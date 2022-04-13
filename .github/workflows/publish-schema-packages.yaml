@@ -1,0 +1,62 @@
+name: "publish-schema-packages"
+
+on:
+  push:
+    branches:
+      - "main"
+      - "master"
+  pull_request:
+
+jobs:
+  deploy-qa:
+    permissions:
+      contents: "read"
+      id-token: "write"
+
+    runs-on: "ubuntu-latest"
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_CICD_WEBHOOK_URL }}
+    steps:
+      - uses: act10ns/slack@v1
+        with:
+          status: starting
+          message: Starting CI/CD build for `{{ env.GITHUB_REF_NAME }}`
+
+      - uses: "actions/checkout@v3"
+
+      - name: "setup node"
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14.x"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: "generate typescript bindings"
+        run: "make qa clean gen-frontend"
+
+      - name: "build npm package"
+        run: npm install && npm run build
+
+      - name: "publish npm package"
+        run: rm -rf .git/ && npm version patch --force && npm publish --force
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_SECRET }}
+
+      - uses: "google-github-actions/auth@v0"
+        with:
+          workload_identity_provider: "projects/221750227179/locations/global/workloadIdentityPools/cicd-pool/providers/cicd-provider"
+          service_account: "cicd-github@basic-garden-241310.iam.gserviceaccount.com"
+
+      - name: "deploy"
+        id: "deploy"
+        uses: "google-github-actions/deploy-appengine@v0"
+        with:
+          deliverables: "app_qa.yaml"
+
+      - name: "show output"
+        run: "echo ${{ steps.deploy.outputs.url }}"
+
+      - uses: act10ns/slack@v1
+        with:
+          status: ${{ job.status }}
+          steps: ${{ toJson(steps) }}
+        if: always()

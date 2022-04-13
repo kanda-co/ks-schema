@@ -6,7 +6,7 @@ info:
 
 servers:
   # NOTE: replace with correct server url at build time
-  - url:
+  - url: https://SCHEMA_URL
 
 paths:
   /api/onboarding:
@@ -125,6 +125,10 @@ components:
           oneOf:
             - $ref: "#/components/schemas/LimitedCompanyInfo"
             - $ref: "#/components/schemas/SoleTraderInfo"
+        available_rates:
+          type: array
+          items:
+            $ref: "#/components/schemas/AvailableRate"
 
     CompanyInfo:
       type: object
@@ -226,6 +230,16 @@ components:
           format: email
         mobile:
           type: string
+
+    AvailableRate:
+      type: object
+      properties:
+        name:
+          type: string
+        fee:
+          type: integer
+        enabled:
+          type: boolean
 
     Error:
       type: object
