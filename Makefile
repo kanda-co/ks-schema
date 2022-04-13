@@ -34,17 +34,12 @@ clean: clean-frontend clean-backend
 
 gen-frontend:
 	@echo Code generation and build for frontend 
-	LC_ALL=C find . -type f -name 'schema.yaml' -exec sed -i '' s%https://SCHEMA_URL%${SCHEMA_URL}%g {} +
 	npx openapi-typescript-codegen --input schema.yaml --output frontend/generated --client axios --exportSchemas true
-	# npm run build
-	LC_ALL=C find . -type f -name 'schema.yaml' -exec sed -i '' s%${SCHEMA_URL}%https://SCHEMA_URL%g {} +
 
 gen-backend:
 	@echo Code generation for backend from OpenAPI...
 	mkdir -p pkg/schema
-	LC_ALL=C find . -type f -name 'schema.yaml' -exec sed -i '' s%https://SCHEMA_URL%${SCHEMA_URL}%g {} +
 	oapi-codegen -generate types,server,spec -package schema schema.yaml > pkg/schema/schema.gen.go
-	LC_ALL=C find . -type f -name 'schema.yaml' -exec sed -i '' s%${SCHEMA_URL}%https://SCHEMA_URL%g {} +
 
 build: gen-backend gen-frontend
 	@echo Build both frontend and backend...
