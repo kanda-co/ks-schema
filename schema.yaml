@@ -1,0 +1,249 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Kanda Service - API schema
+  description: Kanda Service API Schema
+
+servers:
+  # NOTE: replace with correct server url at build time
+  - url:
+
+paths:
+  /api/onboarding:
+    post:
+      operationId: createOnboarding
+      summary: Create new Onboarding
+      tags:
+        - Company
+      requestBody:
+        description: onboarding company object
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Company"
+      responses:
+        200:
+          description: Created onboarding company object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Company"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /api/me:
+    get:
+      operationId: me
+      summary: Get Me info
+      tags:
+        - AuthUser
+      responses:
+        200:
+          description: Me info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthUser"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+components:
+  schemas:
+    AuthUser:
+      type: object
+      properties:
+        uid:
+          type: string
+        token:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        role:
+          type: string
+        phone:
+          type: string
+        photoURL:
+          type: string
+        disabled:
+          type: boolean
+        provider:
+          type: string
+        subject:
+          type: string
+        audience:
+          type: string
+        issuer:
+          type: string
+
+    Address:
+      type: object
+      properties:
+        building_number:
+          type: string
+        building_name:
+          type: string
+        line_1:
+          type: string
+        line_2:
+          type: string
+        city:
+          type: string
+        county:
+          type: string
+        country:
+          type: string
+        postcode:
+          type: string
+
+    Company:
+      type: object
+      properties:
+        company_info:
+          type: object
+          $ref: "#/components/schemas/CompanyInfo"
+        users:
+          type: array
+          items:
+            $ref: "#/components/schemas/UserType"
+        company_type:
+          type: string
+          enum:
+            - limited_company
+            - sole_trader
+        company_type_info:
+          type: object
+          oneOf:
+            - $ref: "#/components/schemas/LimitedCompanyInfo"
+            - $ref: "#/components/schemas/SoleTraderInfo"
+
+    CompanyInfo:
+      type: object
+      properties:
+        trade_type:
+          type: string
+          enum:
+            - gas_engineer
+            - electrician
+            - ev_charger_installer
+            - tiler
+            - kitchen_fitter
+            - floor_layer
+            - cctv_and_security installations
+            - windows_and_doors
+            - landscaping
+            - air_conditioning
+            - bathrooms
+            - driveways_and_patios
+            - garage_doors
+            - fireplaces
+            - multi_trade
+            - other_trade
+        trade_body:
+          type: string
+          enum:
+            - niceic
+            - elecsa
+            - gas_safe
+            - napit
+            - other
+        trade_body_number:
+          type: string
+        warranty_length:
+          type: integer
+        average_monthly_jobs:
+          type: integer
+        average_job_value:
+          type: integer
+        use_subcontractor:
+          type: boolean
+        insurance_document:
+          type: string
+          format: base64
+
+    LimitedCompanyInfo:
+      type: object
+      properties:
+        company_name:
+          type: string
+        company_address:
+          type: object
+          $ref: "#/components/schemas/Address"
+        trading_address:
+          type: object
+          $ref: "#/components/schemas/Address"
+
+    SoleTraderInfo:
+      type: object
+      properties:
+        national_insurance_number:
+          type: string
+        trading_name:
+          type: string
+        trading_address:
+          type: object
+          $ref: "#/components/schemas/Address"
+
+    DirectorInfo:
+      type: object
+      properties:
+        verification_status:
+          type: string
+          enum:
+            - not_verified
+            - verified
+        home_address:
+          type: object
+          $ref: "#/components/schemas/Address"
+
+    UserType:
+      type: object
+      properties:
+        director_info:
+          type: object
+          $ref: "#/components/schemas/DirectorInfo"
+        role:
+          type: string
+          enum:
+            - company-admin
+            - company-manager
+            - company-staff
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+          format: email
+        mobile:
+          type: string
+
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - BearerAuth: []
