@@ -41,12 +41,15 @@ gen-backend:
 	mkdir -p pkg/schema
 	oapi-codegen -generate types,server,spec -package schema schema.yaml > pkg/schema/schema.gen.go
 
-build: gen-backend gen-frontend
-	@echo Build both frontend and backend...
+build-frontend: gen-frontend
+	@echo Build frontend...
 	npx openapi2schema -i schema.yaml > frontend/generated/schema.json
 	echo "import * as JSONSchema from './schema.json';" >> frontend/generated/index.ts
 	echo "export { JSONSchema };" >> frontend/generated/index.ts
 	npm run build
+
+build: gen-backend build-frontend
+	@echo Build both frontend and backend...
 
 setup-cicd:
 	@echo Create CI/CD global identity pool

@@ -30,11 +30,8 @@ jobs:
           node-version: "14.x"
           registry-url: "https://registry.npmjs.org"
 
-      - name: "generate typescript bindings"
-        run: "make qa clean gen-frontend"
-
       - name: "build npm package"
-        run: npm install && npm run build
+        run: npm install && make qa clean build-frontend
 
       - name: "publish npm package"
         run: rm -rf .git/ && npm version $(npm view ks-schema version | awk 'BEGIN{FS=OFS="."} {$3+=1} 1') --force && npm publish --force --allow-same-version
