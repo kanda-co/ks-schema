@@ -43,9 +43,9 @@ gen-backend:
 
 build: gen-backend gen-frontend
 	@echo Build both frontend and backend...
-	node generate.js > frontend/generated/schema.json
-	echo 'import * as Schema from "./schema.json";\n' >> frontend/generated/index.ts
-	echo 'export { Schema };' >> frontend/generated/index.ts
+	npx openapi2schema -i schema.yaml > frontend/generated/schema.json
+	echo "import * as Schema from './schema.json';" >> frontend/generated/index.ts
+	echo "export { Schema };" >> frontend/generated/index.ts
 	npm run build
 
 setup-cicd:
