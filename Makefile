@@ -34,7 +34,7 @@ clean: clean-frontend clean-backend
 
 gen-frontend:
 	@echo Code generation and build for frontend 
-	npx openapi-typescript-codegen --input schema.yaml --output frontend/generated --client axios --exportSchemas true
+	npx openapi-typescript-codegen --input schema.yaml --output frontend/generated --client axios 
 
 gen-backend:
 	@echo Code generation for backend from OpenAPI...

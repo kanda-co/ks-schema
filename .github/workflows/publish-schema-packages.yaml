@@ -37,7 +37,7 @@ jobs:
         run: npm install && npm run build
 
       - name: "publish npm package"
-        run: rm -rf .git/ && npm version patch --force && npm publish --force
+        run: rm -rf .git/ && npm version $(npm view ks-schema version | awk 'BEGIN{FS=OFS="."} {$3+=1} 1') --force && npm publish --force
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_SECRET }}
 
