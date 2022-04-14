@@ -90,63 +90,96 @@ components:
       properties:
         liveness:
           type: boolean
+          title: liveness
         created_at:
           type: string
           format: date-time
+          title: created at
         updated_at:
           type: string
           format: date-time
+          title: updated at
 
     Address:
       type: object
+      required:
+        - line_1
+        - city
+        - country
+        - postcode
       properties:
         building_number:
           type: string
+          title: building number
         building_name:
           type: string
+          title: building name
         line_1:
           type: string
+          title: line 1
         line_2:
           type: string
+          title: line 2
         city:
           type: string
+          title: city / town
         county:
           type: string
+          title: county / state
         country:
           type: string
+          title: country
         postcode:
           type: string
+          title: postcode / zipcode
 
     Company:
       type: object
+      required:
+        - company_info
+        - company_type
+        - company_type_info
       properties:
         company_info:
           type: object
           $ref: "#/components/schemas/CompanyInfo"
+          title: company info
         users:
           type: array
           items:
             $ref: "#/components/schemas/UserType"
+          title: users
         company_type:
           type: string
           enum:
             - limited_company
             - sole_trader
+          title: company type
         company_type_info:
           type: object
           oneOf:
             - $ref: "#/components/schemas/LimitedCompanyInfo"
             - $ref: "#/components/schemas/SoleTraderInfo"
+          title: company type info
         available_rates:
           type: array
           items:
             $ref: "#/components/schemas/AvailableRate"
+          title: available rates
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
+          title: metadata
 
     CompanyInfo:
       type: object
+      required:
+        - trade_type
+        - warranty_length
+        - average_monthly_jobs
+        - average_job_value
+        - use_subcontractor
+        - insurance_document
       properties:
         trade_type:
           type: string
@@ -167,6 +200,7 @@ components:
             - fireplaces
             - multi_trade
             - other_trade
+          title: trade type
         trade_body:
           type: string
           enum:
@@ -175,86 +209,130 @@ components:
             - gas_safe
             - napit
             - other
+          title: trade body
         trade_body_number:
           type: string
+          title: trade body number
         warranty_length:
           type: integer
+          title: warranty length
         average_monthly_jobs:
           type: integer
+          title: average monthly jobs
         average_job_value:
           type: integer
+          title: average job value
         use_subcontractor:
           type: boolean
+          title: use subcontractor?
         insurance_document:
           type: string
           format: base64
+          title: insurance document
 
     LimitedCompanyInfo:
       type: object
+      required:
+        - company_name
+        - company_address
+        - trading_address
       properties:
         company_name:
           type: string
+          title: company name
         company_address:
           type: object
           $ref: "#/components/schemas/Address"
+          title: company address
         trading_address:
           type: object
           $ref: "#/components/schemas/Address"
+          title: trading address
 
     SoleTraderInfo:
       type: object
+      required:
+        - national_insurance_number
+        - trading_name
+        - trading_address
       properties:
         national_insurance_number:
           type: string
+          title: national insurance number
         trading_name:
           type: string
+          title: trading name
         trading_address:
           type: object
           $ref: "#/components/schemas/Address"
+          title: trading address
 
     DirectorInfo:
       type: object
+      required:
+        - verification_status
+        - home_address
       properties:
         verification_status:
           type: string
           enum:
             - not_verified
             - verified
+          title: verification status
         home_address:
           type: object
           $ref: "#/components/schemas/Address"
+          title: home address
 
     UserType:
       type: object
+      required:
+        - role
+        - first_name
+        - email
+        - mobile
       properties:
         director_info:
           type: object
           $ref: "#/components/schemas/DirectorInfo"
+          title: director info
         role:
           type: string
           enum:
             - company-admin
             - company-manager
             - company-staff
+          title: company role
         first_name:
           type: string
+          title: first name
         last_name:
           type: string
+          title: last name
         email:
           type: string
           format: email
+          title: email
         mobile:
           type: string
+          title: mobile
 
     AvailableRate:
       type: object
+      required:
+        - name
+        - fee
+        - enabled
       properties:
         name:
           type: string
+          title: name
         fee:
           type: integer
+          title: fee
         enabled:
           type: boolean
+          title: enabled?
 
     Error:
       type: object
@@ -265,8 +343,10 @@ components:
         code:
           type: integer
           format: int32
+          title: code
         message:
           type: string
+          title: message
 
   securitySchemes:
     BearerAuth:

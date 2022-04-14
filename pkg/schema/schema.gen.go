@@ -97,12 +97,12 @@ const (
 type Address struct {
 	BuildingName   *string `json:"building_name,omitempty"`
 	BuildingNumber *string `json:"building_number,omitempty"`
-	City           *string `json:"city,omitempty"`
-	Country        *string `json:"country,omitempty"`
+	City           string  `json:"city"`
+	Country        string  `json:"country"`
 	County         *string `json:"county,omitempty"`
-	Line1          *string `json:"line_1,omitempty"`
+	Line1          string  `json:"line_1"`
 	Line2          *string `json:"line_2,omitempty"`
-	Postcode       *string `json:"postcode,omitempty"`
+	Postcode       string  `json:"postcode"`
 }
 
 // AuthUser defines model for AuthUser.
@@ -123,19 +123,19 @@ type AuthUser struct {
 
 // AvailableRate defines model for AvailableRate.
 type AvailableRate struct {
-	Enabled *bool   `json:"enabled,omitempty"`
-	Fee     *int    `json:"fee,omitempty"`
-	Name    *string `json:"name,omitempty"`
+	Enabled bool   `json:"enabled"`
+	Fee     int    `json:"fee"`
+	Name    string `json:"name"`
 }
 
 // Company defines model for Company.
 type Company struct {
-	AvailableRates  *[]AvailableRate    `json:"available_rates,omitempty"`
-	CompanyInfo     *CompanyInfo        `json:"company_info,omitempty"`
-	CompanyType     *CompanyCompanyType `json:"company_type,omitempty"`
-	CompanyTypeInfo *interface{}        `json:"company_type_info,omitempty"`
-	Metadata        *Metadata           `json:"metadata,omitempty"`
-	Users           *[]UserType         `json:"users,omitempty"`
+	AvailableRates  *[]AvailableRate   `json:"available_rates,omitempty"`
+	CompanyInfo     CompanyInfo        `json:"company_info"`
+	CompanyType     CompanyCompanyType `json:"company_type"`
+	CompanyTypeInfo interface{}        `json:"company_type_info"`
+	Metadata        *Metadata          `json:"metadata,omitempty"`
+	Users           *[]UserType        `json:"users,omitempty"`
 }
 
 // CompanyCompanyType defines model for Company.CompanyType.
@@ -143,14 +143,14 @@ type CompanyCompanyType string
 
 // CompanyInfo defines model for CompanyInfo.
 type CompanyInfo struct {
-	AverageJobValue    *int                  `json:"average_job_value,omitempty"`
-	AverageMonthlyJobs *int                  `json:"average_monthly_jobs,omitempty"`
-	InsuranceDocument  *string               `json:"insurance_document,omitempty"`
+	AverageJobValue    int                   `json:"average_job_value"`
+	AverageMonthlyJobs int                   `json:"average_monthly_jobs"`
+	InsuranceDocument  string                `json:"insurance_document"`
 	TradeBody          *CompanyInfoTradeBody `json:"trade_body,omitempty"`
 	TradeBodyNumber    *string               `json:"trade_body_number,omitempty"`
-	TradeType          *CompanyInfoTradeType `json:"trade_type,omitempty"`
-	UseSubcontractor   *bool                 `json:"use_subcontractor,omitempty"`
-	WarrantyLength     *int                  `json:"warranty_length,omitempty"`
+	TradeType          CompanyInfoTradeType  `json:"trade_type"`
+	UseSubcontractor   bool                  `json:"use_subcontractor"`
+	WarrantyLength     int                   `json:"warranty_length"`
 }
 
 // CompanyInfoTradeBody defines model for CompanyInfo.TradeBody.
@@ -161,8 +161,8 @@ type CompanyInfoTradeType string
 
 // DirectorInfo defines model for DirectorInfo.
 type DirectorInfo struct {
-	HomeAddress        *Address                        `json:"home_address,omitempty"`
-	VerificationStatus *DirectorInfoVerificationStatus `json:"verification_status,omitempty"`
+	HomeAddress        Address                        `json:"home_address"`
+	VerificationStatus DirectorInfoVerificationStatus `json:"verification_status"`
 }
 
 // DirectorInfoVerificationStatus defines model for DirectorInfo.VerificationStatus.
@@ -176,9 +176,9 @@ type Error struct {
 
 // LimitedCompanyInfo defines model for LimitedCompanyInfo.
 type LimitedCompanyInfo struct {
-	CompanyAddress *Address `json:"company_address,omitempty"`
-	CompanyName    *string  `json:"company_name,omitempty"`
-	TradingAddress *Address `json:"trading_address,omitempty"`
+	CompanyAddress Address `json:"company_address"`
+	CompanyName    string  `json:"company_name"`
+	TradingAddress Address `json:"trading_address"`
 }
 
 // Metadata defines model for Metadata.
@@ -190,19 +190,19 @@ type Metadata struct {
 
 // SoleTraderInfo defines model for SoleTraderInfo.
 type SoleTraderInfo struct {
-	NationalInsuranceNumber *string  `json:"national_insurance_number,omitempty"`
-	TradingAddress          *Address `json:"trading_address,omitempty"`
-	TradingName             *string  `json:"trading_name,omitempty"`
+	NationalInsuranceNumber string  `json:"national_insurance_number"`
+	TradingAddress          Address `json:"trading_address"`
+	TradingName             string  `json:"trading_name"`
 }
 
 // UserType defines model for UserType.
 type UserType struct {
-	DirectorInfo *DirectorInfo        `json:"director_info,omitempty"`
-	Email        *openapi_types.Email `json:"email,omitempty"`
-	FirstName    *string              `json:"first_name,omitempty"`
-	LastName     *string              `json:"last_name,omitempty"`
-	Mobile       *string              `json:"mobile,omitempty"`
-	Role         *UserTypeRole        `json:"role,omitempty"`
+	DirectorInfo *DirectorInfo       `json:"director_info,omitempty"`
+	Email        openapi_types.Email `json:"email"`
+	FirstName    string              `json:"first_name"`
+	LastName     *string             `json:"last_name,omitempty"`
+	Mobile       string              `json:"mobile"`
+	Role         UserTypeRole        `json:"role"`
 }
 
 // UserTypeRole defines model for UserType.Role.
@@ -287,27 +287,32 @@ func RegisterHandlersWithBaseURL(router EchoRouter, si ServerInterface, baseURL 
 // Base64 encoded, gzipped, json marshaled Swagger object
 var swaggerSpec = []string{
 
-	"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",
+	"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",
+	"y+zj+7fseH/8JwAA//8hXI5FiBYAAA==",
 }
 
 // GetSwagger returns the content of the embedded swagger specification file
