@@ -85,6 +85,18 @@ components:
         issuer:
           type: string
 
+    Metadata:
+      type: object
+      properties:
+        liveness:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
     Address:
       type: object
       properties:
@@ -129,6 +141,9 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/AvailableRate"
+        metadata:
+          type: object
+          $ref: "#/components/schemas/Metadata"
 
     CompanyInfo:
       type: object
@@ -142,7 +157,7 @@ components:
             - tiler
             - kitchen_fitter
             - floor_layer
-            - cctv_and_security installations
+            - cctv_and_security_installations
             - windows_and_doors
             - landscaping
             - air_conditioning
