@@ -140,6 +140,9 @@ components:
         - company_type
         - company_type_info
       properties:
+        uid:
+          type: string
+          title: company unique id
         company_info:
           type: object
           $ref: "#/components/schemas/CompanyInfo"
