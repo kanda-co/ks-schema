@@ -8,19 +8,12 @@ info:
 
 local:
 	$(eval ENV := "local")
-	$(eval SCHEMA_URL := http://dev.anzel.me:8080)
-
-dev:
-	$(eval ENV := "dev")
-	$(eval SCHEMA_URL := https://onboarding-qa.kanda.co.uk)
 
 qa:
 	$(eval ENV := "qa")
-	$(eval SCHEMA_URL := https://onboarding-qa.kanda.co.uk)
 
 production:
 	$(eval ENV := "production")
-	$(eval SCHEMA_URL := https://onboarding.kanda.co.uk)
 
 clean-frontend: 
 	@echo Cleaning frontend client built artefact...

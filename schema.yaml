@@ -5,8 +5,9 @@ info:
   description: Kanda Service API Schema
 
 servers:
-  # NOTE: replace with correct server url at build time
-  - url: https://SCHEMA_URL
+  - url: https://hub.kanda.co.uk
+  - url: https://hub-qa.kanda.co.uk
+  - url: http://localhost:8080
 
 paths:
   /api/company:
@@ -524,12 +525,3 @@ components:
         message:
           type: string
           title: message
-
-  securitySchemes:
-    BearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-
-security:
-  - BearerAuth: []
