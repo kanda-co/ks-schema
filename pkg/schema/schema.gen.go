@@ -8,11 +8,13 @@ import (
 	"compress/gzip"
 	"encoding/base64"
 	"fmt"
+	"net/http"
 	"net/url"
 	"path"
 	"strings"
 	"time"
 
+	"github.com/deepmap/oapi-codegen/pkg/runtime"
 	openapi_types "github.com/deepmap/oapi-codegen/pkg/types"
 	"github.com/getkin/kin-openapi/openapi3"
 	"github.com/labstack/echo/v4"
@@ -107,18 +109,18 @@ type Address struct {
 
 // AuthUser defines model for AuthUser.
 type AuthUser struct {
-	Audience *string `json:"audience,omitempty"`
-	Disabled *bool   `json:"disabled,omitempty"`
-	Email    *string `json:"email,omitempty"`
-	Issuer   *string `json:"issuer,omitempty"`
-	Name     *string `json:"name,omitempty"`
-	Phone    *string `json:"phone,omitempty"`
-	PhotoURL *string `json:"photoURL,omitempty"`
-	Provider *string `json:"provider,omitempty"`
-	Role     *string `json:"role,omitempty"`
-	Subject  *string `json:"subject,omitempty"`
-	Token    *string `json:"token,omitempty"`
-	Uid      *string `json:"uid,omitempty"`
+	Audience string              `json:"audience"`
+	Disabled *bool               `json:"disabled,omitempty"`
+	Email    openapi_types.Email `json:"email"`
+	Issuer   string              `json:"issuer"`
+	Name     string              `json:"name"`
+	Phone    *string             `json:"phone,omitempty"`
+	PhotoURL *string             `json:"photoURL,omitempty"`
+	Provider string              `json:"provider"`
+	Role     *string             `json:"role,omitempty"`
+	Subject  string              `json:"subject"`
+	Token    string              `json:"token"`
+	Uid      string              `json:"uid"`
 }
 
 // AvailableRate defines model for AvailableRate.
@@ -134,8 +136,8 @@ type Company struct {
 	CompanyInfo     CompanyInfo        `json:"company_info"`
 	CompanyType     CompanyCompanyType `json:"company_type"`
 	CompanyTypeInfo interface{}        `json:"company_type_info"`
-	Metadata        *Metadata          `json:"metadata,omitempty"`
-	Uid             *string            `json:"uid,omitempty"`
+	Metadata        Metadata           `json:"metadata"`
+	Uid             string             `json:"uid"`
 	Users           *[]UserType        `json:"users,omitempty"`
 }
 
@@ -171,7 +173,7 @@ type DirectorInfoVerificationStatus string
 
 // Error defines model for Error.
 type Error struct {
-	Code    int32  `json:"code"`
+	Code    *int32 `json:"code,omitempty"`
 	Message string `json:"message"`
 }
 
@@ -184,9 +186,9 @@ type LimitedCompanyInfo struct {
 
 // Metadata defines model for Metadata.
 type Metadata struct {
-	CreatedAt *time.Time `json:"created_at,omitempty"`
-	Liveness  *bool      `json:"liveness,omitempty"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	CreatedAt time.Time `json:"created_at"`
+	Liveness  bool      `json:"liveness"`
+	UpdatedAt time.Time `json:"updated_at"`
 }
 
 // SoleTraderInfo defines model for SoleTraderInfo.
@@ -209,25 +211,119 @@ type UserType struct {
 // UserTypeRole defines model for UserType.Role.
 type UserTypeRole string
 
-// CreateOnboardingJSONBody defines parameters for CreateOnboarding.
-type CreateOnboardingJSONBody Company
+// PostCompanyJSONBody defines parameters for PostCompany.
+type PostCompanyJSONBody Company
 
-// CreateOnboardingJSONRequestBody defines body for CreateOnboarding for application/json ContentType.
-type CreateOnboardingJSONRequestBody CreateOnboardingJSONBody
+// PutCompanyJSONBody defines parameters for PutCompany.
+type PutCompanyJSONBody Company
+
+// PostCompanyJSONRequestBody defines body for PostCompany for application/json ContentType.
+type PostCompanyJSONRequestBody PostCompanyJSONBody
+
+// PutCompanyJSONRequestBody defines body for PutCompany for application/json ContentType.
+type PutCompanyJSONRequestBody PutCompanyJSONBody
 
 // ServerInterface represents all server handlers.
 type ServerInterface interface {
+	// Get all companies
+	// (GET /api/company)
+	GetCompanies(ctx echo.Context) error
+	// Post new Company
+	// (POST /api/company)
+	PostCompany(ctx echo.Context) error
+	// delete existing Company
+	// (DELETE /api/company/{uid})
+	DeleteCompany(ctx echo.Context, uid string) error
+	// get existing Company
+	// (GET /api/company/{uid})
+	GetCompany(ctx echo.Context, uid string) error
+	// put existing Company
+	// (PUT /api/company/{uid})
+	PutCompany(ctx echo.Context, uid string) error
 	// Get Me info
 	// (GET /api/me)
 	Me(ctx echo.Context) error
-	// Create new Onboarding
-	// (POST /api/onboarding)
-	CreateOnboarding(ctx echo.Context) error
 }
 
 // ServerInterfaceWrapper converts echo contexts to parameters.
 type ServerInterfaceWrapper struct {
 	Handler ServerInterface
+}
+
+// GetCompanies converts echo context to params.
+func (w *ServerInterfaceWrapper) GetCompanies(ctx echo.Context) error {
+	var err error
+
+	ctx.Set(BearerAuthScopes, []string{""})
+
+	// Invoke the callback with all the unmarshalled arguments
+	err = w.Handler.GetCompanies(ctx)
+	return err
+}
+
+// PostCompany converts echo context to params.
+func (w *ServerInterfaceWrapper) PostCompany(ctx echo.Context) error {
+	var err error
+
+	ctx.Set(BearerAuthScopes, []string{""})
+
+	// Invoke the callback with all the unmarshalled arguments
+	err = w.Handler.PostCompany(ctx)
+	return err
+}
+
+// DeleteCompany converts echo context to params.
+func (w *ServerInterfaceWrapper) DeleteCompany(ctx echo.Context) error {
+	var err error
+	// ------------- Path parameter "uid" -------------
+	var uid string
+
+	err = runtime.BindStyledParameterWithLocation("simple", false, "uid", runtime.ParamLocationPath, ctx.Param("uid"), &uid)
+	if err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter uid: %s", err))
+	}
+
+	ctx.Set(BearerAuthScopes, []string{""})
+
+	// Invoke the callback with all the unmarshalled arguments
+	err = w.Handler.DeleteCompany(ctx, uid)
+	return err
+}
+
+// GetCompany converts echo context to params.
+func (w *ServerInterfaceWrapper) GetCompany(ctx echo.Context) error {
+	var err error
+	// ------------- Path parameter "uid" -------------
+	var uid string
+
+	err = runtime.BindStyledParameterWithLocation("simple", false, "uid", runtime.ParamLocationPath, ctx.Param("uid"), &uid)
+	if err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter uid: %s", err))
+	}
+
+	ctx.Set(BearerAuthScopes, []string{""})
+
+	// Invoke the callback with all the unmarshalled arguments
+	err = w.Handler.GetCompany(ctx, uid)
+	return err
+}
+
+// PutCompany converts echo context to params.
+func (w *ServerInterfaceWrapper) PutCompany(ctx echo.Context) error {
+	var err error
+	// ------------- Path parameter "uid" -------------
+	var uid string
+
+	err = runtime.BindStyledParameterWithLocation("simple", false, "uid", runtime.ParamLocationPath, ctx.Param("uid"), &uid)
+	if err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter uid: %s", err))
+	}
+
+	ctx.Set(BearerAuthScopes, []string{""})
+
+	// Invoke the callback with all the unmarshalled arguments
+	err = w.Handler.PutCompany(ctx, uid)
+	return err
 }
 
 // Me converts echo context to params.
@@ -238,17 +334,6 @@ func (w *ServerInterfaceWrapper) Me(ctx echo.Context) error {
 
 	// Invoke the callback with all the unmarshalled arguments
 	err = w.Handler.Me(ctx)
-	return err
-}
-
-// CreateOnboarding converts echo context to params.
-func (w *ServerInterfaceWrapper) CreateOnboarding(ctx echo.Context) error {
-	var err error
-
-	ctx.Set(BearerAuthScopes, []string{""})
-
-	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.CreateOnboarding(ctx)
 	return err
 }
 
@@ -280,40 +365,50 @@ func RegisterHandlersWithBaseURL(router EchoRouter, si ServerInterface, baseURL 
 		Handler: si,
 	}
 
+	router.GET(baseURL+"/api/company", wrapper.GetCompanies)
+	router.POST(baseURL+"/api/company", wrapper.PostCompany)
+	router.DELETE(baseURL+"/api/company/:uid", wrapper.DeleteCompany)
+	router.GET(baseURL+"/api/company/:uid", wrapper.GetCompany)
+	router.PUT(baseURL+"/api/company/:uid", wrapper.PutCompany)
 	router.GET(baseURL+"/api/me", wrapper.Me)
-	router.POST(baseURL+"/api/onboarding", wrapper.CreateOnboarding)
 
 }
 
 // Base64 encoded, gzipped, json marshaled Swagger object
 var swaggerSpec = []string{
 
-	"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",
+	"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",
+	"mpw3538GAAD//xurg0xAIgAA",
 }
 
 // GetSwagger returns the content of the embedded swagger specification file

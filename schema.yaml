@@ -9,14 +9,35 @@ servers:
   - url: https://SCHEMA_URL
 
 paths:
-  /api/onboarding:
+  /api/company:
+    get:
+      operationId: getCompanies
+      summary: Get all companies
+      tags:
+        - Company
+      responses:
+        200:
+          description: Got all companies
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Company"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
     post:
-      operationId: createOnboarding
-      summary: Create new Onboarding
+      operationId: postCompany
+      summary: Post new Company
       tags:
         - Company
       requestBody:
-        description: onboarding company object
+        description: post new company object
         required: true
         content:
           application/json:
@@ -24,7 +45,7 @@ paths:
               $ref: "#/components/schemas/Company"
       responses:
         200:
-          description: Created onboarding company object
+          description: Posted company object
           content:
             application/json:
               schema:
@@ -35,6 +56,96 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+
+  /api/company/{uid}:
+    get:
+      operationId: getCompany
+      summary: get existing Company
+      tags:
+        - Company
+      parameters:
+        - name: uid
+          in: path
+          description: company uid
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: Got company object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Company"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: putCompany
+      summary: put existing Company
+      tags:
+        - Company
+      parameters:
+        - name: uid
+          in: path
+          description: company uid
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: put existing company object
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Company"
+      responses:
+        200:
+          description: Put company object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Company"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      operationId: deleteCompany
+      summary: delete existing Company
+      tags:
+        - Company
+      parameters:
+        - name: uid
+          in: path
+          description: company uid
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: Deleted company object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Company"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/me:
     get:
       operationId: me
@@ -59,46 +170,87 @@ components:
   schemas:
     AuthUser:
       type: object
+      required:
+        - uid
+        - token
+        - name
+        - email
+        - provider
+        - subject
+        - audience
+        - issuer
       properties:
         uid:
           type: string
+          title: uid
+          readOnly: true
         token:
           type: string
+          title: token
+          readOnly: true
         name:
           type: string
+          title: name
+          minLength: 1
         email:
           type: string
+          title: email
+          format: email
+          readOnly: true
         role:
           type: string
+          title: role
+          readOnly: true
         phone:
           type: string
+          title: phone
+          minLength: 1
         photoURL:
           type: string
+          title: photo URL
+          format: uri
         disabled:
           type: boolean
+          title: disabled
+          readOnly: true
         provider:
           type: string
+          title: provider
+          readOnly: true
         subject:
           type: string
+          title: subject
+          readOnly: true
         audience:
           type: string
+          title: audience
+          readOnly: true
         issuer:
           type: string
+          title: issuer
+          readOnly: true
 
     Metadata:
       type: object
+      required:
+        - liveness
+        - created_at
+        - updated_at
       properties:
         liveness:
           type: boolean
           title: liveness
+          readOnly: true
         created_at:
           type: string
           format: date-time
           title: created at
+          readOnly: true
         updated_at:
           type: string
           format: date-time
           title: updated at
+          readOnly: true
 
     Address:
       type: object
@@ -111,38 +263,49 @@ components:
         building_number:
           type: string
           title: building number
+          minLength: 1
         building_name:
           type: string
           title: building name
+          minLength: 1
         line_1:
           type: string
           title: line 1
+          minLength: 1
         line_2:
           type: string
           title: line 2
+          minLength: 1
         city:
           type: string
           title: city / town
+          minLength: 1
         county:
           type: string
           title: county / state
+          minLength: 1
         country:
           type: string
           title: country
+          minLength: 1
         postcode:
           type: string
           title: postcode / zipcode
+          pattern: "^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})$"
 
     Company:
       type: object
       required:
+        - uid
         - company_info
         - company_type
         - company_type_info
+        - metadata
       properties:
         uid:
           type: string
           title: company unique id
+          readOnly: true
         company_info:
           type: object
           $ref: "#/components/schemas/CompanyInfo"
@@ -216,15 +379,19 @@ components:
         trade_body_number:
           type: string
           title: trade body number
+          minLength: 1
         warranty_length:
           type: integer
           title: warranty length
+          minimum: 1
         average_monthly_jobs:
           type: integer
           title: average monthly jobs
+          minimum: 1
         average_job_value:
           type: integer
           title: average job value
+          minimum: 1
         use_subcontractor:
           type: boolean
           title: use subcontractor?
@@ -243,6 +410,7 @@ components:
         company_name:
           type: string
           title: company name
+          minLength: 1
         company_address:
           type: object
           $ref: "#/components/schemas/Address"
@@ -262,9 +430,11 @@ components:
         national_insurance_number:
           type: string
           title: national insurance number
+          minLength: 1
         trading_name:
           type: string
           title: trading name
+          minLength: 1
         trading_address:
           type: object
           $ref: "#/components/schemas/Address"
@@ -282,6 +452,7 @@ components:
             - not_verified
             - verified
           title: verification status
+          readOnly: true
         home_address:
           type: object
           $ref: "#/components/schemas/Address"
@@ -309,9 +480,11 @@ components:
         first_name:
           type: string
           title: first name
+          minLength: 1
         last_name:
           type: string
           title: last name
+          minLength: 1
         email:
           type: string
           format: email
@@ -319,6 +492,7 @@ components:
         mobile:
           type: string
           title: mobile
+          minLength: 1
 
     AvailableRate:
       type: object
@@ -333,6 +507,7 @@ components:
         fee:
           type: integer
           title: fee
+          minimum: 0
         enabled:
           type: boolean
           title: enabled?
@@ -340,7 +515,6 @@ components:
     Error:
       type: object
       required:
-        - code
         - message
       properties:
         code:
