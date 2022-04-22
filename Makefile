@@ -44,6 +44,10 @@ build-frontend: gen-frontend
 build: gen-backend build-frontend
 	@echo Build both frontend and backend...
 
+ui: build
+	@echo Loading Swagger UI on port 8000...
+	npx swagger-ui-cli -p 8000 schema.yaml
+
 setup-cicd:
 	@echo Create CI/CD global identity pool
 	gcloud iam workload-identity-pools create "cicd-pool" \

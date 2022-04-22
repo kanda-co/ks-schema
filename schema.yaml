@@ -304,7 +304,152 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/payment:
+    get:
+      operationId: getPayments
+      summary: Get all payments
+      tags:
+        - Payment
+      responses:
+        200:
+          description: Got all payments
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Payment"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    post:
+      operationId: postPayment
+      summary: Post new Payment
+      tags:
+        - Payment
+      requestBody:
+        description: post new payment object
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Payment"
+      responses:
+        200:
+          description: Posted payment object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Payment"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/payment/{id}:
+    get:
+      operationId: getPayment
+      summary: get existing Payment
+      tags:
+        - Payment
+      parameters:
+        - name: id
+          in: path
+          description: payment id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: Got payment object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Payment"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: putPayment
+      summary: put existing Payment
+      tags:
+        - Payment
+      parameters:
+        - name: id
+          in: path
+          description: payment id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: put existing payment object
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Payment"
+      responses:
+        200:
+          description: Put payment object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Payment"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      operationId: deletePayment
+      summary: delete existing Payment
+      tags:
+        - Payment
+      parameters:
+        - name: id
+          in: path
+          description: payment id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: Deleted payment object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Payment"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+security:
+  - BearerAuth: []
+
 components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+
   schemas:
     AuthUser:
       type: object
@@ -334,7 +479,6 @@ components:
           type: string
           title: email
           format: email
-          readOnly: true
         role:
           type: string
           title: role
@@ -649,6 +793,7 @@ components:
         name:
           type: string
           title: name
+          minLength: 1
         fee:
           type: integer
           title: fee
@@ -684,13 +829,6 @@ components:
         address:
           type: object
           $ref: "#/components/schemas/Address"
-
-    PaymentMethod:
-      type: string
-      enum:
-        - card
-        - direct_debit
-      title: payment method
 
     Job:
       type: object
@@ -738,11 +876,6 @@ components:
         customer:
           type: object
           $ref: "#/components/schemas/Customer"
-        payment_methods:
-          type: array
-          items:
-            $ref: "#/components/schemas/PaymentMethod"
-          title: payment methods
         payments:
           type: array
           items:
@@ -764,66 +897,14 @@ components:
           title: metadata
           readOnly: true
 
-    Payment:
-      type: object
-      required:
-        - id
-        - kid
-        - kind
-        - xid
-        - provider
-        - status
-        - amount
-        - metadata
-      properties:
-        id:
-          type: string
-          title: payment id
-          readOnly: true
-        kid:
-          type: string
-          title: internal kind id
-        kind:
-          type: string
-          title: internal kind
-          enum:
-            - job
-            - job_payout
-            - job_refund
-            - charge
-            - charge_refund
-        xid:
-          type: string
-          title: external reference id
-          readyOnly: true
-        provider:
-          type: string
-          enum:
-            - stripe
-            - gocardless
-            - bank_transfer
-        status:
-          type: string
-          title: payment status
-          enum:
-            - unpaid
-            - pending
-            - paid
-            - dispute
-            - refunded
-        amount:
-          type: integer
-          format: int32
-          title: payment amount in pence
-          minimum: 0
-        metadata:
-          type: object
-          $ref: "#/components/schemas/Metadata"
-          title: metadata
-          readOnly: true
-
     JobItem:
       type: object
+      required:
+        - title
+        - description
+        - quantity
+        - price
+        - vat
       properties:
         title:
           type: string
@@ -847,6 +928,97 @@ components:
           type: integer
           format: int32
           title: job item vat value in pence
+        quote_document:
+          type: string
+          format: base64
+          title: quote document
+          minLength: 1
+
+    Payment:
+      type: object
+      required:
+        - id
+        - cid
+        - oid
+        - kid
+        - kind
+        - xid
+        - payment_method
+        - provider
+        - status
+        - amount
+        - metadata
+      properties:
+        id:
+          type: string
+          title: payment id
+          readOnly: true
+        cid:
+          type: string
+          title: company id
+          readOnly: true
+        oid:
+          type: string
+          title: owner id
+          readOnly: true
+        kid:
+          type: string
+          title: internal kind id
+          readOnly: true
+        kind:
+          type: string
+          title: internal kind
+          enum:
+            - job
+            - job_payout
+            - job_refund
+            - charge
+            - charge_refund
+          readOnly: true
+        xid:
+          type: string
+          title: external reference id
+          readOnly: true
+        xref:
+          type: string
+          title: external reference
+          readOnly: true
+        payment_method:
+          type: string
+          enum:
+            - loan
+            - card
+            - direct_debit
+          title: payment method
+        provider:
+          type: string
+          enum:
+            - omni
+            - duologi
+            - stripe
+            - gocardless
+            - bank_transfer
+        status:
+          type: string
+          title: payment status
+          enum:
+            - unpaid
+            - pending
+            - paid
+            - disputed
+            - cancelled
+            - refunded
+          readOnly: true
+        amount:
+          type: integer
+          format: int32
+          title: payment amount in pence
+          minimum: 0
+        metadata:
+          type: object
+          $ref: "#/components/schemas/Metadata"
+          title: metadata
+          readOnly: true
 
     Error:
       type: object
@@ -857,6 +1029,8 @@ components:
           type: integer
           format: int32
           title: code
+          readOnly: true
         message:
           type: string
           title: message
+          readOnly: true
