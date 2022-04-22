@@ -150,6 +150,7 @@ type AuthUser struct {
 	Audience string              `json:"audience"`
 	Disabled *bool               `json:"disabled,omitempty"`
 	Email    openapi_types.Email `json:"email"`
+	Id       string              `json:"id"`
 	Issuer   string              `json:"issuer"`
 	Name     string              `json:"name"`
 	Phone    *string             `json:"phone,omitempty"`
@@ -158,7 +159,6 @@ type AuthUser struct {
 	Role     *string             `json:"role,omitempty"`
 	Subject  string              `json:"subject"`
 	Token    string              `json:"token"`
-	Uid      string              `json:"uid"`
 }
 
 // AvailableRate defines model for AvailableRate.
@@ -174,8 +174,8 @@ type Company struct {
 	CompanyInfo     CompanyInfo        `json:"company_info"`
 	CompanyType     CompanyCompanyType `json:"company_type"`
 	CompanyTypeInfo interface{}        `json:"company_type_info"`
+	Id              string             `json:"id"`
 	Metadata        Metadata           `json:"metadata"`
-	Uid             string             `json:"uid"`
 	Users           *[]UserType        `json:"users,omitempty"`
 }
 
@@ -231,6 +231,7 @@ type Job struct {
 	DepositType    string          `json:"deposit_type"`
 	DepositValue   int32           `json:"deposit_value"`
 	Description    string          `json:"description"`
+	Id             string          `json:"id"`
 	JobItems       *[]JobItem      `json:"job_items,omitempty"`
 	Metadata       Metadata        `json:"metadata"`
 	Notes          *[]string       `json:"notes,omitempty"`
@@ -238,7 +239,6 @@ type Job struct {
 	PaymentMethods []PaymentMethod `json:"payment_methods"`
 	Payments       *[]Payment      `json:"payments,omitempty"`
 	Title          string          `json:"title"`
-	Uid            string          `json:"uid"`
 }
 
 // JobItem defines model for JobItem.
@@ -267,12 +267,12 @@ type Metadata struct {
 // Payment defines model for Payment.
 type Payment struct {
 	Amount   int32           `json:"amount"`
+	Id       string          `json:"id"`
 	Kid      string          `json:"kid"`
 	Kind     PaymentKind     `json:"kind"`
 	Metadata Metadata        `json:"metadata"`
 	Provider PaymentProvider `json:"provider"`
 	Status   PaymentStatus   `json:"status"`
-	Uid      string          `json:"uid"`
 	Xid      string          `json:"xid"`
 }
 
@@ -341,14 +341,14 @@ type ServerInterface interface {
 	// (POST /api/company)
 	PostCompany(ctx echo.Context) error
 	// delete existing Company
-	// (DELETE /api/company/{uid})
-	DeleteCompany(ctx echo.Context, uid string) error
+	// (DELETE /api/company/{id})
+	DeleteCompany(ctx echo.Context, id string) error
 	// get existing Company
-	// (GET /api/company/{uid})
-	GetCompany(ctx echo.Context, uid string) error
+	// (GET /api/company/{id})
+	GetCompany(ctx echo.Context, id string) error
 	// put existing Company
-	// (PUT /api/company/{uid})
-	PutCompany(ctx echo.Context, uid string) error
+	// (PUT /api/company/{id})
+	PutCompany(ctx echo.Context, id string) error
 	// Get all jobs
 	// (GET /api/job)
 	GetJobs(ctx echo.Context) error
@@ -356,14 +356,14 @@ type ServerInterface interface {
 	// (POST /api/job)
 	PostJob(ctx echo.Context) error
 	// delete existing Job
-	// (DELETE /api/job/{uid})
-	DeleteJob(ctx echo.Context, uid string) error
+	// (DELETE /api/job/{id})
+	DeleteJob(ctx echo.Context, id string) error
 	// get existing Job
-	// (GET /api/job/{uid})
-	GetJob(ctx echo.Context, uid string) error
+	// (GET /api/job/{id})
+	GetJob(ctx echo.Context, id string) error
 	// put existing Job
-	// (PUT /api/job/{uid})
-	PutJob(ctx echo.Context, uid string) error
+	// (PUT /api/job/{id})
+	PutJob(ctx echo.Context, id string) error
 	// Get Me info
 	// (GET /api/me)
 	Me(ctx echo.Context) error
@@ -395,48 +395,48 @@ func (w *ServerInterfaceWrapper) PostCompany(ctx echo.Context) error {
 // DeleteCompany converts echo context to params.
 func (w *ServerInterfaceWrapper) DeleteCompany(ctx echo.Context) error {
 	var err error
-	// ------------- Path parameter "uid" -------------
-	var uid string
+	// ------------- Path parameter "id" -------------
+	var id string
 
-	err = runtime.BindStyledParameterWithLocation("simple", false, "uid", runtime.ParamLocationPath, ctx.Param("uid"), &uid)
+	err = runtime.BindStyledParameterWithLocation("simple", false, "id", runtime.ParamLocationPath, ctx.Param("id"), &id)
 	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter uid: %s", err))
+		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter id: %s", err))
 	}
 
 	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.DeleteCompany(ctx, uid)
+	err = w.Handler.DeleteCompany(ctx, id)
 	return err
 }
 
 // GetCompany converts echo context to params.
 func (w *ServerInterfaceWrapper) GetCompany(ctx echo.Context) error {
 	var err error
-	// ------------- Path parameter "uid" -------------
-	var uid string
+	// ------------- Path parameter "id" -------------
+	var id string
 
-	err = runtime.BindStyledParameterWithLocation("simple", false, "uid", runtime.ParamLocationPath, ctx.Param("uid"), &uid)
+	err = runtime.BindStyledParameterWithLocation("simple", false, "id", runtime.ParamLocationPath, ctx.Param("id"), &id)
 	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter uid: %s", err))
+		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter id: %s", err))
 	}
 
 	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.GetCompany(ctx, uid)
+	err = w.Handler.GetCompany(ctx, id)
 	return err
 }
 
 // PutCompany converts echo context to params.
 func (w *ServerInterfaceWrapper) PutCompany(ctx echo.Context) error {
 	var err error
-	// ------------- Path parameter "uid" -------------
-	var uid string
+	// ------------- Path parameter "id" -------------
+	var id string
 
-	err = runtime.BindStyledParameterWithLocation("simple", false, "uid", runtime.ParamLocationPath, ctx.Param("uid"), &uid)
+	err = runtime.BindStyledParameterWithLocation("simple", false, "id", runtime.ParamLocationPath, ctx.Param("id"), &id)
 	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter uid: %s", err))
+		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter id: %s", err))
 	}
 
 	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.PutCompany(ctx, uid)
+	err = w.Handler.PutCompany(ctx, id)
 	return err
 }
 
@@ -461,48 +461,48 @@ func (w *ServerInterfaceWrapper) PostJob(ctx echo.Context) error {
 // DeleteJob converts echo context to params.
 func (w *ServerInterfaceWrapper) DeleteJob(ctx echo.Context) error {
 	var err error
-	// ------------- Path parameter "uid" -------------
-	var uid string
+	// ------------- Path parameter "id" -------------
+	var id string
 
-	err = runtime.BindStyledParameterWithLocation("simple", false, "uid", runtime.ParamLocationPath, ctx.Param("uid"), &uid)
+	err = runtime.BindStyledParameterWithLocation("simple", false, "id", runtime.ParamLocationPath, ctx.Param("id"), &id)
 	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter uid: %s", err))
+		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter id: %s", err))
 	}
 
 	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.DeleteJob(ctx, uid)
+	err = w.Handler.DeleteJob(ctx, id)
 	return err
 }
 
 // GetJob converts echo context to params.
 func (w *ServerInterfaceWrapper) GetJob(ctx echo.Context) error {
 	var err error
-	// ------------- Path parameter "uid" -------------
-	var uid string
+	// ------------- Path parameter "id" -------------
+	var id string
 
-	err = runtime.BindStyledParameterWithLocation("simple", false, "uid", runtime.ParamLocationPath, ctx.Param("uid"), &uid)
+	err = runtime.BindStyledParameterWithLocation("simple", false, "id", runtime.ParamLocationPath, ctx.Param("id"), &id)
 	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter uid: %s", err))
+		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter id: %s", err))
 	}
 
 	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.GetJob(ctx, uid)
+	err = w.Handler.GetJob(ctx, id)
 	return err
 }
 
 // PutJob converts echo context to params.
 func (w *ServerInterfaceWrapper) PutJob(ctx echo.Context) error {
 	var err error
-	// ------------- Path parameter "uid" -------------
-	var uid string
+	// ------------- Path parameter "id" -------------
+	var id string
 
-	err = runtime.BindStyledParameterWithLocation("simple", false, "uid", runtime.ParamLocationPath, ctx.Param("uid"), &uid)
+	err = runtime.BindStyledParameterWithLocation("simple", false, "id", runtime.ParamLocationPath, ctx.Param("id"), &id)
 	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter uid: %s", err))
+		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter id: %s", err))
 	}
 
 	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.PutJob(ctx, uid)
+	err = w.Handler.PutJob(ctx, id)
 	return err
 }
 
@@ -545,14 +545,14 @@ func RegisterHandlersWithBaseURL(router EchoRouter, si ServerInterface, baseURL 
 
 	router.GET(baseURL+"/api/company", wrapper.GetCompanies)
 	router.POST(baseURL+"/api/company", wrapper.PostCompany)
-	router.DELETE(baseURL+"/api/company/:uid", wrapper.DeleteCompany)
-	router.GET(baseURL+"/api/company/:uid", wrapper.GetCompany)
-	router.PUT(baseURL+"/api/company/:uid", wrapper.PutCompany)
+	router.DELETE(baseURL+"/api/company/:id", wrapper.DeleteCompany)
+	router.GET(baseURL+"/api/company/:id", wrapper.GetCompany)
+	router.PUT(baseURL+"/api/company/:id", wrapper.PutCompany)
 	router.GET(baseURL+"/api/job", wrapper.GetJobs)
 	router.POST(baseURL+"/api/job", wrapper.PostJob)
-	router.DELETE(baseURL+"/api/job/:uid", wrapper.DeleteJob)
-	router.GET(baseURL+"/api/job/:uid", wrapper.GetJob)
-	router.PUT(baseURL+"/api/job/:uid", wrapper.PutJob)
+	router.DELETE(baseURL+"/api/job/:id", wrapper.DeleteJob)
+	router.GET(baseURL+"/api/job/:id", wrapper.GetJob)
+	router.PUT(baseURL+"/api/job/:id", wrapper.PutJob)
 	router.GET(baseURL+"/api/me", wrapper.Me)
 
 }
@@ -560,48 +560,48 @@ func RegisterHandlersWithBaseURL(router EchoRouter, si ServerInterface, baseURL 
 // Base64 encoded, gzipped, json marshaled Swagger object
 var swaggerSpec = []string{
 
-	"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",
-	"CwAA//+dlDGRcDYAAA==",
+	"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",
+	"/C8AAP//+/uHGVM2AAA=",
 }
 
 // GetSwagger returns the content of the embedded swagger specification file
