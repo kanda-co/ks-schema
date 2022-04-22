@@ -448,6 +448,12 @@ components:
           type: object
           $ref: "#/components/schemas/CompanyInfo"
           title: company info
+        emails:
+          type: array
+          items:
+            type: string
+            format: email
+          title: emails for user who has api access
         users:
           type: array
           items:
