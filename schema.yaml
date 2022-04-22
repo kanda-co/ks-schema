@@ -10,6 +10,26 @@ servers:
   - url: http://localhost:8080
 
 paths:
+  /api/me:
+    get:
+      operationId: me
+      summary: Get Me info
+      tags:
+        - AuthUser
+      responses:
+        200:
+          description: Me info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthUser"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/company:
     get:
       operationId: getCompanies
@@ -147,19 +167,136 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-  /api/me:
+  /api/job:
     get:
-      operationId: me
-      summary: Get Me info
+      operationId: getJobs
+      summary: Get all jobs
       tags:
-        - AuthUser
+        - Job
       responses:
         200:
-          description: Me info
+          description: Got all jobs
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/AuthUser"
+                type: array
+                items:
+                  $ref: "#/components/schemas/Job"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    post:
+      operationId: postJob
+      summary: Post new Job
+      tags:
+        - Job
+      requestBody:
+        description: post new job object
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Job"
+      responses:
+        200:
+          description: Posted job object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/job/{uid}:
+    get:
+      operationId: getJob
+      summary: get existing Job
+      tags:
+        - Job
+      parameters:
+        - name: uid
+          in: path
+          description: job uid
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: Got job object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: putJob
+      summary: put existing Job
+      tags:
+        - Job
+      parameters:
+        - name: uid
+          in: path
+          description: job uid
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: put existing job object
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Job"
+      responses:
+        200:
+          description: Put job object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      operationId: deleteJob
+      summary: delete existing Job
+      tags:
+        - Job
+      parameters:
+        - name: uid
+          in: path
+          description: job uid
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: Deleted job object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
         default:
           description: unexpected error
           content:
@@ -512,6 +649,193 @@ components:
         enabled:
           type: boolean
           title: enabled?
+
+    Customer:
+      type: object
+      required:
+        - first_name
+        - email
+        - phone
+        - address
+      properties:
+        first_name:
+          type: string
+          title: first name
+          minLength: 1
+        last_name:
+          type: string
+          title: last name
+          minLength: 1
+        email:
+          type: string
+          format: email
+          title: email
+        phone:
+          type: string
+          title: phone number
+          minLength: 1
+        address:
+          type: object
+          $ref: "#/components/schemas/Address"
+
+    PaymentMethod:
+      type: string
+      enum:
+        - card
+        - direct_debit
+      title: payment method
+
+    Job:
+      type: object
+      required:
+        - uid
+        - cid
+        - oid
+        - title
+        - description
+        - deposit_type
+        - deposit_value
+        - customer
+        - payment_methods
+        - metadata
+      properties:
+        uid:
+          type: string
+          title: job uid
+          readOnly: true
+        cid:
+          type: string
+          title: company uid
+          readOnly: true
+        oid:
+          type: string
+          title: owner uid
+          readOnly: true
+        title:
+          type: string
+          title: job title
+          minLength: 1
+        description:
+          type: string
+          title: job description
+          minLength: 1
+        deposit_type:
+          type: string
+          title: deposit type
+          minLength: 1
+        deposit_value:
+          type: integer
+          format: int32
+          title: deposit value in pence
+          minimum: 1
+        customer:
+          type: object
+          $ref: "#/components/schemas/Customer"
+        payment_methods:
+          type: array
+          items:
+            $ref: "#/components/schemas/PaymentMethod"
+          title: payment methods
+        payments:
+          type: array
+          items:
+            $ref: "#/components/schemas/Payment"
+          title: payments
+        job_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/JobItem"
+          title: job items
+        notes:
+          type: array
+          items:
+            type: string
+          title: job notes
+        metadata:
+          type: object
+          $ref: "#/components/schemas/Metadata"
+
+    Payment:
+      type: object
+      required:
+        - uid
+        - kid
+        - kind
+        - xid
+        - provider
+        - status
+        - amount
+        - metadata
+      properties:
+        uid:
+          type: string
+          title: payment uid
+          readOnly: true
+        kid:
+          type: string
+          title: internal kind uid
+        kind:
+          type: string
+          title: internal kind
+          enum:
+            - job
+            - job_payout
+            - job_refund
+            - charge
+            - charge_refund
+        xid:
+          type: string
+          title: external reference uid
+          readyOnly: true
+        provider:
+          type: string
+          enum:
+            - stripe
+            - gocardless
+            - bank_transfer
+        status:
+          type: string
+          title: payment status
+          enum:
+            - unpaid
+            - pending
+            - paid
+            - dispute
+            - refunded
+        amount:
+          type: integer
+          format: int32
+          title: payment amount in pence
+          minimum: 0
+        metadata:
+          type: object
+          $ref: "#/components/schemas/Metadata"
+
+    JobItem:
+      type: object
+      properties:
+        title:
+          type: string
+          title: job item title
+          minLength: 1
+        description:
+          type: string
+          title: job item description
+          minLength: 1
+        quantity:
+          type: integer
+          format: int32
+          title: job item quantity
+          minimum: 1
+        price:
+          type: integer
+          format: int32
+          title: job item total price in pence (vat inclusive)
+          minimum: 1
+        vat:
+          type: integer
+          format: int32
+          title: job item vat value in pence
 
     Error:
       type: object
