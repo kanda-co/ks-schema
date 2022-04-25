@@ -876,11 +876,6 @@ components:
         customer:
           type: object
           $ref: "#/components/schemas/Customer"
-        payments:
-          type: array
-          items:
-            $ref: "#/components/schemas/Payment"
-          title: payments
         job_items:
           type: array
           items:
@@ -901,7 +896,6 @@ components:
       type: object
       required:
         - title
-        - description
         - quantity
         - price
         - vat
@@ -989,7 +983,11 @@ components:
             - loan
             - card
             - direct_debit
+            - cash
           title: payment method
+        customer:
+          type: object
+          $ref: "#/components/schemas/Customer"
         provider:
           type: string
           enum:
