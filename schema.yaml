@@ -13,12 +13,12 @@ paths:
   /api/me:
     get:
       operationId: me
-      summary: Get Me info
+      summary: get me info
       tags:
         - AuthUser
       responses:
         200:
-          description: Me info
+          description: got me info
           content:
             application/json:
               schema:
@@ -33,12 +33,12 @@ paths:
   /api/company:
     get:
       operationId: getCompanies
-      summary: Get all companies
+      summary: get all companies
       tags:
         - Company
       responses:
         200:
-          description: Got all companies
+          description: got all companies
           content:
             application/json:
               schema:
@@ -54,11 +54,11 @@ paths:
 
     post:
       operationId: postCompany
-      summary: Post new Company
+      summary: post new company
       tags:
         - Company
       requestBody:
-        description: post new company object
+        description: post new company
         required: true
         content:
           application/json:
@@ -66,7 +66,7 @@ paths:
               $ref: "#/components/schemas/Company"
       responses:
         200:
-          description: Posted company object
+          description: posted new company
           content:
             application/json:
               schema:
@@ -81,7 +81,7 @@ paths:
   /api/company/{id}:
     get:
       operationId: getCompany
-      summary: get existing Company
+      summary: get existing company
       tags:
         - Company
       parameters:
@@ -94,7 +94,7 @@ paths:
             minLength: 1
       responses:
         200:
-          description: Got company object
+          description: got existing company
           content:
             application/json:
               schema:
@@ -108,7 +108,7 @@ paths:
 
     put:
       operationId: putCompany
-      summary: put existing Company
+      summary: put existing company
       tags:
         - Company
       parameters:
@@ -120,7 +120,7 @@ paths:
             type: string
             minLength: 1
       requestBody:
-        description: put existing company object
+        description: put existing company
         required: true
         content:
           application/json:
@@ -128,7 +128,7 @@ paths:
               $ref: "#/components/schemas/Company"
       responses:
         200:
-          description: Put company object
+          description: put existing company
           content:
             application/json:
               schema:
@@ -142,7 +142,7 @@ paths:
 
     delete:
       operationId: deleteCompany
-      summary: delete existing Company
+      summary: delete existing company
       tags:
         - Company
       parameters:
@@ -155,7 +155,7 @@ paths:
             minLength: 1
       responses:
         200:
-          description: Deleted company object
+          description: deleted existing company
           content:
             application/json:
               schema:
@@ -170,12 +170,12 @@ paths:
   /api/job:
     get:
       operationId: getJobs
-      summary: Get all jobs
+      summary: get all jobs
       tags:
         - Job
       responses:
         200:
-          description: Got all jobs
+          description: got all jobs
           content:
             application/json:
               schema:
@@ -191,11 +191,11 @@ paths:
 
     post:
       operationId: postJob
-      summary: Post new Job
+      summary: post new job
       tags:
         - Job
       requestBody:
-        description: post new job object
+        description: post new job
         required: true
         content:
           application/json:
@@ -203,7 +203,7 @@ paths:
               $ref: "#/components/schemas/Job"
       responses:
         200:
-          description: Posted job object
+          description: posted new job
           content:
             application/json:
               schema:
@@ -218,7 +218,7 @@ paths:
   /api/job/{id}:
     get:
       operationId: getJob
-      summary: get existing Job
+      summary: get existing job
       tags:
         - Job
       parameters:
@@ -231,7 +231,7 @@ paths:
             minLength: 1
       responses:
         200:
-          description: Got job object
+          description: got existing job
           content:
             application/json:
               schema:
@@ -245,7 +245,7 @@ paths:
 
     put:
       operationId: putJob
-      summary: put existing Job
+      summary: put existing job
       tags:
         - Job
       parameters:
@@ -257,7 +257,7 @@ paths:
             type: string
             minLength: 1
       requestBody:
-        description: put existing job object
+        description: put existing job
         required: true
         content:
           application/json:
@@ -265,7 +265,7 @@ paths:
               $ref: "#/components/schemas/Job"
       responses:
         200:
-          description: Put job object
+          description: put existing job
           content:
             application/json:
               schema:
@@ -279,7 +279,7 @@ paths:
 
     delete:
       operationId: deleteJob
-      summary: delete existing Job
+      summary: delete existing job
       tags:
         - Job
       parameters:
@@ -292,7 +292,7 @@ paths:
             minLength: 1
       responses:
         200:
-          description: Deleted job object
+          description: deleted existing job
           content:
             application/json:
               schema:
@@ -307,12 +307,12 @@ paths:
   /api/payment:
     get:
       operationId: getPayments
-      summary: Get all payments
+      summary: get all payments
       tags:
         - Payment
       responses:
         200:
-          description: Got all payments
+          description: got all payments
           content:
             application/json:
               schema:
@@ -328,11 +328,11 @@ paths:
 
     post:
       operationId: postPayment
-      summary: Post new Payment
+      summary: post new payment
       tags:
         - Payment
       requestBody:
-        description: post new payment object
+        description: post new payment
         required: true
         content:
           application/json:
@@ -340,7 +340,7 @@ paths:
               $ref: "#/components/schemas/Payment"
       responses:
         200:
-          description: Posted payment object
+          description: posted new payment
           content:
             application/json:
               schema:
@@ -355,7 +355,7 @@ paths:
   /api/payment/{id}:
     get:
       operationId: getPayment
-      summary: get existing Payment
+      summary: get existing payment
       tags:
         - Payment
       parameters:
@@ -368,7 +368,7 @@ paths:
             minLength: 1
       responses:
         200:
-          description: Got payment object
+          description: got existing payment
           content:
             application/json:
               schema:
@@ -382,7 +382,7 @@ paths:
 
     put:
       operationId: putPayment
-      summary: put existing Payment
+      summary: put existing payment
       tags:
         - Payment
       parameters:
@@ -394,7 +394,7 @@ paths:
             type: string
             minLength: 1
       requestBody:
-        description: put existing payment object
+        description: put existing payment
         required: true
         content:
           application/json:
@@ -402,7 +402,7 @@ paths:
               $ref: "#/components/schemas/Payment"
       responses:
         200:
-          description: Put payment object
+          description: put existing payment
           content:
             application/json:
               schema:
@@ -416,7 +416,7 @@ paths:
 
     delete:
       operationId: deletePayment
-      summary: delete existing Payment
+      summary: delete existing payment
       tags:
         - Payment
       parameters:
@@ -429,7 +429,7 @@ paths:
             minLength: 1
       responses:
         200:
-          description: Deleted payment object
+          description: deleted existing payment
           content:
             application/json:
               schema:
@@ -886,6 +886,10 @@ components:
           items:
             type: string
           title: job notes
+        status:
+          type: string
+          title: job status
+          readOnly: true
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
