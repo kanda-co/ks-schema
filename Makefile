@@ -48,6 +48,10 @@ ui: build
 	@echo Loading Swagger UI on port 8000...
 	npx swagger-ui-cli -p 8000 schema.yaml
 
+form:
+	@echo Generating React useForm Field components from schema...
+	go run cmd/generate/main.go -in schema.yaml
+
 setup-cicd:
 	@echo Create CI/CD global identity pool
 	gcloud iam workload-identity-pools create "cicd-pool" \

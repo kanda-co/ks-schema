@@ -574,6 +574,7 @@ components:
           type: string
           title: postcode / zipcode
           pattern: "^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})$"
+          x-kanda-form-widget: Address
 
     Company:
       type: object
@@ -609,6 +610,7 @@ components:
             - limited_company
             - sole_trader
           title: company type
+          x-kanda-form-widget: RadioSelect
         company_type_info:
           type: object
           oneOf:
@@ -656,6 +658,7 @@ components:
             - multi_trade
             - other_trade
           title: trade type
+          x-kanda-form-widget: Select
         trade_body:
           type: string
           enum:
@@ -665,6 +668,7 @@ components:
             - napit
             - other
           title: trade body
+          x-kanda-form-widget: Select
         trade_body_number:
           type: string
           title: trade body number
@@ -766,6 +770,7 @@ components:
             - company-manager
             - company-staff
           title: company role
+          x-kanda-form-widget: RadioSelect
         first_name:
           type: string
           title: first name
@@ -989,6 +994,7 @@ components:
             - direct_debit
             - cash
           title: payment method
+          x-kanda-form-widget: RadioSelect
         customer:
           type: object
           $ref: "#/components/schemas/Customer"
@@ -1000,6 +1006,7 @@ components:
             - stripe
             - gocardless
             - bank_transfer
+          x-kanda-form-widget: RadioSelect
         status:
           type: string
           title: payment status
