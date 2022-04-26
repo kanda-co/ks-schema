@@ -34,9 +34,10 @@ gen-backend:
 	mkdir -p pkg/schema
 	oapi-codegen -generate types,server,spec -package schema schema.yaml > pkg/schema/schema.gen.go
 
-build-frontend: gen-frontend
+build-frontend: gen-frontend widget
 	@echo Build frontend...
 	npx openapi2schema -i schema.yaml > frontend/generated/schema.json
+	echo "import * as Widget from './widget';" >> frontend/generated/index.ts
 	echo "import * as JSONSchema from './schema.json';" >> frontend/generated/index.ts
 	echo "export { JSONSchema };" >> frontend/generated/index.ts
 	npm run build
@@ -48,9 +49,11 @@ ui: build
 	@echo Loading Swagger UI on port 8000...
 	npx swagger-ui-cli -p 8000 schema.yaml
 
-form:
-	@echo Generating React useForm Field components from schema...
-	go run cmd/generate/main.go -in schema.yaml
+widget:
+	@echo Generating React Field components, validators from schema...
+	rm -rf frontend/generated/widget
+	mkdir -p frontend/generated/widget
+	go run ./cmd/form/main.go -in schema.yaml > frontend/generated/widget/index.tsx
 
 setup-cicd:
 	@echo Create CI/CD global identity pool
