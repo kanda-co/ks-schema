@@ -239,7 +239,7 @@ func selectField(
 	for _, opt := range options {
 		optLabel := fmt.Sprintf("%v", opt)
 		optsM = append(optsM, Option{
-			Name:  toPascal(optLabel),
+			Name:  toTitle(optLabel),
 			Value: opt,
 		})
 	}
