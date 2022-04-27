@@ -90,6 +90,18 @@ func getKandaFormWidget(schema *openapi3.Schema) string {
 func renderModule(name string, schema *openapi3.Schema) string {
 	moduleDefs := []string{}
 	components := renderField(name, schema, nil)
+	r := regexp.MustCompile(`export function (?P<Form>.*?)\(`)
+	formFields := r.FindAllStringSubmatch(components, -1)
+	formIndex := r.SubexpIndex("Form")
+	formDef := []string{
+		fmt.Sprintf("export function %sForm() {", name),
+		"return (<>",
+	}
+	for _, formField := range formFields {
+		formDef = append(formDef, fmt.Sprintf(`<%s />`, formField[formIndex]))
+	}
+	formDef = append(formDef, []string{"</>);", "}"}...)
+	moduleDefs = append(moduleDefs, strings.Join(formDef, "\n"))
 	moduleDefs = append(moduleDefs, components)
 	sort.Strings(moduleDefs)
 	return strings.Join(moduleDefs, "\n\n")
