@@ -94,11 +94,11 @@ func renderModule(name string, schema *openapi3.Schema) string {
 	formFields := r.FindAllStringSubmatch(components, -1)
 	formIndex := r.SubexpIndex("Form")
 	formDef := []string{
-		fmt.Sprintf("export function %sForm() {", name),
+		fmt.Sprintf("export function %sForm(props: any) {", name),
 		"return (<>",
 	}
 	for _, formField := range formFields {
-		formDef = append(formDef, fmt.Sprintf(`<%s />`, formField[formIndex]))
+		formDef = append(formDef, fmt.Sprintf(`<%s {...props} />`, formField[formIndex]))
 	}
 	formDef = append(formDef, []string{"</>);", "}"}...)
 	moduleDefs = append(moduleDefs, strings.Join(formDef, "\n"))
