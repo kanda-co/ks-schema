@@ -27,7 +27,8 @@ clean: clean-frontend clean-backend
 
 gen-frontend:
 	@echo Code generation and build for frontend 
-	npx openapi-typescript-codegen --input schema.yaml --output frontend/generated --client axios 
+	# npx openapi-typescript-codegen --input schema.yaml --output frontend/generated --client axios
+	npx @openapi-io-ts/cli -i schema.yaml -o frontend/generated && npx prettier --write frontend/generated
 
 gen-backend:
 	@echo Code generation for backend from OpenAPI...
@@ -39,7 +40,7 @@ build-frontend: gen-frontend widget
 	npx openapi2schema -i schema.yaml > frontend/generated/schema.json
 	echo "import * as Widget from './widget';" >> frontend/generated/index.ts
 	echo "import * as JSONSchema from './schema.json';" >> frontend/generated/index.ts
-	echo "export { JSONSchema };" >> frontend/generated/index.ts
+	echo "export { JSONSchema, Widget };" >> frontend/generated/index.ts
 	npm run build
 
 build: gen-backend build-frontend
@@ -54,6 +55,7 @@ widget:
 	rm -rf frontend/generated/widget
 	mkdir -p frontend/generated/widget
 	go run ./cmd/form/main.go -in schema.yaml > frontend/generated/widget/index.tsx
+	npx prettier --write frontend/generated/widget
 
 setup-cicd:
 	@echo Create CI/CD global identity pool

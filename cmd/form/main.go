@@ -117,12 +117,12 @@ func renderField(name string, schema, root *openapi3.Schema) string {
 				Message: fmt.Sprintf("%s is required.", toTitle(propName)),
 			}
 		}
-		if property.Value.ReadOnly {
-			validation.ReadOnly = &Validator{
-				Value:   true,
-				Message: fmt.Sprintf("%s is read only.", toTitle(propName)),
-			}
-		}
+		// if property.Value.ReadOnly {
+		//   validation.ReadOnly = &Validator{
+		//     Value:   true,
+		//     Message: fmt.Sprintf("%s is read only.", toTitle(propName)),
+		//   }
+		// }
 		if property.Value.Pattern != "" {
 			validation.Pattern = &Validator{
 				Value:   property.Value.Pattern,
