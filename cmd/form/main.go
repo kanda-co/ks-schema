@@ -209,7 +209,7 @@ func inputField(type_, prefix, name string, validation Validation) string {
 	return fmt.Sprintf(`
 export const %sValidation = %v;
 
-export function %s({ props }: any) {
+export function %s(props: any) {
 	return (
 		<WrapInput
 			type="%s"
@@ -247,7 +247,7 @@ func selectField(
 	return fmt.Sprintf(`
 export const %sValidation = %v;
 
-export function %s({ props }: any) {
+export function %s(props: any) {
 	return (
 		<WrapInput
 			type="Select"
