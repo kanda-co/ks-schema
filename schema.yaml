@@ -609,6 +609,7 @@ components:
             - limited_company
             - sole_trader
           title: company type
+          x-kanda-form-widget: Select
         company_type_info:
           type: object
           oneOf:
@@ -656,6 +657,7 @@ components:
             - multi_trade
             - other_trade
           title: trade type
+          x-kanda-form-widget: Select
         trade_body:
           type: string
           enum:
@@ -665,6 +667,7 @@ components:
             - napit
             - other
           title: trade body
+          x-kanda-form-widget: Select
         trade_body_number:
           type: string
           title: trade body number
@@ -766,6 +769,7 @@ components:
             - company-manager
             - company-staff
           title: company role
+          x-kanda-form-widget: Select
         first_name:
           type: string
           title: first name
@@ -989,6 +993,7 @@ components:
             - direct_debit
             - cash
           title: payment method
+          x-kanda-form-widget: Select
         customer:
           type: object
           $ref: "#/components/schemas/Customer"
@@ -1000,6 +1005,7 @@ components:
             - stripe
             - gocardless
             - bank_transfer
+          x-kanda-form-widget: Select
         status:
           type: string
           title: payment status

@@ -27,18 +27,21 @@ clean: clean-frontend clean-backend
 
 gen-frontend:
 	@echo Code generation and build for frontend 
-	npx openapi-typescript-codegen --input schema.yaml --output frontend/generated --client axios 
+	# npx openapi-typescript-codegen --input schema.yaml --output frontend/generated --client axios
+	npx openapi-io-ts -i schema.yaml -o frontend/generated
+	npx prettier --write frontend/generated
 
 gen-backend:
 	@echo Code generation for backend from OpenAPI...
 	mkdir -p pkg/schema
 	oapi-codegen -generate types,server,spec -package schema schema.yaml > pkg/schema/schema.gen.go
 
-build-frontend: gen-frontend
+build-frontend: gen-frontend widget
 	@echo Build frontend...
 	npx openapi2schema -i schema.yaml > frontend/generated/schema.json
+	echo "import * as Widget from './widget';" >> frontend/generated/index.ts
 	echo "import * as JSONSchema from './schema.json';" >> frontend/generated/index.ts
-	echo "export { JSONSchema };" >> frontend/generated/index.ts
+	echo "export { JSONSchema, Widget };" >> frontend/generated/index.ts
 	npm run build
 
 build: gen-backend build-frontend
@@ -47,6 +50,13 @@ build: gen-backend build-frontend
 ui: build
 	@echo Loading Swagger UI on port 8000...
 	npx swagger-ui-cli -p 8000 schema.yaml
+
+widget:
+	@echo Generating React Field components, validators from schema...
+	rm -rf frontend/generated/widget
+	mkdir -p frontend/generated/widget
+	go run ./cmd/form/main.go -in schema.yaml > frontend/generated/widget/index.tsx
+	npx prettier --write frontend/generated/widget
 
 setup-cicd:
 	@echo Create CI/CD global identity pool
