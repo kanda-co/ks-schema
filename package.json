@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/kanda-co/ks-schema#readme",
   "dependencies": {
+    "@openapi-io-ts/cli": "^0.4.1",
     "@openapi-io-ts/runtime": "^0.3.1",
     "@types/node": "^17.0.23",
     "axios": "^0.26.1",
