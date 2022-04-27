@@ -28,7 +28,8 @@ clean: clean-frontend clean-backend
 gen-frontend:
 	@echo Code generation and build for frontend 
 	# npx openapi-typescript-codegen --input schema.yaml --output frontend/generated --client axios
-	npx @openapi-io-ts/cli -i schema.yaml -o frontend/generated && npx prettier --write frontend/generated
+	npx openapi-io-ts -i schema.yaml -o frontend/generated
+	npx prettier --write frontend/generated
 
 gen-backend:
 	@echo Code generation for backend from OpenAPI...
