@@ -27,9 +27,9 @@ type Props struct {
 // Validation definition...
 type Validation struct {
 	Required  *Validator `json:"required,omitempty"`
-	ReadOnly  *Validator `json:"readOnly,omitempty"`
-	Minimum   *Validator `json:"minimum,omitempty"`
-	Maximum   *Validator `json:"maximum,omitempty"`
+	Disabled  *Validator `json:"disabled,omitempty"`
+	Min       *Validator `json:"min,omitempty"`
+	Max       *Validator `json:"max,omitempty"`
 	MinLength *Validator `json:"minLength,omitempty"`
 	MaxLength *Validator `json:"maxLength,omitempty"`
 	Pattern   *Validator `json:"pattern,omitempty"`
@@ -143,43 +143,63 @@ func renderField(name string, schema, root *openapi3.Schema) string {
 			}
 			// props.Required = true
 		}
-		// if property.Value.ReadOnly {
-		//   props.ReadOnly = true
-		// }
+		if property.Value.ReadOnly {
+			validation.Disabled = &Validator{
+				Value:   property.Value.ReadOnly,
+				Message: fmt.Sprintf("%s input is read only or disabled", toTitle(propName)),
+			}
+			// props.ReadOnly = true
+		}
 		if property.Value.Description != "" {
 			props.Placeholder = &property.Value.Description
 		}
 		if property.Value.Pattern != "" {
 			validation.Pattern = &Validator{
 				Value:   property.Value.Pattern,
-				Message: fmt.Sprintf("%s is invalid with %s", toTitle(propName), property.Value.Pattern),
+				Message: fmt.Sprintf("%s input is invalid", toTitle(propName)),
 			}
 			// props.Pattern = &property.Value.Pattern
 		}
 		if property.Value.MinLength > 0 {
 			validation.MinLength = &Validator{
-				Value:   property.Value.MinLength,
-				Message: fmt.Sprintf("%s requires minimum %v length", toTitle(propName), property.Value.MinLength),
+				Value: property.Value.MinLength,
+				Message: fmt.Sprintf(
+					"%s requires minimum length of %v",
+					toTitle(propName),
+					property.Value.MinLength,
+				),
 			}
 		}
 		if property.Value.MaxLength != nil {
 			validation.MaxLength = &Validator{
-				Value:   *property.Value.MaxLength,
-				Message: fmt.Sprintf("%s requires maximum %v length", toTitle(propName), *property.Value.MaxLength),
+				Value: *property.Value.MaxLength,
+				Message: fmt.Sprintf(
+					"%s requires maximum length of %v",
+					toTitle(propName),
+					*property.Value.MaxLength,
+				),
 			}
 			// props.MaxLength = property.Value.MaxLength
 		}
 		if property.Value.Min != nil {
-			validation.Minimum = &Validator{
-				Value:   *property.Value.Min,
-				Message: fmt.Sprintf("%s requires minimum %v value", toTitle(propName), *property.Value.Min),
+			validation.Min = &Validator{
+				Value: *property.Value.Min,
+				Message: fmt.Sprintf(
+					"%s must be great than %v",
+					toTitle(propName),
+					*property.Value.Min,
+				),
 			}
 			// props.Min = property.Value.Min
 		}
 		if property.Value.Max != nil {
-			validation.Maximum = &Validator{
-				Value:   *property.Value.Max,
-				Message: fmt.Sprintf("%s requires maximum %v value", toTitle(propName), *property.Value.Max),
+			validation.Max = &Validator{
+				Value: *property.Value.Max,
+				Message: fmt.Sprintf(
+					"%s must be smaller than %v",
+					toTitle(propName),
+					*property.Value.Max,
+				),
 			}
 			// props.Max = property.Value.Max
 		}
