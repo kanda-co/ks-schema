@@ -5,6 +5,7 @@
     "lib": ["es2017", "es7", "es6", "dom"],
     "declaration": true,
     "declarationMap": true,
+    "jsx": "react",
     "outDir": "dist",
     "strict": true,
     "resolveJsonModule": true,

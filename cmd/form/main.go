@@ -12,6 +12,18 @@ import (
 	"github.com/getkin/kin-openapi/openapi3"
 )
 
+// Props for widget
+type Props struct {
+	Label string
+	// Max         *float64
+	// MaxLength   *uint64
+	// Min         *float64
+	// Pattern     *string
+	Placeholder *string
+	// ReadOnly    bool
+	// Required    bool
+}
+
 // Validation definition...
 type Validation struct {
 	Required  *Validator `json:"required,omitempty"`
@@ -122,24 +134,27 @@ func renderField(name string, schema, root *openapi3.Schema) string {
 			continue
 		}
 
+		props := Props{}
 		validation := Validation{}
 		if isIn(propName, schema.Required) {
 			validation.Required = &Validator{
 				Value:   true,
 				Message: fmt.Sprintf("%s is required.", toTitle(propName)),
 			}
+			// props.Required = true
 		}
 		// if property.Value.ReadOnly {
-		//   validation.ReadOnly = &Validator{
-		//     Value:   true,
-		//     Message: fmt.Sprintf("%s is read only.", toTitle(propName)),
-		//   }
+		//   props.ReadOnly = true
 		// }
+		if property.Value.Description != "" {
+			props.Placeholder = &property.Value.Description
+		}
 		if property.Value.Pattern != "" {
 			validation.Pattern = &Validator{
 				Value:   property.Value.Pattern,
 				Message: fmt.Sprintf("%s is invalid with %s", toTitle(propName), property.Value.Pattern),
 			}
+			// props.Pattern = &property.Value.Pattern
 		}
 		if property.Value.MinLength > 0 {
 			validation.MinLength = &Validator{
@@ -152,20 +167,33 @@ func renderField(name string, schema, root *openapi3.Schema) string {
 				Value:   *property.Value.MaxLength,
 				Message: fmt.Sprintf("%s requires maximum %v length", toTitle(propName), *property.Value.MaxLength),
 			}
+			// props.MaxLength = property.Value.MaxLength
 		}
 		if property.Value.Min != nil {
 			validation.Minimum = &Validator{
 				Value:   *property.Value.Min,
 				Message: fmt.Sprintf("%s requires minimum %v value", toTitle(propName), *property.Value.Min),
 			}
+			// props.Min = property.Value.Min
 		}
 		if property.Value.Max != nil {
 			validation.Maximum = &Validator{
 				Value:   *property.Value.Max,
 				Message: fmt.Sprintf("%s requires maximum %v value", toTitle(propName), *property.Value.Max),
 			}
+			// props.Max = property.Value.Max
 		}
 
+		if property.Value.Title != "" {
+			props.Label = toTitle(property.Value.Title)
+		} else {
+			props.Label = toTitle(propName)
+		}
+		if property.Value.Description != "" {
+			props.Placeholder = &property.Value.Description
+		} else {
+			props.Placeholder = &property.Value.Title
+		}
 		switch property.Value.Type {
 		case "string", "integer", "number":
 			if len(property.Value.Enum) > 0 {
@@ -174,6 +202,7 @@ func renderField(name string, schema, root *openapi3.Schema) string {
 					selectField(
 						name,
 						propName,
+						props,
 						validation,
 						property.Value.Enum,
 					),
@@ -185,6 +214,7 @@ func renderField(name string, schema, root *openapi3.Schema) string {
 						getKandaFormWidget(property.Value),
 						name,
 						propName,
+						props,
 						validation,
 					),
 				)
@@ -212,7 +242,36 @@ func renderField(name string, schema, root *openapi3.Schema) string {
 	return strings.Join(components, "\n")
 }
 
-func inputField(type_, prefix, name string, validation Validation) string {
+func propsToAttributes(props Props) string {
+	inputProps := []string{}
+	if props.Label != "" {
+		inputProps = append(inputProps, fmt.Sprintf(`label="%s"`, props.Label))
+	}
+	// if props.Required {
+	//   inputProps = append(inputProps, fmt.Sprintf(`required="%t"`, props.Required))
+	// }
+	// if props.ReadOnly {
+	//   inputProps = append(inputProps, fmt.Sprintf(`readonly="%t"`, props.ReadOnly))
+	// }
+	if props.Placeholder != nil {
+		inputProps = append(inputProps, fmt.Sprintf(`placeholder="%s"`, *props.Placeholder))
+	}
+	// if props.Pattern != nil {
+	//   inputProps = append(inputProps, fmt.Sprintf(`pattern="%s"`, *props.Pattern))
+	// }
+	// if props.Min != nil {
+	//   inputProps = append(inputProps, fmt.Sprintf(`minimum="%.0f"`, *props.Min))
+	// }
+	// if props.Max != nil {
+	//   inputProps = append(inputProps, fmt.Sprintf(`maximum="%.0f"`, *props.Max))
+	// }
+	// if props.MaxLength != nil {
+	//   inputProps = append(inputProps, fmt.Sprintf(`maxlength="%d"`, *props.MaxLength))
+	// }
+	return strings.Join(inputProps, " ")
+}
+
+func inputField(type_, prefix, name string, props Props, validation Validation) string {
 	pathName := name
 	if prefix != "" {
 		pathName = toPath(prefix + " " + name)
@@ -226,6 +285,7 @@ export function %s(props: any) {
 		<WrapInput
 			type="%s"
 			name="%s"
+			%s
 			validation={%sValidation}
 			{...props}
 		/>
@@ -236,12 +296,13 @@ export function %s(props: any) {
 		toPascal(prefix+" "+name),
 		type_,
 		pathName,
+		propsToAttributes(props),
 		toPascal(prefix+" "+name),
 	)
 }
 
 func selectField(
-	prefix, name string, validation Validation, options []interface{}) string {
+	prefix, name string, props Props, validation Validation, options []interface{}) string {
 	pathName := name
 	if prefix != "" {
 		pathName = toPath(prefix + " " + name)
@@ -264,6 +325,7 @@ export function %s(props: any) {
 		<WrapInput
 			type="Select"
 			name="%s"
+			%s
 			validation={%sValidation}
 			options={%v}
 			{...props}
@@ -274,6 +336,7 @@ export function %s(props: any) {
 		string(b),
 		toPascal(prefix+" "+name),
 		pathName,
+		propsToAttributes(props),
 		toPascal(prefix+" "+name),
 		string(opts),
 	)
