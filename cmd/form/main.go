@@ -271,6 +271,11 @@ func propsToAttributes(props Props) string {
 	return strings.Join(inputProps, " ")
 }
 
+func validationRegexReplace(in []byte) string {
+	r := regexp.MustCompile(`"pattern"\:{"value":"/?(.*?)/?",`)
+	return r.ReplaceAllString(string(in), `"pattern":{"value":/$1/,`)
+}
+
 func inputField(type_, prefix, name string, props Props, validation Validation) string {
 	pathName := name
 	if prefix != "" {
@@ -292,7 +297,7 @@ export function %s(props: any) {
 	);
 }`,
 		toPascal(prefix+" "+name),
-		string(b),
+		validationRegexReplace(b),
 		toPascal(prefix+" "+name),
 		type_,
 		pathName,
@@ -333,7 +338,7 @@ export function %s(props: any) {
 	);
 }`,
 		toPascal(prefix+" "+name),
-		string(b),
+		validationRegexReplace(b),
 		toPascal(prefix+" "+name),
 		pathName,
 		propsToAttributes(props),
