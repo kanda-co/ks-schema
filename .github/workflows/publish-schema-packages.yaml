@@ -39,7 +39,7 @@ jobs:
         run: npm install && make qa clean build-frontend
 
       - name: "publish npm package"
-        run: rm -rf .git/ && npm version $(npm view @kanda-co/ks-schema version | awk 'BEGIN{FS=OFS="."} {$3+=1} 1') --force && npm publish --force --allow-same-version
+        run: rm -rf .git/ && npm version $(npm view @kanda-libs/ks-schema version | awk 'BEGIN{FS=OFS="."} {$3+=1} 1') --force && npm publish --force --allow-same-version
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_SECRET }}
 
