@@ -441,6 +441,143 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/credit:
+    get:
+      operationId: getCredits
+      summary: get all credits
+      tags:
+        - Credit
+      responses:
+        200:
+          description: got all credits
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Credit"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    post:
+      operationId: postCredit
+      summary: post new credit
+      tags:
+        - Credit
+      requestBody:
+        description: post new credit
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Credit"
+      responses:
+        200:
+          description: posted new credit
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Credit"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/credit/{id}:
+    get:
+      operationId: getCredit
+      summary: get existing credit
+      tags:
+        - Credit
+      parameters:
+        - name: id
+          in: path
+          description: credit id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing credit
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Credit"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: putCredit
+      summary: put existing credit
+      tags:
+        - Credit
+      parameters:
+        - name: id
+          in: path
+          description: credit id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: put existing credit
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Credit"
+      responses:
+        200:
+          description: put existing credit
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Credit"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      operationId: deleteCredit
+      summary: delete existing credit
+      tags:
+        - Credit
+      parameters:
+        - name: id
+          in: path
+          description: credit id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: deleted existing credit
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Credit"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
 security:
   - BearerAuth: []
 
@@ -1021,6 +1158,87 @@ components:
           type: integer
           format: int32
           title: payment amount in pence
+          minimum: 0
+        metadata:
+          type: object
+          $ref: "#/components/schemas/Metadata"
+          title: metadata
+          readOnly: true
+
+    Credit:
+      type: object
+      required:
+        - id
+        - cid
+        - oid
+        - kid
+        - kind
+        - xid
+        - customer
+        - provider
+        - state
+        - amount
+        - metadata
+      properties:
+        id:
+          type: string
+          title: payment id
+          readOnly: true
+        cid:
+          type: string
+          title: company id
+          readOnly: true
+        oid:
+          type: string
+          title: owner id
+          readOnly: true
+        kid:
+          type: string
+          title: internal kind id
+          readOnly: true
+        kind:
+          type: string
+          title: internal kind
+          enum:
+            - job
+            - job_payout
+            - job_refund
+            - charge
+            - charge_refund
+          readOnly: true
+        xid:
+          type: string
+          title: external reference id
+          readOnly: true
+        xref:
+          type: string
+          title: external reference
+          readOnly: true
+        customer:
+          type: object
+          $ref: "#/components/schemas/Customer"
+        provider:
+          type: string
+          enum:
+            - omni
+            - duologi
+          x-kanda-form-widget: Select
+        state:
+          type: string
+          title: credit state
+          enum:
+            - accepted
+            - declined
+            - referred
+            - action_lender
+            - action_customer
+            - pending
+            - finished
+            - paid_out
+        amount:
+          type: integer
+          format: int32
+          title: credit amount in pence
           minimum: 0
         metadata:
           type: object
