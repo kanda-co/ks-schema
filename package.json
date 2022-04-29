@@ -1,9 +1,15 @@
 {
-  "name": "ks-schema",
-  "version": "1.0.2",
-  "description": "",
+  "name": "@kanda-libs/ks-schema",
+  "version": "1.0.0",
+  "description": "Kanda Service OpenAPI Schema",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist/*",
+    "package.json",
+    "tsconfig.json",
+    "schema.yaml"
+  ],
   "scripts": {
     "build": "tsc"
   },
