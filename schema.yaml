@@ -848,6 +848,14 @@ components:
           type: object
           $ref: "#/components/schemas/Address"
           title: trading address
+        company_number:
+          type: string
+          title: company number
+          minLength: 1
+        vat_number:
+          type: string
+          title: vat number
+          minLength: 1
 
     SoleTraderInfo:
       type: object
