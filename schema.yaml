@@ -834,7 +834,7 @@ components:
       required:
         - company_name
         - company_address
-        - trading_address
+        - company_number
       properties:
         company_name:
           type: string
