@@ -109,8 +109,13 @@ func renderModule(name string, schema *openapi3.Schema) string {
 		fmt.Sprintf("export function %sForm(props: any) {", name),
 		"return (<>",
 	}
+
 	for _, formField := range formFields {
-		formDef = append(formDef, fmt.Sprintf(`<%s {...props} />`, formField[formIndex]))
+		def := formField[formIndex]
+		if strings.HasSuffix(def, "ArrayWrapper") || strings.HasSuffix(def, "ArrayInput") || strings.HasSuffix(def, "ArraySelect") {
+			continue
+		}
+		formDef = append(formDef, fmt.Sprintf(`<%s {...props} />`, def))
 	}
 	formDef = append(formDef, []string{"</>);", "}"}...)
 	moduleDefs = append(moduleDefs, strings.Join(formDef, "\n"))
@@ -336,10 +341,7 @@ func arrayField(prefix, name string, props Props, validation Validation) string 
 	return fmt.Sprintf(`
 export const %sValidation = %v;
 
-export function %sArrayWrapper(
-	children: React.FunctionComponent<any>,
-	initialData: any = null,
-) {
+export function %sArrayWrapper({ children, initialData = null }: any) {
   return (
 		<Wrapped.ArrayWrapper
 			arrayName="%s"
@@ -434,15 +436,15 @@ func arrayInputField(type_, prefix, name string, props Props, validation Validat
 	}
 	b, _ := json.Marshal(validation)
 	return fmt.Sprintf(`
-export const %sValidation = %v;
+export const %sArrayInputValidation = %v;
 
-export function %s(props: any) {
+export function %sArrayInput(props: any) {
 	return (
 		<Wrapped.ArrayInput
 			type="%s"
 			name="%s"
 			%s
-			validation={%sValidation}
+			validation={%sArrayInputValidation}
 			{...props}
 		/>
 	);
@@ -474,15 +476,15 @@ func arraySelectField(
 	}
 	opts, _ := json.Marshal(optsM)
 	return fmt.Sprintf(`
-export const %sValidation = %v;
+export const %sArraySelectValidation = %v;
 
-export function %s(props: any) {
+export function %sArraySelect(props: any) {
 	return (
 		<Wrapped.ArrayInput
 			type="Select"
 			name="%s"
 			%s
-			validation={%sValidation}
+			validation={%sArraySelectValidation}
 			options={%v}
 			{...props}
 		/>
