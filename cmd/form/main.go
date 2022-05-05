@@ -57,7 +57,7 @@ func main() {
 	_ = doc.Validate(ctx)
 	fmt.Println(`import React from "react";`)
 	fmt.Println(`// @ts-ignore`)
-	fmt.Println(`import { WrapInput } from '@kanda-form-components/library';`)
+	fmt.Println(`import { WrapInput, Wrapped } from '@kanda-form-components/library';`)
 	for name, ref := range doc.Components.Schemas {
 		// write to individual module for Schema Form Fields
 		fmt.Println(renderModule(name, ref.Value))
@@ -217,28 +217,59 @@ func renderField(name string, schema, root *openapi3.Schema) string {
 		switch property.Value.Type {
 		case "string", "integer", "number":
 			if len(property.Value.Enum) > 0 {
-				components = append(
-					components,
-					selectField(
-						name,
-						propName,
-						props,
-						validation,
-						property.Value.Enum,
-					),
-				)
+				if root.Type == "array" {
+					components = append(
+						components,
+						arraySelectField(
+							name,
+							propName,
+							props,
+							validation,
+							property.Value.Enum,
+						),
+					)
+				} else {
+					components = append(
+						components,
+						selectField(
+							name,
+							propName,
+							props,
+							validation,
+							property.Value.Enum,
+						),
+					)
+				}
 			} else {
-				components = append(
-					components,
-					inputField(
-						getKandaFormWidget(property.Value),
-						name,
-						propName,
-						props,
-						validation,
-					),
-				)
+				if root.Type == "array" {
+					components = append(
+						components,
+						arrayInputField(
+							getKandaFormWidget(property.Value),
+							name,
+							propName,
+							props,
+							validation,
+						),
+					)
+				} else {
+					components = append(
+						components,
+						inputField(
+							getKandaFormWidget(property.Value),
+							name,
+							propName,
+							props,
+							validation,
+						),
+					)
+				}
 			}
+		case "array":
+			components = append(
+				components,
+				arrayField(name, propName, props, validation),
+			)
 		}
 
 		if len(property.Value.Properties) > 0 {
@@ -296,6 +327,35 @@ func validationRegexReplace(in []byte) string {
 	return r.ReplaceAllString(string(in), `"pattern":{"value":/$1/,`)
 }
 
+func arrayField(prefix, name string, props Props, validation Validation) string {
+	pathName := name
+	if prefix != "" {
+		pathName = toPath(prefix + " " + name)
+	}
+	b, _ := json.Marshal(validation)
+	return fmt.Sprintf(`
+export const %sValidation = %v;
+
+export function %sArrayWrapper(
+	children: React.FunctionComponent<any>,
+	initialData: any = null,
+) {
+  return (
+		<Wrapped.ArrayWrapper
+			arrayName="%s"
+			initialData={initialData}
+		>
+		{(props: any) => children(props)}
+		</Wrapped.ArrayWrapper>
+	);
+}`,
+		toPascal(prefix+" "+name),
+		validationRegexReplace(b),
+		toPascal(prefix+" "+name),
+		pathName,
+	)
+}
+
 func inputField(type_, prefix, name string, props Props, validation Validation) string {
 	pathName := name
 	if prefix != "" {
@@ -348,6 +408,77 @@ export const %sValidation = %v;
 export function %s(props: any) {
 	return (
 		<WrapInput
+			type="Select"
+			name="%s"
+			%s
+			validation={%sValidation}
+			options={%v}
+			{...props}
+		/>
+	);
+}`,
+		toPascal(prefix+" "+name),
+		validationRegexReplace(b),
+		toPascal(prefix+" "+name),
+		pathName,
+		propsToAttributes(props),
+		toPascal(prefix+" "+name),
+		string(opts),
+	)
+}
+
+func arrayInputField(type_, prefix, name string, props Props, validation Validation) string {
+	pathName := name
+	if prefix != "" {
+		pathName = toPath(prefix + " " + name)
+	}
+	b, _ := json.Marshal(validation)
+	return fmt.Sprintf(`
+export const %sValidation = %v;
+
+export function %s(props: any) {
+	return (
+		<Wrapped.ArrayInput
+			type="%s"
+			name="%s"
+			%s
+			validation={%sValidation}
+			{...props}
+		/>
+	);
+}`,
+		toPascal(prefix+" "+name),
+		validationRegexReplace(b),
+		toPascal(prefix+" "+name),
+		type_,
+		pathName,
+		propsToAttributes(props),
+		toPascal(prefix+" "+name),
+	)
+}
+
+func arraySelectField(
+	prefix, name string, props Props, validation Validation, options []interface{}) string {
+	pathName := name
+	if prefix != "" {
+		pathName = toPath(prefix + " " + name)
+	}
+	b, _ := json.Marshal(validation)
+	optsM := make([]Option, 0)
+	for _, opt := range options {
+		optLabel := fmt.Sprintf("%v", opt)
+		optsM = append(optsM, Option{
+			Name:  toTitle(optLabel),
+			Value: opt,
+		})
+	}
+	opts, _ := json.Marshal(optsM)
+	return fmt.Sprintf(`
+export const %sValidation = %v;
+
+export function %s(props: any) {
+	return (
+		<Wrapped.ArrayInput
 			type="Select"
 			name="%s"
 			%s

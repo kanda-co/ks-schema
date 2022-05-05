@@ -839,9 +839,33 @@ components:
           type: boolean
           title: use subcontractor?
         insurance_document:
+          type: object
+          title: insurance document
+          $ref: "#/components/schemas/Document"
+
+    Document:
+      type: object
+      required:
+        - name
+        - mimetype
+        - ref
+      properties:
+        name:
+          type: string
+          title: document name
+          minLength: 1
+        content:
           type: string
           format: base64
-          title: insurance document
+          title: document content
+        mimetype:
+          type: string
+          title: document mime type
+          readOnly: true
+        ref:
+          type: string
+          title: document ref
+          readOnly: true
 
     LimitedCompanyInfo:
       type: object
