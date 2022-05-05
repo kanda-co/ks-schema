@@ -988,7 +988,6 @@ components:
         - oid
         - name
         - mimetype
-        - ref
         - metadata
       properties:
         id:
