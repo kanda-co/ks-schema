@@ -716,6 +716,10 @@ components:
       type: object
       required:
         - id
+        - cid
+        - oid
+        - emails
+        - users
         - company_info
         - company_type
         - company_type_info
@@ -725,21 +729,31 @@ components:
           type: string
           title: company unique id
           readOnly: true
-        company_info:
-          type: object
-          $ref: "#/components/schemas/CompanyInfo"
-          title: company info
+        cid:
+          type: string
+          title: company id
+          readOnly: true
+        oid:
+          type: string
+          title: owner id
+          readOnly: true
         emails:
           type: array
           items:
             type: string
             format: email
           title: emails for user who has api access
+          readOnly: true
         users:
           type: array
           items:
             $ref: "#/components/schemas/UserType"
           title: users
+          minLength: 1
+        company_info:
+          type: object
+          $ref: "#/components/schemas/CompanyInfo"
+          title: company info
         company_type:
           type: string
           enum:
