@@ -852,15 +852,10 @@ components:
     Company:
       type: object
       required:
-        - id
-        - cid
-        - oid
-        - emails
         - users
         - company_info
         - company_type
         - company_type_info
-        - metadata
       properties:
         id:
           type: string
@@ -983,12 +978,7 @@ components:
     Document:
       type: object
       required:
-        - id
-        - cid
-        - oid
         - name
-        - mimetype
-        - metadata
       properties:
         id:
           type: string
@@ -1071,7 +1061,6 @@ components:
     DirectorInfo:
       type: object
       required:
-        - verification_status
         - home_address
       properties:
         verification_status:
@@ -1173,16 +1162,11 @@ components:
     Job:
       type: object
       required:
-        - id
-        - cid
-        - oid
         - title
         - description
         - deposit_type
         - deposit_value
         - customer
-        - payment_methods
-        - metadata
       properties:
         id:
           type: string
@@ -1274,17 +1258,8 @@ components:
     Payment:
       type: object
       required:
-        - id
-        - cid
-        - oid
-        - kid
-        - kind
-        - xid
-        - payment_method
         - provider
-        - status
         - amount
-        - metadata
       properties:
         id:
           type: string
@@ -1366,17 +1341,9 @@ components:
     Credit:
       type: object
       required:
-        - id
-        - cid
-        - oid
-        - kid
-        - kind
-        - xid
         - customer
         - provider
-        - state
         - amount
-        - metadata
       properties:
         id:
           type: string

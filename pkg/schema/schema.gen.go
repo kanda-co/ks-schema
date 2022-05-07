@@ -223,16 +223,16 @@ type AvailableRate struct {
 
 // Company defines model for Company.
 type Company struct {
-	AvailableRates  *[]AvailableRate      `json:"available_rates,omitempty"`
-	Cid             string                `json:"cid"`
-	CompanyInfo     CompanyInfo           `json:"company_info"`
-	CompanyType     CompanyCompanyType    `json:"company_type"`
-	CompanyTypeInfo interface{}           `json:"company_type_info"`
-	Emails          []openapi_types.Email `json:"emails"`
-	Id              string                `json:"id"`
-	Metadata        Metadata              `json:"metadata"`
-	Oid             string                `json:"oid"`
-	Users           []UserType            `json:"users"`
+	AvailableRates  *[]AvailableRate       `json:"available_rates,omitempty"`
+	Cid             *string                `json:"cid,omitempty"`
+	CompanyInfo     CompanyInfo            `json:"company_info"`
+	CompanyType     CompanyCompanyType     `json:"company_type"`
+	CompanyTypeInfo interface{}            `json:"company_type_info"`
+	Emails          *[]openapi_types.Email `json:"emails,omitempty"`
+	Id              *string                `json:"id,omitempty"`
+	Metadata        *Metadata              `json:"metadata,omitempty"`
+	Oid             *string                `json:"oid,omitempty"`
+	Users           []UserType             `json:"users"`
 }
 
 // CompanyCompanyType defines model for Company.CompanyType.
@@ -259,16 +259,16 @@ type CompanyInfoTradeType string
 // Credit defines model for Credit.
 type Credit struct {
 	Amount   int32          `json:"amount"`
-	Cid      string         `json:"cid"`
+	Cid      *string        `json:"cid,omitempty"`
 	Customer Customer       `json:"customer"`
-	Id       string         `json:"id"`
-	Kid      string         `json:"kid"`
-	Kind     CreditKind     `json:"kind"`
-	Metadata Metadata       `json:"metadata"`
-	Oid      string         `json:"oid"`
+	Id       *string        `json:"id,omitempty"`
+	Kid      *string        `json:"kid,omitempty"`
+	Kind     *CreditKind    `json:"kind,omitempty"`
+	Metadata *Metadata      `json:"metadata,omitempty"`
+	Oid      *string        `json:"oid,omitempty"`
 	Provider CreditProvider `json:"provider"`
-	State    CreditState    `json:"state"`
-	Xid      string         `json:"xid"`
+	State    *CreditState   `json:"state,omitempty"`
+	Xid      *string        `json:"xid,omitempty"`
 	Xref     *string        `json:"xref,omitempty"`
 }
 
@@ -292,8 +292,8 @@ type Customer struct {
 
 // DirectorInfo defines model for DirectorInfo.
 type DirectorInfo struct {
-	HomeAddress        Address                        `json:"home_address"`
-	VerificationStatus DirectorInfoVerificationStatus `json:"verification_status"`
+	HomeAddress        Address                         `json:"home_address"`
+	VerificationStatus *DirectorInfoVerificationStatus `json:"verification_status,omitempty"`
 }
 
 // DirectorInfoVerificationStatus defines model for DirectorInfo.VerificationStatus.
@@ -301,13 +301,13 @@ type DirectorInfoVerificationStatus string
 
 // Document defines model for Document.
 type Document struct {
-	Cid      string   `json:"cid"`
-	Content  *string  `json:"content,omitempty"`
-	Id       string   `json:"id"`
-	Metadata Metadata `json:"metadata"`
-	Mimetype string   `json:"mimetype"`
-	Name     string   `json:"name"`
-	Oid      string   `json:"oid"`
+	Cid      *string   `json:"cid,omitempty"`
+	Content  *string   `json:"content,omitempty"`
+	Id       *string   `json:"id,omitempty"`
+	Metadata *Metadata `json:"metadata,omitempty"`
+	Mimetype *string   `json:"mimetype,omitempty"`
+	Name     string    `json:"name"`
+	Oid      *string   `json:"oid,omitempty"`
 }
 
 // Error defines model for Error.
@@ -318,16 +318,16 @@ type Error struct {
 
 // Job defines model for Job.
 type Job struct {
-	Cid          string     `json:"cid"`
+	Cid          *string    `json:"cid,omitempty"`
 	Customer     Customer   `json:"customer"`
 	DepositType  string     `json:"deposit_type"`
 	DepositValue int32      `json:"deposit_value"`
 	Description  string     `json:"description"`
-	Id           string     `json:"id"`
+	Id           *string    `json:"id,omitempty"`
 	JobItems     *[]JobItem `json:"job_items,omitempty"`
-	Metadata     Metadata   `json:"metadata"`
+	Metadata     *Metadata  `json:"metadata,omitempty"`
 	Notes        *[]string  `json:"notes,omitempty"`
-	Oid          string     `json:"oid"`
+	Oid          *string    `json:"oid,omitempty"`
 	Status       *string    `json:"status,omitempty"`
 	Title        string     `json:"title"`
 }
@@ -360,19 +360,19 @@ type Metadata struct {
 
 // Payment defines model for Payment.
 type Payment struct {
-	Amount        int32                `json:"amount"`
-	Cid           string               `json:"cid"`
-	Customer      *Customer            `json:"customer,omitempty"`
-	Id            string               `json:"id"`
-	Kid           string               `json:"kid"`
-	Kind          PaymentKind          `json:"kind"`
-	Metadata      Metadata             `json:"metadata"`
-	Oid           string               `json:"oid"`
-	PaymentMethod PaymentPaymentMethod `json:"payment_method"`
-	Provider      PaymentProvider      `json:"provider"`
-	Status        PaymentStatus        `json:"status"`
-	Xid           string               `json:"xid"`
-	Xref          *string              `json:"xref,omitempty"`
+	Amount        int32                 `json:"amount"`
+	Cid           *string               `json:"cid,omitempty"`
+	Customer      *Customer             `json:"customer,omitempty"`
+	Id            *string               `json:"id,omitempty"`
+	Kid           *string               `json:"kid,omitempty"`
+	Kind          *PaymentKind          `json:"kind,omitempty"`
+	Metadata      *Metadata             `json:"metadata,omitempty"`
+	Oid           *string               `json:"oid,omitempty"`
+	PaymentMethod *PaymentPaymentMethod `json:"payment_method,omitempty"`
+	Provider      PaymentProvider       `json:"provider"`
+	Status        *PaymentStatus        `json:"status,omitempty"`
+	Xid           *string               `json:"xid,omitempty"`
+	Xref          *string               `json:"xref,omitempty"`
 }
 
 // PaymentKind defines model for Payment.Kind.
@@ -1005,59 +1005,59 @@ func RegisterHandlersWithBaseURL(router EchoRouter, si ServerInterface, baseURL 
 // Base64 encoded, gzipped, json marshaled Swagger object
 var swaggerSpec = []string{
 
-	"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",
+	"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",
+	"//8QWwIFCF0AAA==",
 }
 
 // GetSwagger returns the content of the embedded swagger specification file
