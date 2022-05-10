@@ -57,7 +57,7 @@ func main() {
 	_ = doc.Validate(ctx)
 	fmt.Println(`import React from "react";`)
 	fmt.Println(`// @ts-ignore`)
-	fmt.Println(`import { WrapInput, Wrapped } from '@kanda-form-components/library';`)
+	fmt.Println(`import { Wrapped } from '@kanda-form-components/library';`)
 	for name, ref := range doc.Components.Schemas {
 		// write to individual module for Schema Form Fields
 		fmt.Println(renderModule(name, ref.Value))
@@ -369,7 +369,7 @@ export const %sValidation = %v;
 
 export function %s(props: any) {
 	return (
-		<WrapInput
+		<Wrapped.Input
 			type="%s"
 			name="%s"
 			%s
@@ -409,7 +409,7 @@ export const %sValidation = %v;
 
 export function %s(props: any) {
 	return (
-		<WrapInput
+		<Wrapped.Input
 			type="Select"
 			name="%s"
 			%s
