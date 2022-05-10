@@ -893,7 +893,7 @@ components:
             - limited_company
             - sole_trader
           title: company type
-          x-kanda-form-widget: Select
+          x-kanda-form-widget: RadioSelect
         company_type_info:
           type: object
           oneOf:
