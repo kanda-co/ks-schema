@@ -1097,7 +1097,7 @@ components:
             - company-manager
             - company-staff
           title: company role
-          x-kanda-form-widget: Select
+          x-kanda-form-widget: RadioSelect
         first_name:
           type: string
           title: first name
@@ -1306,7 +1306,7 @@ components:
             - direct_debit
             - cash
           title: payment method
-          x-kanda-form-widget: Select
+          x-kanda-form-widget: RadioSelect
         customer:
           type: object
           $ref: "#/components/schemas/Customer"
@@ -1390,7 +1390,7 @@ components:
           enum:
             - omni
             - duologi
-          x-kanda-form-widget: Select
+          x-kanda-form-widget: RadioSelect
         state:
           type: string
           title: credit state

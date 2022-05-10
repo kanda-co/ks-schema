@@ -93,6 +93,9 @@ func isIn(in string, ins []string) bool {
 
 func getKandaFormWidget(schema *openapi3.Schema) string {
 	widget := "Input"
+	if len(schema.Enum) > 0 {
+		widget = "Select"
+	}
 	if ext, ok := schema.Extensions["x-kanda-form-widget"]; ok {
 		json.Unmarshal(ext.(json.RawMessage), &widget)
 	}
@@ -226,6 +229,7 @@ func renderField(name string, schema, root *openapi3.Schema) string {
 					components = append(
 						components,
 						arraySelectField(
+							getKandaFormWidget(property.Value),
 							name,
 							propName,
 							props,
@@ -237,6 +241,7 @@ func renderField(name string, schema, root *openapi3.Schema) string {
 					components = append(
 						components,
 						selectField(
+							getKandaFormWidget(property.Value),
 							name,
 							propName,
 							props,
@@ -389,7 +394,7 @@ export function %s(props: any) {
 }
 
 func selectField(
-	prefix, name string, props Props, validation Validation, options []interface{}) string {
+	type_, prefix, name string, props Props, validation Validation, options []interface{}) string {
 	pathName := name
 	if prefix != "" {
 		pathName = toPath(prefix + " " + name)
@@ -410,7 +415,7 @@ export const %sValidation = %v;
 export function %s(props: any) {
 	return (
 		<Wrapped.Input
-			type="Select"
+			type="%s"
 			name="%s"
 			%s
 			validation={%sValidation}
@@ -422,6 +427,7 @@ export function %s(props: any) {
 		toPascal(prefix+" "+name),
 		validationRegexReplace(b),
 		toPascal(prefix+" "+name),
+		type_,
 		pathName,
 		propsToAttributes(props),
 		toPascal(prefix+" "+name),
@@ -460,7 +466,7 @@ export function %sArrayInput(props: any) {
 }
 
 func arraySelectField(
-	prefix, name string, props Props, validation Validation, options []interface{}) string {
+	type_, prefix, name string, props Props, validation Validation, options []interface{}) string {
 	pathName := name
 	if prefix != "" {
 		pathName = toPath(prefix + " " + name)
@@ -481,7 +487,7 @@ export const %sArraySelectValidation = %v;
 export function %sArraySelect(props: any) {
 	return (
 		<Wrapped.ArrayInput
-			type="Select"
+			type="%s"
 			name="%s"
 			%s
 			validation={%sArraySelectValidation}
@@ -493,6 +499,7 @@ export function %sArraySelect(props: any) {
 		toPascal(prefix+" "+name),
 		validationRegexReplace(b),
 		toPascal(prefix+" "+name),
+		type_,
 		pathName,
 		propsToAttributes(props),
 		toPascal(prefix+" "+name),
