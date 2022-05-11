@@ -969,8 +969,11 @@ components:
           title: average job value
           minimum: 1
         use_subcontractor:
-          type: boolean
+          type: string
           title: use subcontractor?
+          enum:
+            - yes
+            - no
           x-kanda-form-widget: Select
         insurance_document:
           type: object
