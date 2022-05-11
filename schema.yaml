@@ -971,6 +971,7 @@ components:
         use_subcontractor:
           type: boolean
           title: use subcontractor?
+          x-kanda-form-widget: Select
         insurance_document:
           type: object
           title: insurance document

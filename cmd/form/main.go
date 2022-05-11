@@ -91,6 +91,20 @@ func isIn(in string, ins []string) bool {
 	return false
 }
 
+func unique(ins []string) []string {
+	m := map[string]bool{}
+	outs := []string{}
+
+	for _, in := range ins {
+		if _, existed := m[in]; existed {
+			continue
+		}
+		m[in] = true
+		outs = append(outs, in)
+	}
+	return outs
+}
+
 func getKandaFormWidget(schema *openapi3.Schema) string {
 	widget := "Input"
 	switch schema.Type {
@@ -137,6 +151,7 @@ func renderModule(name string, schema *openapi3.Schema) string {
 	moduleDefs = append(moduleDefs, strings.Join(formDef, "\n"))
 	moduleDefs = append(moduleDefs, components)
 	sort.Strings(moduleDefs)
+	moduleDefs = unique(strings.Split(strings.Join(moduleDefs, "\n\n"), "\n\n"))
 	return strings.Join(moduleDefs, "\n\n")
 }
 
@@ -301,6 +316,27 @@ func renderField(name string, schema, root *openapi3.Schema) string {
 				components,
 				renderField(name+" "+propName, property.Value, property.Value),
 			)
+		} else if len(property.Value.OneOf) > 0 {
+			for _, oneOf := range property.Value.OneOf {
+				components = append(
+					components,
+					renderField(name+" "+propName, oneOf.Value, property.Value),
+				)
+			}
+		} else if len(property.Value.AnyOf) > 0 {
+			for _, anyOf := range property.Value.AnyOf {
+				components = append(
+					components,
+					renderField(name+" "+propName, anyOf.Value, property.Value),
+				)
+			}
+		} else if len(property.Value.AllOf) > 0 {
+			for _, allOf := range property.Value.AllOf {
+				components = append(
+					components,
+					renderField(name+" "+propName, allOf.Value, property.Value),
+				)
+			}
 		}
 
 		if property.Value.Items != nil && property.Value.Items.Value != nil {
