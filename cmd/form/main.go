@@ -93,8 +93,21 @@ func isIn(in string, ins []string) bool {
 
 func getKandaFormWidget(schema *openapi3.Schema) string {
 	widget := "Input"
+	switch schema.Type {
+	case "boolean":
+		widget = "BooleanInput"
+	case "number", "integer", "float", "double":
+		widget = "Number"
+	}
+	if schema.Type == "string" && schema.Format == "date" {
+		widget = "Date"
+	}
 	if len(schema.Enum) > 0 {
-		widget = "Select"
+		if len(schema.Enum) <= 3 {
+			widget = "RadioSelect"
+		} else {
+			widget = "Select"
+		}
 	}
 	if ext, ok := schema.Extensions["x-kanda-form-widget"]; ok {
 		json.Unmarshal(ext.(json.RawMessage), &widget)
@@ -223,7 +236,13 @@ func renderField(name string, schema, root *openapi3.Schema) string {
 			props.Placeholder = &property.Value.Title
 		}
 		switch property.Value.Type {
-		case "string", "integer", "number":
+		case "object":
+		case "array":
+			components = append(
+				components,
+				arrayField(name, propName, props, validation),
+			)
+		default:
 			if len(property.Value.Enum) > 0 {
 				if root.Type == "array" {
 					components = append(
@@ -275,11 +294,6 @@ func renderField(name string, schema, root *openapi3.Schema) string {
 					)
 				}
 			}
-		case "array":
-			components = append(
-				components,
-				arrayField(name, propName, props, validation),
-			)
 		}
 
 		if len(property.Value.Properties) > 0 {
