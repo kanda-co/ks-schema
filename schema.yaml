@@ -972,8 +972,8 @@ components:
           type: string
           title: use subcontractor?
           enum:
-            - yes
-            - no
+            - "yes"
+            - "no"
           x-kanda-form-widget: Select
         insurance_document:
           type: object
