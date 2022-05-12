@@ -853,7 +853,6 @@ components:
     Company:
       type: object
       required:
-        - users
         - company_info
         - company_type
         - company_type_info
@@ -882,7 +881,6 @@ components:
           items:
             $ref: "#/components/schemas/UserType"
           title: users
-          minLength: 1
         company_info:
           type: object
           $ref: "#/components/schemas/CompanyInfo"
