@@ -30,6 +30,44 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/company:
+    get:
+      operationId: infoCompany
+      summary: query company info with its directors
+      tags:
+        - InfoCompany
+      parameters:
+        - in: query
+          name: company_name
+          schema:
+            type: string
+          description: query keyword of company name
+        - in: query
+          name: company_number
+          schema:
+            type: string
+          description: exact company number match
+        - in: query
+          name: directors
+          schema:
+            type: boolean
+          description: include directors info?
+      responses:
+        200:
+          description: got company info
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/InfoCompany"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/company:
     get:
       operationId: getCompanies
@@ -849,6 +887,32 @@ components:
           title: postcode / zipcode
           pattern: "^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})$"
           x-kanda-form-widget: Postcode
+
+    InfoCompany:
+      type: object
+      required:
+        - limited_company
+      properties:
+        id:
+          type: string
+          title: company info unique id
+          readOnly: true
+        limited_company:
+          type: object
+          title: limited company info
+          $ref: "#/components/schemas/LimitedCompanyInfo"
+          readOnly: true
+        directors:
+          type: array
+          title: directors info
+          items:
+            $ref: "#/components/schemas/UserType"
+          readOnly: true
+        metadata:
+          type: object
+          title: metadata
+          $ref: "#/components/schemas/Metadata"
+          readOnly: true
 
     Company:
       type: object

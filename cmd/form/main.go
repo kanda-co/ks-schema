@@ -490,6 +490,8 @@ func arrayInputField(type_, prefix, name string, props Props, validation Validat
 	if prefix != "" {
 		pathName = toPath(prefix + " " + name)
 	}
+	bits := strings.Split(pathName, ".")
+	pathName = bits[len(bits)-1]
 	b, _ := json.Marshal(validation)
 	return fmt.Sprintf(`
 export const %sArrayInputValidation = %v;
@@ -521,6 +523,8 @@ func arraySelectField(
 	if prefix != "" {
 		pathName = toPath(prefix + " " + name)
 	}
+	bits := strings.Split(pathName, ".")
+	pathName = bits[len(bits)-1]
 	b, _ := json.Marshal(validation)
 	optsM := make([]Option, 0)
 	for _, opt := range options {
