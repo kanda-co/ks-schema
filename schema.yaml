@@ -1151,7 +1151,6 @@ components:
         - role
         - first_name
         - email
-        - mobile
       properties:
         director_info:
           type: object

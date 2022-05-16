@@ -418,7 +418,7 @@ type UserType struct {
 	Email        openapi_types.Email `json:"email"`
 	FirstName    string              `json:"first_name"`
 	LastName     *string             `json:"last_name,omitempty"`
-	Mobile       string              `json:"mobile"`
+	Mobile       *string             `json:"mobile,omitempty"`
 	Role         UserTypeRole        `json:"role"`
 }
 
@@ -1109,26 +1109,26 @@ var swaggerSpec = []string{
 	"vEQb/e6ngHzvT+GcZiyZew4ST5hRLjRJXaHsqOKtMp60geQqFwwSvu0FpJNfKIxnLZI0UAutm0XaGyXm",
 	"jTTzzQKSAlWVG3BKUqanMU5Q8TJvxgPL06aUgxfuo3hF9CgKVnn3NmQqdzkU0KI8Shp1mOmCwUKBE0+n",
 	"xDY7WG7Md0i27fggOoo46VRIb3T5qQ+Da7rBqbLYPk+cCXMeb/PZEpY1Jl2Zs6whgTvzktfe4QJut6Fz",
-	"McFjZCeFv4HhWELB6bTd0dhAVByzb5/fK1Ub0/gWQYbYK2lek2ob0IWPvt0xuxeiyW5v9ZECY0K97i37",
-	"p9oBeI/YQXVSr96+BnoN6FlJH2SpgbgDOiDGDaXnz86fnevE1SACG5ytsq/1LRVhxV4zfQYbfOYNprTE",
-	"PioMpl3qdZmtsh+QMJU41s06Q7yhhJtdvzg/N+1DO1KGTVPZQfjZJTcdqeXu1EGFV/cPTqYM5y7ZjgoA",
-	"qwoULYMaZAtlJe7EWIofM2UNrC4JumlQoUpSZGEWGZd1DdlRMYeGzC0yAXdcWZ7b49oeNR6L/S3l4rv2",
-	"pJiyWsTFt/YMye+yr1bO450plgBB16DocWD8RqW42wcawgP4QmWPsxkpPCC1sb5vFz23O/uIy1sTBypk",
-	"3vD27eB7fb+zhAYyWCOhz35dDMNHr1nAWmJQn6kwod+cce1rcuEJZRDbB0l3/cfo3AimBOgGc6Fqghlq",
-	"3vA4ZjHs8Okw+1kqWQXyOStYxfITtdvIUDSX89Hu02YSGRTcPLKJnLfRRWSXyCntmbZoiNEQT1THGW7u",
-	"UsZZ7uZYxLWCa8VvtjdRwRmgR3I7K+BU/eav/0QOl+TKVW+tbcyveHMiGym672anVm6OXDrqmxN2n15K",
-	"jyp7XLbNTuWjqi2q+cVEQP381Nsv2Gan2n69ltBrtFqbh16fNGnIkMxmkTjkrI0tLLho+vBPJcTCijuR",
-	"8DSVWu/8w4m1WtlyOMNqrfTE5/TQbjJdsbVgj+N+nagTVVvZ5+Fp3G+KM1u5lZ6tzK528wQXUPvQAU+s",
-	"4DyLSCaD/qHmTynNp1Q/quPmaADDSi5tB4vJsPt5qrpX081Rzb2qbkrHscpuRjp+4vQiw9KbSYqRMze+",
-	"mPgSiQaTLZ18v+p//DBhkh8kYkdwhY7XlJWAbsHgXCVugTorHZwz7GQ0OlMxXA3dwEKA/pFKUENR7KeW",
-	"cocv7rCYPiZcItD/LuNlZKXum5DAIu1hwwcH0pOKZ19/J9bP/tcjczJxY1+9b1uusdgDLDjwRe5M3t96",
-	"Z/WX5juSWI59Yz7nfnzFvKGbuzQ0+jPzGfYy7o9SWJmrXaU7mDf6QOVjZBct0UTfctmu/DT5JMGP7VYu",
-	"jQ3MrlExkurr1POfEzsTo+lkymi/IPqUitSIXketyMy0O+xCQkpepOLi56TMXrMxM0X2+oywFmPdxR+u",
-	"xaeL+nIkpD8+8sv5GlVAXuH4bw7pBsPETyh7RKG2f/Iz4q41ml3Fqjy17v6unJVnu5FOqE33ZU8sANuP",
-	"f56mOHVfGt2hQG0cfzMsUptOdk4JbofpYtVBPU7oaqWcKFqbHgdPE74m+LLFa9PZyOwK2E5qY30PfO7E",
-	"YrazhGT27H2f9inVQQmdjwrbGWp+WNymDGAxFWM/RyX3Ct4ZKrhX9Ka1Gyt+Z6Pdp80kMii4eWQTOW+j",
-	"i8gukFO8z660SfkfXF2sldo5YgdncJJV9msrvjo728vNM/1t2LOCPpNX+s8ZjyCWH2ACaHV2VtECVnvK",
-	"xeqb82/Os9v17f8CAAD//5wsNr0cYgAA",
+	"McFjZCeFv4HhWEKB6fTYLlT4si+d3ysNG4v4FkGG2Ctp3o5q1et6R9/ueNwL0WS3t/okgbGcXtOW/VMx",
+	"Dt4jdlAN1Ku3r4FeA3rG0QdZaiDugA6IcUPp+bPzZ+c6XzWIwAZnq+xrfUsFVrHXTJ/BBp958ygtqI8K",
+	"g2lPel1mq+wHJEwBjnWPzhBvKOFm1y/Oz03X0E6SYdNUdv59dslNI2q5O3U+4ZX7gwMpw3FLtqMCwKoC",
+	"RcugBtlCWYk7MZbixwxXA6tLgm4aVKhKFFmYRcZlXUN2VMyhIXOLTMAdVwbn9ri2J4zHYn9LufiuPSCm",
+	"jBVx8a09OvK77KuV83hniiVA0DUoehwYd1GZ7faBhvAAvlDZ42xGCg9Ibazv20XP7c4+4vLWxIEKmRe7",
+	"fTv4Xt/vLKGBDNZI6CNfF8Pw0esRsJYY1EcpTMQ3R1v7mlx4QhmE9EGuXf8xOjeCKQG6wVyoUmCGmjc8",
+	"jlkMO3w6zH6WSlaBfM4KVrH8RO02MhTN5Xy0+7SZRAYFN49sIudtdBHZJXJKe5QtGmI0xBPVcYabu5Rx",
+	"lrs5FnGt4Frxm+1NVHAG6JHczgo4Vb/56z+RwyW5ctVbaxvzK96cyEaK7rvZqZWbI5eO+uZg3aeX0qPK",
+	"Hpdts1P5qGqLan4xEVA/P/X2C7bZqbZfryX0Gq3W5qHXJ00aMiSzWSQOOWtjCwsumj78wwixsOIOIjxN",
+	"pdY79nBirVa2HM6wWis98Tk9tJtMV2wt2OO4XyfqRNVW9nl4Gveb4sxWbqVnK7Or3TzBBdQ+dMATKzjP",
+	"IpLJoH+W+VNK8ynVj+q4ORrAsJJL28FiMux+nqru1XRzVHOvqpvScayym5GOnzi9yLD0ZpJi5MyNLya+",
+	"RKLBZEsn36/63zxMmOQHidgRXKHjNWUloFswOE6JW6DOSgfHCzsZjY5SDFdDN7AQoH+SEtRQFPuppdyZ",
+	"izsspk8Hlwj0P8d4GVmp+xQksEh7xvDBgfSk4tnX34n1s//RyJxM3NhX75OWayz2AAsOfJE7k/e33ln9",
+	"pfl8JJZj35ivuB9fMW/o5i4Njf66fIa9jPtbFFbmalfpDuaNPkf5GNlFSzTRt1y2Kz9NPknwY7uVS2MD",
+	"s2tUjKT6OvX858TOxGg6mTLaD4c+pSI1otdRKzIz7Q67kJCSF6m4+Dkps9dszEyRvT4jrMVYd/GHa/Hp",
+	"or4cCemPj/xyvkYVkFc4/puzucEw8RPKHlGo7V/6jLhrjWZXsSpPrbs/J2fl2W6kE2rTfdATC8D2m5+n",
+	"KU7dB0Z3KFAbx98Mi9Smk51Tgtthulh1UI8TulopJ4rWpsfB04SvCb5s8dp0NjK7AraT2ljfA587sZjt",
+	"LCGZPXufpX1KdVBC56PCdoaaHxa3KQNYTMXYz1HJvYJ3hgruFb1p7caK39lo92kziQwKbh7ZRM7b6CKy",
+	"C+QU77MrbVL+B1cXa6V2jtjBGZxklf3aiq/OzvZy80x/EvasoM/klf4rxiOI5QeYAFqdnVW0gNWecrH6",
+	"5vyb8+x2ffu/AAAA//8vt/AzE2IAAA==",
 }
 
 // GetSwagger returns the content of the embedded swagger specification file
