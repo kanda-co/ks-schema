@@ -30,6 +30,32 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+    put:
+      operationId: putMe
+      summary: put me info
+      tags:
+        - AuthUser
+      requestBody:
+        description: put me info details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InfoMe"
+      responses:
+        200:
+          description: put me info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthUser"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/info/company:
     get:
       operationId: infoCompany
@@ -823,6 +849,22 @@ components:
           type: string
           title: issuer
           readOnly: true
+
+    InfoMe:
+      type: object
+      properties:
+        name:
+          type: string
+          title: name
+          minLength: 1
+        phone:
+          type: string
+          title: phone
+          minLength: 1
+        photoURL:
+          type: string
+          title: photo URL
+          format: uri
 
     Metadata:
       type: object
