@@ -917,7 +917,6 @@ components:
     Company:
       type: object
       required:
-        - company_info
         - company_type
         - company_type_info
       properties:
