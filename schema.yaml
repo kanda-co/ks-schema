@@ -866,6 +866,23 @@ components:
           title: photo URL
           format: uri
 
+    Money:
+      type: object
+      required:
+        - amount
+      properties:
+        currency:
+          type: string
+          title: currency
+          enum:
+            - GBP
+          default: GBP
+        amount:
+          type: integer
+          title: amount in pence
+          format: int32
+          minimum: 0
+
     Metadata:
       type: object
       required:
@@ -1247,7 +1264,6 @@ components:
         - first_name
         - email
         - phone
-        - address
       properties:
         first_name:
           type: string
@@ -1301,12 +1317,15 @@ components:
         deposit_type:
           type: string
           title: deposit type
-          minLength: 1
+          enum:
+            - no_deposit
+            - partial_deposit
+            - fixed_deposit
+          default: no_deposit
         deposit_value:
-          type: integer
-          format: int32
+          type: object
+          $ref: "#/components/schemas/Money"
           title: deposit value in pence
-          minimum: 1
         customer:
           type: object
           $ref: "#/components/schemas/Customer"
@@ -1323,6 +1342,25 @@ components:
         status:
           type: string
           title: job status
+          enum:
+            - draft
+            - sent
+            - accepted
+            - declined
+            - archived
+            - remittance
+            - paid_out
+          readOnly: true
+        finance_status:
+          type: string
+          title: finance status
+          enum:
+            - under_review
+            - applied_for_finance
+            - finacne_not_approved
+            - financed
+            - deposit_paid
+            - paid
           readOnly: true
         metadata:
           type: object
@@ -1352,13 +1390,12 @@ components:
           title: job item quantity
           minimum: 1
         price:
-          type: integer
-          format: int32
+          type: object
+          $ref: "#/components/schemas/Money"
           title: job item total price in pence (vat inclusive)
-          minimum: 1
         vat:
-          type: integer
-          format: int32
+          type: object
+          $ref: "#/components/schemas/Money"
           title: job item vat value in pence
         quote_document:
           type: object
@@ -1438,10 +1475,9 @@ components:
             - refunded
           readOnly: true
         amount:
-          type: integer
-          format: int32
+          type: object
+          $ref: "#/components/schemas/Money"
           title: payment amount in pence
-          minimum: 0
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
@@ -1511,10 +1547,9 @@ components:
             - finished
             - paid_out
         amount:
-          type: integer
-          format: int32
+          type: object
+          $ref: "#/components/schemas/Money"
           title: credit amount in pence
-          minimum: 0
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
