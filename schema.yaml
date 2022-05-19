@@ -1404,8 +1404,6 @@ components:
             - accepted
             - declined
             - archived
-            - remittance
-            - paid_out
           readOnly: true
         finance_status:
           type: string
@@ -1413,9 +1411,12 @@ components:
           enum:
             - under_review
             - applied_for_finance
+            - finance_deposit_paid
             - finacne_not_approved
             - financed
-            - deposit_paid
+            - sat_note_sent
+            - sat_note_viewed
+            - sat_note_signed
             - paid
           readOnly: true
         metadata:
