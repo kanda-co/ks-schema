@@ -1071,6 +1071,16 @@ components:
             - "Yes"
             - "No"
           default: "No"
+        lifecycle:
+          type: string
+          title: company lifecycle state
+          enum:
+            - registered
+            - onboarded
+            - completed_setup
+            - verified
+          default: registered
+          readOnly: true
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
