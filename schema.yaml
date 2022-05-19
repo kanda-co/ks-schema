@@ -94,6 +94,34 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/customer:
+    get:
+      operationId: infoCustomer
+      summary: query customer info with loose query
+      tags:
+        - InfoCustomer
+      parameters:
+        - in: query
+          name: q
+          schema:
+            type: string
+          description: query keyword of loosely matched customer
+      responses:
+        200:
+          description: got customer info
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Customer"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/company:
     get:
       operationId: getCompanies
@@ -878,10 +906,14 @@ components:
             - GBP
           default: GBP
         amount:
-          type: integer
           title: amount in pence
-          format: int32
-          minimum: 0
+          $ref: "#/components/schemas/Pence"
+
+    Pence:
+      type: integer
+      format: int32
+      title: amount / number in pence
+      minimum: 0
 
     Metadata:
       type: object
@@ -1025,6 +1057,13 @@ components:
           items:
             $ref: "#/components/schemas/AvailableRate"
           title: available rates
+        skip_deposit:
+          type: string
+          title: company is allowed to take own deposit
+          enum:
+            - "Yes"
+            - "No"
+          default: "No"
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
@@ -1262,6 +1301,7 @@ components:
       type: object
       required:
         - first_name
+        - last_name
         - email
         - phone
       properties:
@@ -1289,7 +1329,6 @@ components:
       type: object
       required:
         - title
-        - description
         - deposit_type
         - deposit_value
         - customer
@@ -1385,10 +1424,8 @@ components:
           title: job item description
           minLength: 1
         quantity:
-          type: integer
-          format: int32
           title: job item quantity
-          minimum: 1
+          $ref: "#/components/schemas/Pence"
         price:
           type: object
           $ref: "#/components/schemas/Money"
