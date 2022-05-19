@@ -5,3 +5,4 @@ frontend/generated
 node_modules/
 .idea
 .idea/
+yarn.lock
