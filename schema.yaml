@@ -1061,9 +1061,10 @@ components:
           type: string
           title: quote preference
           enum:
+            - no_preference
             - kanda
             - custom
-          default: kanda
+          default: no_preference
         skip_deposit:
           type: string
           title: company is allowed to take own deposit
