@@ -1081,6 +1081,10 @@ components:
             - verified
           default: registered
           readOnly: true
+        company_logo:
+          type: object
+          title: company logo document
+          $ref: "#/components/schemas/Document"
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
