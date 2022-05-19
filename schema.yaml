@@ -1057,6 +1057,13 @@ components:
           items:
             $ref: "#/components/schemas/AvailableRate"
           title: available rates
+        quote_preference:
+          type: string
+          title: quote preference
+          enum:
+            - kanda
+            - custom
+          default: kanda
         skip_deposit:
           type: string
           title: company is allowed to take own deposit
