@@ -33,6 +33,7 @@ gen-frontend:
 
 gen-backend:
 	@echo Code generation for backend from OpenAPI...
+	go get -u github.com/deepmap/oapi-codegen/cmd/oapi-codegen
 	mkdir -p pkg/schema
 	oapi-codegen -generate types,server,spec -package schema schema.yaml > pkg/schema/schema.gen.go
 
