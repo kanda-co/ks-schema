@@ -1453,6 +1453,16 @@ components:
           type: object
           $ref: "#/components/schemas/Money"
           title: job item total price in pence (vat inclusive)
+        vat_rate:
+          type: string
+          title: vat applicable rate
+          enum:
+            - "vat_not_set"
+            - "exempted"
+            - "0%"
+            - "5%"
+            - "20%"
+          default: "vat_not_set"
         vat:
           type: object
           $ref: "#/components/schemas/Money"

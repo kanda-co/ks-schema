@@ -131,7 +131,7 @@ func getKandaFormWidget(schema *openapi3.Schema) string {
 
 func renderModule(name string, schema *openapi3.Schema) string {
 	moduleDefs := []string{}
-	components := renderField(name, schema, nil)
+	components := renderField(name, schema, nil, false)
 	r := regexp.MustCompile(`export function (?P<Form>.*?)\(`)
 	formFields := r.FindAllStringSubmatch(components, -1)
 	formIndex := r.SubexpIndex("Form")
@@ -155,7 +155,7 @@ func renderModule(name string, schema *openapi3.Schema) string {
 	return strings.Join(moduleDefs, "\n\n")
 }
 
-func renderField(name string, schema, root *openapi3.Schema) string {
+func renderField(name string, schema, root *openapi3.Schema, isArray bool) string {
 	if schema == nil {
 		return ""
 	}
@@ -259,7 +259,7 @@ func renderField(name string, schema, root *openapi3.Schema) string {
 			)
 		default:
 			if len(property.Value.Enum) > 0 {
-				if root.Type == "array" {
+				if root.Type == "array" || isArray {
 					components = append(
 						components,
 						arraySelectField(
@@ -285,7 +285,7 @@ func renderField(name string, schema, root *openapi3.Schema) string {
 					)
 				}
 			} else {
-				if root.Type == "array" {
+				if root.Type == "array" || isArray {
 					components = append(
 						components,
 						arrayInputField(
@@ -314,27 +314,27 @@ func renderField(name string, schema, root *openapi3.Schema) string {
 		if len(property.Value.Properties) > 0 {
 			components = append(
 				components,
-				renderField(name+" "+propName, property.Value, property.Value),
+				renderField(name+" "+propName, property.Value, property.Value, root.Type == "array" || isArray),
 			)
 		} else if len(property.Value.OneOf) > 0 {
 			for _, oneOf := range property.Value.OneOf {
 				components = append(
 					components,
-					renderField(name+" "+propName, oneOf.Value, property.Value),
+					renderField(name+" "+propName, oneOf.Value, property.Value, root.Type == "array" || isArray),
 				)
 			}
 		} else if len(property.Value.AnyOf) > 0 {
 			for _, anyOf := range property.Value.AnyOf {
 				components = append(
 					components,
-					renderField(name+" "+propName, anyOf.Value, property.Value),
+					renderField(name+" "+propName, anyOf.Value, property.Value, root.Type == "array" || isArray),
 				)
 			}
 		} else if len(property.Value.AllOf) > 0 {
 			for _, allOf := range property.Value.AllOf {
 				components = append(
 					components,
-					renderField(name+" "+propName, allOf.Value, property.Value),
+					renderField(name+" "+propName, allOf.Value, property.Value, root.Type == "array" || isArray),
 				)
 			}
 		}
@@ -342,12 +342,12 @@ func renderField(name string, schema, root *openapi3.Schema) string {
 		if property.Value.Items != nil && property.Value.Items.Value != nil {
 			components = append(
 				components,
-				renderField(name+" "+propName, property.Value.Items.Value, property.Value),
+				renderField(name+" "+propName, property.Value.Items.Value, property.Value, root.Type == "array" || isArray),
 			)
 		}
 	}
 	if schema.Items != nil && schema.Items.Value != nil {
-		components = append(components, renderField(name, schema.Items.Value, schema))
+		components = append(components, renderField(name, schema.Items.Value, schema, root.Type == "array" || isArray))
 	}
 	sort.Strings(components)
 	return strings.Join(components, "\n")
