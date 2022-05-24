@@ -1424,6 +1424,16 @@ components:
             - sat_note_signed
             - paid
           readOnly: true
+        checkout_options:
+          type: array
+          title: checkout options
+          items:
+            $ref: "#/components/schemas/CheckoutOption"
+        finance_options:
+          type: array
+          title: finance options
+          items:
+            type: string
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
@@ -1471,6 +1481,13 @@ components:
           type: object
           title: quote document
           $ref: "#/components/schemas/Document"
+
+    CheckoutOption:
+      type: string
+      title: checkout option
+      enum:
+        - pay_on_completion
+        - decline_job
 
     Payment:
       type: object

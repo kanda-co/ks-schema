@@ -165,6 +165,123 @@ func renderField(name string, schema, root *openapi3.Schema, isArray bool) strin
 		root = &rootSchema
 	}
 
+	if !isIn(schema.Type, []string{"object", "array"}) && len(schema.Properties) == 0 {
+		propName := ""
+		props := Props{}
+		validation := Validation{}
+		if isIn(propName, schema.Required) {
+			validation.Required = &Validator{
+				Value:   true,
+				Message: fmt.Sprintf("%s is required.", toTitle(propName)),
+			}
+			// props.Required = true
+		}
+		if schema.ReadOnly {
+			validation.Disabled = &Validator{
+				Value:   schema.ReadOnly,
+				Message: fmt.Sprintf("%s input is read only or disabled", toTitle(propName)),
+			}
+			// props.ReadOnly = true
+		}
+		if schema.Description != "" {
+			props.Placeholder = &schema.Description
+		}
+		if schema.Pattern != "" {
+			validation.Pattern = &Validator{
+				Value:   schema.Pattern,
+				Message: fmt.Sprintf("%s input is invalid", toTitle(propName)),
+			}
+			// props.Pattern = &property.Value.Pattern
+		}
+		if schema.MinLength > 0 {
+			validation.MinLength = &Validator{
+				Value: schema.MinLength,
+				Message: fmt.Sprintf(
+					"%s requires minimum length of %v",
+					toTitle(propName),
+					schema.MinLength,
+				),
+			}
+		}
+		if schema.MaxLength != nil {
+			validation.MaxLength = &Validator{
+				Value: *schema.MaxLength,
+				Message: fmt.Sprintf(
+					"%s requires maximum length of %v",
+					toTitle(propName),
+					*schema.MaxLength,
+				),
+			}
+			// props.MaxLength = property.Value.MaxLength
+		}
+		if schema.Min != nil {
+			validation.Min = &Validator{
+				Value: *schema.Min,
+				Message: fmt.Sprintf(
+					"%s must be great than %v",
+					toTitle(propName),
+					*schema.Min,
+				),
+			}
+			// props.Min = property.Value.Min
+		}
+		if schema.Max != nil {
+			validation.Max = &Validator{
+				Value: *schema.Max,
+				Message: fmt.Sprintf(
+					"%s must be smaller than %v",
+					toTitle(propName),
+					*schema.Max,
+				),
+			}
+			// props.Max = property.Value.Max
+		}
+
+		if schema.Title != "" {
+			props.Label = toTitle(schema.Title)
+		} else {
+			props.Label = toTitle(propName)
+		}
+		if schema.Description != "" {
+			props.Placeholder = &schema.Description
+		} else {
+			props.Placeholder = &schema.Title
+		}
+		if len(schema.Enum) > 0 {
+			if root.Type == "array" || isArray {
+				components = append(
+					components,
+					arraySelectField(
+						getKandaFormWidget(schema),
+						name,
+						propName,
+						props,
+						validation,
+						schema.Enum,
+					),
+				)
+			} else {
+				components = append(
+					components,
+					selectField(
+						getKandaFormWidget(schema),
+						name,
+						propName,
+						props,
+						validation,
+						schema.Enum,
+					),
+				)
+			}
+		}
+		if schema.Items != nil && schema.Items.Value != nil {
+			components = append(
+				components,
+				renderField(name+" "+propName, schema.Items.Value, schema, root.Type == "array" || isArray),
+			)
+		}
+	}
+
 	for propName, property := range schema.Properties {
 		if property == nil || property.Value == nil {
 			continue
