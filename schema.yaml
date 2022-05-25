@@ -1618,11 +1618,14 @@ components:
           $ref: "#/components/schemas/Customer"
           readOnly: true
         quote_items:
+          type: array
           title: quote items
           items:
             $ref: "#/components/schemas/JobItem"
+          minLength: 1
           readOnly: true
         total:
+          type: object
           title: job total
           $ref: "#/components/schemas/MoneyTotal"
           readOnly: true
@@ -1646,6 +1649,7 @@ components:
           $ref: "#/components/schemas/FinanceStatus"
           readOnly: true
         payments:
+          type: array
           title: payments
           items:
             $ref: "#/components/schemas/Payment"
