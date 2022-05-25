@@ -1607,6 +1607,11 @@ components:
         deposit_type:
           type: string
           title: deposit type
+          enum:
+            - no_deposit
+            - partial_deposit
+            - fixed_deposit
+          default: no_deposit
           readOnly: true
         deposit_value:
           type: object
