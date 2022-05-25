@@ -452,6 +452,143 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/application:
+    get:
+      operationId: getApplications
+      summary: get all applications
+      tags:
+        - Application
+      responses:
+        200:
+          description: got all applications
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Application"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    post:
+      operationId: postApplication
+      summary: post new application
+      tags:
+        - Application
+      requestBody:
+        description: post new application
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Application"
+      responses:
+        200:
+          description: posted new application
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Application"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/application/{id}:
+    get:
+      operationId: getApplication
+      summary: get existing application
+      tags:
+        - Application
+      parameters:
+        - name: id
+          in: path
+          description: application id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing application
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Application"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: putApplication
+      summary: put existing application
+      tags:
+        - Application
+      parameters:
+        - name: id
+          in: path
+          description: application id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: put existing application
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Application"
+      responses:
+        200:
+          description: put existing application
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Application"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      operationId: deleteApplication
+      summary: delete existing application
+      tags:
+        - Application
+      parameters:
+        - name: id
+          in: path
+          description: application id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: deleted existing application
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Application"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/payment:
     get:
       operationId: getPayments
@@ -582,143 +719,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Payment"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-  /api/credit:
-    get:
-      operationId: getCredits
-      summary: get all credits
-      tags:
-        - Credit
-      responses:
-        200:
-          description: got all credits
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Credit"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-    post:
-      operationId: postCredit
-      summary: post new credit
-      tags:
-        - Credit
-      requestBody:
-        description: post new credit
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Credit"
-      responses:
-        200:
-          description: posted new credit
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Credit"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-  /api/credit/{id}:
-    get:
-      operationId: getCredit
-      summary: get existing credit
-      tags:
-        - Credit
-      parameters:
-        - name: id
-          in: path
-          description: credit id
-          required: true
-          schema:
-            type: string
-            minLength: 1
-      responses:
-        200:
-          description: got existing credit
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Credit"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-    put:
-      operationId: putCredit
-      summary: put existing credit
-      tags:
-        - Credit
-      parameters:
-        - name: id
-          in: path
-          description: credit id
-          required: true
-          schema:
-            type: string
-            minLength: 1
-      requestBody:
-        description: put existing credit
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Credit"
-      responses:
-        200:
-          description: put existing credit
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Credit"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-    delete:
-      operationId: deleteCredit
-      summary: delete existing credit
-      tags:
-        - Credit
-      parameters:
-        - name: id
-          in: path
-          description: credit id
-          required: true
-          schema:
-            type: string
-            minLength: 1
-      responses:
-        200:
-          description: deleted existing credit
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Credit"
         default:
           description: unexpected error
           content:
@@ -1409,6 +1409,7 @@ components:
         - title
         - deposit_type
         - deposit_value
+        - job_items
       properties:
         id:
           type: string
@@ -1451,6 +1452,11 @@ components:
             $ref: "#/components/schemas/JobItem"
           title: job items
           minLength: 1
+        total:
+          type: object
+          title: job total
+          $ref: "#/components/schemas/MoneyTotal"
+          readOnly: true
         notes:
           type: array
           items:
@@ -1467,19 +1473,8 @@ components:
             - archived
           readOnly: true
         finance_status:
-          type: string
           title: finance status
-          enum:
-            - under_review
-            - applied_for_finance
-            - finance_deposit_paid
-            - finacne_not_approved
-            - financed
-            - sat_note_sent
-            - sat_note_viewed
-            - sat_note_signed
-            - paid
-          readOnly: true
+          $ref: "#/components/schemas/FinanceStatus"
         checkout_options:
           type: array
           title: checkout options
@@ -1528,6 +1523,7 @@ components:
             - "0%"
             - "5%"
             - "20%"
+            - "custom"
           default: "vat_not_set"
         vat:
           type: object
@@ -1538,6 +1534,41 @@ components:
           title: quote document
           $ref: "#/components/schemas/Document"
 
+    MoneyTotal:
+      type: object
+      title: total
+      properties:
+        amount_vat_inclusive:
+          type: object
+          $ref: "#/components/schemas/Money"
+          title: total amount in pence (vat inclusive)
+          readOnly: true
+        amount_vat_exclusive:
+          type: object
+          $ref: "#/components/schemas/Money"
+          title: total amount in pence (vat exclusive)
+          readOnly: true
+        amount_vat:
+          type: object
+          $ref: "#/components/schemas/Money"
+          title: total vat value in pence
+          readOnly: true
+
+    FinanceStatus:
+      type: string
+      title: finance status
+      enum:
+        - under_review
+        - applied_for_finance
+        - finance_deposit_paid
+        - finacne_not_approved
+        - financed
+        - sat_note_sent
+        - sat_note_viewed
+        - sat_note_signed
+        - paid
+      readOnly: true
+
     CheckoutOption:
       type: string
       title: checkout option
@@ -1545,10 +1576,90 @@ components:
         - pay_on_completion
         - decline_job
 
+    Application:
+      type: object
+      required:
+        - checkout_option
+        - finance_option
+      properties:
+        id:
+          type: string
+          title: application id
+          readOnly: true
+        cid:
+          type: string
+          title: company id
+          readOnly: true
+        oid:
+          type: string
+          title: owner id
+          readOnly: true
+        title:
+          type: string
+          title: job title
+          minLength: 1
+          readOnly: true
+        description:
+          type: string
+          title: job description
+          minLength: 1
+          readOnly: true
+        deposit_type:
+          type: string
+          title: deposit type
+          readOnly: true
+        deposit_value:
+          type: object
+          $ref: "#/components/schemas/Money"
+          title: deposit value in pence
+          readOnly: true
+        customer:
+          type: object
+          $ref: "#/components/schemas/Customer"
+          readOnly: true
+        quote_items:
+          title: quote items
+          items:
+            $ref: "#/components/schemas/JobItem"
+          readOnly: true
+        total:
+          title: job total
+          $ref: "#/components/schemas/MoneyTotal"
+          readOnly: true
+        checkout_options:
+          type: array
+          title: checkout options
+          items:
+            $ref: "#/components/schemas/CheckoutOption"
+          readOnly: true
+        finance_options:
+          type: array
+          title: finance options
+          items:
+            type: string
+          readOnly: true
+        finance_option:
+          type: string
+          title: finance option
+        finance_status:
+          title: finance status
+          $ref: "#/components/schemas/FinanceStatus"
+          readOnly: true
+        payments:
+          title: payments
+          items:
+            $ref: "#/components/schemas/Payment"
+          readOnly: true
+        metadata:
+          type: object
+          $ref: "#/components/schemas/Metadata"
+          title: metadata
+          readOnly: true
+
     Payment:
       type: object
       required:
-        - provider
+        - payment_method
         - amount
       properties:
         id:
@@ -1571,11 +1682,8 @@ components:
           type: string
           title: internal kind
           enum:
-            - job
-            - job_payout
-            - job_refund
+            - application
             - charge
-            - charge_refund
           readOnly: true
         xid:
           type: string
@@ -1589,23 +1697,12 @@ components:
           type: string
           enum:
             - loan
+            - cash
             - card
             - direct_debit
-            - cash
           title: payment method
+          default: cash
           x-kanda-form-widget: RadioSelect
-        customer:
-          type: object
-          $ref: "#/components/schemas/Customer"
-        provider:
-          type: string
-          enum:
-            - omni
-            - duologi
-            - stripe
-            - gocardless
-            - bank_transfer
-          x-kanda-form-widget: Select
         status:
           type: string
           title: payment status
@@ -1627,11 +1724,9 @@ components:
           title: metadata
           readOnly: true
 
-    Credit:
+    OmniCredit:
       type: object
       required:
-        - customer
-        - provider
         - amount
       properties:
         id:
@@ -1654,11 +1749,8 @@ components:
           type: string
           title: internal kind
           enum:
-            - job
-            - job_payout
-            - job_refund
+            - application
             - charge
-            - charge_refund
           readOnly: true
         xid:
           type: string
@@ -1668,15 +1760,6 @@ components:
           type: string
           title: external reference
           readOnly: true
-        customer:
-          type: object
-          $ref: "#/components/schemas/Customer"
-        provider:
-          type: string
-          enum:
-            - omni
-            - duologi
-          x-kanda-form-widget: RadioSelect
         state:
           type: string
           title: credit state
@@ -1693,11 +1776,35 @@ components:
           type: object
           $ref: "#/components/schemas/Money"
           title: credit amount in pence
+        bank_account:
+          title: bank account
+          $ref: "#/components/schemas/BankAccount"
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
           title: metadata
           readOnly: true
+
+    BankAccount:
+      type: object
+      required:
+        - account_name
+        - account_number
+        - sort_code
+      properties:
+        account_name:
+          type: string
+          title: account name
+          minLength: 1
+        account_number:
+          type: string
+          title: account number
+          minLength: 1
+          pattern: "^[0-9]{7,8}$"
+        sort_code:
+          type: string
+          title: sort code
+          pattern: "^[0-9]{2}[-][0-9]{2}[-][0-9]{2}$"
 
     Error:
       type: object
