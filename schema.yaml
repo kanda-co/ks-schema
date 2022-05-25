@@ -396,6 +396,62 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/job/{id}/send:
+    post:
+      operationId: sendJob
+      summary: send existing job
+      tags:
+        - Job
+      parameters:
+        - name: id
+          in: path
+          description: job id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: sent existing job
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/job/{id}/archive:
+    post:
+      operationId: archiveJob
+      summary: archive existing job
+      tags:
+        - Job
+      parameters:
+        - name: id
+          in: path
+          description: job id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: archived existing job
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/payment:
     get:
       operationId: getPayments
@@ -1353,7 +1409,6 @@ components:
         - title
         - deposit_type
         - deposit_value
-        - customer
       properties:
         id:
           type: string
@@ -1395,6 +1450,7 @@ components:
           items:
             $ref: "#/components/schemas/JobItem"
           title: job items
+          minLength: 1
         notes:
           type: array
           items:
