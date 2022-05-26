@@ -589,6 +589,44 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/application/{id}/{payment_method}:
+    post:
+      operationId: postApplicationPaymentMethod
+      summary: post new application payment method
+      tags:
+        - Application
+      parameters:
+        - name: id
+          in: path
+          description: application id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - name: payment_method
+          in: path
+          description: application payment method
+          required: true
+          schema:
+            type: string
+            enum:
+              - loan
+              - cash
+            default: cash
+      responses:
+        200:
+          description: got existing application
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Application"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/payment:
     get:
       operationId: getPayments
