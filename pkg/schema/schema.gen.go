@@ -66,11 +66,11 @@ const (
 
 // Defines values for CompanyInfoTradeBody.
 const (
-	Elecsa  CompanyInfoTradeBody = "elecsa"
-	GasSafe CompanyInfoTradeBody = "gas_safe"
-	Napit   CompanyInfoTradeBody = "napit"
-	Niceic  CompanyInfoTradeBody = "niceic"
-	Other   CompanyInfoTradeBody = "other"
+	CompanyInfoTradeBodyElecsa  CompanyInfoTradeBody = "elecsa"
+	CompanyInfoTradeBodyGasSafe CompanyInfoTradeBody = "gas_safe"
+	CompanyInfoTradeBodyNapit   CompanyInfoTradeBody = "napit"
+	CompanyInfoTradeBodyNiceic  CompanyInfoTradeBody = "niceic"
+	CompanyInfoTradeBodyOther   CompanyInfoTradeBody = "other"
 )
 
 // Defines values for CompanyInfoTradeType.
@@ -99,10 +99,78 @@ const (
 	CompanyInfoUseSubcontractorYes CompanyInfoUseSubcontractor = "yes"
 )
 
+// Defines values for CreditProvider.
+const (
+	Omni CreditProvider = "omni"
+)
+
+// Defines values for CreditState.
+const (
+	CreditStateAccepted       CreditState = "accepted"
+	CreditStateActionCustomer CreditState = "action_customer"
+	CreditStateActionLender   CreditState = "action_lender"
+	CreditStateDeclined       CreditState = "declined"
+	CreditStateFinished       CreditState = "finished"
+	CreditStatePaidOut        CreditState = "paid_out"
+	CreditStatePending        CreditState = "pending"
+	CreditStateReferred       CreditState = "referred"
+)
+
+// Defines values for CustomerDetailsGender.
+const (
+	Female CustomerDetailsGender = "female"
+	Male   CustomerDetailsGender = "male"
+)
+
+// Defines values for CustomerDetailsMaritalStatus.
+const (
+	CustomerDetailsMaritalStatusCohabiting  CustomerDetailsMaritalStatus = "cohabiting"
+	CustomerDetailsMaritalStatusDivorced    CustomerDetailsMaritalStatus = "divorced"
+	CustomerDetailsMaritalStatusMarried     CustomerDetailsMaritalStatus = "married"
+	CustomerDetailsMaritalStatusOther       CustomerDetailsMaritalStatus = "other"
+	CustomerDetailsMaritalStatusSeparated   CustomerDetailsMaritalStatus = "separated"
+	CustomerDetailsMaritalStatusSingle      CustomerDetailsMaritalStatus = "single"
+	CustomerDetailsMaritalStatusToBeMarried CustomerDetailsMaritalStatus = "to_be_married"
+	CustomerDetailsMaritalStatusWidowed     CustomerDetailsMaritalStatus = "widowed"
+)
+
+// Defines values for CustomerDetailsResidentialStatus.
+const (
+	CouncilTenant     CustomerDetailsResidentialStatus = "council tenant"
+	LivingWithParents CustomerDetailsResidentialStatus = "living with parents"
+	Owner             CustomerDetailsResidentialStatus = "owner"
+	Tenant            CustomerDetailsResidentialStatus = "tenant"
+)
+
+// Defines values for CustomerDetailsTitle.
+const (
+	Dr   CustomerDetailsTitle = "dr"
+	Miss CustomerDetailsTitle = "miss"
+	Mr   CustomerDetailsTitle = "mr"
+	Mrs  CustomerDetailsTitle = "mrs"
+	Ms   CustomerDetailsTitle = "ms"
+)
+
 // Defines values for DirectorInfoVerificationStatus.
 const (
 	DirectorInfoVerificationStatusNotVerified DirectorInfoVerificationStatus = "not_verified"
 	DirectorInfoVerificationStatusVerified    DirectorInfoVerificationStatus = "verified"
+)
+
+// Defines values for EmploymentDetailsEmploymentStatus.
+const (
+	Employed     EmploymentDetailsEmploymentStatus = "employed"
+	NotEmployed  EmploymentDetailsEmploymentStatus = "not_employed"
+	Retired      EmploymentDetailsEmploymentStatus = "retired"
+	SelfEmployed EmploymentDetailsEmploymentStatus = "self_employed"
+)
+
+// Defines values for EmploymentDetailsSourceOfIncome.
+const (
+	Benefits    EmploymentDetailsSourceOfIncome = "benefits"
+	Maintenance EmploymentDetailsSourceOfIncome = "maintenance"
+	Other       EmploymentDetailsSourceOfIncome = "other"
+	Partner     EmploymentDetailsSourceOfIncome = "partner"
 )
 
 // Defines values for FinanceStatus.
@@ -127,11 +195,11 @@ const (
 
 // Defines values for JobStatus.
 const (
-	Accepted JobStatus = "accepted"
-	Archived JobStatus = "archived"
-	Declined JobStatus = "declined"
-	Draft    JobStatus = "draft"
-	Sent     JobStatus = "sent"
+	JobStatusAccepted JobStatus = "accepted"
+	JobStatusArchived JobStatus = "archived"
+	JobStatusDeclined JobStatus = "declined"
+	JobStatusDraft    JobStatus = "draft"
+	JobStatusSent     JobStatus = "sent"
 )
 
 // Defines values for JobItemVatRate.
@@ -182,14 +250,15 @@ const (
 
 // Address defines model for Address.
 type Address struct {
-	BuildingName   *string `json:"building_name,omitempty"`
-	BuildingNumber *string `json:"building_number,omitempty"`
-	City           string  `json:"city"`
-	Country        string  `json:"country"`
-	County         *string `json:"county,omitempty"`
-	Line1          string  `json:"line_1"`
-	Line2          *string `json:"line_2,omitempty"`
-	Postcode       string  `json:"postcode"`
+	BuildingName    *string `json:"building_name,omitempty"`
+	BuildingNumber  *string `json:"building_number,omitempty"`
+	City            string  `json:"city"`
+	Country         string  `json:"country"`
+	County          *string `json:"county,omitempty"`
+	Line1           string  `json:"line_1"`
+	Line2           *string `json:"line_2,omitempty"`
+	MonthsAtAddress *int32  `json:"months_at_address,omitempty"`
+	Postcode        string  `json:"postcode"`
 }
 
 // Application defines model for Application.
@@ -236,6 +305,13 @@ type AvailableRate struct {
 	Enabled bool   `json:"enabled"`
 	Fee     int    `json:"fee"`
 	Name    string `json:"name"`
+}
+
+// BankAccount defines model for BankAccount.
+type BankAccount struct {
+	AccountName   string `json:"account_name"`
+	AccountNumber string `json:"account_number"`
+	SortCode      string `json:"sort_code"`
 }
 
 // CheckoutOption defines model for CheckoutOption.
@@ -292,6 +368,29 @@ type CompanyInfoTradeType string
 // CompanyInfoUseSubcontractor defines model for CompanyInfo.UseSubcontractor.
 type CompanyInfoUseSubcontractor string
 
+// Credit defines model for Credit.
+type Credit struct {
+	Amount            Money             `json:"amount"`
+	BankAccount       BankAccount       `json:"bank_account"`
+	Cid               *string           `json:"cid,omitempty"`
+	CustomerDetails   CustomerDetails   `json:"customer_details"`
+	EmploymentDetails EmploymentDetails `json:"employment_details"`
+	Id                *string           `json:"id,omitempty"`
+	Metadata          *Metadata         `json:"metadata,omitempty"`
+	Oid               *string           `json:"oid,omitempty"`
+	Pid               *string           `json:"pid,omitempty"`
+	Provider          *CreditProvider   `json:"provider,omitempty"`
+	State             *CreditState      `json:"state,omitempty"`
+	Xid               *string           `json:"xid,omitempty"`
+	Xref              *string           `json:"xref,omitempty"`
+}
+
+// CreditProvider defines model for Credit.Provider.
+type CreditProvider string
+
+// CreditState defines model for Credit.State.
+type CreditState string
+
 // Customer defines model for Customer.
 type Customer struct {
 	Address   *Address            `json:"address,omitempty"`
@@ -300,6 +399,42 @@ type Customer struct {
 	LastName  string              `json:"last_name"`
 	Phone     string              `json:"phone"`
 }
+
+// CustomerDetails defines model for CustomerDetails.
+type CustomerDetails struct {
+	CurrentAddress Address `json:"current_address"`
+
+	// Customer's date of birth. Format to use: `dd/mm/yyyy`
+	DateOfBirth          *time.Time                       `json:"date_of_birth,omitempty"`
+	Email                openapi_types.Email              `json:"email"`
+	FirstName            string                           `json:"first_name"`
+	Gender               CustomerDetailsGender            `json:"gender"`
+	GoodsDeliveryAddress *Address                         `json:"goods_delivery_address,omitempty"`
+	LastName             string                           `json:"last_name"`
+	MaidenName           *string                          `json:"maiden_name,omitempty"`
+	MaritalStatus        CustomerDetailsMaritalStatus     `json:"marital_status"`
+	MiddleName           *string                          `json:"middle_name,omitempty"`
+	Mobile               *string                          `json:"mobile,omitempty"`
+	MonthlyRentAmount    *Money                           `json:"monthly_rent_amount,omitempty"`
+	NumberOfDependants   int32                            `json:"number_of_dependants"`
+	PreviousAddressOne   *Address                         `json:"previous_address_one,omitempty"`
+	PreviousAddressTwo   *Address                         `json:"previous_address_two,omitempty"`
+	ResidentialStatus    CustomerDetailsResidentialStatus `json:"residential_status"`
+	Telephone            *string                          `json:"telephone,omitempty"`
+	Title                CustomerDetailsTitle             `json:"title"`
+}
+
+// CustomerDetailsGender defines model for CustomerDetails.Gender.
+type CustomerDetailsGender string
+
+// CustomerDetailsMaritalStatus defines model for CustomerDetails.MaritalStatus.
+type CustomerDetailsMaritalStatus string
+
+// CustomerDetailsResidentialStatus defines model for CustomerDetails.ResidentialStatus.
+type CustomerDetailsResidentialStatus string
+
+// CustomerDetailsTitle defines model for CustomerDetails.Title.
+type CustomerDetailsTitle string
 
 // DirectorInfo defines model for DirectorInfo.
 type DirectorInfo struct {
@@ -320,6 +455,25 @@ type Document struct {
 	Name     string    `json:"name"`
 	Oid      *string   `json:"oid,omitempty"`
 }
+
+// EmploymentDetails defines model for EmploymentDetails.
+type EmploymentDetails struct {
+	BusinessName          *string                           `json:"business_name,omitempty"`
+	EmployerName          *string                           `json:"employer_name,omitempty"`
+	EmploymentStatus      EmploymentDetailsEmploymentStatus `json:"employment_status"`
+	GrossAnnualIncome     Money                             `json:"gross_annual_income"`
+	HouseholdAnnualIncome Money                             `json:"household_annual_income"`
+	MainOccupation        *string                           `json:"main_occupation,omitempty"`
+	MonthsEmployed        *int32                            `json:"months_employed,omitempty"`
+	SourceOfIncome        *EmploymentDetailsSourceOfIncome  `json:"source_of_income,omitempty"`
+	TypeOfBusiness        *string                           `json:"type_of_business,omitempty"`
+}
+
+// EmploymentDetailsEmploymentStatus defines model for EmploymentDetails.EmploymentStatus.
+type EmploymentDetailsEmploymentStatus string
+
+// EmploymentDetailsSourceOfIncome defines model for EmploymentDetails.SourceOfIncome.
+type EmploymentDetailsSourceOfIncome string
 
 // Error defines model for Error.
 type Error struct {
@@ -476,6 +630,12 @@ type PostCompanyJSONBody Company
 // PutCompanyJSONBody defines parameters for PutCompany.
 type PutCompanyJSONBody Company
 
+// PostCreditJSONBody defines parameters for PostCredit.
+type PostCreditJSONBody Credit
+
+// PutCreditJSONBody defines parameters for PutCredit.
+type PutCreditJSONBody Credit
+
 // PostDocumentJSONBody defines parameters for PostDocument.
 type PostDocumentJSONBody Document
 
@@ -526,6 +686,12 @@ type PostCompanyJSONRequestBody PostCompanyJSONBody
 
 // PutCompanyJSONRequestBody defines body for PutCompany for application/json ContentType.
 type PutCompanyJSONRequestBody PutCompanyJSONBody
+
+// PostCreditJSONRequestBody defines body for PostCredit for application/json ContentType.
+type PostCreditJSONRequestBody PostCreditJSONBody
+
+// PutCreditJSONRequestBody defines body for PutCredit for application/json ContentType.
+type PutCreditJSONRequestBody PutCreditJSONBody
 
 // PostDocumentJSONRequestBody defines body for PostDocument for application/json ContentType.
 type PostDocumentJSONRequestBody PostDocumentJSONBody
@@ -580,6 +746,21 @@ type ServerInterface interface {
 	// put existing company
 	// (PUT /api/company/{id})
 	PutCompany(ctx echo.Context, id string) error
+	// get all credits
+	// (GET /api/credit)
+	GetCredits(ctx echo.Context) error
+	// post new credit
+	// (POST /api/credit)
+	PostCredit(ctx echo.Context) error
+	// delete existing credit
+	// (DELETE /api/credit/{id})
+	DeleteCredit(ctx echo.Context, id string) error
+	// get existing credit
+	// (GET /api/credit/{id})
+	GetCredit(ctx echo.Context, id string) error
+	// put existing credit
+	// (PUT /api/credit/{id})
+	PutCredit(ctx echo.Context, id string) error
 	// get all documents
 	// (GET /api/document)
 	GetDocuments(ctx echo.Context) error
@@ -799,6 +980,82 @@ func (w *ServerInterfaceWrapper) PutCompany(ctx echo.Context) error {
 
 	// Invoke the callback with all the unmarshalled arguments
 	err = w.Handler.PutCompany(ctx, id)
+	return err
+}
+
+// GetCredits converts echo context to params.
+func (w *ServerInterfaceWrapper) GetCredits(ctx echo.Context) error {
+	var err error
+
+	ctx.Set(BearerAuthScopes, []string{""})
+
+	// Invoke the callback with all the unmarshalled arguments
+	err = w.Handler.GetCredits(ctx)
+	return err
+}
+
+// PostCredit converts echo context to params.
+func (w *ServerInterfaceWrapper) PostCredit(ctx echo.Context) error {
+	var err error
+
+	ctx.Set(BearerAuthScopes, []string{""})
+
+	// Invoke the callback with all the unmarshalled arguments
+	err = w.Handler.PostCredit(ctx)
+	return err
+}
+
+// DeleteCredit converts echo context to params.
+func (w *ServerInterfaceWrapper) DeleteCredit(ctx echo.Context) error {
+	var err error
+	// ------------- Path parameter "id" -------------
+	var id string
+
+	err = runtime.BindStyledParameterWithLocation("simple", false, "id", runtime.ParamLocationPath, ctx.Param("id"), &id)
+	if err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter id: %s", err))
+	}
+
+	ctx.Set(BearerAuthScopes, []string{""})
+
+	// Invoke the callback with all the unmarshalled arguments
+	err = w.Handler.DeleteCredit(ctx, id)
+	return err
+}
+
+// GetCredit converts echo context to params.
+func (w *ServerInterfaceWrapper) GetCredit(ctx echo.Context) error {
+	var err error
+	// ------------- Path parameter "id" -------------
+	var id string
+
+	err = runtime.BindStyledParameterWithLocation("simple", false, "id", runtime.ParamLocationPath, ctx.Param("id"), &id)
+	if err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter id: %s", err))
+	}
+
+	ctx.Set(BearerAuthScopes, []string{""})
+
+	// Invoke the callback with all the unmarshalled arguments
+	err = w.Handler.GetCredit(ctx, id)
+	return err
+}
+
+// PutCredit converts echo context to params.
+func (w *ServerInterfaceWrapper) PutCredit(ctx echo.Context) error {
+	var err error
+	// ------------- Path parameter "id" -------------
+	var id string
+
+	err = runtime.BindStyledParameterWithLocation("simple", false, "id", runtime.ParamLocationPath, ctx.Param("id"), &id)
+	if err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter id: %s", err))
+	}
+
+	ctx.Set(BearerAuthScopes, []string{""})
+
+	// Invoke the callback with all the unmarshalled arguments
+	err = w.Handler.PutCredit(ctx, id)
 	return err
 }
 
@@ -1180,6 +1437,11 @@ func RegisterHandlersWithBaseURL(router EchoRouter, si ServerInterface, baseURL 
 	router.DELETE(baseURL+"/api/company/:id", wrapper.DeleteCompany)
 	router.GET(baseURL+"/api/company/:id", wrapper.GetCompany)
 	router.PUT(baseURL+"/api/company/:id", wrapper.PutCompany)
+	router.GET(baseURL+"/api/credit", wrapper.GetCredits)
+	router.POST(baseURL+"/api/credit", wrapper.PostCredit)
+	router.DELETE(baseURL+"/api/credit/:id", wrapper.DeleteCredit)
+	router.GET(baseURL+"/api/credit/:id", wrapper.GetCredit)
+	router.PUT(baseURL+"/api/credit/:id", wrapper.PutCredit)
 	router.GET(baseURL+"/api/document", wrapper.GetDocuments)
 	router.POST(baseURL+"/api/document", wrapper.PostDocument)
 	router.DELETE(baseURL+"/api/document/:id", wrapper.DeleteDocument)
@@ -1207,71 +1469,87 @@ func RegisterHandlersWithBaseURL(router EchoRouter, si ServerInterface, baseURL 
 // Base64 encoded, gzipped, json marshaled Swagger object
 var swaggerSpec = []string{
 
-	"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",
-	"fzr701lyvDr+IwAA//8VD4X5mnIAAA==",
+	"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",
+	"z749S4+Xx38FAAD//+wq/ZhSjAAA",
 }
 
 // GetSwagger returns the content of the embedded swagger specification file
