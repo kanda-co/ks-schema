@@ -1720,7 +1720,7 @@ components:
         price:
           type: object
           $ref: "#/components/schemas/Money"
-          title: job item total price in pence (vat inclusive)
+          title: job item unit price in pence (vat exclusive)
         vat_rate:
           type: string
           title: vat applicable rate
@@ -1735,7 +1735,7 @@ components:
         vat:
           type: object
           $ref: "#/components/schemas/Money"
-          title: job item vat value in pence
+          title: job item total vat value in pence
         quote_document:
           type: object
           title: quote document
