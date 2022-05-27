@@ -901,6 +901,34 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/credit/{id}/apply:
+    post:
+      operationId: applyCredit
+      summary: apply existing credit
+      tags:
+        - Credit
+      parameters:
+        - name: id
+          in: path
+          description: credit id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: applied existing credit
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Credit"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/document:
     get:
       operationId: getDocuments
