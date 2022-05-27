@@ -1737,6 +1737,7 @@ components:
       type: string
       title: finance status
       enum:
+        - not_applied
         - under_review
         - applied_for_finance
         - finance_deposit_paid
@@ -1746,6 +1747,7 @@ components:
         - sat_note_viewed
         - sat_note_signed
         - paid
+      default: not_applied
       readOnly: true
 
     CheckoutOption:
