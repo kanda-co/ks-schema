@@ -1962,9 +1962,16 @@ components:
           type: string
           title: owner id
           readOnly: true
-        pid:
+        kid:
           type: string
-          title: payment id
+          title: internal kind id
+          readOnly: true
+        kind:
+          type: string
+          title: internal kind
+          enum:
+            - application
+            - charge
           readOnly: true
         provider:
           type: string
