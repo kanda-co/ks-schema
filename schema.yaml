@@ -641,6 +641,12 @@ paths:
               - card
               - loan
             default: cash
+      requestBody:
+        description: application optional payment amount, if omitted total will be set
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Money"
       responses:
         200:
           description: got existing application with new payment
