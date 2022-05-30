@@ -122,6 +122,33 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/auth:
+    put:
+      operationId: infoAuth
+      summary: put auth info by email, send sign-in magic link
+      tags:
+        - InfoAuth
+      requestBody:
+        description: put auth info by email, send sign-in magic link
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InfoAuth"
+      responses:
+        200:
+          description: put link info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoAuth"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/company:
     get:
       operationId: getCompanies
@@ -1151,6 +1178,20 @@ components:
         photoURL:
           type: string
           title: photo URL
+          format: uri
+
+    InfoAuth:
+      type: object
+      required:
+        - email
+      properties:
+        email:
+          type: string
+          title: email
+          format: email
+        continue_url:
+          type: string
+          title: continue url
           format: uri
 
     Money:
