@@ -137,7 +137,7 @@ paths:
               $ref: "#/components/schemas/InfoAuth"
       responses:
         200:
-          description: put link info
+          description: put auth info with email
           content:
             application/json:
               schema:
@@ -637,12 +637,13 @@ paths:
           schema:
             type: string
             enum:
-              - loan
               - cash
+              - card
+              - loan
             default: cash
       responses:
         200:
-          description: got existing application
+          description: got existing application with new payment
           content:
             application/json:
               schema:
