@@ -514,7 +514,7 @@ paths:
                 $ref: "#/components/schemas/Error"
 
   /api/job/{id}/apply:
-    put:
+    post:
       operationId: applyJob
       summary: customer to apply existing job with selected options, only allowed when job status is sent
       tags:
@@ -1819,7 +1819,7 @@ components:
           type: string
           title: internal kind
           enum:
-            - application
+            - job
             - charge
           readOnly: true
         xid:
@@ -1900,7 +1900,7 @@ components:
           type: string
           title: internal kind
           enum:
-            - application
+            - job
             - charge
           readOnly: true
         provider:
