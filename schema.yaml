@@ -479,75 +479,33 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-  /api/application:
-    get:
-      operationId: getApplications
-      summary: get all applications
-      tags:
-        - Application
-      responses:
-        200:
-          description: got all applications
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Application"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
+  /api/job/{id}/pay:
     post:
-      operationId: postApplication
-      summary: post new application
+      operationId: payJob
+      summary: pay existing job, only allowed when job status is beyond sent
       tags:
-        - Application
-      requestBody:
-        description: post new application
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Application"
-      responses:
-        200:
-          description: posted new application
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Application"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-  /api/application/{id}:
-    get:
-      operationId: getApplication
-      summary: get existing application
-      tags:
-        - Application
+        - Job
       parameters:
         - name: id
           in: path
-          description: application id
+          description: job id
           required: true
           schema:
             type: string
             minLength: 1
+      requestBody:
+        description: job payment option
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PaymentOption"
       responses:
         200:
-          description: got existing application
+          description: got existing job with new payment
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Application"
+                $ref: "#/components/schemas/Job"
         default:
           description: unexpected error
           content:
@@ -555,105 +513,33 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/job/{id}/apply:
     put:
-      operationId: putApplication
-      summary: put existing application
+      operationId: applyJob
+      summary: customer to apply existing job with selected options, only allowed when job status is sent
       tags:
-        - Application
+        - Job
       parameters:
         - name: id
           in: path
-          description: application id
+          description: job id
           required: true
           schema:
             type: string
             minLength: 1
       requestBody:
-        description: put existing application
-        required: true
+        description: job apply options selected by customer
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Application"
+              $ref: "#/components/schemas/CustomerOptions"
       responses:
         200:
-          description: put existing application
+          description: got existing job with new payment
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Application"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-    delete:
-      operationId: deleteApplication
-      summary: delete existing application
-      tags:
-        - Application
-      parameters:
-        - name: id
-          in: path
-          description: application id
-          required: true
-          schema:
-            type: string
-            minLength: 1
-      responses:
-        200:
-          description: deleted existing application
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Application"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-  /api/application/{id}/{payment_method}:
-    post:
-      operationId: postApplicationPaymentMethod
-      summary: post new application payment method
-      tags:
-        - Application
-      parameters:
-        - name: id
-          in: path
-          description: application id
-          required: true
-          schema:
-            type: string
-            minLength: 1
-        - name: payment_method
-          in: path
-          description: application payment method
-          required: true
-          schema:
-            type: string
-            enum:
-              - cash
-              - card
-              - loan
-            default: cash
-      requestBody:
-        description: application optional payment amount, if omitted total will be set
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Money"
-      responses:
-        200:
-          description: got existing application with new payment
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Application"
+                $ref: "#/components/schemas/Job"
         default:
           description: unexpected error
           content:
@@ -787,6 +673,44 @@ paths:
       responses:
         200:
           description: deleted existing payment
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Payment"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/payment/{id}/{status}:
+    post:
+      operationId: markPayment
+      summary: company to mark existing payment as given status, only allowed when payment method is cash
+      tags:
+        - Payment
+      parameters:
+        - name: id
+          in: path
+          description: payment id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - name: status
+          in: path
+          description: status update for this payment
+          required: true
+          schema:
+            type: string
+            enum:
+              - unpaid
+              - paid
+              - pay_on_completion
+      responses:
+        200:
+          description: got existing payment marked as given status
           content:
             application/json:
               schema:
@@ -1743,11 +1667,17 @@ components:
           title: checkout options
           items:
             $ref: "#/components/schemas/CheckoutOption"
+          minLength: 1
         finance_options:
           type: array
           title: finance options
           items:
             type: string
+        customer_options:
+          type: object
+          title: customer selected options, updated only via custom endpoint
+          $ref: "#/components/schemas/CustomerOptions"
+          readOnly: true
         payments:
           type: array
           title: payments
@@ -1759,6 +1689,22 @@ components:
           $ref: "#/components/schemas/Metadata"
           title: metadata
           readOnly: true
+
+    CustomerOptions:
+      type: object
+      title: customer selected options, updated only via custom endpoint
+      required:
+        - checkout_option
+        - finance_option
+      properties:
+        checkout_option:
+          type: string
+          title: checkout option selected by customer
+          $ref: "#/components/schemas/CheckoutOption"
+        finance_option:
+          type: string
+          title: finance option selected by customer
+          description: finance option
 
     JobItem:
       type: object
@@ -1830,7 +1776,6 @@ components:
         - not_applied
         - under_review
         - applied_for_finance
-        - finance_deposit_paid
         - finacne_not_approved
         - financed
         - sat_note_sent
@@ -1843,109 +1788,16 @@ components:
     CheckoutOption:
       type: string
       title: checkout option
+      description: checkout option picked by customer, updated only via custom action
       enum:
         - apply_for_finance
-        - pay_on_completion
         - decline_job
-
-    Application:
-      type: object
-      required:
-        - checkout_option
-        - finance_option
-      properties:
-        id:
-          type: string
-          title: application id
-          readOnly: true
-        cid:
-          type: string
-          title: company id
-          readOnly: true
-        oid:
-          type: string
-          title: owner id
-          readOnly: true
-        title:
-          type: string
-          title: job title
-          minLength: 1
-          readOnly: true
-        description:
-          type: string
-          title: job description
-          minLength: 1
-          readOnly: true
-        deposit_type:
-          type: string
-          title: deposit type
-          enum:
-            - no_deposit
-            - partial_deposit
-            - fixed_deposit
-          default: no_deposit
-          readOnly: true
-        deposit_value:
-          type: object
-          $ref: "#/components/schemas/Money"
-          title: deposit value in pence
-          readOnly: true
-        customer:
-          type: object
-          $ref: "#/components/schemas/Customer"
-          readOnly: true
-        quote_items:
-          type: array
-          title: quote items
-          items:
-            $ref: "#/components/schemas/JobItem"
-          minLength: 1
-          readOnly: true
-        total:
-          type: object
-          title: job total
-          $ref: "#/components/schemas/MoneyTotal"
-          readOnly: true
-        checkout_options:
-          type: array
-          title: checkout options
-          items:
-            $ref: "#/components/schemas/CheckoutOption"
-          readOnly: true
-        checkout_option:
-          type: string
-          title: checkout option
-          $ref: "#/components/schemas/CheckoutOption"
-        finance_options:
-          type: array
-          title: finance options
-          items:
-            type: string
-          readOnly: true
-        finance_option:
-          type: string
-          title: finance option
-        finance_status:
-          title: finance status
-          $ref: "#/components/schemas/FinanceStatus"
-          readOnly: true
-        payments:
-          type: array
-          title: payments
-          items:
-            $ref: "#/components/schemas/Payment"
-          readOnly: true
-        metadata:
-          type: object
-          $ref: "#/components/schemas/Metadata"
-          title: metadata
-          readOnly: true
+        - pay_on_completion
 
     Payment:
       type: object
       required:
-        - payment_method
-        - amount
+        - payment_option
       properties:
         id:
           type: string
@@ -1978,16 +1830,10 @@ components:
           type: string
           title: external reference
           readOnly: true
-        payment_method:
-          type: string
-          enum:
-            - loan
-            - cash
-            - card
-            - direct_debit
-          title: payment method
-          default: cash
-          x-kanda-form-widget: RadioSelect
+        payment_option:
+          type: object
+          title: payment option
+          $ref: "#/components/schemas/PaymentOption"
         status:
           type: string
           title: payment status
@@ -1999,15 +1845,32 @@ components:
             - cancelled
             - refunded
           readOnly: true
-        amount:
-          type: object
-          $ref: "#/components/schemas/Money"
-          title: payment amount in pence
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
           title: metadata
           readOnly: true
+
+    PaymentOption:
+      type: object
+      title: payment option
+      required:
+        - payment_method
+        - amount
+      properties:
+        payment_method:
+          type: string
+          title: payment method
+          enum:
+            - cash
+            - card
+            - loan
+          default: cash
+          x-kanda-form-widget: RadioSelect
+        amount:
+          type: object
+          title: payment option amount
+          $ref: "#/components/schemas/Money"
 
     Credit:
       type: object
