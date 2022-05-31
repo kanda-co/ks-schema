@@ -1717,6 +1717,14 @@ components:
           items:
             type: string
           title: job notes
+        archived:
+          type: string
+          title: job is archived?
+          enum:
+            - "yes"
+            - "no"
+          default: "no"
+          readOnly: true
         status:
           type: string
           title: job status
@@ -1725,7 +1733,7 @@ components:
             - sent
             - accepted
             - declined
-            - archived
+            - finished
           readOnly: true
         finance_status:
           title: finance status
@@ -1740,6 +1748,12 @@ components:
           title: finance options
           items:
             type: string
+        payments:
+          type: array
+          title: payments
+          items:
+            $ref: "#/components/schemas/Payment"
+          readOnly: true
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
@@ -1830,6 +1844,7 @@ components:
       type: string
       title: checkout option
       enum:
+        - apply_for_finance
         - pay_on_completion
         - decline_job
 
@@ -1897,6 +1912,10 @@ components:
           items:
             $ref: "#/components/schemas/CheckoutOption"
           readOnly: true
+        checkout_option:
+          type: string
+          title: checkout option
+          $ref: "#/components/schemas/CheckoutOption"
         finance_options:
           type: array
           title: finance options
