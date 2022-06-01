@@ -1948,6 +1948,15 @@ components:
           type: object
           title: employment details
           $ref: "#/components/schemas/EmploymentDetails"
+        credit_documents:
+          type: array
+          title: credit documents
+          items:
+            $ref: "#/components/schemas/Document"
+        signature:
+          type: object
+          title: elecontronic signature
+          $ref: "#/components/schemas/Signature"
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
@@ -2126,6 +2135,24 @@ components:
           type: object
           title: household annual income
           $ref: "#/components/schemas/Money"
+
+    Signature:
+      type: object
+      title: electronic signature
+      required:
+        - signed
+        - fingerprint
+      properties:
+        signed:
+          type: string
+          title: signed your signature
+          enum:
+            - "yes"
+            - "no"
+          default: "no"
+        fingerprint:
+          type: string
+          title: fingerprint reference such as IP
 
     Error:
       type: object
