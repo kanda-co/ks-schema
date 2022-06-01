@@ -1748,6 +1748,14 @@ components:
           type: object
           title: quote document
           $ref: "#/components/schemas/Document"
+        style:
+          type: string
+          title: style
+          enum:
+            - kanda
+            - custom
+          default: kanda
+          readOnly: true
 
     MoneyTotal:
       type: object
