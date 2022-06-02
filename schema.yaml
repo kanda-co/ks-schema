@@ -1244,7 +1244,6 @@ components:
       type: object
       required:
         - company_type
-        - company_type_info
       properties:
         id:
           type: string
@@ -1281,12 +1280,14 @@ components:
             - sole_trader
           title: company type
           x-kanda-form-widget: RadioSelect
-        company_type_info:
+        limited_company_info:
           type: object
-          oneOf:
-            - $ref: "#/components/schemas/LimitedCompanyInfo"
-            - $ref: "#/components/schemas/SoleTraderInfo"
-          title: company type info
+          title: limited company info
+          $ref: "#/components/schemas/LimitedCompanyInfo"
+        sole_trader_info:
+          type: object
+          title: sole trader info
+          $ref: "#/components/schemas/SoleTraderInfo"
         available_rates:
           type: array
           items:
