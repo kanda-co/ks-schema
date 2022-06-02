@@ -1024,6 +1024,171 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/notification:
+    get:
+      operationId: getNotifications
+      summary: get all notifications
+      tags:
+        - Notification
+      responses:
+        200:
+          description: got all notifications
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Notification"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    post:
+      operationId: postNotification
+      summary: post new notification
+      tags:
+        - Notification
+      requestBody:
+        description: post new notification
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Notification"
+      responses:
+        200:
+          description: posted new notification
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Notification"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/notification/{id}:
+    get:
+      operationId: getNotification
+      summary: get existing notification
+      tags:
+        - Notification
+      parameters:
+        - name: id
+          in: path
+          description: notification id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing notification
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Notification"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: putNotification
+      summary: put existing notification
+      tags:
+        - Notification
+      parameters:
+        - name: id
+          in: path
+          description: notification id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: put existing notification
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Notification"
+      responses:
+        200:
+          description: put existing notification
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Notification"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      operationId: deleteNotification
+      summary: delete existing notification
+      tags:
+        - Notification
+      parameters:
+        - name: id
+          in: path
+          description: notification id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: deleted existing notification
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Notification"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/notification/{id}/viewed:
+    post:
+      operationId: viewedNotification
+      summary: viewed existing notification
+      tags:
+        - Notification
+      parameters:
+        - name: id
+          in: path
+          description: notification id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: put existing notification
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Notification"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/webhook/{provider}:
     post:
       operationId: providerWebhook
@@ -2198,6 +2363,70 @@ components:
         fingerprint:
           type: string
           title: fingerprint reference such as IP
+
+    Notification:
+      type: object
+      title: notification
+      required:
+        - notification_channel
+        - content
+      properties:
+        id:
+          type: string
+          title: notification id
+          readOnly: true
+        cid:
+          type: string
+          title: company id
+          readOnly: true
+        oid:
+          type: string
+          title: owner id
+          readOnly: true
+        notification_channel:
+          type: array
+          title: notification channels
+          items:
+            $ref: "#/components/schemas/NotificationChannel"
+          minLength: 1
+          readOnly: true
+        content:
+          type: string
+          title: notification content
+          minLength: 1
+          readOnly: true
+        action:
+          type: string
+          format: uri
+          title: action link for resource to be fetched
+          readOnly: true
+        redirect:
+          type: string
+          format: uri
+          title: redirect link for frontend to land on
+          readOnly: true
+        views:
+          type: array
+          items:
+            type: string
+            format: email
+          title: emails for users who has viewed this notification
+          readOnly: true
+        metadata:
+          type: object
+          $ref: "#/components/schemas/Metadata"
+          title: metadata
+          readOnly: true
+
+    NotificationChannel:
+      type: string
+      title: notification channel
+      enum:
+        - web
+        - sms
+        - email
+      default: web
+      readOnly: true
 
     Error:
       type: object
