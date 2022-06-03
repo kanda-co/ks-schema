@@ -1584,8 +1584,8 @@ components:
           title: average monthly jobs
           minimum: 1
         average_job_value:
-          type: integer
-          title: average job value
+          $ref: "#/components/schemas/Pence"
+          title: average job value in pence
           minimum: 1
         use_subcontractor:
           type: string
