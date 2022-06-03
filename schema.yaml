@@ -1603,7 +1603,6 @@ components:
       type: object
       required:
         - name
-        - content
       properties:
         id:
           type: string
