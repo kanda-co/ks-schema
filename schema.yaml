@@ -1524,6 +1524,10 @@ components:
           type: object
           title: company logo document
           $ref: "#/components/schemas/Document"
+        bank_account:
+          type: object
+          title: bank account to be shown to customer if paid by cash / bank transfer
+          $ref: "#/components/schemas/BankAccount"
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
