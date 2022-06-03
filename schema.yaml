@@ -2092,6 +2092,7 @@ components:
         - bank_account
         - customer_details
         - employment_details
+        - finance_option
       properties:
         id:
           type: string
@@ -2148,6 +2149,11 @@ components:
           type: object
           $ref: "#/components/schemas/Money"
           title: credit amount in pence
+          readOnly: true
+        finance_option:
+          type: string
+          title: finance option for this credit
+          description: finance option
           readOnly: true
         bank_account:
           type: object
