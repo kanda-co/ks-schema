@@ -1207,15 +1207,6 @@ paths:
               - veriff
               - omni
               - duologi
-      requestBody:
-        description: post new provider webhook
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties:
-                type: string
       responses:
         200:
           description: provider webhook accepted
