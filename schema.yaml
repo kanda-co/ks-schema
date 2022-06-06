@@ -1640,7 +1640,6 @@ components:
         contact_phone:
           type: string
           title: contact phone number
-          pattern: ^(?=0)((?=[0-9]{11}$)0[1,2,3,7,8][0-9]{9})|((?=[0-9+]{13}$)\+44[1,2,3,7,8][0-9]{9})$
         contact_address:
           type: object
           title: contact address
@@ -2322,11 +2321,9 @@ components:
         telephone:
           type: string
           title: telephone
-          pattern: ^(?=0)((?=[0-9]{11}$)0[1,2,3,7,8][0-9]{9})|((?=[0-9+]{13}$)\+44[1,2,3,7,8][0-9]{9})$
         mobile:
           type: string
           title: mobile
-          pattern: ^(?=0)((?=[0-9]{11}$)0[1,2,3,7,8][0-9]{9})|((?=[0-9+]{13}$)\+44[1,2,3,7,8][0-9]{9})$
         date_of_birth:
           type: string
           title: date of birth
