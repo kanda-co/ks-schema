@@ -547,6 +547,34 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/job/{id}/companyInfo:
+    post:
+      operationId: jobCompanyInfo
+      summary: get existing job company info
+      tags:
+        - Job
+      parameters:
+        - name: id
+          in: path
+          description: job id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing job company info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JobCompanyInfo"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/payment:
     get:
       operationId: getPayments
@@ -1519,6 +1547,10 @@ components:
           type: object
           title: bank account to be shown to customer if paid by cash / bank transfer
           $ref: "#/components/schemas/BankAccount"
+        contact_info:
+          type: object
+          title: company contact info shared with customers
+          $ref: "#/components/schemas/ContactInfo"
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
@@ -1593,6 +1625,26 @@ components:
           type: object
           title: insurance document
           $ref: "#/components/schemas/Document"
+
+    ContactInfo:
+      type: object
+      title: contact info
+      properties:
+        contact_name:
+          type: string
+          title: contact name
+        contact_email:
+          type: string
+          title: contact email
+          format: email
+        contact_phone:
+          type: string
+          title: contact phone number
+          pattern: ^(?=0)((?=[0-9]{11}$)0[1,2,3,7,8][0-9]{9})|((?=[0-9+]{13}$)\+44[1,2,3,7,8][0-9]{9})$
+        contact_address:
+          type: object
+          title: contact address
+          $ref: "#/components/schemas/Address"
 
     Document:
       type: object
@@ -1777,6 +1829,34 @@ components:
         address:
           type: object
           $ref: "#/components/schemas/Address"
+
+    JobCompanyInfo:
+      type: object
+      title: job company info
+      required:
+        - company_name
+      properties:
+        company_name:
+          type: string
+          title: company name
+          readOnly: true
+        company_logo:
+          type: object
+          title: company logo
+          $ref: "#/components/schemas/Document"
+        vat_number:
+          type: string
+          title: vat number
+          readOnly: true
+        bank_account:
+          type: object
+          title: company bank account
+          $ref: "#/components/schemas/BankAccount"
+          readOnly: true
+        contact_info:
+          type: object
+          title: job company contact info
+          $ref: "#/components/schemas/ContactInfo"
 
     Job:
       type: object
