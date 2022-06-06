@@ -2375,6 +2375,65 @@ components:
           title: goods delivery address
           $ref: "#/components/schemas/Address"
 
+    EmployedDetails:
+      type: object
+      title: employed details
+      required:
+        - employer_name
+        - main_occupation
+        - months_employed
+      properties:
+        employer_name:
+          type: string
+          title: employer name
+          minLength: 1
+        main_occupation:
+          type: string
+          title: main occupation
+          minLength: 1
+        months_employed:
+          type: integer
+          format: int32
+          title: months employed
+          minimum: 1
+
+    SelfEmployedDetails:
+      type: object
+      title: self employed details
+      required:
+        - business_name
+        - type_of_business
+        - months_self_employed
+      properties:
+        business_name:
+          type: string
+          title: business name
+          minLength: 1
+        type_of_business:
+          type: string
+          title: type of business
+          minLength: 1
+        months_self_employed:
+          type: integer
+          format: int32
+          title: months self employed
+          minimum: 1
+
+    NotEmployedDetails:
+      type: object
+      title: not employed details
+      required:
+        - source_of_income
+      properties:
+        source_of_income:
+          type: string
+          title: source of income
+          enum:
+            - partner
+            - benefits
+            - maintenance
+            - other
+
     EmploymentDetails:
       type: object
       required:
@@ -2386,34 +2445,22 @@ components:
           type: string
           title: employment status
           enum:
-            - self_employed
-            - retired
             - employed
+            - self_employed
             - not_employed
-        business_name:
-          type: string
-          title: business name
-        type_of_business:
-          type: string
-          title: type of business
-        employer_name:
-          type: string
-          title: employer name
-        months_employed:
-          type: integer
-          format: int32
-          title: months employed
-        main_occupation:
-          type: string
-          title: main occupation
-        source_of_income:
-          type: string
-          title: source of income
-          enum:
-            - partner
-            - benefits
-            - maintenance
-            - other
+            - retired
+        employed_details:
+          type: object
+          title: employed details
+          $ref: "#/components/schemas/EmployedDetails"
+        self_employed_details:
+          type: object
+          title: self_employed details
+          $ref: "#/components/schemas/SelfEmployedDetails"
+        not_employed_details:
+          type: object
+          title: not employed details
+          $ref: "#/components/schemas/NotEmployedDetails"
         gross_annual_income:
           type: object
           title: gross annual income
