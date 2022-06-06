@@ -2282,6 +2282,7 @@ components:
         - title
         - first_name
         - last_name
+        - date_of_birth
         - marital_status
         - number_of_dependants
         - residential_status
