@@ -2221,7 +2221,6 @@ components:
     Credit:
       type: object
       required:
-        - amount
         - bank_account
         - customer_details
         - employment_details
