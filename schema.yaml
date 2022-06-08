@@ -915,6 +915,69 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/credit/{id}/check:
+    post:
+      operationId: checkCredit
+      summary: check existing credit and refresh documents
+      tags:
+        - Credit
+      parameters:
+        - name: id
+          in: path
+          description: credit id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: checked existing credit and refreshed documents
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Credit"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/credit/{id}/sign:
+    post:
+      operationId: signCredit
+      summary: sign existing credit documents
+      tags:
+        - Credit
+      parameters:
+        - name: id
+          in: path
+          description: credit id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: signature of existing credit documents
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Signature"
+      responses:
+        200:
+          description: fetch and update existing credit documents
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Credit"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/document:
     get:
       operationId: getDocuments
