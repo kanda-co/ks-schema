@@ -1682,11 +1682,12 @@ components:
         trade_body:
           type: string
           enum:
-            - niceic
-            - elecsa
-            - gas_safe
-            - napit
-            - other
+            - "none"
+            - "niceic"
+            - "elecsa"
+            - "gas_safe"
+            - "napit"
+            - "other"
           title: trade body
           x-kanda-form-widget: Select
         trade_body_number:
