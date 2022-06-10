@@ -2071,6 +2071,10 @@ components:
           type: string
           title: finance option selected by customer
           description: finance option
+        deposit_value:
+          type: object
+          $ref: "#/components/schemas/Money"
+          title: deposit value in pence
 
     JobItem:
       type: object
@@ -2249,6 +2253,8 @@ components:
     Credit:
       type: object
       required:
+        - amount
+        - deposit_value
         - bank_account
         - customer_details
         - employment_details
@@ -2310,6 +2316,10 @@ components:
           $ref: "#/components/schemas/Money"
           title: credit amount in pence
           readOnly: true
+        deposit_value:
+          type: object
+          $ref: "#/components/schemas/Money"
+          title: deposit value in pence
         finance_option:
           type: string
           title: finance option for this credit
