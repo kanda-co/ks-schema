@@ -451,6 +451,35 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/job/{id}/complete:
+    post:
+      operationId: completeJob
+      summary: >
+        complete existing accepted job, only allowed when job status is accepted
+      tags:
+        - Job
+      parameters:
+        - name: id
+          in: path
+          description: job id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: completed existing accepted job
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/job/{id}/archive:
     post:
       operationId: archiveJob
@@ -479,10 +508,48 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/job/{id}/apply:
+    post:
+      operationId: applyJob
+      summary: >
+        customer to apply existing job with selected options,
+        only allowed when job status is sent
+      tags:
+        - Job
+      parameters:
+        - name: id
+          in: path
+          description: job id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: job apply options selected by customer
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CustomerOptions"
+      responses:
+        200:
+          description: got existing job with new payment
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/job/{id}/pay:
     post:
       operationId: payJob
-      summary: pay existing job, only allowed when job status is beyond sent
+      summary: >
+        customer to pay existing job, 
+        only allowed when job status is beyond sent
       tags:
         - Job
       parameters:
@@ -513,10 +580,42 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-  /api/job/{id}/apply:
+  /api/job/{id}/viewSatNote:
     post:
-      operationId: applyJob
-      summary: customer to apply existing job with selected options, only allowed when job status is sent
+      operationId: viewJobSatNote
+      summary: >
+        customer to view completed job with satisfaction note,
+        only allowed when job status is finished and is financed
+      tags:
+        - Job
+      parameters:
+        - name: id
+          in: path
+          description: job id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing job with new payment
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/job/{id}/signSatNote:
+    post:
+      operationId: signJobSateNote
+      summary: >
+        customer to sign completed job with satisfaction note,
+        only allowed when job status is finished and is financed
       tags:
         - Job
       parameters:
@@ -528,11 +627,11 @@ paths:
             type: string
             minLength: 1
       requestBody:
-        description: job apply options selected by customer
+        description: customer to sign completed job with satisfaction note
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CustomerOptions"
+              $ref: "#/components/schemas/SatNote"
       responses:
         200:
           description: got existing job with new payment
@@ -715,7 +814,9 @@ paths:
   /api/payment/{id}/{status}:
     post:
       operationId: markPayment
-      summary: company to mark existing payment as given status, only allowed when payment method is cash
+      summary: >
+        company to mark existing payment as given status,
+        only allowed when payment method is cash
       tags:
         - Payment
       parameters:
@@ -946,7 +1047,9 @@ paths:
   /api/credit/{id}/check:
     post:
       operationId: checkCredit
-      summary: check existing credit and refresh documents
+      summary: >
+        check existing credit and refresh documents,
+        only allowed when credit state is set
       tags:
         - Credit
       parameters:
@@ -974,7 +1077,9 @@ paths:
   /api/credit/{id}/sign:
     post:
       operationId: signCredit
-      summary: sign existing credit documents
+      summary: >
+        sign existing credit documents,
+        only allowed when credit state is accepted
       tags:
         - Credit
       parameters:
@@ -2051,6 +2156,16 @@ components:
           items:
             $ref: "#/components/schemas/Payment"
           readOnly: true
+        sat_note_timeline:
+          type: object
+          title: customer satisfaction note timeline
+          $ref: "#/components/schemas/SatNoteTimeline"
+          readOnly: true
+        sat_note:
+          type: object
+          title: customer satisfaction note
+          $ref: "#/components/schemas/SatNote"
+          readOnly: true
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
@@ -2076,6 +2191,72 @@ components:
           type: object
           $ref: "#/components/schemas/Money"
           title: deposit value in pence
+
+    SatNoteTimeline:
+      type: object
+      title: customer satisfaction note timeline
+      properties:
+        sent_at:
+          type: string
+          title: timestamp sat note is sent
+          format: date-time
+          readOnly: true
+        viewed_at:
+          type: string
+          title: timestamp sat note is viewed
+          format: date-time
+          readOnly: true
+        signed_at:
+          type: string
+          title: timestamp sat note is signed
+          format: date-time
+          readOnly: true
+
+    SatNote:
+      type: object
+      title: customer satisfaction note and signature details
+      required:
+        - q_pressure
+        - q_easiness
+        - q_availability
+        - q_application
+        - q_advice
+        - signature
+        - quote
+        - certificate
+      properties:
+        q_pressure:
+          type: string
+          title: How much pressure from the installer did you feel when applying for finance?
+          minLength: 1
+        q_easiness:
+          type: string
+          title: How easy did you find applying for finance with Kanda?
+          minLength: 1
+        q_availability:
+          type: string
+          title: How did you find out that finance was available on this installation?
+          minLength: 1
+        q_application:
+          type: string
+          title: Who completed your application?
+          minLength: 1
+        q_advice:
+          type: string
+          title: Did the installer give you advice on your finance application?
+          minLength: 1
+        signature:
+          type: object
+          title: sat note customer signature
+          $ref: "#/components/schemas/Signature"
+        quote:
+          type: object
+          title: job quote for sat note
+          $ref: "#/components/schemas/Document"
+        certificate:
+          type: object
+          title: sat note generated document
+          $ref: "#/components/schemas/Document"
 
     JobItem:
       type: object
