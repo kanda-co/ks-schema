@@ -598,7 +598,7 @@ paths:
             minLength: 1
       responses:
         200:
-          description: got existing job with new payment
+          description: got existing job with viewed satisfaction note
           content:
             application/json:
               schema:
@@ -634,7 +634,37 @@ paths:
               $ref: "#/components/schemas/SatNote"
       responses:
         200:
-          description: got existing job with new payment
+          description: got existing job with signed satisfaction note
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/job/{id}/approve:
+    post:
+      operationId: approveJobSatNote
+      summary: >
+        kanda staff to approve signed completed job with satisfaction note,
+        only allowed when sat note is signed and job status is finished and is financed
+      tags:
+        - Job
+      parameters:
+        - name: id
+          in: path
+          description: job id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing job with signed and approved with satisfaction note
           content:
             application/json:
               schema:
@@ -1462,6 +1492,7 @@ components:
         - subject
         - audience
         - issuer
+        - verified
       properties:
         id:
           type: string
@@ -1510,6 +1541,10 @@ components:
         issuer:
           type: string
           title: issuer
+          readOnly: true
+        verified:
+          type: boolean
+          title: email verified
           readOnly: true
 
     InfoMe:
