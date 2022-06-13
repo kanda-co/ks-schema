@@ -2780,7 +2780,6 @@ components:
           type: object
           title: gross annual income
           $ref: "#/components/schemas/Money"
-          minimum: 500000
         household_annual_income:
           type: object
           title: household annual income
