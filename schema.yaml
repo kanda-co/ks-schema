@@ -1545,7 +1545,6 @@ components:
         verified:
           type: boolean
           title: email verified
-          readOnly: true
 
     InfoMe:
       type: object
