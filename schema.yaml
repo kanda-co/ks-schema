@@ -1596,6 +1596,7 @@ components:
       format: int32
       title: amount / number in pence
       minimum: 0
+      maximum: 2147483647
 
     Metadata:
       type: object
@@ -1664,6 +1665,8 @@ components:
           type: integer
           title: months at address
           format: int32
+          minimum: 0
+          maximum: 2147483647
 
     InfoCompany:
       type: object
@@ -1841,6 +1844,7 @@ components:
           type: integer
           title: average monthly jobs
           minimum: 1
+          maximum: 2147483647
         average_job_value:
           $ref: "#/components/schemas/Pence"
           title: average job value in pence
@@ -1901,6 +1905,7 @@ components:
           type: string
           format: base64
           title: document content
+          maxLength: 1048487
           x-kanda-form-widget: File
         mimetype:
           type: string
@@ -2028,6 +2033,7 @@ components:
           type: integer
           title: fee
           minimum: 0
+          maximum: 2147483647
         enabled:
           type: boolean
           title: enabled?
@@ -2266,6 +2272,7 @@ components:
             - "yes"
             - "no"
             - "somewhat"
+          x-kanda-form-widget: Select
         q_easiness:
           type: string
           title: Do you find it easy to apply for finance with Kanda?
@@ -2273,6 +2280,7 @@ components:
             - "yes"
             - "no"
             - "somewhat"
+          x-kanda-form-widget: Select
         q_availability:
           type: string
           title: How did you first become aware that finance was available?
@@ -2280,12 +2288,14 @@ components:
             - "The installer told me when quoting me"
             - "I saw it advertised by the installer"
             - "I found out when the installer sent me a link via Kanda"
+          x-kanda-form-widget: Select
         q_application:
           type: string
           title: Who completed your application for finance?
           enum:
             - "I completed the application myself"
             - "Someone completed the appliation on my behalf"
+          x-kanda-form-widget: Select
         q_advice:
           type: string
           title: What advice did the installer give you on your finance application?
@@ -2294,6 +2304,7 @@ components:
             - "They told me what rates where available"
             - "They helped me work out my potential repayments"
             - "They completed the application for me"
+          x-kanda-form-widget: Select
         signature:
           type: object
           title: sat note customer signature
@@ -2675,6 +2686,8 @@ components:
           type: integer
           title: number of dependants
           format: int32
+          minimum: 0
+          maximum: 2147483647
         residential_status:
           type: string
           title: residential status
@@ -2725,6 +2738,7 @@ components:
           format: int32
           title: months employed
           minimum: 1
+          maximum: 2147483647
 
     SelfEmployedDetails:
       type: object
@@ -2747,6 +2761,7 @@ components:
           format: int32
           title: months self employed
           minimum: 1
+          maximum: 2147483647
 
     NotEmployedDetails:
       type: object
