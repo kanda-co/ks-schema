@@ -2261,24 +2261,39 @@ components:
       properties:
         q_pressure:
           type: string
-          title: How much pressure from the installer did you feel when applying for finance?
-          minLength: 1
+          title: Did the installer pressure you to apply for finance?
+          enum:
+            - "yes"
+            - "no"
+            - "somewhat"
         q_easiness:
           type: string
-          title: How easy did you find applying for finance with Kanda?
-          minLength: 1
+          title: Do you find it easy to apply for finance with Kanda?
+          enum:
+            - "yes"
+            - "no"
+            - "somewhat"
         q_availability:
           type: string
-          title: How did you find out that finance was available on this installation?
-          minLength: 1
+          title: How did you first become aware that finance was available?
+          enum:
+            - "The installer told me when quoting me"
+            - "I saw it advertised by the installer"
+            - "I found out when the installer sent me a link via Kanda"
         q_application:
           type: string
-          title: Who completed your application?
-          minLength: 1
+          title: Who completed your application for finance?
+          enum:
+            - "I completed the application myself"
+            - "Someone completed the appliation on my behalf"
         q_advice:
           type: string
-          title: Did the installer give you advice on your finance application?
-          minLength: 1
+          title: What advice did the installer give you on your finance application?
+          enum:
+            - "They just sent me a link to apply"
+            - "They told me what rates where available"
+            - "They helped me work out my potential repayments"
+            - "They completed the application for me"
         signature:
           type: object
           title: sat note customer signature
