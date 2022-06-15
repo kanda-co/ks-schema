@@ -149,6 +149,26 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/ip:
+    get:
+      operationId: infoIP
+      summary: query request IPv4 address or fallback to server IP
+      tags:
+        - InfoIP
+      responses:
+        200:
+          description: got request IPv4 address
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoIP"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/company:
     get:
       operationId: getCompanies
@@ -1575,6 +1595,15 @@ components:
           type: string
           title: continue url
           format: uri
+
+    InfoIP:
+      type: object
+      required:
+        - ipv4
+      properties:
+        ipv4:
+          type: string
+          title: ipv4 address
 
     Money:
       type: object
