@@ -2298,17 +2298,17 @@ components:
           type: string
           title: Did the installer pressure you to apply for finance?
           enum:
-            - "yes"
             - "no"
             - "somewhat"
+            - "yes"
           x-kanda-form-widget: Select
         q_easiness:
           type: string
-          title: Do you find it easy to apply for finance with Kanda?
+          title: Do you find it hard to apply for finance with Kanda?
           enum:
-            - "yes"
             - "no"
             - "somewhat"
+            - "yes"
           x-kanda-form-widget: Select
         q_availability:
           type: string
