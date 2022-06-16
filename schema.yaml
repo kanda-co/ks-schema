@@ -2425,7 +2425,7 @@ components:
         - not_applied
         - under_review
         - applied_for_finance
-        - finacne_not_approved
+        - finance_not_approved
         - financed
         - sat_note_sent
         - sat_note_viewed
