@@ -1973,6 +1973,7 @@ components:
         vat_number:
           type: string
           title: vat number
+          pattern: "^(GB)?([0-9]{9}([0-9]{3})?|[A-Z]{2}[0-9]{3})$"
           minLength: 1
 
     SoleTraderInfo:
@@ -2291,7 +2292,6 @@ components:
         - q_application
         - q_advice
         - signature
-        - quote
         - certificate
       properties:
         q_pressure:
@@ -2338,13 +2338,9 @@ components:
           type: object
           title: sat note customer signature
           $ref: "#/components/schemas/Signature"
-        quote:
-          type: object
-          title: job quote for sat note
-          $ref: "#/components/schemas/Document"
         certificate:
           type: object
-          title: sat note generated document
+          title: sat note generated document combined with quote
           $ref: "#/components/schemas/Document"
 
     JobItem:
