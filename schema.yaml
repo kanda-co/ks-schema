@@ -1141,12 +1141,12 @@ paths:
             type: string
             minLength: 1
       requestBody:
-        description: signature of existing credit documents
+        description: signature and quote of existing credit documents
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Signature"
+              $ref: "#/components/schemas/SignDocument"
       responses:
         200:
           description: fetch and update existing credit documents
@@ -2340,7 +2340,7 @@ components:
           $ref: "#/components/schemas/Signature"
         certificate:
           type: object
-          title: sat note generated document combined with quote
+          title: sat note generated document with e-signature
           $ref: "#/components/schemas/Document"
 
     JobItem:
@@ -2838,6 +2838,22 @@ components:
           type: object
           title: household annual income
           $ref: "#/components/schemas/Money"
+
+    SignDocument:
+      type: object
+      title: credit signature document with quote
+      required:
+        - signature
+        - quote
+      properties:
+        signature:
+          type: object
+          title: signature
+          $ref: "#/components/schemas/Signature"
+        quote:
+          type: object
+          title: quote document to upload to provider
+          $ref: "#/components/schemas/Document"
 
     Signature:
       type: object
