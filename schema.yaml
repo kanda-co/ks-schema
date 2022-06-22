@@ -149,6 +149,33 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/verify:
+    put:
+      operationId: infoVerify
+      summary: put verify info by email, send verification magic link
+      tags:
+        - InfoAuth
+      requestBody:
+        description: put verify info by email, send verification magic link
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InfoAuth"
+      responses:
+        200:
+          description: put verify info with email
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoAuth"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/info/ip:
     get:
       operationId: infoIP
