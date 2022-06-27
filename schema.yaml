@@ -1518,6 +1518,43 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/runner:
+    get:
+      operationId: runner
+      summary: runner for task event
+      tags:
+        - Task
+      parameters:
+        - name: event
+          in: query
+          description: runner event type
+          required: true
+          schema:
+            type: string
+            enum:
+              - reminder
+        - name: task
+          in: query
+          description: runner task name
+          required: true
+          schema:
+            type: string
+            enum:
+              - dbv3_user_company_setup
+              - dbv3_user_verify_director
+              - dbv3_ho_initial_follow_up
+              - dbv3_ho_application_sign_docs
+              - dbv3_ho_application_sat_note_sent
+      responses:
+        200:
+          description: runner has been completed
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
 security:
   - BearerAuth: []
 
