@@ -333,6 +333,36 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/company/{id}/approve:
+    post:
+      operationId: approveCompany
+      summary: >
+        kanda staff to approve and verify company users and mark its lifecycle verified
+        only allowed when company has already gone through company setup
+      tags:
+        - Company
+      parameters:
+        - name: id
+          in: path
+          description: company id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got approved and verified company
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Company"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/job:
     get:
       operationId: getJobs
