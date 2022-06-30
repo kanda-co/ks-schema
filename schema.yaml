@@ -1421,6 +1421,143 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/subscription:
+    get:
+      operationId: getSubscriptions
+      summary: get all subscriptions
+      tags:
+        - Subscription
+      responses:
+        200:
+          description: got all subscriptions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Subscription"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    post:
+      operationId: postSubscription
+      summary: post new subscription
+      tags:
+        - Subscription
+      requestBody:
+        description: post new subscription
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Subscription"
+      responses:
+        200:
+          description: posted new subscription
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Subscription"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/subscription/{id}:
+    get:
+      operationId: getSubscription
+      summary: get existing subscription
+      tags:
+        - Subscription
+      parameters:
+        - name: id
+          in: path
+          description: subscription id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing subscription
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Subscription"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: putSubscription
+      summary: put existing subscription
+      tags:
+        - Subscription
+      parameters:
+        - name: id
+          in: path
+          description: subscription id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: put existing subscription
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Subscription"
+      responses:
+        200:
+          description: put existing subscription
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Subscription"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      operationId: deleteSubscription
+      summary: delete existing subscription
+      tags:
+        - Subscription
+      parameters:
+        - name: id
+          in: path
+          description: subscription id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: deleted existing subscription
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Subscription"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
 security:
   - BearerAuth: []
 
@@ -2802,6 +2939,133 @@ components:
         fingerprint:
           type: string
           title: fingerprint reference such as IP
+
+    Subscription:
+      type: object
+      properties:
+        id:
+          type: string
+          title: subscription id
+          readOnly: true
+        cid:
+          type: string
+          title: company id
+          readOnly: true
+        oid:
+          type: string
+          title: owner id
+          readOnly: true
+        billing:
+          type: string
+          title: billing reference
+          readOnly: true
+        mandate:
+          type: string
+          title: mandate reference
+          readOnly: true
+        mandate_status:
+          type: string
+          title: mandate status
+          readOnly: true
+        authorisation_url:
+          type: string
+          title: authorisation url to submit a mandate agreement
+          readOnly: true
+        interval:
+          type: string
+          title: subscription interval
+          enum:
+            - monthly
+            - annually
+          default: monthly
+        day_of_month:
+          type: integer
+          title: day of month for collection
+          format: int32
+          minimum: 1
+          maximum: 28
+        amount:
+          type: object
+          title: subscription amount
+          $ref: "#/components/schemas/Money"
+          readOnly: true
+        events:
+          type: array
+          title: subscription events
+          items:
+            $ref: "#/components/schemas/Event"
+          readOnly: true
+        xid:
+          type: string
+          title: external reference id
+          readOnly: true
+        xref:
+          type: string
+          title: external reference
+          readOnly: true
+        metadata:
+          type: object
+          $ref: "#/components/schemas/Metadata"
+          title: metadata
+          readOnly: true
+
+    Event:
+      type: object
+      title: event
+      required:
+        - id
+        - cid
+        - oid
+        - resource
+        - action
+        - source
+        - result
+      properties:
+        id:
+          type: string
+          title: event id
+          readOnly: true
+        cid:
+          type: string
+          title: company id
+          readOnly: true
+        oid:
+          type: string
+          title: owner id
+          readOnly: true
+        resource:
+          type: string
+          title: event resource
+          readOnly: true
+        resource_id:
+          type: string
+          title: event resource id
+          readOnly: true
+        action:
+          type: string
+          title: event action
+          readOnly: true
+        source:
+          type: string
+          title: event source
+          enum:
+            - api
+            - kanda
+            - webhook
+          readOnly: true
+        result:
+          type: string
+          title: event result
+          readOnly: true
+        error:
+          type: object
+          title: event error
+          $ref: "#/components/schemas/Error"
+        metadata:
+          type: object
+          $ref: "#/components/schemas/Metadata"
+          title: metadata
+          readOnly: true
 
     Error:
       type: object
