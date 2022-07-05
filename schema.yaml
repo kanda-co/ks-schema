@@ -176,6 +176,33 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/password:
+    put:
+      operationId: infoPassword
+      summary: put password info by email, send password reset magic link
+      tags:
+        - InfoAuth
+      requestBody:
+        description: put password info by email, send password reset magic link
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InfoAuth"
+      responses:
+        200:
+          description: put auth info with email
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoAuth"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/info/ip:
     get:
       operationId: infoIP
