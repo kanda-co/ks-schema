@@ -780,6 +780,36 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/job/{id}/payout:
+    post:
+      operationId: payoutJob
+      summary: >
+        kanda staff to approve a payout for job,
+        only allowed when provider approved sat note and job status is finished and is financed
+      tags:
+        - Job
+      parameters:
+        - name: id
+          in: path
+          description: job id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing job with finance status set to paid
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/job/{id}/companyInfo:
     post:
       operationId: jobCompanyInfo
