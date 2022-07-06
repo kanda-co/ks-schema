@@ -2384,6 +2384,7 @@ components:
         - sat_note_sent
         - sat_note_viewed
         - sat_note_signed
+        - payout_pending
         - paid
       default: not_applied
       readOnly: true
