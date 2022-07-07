@@ -176,6 +176,33 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/password:
+    put:
+      operationId: infoPassword
+      summary: put password info by email, send password reset magic link
+      tags:
+        - InfoAuth
+      requestBody:
+        description: put password info by email, send password reset magic link
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InfoAuth"
+      responses:
+        200:
+          description: put auth info with email
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoAuth"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/info/ip:
     get:
       operationId: infoIP
@@ -742,6 +769,36 @@ paths:
       responses:
         200:
           description: got existing job with signed and approved with satisfaction note
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/job/{id}/payout:
+    post:
+      operationId: payoutJob
+      summary: >
+        kanda staff to approve a payout for job,
+        only allowed when provider approved sat note and job status is finished and is financed
+      tags:
+        - Job
+      parameters:
+        - name: id
+          in: path
+          description: job id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing job with finance status set to paid
           content:
             application/json:
               schema:
@@ -1405,6 +1462,7 @@ paths:
           schema:
             type: string
             enum:
+              - dbv3_ho_application_customer_action_reminder
               - dbv3_ho_application_sat_note_sent_reminder
               - dbv3_ho_application_sign_docs_reminder
               - dbv3_ho_initial_follow_up
@@ -2508,6 +2566,7 @@ components:
         - sat_note_sent
         - sat_note_viewed
         - sat_note_signed
+        - payout_pending
         - paid
       default: not_applied
       readOnly: true
