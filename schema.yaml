@@ -1426,10 +1426,10 @@ paths:
           schema:
             type: string
             enum:
+              - gocardless
+              - omni
               - stripe
               - veriff
-              - omni
-              - duologi
       responses:
         200:
           description: provider webhook accepted
@@ -3032,6 +3032,10 @@ components:
         billing:
           type: string
           title: billing reference
+          readOnly: true
+        billing_status:
+          type: string
+          title: billing status
           readOnly: true
         mandate:
           type: string
