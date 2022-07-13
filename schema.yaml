@@ -1636,14 +1636,6 @@ components:
           format: date-time
           title: updated at
           readOnly: true
-        cid:
-          type: string
-          title: creator company id
-          readOnly: true
-        oid:
-          type: string
-          title: creator owner id
-          readOnly: true
 
     Address:
       type: object
@@ -1735,6 +1727,10 @@ components:
         oid:
           type: string
           title: owner id
+          readOnly: true
+        aid:
+          type: string
+          title: author id
           readOnly: true
         emails:
           type: array
@@ -1921,6 +1917,10 @@ components:
         oid:
           type: string
           title: owner id
+          readOnly: true
+        aid:
+          type: string
+          title: author id
           readOnly: true
         name:
           type: string
@@ -2139,6 +2139,10 @@ components:
         oid:
           type: string
           title: owner id
+          readOnly: true
+        aid:
+          type: string
+          title: author id
           readOnly: true
         title:
           type: string
@@ -2453,6 +2457,10 @@ components:
           type: string
           title: owner id
           readOnly: true
+        aid:
+          type: string
+          title: author id
+          readOnly: true
         kid:
           type: string
           title: internal kind id
@@ -2533,6 +2541,10 @@ components:
         oid:
           type: string
           title: owner id
+          readOnly: true
+        aid:
+          type: string
+          title: author id
           readOnly: true
         kid:
           type: string
