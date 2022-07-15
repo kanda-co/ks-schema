@@ -1865,6 +1865,10 @@ components:
           type: string
           title: owner id
           readOnly: true
+        aid:
+          type: string
+          title: author id
+          readOnly: true
         emails:
           type: array
           items:
@@ -2065,6 +2069,10 @@ components:
         oid:
           type: string
           title: owner id
+          readOnly: true
+        aid:
+          type: string
+          title: author id
           readOnly: true
         name:
           type: string
@@ -2283,6 +2291,10 @@ components:
         oid:
           type: string
           title: owner id
+          readOnly: true
+        aid:
+          type: string
+          title: author id
           readOnly: true
         title:
           type: string
@@ -2597,6 +2609,10 @@ components:
           type: string
           title: owner id
           readOnly: true
+        aid:
+          type: string
+          title: author id
+          readOnly: true
         kid:
           type: string
           title: internal kind id
@@ -2677,6 +2693,10 @@ components:
         oid:
           type: string
           title: owner id
+          readOnly: true
+        aid:
+          type: string
+          title: author id
           readOnly: true
         kid:
           type: string
@@ -3029,6 +3049,10 @@ components:
           type: string
           title: owner id
           readOnly: true
+        aid:
+          type: string
+          title: author id
+          readOnly: true
         billing:
           type: string
           title: billing reference
@@ -3110,6 +3134,10 @@ components:
         oid:
           type: string
           title: owner id
+          readOnly: true
+        aid:
+          type: string
+          title: author id
           readOnly: true
         resource:
           type: string
