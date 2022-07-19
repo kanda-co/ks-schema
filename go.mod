@@ -1,6 +1,6 @@
 module github.com/kanda-co/ks-schema
 
-go 1.18
+go 1.16
 
 require (
 	github.com/deepmap/oapi-codegen v1.11.0
