@@ -2001,7 +2001,6 @@ components:
         - average_monthly_jobs
         - average_job_value
         - use_subcontractor
-        - insurance_document
       properties:
         trade_type:
           type: string
