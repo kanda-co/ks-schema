@@ -406,6 +406,34 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/company/{id}/director:
+    post:
+      operationId: directorCompany
+      summary: send verification email to all non-verified directors for the company
+      tags:
+        - Company
+      parameters:
+        - name: id
+          in: path
+          description: company id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got approved and verified company
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Company"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/company/{id}/approve:
     post:
       operationId: approveCompany
