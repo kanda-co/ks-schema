@@ -278,6 +278,7 @@ paths:
       parameters:
         - in: query
           name: email
+          required: true
           schema:
             type: string
             format: email
