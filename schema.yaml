@@ -1651,6 +1651,34 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/subscription/{id}/pending:
+    post:
+      operationId: pendingSubscription
+      summary: pending existing subscription
+      tags:
+        - Subscription
+      parameters:
+        - name: id
+          in: path
+          description: subscription id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing subscription
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Subscription"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/webhook/{provider}:
     post:
       operationId: providerWebhook

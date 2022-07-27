@@ -1229,6 +1229,9 @@ type ServerInterface interface {
 	// put existing subscription
 	// (PUT /api/subscription/{id})
 	PutSubscription(ctx echo.Context, id string) error
+	// pending existing subscription
+	// (POST /api/subscription/{id}/pending)
+	PendingSubscription(ctx echo.Context, id string) error
 	// provider webhook
 	// (POST /api/webhook/{provider})
 	ProviderWebhook(ctx echo.Context, provider ProviderWebhookParamsProvider) error
@@ -2198,6 +2201,24 @@ func (w *ServerInterfaceWrapper) PutSubscription(ctx echo.Context) error {
 	return err
 }
 
+// PendingSubscription converts echo context to params.
+func (w *ServerInterfaceWrapper) PendingSubscription(ctx echo.Context) error {
+	var err error
+	// ------------- Path parameter "id" -------------
+	var id string
+
+	err = runtime.BindStyledParameterWithLocation("simple", false, "id", runtime.ParamLocationPath, ctx.Param("id"), &id)
+	if err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter id: %s", err))
+	}
+
+	ctx.Set(BearerAuthScopes, []string{""})
+
+	// Invoke the callback with all the unmarshalled arguments
+	err = w.Handler.PendingSubscription(ctx, id)
+	return err
+}
+
 // ProviderWebhook converts echo context to params.
 func (w *ServerInterfaceWrapper) ProviderWebhook(ctx echo.Context) error {
 	var err error
@@ -2303,6 +2324,7 @@ func RegisterHandlersWithBaseURL(router EchoRouter, si ServerInterface, baseURL 
 	router.DELETE(baseURL+"/api/subscription/:id", wrapper.DeleteSubscription)
 	router.GET(baseURL+"/api/subscription/:id", wrapper.GetSubscription)
 	router.PUT(baseURL+"/api/subscription/:id", wrapper.PutSubscription)
+	router.POST(baseURL+"/api/subscription/:id/pending", wrapper.PendingSubscription)
 	router.POST(baseURL+"/api/webhook/:provider", wrapper.ProviderWebhook)
 
 }
@@ -2432,10 +2454,11 @@ var swaggerSpec = []string{
 	"zzwxyFxqLjOZt6xFcB0Fl1hljCuSwZf9p4DpjmUFz2UMkDKqKC6zLde8zpravVN1+l0jicjc9RrwWZdB",
 	"1wBijmxl7XdPx8ieWNBRVuyxRBtCvGT5khabRRL0pJYZJ5ZulfykBaVbIrL3zeyUO+p/W/t+4v7ga953",
 	"CP5lgOkCMwCyR0rHmWDC47mAAPQDbcwF5B/JCsghLvfjzM3B0OYHZE+WFpck6BExIRKxRTszZ9CTmFGL",
-	"N/zs+KcUWE6JxSCFsFTh6OcR5snIepYKf9giEPjRS2V/kGWYy/tUvmGBvP8IJqtJU3RBZqv5BIRzjJQT",
-	"xuuGbPacX5+/dYV0I0mJSwvyd9NmMjHhSvP8QCmUWwcyK1ba8RyLoiRSu2m8YnS1BiGGGBDCi+3JwUSL",
-	"q6VHW0S9KDb3kPS461hyBb1KkjeCqiMw5RuCBRFw4cXFyytNDnP/k2FZI8rVxWqvVC0vzs/3zeYzKMb8",
-	"LOefNdcrHQAPIM5e4xGgi/Pzkue43HOpLr5+9PWj1e3V7f8EAAD//yCaZyJB4wAA",
+	"N/zs+KcUWE6JxSCFsFTh6OcR5snIepYKf9giEPjRS2V/kGWYy/tUvmGBvP8IJqtJU3RBZqv5BIRzjJR3",
+	"NV7nNWGFFox0eaUB+EWBfVIKzLL1VDm5IZs959fnb13B5Ujy6tKC/N20mUxguRJOP6AORcOBzIqpdzzH",
+	"oiiJ1O48rxhdrUFOIFcAYej25KCzxdXSoy22XxSre0h63HUsuYJeJckbQdURmPINwYIIuBjl4uWVJoe5",
+	"J8ywrBHl6mK1V6qWF+fn+2bzGRTtfpbzz5rr1e06AnH2Go8AXZyflzzH5Z5LdfH1o68frW6vbv8nAAD/",
+	"/xPPzCdp5QAA",
 }
 
 // GetSwagger returns the content of the embedded swagger specification file
