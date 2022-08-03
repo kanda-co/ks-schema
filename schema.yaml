@@ -1749,6 +1749,7 @@ paths:
             type: string
             enum:
               - reminder
+              - housekeeping
         - name: task
           in: query
           description: runner task name
@@ -1763,6 +1764,7 @@ paths:
               - dbv3_tp_initial_follow_up
               - dbv3_user_company_setup_reminder
               - dbv3_user_verify_director_reminder
+              - housekeeping_check_referral_expiry
       responses:
         200:
           description: runner has been completed
