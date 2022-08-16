@@ -1934,7 +1934,7 @@ components:
           type: string
           title: email for ghosted user
           format: email
-        customer_role:
+        custom_role:
           type: string
           title: custom role set for ghosted user
         custom_token:
