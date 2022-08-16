@@ -1940,6 +1940,9 @@ components:
         custom_token:
           type: string
           title: custom token
+        bearer_token:
+          type: string
+          title: bearer token
 
     InfoAuth:
       type: object
