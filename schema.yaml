@@ -102,6 +102,33 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/ghost:
+    put:
+      operationId: infoGhost
+      summary: info ghost mode to return custom token, only available to Kanda staff
+      tags:
+        - InfoGhost
+      requestBody:
+        description: info ghost mode to return custom token
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InfoGhost"
+      responses:
+        200:
+          description: put me info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoGhost"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/info/company:
     get:
       operationId: infoCompany
@@ -1897,6 +1924,22 @@ components:
           type: string
           title: photo URL
           format: uri
+
+    InfoGhost:
+      type: object
+      required:
+        - email
+      properties:
+        email:
+          type: string
+          title: email for ghosted user
+          format: email
+        customer_role:
+          type: string
+          title: custom role set for ghosted user
+        custom_token:
+          type: string
+          title: custom token
 
     InfoAuth:
       type: object
