@@ -739,6 +739,35 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/job/{id}/check:
+    post:
+      operationId: checkJob
+      summary: >
+        check existing job credit state, only allowed when job is financed
+      tags:
+        - Job
+      parameters:
+        - name: id
+          in: path
+          description: job id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: checked existing job credit state
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JobCreditState"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/job/{id}/complete:
     post:
       operationId: completeJob
@@ -2916,6 +2945,38 @@ components:
           type: object
           title: payment option amount
           $ref: "#/components/schemas/Money"
+
+    JobCreditState:
+      type: object
+      required:
+        - id
+        - financed
+      properties:
+        id:
+          type: string
+          title: job id
+          readOnly: true
+        has_finance_application:
+          type: boolean
+          title: job has finance application
+          readOnly: true
+        current_status:
+          type: string
+          title: job credit state current status
+          enum:
+            - not_submitted
+            - accepted_sign_document
+            - accepted_deposit_required
+            - accepted
+            - declined
+            - referred
+            - action_lender
+            - action_customer
+            - pending
+            - finished
+            - paid_out
+            - cancelled
+          readOnly: true
 
     Credit:
       type: object
