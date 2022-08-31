@@ -2466,6 +2466,10 @@ components:
           type: string
           title: mobile
           minLength: 1
+        date_of_birth:
+          type: string
+          title: date of birth
+          format: date
 
     AvailableRate:
       type: object
