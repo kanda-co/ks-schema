@@ -2433,7 +2433,6 @@ components:
         date_of_birth:
           type: string
           title: date of birth
-          format: date
 
     UserType:
       type: object
