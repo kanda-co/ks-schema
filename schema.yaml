@@ -726,12 +726,6 @@ paths:
             type: string
             minLength: 1
       responses:
-        200:
-          description: resent existing job
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Job"
         default:
           description: unexpected error
           content:
