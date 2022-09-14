@@ -488,6 +488,48 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/company/{id}/identity:
+    post:
+      operationId: identityCompany
+      summary: owner / director to submit ID verification
+      tags:
+        - Company
+      parameters:
+        - name: id
+          in: path
+          description: company id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - name: email
+          in: query
+          description: owner / director email
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: submit owner / director ID verification
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Identity"
+      responses:
+        200:
+          description: submitted owner / director ID verification
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Identity"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/company/{id}/director:
     post:
       operationId: directorCompany
@@ -535,6 +577,50 @@ paths:
       responses:
         200:
           description: got approved and verified company
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Company"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/company/{id}/decline:
+    post:
+      operationId: declineCompany
+      summary: >
+        kanda staff to reject or decline company and mark its lifecycle declined,
+        apart from improper insurance document, all declines will disable company
+        and suspend and disable all users associated with the company.
+        for improper insurance document, document will be removed and lifecycle 
+        re-calculated so tradesperson can upload a correct one again.
+      tags:
+        - Company
+      parameters:
+        - name: id
+          in: path
+          description: company id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - name: reason
+          in: query
+          description: reject or decline reason
+          required: true
+          schema:
+            type: string
+            enum:
+              - "failed_checks"
+              - "fraudulent"
+              - "improper_insurance"
+              - "unsupported_trade"
+      responses:
+        200:
+          description: got rejected or declined company
           content:
             application/json:
               schema:
@@ -2188,8 +2274,10 @@ components:
             - subscribed
             - director_info_provided
             - onboarded
+            - insurance_uploaded
             - completed_setup
             - verified
+            - declined
           default: registered
           readOnly: true
         billing:
@@ -2298,6 +2386,38 @@ components:
           type: object
           title: insurance document
           $ref: "#/components/schemas/Document"
+        contract_agreement:
+          type: object
+          title: contract agreement
+          $ref: "#/components/schemas/ContractAgreement"
+
+    ContractAgreement:
+      type: object
+      title: contract agreement
+      properties:
+        agreed_terms_and_conditions:
+          type: string
+          title: agreed terms and conditions
+          enum:
+            - "yes"
+            - "no"
+          default: "no"
+        agreed_to_become_iar_of_kanda:
+          type: string
+          title: agreed to become IAR of Kanda
+          enum:
+            - "yes"
+            - "no"
+          default: "no"
+        print_name:
+          type: string
+          title: print name
+          minLength: 1
+        signed_at:
+          type: string
+          title: signed at
+          format: date-time
+          readOnly: true
 
     ContactInfo:
       type: object
@@ -2317,6 +2437,9 @@ components:
           type: object
           title: contact address
           $ref: "#/components/schemas/Address"
+        trading_name:
+          type: string
+          title: trading name
 
     Document:
       type: object
@@ -2407,6 +2530,41 @@ components:
           type: object
           $ref: "#/components/schemas/Address"
           title: trading address
+
+    Identity:
+      type: object
+      required:
+        - first_name
+        - last_name
+        - email
+        - mobile
+        - date_of_birth
+        - home_address
+      properties:
+        first_name:
+          type: string
+          title: first name
+          minLength: 1
+        last_name:
+          type: string
+          title: last name
+          minLength: 1
+        email:
+          type: string
+          format: email
+          title: email
+        mobile:
+          type: string
+          title: mobile
+          minLength: 1
+        date_of_birth:
+          type: string
+          title: date of birth
+          format: date-time
+        home_address:
+          type: object
+          $ref: "#/components/schemas/Address"
+          title: home address
 
     DirectorInfo:
       type: object
@@ -3393,12 +3551,6 @@ components:
           title: subscription amount
           $ref: "#/components/schemas/Money"
           readOnly: true
-        events:
-          type: array
-          title: subscription events
-          items:
-            $ref: "#/components/schemas/Event"
-          readOnly: true
         xid:
           type: string
           title: external reference id
@@ -3418,6 +3570,7 @@ components:
       title: event
       required:
         - id
+        - rid
         - cid
         - oid
         - resource
@@ -3428,6 +3581,10 @@ components:
         id:
           type: string
           title: event id
+          readOnly: true
+        rid:
+          type: string
+          title: request id
           readOnly: true
         cid:
           type: string
@@ -3441,18 +3598,6 @@ components:
           type: string
           title: author id
           readOnly: true
-        resource:
-          type: string
-          title: event resource
-          readOnly: true
-        resource_id:
-          type: string
-          title: event resource id
-          readOnly: true
-        action:
-          type: string
-          title: event action
-          readOnly: true
         source:
           type: string
           title: event source
@@ -3461,9 +3606,18 @@ components:
             - kanda
             - webhook
           readOnly: true
-        result:
+        action:
           type: string
-          title: event result
+          title: event action
+          readOnly: true
+        success:
+          type: boolean
+          title: success
+          readOnly: true
+        entity:
+          type: object
+          $ref: "#/components/schemas/Entity"
+          title: entity
           readOnly: true
         error:
           type: object
@@ -3473,6 +3627,30 @@ components:
           type: object
           $ref: "#/components/schemas/Metadata"
           title: metadata
+          readOnly: true
+
+    Entity:
+      type: object
+      title: entity
+      description: entity record
+      properties:
+        company:
+          $ref: "#/components/schemas/Company"
+          readOnly: true
+        credit:
+          $ref: "#/components/schemas/Credit"
+          readOnly: true
+        document:
+          $ref: "#/components/schemas/Document"
+          readOnly: true
+        job:
+          $ref: "#/components/schemas/Job"
+          readOnly: true
+        payment:
+          $ref: "#/components/schemas/Payment"
+          readOnly: true
+        subscription:
+          $ref: "#/components/schemas/Subscription"
           readOnly: true
 
     InfoValidationEmail:
