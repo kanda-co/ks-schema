@@ -2203,12 +2203,15 @@ components:
 
     InfoCompany:
       type: object
-      required:
-        - limited_company
       properties:
         id:
           type: string
           title: company info unique id
+          readOnly: true
+        sole_trader:
+          type: object
+          title: sole trader info
+          $ref: "#/components/schemas/SoleTraderInfo"
           readOnly: true
         limited_company:
           type: object
