@@ -489,8 +489,41 @@ paths:
                 $ref: "#/components/schemas/Error"
 
   /api/company/{id}/identity:
+    get:
+      operationId: getCompanyIdentity
+      summary: get owner / director info from company
+      tags:
+        - Company
+      parameters:
+        - name: id
+          in: path
+          description: company id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - name: email
+          in: query
+          description: filter owner / director by email
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got owner / director info from company
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoCompany"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
     post:
-      operationId: identityCompany
+      operationId: postCompanyIdentity
       summary: owner / director to submit ID verification
       tags:
         - Company
@@ -522,7 +555,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Identity"
+                $ref: "#/components/schemas/InfoCompany"
         default:
           description: unexpected error
           content:
