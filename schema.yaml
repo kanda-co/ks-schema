@@ -2611,6 +2611,8 @@ components:
           type: string
           enum:
             - not_verified
+            - verification_submitted
+            - verification_declined
             - verified
           title: verification status
           readOnly: true
