@@ -2357,6 +2357,9 @@ components:
       type: object
       required:
         - trade_type
+        - trade_type_name
+        - trade_body
+        - trade_body_name
         - warranty_length
         - average_monthly_jobs
         - average_job_value
@@ -2365,35 +2368,67 @@ components:
         trade_type:
           type: string
           enum:
-            - gas_engineer
-            - electrician
-            - ev_charger_installer
-            - tiler
-            - kitchen_fitter
-            - floor_layer
-            - cctv_and_security_installations
-            - windows_and_doors
-            - landscaping
             - air_conditioning
             - bathrooms
+            - battery_storage
+            - blinds_and_shutters
+            - carpentry
+            - cctv_and_security_installations
+            - conservatories
+            - decking
             - driveways_and_patios
-            - garage_doors
+            - electrician
+            - ev_charger_installer
+            - fencing
             - fireplaces
+            - fitted_bedroom_furniture
+            - floor_layer
+            - garage_doors
+            - garden_rooms
+            - gas_engineer
+            - gates
+            - heat_pumps
+            - heating_systems
+            - kitchen_fitter
+            - landscaping
+            - plumbing
+            - resin_driveways
+            - roofing__excluding_flat_roofs
+            - security_systems
+            - tiler
+            - verandas
+            - windows_and_doors
             - multi_trade
             - other_trade
           title: trade type
           x-kanda-form-widget: Select
+        trade_type_name:
+          type: string
+          title: trade type name
+          minLength: 1
         trade_body:
           type: string
           enum:
             - "none"
-            - "niceic"
+            - "acrib"
+            - "aphc"
+            - "assure"
+            - "certass"
             - "elecsa"
+            - "fensa"
+            - "feta"
             - "gas_safe"
+            - "hetas"
             - "napit"
+            - "nfrc"
+            - "nic_eic"
             - "other"
           title: trade body
           x-kanda-form-widget: Select
+        trade_body_name:
+          type: string
+          title: trade body name
+          minLength: 1
         trade_body_number:
           type: string
           title: trade body number
@@ -2431,6 +2466,10 @@ components:
       type: object
       title: contract agreement
       properties:
+        contract:
+          type: object
+          title: contract
+          $ref: "#/components/schemas/Document"
         agreed_terms_and_conditions:
           type: string
           title: agreed terms and conditions
