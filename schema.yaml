@@ -2421,7 +2421,7 @@ components:
             - "hetas"
             - "napit"
             - "nfrc"
-            - "nic_eic"
+            - "niceic"
             - "other"
           title: trade body
           x-kanda-form-widget: Select
