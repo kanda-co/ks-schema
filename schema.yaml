@@ -647,10 +647,15 @@ paths:
           schema:
             type: string
             enum:
-              - "failed_checks"
-              - "fraudulent"
-              - "improper_insurance"
-              - "unsupported_trade"
+              - "rejected_outdated_insurance_document"
+              - "rejected_invalid_insurnace_document"
+              - "rejected_not_on_trade_body_website"
+              - "rejected_contact_us_on_application_error"
+              - "declined_ccj_against_business_or_director"
+              - "declined_ccj_against_previous_association"
+              - "declined_listed_trade_type_not_covered"
+              - "declined_several_negatives_against_company"
+              - "declined_unable_to_complete_id_checks"
       responses:
         200:
           description: got rejected or declined company
