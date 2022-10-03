@@ -2272,6 +2272,10 @@ components:
           type: object
           $ref: "#/components/schemas/CompanyInfo"
           title: company info
+        solar_company_info:
+          type: object
+          $ref: "#/components/schemas/SolarCompanyInfo"
+          title: solar company info
         company_type:
           type: string
           enum:
@@ -2357,6 +2361,43 @@ components:
           $ref: "#/components/schemas/Metadata"
           title: metadata
           readOnly: true
+
+    SolarCompanyInfo:
+      type: object
+      required:
+        - epvs_registration_number
+        - solar_trade_association
+        - solar_trade_association_number
+        - electrical_trade_association
+      properties:
+        epvs_registration_number:
+          type: string
+          title: EPVS registration number
+          minLength: 1
+        solar_trade_association:
+          type: string
+          enum:
+            - "msc"
+            - "heis"
+            - "rec"
+          title: solar trade association
+          x-kanda-form-widget: Select
+        solar_trade_association_number:
+          type: string
+          title: solar trade association number
+          minLength: 1
+        electrical_trade_association:
+          type: string
+          enum:
+            - "niceic"
+            - "napit"
+            - "none"
+          title: electrical trade association
+          x-kanda-form-widget: Select
+        electrical_trade_association_number:
+          type: string
+          title: electrical trade association number
+          minLength: 1
 
     CompanyInfo:
       type: object
@@ -2895,6 +2936,17 @@ components:
           title: customer satisfaction note
           $ref: "#/components/schemas/SatNote"
           readOnly: true
+        job_type:
+          type: string
+          title: job type
+          enum:
+            - standard
+            - solar
+        job_documents:
+          type: array
+          title: job documents
+          items:
+            $ref: "#/components/schemas/Document"
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
@@ -2993,6 +3045,12 @@ components:
             - "They helped me work out my potential repayments"
             - "They completed the application for me"
           x-kanda-form-widget: Select
+        q_saving:
+          type: string
+          title: Were you told about any potential feed in tariffs, savings, returns or Renewable Heat incentive and do you understand that the actual amounts  you  receive, and your estimated returns/savings were based on varying factors including you own energy consumption and any returns/savings/payback periods are not linked to your repayments on this agreement.
+          enum:
+            - "Yes I understand"
+            - "No I don't understand"
         signature:
           type: object
           title: sat note customer signature
