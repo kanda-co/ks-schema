@@ -2379,7 +2379,7 @@ components:
           enum:
             - "msc"
             - "heis"
-            - "rec"
+            - "recc"
           title: solar trade association
           x-kanda-form-widget: Select
         solar_trade_association_number:
@@ -3312,6 +3312,7 @@ components:
           title: provider name
           enum:
             - omni
+            - propensio
           default: omni
           readOnly: true
         xid:
@@ -3362,6 +3363,15 @@ components:
           type: object
           title: employment details
           $ref: "#/components/schemas/EmploymentDetails"
+        finance_details:
+          type: object
+          title: finance details
+          $ref: "#/components/schemas/FinanceDetails"
+        extra_applicants:
+          type: array
+          title: extra applicants
+          items:
+            $ref: "#/components/schemas/ApplicantDetails"
         credit_documents:
           type: array
           title: credit documents
@@ -3397,6 +3407,12 @@ components:
           type: string
           title: sort code
           pattern: "^[0-9]{2}[-][0-9]{2}[-][0-9]{2}$"
+        months_held:
+          type: integer
+          title: months held for bank account
+          format: int32
+          minimum: 0
+          maximum: 2147483647
 
     CustomerDetails:
       type: object
@@ -3481,6 +3497,9 @@ components:
             - council tenant
             - living with parents
             - owner
+            - owner without mortgage
+            - lodger
+            - armed forces
         monthly_rent_amount:
           type: object
           title: monthly rent amount
@@ -3561,6 +3580,10 @@ components:
             - partner
             - benefits
             - maintenance
+            - disabled
+            - full-time carer
+            - homemaker
+            - permanent dla
             - other
 
     EmploymentDetails:
@@ -3632,6 +3655,66 @@ components:
         fingerprint:
           type: string
           title: fingerprint reference such as IP
+
+    ApplicantDetails:
+      type: object
+      title: applicant details
+      required:
+        - bank_account
+        - customer_details
+        - employment_details
+        - finance_details
+      properties:
+        bank_account:
+          type: object
+          title: bank account
+          $ref: "#/components/schemas/BankAccount"
+        customer_details:
+          type: object
+          title: customer details
+          $ref: "#/components/schemas/CustomerDetails"
+        employment_details:
+          type: object
+          title: employment details
+          $ref: "#/components/schemas/EmploymentDetails"
+        finance_details:
+          type: object
+          title: finance details
+          $ref: "#/components/schemas/FinanceDetails"
+
+    FinanceDetails:
+      type: object
+      title: finance details
+      properties:
+        bankrupcy_or_iva_in_last_5_years:
+          type: string
+          title: any bankrupcy or IVA in the last 5 years?
+          enum:
+            - "yes"
+            - "no"
+        expenditures:
+          type: array
+          title: expenditures
+          items:
+            $ref: "#/components/schemas/Expenditure"
+
+    Expenditure:
+      type: object
+      title: expenditure
+      properties:
+        expenditure_type:
+          type: string
+          enum:
+            - "credit card"
+            - "clothes"
+            - "council tax and bills"
+            - "child support agency"
+            - "healthcare"
+            - "holidays"
+        monthly_amount:
+          type: object
+          title: monthly amount
+          $ref: "#/components/schemas/Money"
 
     Subscription:
       type: object
