@@ -563,6 +563,10 @@ export function %s(props: FieldProps["%s"]) {
 
 func selectField(
 	type_, prefix, name string, props Props, validation Validation, options []interface{}) string {
+	pathName := name
+    if prefix != "" {
+        pathName = toPath(prefix + " " + name)
+    }
 	b, _ := json.Marshal(validation)
 	optsM := make([]Option, 0)
 	for _, opt := range options {
@@ -583,6 +587,7 @@ export function %s(props: FieldProps["%s"]) {
 				%s
 				options={%v}
 				{...props}
+				name="%s"
 			/>
 		</Field.Validator>
 	);
@@ -595,6 +600,7 @@ export function %s(props: FieldProps["%s"]) {
 		type_,
 		propsToAttributes(props),
 		string(opts),
+		pathName,
 	)
 }
 
