@@ -103,7 +103,7 @@ export type FieldRegisterMethod = (
   options?: RegisterOptions
 ) => UseFormRegisterReturn;
 
-export type ValidationValue = boolean | string | number;
+export type ValidationValue = boolean | string | number | RegExp;
 
 export type ValidationError = string | StringIndexedObject<string>;
 

@@ -43,16 +43,16 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_SECRET }}
 
-      # - name: "codegen for TS components"
-      #   run: make qa clean ts-widget
+      - name: "codegen for TS components"
+        run: make qa clean ts-widget
 
-      # - name: "install yarn deps + build TS npm package"
-      #   run: cd ks-component-ts && yarn && yarn build
+      - name: "install yarn deps + build TS npm package"
+        run: cd ks-component-ts && yarn && yarn build
 
-      # - name: "publish TS npm package"
-      #   run: rm -rf .git/ && cd ts-pkg && rm -rf .git/ && npm version $(npm view @kanda-libs/ks-component-ts version | awk 'BEGIN{FS=OFS="."} {$3+=1} 1') --force && npm publish --force --allow-same-version
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_SECRET }}
+      - name: "publish TS npm package"
+        run: rm -rf .git/ && cd ks-component-ts && rm -rf .git/ && npm version $(npm view @kanda-libs/ks-component-ts version | awk 'BEGIN{FS=OFS="."} {$3+=1} 1') --force && npm publish --force --allow-same-version
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_SECRET }}
 
       - uses: act10ns/slack@v1
         with:

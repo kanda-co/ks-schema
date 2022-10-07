@@ -127,8 +127,9 @@ func getKandaFormWidget(schema *openapi3.Schema) string {
 	if ext, ok := schema.Extensions["x-kanda-form-widget"]; ok {
 		json.Unmarshal(ext.(json.RawMessage), &widget)
 	}
+	// FIXME: once we have the components, remove these lines
 	switch widget {
-	case "Postcode", "File":
+	case "Postcode", "File", "BooleanInput", "Company":
 		widget = "Input"
 	}
 	return widget
@@ -654,7 +655,7 @@ export const %sArraySelectValidation = %v;
 export function %sArraySelect(props: any) {
 	return (
 		<Field.Array.Input name="%s">
-			<Field.Validator validation={%sArrayInputValidation}>
+			<Field.Validator validation={%sArraySelectValidation}>
 				<Field.%s
 					%s
 					options={%v}

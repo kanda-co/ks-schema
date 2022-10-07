@@ -1,5 +1,5 @@
 {
-  "name": "@kanda-libs/ks-form-library-new",
+  "name": "@kanda-libs/ks-component-ts",
   "version": "0.0.7",
   "description": "Kanda form components library",
   "main": "dist/index.cjs.js",

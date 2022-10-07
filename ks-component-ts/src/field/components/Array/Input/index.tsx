@@ -4,14 +4,19 @@ import { ArrayWrapperContext } from "~/field/components/Array/Wrapper";
 import { type StringIndexedObject } from "~/types";
 
 export interface ArrayInputProps extends ValidationProps {
-  index: number;
+  index?: number;
   name: string;
   children: JSX.Element;
 }
 
 const ArrayInput: FunctionComponent<ArrayInputProps> = function (props) {
-  const { index, name, children, validationErrors, validationConditions } =
-    props;
+  const {
+    index = 0,
+    name,
+    children,
+    validationErrors,
+    validationConditions,
+  } = props;
 
   const { arrayName } = useContext(ArrayWrapperContext);
 
