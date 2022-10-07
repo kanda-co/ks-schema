@@ -55,21 +55,10 @@ func main() {
 	loader := openapi3.Loader{Context: ctx}
 	doc, _ := loader.LoadFromFile(*in)
 	_ = doc.Validate(ctx)
-	fmt.Println(`export { useFormContext } from "react-hook-form";
-
+	fmt.Println(`
 import React from "react";
-import FormTheme from "./components/FormTheme";
-import FormWrapper from "./components/FormWrapper";
-import Field, { type FieldProps } from "~/field";
-export { default as ButtonText } from "./components/Button/Text";
-
-export { Field, FormTheme, FormWrapper };
-
-export { type FieldProps };
-
-export * from "./components";
-
-// @ts-ignore`)
+// @ts-ignore
+import Field, { type FieldProps } from "~/field";`)
 	for name, ref := range doc.Components.Schemas {
 		// write to individual module for Schema Form Fields
 		fmt.Println(renderModule(name, ref.Value))
@@ -137,6 +126,10 @@ func getKandaFormWidget(schema *openapi3.Schema) string {
 	}
 	if ext, ok := schema.Extensions["x-kanda-form-widget"]; ok {
 		json.Unmarshal(ext.(json.RawMessage), &widget)
+	}
+	switch widget {
+	case "Postcode", "File":
+		widget = "Input"
 	}
 	return widget
 }
@@ -543,10 +536,6 @@ export function %sArrayWrapper({ children, initialData = null }: any) {
 }
 
 func inputField(type_, prefix, name string, props Props, validation Validation) string {
-	pathName := name
-	if prefix != "" {
-		pathName = toPath(prefix + " " + name)
-	}
 	b, _ := json.Marshal(validation)
 	return fmt.Sprintf(`
 export const %sValidation = %v;
@@ -555,9 +544,7 @@ export function %s(props: FieldProps["%s"]) {
 	return (
 		<Field.Validator validation={%sValidation}>
 			<Field.%s
-				name="%s"
 				%s
-				validation={%sValidation}
 				{...props}
 			/>
 		</Field.Validator>
@@ -569,18 +556,12 @@ export function %s(props: FieldProps["%s"]) {
 		type_,
 		toPascal(prefix+" "+name),
 		type_,
-		pathName,
 		propsToAttributes(props),
-		toPascal(prefix+" "+name),
 	)
 }
 
 func selectField(
 	type_, prefix, name string, props Props, validation Validation, options []interface{}) string {
-	pathName := name
-	if prefix != "" {
-		pathName = toPath(prefix + " " + name)
-	}
 	b, _ := json.Marshal(validation)
 	optsM := make([]Option, 0)
 	for _, opt := range options {
@@ -594,11 +575,10 @@ func selectField(
 	return fmt.Sprintf(`
 export const %sValidation = %v;
 
-export function %s(props: FieldProps["%s"]): FunctionComponent<FieldProps["%s"]> {
+export function %s(props: FieldProps["%s"]) {
 	return (
 		<Field.Validator validation={%sValidation}>
 			<Field.%s
-				name="%s"
 				%s
 				options={%v}
 				{...props}
@@ -610,10 +590,8 @@ export function %s(props: FieldProps["%s"]): FunctionComponent<FieldProps["%s"]>
 		validationRegexReplace(b),
 		toPascal(prefix+" "+name),
 		type_,
-		type_,
 		toPascal(prefix+" "+name),
 		type_,
-		pathName,
 		propsToAttributes(props),
 		string(opts),
 	)
@@ -635,8 +613,6 @@ export function %sArrayInput(props: any) {
 		<Field.Array.Input name="%s">
 			<Field.Validator validation={%sArrayInputValidation}>
 				<Field.%s
-					label="%s"
-					placeholder="%s"
 					%s
 					{...props}
 				/>
@@ -650,8 +626,6 @@ export function %sArrayInput(props: any) {
 		pathName,
 		toPascal(prefix+" "+name),
 		type_,
-		toTitle(pathName),
-		toTitle(pathName),
 		propsToAttributes(props),
 	)
 }
@@ -682,8 +656,6 @@ export function %sArraySelect(props: any) {
 		<Field.Array.Input name="%s">
 			<Field.Validator validation={%sArrayInputValidation}>
 				<Field.%s
-					label="%s"
-					placeholder="%s"
 					%s
 					options={%v}
 					{...props}
@@ -698,8 +670,6 @@ export function %sArraySelect(props: any) {
 		pathName,
 		toPascal(prefix+" "+name),
 		type_,
-		toTitle(pathName),
-		toTitle(pathName),
 		propsToAttributes(props),
 		string(opts),
 	)

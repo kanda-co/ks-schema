@@ -5,6 +5,5 @@ frontend/generated
 node_modules/
 .idea
 .idea/
-ts-pkg/src/index.ts
-ts-pkg/src/index.tsx
+ts-pkg/src/generated
 yarn.lock

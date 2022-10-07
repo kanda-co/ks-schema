@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "module": "es2015",
+    "target": "es2018",
+    "moduleResolution": "node",
+    "outDir": "./dist",
+    "jsx": "react",
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": "./src/",
+    "paths": {
+      "~/*": ["*"]
+    }
+  },
+  "include": ["./src/", "./src/types/svg.d.ts"],
+  "exclude": ["node_modules", "app"],
+  "rootDirs": ["./src/"]
+}

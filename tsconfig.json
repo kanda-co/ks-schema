@@ -11,5 +11,5 @@
     "resolveJsonModule": true,
     "esModuleInterop": true
   },
-  "exclude": ["node_modules", "dist", "ts-pkg"]
+  "exclude": ["node_modules", "dist", "ks-component-ts"]
 }
