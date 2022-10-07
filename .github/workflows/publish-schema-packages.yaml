@@ -43,8 +43,20 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_SECRET }}
 
+      - name: "setup node"
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16.x"
+          registry-url: "https://registry.npmjs.org"
+
       - name: "codegen for TS components"
         run: make qa clean ts-widget
+
+      - name: "setup node"
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16.x"
+          registry-url: "https://registry.yarnpkg.com"
 
       - name: "install yarn deps + build TS npm package"
         run: cd ks-component-ts && yarn && yarn build
