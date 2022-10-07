@@ -27,7 +27,7 @@ jobs:
       - name: "setup node"
         uses: actions/setup-node@v2
         with:
-          node-version: "14.x"
+          node-version: "16.x"
           registry-url: "https://registry.npmjs.org"
 
       - name: "setup go"
@@ -40,6 +40,17 @@ jobs:
 
       - name: "publish npm package"
         run: rm -rf .git/ && npm version $(npm view @kanda-libs/ks-schema version | awk 'BEGIN{FS=OFS="."} {$3+=1} 1') --force && npm publish --force --allow-same-version
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_SECRET }}
+
+      - name: "codegen for TS components"
+        run: make qa ts-widget
+
+      - name: "install yarn deps + build TS npm package"
+        run: cd ts-pkg && yarn && yarn build
+
+      - name: "publish TS npm package"
+        run: cd ts-pkg && rm -rf .git/ && npm version $(npm view @kanda-libs/ks-component-ts version | awk 'BEGIN{FS=OFS="."} {$3+=1} 1') --force && npm publish --force --allow-same-version
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_SECRET }}
 

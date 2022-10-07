@@ -60,6 +60,13 @@ widget:
 	go run ./cmd/form/main.go -in schema.yaml > frontend/generated/widget/index.tsx
 	npx prettier --write frontend/generated/widget
 
+ts-widget:
+	@echo Generating TS React Field components, validators from schema...
+	rm -rf ts-pkg/src/index.tsx
+	go run ./cmd/ts-form/main.go -in schema.yaml > ts-pkg/src/index.tsx
+	npx prettier --write ts-pkg/src/index.tsx
+	cd ts-pkg; yarn && yarn build
+
 setup-cicd:
 	@echo Create CI/CD global identity pool
 	gcloud iam workload-identity-pools create "cicd-pool" \
