@@ -6,4 +6,3 @@ node_modules/
 .idea
 .idea/
 ks-component-ts/src/generated/
-yarn.lock
