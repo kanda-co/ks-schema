@@ -98,7 +98,7 @@
   },
   "homepage": "https://github.com/kanda-co/ks-design-library#readme",
   "dependencies": {
-    "@kanda-libs/ks-design-library": "^0.0.44",
+    "@kanda-libs/ks-design-library": "^0.0.47",
     "@kanda-libs/ks-tailwind-config": "^0.0.2",
     "@types/lodash.get": "^4.4.7",
     "lodash.get": "^4.4.2",
