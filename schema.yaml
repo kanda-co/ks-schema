@@ -3534,6 +3534,12 @@ components:
         - main_occupation
         - months_employed
       properties:
+        employed_type:
+          type: string
+          title: employed type
+          enum:
+            - "full_time"
+            - "part_time"
         employer_name:
           type: string
           title: employer name
@@ -3557,6 +3563,12 @@ components:
         - type_of_business
         - months_self_employed
       properties:
+        self_employed_type:
+          type: string
+          title: self employed type
+          enum:
+            - "full_time"
+            - "part_time"
         business_name:
           type: string
           title: business name
@@ -3596,7 +3608,6 @@ components:
       required:
         - employment_status
         - gross_annual_income
-        - household_annual_income
       properties:
         employment_status:
           type: string
