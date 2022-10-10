@@ -3494,12 +3494,12 @@ components:
           title: residential status
           enum:
             - tenant
-            - council tenant
-            - living with parents
+            - council_tenant
+            - living_with_parents
             - owner
-            - owner without mortgage
+            - owner_without_mortgage
             - lodger
-            - armed forces
+            - armed_forces
         monthly_rent_amount:
           type: object
           title: monthly rent amount
@@ -3581,9 +3581,9 @@ components:
             - benefits
             - maintenance
             - disabled
-            - full-time carer
+            - fulltime_carer
             - homemaker
-            - permanent dla
+            - permanent_dla
             - other
 
     EmploymentDetails:
