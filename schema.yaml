@@ -3363,6 +3363,11 @@ components:
           type: object
           title: employment details
           $ref: "#/components/schemas/EmploymentDetails"
+        additional_employment_details:
+          type: array
+          title: additional employment details
+          items:
+            $ref: "#/components/schemas/EmployedDetails"
         finance_details:
           type: object
           title: finance details
@@ -3677,6 +3682,11 @@ components:
           type: object
           title: employment details
           $ref: "#/components/schemas/EmploymentDetails"
+        additional_employment_details:
+          type: array
+          title: additional employment details
+          items:
+            $ref: "#/components/schemas/EmployedDetails"
         finance_details:
           type: object
           title: finance details
@@ -3692,16 +3702,32 @@ components:
           enum:
             - "yes"
             - "no"
-        additional_incomes:
+        incomes:
           type: array
-          title: additional incomes
+          title: incomes
           items:
-            $ref: "#/components/schemas/EmploymentDetails"
+            $ref: "#/components/schemas/Income"
         expenditures:
           type: array
           title: expenditures
           items:
             $ref: "#/components/schemas/Expenditure"
+
+    Income:
+      type: object
+      title: income
+      properties:
+        income_type:
+          type: string
+          enum:
+            - "benefits"
+            - "other_sources_of_income"
+            - "pensions"
+            - "earning_after_tax"
+        monthly_amount:
+          type: object
+          title: monthly amount
+          $ref: "#/components/schemas/Money"
 
     Expenditure:
       type: object
