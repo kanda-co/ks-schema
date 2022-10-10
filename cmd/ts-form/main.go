@@ -538,6 +538,10 @@ export function %sArrayWrapper({ children, initialData = null }: any) {
 
 func inputField(type_, prefix, name string, props Props, validation Validation) string {
 	b, _ := json.Marshal(validation)
+	pathName := name
+    if prefix != "" {
+        pathName = toPath(prefix + " " + name)
+    }
 	return fmt.Sprintf(`
 export const %sValidation = %v;
 
@@ -547,6 +551,7 @@ export function %s(props: FieldProps["%s"]) {
 			<Field.%s
 				%s
 				{...props}
+				name="%s"
 			/>
 		</Field.Validator>
 	);
@@ -558,6 +563,7 @@ export function %s(props: FieldProps["%s"]) {
 		toPascal(prefix+" "+name),
 		type_,
 		propsToAttributes(props),
+		pathName,
 	)
 }
 
