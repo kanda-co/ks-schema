@@ -3705,10 +3705,10 @@ components:
         expenditure_type:
           type: string
           enum:
-            - "credit card"
+            - "credit_card"
             - "clothes"
-            - "council tax and bills"
-            - "child support agency"
+            - "council_tax_and_bills"
+            - "child_support_agency"
             - "healthcare"
             - "holidays"
         monthly_amount:
