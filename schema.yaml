@@ -3697,7 +3697,7 @@ components:
           type: array
           title: additional employment details
           items:
-            $ref: "#/components/schemas/EmployedDetails"
+            $ref: "#/components/schemas/EmploymentDetails"
         finance_details:
           type: object
           title: finance details
