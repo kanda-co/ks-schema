@@ -3692,6 +3692,11 @@ components:
           enum:
             - "yes"
             - "no"
+        additional_incomes:
+          type: array
+          title: additional incomes
+          items:
+            $ref: "#/components/schemas/EmploymentDetails"
         expenditures:
           type: array
           title: expenditures
