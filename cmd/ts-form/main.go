@@ -168,7 +168,7 @@ func renderModule(name string, schema *openapi3.Schema) string {
 }
 
 func renderDefaultExports(defaultExports []string) string {
-	exports := []string{}
+	exports := []string{"\n"}
 
 	exports = append(exports, "export default {")
 	exports = append(exports, strings.Join(defaultExports, ",\n"))
