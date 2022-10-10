@@ -170,9 +170,10 @@ func renderModule(name string, schema *openapi3.Schema) string {
 func renderDefaultExports(defaultExports []string) string {
 	exports := []string{"\n"}
 
-	exports = append(exports, "export default {")
+	exports = append(exports, "const Widget = {")
 	exports = append(exports, strings.Join(defaultExports, ",\n"))
-	exports = append(exports, "};")
+	exports = append(exports, "};\n\n")
+	exports = append(exports, "export default Widget;")
 
 	return strings.Join(exports, "")
 }
