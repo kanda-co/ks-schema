@@ -54,6 +54,7 @@ func main() {
 	ctx := context.Background()
 	loader := openapi3.Loader{Context: ctx}
 	doc, _ := loader.LoadFromFile(*in)
+	defaultExports := []string{}
 	_ = doc.Validate(ctx)
 	fmt.Println(`
 import React from "react";
@@ -62,7 +63,10 @@ import Field, { type FieldProps } from "~/field";`)
 	for name, ref := range doc.Components.Schemas {
 		// write to individual module for Schema Form Fields
 		fmt.Println(renderModule(name, ref.Value))
+		defaultExports = append(defaultExports, getModuleDefaults(name, ref.Value))
 	}
+
+	fmt.Println(renderDefaultExports(defaultExports))
 }
 
 func toPascal(in string) string {
@@ -159,7 +163,43 @@ func renderModule(name string, schema *openapi3.Schema) string {
 	sort.Strings(moduleDefs)
 	moduleDefs = unique(strings.Split(strings.Join(moduleDefs, "\n\n"), "\n\n"))
 	moduleDef := strings.Join(moduleDefs, "\n\n")
+
+	return moduleDef
+}
+
+func renderDefaultExports(defaultExports []string) string {
 	exports := []string{}
+
+	exports = append(exports, "export default {")
+	exports = append(exports, strings.Join(defaultExports, ",\n"))
+	exports = append(exports, "};")
+
+	return strings.Join(exports, "")
+}
+
+func getModuleDefaults(name string, schema *openapi3.Schema) string {
+	moduleDefs := []string{}
+	exports := []string{}
+	components := renderField(name, schema, nil, false)
+	r := regexp.MustCompile(`export function (?P<Form>.*?)\(`)
+	formFields := r.FindAllStringSubmatch(components, -1)
+	formIndex := r.SubexpIndex("Form")
+	formDef := []string{
+		fmt.Sprintf("export function %sForm(props: any) {", name),
+		"return (<>",
+	}
+
+	for _, formField := range formFields {
+		def := formField[formIndex]
+		if strings.HasSuffix(def, "ArrayWrapper") || strings.HasSuffix(def, "ArrayInput") || strings.HasSuffix(def, "ArraySelect") {
+			continue
+		}
+		formDef = append(formDef, fmt.Sprintf(`<%s {...props} />`, def))
+	}
+	formDef = append(formDef, []string{"</>);", "}"}...)
+	moduleDefs = append(moduleDefs, strings.Join(formDef, "\n"))
+	moduleDefs = append(moduleDefs, components)
+
 	for _, md := range moduleDefs {
 		if !strings.HasPrefix(md, "export function ") {
 			continue
@@ -172,15 +212,8 @@ func renderModule(name string, schema *openapi3.Schema) string {
 			)[0],
 		)
 	}
-	return strings.Join(
-		[]string{
-			moduleDef,
-			"export default {",
-			strings.Join(exports, ",\n"),
-			"};",
-		},
-		"\n\n",
-	)
+
+	return strings.Join(exports, ",\n")
 }
 
 func renderField(name string, schema, root *openapi3.Schema, isArray bool) string {
