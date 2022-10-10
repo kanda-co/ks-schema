@@ -62,8 +62,11 @@ import React from "react";
 import Field, { type FieldProps } from "~/field";`)
 	for name, ref := range doc.Components.Schemas {
 		// write to individual module for Schema Form Fields
-		fmt.Println(renderModule(name, ref.Value))
-		defaultExports = append(defaultExports, getModuleDefaults(name, ref.Value))
+
+		var moduleDef, exports = renderModule(name, ref.Value)
+
+		fmt.Println(moduleDef)
+		defaultExports = append(defaultExports, exports)
 	}
 
 	fmt.Println(renderDefaultExports(defaultExports))
@@ -139,8 +142,9 @@ func getKandaFormWidget(schema *openapi3.Schema) string {
 	return widget
 }
 
-func renderModule(name string, schema *openapi3.Schema) string {
+func renderModule(name string, schema *openapi3.Schema) (string, string) {
 	moduleDefs := []string{}
+	exports := []string{}
 	components := renderField(name, schema, nil, false)
 	r := regexp.MustCompile(`export function (?P<Form>.*?)\(`)
 	formFields := r.FindAllStringSubmatch(components, -1)
@@ -164,43 +168,6 @@ func renderModule(name string, schema *openapi3.Schema) string {
 	moduleDefs = unique(strings.Split(strings.Join(moduleDefs, "\n\n"), "\n\n"))
 	moduleDef := strings.Join(moduleDefs, "\n\n")
 
-	return moduleDef
-}
-
-func renderDefaultExports(defaultExports []string) string {
-	exports := []string{"\n"}
-
-	exports = append(exports, "const Widget = {")
-	exports = append(exports, strings.Join(defaultExports, ",\n"))
-	exports = append(exports, "};\n\n")
-	exports = append(exports, "export default Widget;")
-
-	return strings.Join(exports, "")
-}
-
-func getModuleDefaults(name string, schema *openapi3.Schema) string {
-	moduleDefs := []string{}
-	exports := []string{}
-	components := renderField(name, schema, nil, false)
-	r := regexp.MustCompile(`export function (?P<Form>.*?)\(`)
-	formFields := r.FindAllStringSubmatch(components, -1)
-	formIndex := r.SubexpIndex("Form")
-	formDef := []string{
-		fmt.Sprintf("export function %sForm(props: any) {", name),
-		"return (<>",
-	}
-
-	for _, formField := range formFields {
-		def := formField[formIndex]
-		if strings.HasSuffix(def, "ArrayWrapper") || strings.HasSuffix(def, "ArrayInput") || strings.HasSuffix(def, "ArraySelect") {
-			continue
-		}
-		formDef = append(formDef, fmt.Sprintf(`<%s {...props} />`, def))
-	}
-	formDef = append(formDef, []string{"</>);", "}"}...)
-	moduleDefs = append(moduleDefs, strings.Join(formDef, "\n"))
-	moduleDefs = append(moduleDefs, components)
-
 	for _, md := range moduleDefs {
 		if !strings.HasPrefix(md, "export function ") {
 			continue
@@ -214,7 +181,20 @@ func getModuleDefaults(name string, schema *openapi3.Schema) string {
 		)
 	}
 
-	return strings.Join(exports, ",\n")
+	defaultExports := strings.Join(exports, ",\n")
+
+	return moduleDef, defaultExports
+}
+
+func renderDefaultExports(defaultExports []string) string {
+	exports := []string{"\n"}
+
+	exports = append(exports, "const Widget = {")
+	exports = append(exports, strings.Join(defaultExports, ",\n"))
+	exports = append(exports, "};\n\n")
+	exports = append(exports, "export default Widget;")
+
+	return strings.Join(exports, "")
 }
 
 func renderField(name string, schema, root *openapi3.Schema, isArray bool) string {
