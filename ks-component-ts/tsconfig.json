@@ -14,7 +14,6 @@
     "noUnusedParameters": false,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "importsNotUsedAsValues": "error",
     "baseUrl": "./src/",
     "paths": {
       "~/*": ["*"]

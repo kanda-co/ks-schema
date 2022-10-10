@@ -24,9 +24,7 @@ import Array from "~/field/components/Array";
 import BuildFinancePlan, {
   type BuildFinancePlanProps,
 } from "~/field/components/BuildFinancePlan";
-import PostcodeInput, {
-  type PostcodeInputProps,
-} from "~/field/components/PostcodeInput";
+import Postcode, { type PostcodeProps } from "~/field/components/Postcode";
 
 export default {
   Validator,
@@ -41,7 +39,7 @@ export default {
   PriceInput,
   DatePickerInput,
   FingerprintBooleanInput,
-  PostcodeInput,
+  Postcode,
   Select,
   RadioSelect,
   Array,
@@ -54,6 +52,6 @@ export interface FieldProps {
   RadioSelect: RadioSelectProps;
   DatePickerInput: DatePickerInputProps;
   NumberFormatInput: NumberFormatInputProps;
-  PostcodeInput: PostcodeInputProps;
+  Postcode: PostcodeProps;
   BuildFinancePlan: BuildFinancePlanProps;
 }

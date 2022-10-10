@@ -3,17 +3,17 @@ import { useDebounce } from "use-debounce";
 import { useWatch } from "react-hook-form";
 import { DEBOUNCE_INTERVAL, NO_ADDRESSES } from "./constants";
 import { validatePostcode, checkPostcodesMatch } from "./helpers";
-import type { PostcodeInputProps } from "../types";
+import type { PostcodeProps } from "../types";
 
 export type PostcodeInputArgs = Omit<
-  PostcodeInputProps,
+  PostcodeProps,
   "label" | "warning" | "icon" | "isLoading"
 >;
 
-export type PostcodeInputHook = Omit<
-  PostcodeInputProps,
-  "data" | "error" | "isValidating" | "callback"
->;
+export interface PostcodeInputHook
+  extends Omit<PostcodeProps, "data" | "error" | "isValidating" | "callback"> {
+  warning?: string | null;
+}
 
 export default function usePostcodeInput({
   name,
