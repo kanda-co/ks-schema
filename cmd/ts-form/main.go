@@ -158,7 +158,29 @@ func renderModule(name string, schema *openapi3.Schema) string {
 	moduleDefs = append(moduleDefs, components)
 	sort.Strings(moduleDefs)
 	moduleDefs = unique(strings.Split(strings.Join(moduleDefs, "\n\n"), "\n\n"))
-	return strings.Join(moduleDefs, "\n\n")
+	moduleDef := strings.Join(moduleDefs, "\n\n")
+	exports := []string{}
+	for _, md := range moduleDefs {
+		if !strings.HasPrefix(md, "export function ") {
+			continue
+		}
+		exports = append(
+			exports,
+			strings.Split(
+				strings.Replace(md, "export function ", "", 1),
+				"(",
+			)[0],
+		)
+	}
+	return strings.Join(
+		[]string{
+			moduleDef,
+			"export default {",
+			strings.Join(exports, ",\n"),
+			"};",
+		},
+		"\n\n",
+	)
 }
 
 func renderField(name string, schema, root *openapi3.Schema, isArray bool) string {
@@ -539,9 +561,9 @@ export function %sArrayWrapper({ children, initialData = null }: any) {
 func inputField(type_, prefix, name string, props Props, validation Validation) string {
 	b, _ := json.Marshal(validation)
 	pathName := name
-    if prefix != "" {
-        pathName = toPath(prefix + " " + name)
-    }
+	if prefix != "" {
+		pathName = toPath(prefix + " " + name)
+	}
 	return fmt.Sprintf(`
 export const %sValidation = %v;
 
@@ -570,9 +592,9 @@ export function %s(props: FieldProps["%s"]) {
 func selectField(
 	type_, prefix, name string, props Props, validation Validation, options []interface{}) string {
 	pathName := name
-    if prefix != "" {
-        pathName = toPath(prefix + " " + name)
-    }
+	if prefix != "" {
+		pathName = toPath(prefix + " " + name)
+	}
 	b, _ := json.Marshal(validation)
 	optsM := make([]Option, 0)
 	for _, opt := range options {

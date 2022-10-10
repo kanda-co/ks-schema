@@ -68,9 +68,7 @@ ts-widget:
 	npx openapi-io-ts -i schema.yaml -o ks-component-ts/src/generated
 	npx prettier --write ks-component-ts/src/generated
 	go run ./cmd/ts-form/main.go -in schema.yaml > ks-component-ts/src/generated/widget/index.tsx
-	# npx openapi2schema -i schema.yaml > ks-component-ts/src/generated/schema.json
-	echo "import * as Widget from './widget';" >> ks-component-ts/src/generated/index.ts
-	# echo "import * as JSONSchema from './schema.json';" >> ks-component-ts/src/generated/index.ts
+	echo "import Widget from './widget';" >> ks-component-ts/src/generated/index.ts
 	echo "import { servers } from './servers';" >> ks-component-ts/src/generated/index.ts
 	echo "export { Widget, servers };" >> ks-component-ts/src/generated/index.ts
 	npx prettier --write ks-component-ts/src/generated/widget
