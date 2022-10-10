@@ -370,10 +370,10 @@
     react-toastify "^9.0.8"
     use-debounce "^8.0.4"
 
-"@kanda-libs/ks-tailwind-config@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-tailwind-config/-/ks-tailwind-config-0.0.2.tgz#4c98b2d9e77c8aca682f625f3262ebe6d0159d64"
-  integrity sha512-TLHjhoR/gyCk5LQ7yJnUz/c1kxG9azjTgeuYwariJiPNjn2Np181VHA/ycocYkaepCVjJBDaJ41O1Tv/4WswFw==
+"@kanda-libs/ks-tailwind-config@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-tailwind-config/-/ks-tailwind-config-0.0.3.tgz#974151fea95beae95d2f0039691964c23344bc28"
+  integrity sha512-Tp1+rlMcjnx1yOp/mMr/ZxUQvJG1w1Gh+3tYyz4eo8N5K8nLcAWv4Ev+cVW+oLjcEky9fRKP5j6+dkk468WmfA==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
