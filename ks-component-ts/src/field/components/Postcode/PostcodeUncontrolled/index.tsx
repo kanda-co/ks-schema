@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import usePostcodeInput from "./usePostcodeInput";
 import type { PostcodeProps } from "../types";
 import FieldFormController from "~/field/components/FieldFormController";
-import InputUncontrolled from "~/field/components/Input/InputUncontrolled";
+import Input from "~/field/components/Input";
 import type { FieldFormControllerChildrenArgs } from "~/field/components/FieldFormController/types";
 
 const PostcodeUncontrolled: FunctionComponent<PostcodeProps> = function (
@@ -13,7 +13,7 @@ const PostcodeUncontrolled: FunctionComponent<PostcodeProps> = function (
   return (
     <FieldFormController {...containerProps} register>
       {(fieldProps: FieldFormControllerChildrenArgs) => (
-        <InputUncontrolled {...fieldProps} />
+        <Input {...fieldProps} />
       )}
     </FieldFormController>
   );
