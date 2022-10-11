@@ -1141,6 +1141,42 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/job/{id}/override:
+    post:
+      operationId: overrideJob
+      summary: >
+        kanda staff to override a job status and trigger comms to be sent (if applicable),
+        only allowed when job is applied for finance or financed.
+      tags:
+        - Job
+      parameters:
+        - name: id
+          in: path
+          description: job id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: job override to be applied to job
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/JobOverride"
+      responses:
+        200:
+          description: got existing job with finance status set to paid
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/job/{id}/companyInfo:
     post:
       operationId: jobCompanyInfo
@@ -3942,6 +3978,21 @@ components:
           type: string
           title: source
           readOnly: true
+
+    JobOverride:
+      type: object
+      title: job override
+      required:
+        - action
+      properties:
+        action:
+          type: string
+          title: action
+          enum:
+            - "mark_job_as_pending"
+            - "mark_job_as_accepted"
+            - "mark_job_as_declined"
+            - "mark_job_as_cancelled"
 
     Error:
       type: object
