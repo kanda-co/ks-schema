@@ -1,5 +1,11 @@
-import { POST_CODE_REGEX, NO_ADDRESS_FOUND_LABEL } from "./constants";
-import { Address, AddressApiData } from "../types";
+import {
+  POST_CODE_REGEX,
+  NO_ADDRESS_FOUND_LABEL,
+} from "field/components/Address/Postcode/PostcodeUncontrolled/constants";
+import {
+  AddressApiData,
+  AddressApiResponseAddress,
+} from "~/field/components/Address/types";
 
 export const validatePostcode = (postcode: string): boolean =>
   POST_CODE_REGEX.test(postcode.trim());
@@ -7,7 +13,7 @@ export const validatePostcode = (postcode: string): boolean =>
 /**
  * Format address for proper display on select field
  */
-export const formatSelectName = (address: Address) =>
+export const formatSelectName = (address: AddressApiResponseAddress) =>
   address.formattedAddress.filter(Boolean).join(", ");
 
 /**

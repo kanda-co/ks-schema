@@ -24,9 +24,13 @@ import Array from "~/field/components/Array";
 import BuildFinancePlan, {
   type BuildFinancePlanProps,
 } from "~/field/components/BuildFinancePlan";
-import Postcode, { type PostcodeProps } from "~/field/components/Postcode";
+import Postcode, {
+  type PostcodeProps,
+} from "~/field/components/Address/Postcode";
+import Address from "~/field/components/Address";
 
-export default {
+const Field = {
+  Address,
   Validator,
   Input,
   UncontrolledInput,
@@ -45,6 +49,8 @@ export default {
   Array,
   BuildFinancePlan,
 };
+
+export default Field;
 
 export interface FieldProps {
   Input: InputProps;

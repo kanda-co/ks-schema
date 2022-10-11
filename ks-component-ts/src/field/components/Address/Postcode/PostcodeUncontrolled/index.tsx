@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
-import usePostcodeInput from "./usePostcodeInput";
-import type { PostcodeProps } from "../types";
+import usePostcodeInput from "field/components/Address/Postcode/PostcodeUncontrolled/usePostcodeInput";
+import type { PostcodeProps } from "~/field/components/Address/types";
 import FieldFormController from "~/field/components/FieldFormController";
 import Input from "~/field/components/Input";
 import type { FieldFormControllerChildrenArgs } from "~/field/components/FieldFormController/types";

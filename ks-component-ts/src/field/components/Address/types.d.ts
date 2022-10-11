@@ -1,15 +1,29 @@
+export interface AddressApiResponseAddress {
+  buildingNumber?: string;
+  subBuildingNumber?: string;
+  buildingName?: string;
+  subBuildingName?: string;
+  line1?: string;
+  line2?: string;
+  locality?: string;
+  townOrCity?: string;
+  county?: string;
+  country?: string;
+  formatted_address: string[];
+  formattedAddress: string[];
+}
+
 export interface Address {
   formattedAddress: string[];
 }
 
 export interface AddressApiData {
+  isLoading?: boolean;
   postcode?: string;
-  addresses?: Address[];
+  addresses?: AddressApiResponseAddress[];
 }
 
-export interface PostcodeCallbackArgs extends AddressApiData {
-  isLoading?: boolean;
-}
+export type PostcodeCallbackArgs = AddressApiData;
 
 export type PostcodeCallback = (args: PostcodeCallbackArgs) => void;
 
