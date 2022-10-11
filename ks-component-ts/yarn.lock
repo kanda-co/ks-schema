@@ -370,10 +370,12 @@
     react-toastify "^9.0.8"
     use-debounce "^8.0.4"
 
-"@kanda-libs/ks-tailwind-config@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-tailwind-config/-/ks-tailwind-config-0.0.3.tgz#974151fea95beae95d2f0039691964c23344bc28"
-  integrity sha512-Tp1+rlMcjnx1yOp/mMr/ZxUQvJG1w1Gh+3tYyz4eo8N5K8nLcAWv4Ev+cVW+oLjcEky9fRKP5j6+dkk468WmfA==
+"@kanda-libs/ks-tailwind-config@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-tailwind-config/-/ks-tailwind-config-0.0.5.tgz#46865a63e9309db3fa16cba0a8e935b3d89d8654"
+  integrity sha512-Q90jd7yrOnPzvVXdWRXJOY51Y3JEBILpWrB0ARzXIhGiB6gbsOymHRpH+2/c66Oe087J4lX0vUh/rY9k6wAYMA==
+  dependencies:
+    esm "^3.2.25"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -1822,6 +1824,11 @@ eslint@^8.11.0:
     strip-ansi "^6.0.1"
     strip-json-comments "^3.1.0"
     text-table "^0.2.0"
+
+esm@^3.2.25:
+  version "3.2.25"
+  resolved "https://registry.yarnpkg.com/esm/-/esm-3.2.25.tgz#342c18c29d56157688ba5ce31f8431fbb795cc10"
+  integrity sha512-U1suiZ2oDVWv4zPO56S0NcR5QriEahGtdN2OR6FiOG4WJvcjBVFB0qI4+eKoWFH483PKGuLuu6V8Z4T5g63UVA==
 
 espree@^9.4.0:
   version "9.4.0"

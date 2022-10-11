@@ -21,6 +21,7 @@ export default function usePostcodeInput({
   data,
   error: apiError,
   isValidating: isLoading,
+  onPostcodeSearch,
   ...restProps
 }: PostcodeInputArgs): PostcodeInputHook {
   /**
@@ -28,64 +29,77 @@ export default function usePostcodeInput({
    */
   const postalCode = useWatch({ name });
 
-  /**
-   * Debounces values to reduce number of calls
-   */
-  const [debouncedPostalCode] = useDebounce(postalCode, DEBOUNCE_INTERVAL);
-
-  const isPostcodeValid = validatePostcode(debouncedPostalCode || "");
-
-  const postCodeRef = useRef(debouncedPostalCode);
-
-  const [toSearch, setToSearch] = useState(null);
-
-  const warning = apiError
-    ? "This postcode returned no results - you'll have to enter your address manually"
-    : null;
-
-  /**
-   * Effect passes fetched data back through callback
-   */
   useEffect(() => {
-    if (!callback) return;
-    if (apiError) {
-      callback(NO_ADDRESSES);
-      return;
+    if (postalCode && onPostcodeSearch) {
+      onPostcodeSearch(postalCode);
     }
-    if (isPostcodeValid && data?.postcode) {
-      postCodeRef.current = data.postcode;
-    }
-    callback({
-      ...data,
-      isLoading,
-    });
-  }, [
-    callback,
-    isLoading,
-    isPostcodeValid,
-    data,
-    apiError,
-    debouncedPostalCode,
-  ]);
+  }, [postalCode, onPostcodeSearch]);
 
-  useEffect(() => {
-    if (!isPostcodeValid) {
-      setToSearch(null);
-      return;
-    }
-    if (checkPostcodesMatch(debouncedPostalCode, postCodeRef.current)) return;
-    setToSearch(debouncedPostalCode.trim());
-  }, [debouncedPostalCode, isPostcodeValid]);
-
-  useEffect(() => {
-    if (toSearch) return;
-    if (!postCodeRef.current) return;
-    setToSearch(postCodeRef.current);
-  }, [toSearch]);
+  // /**
+  //  * Debounces values to reduce number of calls
+  //  */
+  // const [debouncedPostalCode] = useDebounce(postalCode, DEBOUNCE_INTERVAL);
+  //
+  // const isPostcodeValid = validatePostcode(debouncedPostalCode || "");
+  //
+  // const postCodeRef = useRef(debouncedPostalCode);
+  //
+  // const [toSearch, setToSearch] = useState(null);
+  //
+  // const warning = apiError
+  //   ? "This postcode returned no results - you'll have to enter your address manually"
+  //   : null;
+  //
+  // /**
+  //  * Effect passes fetched data back through callback
+  //  */
+  // useEffect(() => {
+  //   if (!callback) return;
+  //   if (apiError) {
+  //     callback(NO_ADDRESSES);
+  //     return;
+  //   }
+  //   if (isPostcodeValid && data?.postcode) {
+  //     postCodeRef.current = data.postcode;
+  //   }
+  //   callback({
+  //     ...data,
+  //     isLoading,
+  //   });
+  // }, [
+  //   toSearch,
+  //   callback,
+  //   isLoading,
+  //   isPostcodeValid,
+  //   data,
+  //   apiError,
+  //   debouncedPostalCode,
+  // ]);
+  //
+  // useEffect(() => {
+  //   // if (!isPostcodeValid) {
+  //   //   setToSearch(null);
+  //   //   return;
+  //   // }
+  //   // if (checkPostcodesMatch(debouncedPostalCode, postCodeRef.current)) return;
+  //   setToSearch(debouncedPostalCode.trim());
+  // }, [debouncedPostalCode, isPostcodeValid]);
+  //
+  // useEffect(() => {
+  //   if (!toSearch || !onPostcodeSearch) return;
+  //
+  //   onPostcodeSearch(toSearch);
+  // }, [toSearch, onPostcodeSearch]);
+  //
+  // useEffect(() => {
+  //   if (toSearch) return;
+  //   if (!postCodeRef.current) return;
+  //   setToSearch(postCodeRef.current);
+  // }, [toSearch]);
 
   return {
     ...restProps,
     name,
-    warning,
+    warning: null,
   };
 }

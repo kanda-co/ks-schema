@@ -42,4 +42,8 @@ export interface PostcodeProps {
    * Display Loading state
    */
   isLoading?: boolean;
+  /**
+   * Callback fired when the value is changed.
+   */
+  onPostcodeSearch?: (postcode: string) => void;
 }
