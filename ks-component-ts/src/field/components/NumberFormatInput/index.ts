@@ -13,7 +13,12 @@ const WithFieldInfo = withFieldInfo(Controlled);
 
 export { Controlled, WithFieldInfo };
 
-const NumberFormatInput = withFieldFormController(WithFieldInfo);
+const NumberFormatInput = withFieldFormController(
+  WithFieldInfo,
+  null,
+  false,
+  true
+);
 
 export type NumberFormatInputBaseProps =
   DefaultFormFieldProps<NumberFormatInputControlledProps>;

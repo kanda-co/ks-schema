@@ -15,7 +15,8 @@ export type FieldFormControllerPropsWithoutChildren<T> = Omit<
 export default function withFieldFormController<T>(
   Component: InputFunctionComponent<T> | FunctionComponent<T>,
   formatName: null | ((name: string) => string) = null,
-  passRegister = false
+  passRegister = false,
+  control = false
 ) {
   const formatNameMethod = formatName || ((name) => name);
 
@@ -25,6 +26,7 @@ export default function withFieldFormController<T>(
       name={formatNameMethod(props.name as string)}
       register={!passRegister}
       passRegister={passRegister}
+      control={control}
     >
       {(fieldProps: DefaultFormFieldProps<T>) => (
         <Component
