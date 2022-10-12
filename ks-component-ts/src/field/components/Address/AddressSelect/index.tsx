@@ -1,8 +1,7 @@
 import React, { FunctionComponent } from "react";
 import useAddressSelectProps from "./useAddressSelectProps";
 import { AddressApiData } from "~/field/components/Address/types";
-import FieldFormController from "~/field/components/FieldFormController";
-import { Uncontrolled as Select, type SelectProps } from "../../Select";
+import Select, { type SelectProps } from "../../Select";
 
 export interface AddressSelectProps {
   /**
@@ -40,11 +39,7 @@ const AddressSelect: FunctionComponent<AddressSelectProps> = function ({
     data
   ) as unknown as SelectProps;
 
-  return (
-    <FieldFormController register>
-      {() => <Select {...selectProps} />}
-    </FieldFormController>
-  );
+  return <Select {...selectProps} />;
 };
 
 export default AddressSelect;

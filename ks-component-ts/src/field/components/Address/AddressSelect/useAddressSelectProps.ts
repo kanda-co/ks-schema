@@ -52,39 +52,38 @@ export default function useAddressSelectProps(
    */
   const handleChange = useCallback(
     (e) => {
-      // const id = parseInt(e.target.value, 10);
-      //
-      // selectedRef.current = e.target.value;
-      //
-      // const address = addresses && (addresses[id] as AddressApiResponseAddress);
-      //
-      // if (!address) return;
-      //
-      // setValue(
-      //   `${prefix}.building_number`,
-      //   address?.buildingNumber || address?.subBuildingNumber || undefined
-      // );
-      // setValue(
-      //   `${prefix}.building_name`,
-      //   address?.buildingName || address?.subBuildingName || undefined
-      // );
-      // setValue(
-      //   `${prefix}.line_1`,
-      //   address?.line1 || address?.formattedAddress[0]
-      // );
-      // setValue(
-      //   `${prefix}.line_2`,
-      //   address?.line2 ||
-      //     address?.formattedAddress[1] ||
-      //     address?.locality ||
-      //     null
-      // );
-      // setValue(`${prefix}.city`, address?.townOrCity);
-      // setValue(`${prefix}.county`, address?.county);
-      // setValue(`${prefix}.country`, address?.country);
-      // setValue(`${prefix}.postcode`, apiPostcode);
-      //
-      // postCodeRef.current = apiPostcode;
+      const id = parseInt(e.target.value, 10);
+
+      selectedRef.current = e.target.value;
+
+      const address = addresses && (addresses[id] as AddressApiResponseAddress);
+
+      if (!address) return;
+
+      setValue(
+        `${prefix}.building_number`,
+        address?.buildingNumber || address?.subBuildingNumber || undefined
+      );
+      setValue(
+        `${prefix}.building_name`,
+        address?.buildingName || address?.subBuildingName || undefined
+      );
+      setValue(
+        `${prefix}.line_1`,
+        address?.line1 || address?.formatted_address[0]
+      );
+      setValue(
+        `${prefix}.line_2`,
+        address?.line2 ||
+          address?.formatted_address[1] ||
+          address?.locality ||
+          null
+      );
+      setValue(`${prefix}.city`, address?.townOrCity);
+      setValue(`${prefix}.county`, address?.county);
+      setValue(`${prefix}.country`, address?.country);
+
+      postCodeRef.current = apiPostcode;
     },
     [addresses, apiPostcode, prefix, setValue]
   );
