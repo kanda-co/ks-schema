@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import useAddressSelectProps from "./useAddressSelectProps";
 import { AddressApiData } from "~/field/components/Address/types";
 import FieldFormController from "~/field/components/FieldFormController";
-import Select, { SelectProps } from "../../Select";
+import { Uncontrolled as Select, type SelectProps } from "../../Select";
 
 export interface AddressSelectProps {
   /**

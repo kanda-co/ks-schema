@@ -33,6 +33,8 @@ export default function useAddressSelectProps(
     ? postcodeName.split(".").slice(0, -1).join(".")
     : null;
 
+  console.log("prefixprefixprefixprefixprefixprefix", prefix);
+
   const name = `${prefix}.selected`;
 
   const { setValue } = useFormContext();
@@ -52,6 +54,8 @@ export default function useAddressSelectProps(
    */
   const handleChange = useCallback(
     (e) => {
+      console.log("prefixprefixprefixprefixprefixprefix", prefix);
+      debugger;
       const id = parseInt(e.target.value, 10);
 
       selectedRef.current = e.target.value;
