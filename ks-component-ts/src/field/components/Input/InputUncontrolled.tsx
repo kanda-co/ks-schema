@@ -20,8 +20,8 @@ const InputUncontrolled: FunctionComponent<
   error,
   isLoading,
   icon,
-  iconColor,
-  iconVariant,
+  iconColor = "text-neutral-500",
+  iconVariant = "default",
   italic,
   autoSize = false,
   ...restProps
