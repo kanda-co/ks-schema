@@ -3086,7 +3086,7 @@ components:
           title: Were you told about any potential feed in tariffs, savings, returns or Renewable Heat incentive and do you understand that the actual amounts  you  receive, and your estimated returns/savings were based on varying factors including you own energy consumption and any returns/savings/payback periods are not linked to your repayments on this agreement.
           enum:
             - "Yes I understand"
-            - "No I don't understand"
+            - "No I do not understand"
         signature:
           type: object
           title: sat note customer signature
