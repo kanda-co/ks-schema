@@ -488,9 +488,9 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-  /api/company/{id}/identity:
+  /api/company/{id}/director-verification:
     get:
-      operationId: getCompanyIdentity
+      operationId: getCompanyDirectorVerification
       summary: get owner / director info from company
       tags:
         - Company
@@ -523,7 +523,7 @@ paths:
                 $ref: "#/components/schemas/Error"
 
     post:
-      operationId: postCompanyIdentity
+      operationId: postCompanyDirectorVerification
       summary: owner / director to submit ID verification
       tags:
         - Company
@@ -548,7 +548,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Identity"
+              $ref: "#/components/schemas/DirectorVerification"
       responses:
         200:
           description: submitted owner / director ID verification
@@ -2688,7 +2688,7 @@ components:
           $ref: "#/components/schemas/Address"
           title: trading address
 
-    Identity:
+    DirectorVerification:
       type: object
       required:
         - first_name
