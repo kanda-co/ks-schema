@@ -219,11 +219,7 @@ func renderField(name string, schema, root *openapi3.Schema, isArray bool) strin
 			// props.Required = true
 		}
 		if schema.ReadOnly {
-			validation.Disabled = &Validator{
-				Value:   schema.ReadOnly,
-				Message: fmt.Sprintf("%s input is read only or disabled", toTitle(propName)),
-			}
-			// props.ReadOnly = true
+		    return ""
 		}
 		if schema.Description != "" {
 			props.Placeholder = &schema.Description
@@ -339,11 +335,7 @@ func renderField(name string, schema, root *openapi3.Schema, isArray bool) strin
 			// props.Required = true
 		}
 		if property.Value.ReadOnly {
-			validation.Disabled = &Validator{
-				Value:   property.Value.ReadOnly,
-				Message: fmt.Sprintf("%s input is read only or disabled", toTitle(propName)),
-			}
-			// props.ReadOnly = true
+			continue
 		}
 		if property.Value.Description != "" {
 			props.Placeholder = &property.Value.Description
