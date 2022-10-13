@@ -488,9 +488,9 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-  /api/company/{id}/identity:
+  /api/company/{id}/director-verification:
     get:
-      operationId: getCompanyIdentity
+      operationId: getCompanyDirectorVerification
       summary: get owner / director info from company
       tags:
         - Company
@@ -523,7 +523,7 @@ paths:
                 $ref: "#/components/schemas/Error"
 
     post:
-      operationId: postCompanyIdentity
+      operationId: postCompanyDirectorVerification
       summary: owner / director to submit ID verification
       tags:
         - Company
@@ -548,7 +548,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Identity"
+              $ref: "#/components/schemas/DirectorVerification"
       responses:
         200:
           description: submitted owner / director ID verification
@@ -1127,6 +1127,42 @@ paths:
           schema:
             type: string
             minLength: 1
+      responses:
+        200:
+          description: got existing job with finance status set to paid
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/job/{id}/override:
+    post:
+      operationId: overrideJob
+      summary: >
+        kanda staff to override a job status and trigger comms to be sent (if applicable),
+        only allowed when job is applied for finance or financed.
+      tags:
+        - Job
+      parameters:
+        - name: id
+          in: path
+          description: job id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: job override to be applied to job
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/JobOverride"
       responses:
         200:
           description: got existing job with finance status set to paid
@@ -2652,7 +2688,7 @@ components:
           $ref: "#/components/schemas/Address"
           title: trading address
 
-    Identity:
+    DirectorVerification:
       type: object
       required:
         - first_name
@@ -2750,6 +2786,7 @@ components:
         - name
         - fee
         - enabled
+        - provider
       properties:
         name:
           type: string
@@ -2763,6 +2800,10 @@ components:
         enabled:
           type: boolean
           title: enabled?
+        provider:
+          type: string
+          title: provider
+          $ref: "#/components/schemas/FinanceProvider"
 
     Customer:
       type: object
@@ -3050,7 +3091,7 @@ components:
           title: Were you told about any potential feed in tariffs, savings, returns or Renewable Heat incentive and do you understand that the actual amounts  you  receive, and your estimated returns/savings were based on varying factors including you own energy consumption and any returns/savings/payback periods are not linked to your repayments on this agreement.
           enum:
             - "Yes I understand"
-            - "No I don't understand"
+            - "No I do not understand"
         signature:
           type: object
           title: sat note customer signature
@@ -3310,11 +3351,7 @@ components:
         provider:
           type: string
           title: provider name
-          enum:
-            - omni
-            - propensio
-          default: omni
-          readOnly: true
+          $ref: "#/components/schemas/FinanceProvider"
         xid:
           type: string
           title: external reference id
@@ -3363,6 +3400,11 @@ components:
           type: object
           title: employment details
           $ref: "#/components/schemas/EmploymentDetails"
+        additional_employment_details:
+          type: array
+          title: additional employment details
+          items:
+            $ref: "#/components/schemas/EmploymentDetails"
         finance_details:
           type: object
           title: finance details
@@ -3386,6 +3428,15 @@ components:
           $ref: "#/components/schemas/Metadata"
           title: metadata
           readOnly: true
+
+    FinanceProvider:
+      type: string
+      title: provider name
+      enum:
+        - omni
+        - propensio
+      default: omni
+      readOnly: true
 
     BankAccount:
       type: object
@@ -3494,12 +3545,12 @@ components:
           title: residential status
           enum:
             - tenant
-            - council tenant
-            - living with parents
+            - council_tenant
+            - living_with_parents
             - owner
-            - owner without mortgage
+            - owner_without_mortgage
             - lodger
-            - armed forces
+            - armed_forces
         monthly_rent_amount:
           type: object
           title: monthly rent amount
@@ -3529,6 +3580,12 @@ components:
         - main_occupation
         - months_employed
       properties:
+        employed_type:
+          type: string
+          title: employed type
+          enum:
+            - "full_time"
+            - "part_time"
         employer_name:
           type: string
           title: employer name
@@ -3552,6 +3609,12 @@ components:
         - type_of_business
         - months_self_employed
       properties:
+        self_employed_type:
+          type: string
+          title: self employed type
+          enum:
+            - "full_time"
+            - "part_time"
         business_name:
           type: string
           title: business name
@@ -3581,9 +3644,9 @@ components:
             - benefits
             - maintenance
             - disabled
-            - full-time carer
+            - fulltime_carer
             - homemaker
-            - permanent dla
+            - permanent_dla
             - other
 
     EmploymentDetails:
@@ -3591,7 +3654,6 @@ components:
       required:
         - employment_status
         - gross_annual_income
-        - household_annual_income
       properties:
         employment_status:
           type: string
@@ -3677,6 +3739,11 @@ components:
           type: object
           title: employment details
           $ref: "#/components/schemas/EmploymentDetails"
+        additional_employment_details:
+          type: array
+          title: additional employment details
+          items:
+            $ref: "#/components/schemas/EmploymentDetails"
         finance_details:
           type: object
           title: finance details
@@ -3692,11 +3759,32 @@ components:
           enum:
             - "yes"
             - "no"
+        incomes:
+          type: array
+          title: incomes
+          items:
+            $ref: "#/components/schemas/Income"
         expenditures:
           type: array
           title: expenditures
           items:
             $ref: "#/components/schemas/Expenditure"
+
+    Income:
+      type: object
+      title: income
+      properties:
+        income_type:
+          type: string
+          enum:
+            - "benefits"
+            - "other_sources_of_income"
+            - "pensions"
+            - "earning_after_tax"
+        monthly_amount:
+          type: object
+          title: monthly amount
+          $ref: "#/components/schemas/Money"
 
     Expenditure:
       type: object
@@ -3705,10 +3793,10 @@ components:
         expenditure_type:
           type: string
           enum:
-            - "credit card"
+            - "credit_card"
             - "clothes"
-            - "council tax and bills"
-            - "child support agency"
+            - "council_tax_and_bills"
+            - "child_support_agency"
             - "healthcare"
             - "holidays"
         monthly_amount:
@@ -3900,6 +3988,21 @@ components:
           type: string
           title: source
           readOnly: true
+
+    JobOverride:
+      type: object
+      title: job override
+      required:
+        - action
+      properties:
+        action:
+          type: string
+          title: action
+          enum:
+            - "mark_job_as_pending"
+            - "mark_job_as_accepted"
+            - "mark_job_as_declined"
+            - "mark_job_as_cancelled"
 
     Error:
       type: object
