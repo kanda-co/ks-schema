@@ -15,19 +15,19 @@ qa:
 production:
 	$(eval ENV := "production")
 
-clean-frontend: 
+clean-frontend:
 	@echo Cleaning frontend client built artefact...
 	rm -rf dist/ frontend/generated
 	rm -rf ks-component-ts/dist ks-component-ts/src/generated
 
-clean-backend: 
+clean-backend:
 	@echo Cleaning built artefact...
 	rm -rf pkg/schema/*.gen.go
 
 clean: clean-frontend clean-backend
 
 gen-frontend:
-	@echo Code generation and build for frontend 
+	@echo Code generation and build for frontend
 	# npx openapi-typescript-codegen --input schema.yaml --output frontend/generated --client axios
 	npx openapi-io-ts -i schema.yaml -o frontend/generated
 	npx prettier --write frontend/generated
@@ -64,9 +64,9 @@ widget:
 ts-widget:
 	@echo Generating TS React Field components, validators from schema...
 	rm -rf ks-component-ts/src/generated
-	mkdir -p ks-component-ts/src/generated/widget
-	npx openapi-io-ts -i schema.yaml -o ks-component-ts/src/generated
-	npx prettier --write ks-component-ts/src/generated
+	mkdir -p ks-component-ts/src/generated/widget ks-frontend-services/src/generated/widget
+	npx openapi-io-ts -i schema.yaml -o ks-frontend-services/src/generated
+	npx prettier --write ks-frontend-services/src/generated
 	go run ./cmd/ts-form/main.go -in schema.yaml > ks-component-ts/src/generated/widget/index.tsx
 	echo "import Widget from './widget';" >> ks-component-ts/src/generated/index.ts
 	echo "import { servers } from './servers';" >> ks-component-ts/src/generated/index.ts
