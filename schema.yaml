@@ -2786,6 +2786,7 @@ components:
         - name
         - fee
         - enabled
+        - provider
       properties:
         name:
           type: string
@@ -2799,6 +2800,10 @@ components:
         enabled:
           type: boolean
           title: enabled?
+        provider:
+          type: string
+          title: provider
+          $ref: "#/components/schemas/FinanceProvider"
 
     Customer:
       type: object
@@ -3346,11 +3351,7 @@ components:
         provider:
           type: string
           title: provider name
-          enum:
-            - omni
-            - propensio
-          default: omni
-          readOnly: true
+          $ref: "#/components/schemas/FinanceProvider"
         xid:
           type: string
           title: external reference id
@@ -3427,6 +3428,15 @@ components:
           $ref: "#/components/schemas/Metadata"
           title: metadata
           readOnly: true
+
+    FinanceProvider:
+      type: string
+      title: provider name
+      enum:
+        - omni
+        - propensio
+      default: omni
+      readOnly: true
 
     BankAccount:
       type: object
