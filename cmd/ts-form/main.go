@@ -587,7 +587,7 @@ export function %s(props: FieldProps["%s"]) {
 			<Field.%s
 				%s
 				{...props}
-				name="%s"
+				name={props.name || '%s'}
 			/>
 		</Field.Validator>
 	);
@@ -629,7 +629,7 @@ export function %s(props: FieldProps["%s"]) {
 				%s
 				options={%v}
 				{...props}
-				name="%s"
+				name={props.name || '%s'}
 			/>
 		</Field.Validator>
 	);
