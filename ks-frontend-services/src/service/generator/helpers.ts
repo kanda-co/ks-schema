@@ -53,7 +53,7 @@ function formatServiceMethod(
  */
 export function formatServiceDefinitionLine(operationKey: string): string {
   const operationName = getOperationName(operationKey);
-  const methods = operations[operationKey](() => {});
+  const methods = (operations as StringIndexedObject)[operationKey](() => {});
 
   const methodKey = `${operationName}Methods`;
 
