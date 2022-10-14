@@ -1,6 +1,6 @@
 {
   "name": "@kanda-libs/ks-frontend-services",
-  "version": "0.0.72",
+  "version": "0.0.73",
   "license": "private",
   "scripts": {
     "generate-service-module": "./node_modules/.bin/ts-node ./src/service/generator/",
@@ -13,6 +13,7 @@
   ],
   "dependencies": {
     "@kanda-utils/library": "^0.1.16-beta-1",
+    "@openapi-io-ts/runtime": "^0.3.1",
     "@stripe/stripe-js": "^1.35.0",
     "append-query": "^2.1.1",
     "firebase": "^9.9.3",
