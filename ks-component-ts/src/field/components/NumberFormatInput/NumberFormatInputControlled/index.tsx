@@ -25,10 +25,10 @@ const NumberFormatInputControlled: FunctionComponent<NumberFormatInputControlled
         {...controlProps}
         render={({ field: { onChange, onBlur, value, ref } }) => (
           <NumberFormat
-            customInput={InputUncontrolled}
             getInputRef={ref}
+            customInput={InputUncontrolled}
             name={name}
-            value={valueFormatter(value)}
+            value={parseInt(value, 10)}
             onValueChange={(formatValue) => {
               if (onValueChange) {
                 onValueChange(formatValue, onChange);

@@ -1,7 +1,4 @@
 import Controlled from "./NumberFormatInputControlled";
-import withFieldFormController, {
-  type FieldFormControllerPropsWithoutChildren,
-} from "~/field/components/FieldFormController/withFieldFormController";
 import withFieldInfo from "../FieldInfo/withFieldInfo";
 import {
   type DefaultFormFieldProps,
@@ -13,12 +10,7 @@ const WithFieldInfo = withFieldInfo(Controlled);
 
 export { Controlled, WithFieldInfo };
 
-const NumberFormatInput = withFieldFormController(
-  WithFieldInfo,
-  null,
-  false,
-  true
-);
+const NumberFormatInput = WithFieldInfo;
 
 export type NumberFormatInputBaseProps =
   DefaultFormFieldProps<NumberFormatInputControlledProps>;
@@ -26,7 +18,6 @@ export type NumberFormatInputBaseProps =
 export type NumberFormatInputWithInfoProps =
   WrappedWithFieldInfoFormComponent<NumberFormatInputBaseProps>;
 
-export type NumberFormatInputProps =
-  FieldFormControllerPropsWithoutChildren<NumberFormatInputWithInfoProps>;
+export type NumberFormatInputProps = NumberFormatInputWithInfoProps;
 
 export default NumberFormatInput;
