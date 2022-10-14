@@ -64,9 +64,11 @@ widget:
 ts-widget:
 	@echo Generating TS React Field components, validators from schema...
 	rm -rf ks-component-ts/src/generated
-	mkdir -p ks-component-ts/src/generated/widget ks-frontend-services/src/generated/widget
-	npx openapi-io-ts -i schema.yaml -o ks-frontend-services/src/generated
-	npx prettier --write ks-frontend-services/src/generated
+	rm -rf ks-frontend-services/src/generated
+	mkdir -p ks-component-ts/src/generated/widget
+	npx openapi-io-ts -i schema.yaml -o ks-component-ts/src/generated
+	npx prettier --write ks-component-ts/src/generated
+	cp -r ks-component-ts/src/generated ks-frontend-services/src/generated
 	go run ./cmd/ts-form/main.go -in schema.yaml > ks-component-ts/src/generated/widget/index.tsx
 	echo "import Widget from './widget';" >> ks-component-ts/src/generated/index.ts
 	echo "import { servers } from './servers';" >> ks-component-ts/src/generated/index.ts

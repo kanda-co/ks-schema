@@ -4,3 +4,4 @@ app/node_modules/
 dist/
 **/yarn-error.log
 src/generated
+src/generated/**
