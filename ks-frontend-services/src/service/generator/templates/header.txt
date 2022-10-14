@@ -1,5 +1,5 @@
-import * as operations from '@kanda-libs/ks-schema/dist/operations';
-import { servers } from '@kanda-libs/ks-schema';
+import * as operations from '../generated/operations';
+import { servers } from '../generated/servers';
 import { requestFunctions } from '../helpers';
 
 const dns = {

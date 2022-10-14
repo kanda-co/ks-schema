@@ -20,6 +20,9 @@ const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 export default [
   bundle({
     plugins: [
+      typescriptPaths({
+        nonRelative: true,
+      }),
       typescript(),
       nodePolyfills(),
       resolve({
@@ -30,7 +33,6 @@ export default [
         extensions,
         include: ['src/**/*'],
       }),
-      typescriptPaths(),
       process.env.NODE_ENV === 'production' && uglify(),
     ],
     output: [

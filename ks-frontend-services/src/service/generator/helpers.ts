@@ -1,6 +1,6 @@
 import { StringIndexedObject } from '../../types';
 import { EXCLUDED_OPERATION_KEYS, SERVICE_BUILDER_TAG } from './constants';
-import * as operations from '@kanda-libs/ks-schema/dist/operations';
+import * as operations from '../../generated/operations';
 
 /**
  * Returns a string array of operation keys that we want to define services for.

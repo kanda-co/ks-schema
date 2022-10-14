@@ -1,4 +1,4 @@
-import * as operations from '@kanda-libs/ks-schema/dist/operations';
+import * as operations from 'generated/operations';
 import { StringIndexedObject } from './types';
 import fetch from './fetch';
 
