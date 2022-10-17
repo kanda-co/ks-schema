@@ -45,7 +45,7 @@ export default function useSubmit<T>(
         const result = formatResponse
           ? await handleResponse(response as Response)
           : response;
-        setData(result);
+        setData(result as T);
         return { data: result };
       } catch (e) {
         setError(e);

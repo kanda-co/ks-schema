@@ -1,6 +1,7 @@
-import * as operations from '../../generated/operations';
 import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
+import * as operations from '../../generated/operations';
+import * as externalServices from '../external';
 import {
   SERVICE_FILE_NAME,
   HEADER_FILE_NAME,
@@ -20,11 +21,15 @@ import {
 
 try {
   /**
+   * Add the external services to the file
+   */
+  let fileContents = "import * as externalServices from './external';\n";
+  /**
    * The header is stored in a template file to make changing imports etc easier
    * and more maintainable
    */
   const header = readFileSync(join(__dirname, HEADER_FILE_NAME), 'utf-8');
-  let fileContents = `${header}\n`;
+  fileContents += `${header}\n`;
 
   /**
    * This handles the actual definition of each service as a const. Example output:
@@ -53,7 +58,11 @@ try {
    * individual service can be imported and a 'services' object.
    */
   fileContents += [
-    formatAllServicesExport(operationKeys, 'const services = '),
+    formatAllServicesExport(
+      operationKeys,
+      'const services = ',
+      '...externalServices',
+    ),
     formatAllServicesExport(operationKeys, 'export '),
   ].join('\n\n');
 

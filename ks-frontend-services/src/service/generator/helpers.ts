@@ -80,6 +80,7 @@ export function formatServiceDefinitionLine(operationKey: string): string {
 export function formatAllServicesExport(
   operationKeys: string[],
   prefix: string,
+  extraImports = '',
 ): string {
   const formattedOperations = operationKeys.map((key) => {
     const operationName = getOperationName(key);
@@ -90,6 +91,10 @@ export function formatAllServicesExport(
   let formattedServicesObject = `${prefix}{\n`;
 
   formattedServicesObject += formattedOperations.join('\n');
+
+  if (extraImports) {
+    formattedServicesObject += `\n${extraImports}\n`;
+  }
 
   formattedServicesObject += '\n};';
 

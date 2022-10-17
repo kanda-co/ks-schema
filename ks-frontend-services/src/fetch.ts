@@ -34,7 +34,7 @@ interface FetchArgs {
   init?: RequestInit;
 }
 
-const originalFetch = fetch.bind(window);
+const originalFetch = () => fetch.bind(window);
 
 /**
  * Alter the fetch method so that it will automatically retry the request
@@ -50,7 +50,7 @@ const interceptedFetch = (
 ) => {
   const token = FirebaseAuthService?.auth?.currentUser?.accessToken;
 
-  return originalFetch
+  return originalFetch()
     .apply(window, [url, buildRequestHeaders(options, token), ...args])
     .then(async (data) => {
       if (data.status === 403) {
@@ -61,7 +61,7 @@ const interceptedFetch = (
 
           console.log('Token refreshed');
 
-          return originalFetch.apply(window, [
+          return originalFetch().apply(window, [
             url,
             buildRequestHeaders(options, newToken),
             ...args,
