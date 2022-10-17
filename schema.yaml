@@ -3577,6 +3577,8 @@ components:
             - living_with_parents
             - owner
             - owner_without_mortgage
+            - homeowner_shared_ownership
+            - homeowner_buy_to_let_living_elsewhere
             - lodger
             - armed_forces
         monthly_rent_amount:
@@ -3675,6 +3677,7 @@ components:
             - fulltime_carer
             - homemaker
             - permanent_dla
+            - student
             - other
 
     EmploymentDetails:
@@ -3809,6 +3812,14 @@ components:
             - "other_sources_of_income"
             - "pensions"
             - "earning_after_tax"
+        income_type_info:
+          type: string
+          title: income type info
+          enum:
+            - applicant
+            - household
+            - not_specified
+          default: applicant
         monthly_amount:
           type: object
           title: monthly amount
@@ -3901,94 +3912,6 @@ components:
           type: object
           $ref: "#/components/schemas/Metadata"
           title: metadata
-          readOnly: true
-
-    Event:
-      type: object
-      title: event
-      required:
-        - id
-        - rid
-        - cid
-        - oid
-        - resource
-        - action
-        - source
-        - result
-      properties:
-        id:
-          type: string
-          title: event id
-          readOnly: true
-        rid:
-          type: string
-          title: request id
-          readOnly: true
-        cid:
-          type: string
-          title: company id
-          readOnly: true
-        oid:
-          type: string
-          title: owner id
-          readOnly: true
-        aid:
-          type: string
-          title: author id
-          readOnly: true
-        source:
-          type: string
-          title: event source
-          enum:
-            - api
-            - kanda
-            - webhook
-          readOnly: true
-        action:
-          type: string
-          title: event action
-          readOnly: true
-        success:
-          type: boolean
-          title: success
-          readOnly: true
-        entity:
-          type: object
-          $ref: "#/components/schemas/Entity"
-          title: entity
-          readOnly: true
-        error:
-          type: object
-          title: event error
-          $ref: "#/components/schemas/Error"
-        metadata:
-          type: object
-          $ref: "#/components/schemas/Metadata"
-          title: metadata
-          readOnly: true
-
-    Entity:
-      type: object
-      title: entity
-      description: entity record
-      properties:
-        company:
-          $ref: "#/components/schemas/Company"
-          readOnly: true
-        credit:
-          $ref: "#/components/schemas/Credit"
-          readOnly: true
-        document:
-          $ref: "#/components/schemas/Document"
-          readOnly: true
-        job:
-          $ref: "#/components/schemas/Job"
-          readOnly: true
-        payment:
-          $ref: "#/components/schemas/Payment"
-          readOnly: true
-        subscription:
-          $ref: "#/components/schemas/Subscription"
           readOnly: true
 
     InfoValidationEmail:
