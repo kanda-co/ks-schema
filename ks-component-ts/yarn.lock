@@ -349,10 +349,10 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@kanda-libs/ks-design-library@^0.0.47":
-  version "0.0.47"
-  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-design-library/-/ks-design-library-0.0.47.tgz#838a8b0ed413987642742dfdb5ea54701e786e01"
-  integrity sha512-waepI5bvYkuNTqWpjj2204Bfrvbk10jM9bZPZRza8X9mLEJwLV7VFagWJ51XkW8P1qiB4THOOC+ll9qDJs6NGg==
+"@kanda-libs/ks-design-library@^0.0.49":
+  version "0.0.49"
+  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-design-library/-/ks-design-library-0.0.49.tgz#417b7ce10b6e153e12cdc2275ccdaa0f8c47fb8c"
+  integrity sha512-s+4a+ysTwcvgfSUzu6trnXmP14uX8pVa8Su7Iv0rOzT61ZebFXuNTEolWbhJHtAst23Xo8KnVc/35OFNNEjFjg==
   dependencies:
     "@types/lodash.set" "^4.3.7"
     "@types/react-helmet" "^6.1.5"

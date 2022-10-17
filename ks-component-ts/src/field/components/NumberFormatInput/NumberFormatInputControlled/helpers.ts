@@ -1,17 +1,17 @@
 import { NumberFormatValues } from "react-number-format";
 
 export const defaultOnValueChange = (
-  formatValue: NumberFormatValues,
+  numberFieldValue: NumberFormatValues,
   isNumericString: boolean,
   onChange: (...event: any[]) => void
 ) => {
   if (isNumericString) {
-    onChange(formatValue.value || null);
+    onChange(numberFieldValue.value || null);
     return;
   }
   onChange(
-    formatValue.floatValue || formatValue.floatValue === 0
-      ? formatValue.floatValue
+    numberFieldValue.floatValue || numberFieldValue.floatValue === 0
+      ? numberFieldValue.floatValue
       : null
   );
 };

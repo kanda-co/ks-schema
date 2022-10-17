@@ -4,8 +4,6 @@ import { type NumberFormatInputControlledProps } from "~/field/components/Number
 import { formatValue, onValueChange } from "./helpers";
 import { NumberFormatValues } from "react-number-format";
 
-export interface Props {}
-
 const SortCodeInputControlled: FunctionComponent<NumberFormatInputControlledProps> =
   function (props) {
     return (

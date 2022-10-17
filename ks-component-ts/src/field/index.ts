@@ -16,6 +16,9 @@ import DatePickerInput, {
   type DatePickerInputProps,
 } from "~/field/components/DatePickerInput";
 import FingerprintBooleanInput from "~/field/components/FingerprintBooleanInput";
+import NumberInput, {
+  type NumberInputProps,
+} from "~/field/components/NumberInput";
 import Select, { type SelectProps } from "~/field/components/Select";
 import RadioSelect, {
   type RadioSelectProps,
@@ -33,6 +36,7 @@ const Field = {
   Address,
   Validator,
   Input,
+  NumberInput,
   UncontrolledInput,
   PasswordInput,
   BooleanInput,
@@ -60,4 +64,5 @@ export interface FieldProps {
   NumberFormatInput: NumberFormatInputProps;
   Postcode: PostcodeProps;
   BuildFinancePlan: BuildFinancePlanProps;
+  NumberInput: NumberInputProps;
 }

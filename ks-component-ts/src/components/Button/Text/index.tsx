@@ -1,6 +1,11 @@
 import React, { FunctionComponent } from "react";
-import { Icon, SkeletonLoader } from "@kanda-libs/ks-design-library";
+import {
+  Icon,
+  SkeletonLoader,
+  PassConstants,
+} from "@kanda-libs/ks-design-library";
 import { StringIndexedObject } from "~/types";
+import constants from "./constants";
 
 export interface ButtonTextProps {
   /**
@@ -83,31 +88,29 @@ const ButtonText: FunctionComponent<ButtonTextProps> = function ({
   icon,
   iconProps = {},
   className,
-  // disabled,
   submit,
-  left,
-  isLoading,
+  left = false,
+  isLoading = false,
   append = null,
   prepend = null,
   ...restProps
 }) {
   return (
-    // <Pass.Constants
-    //   constants={constants}
-    //   className={className}
-    //   variant={variant}
-    //   left={left}
-    //   iconSpacing={iconSpacing}
-    //   loading={isLoading}
-    //   size={size}
-    // >
-    <>
+    <PassConstants
+      constants={constants}
+      className={className as string}
+      variant={variant}
+      left={left}
+      iconSpacing={iconSpacing}
+      loading={isLoading}
+      size={size}
+    >
       {({
         classNames,
         getButtonProps,
         getIconProps,
         getSkeletonProps,
-      }: StringIndexedObject<any>) => (
+      }: StringIndexedObject) => (
         <button
           type={submit ? "submit" : "button"}
           {...getButtonProps(restProps)}
@@ -124,8 +127,7 @@ const ButtonText: FunctionComponent<ButtonTextProps> = function ({
           <SkeletonLoader {...getSkeletonProps({ isLoading })} />
         </button>
       )}
-    </>
-    // </Pass.Constants>
+    </PassConstants>
   );
 };
 

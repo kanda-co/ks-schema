@@ -28,7 +28,7 @@ const NumberFormatInputControlled: FunctionComponent<NumberFormatInputControlled
             getInputRef={ref}
             customInput={InputUncontrolled}
             name={name}
-            value={parseInt(value, 10)}
+            value={restProps.mask ? value : valueFormatter(value)}
             onValueChange={(formatValue) => {
               if (onValueChange) {
                 onValueChange(formatValue, onChange);

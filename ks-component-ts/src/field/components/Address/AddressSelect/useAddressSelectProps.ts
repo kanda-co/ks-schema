@@ -62,11 +62,11 @@ export default function useAddressSelectProps(
 
       setValue(
         `${prefix}.building_number`,
-        address?.buildingNumber || address?.subBuildingNumber || undefined
+        address?.building_number || address?.sub_building_number || undefined
       );
       setValue(
         `${prefix}.building_name`,
-        address?.buildingName || address?.subBuildingName || undefined
+        address?.building_name || address?.sub_building_name || undefined
       );
       setValue(
         `${prefix}.line_1`,
@@ -79,7 +79,7 @@ export default function useAddressSelectProps(
           address?.locality ||
           null
       );
-      setValue(`${prefix}.city`, address?.townOrCity);
+      setValue(`${prefix}.city`, address?.town_or_city);
       setValue(`${prefix}.county`, address?.county);
       setValue(`${prefix}.country`, address?.country);
 

@@ -1,12 +1,12 @@
 export interface AddressApiResponseAddress {
-  buildingNumber?: string;
-  subBuildingNumber?: string;
-  buildingName?: string;
-  subBuildingName?: string;
+  building_number?: string;
+  sub_building_number?: string;
+  building_name?: string;
+  sub_building_name?: string;
+  town_or_city?: string;
   line1?: string;
   line2?: string;
   locality?: string;
-  townOrCity?: string;
   county?: string;
   country?: string;
   formatted_address: string[];
