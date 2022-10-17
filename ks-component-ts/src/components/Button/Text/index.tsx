@@ -116,6 +116,10 @@ const ButtonText: FunctionComponent<ButtonTextProps> = function ({
           {...getButtonProps(restProps)}
         >
           <span className={classNames.container}>
+            <div>
+              <strong>{JSON.stringify(getButtonProps(restProps))}</strong>
+              <i>{JSON.stringify(restProps)}</i>
+            </div>
             {prepend}
             <span className={classNames.content}>
               {label || children}

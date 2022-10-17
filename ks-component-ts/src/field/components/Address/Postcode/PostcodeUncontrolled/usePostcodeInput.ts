@@ -18,7 +18,7 @@ export type PostcodeInputArgs = Omit<
 
 export interface PostcodeInputHook
   extends Omit<PostcodeProps, "data" | "error" | "isValidating" | "callback"> {
-  warning?: string | null;
+  error?: string;
 }
 
 export default function usePostcodeInput({
@@ -46,9 +46,9 @@ export default function usePostcodeInput({
 
   const [toSearch, setToSearch] = useState(null);
 
-  const warning = apiError
+  const error = apiError
     ? "This postcode returned no results - you'll have to enter your address manually"
-    : null;
+    : "";
 
   /**
    * Effect passes fetched data back through callback
@@ -103,6 +103,6 @@ export default function usePostcodeInput({
   return {
     ...restProps,
     name,
-    warning,
+    error,
   };
 }
