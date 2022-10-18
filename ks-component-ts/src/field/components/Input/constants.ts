@@ -7,7 +7,7 @@ export const CLASS_NAMES = {
   },
   iconContainer: {
     base: "flex pointer-events-none h-full justify-center items-center my-auto",
-    iconVariant: {
+    "@iconVariant": {
       default: "pl-4",
       dark: "min-w-10 bg-neutral-200 icon-stroke-md",
       search: "pl-4 pr-3",

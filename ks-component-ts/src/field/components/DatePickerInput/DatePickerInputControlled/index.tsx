@@ -13,9 +13,9 @@ const DatePickerInputControlled: FunctionComponent<DatePickerInputControlledProp
   function ({ symbol = "£", currencyDecimal = 100, ...props }) {
     return (
       <NumberFormatInputControlled
+        {...props}
         icon="calendar"
         placeholder="DD / MM / YYYY"
-        {...props}
         formatValue={formatValue}
         format="## / ## / ####"
         mask={["D", "D", "M", "M", "Y", "Y", "Y", "Y"]}
