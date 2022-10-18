@@ -119,7 +119,7 @@ func getKandaFormWidget(schema *openapi3.Schema) string {
 	case "boolean":
 		widget = "BooleanInput"
 	case "number", "integer", "float", "double":
-		widget = "NumberFormatInput"
+		widget = "NumberInput"
 	}
 	if schema.Type == "string" && schema.Format == "date" {
 		widget = "DatePickerInput"
