@@ -1,9 +1,7 @@
 import { createGetter } from './helpers';
 import { RequestFunction } from '@openapi-io-ts/runtime';
 
-// TODO: Proper API key from environment and not hardcoded
-// TODO: Deactivate this key
-const API_KEY = '-D4UfWF1v0SsPM1npts9gg36950';
+export const API_KEY = process.env.REACT_APP_GET_ADDRESS_API_KEY || '';
 
 const BASE_URL = 'https://api.getAddress.io';
 

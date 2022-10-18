@@ -12,7 +12,6 @@
     "dist"
   ],
   "dependencies": {
-    "@kanda-utils/library": "^0.1.16-beta-1",
     "@openapi-io-ts/runtime": "^0.3.1",
     "@stripe/stripe-js": "^1.35.0",
     "append-query": "^2.1.1",
