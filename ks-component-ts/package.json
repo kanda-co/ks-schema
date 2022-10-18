@@ -1,6 +1,6 @@
 {
   "name": "@kanda-libs/ks-component-ts",
-  "version": "0.1.55-test",
+  "version": "0.1.55-test2",
   "description": "Kanda form components library",
   "main": "dist/index.cjs.js",
   "source": "src/index.ts",
