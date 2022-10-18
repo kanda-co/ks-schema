@@ -10,6 +10,8 @@ export {
   MultiStepFormRouter,
 } from "./components/MultiStepForm";
 
+export { makeIsAllowed } from "./field/helpers";
+
 export { type FieldProps };
 
 export * from "./components";
