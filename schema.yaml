@@ -3833,6 +3833,8 @@ components:
         expenditure_type:
           type: string
           enum:
+            - "mortgage"
+            - "rent"
             - "credit_card"
             - "clothes"
             - "council_tax_and_bills"
