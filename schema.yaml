@@ -943,6 +943,34 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/job/{id}/unarchive:
+    post:
+      operationId: unarchiveJob
+      summary: unarchive existing already archived job
+      tags:
+        - Job
+      parameters:
+        - name: id
+          in: path
+          description: job id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: unarchived existing already archived job
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/job/{id}/apply:
     post:
       operationId: applyJob
