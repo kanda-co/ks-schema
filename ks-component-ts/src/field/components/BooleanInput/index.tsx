@@ -1,45 +1,27 @@
-import React, { FunctionComponent } from "react";
-import { Controller } from "react-hook-form";
-import Uncontrolled, {
-  type BooleanFieldProps,
-} from "./BooleanInputUncontrolled";
-import { type ExtendControllerProps } from "~/field/types";
+import Uncontrolled from "./BooleanInputUncontrolled";
+import Controlled from "./BooleanInputControlled";
 
-export { Uncontrolled };
+import withFieldInfo from "../FieldInfo/withFieldInfo";
 
-const BooleanInput: FunctionComponent<
-  BooleanFieldProps & ExtendControllerProps
-> = function ({
-  name,
-  control,
-  rules,
-  controlProps = {},
-  handle,
-  isLoading,
-  ...restProps
-}) {
-  return (
-    <Controller
-      control={control}
-      rules={rules}
-      {...controlProps}
-      name={name as string}
-      render={({ field: { onChange, onBlur, value, ref } }) => (
-        <Uncontrolled
-          handle={handle}
-          name={name}
-          defaultChecked={value}
-          forwardRef={ref}
-          onChange={() => {
-            onChange(!value);
-          }}
-          onBlur={onBlur}
-          isLoading={isLoading}
-          {...restProps}
-        />
-      )}
-    ></Controller>
-  );
-};
+export { Uncontrolled, Controlled };
+
+import {
+  type DefaultFormFieldProps,
+  type WrappedWithFieldInfoFormComponent,
+} from "~/field/types";
+import { type BooleanInputControlledProps } from "~/field/components/BooleanInput/BooleanInputControlled";
+import { FunctionComponent } from "react";
+
+const WithFieldInfo = withFieldInfo(Controlled as FunctionComponent);
+
+const BooleanInput = WithFieldInfo;
+
+export type BooleanInputBaseProps =
+  DefaultFormFieldProps<BooleanInputControlledProps>;
+
+export type BooleanInputWithInfoProps =
+  WrappedWithFieldInfoFormComponent<BooleanInputBaseProps>;
+
+export type BooleanInputProps = BooleanInputWithInfoProps;
 
 export default BooleanInput;
