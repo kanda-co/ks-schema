@@ -651,7 +651,7 @@ export const %sArrayInputValidation = %v;
 
 export function %sArrayInput(props: any) {
 	return (
-		<Field.Array.Input name="%s" index={props.index || 0}>
+		<Field.Array.Input name={props.name || '%s'} index={props.index || 0}>
 			<Field.Validator validation={%sArrayInputValidation}>
 				<Field.%s
 					%s
@@ -694,7 +694,7 @@ export const %sArraySelectValidation = %v;
 
 export function %sArraySelect(props: any) {
 	return (
-		<Field.Array.Input name="%s" index={props.index || 0}>
+		<Field.Array.Input name={props.name || '%s'} index={props.index || 0}>
 			<Field.Validator validation={%sArraySelectValidation}>
 				<Field.%s
 					%s
