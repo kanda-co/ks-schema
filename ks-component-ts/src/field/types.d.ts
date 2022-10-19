@@ -122,3 +122,7 @@ export interface ValidationProps {
   validationConditions?: ValidationConditions;
   validationErrors?: ValidationErrors;
 }
+
+export type ValidatedFieldProps<T> = {
+  nested?: boolean;
+} & T;

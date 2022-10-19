@@ -66,3 +66,5 @@ export interface FieldProps {
   BuildFinancePlan: BuildFinancePlanProps;
   NumberInput: NumberInputProps;
 }
+
+export type { ValidatedFieldProps } from "./types";

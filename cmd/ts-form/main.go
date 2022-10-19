@@ -59,7 +59,7 @@ func main() {
 	fmt.Println(`
 import React from "react";
 // @ts-ignore
-import Field, { type FieldProps } from "~/field";`)
+import Field, { type FieldProps, type ValidatedFieldProps } from "~/field";`)
 	for name, ref := range doc.Components.Schemas {
 		// write to individual module for Schema Form Fields
 
@@ -573,9 +573,9 @@ func inputField(type_, prefix, name string, props Props, validation Validation) 
 	return fmt.Sprintf(`
 export const %sValidation = %v;
 
-export function %s(props: FieldProps["%s"]) {
+export function %s(props: ValidatedFieldProps<FieldProps["%s"]>) {
 	return (
-		<Field.Validator validation={%sValidation}>
+		<Field.Validator validation={%sValidation} nested={props.nested}>
 			<Field.%s
 				%s
 				{...props}
@@ -614,9 +614,9 @@ func selectField(
 	return fmt.Sprintf(`
 export const %sValidation = %v;
 
-export function %s(props: FieldProps["%s"]) {
+export function %s(props: ValidatedFieldProps<FieldProps["%s"]>) {
 	return (
-		<Field.Validator validation={%sValidation}>
+		<Field.Validator validation={%sValidation} nested={props.nested}>
 			<Field.%s
 				%s
 				options={%v}
@@ -652,7 +652,7 @@ export const %sArrayInputValidation = %v;
 export function %sArrayInput(props: any) {
 	return (
 		<Field.Array.Input name={props.name || '%s'} index={props.index || 0}>
-			<Field.Validator validation={%sArrayInputValidation}>
+			<Field.Validator validation={%sArrayInputValidation} nested={props.nested}>
 				<Field.%s
 					%s
 					{...props}
@@ -695,7 +695,7 @@ export const %sArraySelectValidation = %v;
 export function %sArraySelect(props: any) {
 	return (
 		<Field.Array.Input name={props.name || '%s'} index={props.index || 0}>
-			<Field.Validator validation={%sArraySelectValidation}>
+			<Field.Validator validation={%sArraySelectValidation} nested={props.nested}>
 				<Field.%s
 					%s
 					options={%v}
