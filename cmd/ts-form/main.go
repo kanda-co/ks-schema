@@ -169,21 +169,37 @@ func renderModule(name string, schema *openapi3.Schema) (string, string) {
 	moduleDef := strings.Join(moduleDefs, "\n\n")
 
 	for _, md := range moduleDefs {
-		if !strings.HasPrefix(md, "export function ") {
-			continue
+	    isTsConst := strings.Contains(md, "export const")
+
+	 	if isTsConst {
+	 	    exports = append(
+                exports,
+                strings.Split(
+                    strings.Replace(md, "export const ", "", 1),
+                    "=",
+                )[0],
+            )
+            continue
 		}
+
 		exports = append(
-			exports,
-			strings.Split(
-				strings.Replace(md, "export function ", "", 1),
-				"(",
-			)[0],
-		)
+            exports,
+            strings.Split(
+                strings.Replace(md, "export function ", "", 1),
+                "(",
+            )[0],
+        )
 	}
 
-	defaultExports := strings.Join(exports, ",\n")
+	defaultExports := []string{}
 
-	return moduleDef, defaultExports
+	for _, export := range exports {
+	    if export != "" {
+	        defaultExports = append(defaultExports, export)
+        }
+	}
+
+	return moduleDef, strings.Join(defaultExports, ",\n")
 }
 
 func renderDefaultExports(defaultExports []string) string {
