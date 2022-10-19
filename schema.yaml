@@ -276,6 +276,33 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/session:
+    put:
+      operationId: infoSession
+      summary: request a new session token for use in checkout
+      tags:
+        - InfoAuth
+      requestBody:
+        description: request a new session token from given resource id and custom code
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InfoSession"
+      responses:
+        200:
+          description: requested a new session token from given resource id and custom code
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoSession"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/info/claim-account:
     put:
       operationId: infoClaimAccount
@@ -2193,6 +2220,18 @@ components:
           type: string
           title: continue url
           format: uri
+
+    InfoSession:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+          title: resource id
+        custom_token:
+          type: string
+          title: custom token used for sign in exchange
 
     InfoIP:
       type: object
