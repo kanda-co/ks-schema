@@ -29,7 +29,7 @@ import BuildFinancePlan, {
 } from "~/field/components/BuildFinancePlan";
 import Postcode, {
   type PostcodeProps,
-} from "~/field/components/Address/Postcode";
+} from "~/field/components/Address/AddressPostcode";
 import Address from "~/field/components/Address";
 
 const Field = {

@@ -4,7 +4,7 @@ import Input from "~/field/components/Input";
 import usePostcodeInput from "./usePostcodeInput";
 import { DefaultFormFieldProps, FieldInfoWrapperProps } from "~/field/types";
 
-const PostcodeUncontrolled: FunctionComponent<
+const AddressPostcodeUncontrolled: FunctionComponent<
   DefaultFormFieldProps<PostcodeProps> & FieldInfoWrapperProps
 > = function (props) {
   const containerProps = usePostcodeInput(props);
@@ -12,4 +12,4 @@ const PostcodeUncontrolled: FunctionComponent<
   return <Input {...containerProps} />;
 };
 
-export default PostcodeUncontrolled;
+export default AddressPostcodeUncontrolled;

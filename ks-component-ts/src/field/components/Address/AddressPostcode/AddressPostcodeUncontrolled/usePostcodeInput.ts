@@ -1,14 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { useDebounce } from "use-debounce";
 import { useWatch } from "react-hook-form";
-import {
-  DEBOUNCE_INTERVAL,
-  NO_ADDRESSES,
-} from "field/components/Address/Postcode/PostcodeUncontrolled/constants";
-import {
-  validatePostcode,
-  checkPostcodesMatch,
-} from "field/components/Address/Postcode/PostcodeUncontrolled/helpers";
+import { DEBOUNCE_INTERVAL, NO_ADDRESSES } from "./constants";
+import { validatePostcode, checkPostcodesMatch } from "./helpers";
 import type { PostcodeProps } from "~/field/components/Address/types";
 
 export type PostcodeInputArgs = Omit<

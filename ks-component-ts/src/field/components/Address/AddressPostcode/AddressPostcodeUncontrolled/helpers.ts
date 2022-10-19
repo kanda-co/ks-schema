@@ -1,7 +1,4 @@
-import {
-  POST_CODE_REGEX,
-  NO_ADDRESS_FOUND_LABEL,
-} from "field/components/Address/Postcode/PostcodeUncontrolled/constants";
+import { POST_CODE_REGEX, NO_ADDRESS_FOUND_LABEL } from "./constants";
 import {
   AddressApiData,
   AddressApiResponseAddress,

@@ -1,5 +1,5 @@
 import Select from "./AddressSelect";
-import Postcode from "./Postcode";
+import Postcode from "./AddressPostcode";
 
 export default {
   Select,
