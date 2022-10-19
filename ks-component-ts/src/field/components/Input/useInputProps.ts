@@ -52,7 +52,7 @@ export default function useInputProps(
     iconContainer: clsx(
       CLASS_NAMES.iconContainer.base,
       iconVariant &&
-        CLASS_NAMES.iconContainer.iconVariant[
+        CLASS_NAMES.iconContainer["@iconVariant"][
           iconVariant as "default" | "dark" | "search"
         ]
     ),

@@ -62,9 +62,13 @@ export function createRollupConfig(options, callback) {
           { src: "src/styles/fonts", dest: "dist" },
         ],
       }),
+      // Generate widget types
+      // execute(
+      //   "./node_modules/.bin/dts-bundle-generator -o dist/widget.d.ts src/generated/widget/index.tsx"
+      // ),
       // Generate index.d.ts file
       execute(
-        "./node_modules/.bin/dts-bundle-generator -o dist/index.d.ts src/index.ts"
+        "./node_modules/.bin/dts-bundle-generator --external-inlines=./generated -o dist/index.d.ts src/index.ts"
       ),
     ].filter(Boolean),
   };

@@ -1,13 +1,12 @@
 {
   "compilerOptions": {
     "sourceMap": true,
-    "module": "es2015",
+    "module": "esnext",
     "target": "es2018",
     "moduleResolution": "node",
     "outDir": "./dist",
     "jsx": "react",
     "skipLibCheck": true,
-    "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["dom", "dom.iterable", "esnext"],
     "strict": true,

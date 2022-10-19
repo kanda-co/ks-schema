@@ -1,8 +1,11 @@
 import Controlled from "./SortCodeInputControlled";
 import withFieldFormController from "~/field/components/FieldFormController/withFieldFormController";
+import withFieldInfo from "~/field/components/FieldInfo/withFieldInfo";
 
-export { Controlled };
+const WithInfo = withFieldInfo(Controlled);
 
-const SortCodeInput = withFieldFormController(Controlled);
+export { Controlled, WithInfo };
+
+const SortCodeInput = withFieldFormController(WithInfo);
 
 export default SortCodeInput;

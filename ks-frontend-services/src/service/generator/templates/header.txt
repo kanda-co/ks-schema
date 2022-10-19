@@ -1,0 +1,12 @@
+import * as operations from '../generated/operations';
+import { servers } from '../generated/servers';
+import { requestFunctions } from '../helpers';
+
+const dns = {
+  production: servers[0],
+  qa: servers[1],
+  dev: servers[2],
+};
+
+const server = dns[process.env.REACT_APP_ENV || 'dev'];
+const serverFunctions = requestFunctions(server);

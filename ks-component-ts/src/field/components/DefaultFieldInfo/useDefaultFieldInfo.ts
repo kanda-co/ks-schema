@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { useClasses } from "@kanda-libs/ks-design-library";
 import useFormTheme from "~/hooks/useFormTheme";
 import { DefaultWrapperContainerProps } from "~/field/types";
 import { CLASS_NAMES } from "./constants";
@@ -14,11 +14,13 @@ interface BaseClasses {
   baseSkeletonWrapper?: string;
 }
 
+interface ClassNames {
+  container: string;
+  content: string;
+}
+
 interface Hook {
-  classNames: {
-    container: string;
-    content: string;
-  };
+  classNames: ClassNames;
   errorText: string | undefined;
 }
 
@@ -34,22 +36,22 @@ export default function useDefaultFieldInfo(
 
   const width = autoWidth ? "w-auto" : "w-full";
 
-  const classNames = {
-    container: clsx(
-      baseClasses.baseContainer,
+  const classNames = useClasses(baseClasses, {
+    container: [
+      ".baseContainer",
       "field-wrapper",
       error && "field-error",
       isLoading && "field-loading",
       className,
-      width
-    ),
-    content: clsx(baseClasses.baseContent, width),
-  };
+      width,
+    ],
+    content: [".baseContent", width],
+  });
 
   const errorText = typeof error === "string" ? error : error?.message;
 
   return {
-    classNames,
+    classNames: classNames as ClassNames,
     errorText,
   };
 }

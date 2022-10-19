@@ -10,7 +10,7 @@ const RadioButton = forwardRef<JSX.Element, HandleProps>(
         isLoading={isLoading}
         {...SKELETONS.radiobutton}
         afterLoading={
-          <React.Fragment>
+          <>
             <input
               {...restProps}
               ref={ref as ForwardedRef<HTMLInputElement>}
@@ -22,7 +22,7 @@ const RadioButton = forwardRef<JSX.Element, HandleProps>(
             <label htmlFor={id || name} className={CLASS_NAMES.label}>
               <div className={CLASS_NAMES.icon} />
             </label>
-          </React.Fragment>
+          </>
         }
       />
     </div>

@@ -6,14 +6,14 @@ import {
   useFormState,
 } from "react-hook-form";
 import { getError } from "~/field/helpers";
-import {
+import type {
   ExtendedRegisterReturn,
   FieldFormControllerChildrenArgs,
   FieldFormControllerCommonArgs,
   FieldFormControllerOptions,
 } from "./types";
-import { StringIndexedObject } from "~/types";
-import { ErrorMessage, ValidationConditions } from "~/field/types";
+import type { StringIndexedObject } from "~/types";
+import type { ErrorMessage, ValidationConditions } from "~/field/types";
 
 export type FieldFormControllerProps<T> = {
   register?: boolean;

@@ -1,6 +1,6 @@
 {
   "name": "@kanda-libs/ks-component-ts",
-  "version": "0.0.7",
+  "version": "0.1.64",
   "description": "Kanda form components library",
   "main": "dist/index.cjs.js",
   "source": "src/index.ts",
@@ -35,6 +35,7 @@
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
     "@types/react-input-autosize": "^2.2.1",
+    "@types/react-slick": "^0.23.10",
     "@typescript-eslint/eslint-plugin": "^5.14.0",
     "@typescript-eslint/parser": "^5.14.0",
     "@vitejs/plugin-react": "^1.3.0",
@@ -48,6 +49,7 @@
     "eslint-plugin-react": "^7.29.3",
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
+    "esm": "^3.2.25",
     "lint-staged": "^12.3.5",
     "postcss": "^8.4.12",
     "postcss-100vh-fix": "^1.0.2",
@@ -98,14 +100,15 @@
   },
   "homepage": "https://github.com/kanda-co/ks-design-library#readme",
   "dependencies": {
-    "@kanda-libs/ks-design-library": "^0.0.47",
-    "@kanda-libs/ks-tailwind-config": "^0.0.3",
+    "@kanda-libs/ks-design-library": "^0.0.49",
+    "@kanda-libs/ks-tailwind-config": "^0.0.5",
     "@types/lodash.get": "^4.4.7",
     "lodash.get": "^4.4.2",
     "react-hook-form": "^7.35.0",
     "react-input-autosize": "^3.0.0",
     "react-loading-skeleton": "^3.1.0",
     "react-number-format": "^4.6.4",
+    "react-slick": "^0.29.0",
     "use-debounce": "^8.0.3"
   },
   "resolutions": {

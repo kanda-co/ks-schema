@@ -23,3 +23,21 @@ export const getError = (
 
   return null;
 };
+
+export interface MakeIsAllowedValue {
+  value: number;
+}
+
+export type MakeIsAllowedReturn = (value: MakeIsAllowedValue) => boolean;
+
+/**
+ * Creates helper function to check input validity
+ */
+export const makeIsAllowed =
+  (minValue: number, maxValue: number): MakeIsAllowedReturn =>
+  /**
+   * Check if value is on the range
+   */
+  ({ value }) => {
+    return value <= maxValue && value >= minValue;
+  };

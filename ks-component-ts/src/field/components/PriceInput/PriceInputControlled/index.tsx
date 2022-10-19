@@ -4,18 +4,18 @@ import { type NumberFormatInputControlledProps } from "~/field/components/Number
 import { formatValue, onValueChange } from "./helpers";
 import { NumberFormatValues } from "react-number-format";
 
-export interface Props {
+export interface PriceInputControlledProps {
   symbol?: string;
   currencyDecimal?: number;
 }
 
 const PriceInputControlled: FunctionComponent<
-  NumberFormatInputControlledProps & Props
+  NumberFormatInputControlledProps & PriceInputControlledProps
 > = function ({ symbol = "£", currencyDecimal = 100, ...props }) {
   return (
     <NumberFormatInputControlled
       {...props}
-      formatValue={(value) => formatValue(value as number)}
+      formatValue={(value) => formatValue(value as number, currencyDecimal)}
       placeholder={`${symbol}0.00`}
       prefix={symbol}
       thousandSeparator
