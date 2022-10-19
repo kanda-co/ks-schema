@@ -1204,6 +1204,15 @@ paths:
         only allowed when provider approved sat note and job status is finished and is financed
       tags:
         - Job
+      parameters:
+        - name: job_type
+          in: query
+          description: optional job type for clearing particular payouts
+          schema:
+            type: string
+            enum:
+              - standard_jobs
+              - solar_jobs
       responses:
         200:
           description: got existing jobs with finance status set to paid
