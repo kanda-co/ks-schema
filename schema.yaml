@@ -2212,6 +2212,7 @@ components:
         custom_token:
           type: string
           title: custom token
+          readOnly: true
         bearer_token:
           type: string
           title: bearer token
