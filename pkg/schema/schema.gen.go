@@ -1127,6 +1127,12 @@ type Subscription struct {
 // SubscriptionInterval defines model for Subscription.Interval.
 type SubscriptionInterval string
 
+// Tally defines model for Tally.
+type Tally struct {
+	Failure *string `json:"failure,omitempty"`
+	Id      string  `json:"id"`
+}
+
 // UserType defines model for UserType.
 type UserType struct {
 	DirectorInfo *DirectorInfo       `json:"director_info,omitempty"`
@@ -1466,6 +1472,9 @@ type ServerInterface interface {
 	// post new job
 	// (POST /api/job)
 	PostJob(ctx echo.Context) error
+	// kanda staff to approve all payouts for job, only allowed when provider approved sat note and job status is finished and is financed
+	// (POST /api/job/all/payouts)
+	PayoutsJob(ctx echo.Context) error
 	// delete existing job
 	// (DELETE /api/job/{id})
 	DeleteJob(ctx echo.Context, id string) error
@@ -2165,6 +2174,17 @@ func (w *ServerInterfaceWrapper) PostJob(ctx echo.Context) error {
 	return err
 }
 
+// PayoutsJob converts echo context to params.
+func (w *ServerInterfaceWrapper) PayoutsJob(ctx echo.Context) error {
+	var err error
+
+	ctx.Set(BearerAuthScopes, []string{""})
+
+	// Invoke the callback with all the unmarshalled arguments
+	err = w.Handler.PayoutsJob(ctx)
+	return err
+}
+
 // DeleteJob converts echo context to params.
 func (w *ServerInterfaceWrapper) DeleteJob(ctx echo.Context) error {
 	var err error
@@ -2809,6 +2829,7 @@ func RegisterHandlersWithBaseURL(router EchoRouter, si ServerInterface, baseURL 
 	router.PUT(baseURL+"/api/info/verify", wrapper.InfoVerify)
 	router.GET(baseURL+"/api/job", wrapper.GetJobs)
 	router.POST(baseURL+"/api/job", wrapper.PostJob)
+	router.POST(baseURL+"/api/job/all/payouts", wrapper.PayoutsJob)
 	router.DELETE(baseURL+"/api/job/:id", wrapper.DeleteJob)
 	router.GET(baseURL+"/api/job/:id", wrapper.GetJob)
 	router.PUT(baseURL+"/api/job/:id", wrapper.PutJob)
