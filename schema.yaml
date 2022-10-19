@@ -1169,6 +1169,31 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/job/all/payouts:
+    post:
+      operationId: payoutsJob
+      summary: >
+        kanda staff to approve all payouts for job,
+        only allowed when provider approved sat note and job status is finished and is financed
+      tags:
+        - Job
+      responses:
+        200:
+          description: got existing jobs with finance status set to paid
+          content:
+            application/json:
+              schema:
+                type: array
+                title: tallies
+                items:
+                  $ref: "#/components/schemas/Tally"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/job/{id}/override:
     post:
       operationId: overrideJob
@@ -4031,6 +4056,19 @@ components:
             - "mark_job_as_accepted"
             - "mark_job_as_declined"
             - "mark_job_as_cancelled"
+
+    Tally:
+      type: object
+      title: tally result
+      required:
+        - id
+      properties:
+        id:
+          type: string
+          title: record id
+        failure:
+          type: string
+          title: failure reason
 
     Error:
       type: object
