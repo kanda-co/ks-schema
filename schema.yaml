@@ -2225,10 +2225,14 @@ components:
       type: object
       required:
         - id
+        - code
       properties:
         id:
           type: string
           title: resource id
+        code:
+          type: string
+          title: code
         custom_token:
           type: string
           title: custom token used for sign in exchange
