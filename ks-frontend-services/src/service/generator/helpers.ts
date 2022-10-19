@@ -100,3 +100,23 @@ export function formatAllServicesExport(
 
   return formattedServicesObject;
 }
+
+/**
+ * Formats the external services declarations
+ */
+export const formatExternalServicesDeclarations = (
+  externalServices: StringIndexedObject,
+): string =>
+  Object.keys(externalServices)
+    .map((key) => `const ${key} = externalServices['${key}'];`)
+    .join('\n') + '\n\n';
+
+/**
+ * Formats the external services exports
+ */
+export const formatExternalServicesExport = (
+  externalServices: StringIndexedObject,
+): string =>
+  Object.keys(externalServices)
+    .map((key) => `  ${key},`)
+    .join('\n');

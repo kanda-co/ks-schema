@@ -9,6 +9,8 @@ import {
 } from './constants';
 import {
   formatAllServicesExport,
+  formatExternalServicesDeclarations,
+  formatExternalServicesExport,
   formatServiceDefinitionLine,
   getOperationKeys,
 } from './helpers';
@@ -50,6 +52,11 @@ try {
     join(__dirname, SERVICE_COMMENT_FILE_NAME),
     'utf-8',
   );
+
+  const externalServicesExport = formatExternalServicesExport(externalServices);
+
+  fileContents += formatExternalServicesDeclarations(externalServices);
+
   fileContents += serviceComment;
 
   /**
@@ -61,9 +68,9 @@ try {
     formatAllServicesExport(
       operationKeys,
       'const services = ',
-      '...externalServices',
+      externalServicesExport,
     ),
-    formatAllServicesExport(operationKeys, 'export '),
+    formatAllServicesExport(operationKeys, 'export ', externalServicesExport),
   ].join('\n\n');
 
   fileContents += '\n\nexport default services;';
