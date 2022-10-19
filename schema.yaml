@@ -283,7 +283,7 @@ paths:
       tags:
         - InfoAuth
       requestBody:
-        description: request a new session token from given resource id and custom code
+        description: request a new session token from given code
         required: true
         content:
           application/json:
@@ -291,7 +291,7 @@ paths:
               $ref: "#/components/schemas/InfoSession"
       responses:
         200:
-          description: requested a new session token from given resource id and custom code
+          description: requested a new session token from given code
           content:
             application/json:
               schema:
@@ -2234,12 +2234,8 @@ components:
     InfoSession:
       type: object
       required:
-        - id
         - code
       properties:
-        id:
-          type: string
-          title: resource id
         code:
           type: string
           title: code
