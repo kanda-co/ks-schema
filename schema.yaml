@@ -1211,8 +1211,8 @@ paths:
           schema:
             type: string
             enum:
-              - standard_jobs
-              - solar_jobs
+              - standard
+              - solar
       responses:
         200:
           description: got existing jobs with finance status set to paid
@@ -2212,6 +2212,7 @@ components:
         custom_token:
           type: string
           title: custom token
+          readOnly: true
         bearer_token:
           type: string
           title: bearer token
