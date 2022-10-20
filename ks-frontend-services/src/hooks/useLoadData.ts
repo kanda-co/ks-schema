@@ -12,7 +12,9 @@ const useLoadData = (
   const method = service?.method || (() => () => {});
   const fetcher = () => method(...arg)().then((res) => handleResponse(res));
 
-  return useSWRImmutable(service?.key, fetcher, {
+  const key = service?.key;
+
+  return useSWRImmutable(key, fetcher, {
     ...options,
   });
 };
