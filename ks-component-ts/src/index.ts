@@ -8,6 +8,7 @@ export { Field, FormTheme, FormWrapper };
 export {
   MultiStepFormContext,
   MultiStepFormRouter,
+  MultiStepFormIndicator,
 } from "./components/MultiStepForm";
 
 export { makeIsAllowed } from "./field/helpers";

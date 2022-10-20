@@ -3,6 +3,7 @@ import { Context } from "./Context";
 import useMultiStepValue from "./useMultiStepValue";
 import type { MultiStepFormProps } from "./types";
 import Router from "./Router";
+import Indicator from "./Indicator";
 
 const MultiStepForm: FunctionComponent<MultiStepFormProps> = function ({
   children,
@@ -27,6 +28,10 @@ const MultiStepForm: FunctionComponent<MultiStepFormProps> = function ({
   return <Context.Provider value={value}>{children}</Context.Provider>;
 };
 
-export { Context as MultiStepFormContext, Router as MultiStepFormRouter };
+export {
+  Context as MultiStepFormContext,
+  Router as MultiStepFormRouter,
+  Indicator as MultiStepFormIndicator,
+};
 
 export default MultiStepForm;
