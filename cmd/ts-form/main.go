@@ -54,6 +54,7 @@ func main() {
 	ctx := context.Background()
 	loader := openapi3.Loader{Context: ctx}
 	doc, _ := loader.LoadFromFile(*in)
+	defaultExports := []string{}
 	_ = doc.Validate(ctx)
 	fmt.Println(`
 import React from "react";
@@ -61,8 +62,14 @@ import React from "react";
 import Field, { type FieldProps } from "~/field";`)
 	for name, ref := range doc.Components.Schemas {
 		// write to individual module for Schema Form Fields
-		fmt.Println(renderModule(name, ref.Value))
+
+		var moduleDef, exports = renderModule(name, ref.Value)
+
+		fmt.Println(moduleDef)
+		defaultExports = append(defaultExports, exports)
 	}
+
+	fmt.Println(renderDefaultExports(defaultExports))
 }
 
 func toPascal(in string) string {
@@ -112,9 +119,9 @@ func getKandaFormWidget(schema *openapi3.Schema) string {
 	case "boolean":
 		widget = "BooleanInput"
 	case "number", "integer", "float", "double":
-		widget = "NumberFormatInput"
+		widget = "NumberInput"
 	}
-	if schema.Type == "string" && schema.Format == "date" {
+	if schema.Type == "string" && schema.Format == "date-time" {
 		widget = "DatePickerInput"
 	}
 	if len(schema.Enum) > 0 {
@@ -129,14 +136,15 @@ func getKandaFormWidget(schema *openapi3.Schema) string {
 	}
 	// FIXME: once we have the components, remove these lines
 	switch widget {
-	case "Postcode", "File", "BooleanInput", "Company":
+	case "File", "BooleanInput", "Company":
 		widget = "Input"
 	}
 	return widget
 }
 
-func renderModule(name string, schema *openapi3.Schema) string {
+func renderModule(name string, schema *openapi3.Schema) (string, string) {
 	moduleDefs := []string{}
+	exports := []string{}
 	components := renderField(name, schema, nil, false)
 	r := regexp.MustCompile(`export function (?P<Form>.*?)\(`)
 	formFields := r.FindAllStringSubmatch(components, -1)
@@ -158,7 +166,35 @@ func renderModule(name string, schema *openapi3.Schema) string {
 	moduleDefs = append(moduleDefs, components)
 	sort.Strings(moduleDefs)
 	moduleDefs = unique(strings.Split(strings.Join(moduleDefs, "\n\n"), "\n\n"))
-	return strings.Join(moduleDefs, "\n\n")
+	moduleDef := strings.Join(moduleDefs, "\n\n")
+
+	for _, md := range moduleDefs {
+		if !strings.HasPrefix(md, "export function ") {
+			continue
+		}
+		exports = append(
+			exports,
+			strings.Split(
+				strings.Replace(md, "export function ", "", 1),
+				"(",
+			)[0],
+		)
+	}
+
+	defaultExports := strings.Join(exports, ",\n")
+
+	return moduleDef, defaultExports
+}
+
+func renderDefaultExports(defaultExports []string) string {
+	exports := []string{"\n"}
+
+	exports = append(exports, "const Widget = {")
+	exports = append(exports, strings.Join(defaultExports, ",\n"))
+	exports = append(exports, "};\n\n")
+	exports = append(exports, "export default Widget;")
+
+	return strings.Join(exports, "")
 }
 
 func renderField(name string, schema, root *openapi3.Schema, isArray bool) string {
@@ -183,11 +219,7 @@ func renderField(name string, schema, root *openapi3.Schema, isArray bool) strin
 			// props.Required = true
 		}
 		if schema.ReadOnly {
-			validation.Disabled = &Validator{
-				Value:   schema.ReadOnly,
-				Message: fmt.Sprintf("%s input is read only or disabled", toTitle(propName)),
-			}
-			// props.ReadOnly = true
+		    return ""
 		}
 		if schema.Description != "" {
 			props.Placeholder = &schema.Description
@@ -303,11 +335,7 @@ func renderField(name string, schema, root *openapi3.Schema, isArray bool) strin
 			// props.Required = true
 		}
 		if property.Value.ReadOnly {
-			validation.Disabled = &Validator{
-				Value:   property.Value.ReadOnly,
-				Message: fmt.Sprintf("%s input is read only or disabled", toTitle(propName)),
-			}
-			// props.ReadOnly = true
+			continue
 		}
 		if property.Value.Description != "" {
 			props.Placeholder = &property.Value.Description
@@ -538,6 +566,10 @@ export function %sArrayWrapper({ children, initialData = null }: any) {
 
 func inputField(type_, prefix, name string, props Props, validation Validation) string {
 	b, _ := json.Marshal(validation)
+	pathName := name
+	if prefix != "" {
+		pathName = toPath(prefix + " " + name)
+	}
 	return fmt.Sprintf(`
 export const %sValidation = %v;
 
@@ -547,6 +579,7 @@ export function %s(props: FieldProps["%s"]) {
 			<Field.%s
 				%s
 				{...props}
+				name={props.name || '%s'}
 			/>
 		</Field.Validator>
 	);
@@ -558,11 +591,16 @@ export function %s(props: FieldProps["%s"]) {
 		toPascal(prefix+" "+name),
 		type_,
 		propsToAttributes(props),
+		pathName,
 	)
 }
 
 func selectField(
 	type_, prefix, name string, props Props, validation Validation, options []interface{}) string {
+	pathName := name
+	if prefix != "" {
+		pathName = toPath(prefix + " " + name)
+	}
 	b, _ := json.Marshal(validation)
 	optsM := make([]Option, 0)
 	for _, opt := range options {
@@ -583,6 +621,7 @@ export function %s(props: FieldProps["%s"]) {
 				%s
 				options={%v}
 				{...props}
+				name={props.name || '%s'}
 			/>
 		</Field.Validator>
 	);
@@ -595,6 +634,7 @@ export function %s(props: FieldProps["%s"]) {
 		type_,
 		propsToAttributes(props),
 		string(opts),
+		pathName,
 	)
 }
 
@@ -611,7 +651,7 @@ export const %sArrayInputValidation = %v;
 
 export function %sArrayInput(props: any) {
 	return (
-		<Field.Array.Input name="%s">
+		<Field.Array.Input name={props.name || '%s'} index={props.index || 0}>
 			<Field.Validator validation={%sArrayInputValidation}>
 				<Field.%s
 					%s
@@ -654,7 +694,7 @@ export const %sArraySelectValidation = %v;
 
 export function %sArraySelect(props: any) {
 	return (
-		<Field.Array.Input name="%s">
+		<Field.Array.Input name={props.name || '%s'} index={props.index || 0}>
 			<Field.Validator validation={%sArraySelectValidation}>
 				<Field.%s
 					%s

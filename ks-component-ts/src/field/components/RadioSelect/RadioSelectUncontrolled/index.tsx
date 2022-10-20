@@ -11,7 +11,7 @@ const RadioSelectUncontrolled: FunctionComponent<
 
   return (
     <div className={classNames.container}>
-      {options.map((option) => (
+      {options?.map((option) => (
         <Option
           fieldName={name as string}
           value={option.value}

@@ -1,5 +1,8 @@
 import Validator from "./components/Validator";
-import Input, { type InputProps } from "./components/Input";
+import Input, {
+  Uncontrolled as UncontrolledInput,
+  type InputProps,
+} from "./components/Input";
 import PasswordInput from "./components/PasswordInput";
 import BooleanInput from "~/field/components/BooleanInput";
 import TextAreaInput from "~/field/components/TextAreaInput";
@@ -13,15 +16,28 @@ import DatePickerInput, {
   type DatePickerInputProps,
 } from "~/field/components/DatePickerInput";
 import FingerprintBooleanInput from "~/field/components/FingerprintBooleanInput";
+import NumberInput, {
+  type NumberInputProps,
+} from "~/field/components/NumberInput";
 import Select, { type SelectProps } from "~/field/components/Select";
 import RadioSelect, {
   type RadioSelectProps,
 } from "~/field/components/RadioSelect";
 import Array from "~/field/components/Array";
+import BuildFinancePlan, {
+  type BuildFinancePlanProps,
+} from "~/field/components/BuildFinancePlan";
+import Postcode, {
+  type PostcodeProps,
+} from "~/field/components/Address/Postcode";
+import Address from "~/field/components/Address";
 
-export default {
+const Field = {
+  Address,
   Validator,
   Input,
+  NumberInput,
+  UncontrolledInput,
   PasswordInput,
   BooleanInput,
   TextAreaInput,
@@ -31,10 +47,14 @@ export default {
   PriceInput,
   DatePickerInput,
   FingerprintBooleanInput,
+  Postcode,
   Select,
   RadioSelect,
   Array,
+  BuildFinancePlan,
 };
+
+export default Field;
 
 export interface FieldProps {
   Input: InputProps;
@@ -42,4 +62,7 @@ export interface FieldProps {
   RadioSelect: RadioSelectProps;
   DatePickerInput: DatePickerInputProps;
   NumberFormatInput: NumberFormatInputProps;
+  Postcode: PostcodeProps;
+  BuildFinancePlan: BuildFinancePlanProps;
+  NumberInput: NumberInputProps;
 }

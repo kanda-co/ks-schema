@@ -1,6 +1,7 @@
 import { NumberFormatValues } from "react-number-format";
 
-export const formatValue = (value: number | null) => value;
+export const formatValue = (value: number | null, currencyDecimal: number) =>
+  (value as number) / currencyDecimal;
 
 export const onValueChange = (
   event: NumberFormatValues,

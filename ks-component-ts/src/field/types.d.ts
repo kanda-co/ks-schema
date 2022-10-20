@@ -20,7 +20,7 @@ export interface ErrorMessage {
 }
 
 interface DefaultWrapperContainerProps {
-  children: JSX.Element | JSX.Element[];
+  children?: JSX.Element | JSX.Element[];
   error?: ErrorMessage | string;
   className?: string;
   isLoading?: boolean;
@@ -28,7 +28,7 @@ interface DefaultWrapperContainerProps {
 }
 
 export interface WarningProps {
-  warning?: string | JSX.Element | JSX.Element[];
+  warning?: string | JSX.Element | JSX.Element[] | null;
 }
 
 export interface LabelProps {

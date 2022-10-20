@@ -276,6 +276,33 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/session:
+    put:
+      operationId: infoSession
+      summary: request a new session token for use in checkout
+      tags:
+        - InfoAuth
+      requestBody:
+        description: request a new session token from given code
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InfoSession"
+      responses:
+        200:
+          description: requested a new session token from given code
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoSession"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/info/claim-account:
     put:
       operationId: infoClaimAccount
@@ -1177,6 +1204,15 @@ paths:
         only allowed when provider approved sat note and job status is finished and is financed
       tags:
         - Job
+      parameters:
+        - name: job_type
+          in: query
+          description: optional job type for clearing particular payouts
+          schema:
+            type: string
+            enum:
+              - standard
+              - solar
       responses:
         200:
           description: got existing jobs with finance status set to paid
@@ -2176,6 +2212,7 @@ components:
         custom_token:
           type: string
           title: custom token
+          readOnly: true
         bearer_token:
           type: string
           title: bearer token
@@ -2193,6 +2230,18 @@ components:
           type: string
           title: continue url
           format: uri
+
+    InfoSession:
+      type: object
+      required:
+        - code
+      properties:
+        code:
+          type: string
+          title: code
+        custom_token:
+          type: string
+          title: custom token used for sign in exchange
 
     InfoIP:
       type: object

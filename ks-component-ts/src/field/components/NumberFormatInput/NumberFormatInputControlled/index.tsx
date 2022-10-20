@@ -13,7 +13,7 @@ const NumberFormatInputControlled: FunctionComponent<NumberFormatInputControlled
     isLoading,
     isNumericString = false,
     rules = {},
-    formatValue = (value: string) => value,
+    formatValue: valueFormatter = (value: string) => value,
     onValueChange,
     ...restProps
   }) {
@@ -25,11 +25,10 @@ const NumberFormatInputControlled: FunctionComponent<NumberFormatInputControlled
         {...controlProps}
         render={({ field: { onChange, onBlur, value, ref } }) => (
           <NumberFormat
-            customInput={InputUncontrolled}
             getInputRef={ref}
-            ref={ref}
+            customInput={InputUncontrolled}
             name={name}
-            value={formatValue(value)}
+            value={restProps.mask ? value : valueFormatter(value)}
             onValueChange={(formatValue) => {
               if (onValueChange) {
                 onValueChange(formatValue, onChange);

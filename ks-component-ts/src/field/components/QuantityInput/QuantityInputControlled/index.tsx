@@ -4,12 +4,12 @@ import { type NumberFormatInputControlledProps } from "~/field/components/Number
 import { formatValue, onValueChange } from "./helpers";
 import { NumberFormatValues } from "react-number-format";
 
-export interface Props {
+export interface QuantityInputControlledProps {
   quantityDecimal?: number;
 }
 
 const QuantityInputControlled: FunctionComponent<
-  NumberFormatInputControlledProps & Props
+  NumberFormatInputControlledProps & QuantityInputControlledProps
 > = function ({ quantityDecimal = 100, ...props }) {
   return (
     <NumberFormatInputControlled

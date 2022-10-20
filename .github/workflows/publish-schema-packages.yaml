@@ -60,6 +60,14 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_SECRET }}
 
+      - name: "install yarn deps + build frontend services"
+        run: cd ks-frontend-services && yarn && yarn build
+
+      - name: "publish frontend services npm package"
+        run: cd ks-frontend-services && yarn publish --patch
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_SECRET }}
+
       - uses: act10ns/slack@v1
         with:
           status: ${{ job.status }}
