@@ -3,7 +3,7 @@ import type { DropzoneProps } from "./types";
 import type { Accept } from "react-dropzone";
 import { Icon, Text } from "@kanda-libs/ks-design-library";
 import useDropzoneProps from "./useDropzoneProps";
-import Context from "./Context";
+import DropzoneContext from "components/Dropzone/DropzoneContext";
 import { ICON_PROPS } from "./constants";
 
 const Dropzone: FunctionComponent<DropzoneProps> = function ({
@@ -21,7 +21,7 @@ const Dropzone: FunctionComponent<DropzoneProps> = function ({
     });
 
   return (
-    <Context.Provider value={{ droppedFiles: [droppedFiles] }}>
+    <DropzoneContext.Provider value={{ droppedFiles: [droppedFiles] }}>
       <div {...parentDropZone.getRootProps()} className={className}>
         <input {...parentDropZone.getInputProps()} />
         {children}
@@ -33,7 +33,7 @@ const Dropzone: FunctionComponent<DropzoneProps> = function ({
           </div>
         </div>
       </div>
-    </Context.Provider>
+    </DropzoneContext.Provider>
   );
 };
 
