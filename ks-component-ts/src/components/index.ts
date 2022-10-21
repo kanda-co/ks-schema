@@ -5,5 +5,5 @@ export { default as FieldHandle } from "./Handle";
 export { default as MultiStepForm } from "./MultiStepForm";
 export { default as FormState } from "./FormState";
 export { default as Dropzone } from "./Dropzone";
-export { default as DropzoneContext } from "components/Dropzone/DropzoneContext";
-export { default as PasswordStrengthIndicator } from "components/Dropzone/PasswordStrengthIndicator";
+export { default as DropzoneContext } from "./Dropzone/DropzoneContext";
+export { default as PasswordStrengthIndicator } from "./PasswordStrengthIndicator";

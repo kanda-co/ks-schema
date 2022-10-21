@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.1.8 | MIT License | https://tailwindcss.com
+! tailwindcss v3.2.0 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -408,6 +408,12 @@ img,
 video {
   max-width: 100%;
   height: auto;
+}
+
+/* Make elements with the HTML hidden attribute stay hidden by default */
+
+[hidden] {
+  display: none;
 }
 
 @font-face {
@@ -943,6 +949,10 @@ video {
   margin-bottom: 12px;
 }
 
+.-mt-3 {
+  margin-top: -12px;
+}
+
 .mr-4 {
   margin-right: 16px;
 }
@@ -1082,6 +1092,10 @@ video {
   width: 33.333333%;
 }
 
+.w-16 {
+  width: 64px;
+}
+
 .w-3 {
   width: 12px;
 }
@@ -1168,6 +1182,10 @@ video {
 
 .flex-col {
   flex-direction: column;
+}
+
+.items-start {
+  align-items: flex-start;
 }
 
 .items-center {
@@ -1463,12 +1481,24 @@ video {
   text-align: center;
 }
 
+.text-right {
+  text-align: right;
+}
+
 .align-middle {
   vertical-align: middle;
 }
 
 .font-bold {
   font-weight: 700;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.lowercase {
+  text-transform: lowercase;
 }
 
 .italic {
@@ -2675,25 +2705,25 @@ Modified version of toast CSS to match designs
   color: rgb(195 207 223 / var(--tw-text-opacity));
 }
 
-input[type="checkbox"]:checked ~ .label-checked\:border-transparentinput[type="radio"]:checked ~ .label-checked\:border-transparent {
+input[type="checkbox"]:checked ~ .label-checked\:border-transparent {
   border-color: transparent;
 }
 
-input[type="checkbox"]:checked ~ .label-checked\:bg-turquoise-300input[type="radio"]:checked ~ .label-checked\:bg-turquoise-300 {
+input[type="checkbox"]:checked ~ .label-checked\:bg-turquoise-300 {
   --tw-bg-opacity: 1;
   background-color: rgb(39 222 191 / var(--tw-bg-opacity));
 }
 
 @media (min-width: 768px) {
+  .md\:mx-20 {
+    margin-left: 80px;
+    margin-right: 80px;
+  }
+
   .md\:text-style-g-em {
     font-weight: 600;
     font-size: 14px;
     line-height: 22px;
-  }
-
-  .md\:mx-20 {
-    margin-left: 80px;
-    margin-right: 80px;
   }
 
   .md\:min-w-20 {
