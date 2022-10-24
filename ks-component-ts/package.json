@@ -1,6 +1,6 @@
 {
   "name": "@kanda-libs/ks-component-ts",
-  "version": "0.1.105",
+  "version": "0.1.106",
   "description": "Kanda form components library",
   "main": "dist/index.cjs.js",
   "source": "src/index.ts",
@@ -100,7 +100,7 @@
   },
   "homepage": "https://github.com/kanda-co/ks-design-library#readme",
   "dependencies": {
-    "@kanda-libs/ks-design-library": "^0.0.62",
+    "@kanda-libs/ks-design-library": "^0.0.68",
     "@kanda-libs/ks-tailwind-config": "^0.0.5",
     "@types/lodash.get": "^4.4.7",
     "@types/react-dropzone": "^5.1.0",
