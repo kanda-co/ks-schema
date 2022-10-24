@@ -5,7 +5,7 @@ import useFooterButtonProps from "~/components/MultiStepForm/Footer/useFooterBut
 import { CLASS_NAMES } from "./constants";
 
 export interface FooterProps {
-  nextButton?: FunctionComponent;
+  nextButton?: JSX.Element;
   nextButtonProps?: StringIndexedObject;
   prevButtonProps?: StringIndexedObject;
 }
