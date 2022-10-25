@@ -9,8 +9,8 @@ interface LoadDataOptions
   shouldRetryOnError?: boolean;
 }
 
-const useLoadData = <T, V>(
-  service?: Service<T, V>,
+const useLoadData = <Value, Params, Body>(
+  service?: Service<Value, Params, Body>,
   options: LoadDataOptions = {},
   ...arg
 ) => {
@@ -19,7 +19,7 @@ const useLoadData = <T, V>(
 
   const key = service?.key;
 
-  return useSWRImmutable<T>(key, fetcher, {
+  return useSWRImmutable<Value>(key, fetcher, {
     ...options,
   });
 };

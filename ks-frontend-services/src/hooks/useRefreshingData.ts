@@ -4,8 +4,8 @@ import { PublicConfiguration } from 'swr/dist/types';
 import { handleResponse } from '../handlers';
 import { Service } from 'types';
 
-const useRefreshingData = <T, V>(
-  service: Service<T, V>,
+const useRefreshingData = <Value, Params, Body>(
+  service: Service<Value, Params, Body>,
   options: Pick<PublicConfiguration, 'revalidateOnMount' | 'refreshInterval'>,
   ...arg
 ) => {

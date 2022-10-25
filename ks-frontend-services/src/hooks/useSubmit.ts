@@ -10,8 +10,8 @@ import {
 } from '../types';
 import { handleResponse, Response } from '../handlers';
 
-export interface Hook<T, V> {
-  submit: ServiceSubmit<T, V>;
+export interface Hook<Value, Params, Body> {
+  submit: ServiceSubmit<Value, Params, Body>;
   error?: string;
   data?: StringIndexedObject;
   isSubmitting?: boolean;
@@ -22,10 +22,10 @@ export interface Hook<T, V> {
  * @param service ServiceMethod
  * @param formatResponse
  */
-export default function useSubmit<T, V>(
-  service: Service<T, V>,
+export default function useSubmit<Value, Params, Body>(
+  service: Service<Value, Params, Body>,
   formatResponse = true,
-): Hook<T, V> {
+): Hook<Value, Params, Body> {
   const [error, setError] = useState<string>();
   const [data, setData] = useState<StringIndexedObject>();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -34,7 +34,12 @@ export default function useSubmit<T, V>(
    * Calls the method and handles loading / error states
    */
   const submit = useCallback(
-    async (args: ServiceParams<V>): Promise<ServiceMethodReturnParams<T>> => {
+    async ({
+      body = {} as Body,
+      params = {} as Params,
+    }: Partial<ServiceParams<Params, Body>>): Promise<
+      ServiceMethodReturnParams<Value>
+    > => {
       if (!service || !service.method) {
         const errorLabel = 'No such method exists';
         setError(errorLabel);
@@ -44,9 +49,19 @@ export default function useSubmit<T, V>(
       setError(null);
       setIsSubmitting(true);
 
+      /**
+       * This is needed because both body and params are marked as required at
+       * the service level for each individual request interface. But some may
+       * have no params, body or both.
+       */
+      const args = {
+        body,
+        params,
+      };
+
       const method = service.method as unknown as (
-        args: ServiceParams<V>,
-      ) => ServiceMethodReturn<T>;
+        args: Partial<ServiceParams<Params, Body>>,
+      ) => ServiceMethodReturn<Value>;
 
       const response = formatResponse
         ? ((await method(args)) as unknown as Function)()
@@ -56,7 +71,7 @@ export default function useSubmit<T, V>(
         const result = formatResponse
           ? await handleResponse(response as Response)
           : response;
-        setData(result as T);
+        setData(result as Value);
         return { data: result };
       } catch (e) {
         setError(e);
@@ -69,7 +84,7 @@ export default function useSubmit<T, V>(
   );
 
   return {
-    submit: submit as unknown as ServiceSubmit<T, V>,
+    submit: submit as unknown as ServiceSubmit<Value, Params, Body>,
     error,
     data,
     isSubmitting,
