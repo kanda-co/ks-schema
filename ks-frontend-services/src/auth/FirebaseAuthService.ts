@@ -139,7 +139,6 @@ class FirebaseAuthService {
 
   signInWithCustomToken = async (token: string, redirect = true) => {
     await this.setPersistence();
-    const idToken = this.auth.currentUser.getIdToken(true);
     await signInWithCustomToken(this.auth, token);
 
     if (redirect) {
