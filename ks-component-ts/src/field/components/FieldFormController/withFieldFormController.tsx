@@ -9,7 +9,7 @@ import type {
 
 export type FieldFormControllerPropsWithoutChildren<T> = Omit<
   FieldFormControllerProps<T>,
-  "children"
+  "children" | "$$typeof"
 >;
 
 export default function withFieldFormController<T>(
