@@ -591,7 +591,7 @@ export const %sValidation = %v;
 
 export function %s(props: ValidatedFieldProps<FieldProps["%s"]>) {
 	return (
-		<Field.Validator validation={%sValidation} nested={props.nested}>
+		<Field.Validator validation={props.validation || %sValidation} nested={props.nested}>
 			<Field.%s
 				%s
 				{...props}
@@ -632,7 +632,7 @@ export const %sValidation = %v;
 
 export function %s(props: ValidatedFieldProps<FieldProps["%s"]>) {
 	return (
-		<Field.Validator validation={%sValidation} nested={props.nested}>
+		<Field.Validator validation={props.validation || %sValidation} nested={props.nested}>
 			<Field.%s
 				%s
 				options={%v}
@@ -668,7 +668,7 @@ export const %sArrayInputValidation = %v;
 export function %sArrayInput(props: any) {
 	return (
 		<Field.Array.Input name={props.name || '%s'} index={props.index || 0}>
-			<Field.Validator validation={%sArrayInputValidation} nested={props.nested}>
+			<Field.Validator validation={props.validation || %sArrayInputValidation} nested={props.nested}>
 				<Field.%s
 					%s
 					{...props}
@@ -711,7 +711,7 @@ export const %sArraySelectValidation = %v;
 export function %sArraySelect(props: any) {
 	return (
 		<Field.Array.Input name={props.name || '%s'} index={props.index || 0}>
-			<Field.Validator validation={%sArraySelectValidation} nested={props.nested}>
+			<Field.Validator validation={props.validation || %sArraySelectValidation} nested={props.nested}>
 				<Field.%s
 					%s
 					options={%v}
