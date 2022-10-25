@@ -1,4 +1,4 @@
-import Uncontrolled from "./BooleanInputUncontrolled";
+import Uncontrolled, { BooleanFieldProps } from "./BooleanInputUncontrolled";
 import Controlled from "./BooleanInputControlled";
 
 import withFieldInfo from "../FieldInfo/withFieldInfo";
@@ -12,7 +12,9 @@ import {
 import { type BooleanInputControlledProps } from "~/field/components/BooleanInput/BooleanInputControlled";
 import { FunctionComponent } from "react";
 
-const WithFieldInfo = withFieldInfo(Controlled as FunctionComponent);
+const WithFieldInfo = withFieldInfo(
+  Controlled as FunctionComponent<DefaultFormFieldProps<BooleanFieldProps>>
+);
 
 const BooleanInput = WithFieldInfo;
 

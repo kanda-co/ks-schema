@@ -6,6 +6,7 @@ export const FormThemeContext = createContext<Theme>(DEFAULT_THEME);
 
 export interface FormThemeProps {
   variant?: string;
+  children?: JSX.Element | JSX.Element[];
 }
 
 const FormTheme: FunctionComponent<FormThemeProps> = function ({
