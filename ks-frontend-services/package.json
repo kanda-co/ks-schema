@@ -1,6 +1,6 @@
 {
   "name": "@kanda-libs/ks-frontend-services",
-  "version": "0.0.89-ts-11",
+  "version": "0.0.89-ts-12",
   "license": "private",
   "scripts": {
     "generate-service-module": "./node_modules/.bin/ts-node ./src/service/generator/",
