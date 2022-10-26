@@ -8,7 +8,7 @@ interface Hook {
   isUserLoggedIn: boolean;
   isValidating: boolean;
   revalidate: () => Promise<void>;
-  logout: (redirect?: boolean) => void;
+  logout: (redirect?: boolean) => Promise<void>;
 }
 
 export default function useCurrentUser(): Hook {

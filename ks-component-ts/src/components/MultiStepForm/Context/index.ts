@@ -26,7 +26,7 @@ interface MultiStepFormContextValue {
   /**
    * Form data
    */
-  data?: StringIndexedObject;
+  data: StringIndexedObject;
   /**
    * Function to set specific step
    */

@@ -123,7 +123,7 @@ export interface ValidationProps {
   validationErrors?: ValidationErrors;
 }
 
-export type ValidatedFieldProps<T> = {
+export type ValidatedFieldProps<T> = T & {
   validation?: ValidationItems;
   nested?: boolean;
-} & T;
+};

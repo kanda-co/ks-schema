@@ -37,7 +37,7 @@ export interface Service<
 
 export interface ServiceMethodReturnParams<T> {
   data?: T;
-  error?: string;
+  error?: StringIndexedObject | string;
 }
 
 export type ServiceSubmit<

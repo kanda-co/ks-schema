@@ -18,7 +18,7 @@ const SelectUncontrolled: FunctionComponent<
 }) {
   const { options, classNames, currentValue, defaultValue, skeletonClasses } =
     useSelectUncontrolled(
-      name,
+      name as string,
       placeholder,
       initialOptions,
       isLoading,

@@ -10,7 +10,7 @@ export interface SelectUncontrolledProps {
   /**
    * Name of the input required for form to work
    */
-  name: string;
+  name?: string;
   /**
    * The HTML element ID.
    */

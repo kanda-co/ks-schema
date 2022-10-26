@@ -4,7 +4,9 @@ import Input, {
   type InputProps,
 } from "./components/Input";
 import PasswordInput from "./components/PasswordInput";
-import BooleanInput from "~/field/components/BooleanInput";
+import BooleanInput, {
+  BooleanInputProps,
+} from "~/field/components/BooleanInput";
 import TextAreaInput from "~/field/components/TextAreaInput";
 import NumberFormatInput, {
   type NumberFormatInputProps,
@@ -65,6 +67,7 @@ export interface FieldProps {
   Postcode: PostcodeProps;
   BuildFinancePlan: BuildFinancePlanProps;
   NumberInput: NumberInputProps;
+  BooleanInput: BooleanInputProps;
 }
 
 export type { ValidatedFieldProps } from "./types";

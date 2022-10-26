@@ -3,7 +3,8 @@ import { FormProvider } from "react-hook-form";
 
 export interface FormWrapperProps {
   form: any;
-  onSubmit: () => void;
+  onSubmit?: () => void;
+  children?: JSX.Element | JSX.Element[];
 }
 
 const FormWrapper: FunctionComponent<FormWrapperProps> = function ({

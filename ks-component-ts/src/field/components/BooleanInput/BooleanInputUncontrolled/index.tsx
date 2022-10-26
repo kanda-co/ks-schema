@@ -12,7 +12,7 @@ export interface BooleanFieldProps extends HandleProps {
   /**
    * type of handle
    */
-  handle?: HandleType;
+  handle?: string;
   /**
    * Field label
    */
