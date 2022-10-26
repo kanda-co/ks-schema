@@ -48,7 +48,7 @@ interface MultiStepFormContextValue {
    * Locked state for the buttons
    */
   lockButtons?: MutableRefObject<boolean>;
-  steps: number[];
+  steps: string[];
 }
 
 export const Context = createContext<MultiStepFormContextValue>({

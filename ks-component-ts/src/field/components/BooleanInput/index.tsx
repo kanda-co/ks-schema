@@ -7,7 +7,7 @@ export { Uncontrolled, Controlled };
 
 import {
   type DefaultFormFieldProps,
-  type WrappedWithFieldInfoFormComponent,
+  type WrappedWithFieldInfoFormComponentProps,
 } from "~/field/types";
 import { type BooleanInputControlledProps } from "~/field/components/BooleanInput/BooleanInputControlled";
 import { FunctionComponent } from "react";
@@ -22,7 +22,7 @@ export type BooleanInputBaseProps =
   DefaultFormFieldProps<BooleanInputControlledProps>;
 
 export type BooleanInputWithInfoProps =
-  WrappedWithFieldInfoFormComponent<BooleanInputBaseProps>;
+  WrappedWithFieldInfoFormComponentProps<BooleanInputBaseProps>;
 
 export type BooleanInputProps = BooleanInputWithInfoProps;
 

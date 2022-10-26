@@ -14,5 +14,5 @@ export interface RadioSelectUncontrolledProps {
   multiple?: boolean;
   inline?: boolean;
   variant?: RadioSelectVariant;
-  options: SelectOption[];
+  options?: SelectOption[];
 }

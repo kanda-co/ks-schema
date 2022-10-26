@@ -16,4 +16,5 @@ export type {
   ServiceParams,
   ServiceMethod,
   ServiceSubmit,
+  ServiceMethodReturnParams,
 } from './types';

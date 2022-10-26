@@ -6,7 +6,7 @@ import withFieldInfo from "~/field/components/FieldInfo/withFieldInfo";
 import { SelectUncontrolledProps } from "./types";
 import {
   type DefaultFormFieldProps,
-  type WrappedWithFieldInfoFormComponent,
+  type WrappedWithFieldInfoFormComponentProps,
 } from "~/field/types";
 
 const WithFieldInfo = withFieldInfo(Uncontrolled);
@@ -18,7 +18,7 @@ const Select = withFieldFormController(WithFieldInfo);
 export type SelectBaseProps = DefaultFormFieldProps<SelectUncontrolledProps>;
 
 export type SelectWithInfoProps =
-  WrappedWithFieldInfoFormComponent<SelectBaseProps>;
+  WrappedWithFieldInfoFormComponentProps<SelectBaseProps>;
 
 export type SelectProps =
   FieldFormControllerPropsWithoutChildren<SelectWithInfoProps>;

@@ -6,7 +6,9 @@ import withFieldFormController, {
 import {
   DefaultFormFieldProps,
   WrappedWithFieldInfoFormComponent,
+  WrappedWithFieldInfoFormComponentProps,
 } from "~/field/types";
+import { FunctionComponent } from "react";
 
 const WithFieldInfo = withFieldInfo(Uncontrolled);
 
@@ -17,7 +19,7 @@ const Input = withFieldFormController(WithFieldInfo);
 export type InputBaseProps = DefaultFormFieldProps<InputUncontrolledProps>;
 
 export type InputWithInfoProps =
-  WrappedWithFieldInfoFormComponent<InputBaseProps>;
+  WrappedWithFieldInfoFormComponentProps<InputBaseProps>;
 
 export type InputProps =
   FieldFormControllerPropsWithoutChildren<InputWithInfoProps>;

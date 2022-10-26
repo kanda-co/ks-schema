@@ -58,7 +58,7 @@ export type ValidError = string | ErrorMessage | undefined;
 /**
  * Shared props that all field components will have
  */
-export type DefaultFormFieldProps<T = {}> = {
+export type DefaultFormFieldProps<T> = {
   name?: string;
   id?: string;
   placeholder?: string;
@@ -71,13 +71,15 @@ export type DefaultFormFieldProps<T = {}> = {
   isLoading?: boolean;
 } & T;
 
-export type WrappedWithFieldInfoFormComponent<T = {}> =
-  ForwardRefExoticComponent<
-    PropsWithoutRef<DefaultFormFieldProps<T> & FieldInfoWrapperProps> &
-      RefAttributes<HTMLElement>
-  >;
+export type WrappedWithFieldInfoFormComponentProps<T> = DefaultFormFieldProps<
+  T & FieldInfoWrapperProps
+>;
 
-export type InputFunctionComponent<T = any> = FunctionComponent<
+export type WrappedWithFieldInfoFormComponent<T> = FunctionComponent<
+  WrappedWithFieldInfoFormComponentProps<T>
+>;
+
+export type InputFunctionComponent<T = StringIndexedObject> = FunctionComponent<
   DefaultFormFieldProps<T>
 >;
 

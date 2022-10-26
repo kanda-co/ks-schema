@@ -26,7 +26,7 @@ export interface StepsHook {
 }
 
 export default function useSteps(
-  steps: number[],
+  steps: string[],
   initialStepIndex: number,
   initialStepSafeIndex: number,
   addStepsToUrl: boolean

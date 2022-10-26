@@ -635,8 +635,8 @@ export function %s(props: ValidatedFieldProps<FieldProps["%s"]>) {
 		<Field.Validator validation={props.validation || %sValidation} nested={props.nested}>
 			<Field.%s
 				%s
-				options={%v}
 				{...props}
+				options={props.options || %v}
 				name={props.name || '%s'}
 			/>
 		</Field.Validator>
@@ -714,8 +714,8 @@ export function %sArraySelect(props: any) {
 			<Field.Validator validation={props.validation || %sArraySelectValidation} nested={props.nested}>
 				<Field.%s
 					%s
-					options={%v}
 					{...props}
+					options={props.options || %v}
 				/>
 			</Field.Validator>
 		</Field.Array.Input>

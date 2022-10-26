@@ -6,6 +6,7 @@ import type {
   DefaultFormFieldProps,
   InputFunctionComponent,
 } from "~/field/types";
+import { StringIndexedObject } from "~/types";
 
 export type FieldFormControllerPropsWithoutChildren<T> = Omit<
   FieldFormControllerProps<T>,

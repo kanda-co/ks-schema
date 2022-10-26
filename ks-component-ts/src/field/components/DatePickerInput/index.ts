@@ -7,7 +7,7 @@ import withFieldFormController, {
 import withFieldInfo from "../FieldInfo/withFieldInfo";
 import {
   DefaultFormFieldProps,
-  WrappedWithFieldInfoFormComponent,
+  WrappedWithFieldInfoFormComponentProps,
 } from "~/field/types";
 
 const WithFieldInfo = withFieldInfo(Controlled);
@@ -20,7 +20,7 @@ export type DatePickerInputBaseProps =
   DefaultFormFieldProps<DatePickerInputControlledProps>;
 
 export type DatePickerInputWithInfoProps =
-  WrappedWithFieldInfoFormComponent<DatePickerInputBaseProps>;
+  WrappedWithFieldInfoFormComponentProps<DatePickerInputBaseProps>;
 
 export type DatePickerInputProps =
   FieldFormControllerPropsWithoutChildren<DatePickerInputWithInfoProps>;
