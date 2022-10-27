@@ -64,7 +64,7 @@ export default function useSubmit<Value, Params, Body>(
       ) => ServiceMethodReturn<Value>;
 
       const response = formatResponse
-        ? ((await method(args)) as unknown as Function)()
+        ? await (method(args) as unknown as Function)()
         : await method(args);
 
       try {

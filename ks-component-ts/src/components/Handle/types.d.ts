@@ -1,6 +1,10 @@
-import { type ForwardRefExoticComponent, type RefAttributes } from "react";
+import {
+  type ForwardRefExoticComponent,
+  InputHTMLAttributes,
+  type RefAttributes,
+} from "react";
 
-export interface HandleProps {
+export interface HandleProps extends InputHTMLAttributes<HTMLInputElement> {
   /**
    * Name of the input required for form to work
    */

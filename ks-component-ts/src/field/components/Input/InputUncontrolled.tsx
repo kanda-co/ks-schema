@@ -1,10 +1,15 @@
-import React, { FunctionComponent } from "react";
+import React, {
+  FunctionComponent,
+  HTMLAttributes,
+  InputHTMLAttributes,
+} from "react";
 import { Icon, SkeletonLoader } from "@kanda-libs/ks-design-library";
 import AutosizeInput from "react-input-autosize";
 import { DefaultFormFieldProps } from "~/field/types";
 import useInputProps from "./useInputProps";
 
-export interface InputUncontrolledProps {
+export interface InputUncontrolledProps
+  extends InputHTMLAttributes<HTMLInputElement> {
   icon?: string;
   iconColor?: string;
   iconVariant?: string;

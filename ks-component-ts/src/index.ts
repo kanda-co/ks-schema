@@ -21,10 +21,7 @@ export * from "./components";
 export { Widget } from "./generated";
 
 export { default as FieldHandle } from "./components/Handle";
-export {
-  default as FieldHandle,
-  type HandleType,
-} from "./components/Handle/types";
+export { type HandleType } from "./components/Handle/types";
 
 export {
   useForm,

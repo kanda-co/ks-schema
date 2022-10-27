@@ -24,10 +24,9 @@ export default function withFieldInfo<T>(
     prepend,
     append,
     className,
+    forwardRef,
     ...restProps
   }) {
-    const ref = useRef();
-
     return (
       <FieldInfo
         id={id || name}
@@ -49,7 +48,7 @@ export default function withFieldInfo<T>(
             isLoading={isLoading}
             name={name}
             {...(restProps as WrappedFormComponentRestProps<T>)}
-            forwardRef={ref}
+            forwardRef={forwardRef}
           />
         </>
       </FieldInfo>
