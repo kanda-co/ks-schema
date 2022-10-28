@@ -32,6 +32,9 @@ import BuildFinancePlan, {
 import Postcode, {
   type PostcodeProps,
 } from "~/field/components/Address/AddressPostcode";
+import PhoneNumberInput, {
+  type PhoneNumberInputProps,
+} from "~/field/components/PhoneNumberInput";
 import Address from "~/field/components/Address";
 
 const Field = {
@@ -44,6 +47,7 @@ const Field = {
   BooleanInput,
   TextAreaInput,
   NumberFormatInput,
+  PhoneNumberInput,
   SortCodeInput,
   QuantityInput,
   PriceInput,
@@ -64,6 +68,7 @@ export interface FieldProps {
   RadioSelect: RadioSelectProps;
   DatePickerInput: DatePickerInputProps;
   NumberFormatInput: NumberFormatInputProps;
+  PhoneNumberInput: PhoneNumberInputProps;
   Postcode: PostcodeProps;
   BuildFinancePlan: BuildFinancePlanProps;
   NumberInput: NumberInputProps;
