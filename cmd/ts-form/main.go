@@ -136,7 +136,7 @@ func getKandaFormWidget(schema *openapi3.Schema) string {
 	}
 	// FIXME: once we have the components, remove these lines
 	switch widget {
-	case "File", "BooleanInput", "Company":
+	case "File", "Company":
 		widget = "Input"
 	}
 	return widget

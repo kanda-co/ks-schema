@@ -11,7 +11,7 @@ export const formatAddressLineOne = (
   address?: SelectedCompanyAddress
 ): string =>
   [address?.premises, address?.addressLine1]
-    .map(trim)
+    .map(trim as unknown as (value?: string) => string[] | undefined)
     .filter(Boolean)
     // join ["44", "Hepleswell"] with space "44 Hepleswell"
     // join ["C/O Streets Chartered Accountants", "3 Wellbrook Court"] with comma and space "C/O Streets Chartered Accountants, 3 Wellbrook Court"
