@@ -3616,11 +3616,9 @@ components:
         telephone:
           type: string
           title: telephone
-          x-kanda-form-widget: PhoneNumberInput
         mobile:
           type: string
           title: mobile
-          x-kanda-form-widget: PhoneNumberInput
         date_of_birth:
           type: string
           title: date of birth
