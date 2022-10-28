@@ -308,7 +308,7 @@ paths:
       operationId: infoLegacyRedirect
       summary: request a new checkout link based on given data for redirect flow
       tags:
-        - Info
+        - InfoAuth
       requestBody:
         description: request a new checkout link based on given data for legacy redirect flow
         required: true
