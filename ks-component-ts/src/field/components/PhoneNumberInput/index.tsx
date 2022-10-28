@@ -3,8 +3,8 @@ import Controlled, {
   PhoneNumberInputControlledProps,
 } from "./PhoneNumberInputControlled";
 
-export { Uncontrolled, Controlled };
+type PhoneNumberInputProps = PhoneNumberInputControlledProps;
 
-export type { PhoneNumberInputControlledProps as PhoneNumberInputProps };
+export { Uncontrolled, Controlled, type PhoneNumberInputProps };
 
 export default Controlled;

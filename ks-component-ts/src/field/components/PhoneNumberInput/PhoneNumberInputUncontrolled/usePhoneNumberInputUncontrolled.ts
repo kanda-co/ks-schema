@@ -52,7 +52,7 @@ export default function usePhoneNumberInputUncontrolled({
     phoneInput: [baseClasses, paddingClasses, focusClasses, ".phoneInput"],
   });
 
-  const code = useWatch({ name, defaultValue });
+  const code = useWatch({ name: name as string, defaultValue });
 
   return {
     classNames,

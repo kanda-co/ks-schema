@@ -10,18 +10,12 @@ export interface PhoneNumberInputUncontrolledProps {
   /**
    * Name of the input required for form to work
    */
-  name: string;
+  name?: string;
   /**
    * Name of the input required for form to work
    */
-  countryCodeName: string;
-  /**
-   * ForwardRef
-   */
+  countryCodeName?: string;
   forwardRef?: any;
-  /**
-   * ClassName
-   */
   className?: string;
   /**
    * The HTML element ID.
