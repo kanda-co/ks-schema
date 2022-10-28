@@ -2,25 +2,25 @@ import { SelectedCompanyInputProps } from "~/field/components/CompanyLookupInput
 import { useWatch } from "react-hook-form";
 import { formatAddress } from "./helpers";
 
-export type SelectedCompanyHookArgs = Omit<
+export type SelectedCompanyPropsHookArgs = Omit<
   SelectedCompanyInputProps,
   "selectedLabel" | "removeSelected" | "removeSelectedLabel" | "selectedDisplay"
 >;
 
-export interface SelectedCompanyHook {
+export interface SelectedCompanyPropsHook {
   companyName: string;
   companyNumber: string;
   address: string;
 }
 
-export default function useSelectedCompany({
+export default function useSelectedCompanyProps({
   name,
   companyNumberName,
   addressLineOneName,
   addressLineTwoName,
   postalCodeName,
   cityName,
-}: SelectedCompanyHookArgs): SelectedCompanyHook {
+}: SelectedCompanyPropsHookArgs): SelectedCompanyPropsHook {
   const [
     companyName,
     companyNumber,

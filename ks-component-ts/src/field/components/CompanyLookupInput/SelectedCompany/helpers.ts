@@ -1,9 +1,5 @@
-interface FormatAddressArgs {
-  addressLineOne?: string;
-  addressLineTwo?: string;
-  city?: string;
-  postalCode?: string;
-}
+import { SelectedCompany } from "~/field/components/CompanyLookupInput/types";
+
 /**
  * Formats Address
  */
@@ -12,5 +8,5 @@ export const formatAddress = ({
   addressLineTwo,
   city,
   postalCode,
-}: FormatAddressArgs): string =>
+}: SelectedCompany): string =>
   [addressLineOne, addressLineTwo, city, postalCode].filter(Boolean).join(", ");
