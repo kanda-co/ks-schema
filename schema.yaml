@@ -303,33 +303,6 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-  /api/info/legacy-redirect:
-    post:
-      operationId: infoLegacyRedirect
-      summary: request a new checkout link based on given data for redirect flow
-      tags:
-        - InfoAuth
-      requestBody:
-        description: request a new checkout link based on given data for legacy redirect flow
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/InfoLegacyRedirect"
-      responses:
-        200:
-          description: got a new checkout link based on given data for legacy redirect flow
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/InfoLegacyRedirect"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/InfoLegacyRedirect"
-
   /api/info/claim-account:
     put:
       operationId: infoClaimAccount
@@ -356,6 +329,33 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+
+  /api/info/legacy-redirect:
+    put:
+      operationId: infoLegacyRedirect
+      summary: request a new checkout link based on given data for redirect flow
+      tags:
+        - InfoRedirect
+      requestBody:
+        description: request a new checkout link based on given data for legacy redirect flow
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InfoLegacyRedirect"
+      responses:
+        200:
+          description: got a new checkout link based on given data for legacy redirect flow
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoLegacyRedirect"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoLegacyRedirect"
 
   /api/info/ip:
     get:
