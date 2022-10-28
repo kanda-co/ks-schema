@@ -303,6 +303,33 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/legacy-redirect:
+    post:
+      operationId: infoLegacyRedirect
+      summary: request a new checkout link based on given data for redirect flow
+      tags:
+        - Info
+      requestBody:
+        description: request a new checkout link based on given data for legacy redirect flow
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InfoLegacyRedirect"
+      responses:
+        200:
+          description: got a new checkout link based on given data for legacy redirect flow
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoLegacyRedirect"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoLegacyRedirect"
+
   /api/info/claim-account:
     put:
       operationId: infoClaimAccount
@@ -2179,6 +2206,7 @@ components:
 
     InfoMe:
       type: object
+      title: info me
       properties:
         email:
           type: string
@@ -2199,6 +2227,7 @@ components:
 
     InfoGhost:
       type: object
+      title: info ghost
       required:
         - email
       properties:
@@ -2219,6 +2248,7 @@ components:
 
     InfoAuth:
       type: object
+      title: info auth
       required:
         - email
       properties:
@@ -2233,6 +2263,7 @@ components:
 
     InfoSession:
       type: object
+      title: info session
       required:
         - code
       properties:
@@ -2242,6 +2273,71 @@ components:
         custom_token:
           type: string
           title: custom token used for sign in exchange
+
+    InfoLegacyRedirect:
+      type: object
+      title: info legacy redirect
+      required:
+        - reference
+        - price
+        - email
+        - description_of_goods
+        - enterprise_id
+      properties:
+        reference:
+          type: string
+          title: title
+          description: >
+            The reference for the loan application.
+            Is mainly used for tracking loan applications
+        price:
+          type: integer
+          format: int32
+          title: price in pence
+          description: >
+            The price of the loan in pennies.
+            Ex.: If the price is 2,450.99, the value should be passed as 245099.
+          $ref: "#/components/schemas/Pence"
+        email:
+          type: string
+          title: email
+          format: email
+          description: The email of the customer applying for the loan
+        description_of_goods:
+          type: string
+          title: description of goods
+          description: The description of the goods.
+        enterprise_id:
+          type: string
+          title: enterprise id
+          description: Your enterprise ID
+        first_name:
+          type: string
+          title: first name
+          description: The first name of the customer applying for the loan
+        last_name:
+          type: string
+          title: last name
+          description: The last name of the customer applying for the loan
+        mobile:
+          type: string
+          title: mobile
+          description: The mobile number of the customer applying for the loan
+        deposit:
+          type: integer
+          format: int32
+          title: Deposit in pence
+          $ref: "#/components/schemas/Pence"
+        redirect_urls:
+          type: object
+          title: redirect urls
+          $ref: "#/components/schemas/RedirectURLs"
+        enabled_rates:
+          type: array
+          title: Enabled rates
+          description: specified the enabled rates for the loan
+          items:
+            type: string
 
     InfoIP:
       type: object
@@ -2494,6 +2590,10 @@ components:
           type: object
           title: company contact info shared with customers
           $ref: "#/components/schemas/ContactInfo"
+        redirect_urls:
+          type: object
+          title: redirects
+          $ref: "#/components/schemas/RedirectURLs"
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
@@ -2935,6 +3035,23 @@ components:
           type: object
           $ref: "#/components/schemas/Address"
 
+    RedirectURLs:
+      type: object
+      title: redirect urls
+      properties:
+        checkout_url:
+          type: string
+          title: checkout url
+        success_url:
+          type: string
+          title: success url
+        failure_url:
+          type: string
+          title: failure url
+        webhook_url:
+          type: string
+          title: webhook url
+
     JobCompanyInfo:
       type: object
       title: job company info
@@ -3090,6 +3207,14 @@ components:
           title: job documents
           items:
             $ref: "#/components/schemas/Document"
+        xid:
+          type: string
+          title: external reference id
+          readOnly: true
+        xref:
+          type: string
+          title: external reference
+          readOnly: true
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
