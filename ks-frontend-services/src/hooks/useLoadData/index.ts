@@ -1,17 +1,12 @@
 import useSWRImmutable from 'swr/immutable';
-import { PublicConfiguration } from 'swr/dist/types';
-
-import { handleResponse } from '../handlers';
-import { Service } from '../types';
-
-interface LoadDataOptions
-  extends Pick<PublicConfiguration, 'revalidateOnMount' | 'refreshInterval'> {
-  shouldRetryOnError?: boolean;
-}
+import type { Service } from '../../types';
+import { handleResponse } from '../../handlers';
+import { getKey } from './helpers';
+import type { LoadDataHookOptions } from './types';
 
 const useLoadData = <Value, Params = undefined, Body = undefined>(
   service?: Service<Value, Params, Body> | false,
-  options: LoadDataOptions = {},
+  options: LoadDataHookOptions = {},
   ...arg
 ) => {
   const method = (
@@ -22,7 +17,9 @@ const useLoadData = <Value, Params = undefined, Body = undefined>(
 
   const fetcher = () => method(...arg)().then((res) => handleResponse(res));
 
-  const key = service !== false ? service?.key : null;
+  const { params = {} } = arg[0] ? arg[0] : {};
+  const serviceKey = service !== false ? service?.key : null;
+  const key = getKey(serviceKey, options, params);
 
   return useSWRImmutable<Value>(key, fetcher, {
     ...options,
