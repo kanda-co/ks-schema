@@ -8,6 +8,8 @@ export { Field, FormTheme, FormWrapper };
 export {
   MultiStepFormContext,
   MultiStepFormRouter,
+  MultiStepFormIndicator,
+  MultiStepFormFooter,
 } from "./components/MultiStepForm";
 
 export { makeIsAllowed } from "./field/helpers";
@@ -17,6 +19,8 @@ export { type FieldProps };
 export * from "./components";
 
 export { Widget } from "./generated";
+
+export { default as FieldHandle } from "./components/Handle";
 
 export {
   useForm,
