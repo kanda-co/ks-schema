@@ -1,6 +1,6 @@
 import { SelectedCompanyInputProps } from "~/field/components/CompanyLookupInput/SelectedCompany/types";
 import { useWatch } from "react-hook-form";
-import { formatAddress } from "./helpers";
+import { formatAddress } from "~/field/components/CompanyLookupInput/helpers";
 
 export type SelectedCompanyPropsHookArgs = Omit<
   SelectedCompanyInputProps,

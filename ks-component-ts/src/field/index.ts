@@ -35,6 +35,9 @@ import Postcode, {
 import PhoneNumberInput, {
   type PhoneNumberInputProps,
 } from "~/field/components/PhoneNumberInput";
+import CompanyLookupInput, {
+  type CompanyLookupInputProps,
+} from "~/field/components/CompanyLookupInput";
 import Address from "~/field/components/Address";
 
 const Field = {
@@ -58,6 +61,7 @@ const Field = {
   RadioSelect,
   Array,
   BuildFinancePlan,
+  CompanyLookupInput,
 };
 
 export default Field;
@@ -73,6 +77,7 @@ export interface FieldProps {
   BuildFinancePlan: BuildFinancePlanProps;
   NumberInput: NumberInputProps;
   BooleanInput: BooleanInputProps;
+  CompanyLookupInput: CompanyLookupInputProps;
 }
 
 export type { ValidatedFieldProps } from "./types";

@@ -1,7 +1,7 @@
 import { useCallback, type MouseEvent } from "react";
-import { formatAddress } from "~/field/components/CompanyLookupInput/SelectedCompany/helpers";
 import type { ItemProps } from "field/components/CompanyLookupInput/SearchResults/Desktop/Item/types";
 import { SelectedCompany } from "~/field/components/CompanyLookupInput/types";
+import { formatAddress } from "~/field/components/CompanyLookupInput/helpers";
 
 export type ItemPropsHookArgs = Omit<ItemProps, "searchWords" | "isLoading">;
 
