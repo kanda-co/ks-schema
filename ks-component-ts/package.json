@@ -1,6 +1,6 @@
 {
   "name": "@kanda-libs/ks-component-ts",
-  "version": "0.0.136-ts-12",
+  "version": "0.0.136-ts-13",
   "description": "Kanda form components library",
   "main": "dist/index.cjs.js",
   "source": "src/index.ts",
@@ -87,8 +87,8 @@
   "peerDependencies": {
     "clsx": "^1.1.1",
     "lodash.get": "^4.4.2",
-    "react": "^16.8.0 || ^17 || ^18",
-    "react-hook-form": "^7.27.0"
+    "react": "^16.8.0 || ^17",
+    "react-hook-form": "^7.35.0"
   },
   "repository": {
     "type": "git",
@@ -120,7 +120,7 @@
     "use-debounce": "^8.0.3"
   },
   "resolutions": {
-    "react": "18.2.0",
+    "react": "17.0.2",
     "@types/react": "^17.0.39"
   }
 }
