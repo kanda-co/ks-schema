@@ -3,6 +3,13 @@ import trim from "lodash.trim";
 import { NUMBERS_AND_DASH_REGEX } from "./constants";
 import type { SelectedCompany, SelectedCompanyAddress } from "../types";
 import { CompanyApiResponse } from "../types";
+import {
+  InfoCompany,
+  LimitedCompanyInfo,
+  Metadata,
+  SoleTraderInfo,
+  UserType,
+} from "@kanda-libs/ks-frontend-services";
 
 /**
  * Formats AddressLineOne from api data
@@ -28,19 +35,22 @@ export const formatAddressLineTwo = (
 /**
  * Format company data
  */
-export const formatCompany = (company: SelectedCompany) => ({
-  companyName: company.title,
-  companyNumber: company.companyNumber,
-  addressLineOne: formatAddressLineOne(company.address),
-  addressLineTwo: formatAddressLineTwo(company.address),
-  city: company.address?.locality,
-  county: company.address?.region,
-  country: company.address?.country,
-  postalCode: company.address?.postalCode,
+export const formatCompany = (company: InfoCompany) => ({
+  companyName: company.limited_company?.company_name,
+  companyNumber: company.limited_company?.company_number,
+  addressLineOne: formatAddressLineOne(
+    company.limited_company?.company_address
+  ),
+  addressLineTwo: formatAddressLineTwo(
+    company.limited_company?.company_address
+  ),
+  city: company.limited_company?.company_address?.city,
+  county: company.limited_company?.company_address?.county,
+  country: company.limited_company?.company_address?.country,
+  postalCode: company.limited_company?.company_address?.postcode,
 });
 
 /**
  * Format response data
  */
-export const formatData = (data: CompanyApiResponse) =>
-  data.items.map(formatCompany);
+export const formatData = (data: CompanyApiResponse) => data.map(formatCompany);

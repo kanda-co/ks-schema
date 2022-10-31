@@ -1,4 +1,5 @@
-import { ValidationProps } from "~/field/types";
+import type { InfoCompany } from "@kanda-libs/ks-frontend-services";
+import type { ValidationProps } from "~/field/types";
 
 export interface SelectedCompanyAddress {
   premises?: string;
@@ -21,9 +22,7 @@ export interface SelectedCompany {
   address?: SelectedCompanyAddress;
 }
 
-export interface CompanyApiResponse {
-  items: SelectedCompany[];
-}
+export type CompanyApiResponse = InfoCompany[];
 
 export interface CompanyLookupInputSharedProps extends ValidationProps {
   /**

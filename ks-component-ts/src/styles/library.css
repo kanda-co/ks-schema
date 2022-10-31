@@ -856,6 +856,10 @@ video {
   pointer-events: none;
 }
 
+.visible {
+  visibility: visible;
+}
+
 .fixed {
   position: fixed;
 }
@@ -866,6 +870,10 @@ video {
 
 .relative {
   position: relative;
+}
+
+.sticky {
+  position: sticky;
 }
 
 .top-0 {
@@ -1009,6 +1017,10 @@ video {
 
 .mt-4 {
   margin-top: 16px;
+}
+
+.-mt-5 {
+  margin-top: -20px;
 }
 
 .ml-3 {
@@ -1432,6 +1444,10 @@ video {
   background-repeat: no-repeat;
 }
 
+.p-2 {
+  padding: 8px;
+}
+
 .p-4 {
   padding: 16px;
 }
@@ -1446,10 +1462,6 @@ video {
 
 .p-2\.5 {
   padding: 10px;
-}
-
-.p-2 {
-  padding: 8px;
 }
 
 .p-3 {
@@ -1541,6 +1553,10 @@ video {
 
 .\!pr-0 {
   padding-right: 0 !important;
+}
+
+.pb-1 {
+  padding-bottom: 4px;
 }
 
 .text-left {

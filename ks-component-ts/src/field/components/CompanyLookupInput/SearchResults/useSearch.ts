@@ -27,7 +27,12 @@ const useSearch = (query = ""): SearchHook => {
       StringIndexedObject,
       StringIndexedObject
     >,
-    { shouldRetryOnError: false }
+    { shouldRetryOnError: false },
+    {
+      params: {
+        company_name: debouncedQuery,
+      },
+    }
   );
 
   const isLoading = !data;
