@@ -12,7 +12,7 @@ export interface ActionsHookArgs {
   setHiddenColumns: (callback: ActionHookHiddenColumnCallback) => void;
 }
 
-export interface ActionsHook {}
+export type ActionsHook = (action: TableAction, event: MouseEvent) => void;
 
 export default function useActions({
   onAction,
@@ -22,8 +22,6 @@ export default function useActions({
 }: ActionsHookArgs): ActionsHook {
   /**
    * Moves column
-   * @param {Number} direction
-   * @param {String} id
    */
   const moveColumn = useCallback(
     (direction: string, id: number) => {
@@ -58,9 +56,6 @@ export default function useActions({
 
   /**
    * Method to handle action
-   * @param {Object} action
-   * @param {Event} event
-   * @returns ref to pas to that component
    */
   return useCallback(
     (action: TableAction, event: MouseEvent) => {

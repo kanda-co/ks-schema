@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { FunctionComponent, useMemo } from "react";
 import {
   useTable,
   useColumnOrder,
@@ -6,21 +6,42 @@ import {
   useFlexLayout,
   type Column,
   type TableProps,
+  type Row,
 } from "react-table";
 import { useClasses } from "@kanda-libs/ks-design-library";
 import { CLASS_NAMES } from "./constants";
 import { generatePlaceholderData } from "./helpers";
-import useActions, { ActionHookHiddenColumnCallback } from "./useActions";
+import useActions, {
+  type ActionHookHiddenColumnCallback,
+  type ActionsHook,
+} from "./useActions";
 import type { TableHook } from "./types";
 import type {
   TableHeaderColumn,
   TableProps as DefaultTableProps,
 } from "./types";
+import type { PopoverButtonHoverPopoverProps } from "./Rows/PopoverButton";
+import { StringIndexedObject } from "~/types";
 
 export type TablePropsHookArgs = Omit<DefaultTableProps, "onRowClicked">;
 
 export interface TablePropsHook {
   tableProps: TableProps;
+  headerGroups: Column[];
+  rows: Row[];
+  prepareRow: (row: Row) => void;
+  allColumns: Column[];
+  setColumnOrder: (order: number[]) => void;
+  showPagination: boolean;
+  isLoading: boolean;
+  paginationProps: {
+    pageCount: number;
+    pageIndex: number;
+    setPage: (page: number) => void;
+  };
+  hoverPopover: FunctionComponent<PopoverButtonHoverPopoverProps>;
+  classNames: StringIndexedObject;
+  handleAction: ActionsHook;
 }
 
 export default function useTableProps({
@@ -103,8 +124,8 @@ export default function useTableProps({
     allColumns,
     setColumnOrder,
     showPagination: totalPages > 1 && !isLoading,
-    paginationProps,
     isLoading: isLoading || false,
+    paginationProps,
     hoverPopover,
     classNames,
     handleAction,
