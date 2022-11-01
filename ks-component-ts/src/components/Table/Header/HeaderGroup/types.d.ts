@@ -1,6 +1,8 @@
-import type { StringIndexedObject } from '~/types';
-import type { TableHeaderColumn } from '~/components/Table/types';
-import type { HTMLAttributes } from 'react';
+import type { HTMLAttributes } from "react";
+import { Column } from "react-table";
+import type { TableHeaderColumn } from "~/components/Table/types";
+import { ActionsHook } from "~/components/Table/useActions";
+import type { StringIndexedObject } from "~/types";
 
 export interface HeaderGroup {
   headers: TableHeaderColumn[];
@@ -9,7 +11,8 @@ export interface HeaderGroup {
 
 export interface HeaderGroupProps extends HTMLAttributes<HTMLDivElement> {
   isLoading?: boolean;
-  handleAction?: () => void;
-  headerGroup: HeaderGroup;
-  allColumns: TableHeaderColumn[];
+  handleAction?: ActionsHook;
+  headerGroup: Column;
+  allColumns: Column[];
+  setColumnOrder: (order: number[]) => void;
 }

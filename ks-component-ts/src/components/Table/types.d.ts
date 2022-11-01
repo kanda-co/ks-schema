@@ -2,7 +2,8 @@ import type { FunctionComponent, HTMLAttributes } from "react";
 import type { Cell } from "react-table";
 import type { StringIndexedObject } from "~/types";
 import type { PopoverButtonHoverPopoverProps } from "./Rows/PopoverButton";
-import { TableInstance } from "react-table";
+import type { TableInstance } from "react-table";
+import type { DraggableId } from "react-beautiful-dnd";
 
 export interface AdvancedItem {
   action: StringIndexedObject;
@@ -17,7 +18,7 @@ export interface TableAction {
 }
 
 export interface TableHeaderColumn {
-  id: number;
+  id: DraggableId;
   render: (label: string) => string;
   accessor: string;
   getHeaderProps: () => HTMLAttributes<HTMLDivElement>;
@@ -30,6 +31,8 @@ export interface TableHeaderColumn {
   isResizing: boolean;
   isVisible: boolean;
   getResizerProps: () => HTMLAttributes<HTMLDivElement>;
+  Header: string;
+  getToggleHiddenProps: () => HTMLAttributes<HTMLDivElement>;
 }
 
 export interface TableProps {

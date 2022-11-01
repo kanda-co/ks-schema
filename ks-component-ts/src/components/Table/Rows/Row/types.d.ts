@@ -1,11 +1,12 @@
-import { TableRow } from "~/components/Table/types";
-import { FunctionComponent, MouseEvent } from "react";
-import { PopoverButtonHoverPopoverProps } from "~/components/Table/Rows/PopoverButton";
+import type { TableRow } from "~/components/Table/types";
+import type { Row } from "react-table";
+import type { FunctionComponent, MouseEvent } from "react";
+import type { PopoverButtonHoverPopoverProps } from "~/components/Table/Rows/PopoverButton";
 
 export interface RowProps {
   isLoading?: boolean;
-  onRowClicked?: (row: TableRow, e: MouseEvent) => void;
-  row: TableRow;
-  prepareRow: (row: TableRow) => void;
+  onRowClicked?: (row: Row, e: MouseEvent) => void;
+  row: Row;
+  prepareRow: (row: Row) => void;
   hoverPopover: FunctionComponent<PopoverButtonHoverPopoverProps>;
 }

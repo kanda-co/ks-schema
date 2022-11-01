@@ -6,8 +6,8 @@ import {
 } from "react-beautiful-dnd";
 import { HandleProps } from "~/components/Handle/types";
 import { MutableRefObject } from "react";
-import { IconProps } from "@kanda-libs/ks-design-library/dist/components/Icon";
 import { TableHeaderColumn } from "~/components/Table/types";
+import type { IconProps } from "@kanda-libs/ks-design-library";
 
 export interface TableColumnOptionInputProps {
   column: TableHeaderColumn;

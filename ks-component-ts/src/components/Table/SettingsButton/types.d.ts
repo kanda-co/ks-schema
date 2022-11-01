@@ -1,6 +1,6 @@
-import { TableHeaderColumn } from "~/components/Table/types";
+import { Column } from "react-table";
 
 export interface SettingsButtonProps {
-  columns: TableHeaderColumn[];
+  columns: Column[];
   setColumnOrder: (values: number[]) => void;
 }

@@ -23,6 +23,7 @@ export interface ButtonTextProps {
   /**
    * Icon props
    */
+
   iconProps?: {
     className: string;
     stroke: string;

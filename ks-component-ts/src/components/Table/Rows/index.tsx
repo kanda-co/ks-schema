@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from "react";
-import { TableRow } from "../types";
+import type { Row as RowType } from "react-table";
 import { RowProps } from "./Row/types";
 import Row from "~/components/Table/Rows/Row";
 
 export interface RowsProps extends Omit<RowProps, "row"> {
-  rows: TableRow[];
+  rows: RowType[];
 }
 
 const Rows: FunctionComponent<RowsProps> = function ({ rows, ...rowProps }) {

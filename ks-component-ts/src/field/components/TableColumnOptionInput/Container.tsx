@@ -1,6 +1,5 @@
 import React, { FunctionComponent, MutableRefObject, useMemo } from "react";
 import clsx from "clsx";
-import type { IconProps } from "@kanda-libs/ks-design-library/dist/components/Icon";
 import {
   CLASS_NAMES,
   DRAGGING_PROPS,
@@ -50,13 +49,12 @@ const Container: FunctionComponent<ContainerProps> = function ({
   );
 
   const iconProps = useMemo(
-    () =>
-      ({
-        ...HANDLE_ICON_PROPS,
-        stroke: isDragging
-          ? DRAGGING_PROPS.color.dragging
-          : DRAGGING_PROPS.color.static,
-      } as IconProps),
+    () => ({
+      ...HANDLE_ICON_PROPS,
+      stroke: isDragging
+        ? DRAGGING_PROPS.color.dragging
+        : DRAGGING_PROPS.color.static,
+    }),
     [isDragging]
   );
 

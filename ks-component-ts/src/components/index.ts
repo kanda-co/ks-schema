@@ -8,3 +8,4 @@ export { default as MultiStepForm } from "./MultiStepForm";
 export { default as PasswordStrengthIndicator } from "./PasswordStrengthIndicator";
 export { default as RowFields } from "./RowFields";
 export { default as Search } from "./Search";
+export { default as Table } from "./Table";

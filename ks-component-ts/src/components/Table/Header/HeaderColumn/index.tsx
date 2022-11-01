@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from "react";
+import type { Column } from "react-table";
 import { Popover, SkeletonLoader } from "@kanda-libs/ks-design-library";
-import type { TableHeaderColumn } from "~/components/Table/types";
+import type { ActionsHook } from "~/components/Table/useActions";
 import HeaderResizer from "../HeaderResizer";
 import HeaderButtonWrapper from "../HeaderButtonWrapper";
 import HeaderButton from "../HeaderButton";
@@ -8,8 +9,8 @@ import useHeaderColumnProps from "./useHeaderColumnProps";
 
 export interface HeaderColumnProps {
   isLoading?: boolean;
-  handleAction?: () => void;
-  column: TableHeaderColumn;
+  handleAction?: ActionsHook;
+  column: Column;
   index?: number;
   totalVisible?: number;
 }

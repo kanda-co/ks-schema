@@ -1,12 +1,10 @@
-import React, { FunctionComponent } from 'react';
-import HeaderGroup from './HeaderGroup';
-import type {
-  HeaderGroup as HeaderGroupType,
-  HeaderGroupProps,
-} from './HeaderGroup/types';
+import React, { FunctionComponent } from "react";
+import HeaderGroup from "./HeaderGroup";
+import type { HeaderGroupProps } from "./HeaderGroup/types";
+import type { Column } from "react-table";
 
-export interface HeaderProps extends Omit<HeaderGroupProps, 'headerGroup'> {
-  headerGroups: HeaderGroupType[];
+export interface HeaderProps extends Omit<HeaderGroupProps, "headerGroup"> {
+  headerGroups: Column[];
 }
 
 const Header: FunctionComponent<HeaderProps> = function ({
