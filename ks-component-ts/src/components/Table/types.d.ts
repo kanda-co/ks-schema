@@ -9,12 +9,8 @@ export interface AdvancedItem {
 }
 
 export interface TableAction {
-  name: string;
-  icon: string;
-  action: {
-    type: string;
-    payload: number | number[];
-  };
+  type: string;
+  payload: [direction: string, id: number];
 }
 
 export interface TableHeaderColumn {
@@ -31,4 +27,18 @@ export interface TableHeaderColumn {
   isResizing: boolean;
   isVisible: boolean;
   getResizerProps: () => HTMLAttributes<HTMLDivElement>;
+}
+
+export interface TableProps {
+  onRowClicked: () => void;
+  onAction: () => void;
+  isValidating: boolean;
+  data: any[];
+  columns: TableHeaderColumn[];
+  defaultColumn: TableHeaderColumn;
+  isLoading: boolean;
+}
+
+export interface TableRow {
+  index: number;
 }
