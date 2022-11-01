@@ -1,19 +1,23 @@
 import { useMemo } from "react";
-import PropTypes from "prop-types";
 import {
   useTable,
   useColumnOrder,
   useResizeColumns,
   useFlexLayout,
+  type Column,
+  type TableProps,
 } from "react-table";
 import { useClasses } from "@kanda-libs/ks-design-library";
 import { CLASS_NAMES } from "./constants";
 import { generatePlaceholderData } from "./helpers";
 import useActions, { ActionHookHiddenColumnCallback } from "./useActions";
-import type { TableProps } from "./types";
-import { TableHeaderColumn } from "./types";
+import type { TableHook } from "./types";
+import type {
+  TableHeaderColumn,
+  TableProps as DefaultTableProps,
+} from "./types";
 
-export type TablePropsHookArgs = Omit<TableProps, "onRowClicked">;
+export type TablePropsHookArgs = Omit<DefaultTableProps, "onRowClicked">;
 
 export interface TablePropsHook {
   tableProps: TableProps;
@@ -60,11 +64,15 @@ export default function useTableProps({
     setColumnOrder,
     setHiddenColumns,
   } = useTable(
-    { columns, data, defaultColumn },
+    {
+      columns: columns as unknown as Column<object>[],
+      data,
+      defaultColumn: defaultColumn as unknown as Column<object>,
+    },
     useColumnOrder,
     useResizeColumns,
     useFlexLayout
-  );
+  ) as TableHook;
 
   const tableProps = getTableProps();
 

@@ -2,6 +2,7 @@ import type { FunctionComponent, HTMLAttributes } from "react";
 import type { Cell } from "react-table";
 import type { StringIndexedObject } from "~/types";
 import type { PopoverButtonHoverPopoverProps } from "./Rows/PopoverButton";
+import { TableInstance } from "react-table";
 
 export interface AdvancedItem {
   action: StringIndexedObject;
@@ -52,4 +53,8 @@ export interface TableRow {
   getRowProps: (args: StringIndexedObject) => HTMLAttributes<HTMLDivElement>;
   original?: TableRow;
   isValidating: boolean;
+}
+
+export interface TableHook extends TableInstance {
+  setColumnOrder: (order: number[]) => void;
 }
