@@ -38,6 +38,9 @@ import PhoneNumberInput, {
 import CompanyLookupInput, {
   type CompanyLookupInputProps,
 } from "~/field/components/CompanyLookupInput";
+import TableColumnOptionInput, {
+  type TableColumnOptionInputProps,
+} from "~/field/components/TableColumnOptionInput";
 import Address from "~/field/components/Address";
 
 const Field = {
@@ -62,6 +65,7 @@ const Field = {
   Array,
   BuildFinancePlan,
   CompanyLookupInput,
+  TableColumnOptionInput,
 };
 
 export default Field;
@@ -78,6 +82,7 @@ export interface FieldProps {
   NumberInput: NumberInputProps;
   BooleanInput: BooleanInputProps;
   CompanyLookupInput: CompanyLookupInputProps;
+  TableColumnOptionInput: TableColumnOptionInputProps;
 }
 
 export type { ValidatedFieldProps } from "./types";

@@ -31,7 +31,7 @@ const Item: FunctionComponent<ItemProps> = function ({
             <Highlighter
               {...HIGHLIGHT_PROPS}
               searchWords={searchWords}
-              textToHighlight={company?.companyName || ""}
+              textToHighlight={company?.limited_company?.company_name || ""}
             />
           }
         />
@@ -44,7 +44,7 @@ const Item: FunctionComponent<ItemProps> = function ({
             <Highlighter
               {...HIGHLIGHT_PROPS}
               searchWords={searchWords}
-              textToHighlight={company?.companyNumber || ""}
+              textToHighlight={company?.limited_company?.company_number || ""}
             />
           }
         />

@@ -4,7 +4,7 @@ import useDesktopProps from "~/field/components/CompanyLookupInput/SearchResults
 import { Button, Card, Popover } from "@kanda-libs/ks-design-library";
 import { CLASS_NAMES } from "./constants";
 import Item from "~/field/components/CompanyLookupInput/SearchResults/Desktop/Item";
-import { SelectedCompany } from "~/field/components/CompanyLookupInput/types";
+import type { InfoCompany } from "@kanda-libs/ks-frontend-services";
 
 const Desktop: FunctionComponent<DesktopProps> = function ({
   companySearchName,
@@ -44,7 +44,7 @@ const Desktop: FunctionComponent<DesktopProps> = function ({
                   handleSelect={handleSelect}
                   searchWords={searchWords}
                   key={item.id}
-                  company={item as SelectedCompany}
+                  company={item as InfoCompany}
                   isLoading={isLoading}
                 />
               ))}

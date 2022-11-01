@@ -11,17 +11,6 @@ export interface SelectedCompanyAddress {
   postalCode?: string;
 }
 
-export interface SelectedCompany {
-  title?: string;
-  companyName?: string;
-  companyNumber?: string;
-  addressLineOne?: string;
-  addressLineTwo?: string;
-  city?: string;
-  postalCode?: string;
-  address?: SelectedCompanyAddress;
-}
-
 export type CompanyApiResponse = InfoCompany[];
 
 export interface CompanyLookupInputSharedProps extends ValidationProps {

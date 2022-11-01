@@ -1,4 +1,6 @@
-export interface SelectedCompanyInputProps {
+import type { Address } from "@kanda-libs/ks-frontend-services";
+
+export interface SelectedCompanyProps extends Partial<Address> {
   /**
    * Company search field name
    */

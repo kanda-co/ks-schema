@@ -1,7 +1,7 @@
 import { useCallback, type MouseEvent } from "react";
-import type { ItemProps } from "field/components/CompanyLookupInput/SearchResults/Desktop/Item/types";
-import { SelectedCompany } from "~/field/components/CompanyLookupInput/types";
-import { formatAddress } from "~/field/components/CompanyLookupInput/helpers";
+import type { Address, InfoCompany } from "@kanda-libs/ks-frontend-services";
+import { formatAddress } from "../../../helpers";
+import type { ItemProps } from "./types";
 
 export type ItemPropsHookArgs = Omit<ItemProps, "searchWords" | "isLoading">;
 
@@ -21,12 +21,19 @@ export default function useItemProps({
     (e: MouseEvent) => {
       e.stopPropagation();
 
-      handleSelect(company as SelectedCompany);
+      handleSelect(company as InfoCompany);
     },
     [handleSelect, company]
   );
 
-  const address = formatAddress(company || {});
+  const address = formatAddress(
+    (company?.limited_company?.company_address as Address) || {}
+  );
+
+  console.log({
+    company,
+    address,
+  });
 
   return {
     onSelect,

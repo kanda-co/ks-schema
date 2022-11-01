@@ -1,11 +1,12 @@
 import { useState, useCallback, useContext, useEffect } from "react";
 import { useFormContext, useWatch } from "react-hook-form";
 import get from "lodash.get";
-
+import type { InfoCompany } from "@kanda-libs/ks-frontend-services";
 import {
   ModalsWrapperContext,
   useIsDesktop,
 } from "@kanda-libs/ks-design-library";
+
 import { CompanyLookupInputProps } from "./types";
 import { InputProps } from "~/field/components/Input";
 import { SearchResultsProps } from "~/field/components/CompanyLookupInput/SearchResults/types";
@@ -53,15 +54,36 @@ export default function useCompanyLookupInputProps({
    * @param {Object} company
    */
   const setFieldValues = useCallback(
-    (company = {}) => {
-      setValue(name as string, company.companyName);
-      setValue(props.companyNumberName as string, company.companyNumber);
-      setValue(props.addressLineOneName as string, company.addressLineOne);
-      setValue(props.addressLineTwoName as string, company.addressLineTwo);
-      setValue(props.cityName as string, company.city);
-      setValue(props.countyName as string, company.county);
-      setValue(props.countryName as string, company.country);
-      setValue(props.postalCodeName as string, company.postalCode);
+    (company: InfoCompany = {}) => {
+      setValue(name as string, company?.limited_company?.company_name);
+      setValue(
+        props.companyNumberName as string,
+        company.limited_company?.company_number
+      );
+      setValue(
+        props.addressLineOneName as string,
+        company.limited_company?.company_address?.line_1
+      );
+      setValue(
+        props.addressLineTwoName as string,
+        company.limited_company?.company_address?.line_2
+      );
+      setValue(
+        props.cityName as string,
+        company.limited_company?.company_address?.city
+      );
+      setValue(
+        props.countyName as string,
+        company.limited_company?.company_address?.county
+      );
+      setValue(
+        props.countryName as string,
+        company.limited_company?.company_address?.country
+      );
+      setValue(
+        props.postalCodeName as string,
+        company.limited_company?.company_address?.postcode
+      );
       setCompanySelected(true);
     },
     [
@@ -82,7 +104,7 @@ export default function useCompanyLookupInputProps({
    * @param {Object} company
    */
   const handleSelect = useCallback(
-    (company) => {
+    (company: InfoCompany) => {
       setFieldValues(company);
       if (!isDesktop) {
         hideModal(modalId);

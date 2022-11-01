@@ -1,12 +1,9 @@
-import { SelectedCompany } from "~/field/components/CompanyLookupInput/types";
+import type { Address } from "@kanda-libs/ks-frontend-services";
 
-/**
- * Formats Address
- */
 export const formatAddress = ({
-  addressLineOne,
-  addressLineTwo,
+  line_1,
+  line_2,
   city,
-  postalCode,
-}: SelectedCompany): string =>
-  [addressLineOne, addressLineTwo, city, postalCode].filter(Boolean).join(", ");
+  postcode,
+}: Partial<Address>): string =>
+  [line_1, line_2, city, postcode].filter(Boolean).join(", ");

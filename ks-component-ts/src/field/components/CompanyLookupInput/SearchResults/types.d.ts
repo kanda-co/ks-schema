@@ -1,6 +1,7 @@
-import type { SelectedCompany, CompanyLookupInputSharedProps } from "../types";
+import type { InfoCompany } from "@kanda-libs/ks-frontend-services";
+import type { CompanyLookupInputSharedProps } from "../types";
 
 export interface SearchResultsProps extends CompanyLookupInputSharedProps {
   modalId?: string;
-  handleSelect: (company: SelectedCompany) => void;
+  handleSelect: (company: InfoCompany) => void;
 }

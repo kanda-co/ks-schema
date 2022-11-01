@@ -1,15 +1,12 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { useDebounce } from "use-debounce";
 import {
   useLoadData,
   services,
   InfoCompany,
-  Service,
 } from "@kanda-libs/ks-frontend-services";
-import { StringIndexedObject } from "~/types";
+import usePreviousValue from "~/hooks/usePreviousValue";
 import { DEBOUNCE_INTERVAL, SKELETON_DATA } from "./constants";
-import { formatData } from "./helpers";
-import { CompanyApiResponse } from "~/field/components/CompanyLookupInput/types";
 
 export interface SearchHook {
   results: InfoCompany[];
@@ -20,13 +17,13 @@ export interface SearchHook {
 
 const useSearch = (query = ""): SearchHook => {
   const [debouncedQuery] = useDebounce(query, DEBOUNCE_INTERVAL);
+  const { previousValue: previousQuery, hasChanged: queryHasChanged } =
+    usePreviousValue(debouncedQuery);
 
-  const { data, isValidating } = useLoadData(
-    (debouncedQuery && services.infoCompany.infoCompany) as unknown as Service<
-      CompanyApiResponse,
-      StringIndexedObject,
-      StringIndexedObject
-    >,
+  const { data, isValidating, mutate } = useLoadData(
+    (debouncedQuery &&
+      services.infoCompany
+        .infoCompany) as typeof services.infoCompany.infoCompany,
     { shouldRetryOnError: false },
     {
       params: {
@@ -35,9 +32,15 @@ const useSearch = (query = ""): SearchHook => {
     }
   );
 
-  const isLoading = !data;
+  useEffect(() => {
+    if (previousQuery && queryHasChanged) {
+      mutate();
+    }
+  }, [previousQuery, queryHasChanged]);
 
-  const formattedData = useMemo(() => (data ? formatData(data) : []), [data]);
+  const isLoading = !data || isValidating;
+
+  const formattedData = data || [];
 
   const results = isValidating ? SKELETON_DATA : formattedData;
 

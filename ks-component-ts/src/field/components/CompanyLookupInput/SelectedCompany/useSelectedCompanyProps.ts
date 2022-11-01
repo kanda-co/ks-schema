@@ -1,9 +1,9 @@
-import { SelectedCompanyInputProps } from "~/field/components/CompanyLookupInput/SelectedCompany/types";
+import { SelectedCompanyProps } from "~/field/components/CompanyLookupInput/SelectedCompany/types";
 import { useWatch } from "react-hook-form";
 import { formatAddress } from "~/field/components/CompanyLookupInput/helpers";
 
 export type SelectedCompanyPropsHookArgs = Omit<
-  SelectedCompanyInputProps,
+  SelectedCompanyProps,
   "selectedLabel" | "removeSelected" | "removeSelectedLabel" | "selectedDisplay"
 >;
 
@@ -21,28 +21,23 @@ export default function useSelectedCompanyProps({
   postalCodeName,
   cityName,
 }: SelectedCompanyPropsHookArgs): SelectedCompanyPropsHook {
-  const [
-    companyName,
-    companyNumber,
-    addressLineOne,
-    addressLineTwo,
-    postalCode,
-    city,
-  ] = useWatch({
-    name: [
-      name,
-      companyNumberName,
-      addressLineOneName,
-      addressLineTwoName,
-      postalCodeName,
-      cityName,
-    ],
-  });
+  const [companyName, companyNumber, line_1, line_2, postcode, city] = useWatch(
+    {
+      name: [
+        name,
+        companyNumberName,
+        addressLineOneName,
+        addressLineTwoName,
+        postalCodeName,
+        cityName,
+      ],
+    }
+  ) as string[];
 
   const address = formatAddress({
-    addressLineOne,
-    addressLineTwo,
-    postalCode,
+    line_1,
+    line_2,
+    postcode,
     city,
   });
 

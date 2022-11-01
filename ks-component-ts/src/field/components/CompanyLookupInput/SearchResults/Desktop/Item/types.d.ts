@@ -1,14 +1,14 @@
-import { SelectedCompany } from "~/field/components/CompanyLookupInput/types";
+import type { InfoCompany } from "@kanda-libs/ks-frontend-services";
 
 export interface ItemProps {
   /**
    * Handle select customer
    */
-  handleSelect(company: SelectedCompany): void;
+  handleSelect(company: InfoCompany): void;
   /**
    * Loading state
    */
   isLoading?: boolean;
   searchWords?: string[];
-  company?: SelectedCompany;
+  company?: InfoCompany;
 }
