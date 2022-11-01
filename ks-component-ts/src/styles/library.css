@@ -860,6 +860,10 @@ video {
   visibility: visible;
 }
 
+.static {
+  position: static;
+}
+
 .fixed {
   position: fixed;
 }
@@ -1013,6 +1017,10 @@ video {
 
 .mr-3 {
   margin-right: 12px;
+}
+
+.ml-auto {
+  margin-left: auto;
 }
 
 .mt-4 {

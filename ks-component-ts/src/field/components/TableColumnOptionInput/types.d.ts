@@ -7,16 +7,10 @@ import {
 import { HandleProps } from "~/components/Handle/types";
 import { MutableRefObject } from "react";
 import { IconProps } from "@kanda-libs/ks-design-library/dist/components/Icon";
-
-export interface TableColumnOptionInputColumn {
-  id: string;
-  isVisible: boolean;
-  Header: string;
-  getToggleHiddenProps: () => HTMLAttributes<HTMLDivElement>;
-}
+import { TableHeaderColumn } from "~/components/Table/types";
 
 export interface TableColumnOptionInputProps {
-  column: TableColumnOptionInputColumn;
+  column: TableHeaderColumn;
   index: number;
   visibleColumns: number;
 }
