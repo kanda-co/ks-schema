@@ -1,6 +1,7 @@
 import type { FunctionComponent, HTMLAttributes } from "react";
-import { StringIndexedObject } from "~/types";
 import type { Cell } from "react-table";
+import type { StringIndexedObject } from "~/types";
+import type { PopoverButtonHoverPopoverProps } from "./Rows/PopoverButton";
 
 export interface AdvancedItem {
   action: StringIndexedObject;
@@ -38,6 +39,10 @@ export interface TableProps {
   columns: TableHeaderColumn[];
   defaultColumn: TableHeaderColumn;
   isLoading: boolean;
+  pageIndex: number;
+  totalPages: number;
+  setPage: (page: number) => void;
+  hoverPopover: FunctionComponent<PopoverButtonHoverPopoverProps>;
 }
 
 export interface TableRow {
