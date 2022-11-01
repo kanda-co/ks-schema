@@ -1,5 +1,6 @@
 import type { FunctionComponent, HTMLAttributes } from "react";
 import { StringIndexedObject } from "~/types";
+import type { Cell } from "react-table";
 
 export interface AdvancedItem {
   action: StringIndexedObject;
@@ -40,5 +41,10 @@ export interface TableProps {
 }
 
 export interface TableRow {
+  id: number;
   index: number;
+  cells: Cell[];
+  getRowProps: (args: StringIndexedObject) => HTMLAttributes<HTMLDivElement>;
+  original?: TableRow;
+  isValidating: boolean;
 }
