@@ -1,9 +1,9 @@
-import { ACTIONS } from '../../constants';
+import { ACTIONS } from "../../constants";
 import {
   MOVE_LEFT_ITEM_PROPS,
   MOVE_RIGHT_ITEM_PROPS,
   HIDE_COLUMN_PROPS,
-} from './constants';
+} from "./constants";
 
 /**
  * Creates move right item

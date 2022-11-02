@@ -4,6 +4,7 @@ import useSettingsPopoverOnDragEnd from "./useSettingsPopoverOnDragEnd";
 import { CLASS_NAMES, HEADING_TEXT, DROP_ID } from "./constants";
 import DragDropWrapper from "~/components/Table/SettingsButton/DragDropWrapper";
 import { SettingsButtonProps } from "~/components/Table/SettingsButton/types";
+import { TableHeaderColumn } from "~/components/Table/types";
 
 export type SettingsPopoverProps = SettingsButtonProps;
 
@@ -24,7 +25,7 @@ const SettingsPopover: FunctionComponent<SettingsPopoverProps> = function ({
             <DragDropWrapper
               provided={provided}
               snapshot={snapshot}
-              columns={columns}
+              columns={columns as TableHeaderColumn[]}
             />
           )}
         </Droppable>

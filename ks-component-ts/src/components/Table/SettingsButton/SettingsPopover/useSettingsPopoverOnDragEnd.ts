@@ -19,7 +19,9 @@ export default function useSettingsPopoverOnDragEnd({
         destination: { index: endIndex },
       } = result;
       const columnNames = columns.map((column) => column.id);
-      setColumnOrder(reorder(startIndex, endIndex, columnNames));
+      setColumnOrder(
+        reorder(startIndex, endIndex, columnNames as unknown as number[])
+      );
     },
     [columns, setColumnOrder]
   );

@@ -5,6 +5,7 @@ import { useClasses } from "@kanda-libs/ks-design-library";
 import type { StringIndexedObject } from "~/types";
 import type { Cell } from "react-table";
 import type { RowProps } from "./types";
+import { RowPropGetter } from "react-table";
 
 export type RowPropsHookArgs = RowProps;
 
@@ -34,7 +35,7 @@ export default function useRowProps({
 
   const rowProps = getRowProps({
     onClick: handleClick,
-  });
+  } as RowPropGetter<object>);
 
   const [showButton, setShowButton] = useState(false);
   const [delayHandler, setDelayHandler] = useState<NodeJS.Timeout | null>(null);

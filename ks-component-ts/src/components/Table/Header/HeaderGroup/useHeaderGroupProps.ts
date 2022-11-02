@@ -1,15 +1,16 @@
-import type { Column } from "react-table";
 import type { HeaderGroupProps } from "./types";
+import { HeaderGroup } from "./types";
+import { TableColumn } from "~/components/Table/types";
 
 export interface HeaderGroupPropsHook {
   headerGroupProps: HeaderGroupProps;
-  headers: Column[];
+  headers: TableColumn[];
   totalVisible: number;
 }
 
 export default function useHeaderGroupProps(
-  headerGroup: Column,
-  allColumns: Column[]
+  headerGroup: HeaderGroup,
+  allColumns: TableColumn[]
 ): HeaderGroupPropsHook {
   const { headers, getHeaderGroupProps } = headerGroup;
   const headerGroupProps = getHeaderGroupProps({});

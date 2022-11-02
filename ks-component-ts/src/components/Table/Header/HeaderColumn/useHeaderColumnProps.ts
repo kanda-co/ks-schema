@@ -51,9 +51,9 @@ export default function useHeaderColumnProps(
             name: "separator",
             action: {},
           },
-          index !== 0 && moveLeftItem(id),
-          index !== totalVisible - 1 && moveRightItem(id),
-          hideColumn(id),
+          index !== 0 && moveLeftItem(id as unknown as number),
+          index !== totalVisible - 1 && moveRightItem(id as unknown as number),
+          hideColumn(id as unknown as number),
         ].filter(Boolean)) ||
         []) as AdvancedItem[],
     [id, index, originalItems.length, totalVisible]

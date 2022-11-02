@@ -28,16 +28,20 @@ export default function useActions({
       const columnIds = allColumns.map((column) => column.id);
       const visibleColumns = allColumns.reduce((visible: number[], column) => {
         if (column.isVisible) {
-          visible.push(column.id);
+          visible.push(column.id as unknown as number);
         }
         return visible;
       }, []);
-      const initialIndex = columnIds.indexOf(id);
+      const initialIndex = columnIds.indexOf(id as unknown as string);
       const finalIndex = columnIds.indexOf(
-        visibleColumns[visibleColumns.indexOf(id) + parseInt(direction, 10)]
+        visibleColumns[
+          visibleColumns.indexOf(id) + parseInt(direction, 10)
+        ] as unknown as string
       );
       setTimeout(() => {
-        setColumnOrder(reorder(initialIndex, finalIndex, columnIds));
+        setColumnOrder(
+          reorder(initialIndex, finalIndex, columnIds as unknown as number[])
+        );
       }, 10);
     },
     [allColumns, setColumnOrder]

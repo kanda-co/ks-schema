@@ -6,6 +6,7 @@ import HeaderResizer from "../HeaderResizer";
 import HeaderButtonWrapper from "../HeaderButtonWrapper";
 import HeaderButton from "../HeaderButton";
 import useHeaderColumnProps from "./useHeaderColumnProps";
+import { TableHeaderColumn } from "~/components/Table/types";
 
 export interface HeaderColumnProps {
   isLoading?: boolean;
@@ -23,7 +24,7 @@ const HeaderColumn: FunctionComponent<HeaderColumnProps> = function ({
   totalVisible = 0,
 }) {
   const { classNames, headerProps, popoverProps, label } = useHeaderColumnProps(
-    column,
+    column as TableHeaderColumn,
     index,
     totalVisible
   );
@@ -45,7 +46,7 @@ const HeaderColumn: FunctionComponent<HeaderColumnProps> = function ({
                 </HeaderButtonWrapper>
               )}
             />
-            <HeaderResizer column={column} />~
+            <HeaderResizer column={column as TableHeaderColumn} />
           </>
         }
       />

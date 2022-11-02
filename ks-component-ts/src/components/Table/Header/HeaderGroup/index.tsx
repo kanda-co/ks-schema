@@ -1,8 +1,12 @@
-import React, { FunctionComponent } from 'react';
-import type { HeaderGroupProps } from '~/components/Table/Header/HeaderGroup/types';
-import useHeaderGroupProps from '~/components/Table/Header/HeaderGroup/useHeaderGroupProps';
-import HeaderColumn from '../HeaderColumn';
-import { CLASS_NAMES } from './constants';
+import React, { FunctionComponent } from "react";
+import type {
+  HeaderGroupProps,
+  HeaderGroup as HeaderGroupType,
+} from "~/components/Table/Header/HeaderGroup/types";
+import useHeaderGroupProps from "~/components/Table/Header/HeaderGroup/useHeaderGroupProps";
+import HeaderColumn from "../HeaderColumn";
+import { CLASS_NAMES } from "./constants";
+import { TableColumn } from "~/components/Table/types";
 
 const HeaderGroup: FunctionComponent<HeaderGroupProps> = function ({
   isLoading = false,
@@ -11,8 +15,8 @@ const HeaderGroup: FunctionComponent<HeaderGroupProps> = function ({
   allColumns,
 }) {
   const { headerGroupProps, headers, totalVisible } = useHeaderGroupProps(
-    headerGroup,
-    allColumns,
+    headerGroup as unknown as HeaderGroupType,
+    allColumns as unknown as TableColumn[]
   );
 
   return (

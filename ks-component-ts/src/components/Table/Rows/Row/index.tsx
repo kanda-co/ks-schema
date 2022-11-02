@@ -4,6 +4,7 @@ import useRowProps from "~/components/Table/Rows/Row/useRowProps";
 import Cell from "~/components/Table/Rows/Cell";
 import { StringIndexedObject } from "~/types";
 import PopoverButton from "~/components/Table/Rows/PopoverButton";
+import { TableRow } from "~/components/Table/types";
 
 const Row: FunctionComponent<RowProps> = function ({
   row,
@@ -36,11 +37,16 @@ const Row: FunctionComponent<RowProps> = function ({
           key={(cell as StringIndexedObject).key}
           cell={cell}
           index={index}
-          isLoading={row.original?.isValidating || isLoading}
+          isLoading={(row.original as TableRow)?.isValidating || isLoading}
         />
       ))}
 
-      {showButton && <PopoverButton row={row} hoverPopover={hoverPopover} />}
+      {showButton && (
+        <PopoverButton
+          row={row as unknown as TableRow}
+          hoverPopover={hoverPopover}
+        />
+      )}
     </div>
   );
 };

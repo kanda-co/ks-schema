@@ -1,5 +1,5 @@
 import type { FunctionComponent, HTMLAttributes } from "react";
-import type { Cell } from "react-table";
+import type { Cell, Column } from "react-table";
 import type { StringIndexedObject } from "~/types";
 import type { PopoverButtonHoverPopoverProps } from "./Rows/PopoverButton";
 import type { TableInstance } from "react-table";
@@ -60,4 +60,9 @@ export interface TableRow {
 
 export interface TableHook extends TableInstance {
   setColumnOrder: (order: number[]) => void;
+}
+
+export interface TableColumn extends Column {
+  id: string;
+  isVisible: boolean;
 }
