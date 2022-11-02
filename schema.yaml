@@ -2076,6 +2076,7 @@ paths:
             enum:
               - gocardless
               - omni
+              - allium
               - stripe
               - veriff
       responses:
