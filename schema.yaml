@@ -3244,6 +3244,10 @@ components:
           type: object
           $ref: "#/components/schemas/Money"
           title: deposit value in pence
+        provider:
+          type: string
+          title: provider name
+          $ref: "#/components/schemas/FinanceProvider"
 
     SatNoteTimeline:
       type: object
