@@ -2061,6 +2061,34 @@ paths:
                 $ref: "#/components/schemas/Error"
 
   /api/webhook/{provider}:
+    get:
+      operationId: providerCheckWebhook
+      summary: provider check webhook
+      tags:
+        - Webhook
+      parameters:
+        - name: provider
+          in: path
+          description: provider name
+          required: true
+          schema:
+            type: string
+            enum:
+              - gocardless
+              - omni
+              - allium
+              - stripe
+              - veriff
+      responses:
+        200:
+          description: provider webhook accepted
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
     post:
       operationId: providerWebhook
       summary: provider webhook

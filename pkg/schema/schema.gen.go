@@ -1349,6 +1349,9 @@ type PostSubscriptionJSONBody Subscription
 // PutSubscriptionJSONBody defines parameters for PutSubscription.
 type PutSubscriptionJSONBody Subscription
 
+// ProviderCheckWebhookParamsProvider defines parameters for ProviderCheckWebhook.
+type ProviderCheckWebhookParamsProvider string
+
 // ProviderWebhookParamsProvider defines parameters for ProviderWebhook.
 type ProviderWebhookParamsProvider string
 
@@ -1651,6 +1654,9 @@ type ServerInterface interface {
 	// pending existing subscription
 	// (POST /api/subscription/{id}/pending)
 	PendingSubscription(ctx echo.Context, id string) error
+	// provider check webhook
+	// (GET /api/webhook/{provider})
+	ProviderCheckWebhook(ctx echo.Context, provider ProviderCheckWebhookParamsProvider) error
 	// provider webhook
 	// (POST /api/webhook/{provider})
 	ProviderWebhook(ctx echo.Context, provider ProviderWebhookParamsProvider) error
@@ -2855,6 +2861,24 @@ func (w *ServerInterfaceWrapper) PendingSubscription(ctx echo.Context) error {
 	return err
 }
 
+// ProviderCheckWebhook converts echo context to params.
+func (w *ServerInterfaceWrapper) ProviderCheckWebhook(ctx echo.Context) error {
+	var err error
+	// ------------- Path parameter "provider" -------------
+	var provider ProviderCheckWebhookParamsProvider
+
+	err = runtime.BindStyledParameterWithLocation("simple", false, "provider", runtime.ParamLocationPath, ctx.Param("provider"), &provider)
+	if err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter provider: %s", err))
+	}
+
+	ctx.Set(BearerAuthScopes, []string{""})
+
+	// Invoke the callback with all the unmarshalled arguments
+	err = w.Handler.ProviderCheckWebhook(ctx, provider)
+	return err
+}
+
 // ProviderWebhook converts echo context to params.
 func (w *ServerInterfaceWrapper) ProviderWebhook(ctx echo.Context) error {
 	var err error
@@ -2973,6 +2997,7 @@ func RegisterHandlersWithBaseURL(router EchoRouter, si ServerInterface, baseURL 
 	router.GET(baseURL+"/api/subscription/:id", wrapper.GetSubscription)
 	router.PUT(baseURL+"/api/subscription/:id", wrapper.PutSubscription)
 	router.POST(baseURL+"/api/subscription/:id/pending", wrapper.PendingSubscription)
+	router.GET(baseURL+"/api/webhook/:provider", wrapper.ProviderCheckWebhook)
 	router.POST(baseURL+"/api/webhook/:provider", wrapper.ProviderWebhook)
 
 }
@@ -3148,10 +3173,10 @@ var swaggerSpec = []string{
 	"IL1yLNGGEO/iZVHlcAyQIFs1YzlWdjvrZ81N7baS9cYbPO4meOW1exxfgT/jMQ4D2YF0gV4D2UOlo0xn",
 	"weP+g07TB7rk7aB/xJMgh7A8jgE4B0LrU5A9XlqcY6GHxAhLhDbtTD9Dj2NGtaQ//Md3GJ1ii4HbYanM",
 	"0fc9zOOR9SwR/mmzQMf2Xir5O56JubSP+SgWSPsPoLLqOEYXpLbqj4A5x1B5rPI6rwjLNGPEI6NNg98F",
-	"2EclwCxZT+WTG7LJOb8+f+9ipUccXpe2yX+YPpNOLxd97Z+6u6zhmsw6eO94ikVWEKnNeV4yulqvcFHQ",
-	"ulytgWHA0QCH1u3Jp88GaIuYJptsUTTvAemR2dHmCkaVJK0FVQegzjcECyKgAuKz11caHaaUuqFdLYrV",
-	"s1WuVCWfnZ/n9eYJBN4/SfmT+np1uw60OHuLRxo9Oz8veIqLnEv17KunXz1d3V7d/k8AAAD//5SlXXo8",
-	"KAEA",
+	"2EclwCxZT+WTG7LJOb8+f+9ipW+j55NL2wLycP/D9Jt0fLkIbP/k3WUP12TW4XvHUyyygkht0vOS0dV6",
+	"hYuC1uVqDUwDzgY4uG5PPoE2QFvkNBlli6K7A9Kk2t409HAEdxQaOePYIX6n5VJoOUZF6ELSWlB1AOp8",
+	"Q7AgAipaPnt9pdFhSuMb2tWiWD1b5UpV8tn5eV5vnkAixZOUP6mvV7frQIuzt3ik0bPz84KnuMi5VM++",
+	"evrV09Xt1e3/BAAA//8Wln5wDCoBAA==",
 }
 
 // GetSwagger returns the content of the embedded swagger specification file
