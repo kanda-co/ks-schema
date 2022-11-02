@@ -104,6 +104,7 @@
     "@types/lodash.trim": "^4.5.7",
     "@types/react-dropzone": "^5.1.0",
     "@zxcvbn-ts/core": "^1.0.0",
+    "cropperjs": "^1.5.12",
     "lodash.get": "^4.4.2",
     "lodash.trim": "^4.5.1",
     "react-beautiful-dnd": "^13.1.1",
@@ -112,6 +113,7 @@
     "react-input-autosize": "^3.0.0",
     "react-loading-skeleton": "^3.1.0",
     "react-number-format": "^4.6.4",
+    "react-range": "^1.8.14",
     "react-slick": "^0.29.0",
     "react-table": "^7.7.0",
     "use-debounce": "^8.0.3"
