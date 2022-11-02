@@ -1670,6 +1670,10 @@ video {
   vertical-align: middle;
 }
 
+.text-base {
+  font-size: 16px;
+}
+
 .font-bold {
   font-weight: 700;
 }
@@ -2891,6 +2895,10 @@ input[type="checkbox"]:checked ~ .label-checked\:bg-turquoise-300 {
 
   .md\:pl-4 {
     padding-left: 16px;
+  }
+
+  .md\:text-sm {
+    font-size: 14px;
   }
 }
 

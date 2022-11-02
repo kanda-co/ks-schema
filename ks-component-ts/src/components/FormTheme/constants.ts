@@ -4,7 +4,8 @@ export const DEFAULT_THEME = {
   fieldWrapper: "Default" as FieldWrapperType,
   baseClasses:
     "rounded-lg flex w-full bg-neutral-100 border caret-turquoise-300",
-  inputClasses: "text-style-g text-neutral-900 placeholder-neutral-600",
+  inputClasses:
+    "text-style-g text-neutral-900 placeholder-neutral-600 text-base md:text-sm",
   focusClasses:
     "border-solid border-transparent focus:outline-none focus:border-turquoise-300 focus:bg-neutral-000",
   paddingClasses: "px-4 py-3.25",
@@ -24,7 +25,8 @@ export const DEFAULT_WHITE_THEME = {
   fieldWrapper: "Default" as FieldWrapperType,
   baseClasses:
     "rounded-lg flex w-full bg-neutral-000 border caret-turquoise-300",
-  inputClasses: "text-style-g text-neutral-900 placeholder-neutral-600",
+  inputClasses:
+    "text-style-g text-neutral-900 placeholder-neutral-600 text-base md:text-sm",
   focusClasses:
     "focus:px-2 border-solid border-transparent focus:outline-none focus:border-turquoise-300 focus:bg-neutral-000",
   paddingClasses: "py-2",
@@ -161,7 +163,8 @@ const FILLED_THEME = {
   fieldWrapper: "Default" as FieldWrapperType,
   baseClasses:
     "rounded-lg flex w-full bg-neutral-000 border caret-turquoise-300",
-  inputClasses: "text-style-g text-neutral-900 placeholder-neutral-600",
+  inputClasses:
+    "text-style-g text-neutral-900 placeholder-neutral-600 text-base md:text-sm",
   focusClasses:
     "border-solid border-transparent focus:outline-none focus:border-turquoise-300 focus:bg-neutral-000",
   paddingClasses: "px-4 py-3.25",
@@ -200,7 +203,8 @@ const CUSTOMER_CHECKOUT_THEME = {
   fieldWrapper: "Default" as FieldWrapperType,
   baseClasses:
     "rounded-lg flex w-full bg-neutral-100 border caret-turquoise-300",
-  inputClasses: "text-style-g text-neutral-900 placeholder-neutral-600",
+  inputClasses:
+    "text-style-g text-neutral-900 placeholder-neutral-600 text-base md:text-sm",
   focusClasses:
     "border-solid border-transparent focus:outline-none focus:border-turquoise-300 focus:bg-neutral-000",
   paddingClasses: "px-4 py-3.25",
@@ -220,7 +224,8 @@ const GROUP_DEFAULT_THEME = {
   fieldWrapper: "Default" as FieldWrapperType,
   baseClasses:
     "rounded-lg flex w-full bg-neutral-100 border caret-turquoise-300",
-  inputClasses: "text-style-g text-neutral-900 placeholder-neutral-600",
+  inputClasses:
+    "text-style-g text-neutral-900 placeholder-neutral-600 text-base md:text-sm",
   focusClasses:
     "border-solid border-transparent focus:outline-none focus:border-turquoise-300 focus:bg-neutral-000",
 

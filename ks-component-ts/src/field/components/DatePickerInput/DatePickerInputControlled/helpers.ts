@@ -20,5 +20,5 @@ export const onValueChange = (
 ): void => {
   if (!event.value) return;
   const fmt = format(event.value, "##-##-####");
-  onChange(fmt.split("-").reverse().join("-"));
+  onChange(fmt.split("-").reverse().join("-").replace(/ /g, ""));
 };
