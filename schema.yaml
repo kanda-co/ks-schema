@@ -3866,6 +3866,10 @@ components:
           title: months employed
           minimum: 1
           maximum: 2147483647
+        employer_address:
+          type: object
+          title: employer address
+          $ref: "#/components/schemas/Address"
 
     SelfEmployedDetails:
       type: object
@@ -3895,6 +3899,10 @@ components:
           title: months self employed
           minimum: 1
           maximum: 2147483647
+        business_address:
+          type: object
+          title: business address
+          $ref: "#/components/schemas/Address"
 
     NotEmployedDetails:
       type: object
