@@ -1057,6 +1057,14 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-cropper@^1.3.2":
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/@types/react-cropper/-/react-cropper-1.3.2.tgz#005e3d32aa17a78aa9d53db8b796dc41e47b467f"
+  integrity sha512-4WNzA9LTj9VRPCzrqZttUBJRy6vWfKKGWTJqcTdjM5xuYSwJ5cH6YQo1jinAg46nFkRmrwfhKaKrESq96skT/w==
+  dependencies:
+    "@types/react" "*"
+    cropperjs "^1.5.5"
+
 "@types/react-dom@^17.0.11":
   version "17.0.17"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.17.tgz#2e3743277a793a96a99f1bf87614598289da68a1"
@@ -1850,7 +1858,7 @@ cosmiconfig@^5.2.1:
     js-yaml "^3.13.1"
     parse-json "^4.0.0"
 
-cropperjs@^1.5.12:
+cropperjs@^1.5.12, cropperjs@^1.5.5:
   version "1.5.12"
   resolved "https://registry.yarnpkg.com/cropperjs/-/cropperjs-1.5.12.tgz#d9c0db2bfb8c0d769d51739e8f916bbc44e10f50"
   integrity sha512-re7UdjE5UnwdrovyhNzZ6gathI4Rs3KGCBSc8HCIjUo5hO42CtzyblmWLj6QWVw7huHyDMfpKxhiO2II77nhDw==
