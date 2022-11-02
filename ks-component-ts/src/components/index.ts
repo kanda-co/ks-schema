@@ -6,6 +6,7 @@ export { default as FormState } from "./FormState";
 export { default as FormTheme } from "./FormTheme";
 export { default as MultiStepForm } from "./MultiStepForm";
 export { default as PasswordStrengthIndicator } from "./PasswordStrengthIndicator";
+export { default as RangeSlider } from "./RangeSlider";
 export { default as RowFields } from "./RowFields";
 export { default as Search } from "./Search";
 export { default as Table } from "./Table";
