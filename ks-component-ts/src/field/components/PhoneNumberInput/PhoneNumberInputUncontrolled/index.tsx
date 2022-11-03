@@ -16,15 +16,17 @@ const PhoneNumberInputUncontrolled: FunctionComponent<PhoneNumberInputUncontroll
     className,
     isLoading,
     phoneNumberProps,
+    countryCodeName,
   }) {
     const { classNames, skeletonClasses, code } =
       usePhoneNumberInputUncontrolled({
         error,
         className,
         isLoading,
-        name,
         defaultValue,
+        name: countryCodeName,
       });
+
     return (
       <div className={classNames.container}>
         {isLoading ? (
