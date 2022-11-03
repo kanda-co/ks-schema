@@ -39,7 +39,7 @@ jobs:
         run: npm install && make qa clean build-frontend
 
       - name: "publish npm package"
-        if: github.event_name != "pull_request"
+        if: ${{ github.event_name != 'pull_request' }}
         run: rm -rf .git/ && npm version $(npm view @kanda-libs/ks-schema versions --json | grep '[0-9].[0-9].[0-9]' | sort -t "." -k1,1n -k2,2n -k3,3n | tail -1 | cut -d '"' -f 2 |  awk 'BEGIN{FS=OFS="."} {$3+=1} 1') --force && npm publish --force --allow-same-version
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_SECRET }}
@@ -57,7 +57,7 @@ jobs:
         run: cd ks-frontend-services && yarn && yarn build
 
       - name: "publish frontend services npm package"
-        if: github.event_name != "pull_request"
+        if: ${{ github.event_name != 'pull_request' }}
         run: rm -rf .git/ && cd ks-frontend-services && rm -rf .git/ && yarn publish --new-version $(yarn info @kanda-libs/ks-frontend-services versions | grep '[0-9].[0-9].[0-9]' | sort -t "." -k1,1n -k2,2n -k3,3n | tail -1 | cut -d "'" -f 2 |  awk 'BEGIN{FS=OFS="."} {$3+=1} 1')
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_SECRET }}
@@ -66,7 +66,7 @@ jobs:
         run: cd ks-component-ts && yarn && yarn build
 
       - name: "publish TS npm package"
-        if: github.event_name != "pull_request"
+        if: ${{ github.event_name != 'pull_request' }}
         run: rm -rf .git/ && cd ks-component-ts && rm -rf .git/ && yarn publish --new-version $(yarn info @kanda-libs/ks-component-ts versions | grep '[0-9].[0-9].[0-9]' | sort -t "." -k1,1n -k2,2n -k3,3n | tail -1 | cut -d "'" -f 2 |  awk 'BEGIN{FS=OFS="."} {$3+=1} 1')
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_SECRET }}
