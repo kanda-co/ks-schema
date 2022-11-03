@@ -24,6 +24,7 @@ export default function withFieldInfo<T>(
     prepend,
     append,
     className,
+    wrapperProps,
     forwardRef,
     ...restProps
   }) {
@@ -39,6 +40,7 @@ export default function withFieldInfo<T>(
         autoWidth={autoWidth}
         prepend={prepend}
         append={append}
+        wrapperProps={wrapperProps}
         className={className}
       >
         <>
