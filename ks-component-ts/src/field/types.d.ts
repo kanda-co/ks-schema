@@ -1,6 +1,7 @@
 import {
   type ForwardRefExoticComponent,
   type FunctionComponent,
+  HTMLAttributes,
   type MutableRefObject,
   type PropsWithoutRef,
   type RefAttributes,
@@ -50,6 +51,7 @@ export interface FieldInfoWrapperProps
     WarningProps {
   prepend?: JSX.Element | JSX.Element[];
   append?: JSX.Element | JSX.Element[];
+  wrapperProps?: HTMLAttributes<HTMLDivElement>;
   name?: string;
 }
 
