@@ -5,19 +5,23 @@ import { CROPPER_PROPS } from "./constants";
 import useImage from "./useImage";
 import useImageManipulation from "./useImageManipulation";
 import type { ReactCropperProps } from "./types";
+import type { CropperBottomOptionsProps } from "./CropperBottomOptions";
+import type { CropperTopOptionsProps } from "./CropperTopOptions";
 
 export interface CropperPropsHook {
   onSave: () => void;
   modalId: string;
   cropperProps: ReactCropperProps;
+  cropperBottomOptionsProps: CropperBottomOptionsProps;
+  cropperTopOptionsProps: CropperTopOptionsProps;
 }
 
 export default function useCropperProps(
-  file: File,
+  file: File | undefined,
   onCrop: (file: File) => void,
   name: string
 ): CropperPropsHook {
-  const { image, modalId } = useImage(name, file);
+  const { image, modalId } = useImage(name, file as File);
 
   const {
     cropperRef,
@@ -40,7 +44,11 @@ export default function useCropperProps(
 
     if (!dataUrl) return;
 
-    const croppedFile = dataURItoFile(dataUrl, file.name, file.type);
+    const croppedFile = dataURItoFile(
+      dataUrl,
+      file?.name as string,
+      file?.type as string
+    );
 
     onCrop(croppedFile);
   }, [getDataUrl, file, onCrop]);
@@ -53,23 +61,23 @@ export default function useCropperProps(
     ready: onReady,
   };
 
-  const cropperButtomOptionsProps = {
+  const cropperBottomOptionsProps = {
     handleZoom,
     handleFit,
     handleReset,
     zoomRange,
-  };
+  } as CropperBottomOptionsProps;
 
   const cropperTopOptionsProps = {
     handleRotateClockwise,
     handleRotateCounterClockwise,
-  };
+  } as CropperTopOptionsProps;
 
   return {
     onSave,
     modalId,
     cropperProps,
-    cropperButtomOptionsProps,
+    cropperBottomOptionsProps,
     cropperTopOptionsProps,
   };
 }

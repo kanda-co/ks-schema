@@ -1,5 +1,5 @@
 import DragMode = Cropper.DragMode;
-import { Position } from "postcss";
+import type { CSSProperties } from "react";
 
 export const CLASS_NAMES = {
   container: "flex flex-1 relative",
@@ -15,12 +15,12 @@ export const ICON_PROPS = {
 
 export const CROPPER_PROPS = {
   style: {
-    position: "absolute" as unknown,
+    position: "absolute",
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
-  },
+  } as CSSProperties,
   dragMode: "move" as DragMode,
   zoomable: true,
   zoomOnWheel: false,

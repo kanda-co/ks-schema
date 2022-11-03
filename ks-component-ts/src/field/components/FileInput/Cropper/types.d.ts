@@ -1,14 +1,39 @@
+import type { HTMLProps } from "react";
 import type { MutableRefObject } from "react";
 import Cropper from "cropperjs";
-import * as React from "react";
-import ReactCropper from "react-cropper";
+import { CropperBottomOptionsProps } from "~/field/components/FileInput/Cropper/CropperBottomOptions";
+import { CropperTopOptionsProps } from "~/field/components/FileInput/Cropper/CropperTopOptions";
+import { MouseEvent } from "react";
 
 export type CropperRef = MutableRefObject<{
   cropper: Cropper;
 }>;
 
-interface ReactCropperProps
+export interface ReactCropperProps
   extends Cropper.Options,
-    Omit<React.HTMLProps<HTMLImageElement>, "data" | "ref"> {
+    Omit<HTMLProps<HTMLImageElement>, "data" | "ref"> {
   ref: CropperRef;
+}
+
+export interface CropperProps {
+  /**
+   * OnCrop callback
+   */
+  onCrop: (file: File) => void;
+  /**
+   * OnCancelCrop callback
+   */
+  onCancelCrop: () => void;
+  /**
+   * Field name
+   */
+  name: string;
+  /**
+   * File object to be cropped
+   */
+  file?: File;
+  cropperBottomOptionsProps: CropperBottomOptionsProps;
+  cropperTopOptionsProps: CropperTopOptionsProps;
+  onSave: (e?: MouseEvent) => void;
+  cropperProps: Omit<ReactCropperProps, "ref">;
 }
