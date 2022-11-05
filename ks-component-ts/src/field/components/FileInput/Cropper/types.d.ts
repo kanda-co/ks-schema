@@ -27,13 +27,13 @@ export interface CropperProps {
   /**
    * Field name
    */
-  name: string;
+  name?: string;
   /**
    * File object to be cropped
    */
   file?: File;
-  cropperBottomOptionsProps: CropperBottomOptionsProps;
-  cropperTopOptionsProps: CropperTopOptionsProps;
-  onSave: (e?: MouseEvent) => void;
-  cropperProps: Omit<ReactCropperProps, "ref">;
+  cropperBottomOptionsProps?: CropperBottomOptionsProps;
+  cropperTopOptionsProps?: CropperTopOptionsProps;
+  onSave?: (e?: MouseEvent) => void;
+  cropperProps?: Omit<ReactCropperProps, "ref">;
 }

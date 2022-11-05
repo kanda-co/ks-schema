@@ -5,8 +5,10 @@ import type { IconProps } from "@kanda-libs/ks-design-library";
 export type FileCardFileProgress = StringIndexedObject<(value: number) => void>;
 
 export interface FileCardFile {
-  name: string;
-  preview: string;
+  name?: string;
+  preview?: string;
+  type?: string;
+  content?: string;
 }
 
 export interface FileCardIcons {

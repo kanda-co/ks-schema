@@ -19,7 +19,7 @@ export interface CropperPropsHook {
 export default function useCropperProps(
   file: File | undefined,
   onCrop: (file: File) => void,
-  name: string
+  name?: string
 ): CropperPropsHook {
   const { image, modalId } = useImage(name, file as File);
 

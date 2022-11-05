@@ -101,7 +101,7 @@
   },
   "dependencies": {
     "@kanda-libs/ks-design-library": "0.0.76-ts-1",
-    "@kanda-libs/ks-frontend-services": "^0.0.106-ts-8",
+    "@kanda-libs/ks-frontend-services": "^0.0.106-ts-13",
     "@kanda-libs/ks-tailwind-config": "^0.0.5",
     "@types/lodash.get": "^4.4.7",
     "@types/lodash.trim": "^4.5.7",
@@ -113,7 +113,7 @@
     "lodash.trim": "^4.5.1",
     "mime-types": "^2.1.35",
     "react-beautiful-dnd": "^13.1.1",
-    "react-dropzone": "^14.2.3",
+    "react-dropzone": "^11.3.4",
     "react-hook-form": "^7.35.0",
     "react-input-autosize": "^3.0.0",
     "react-loading-skeleton": "^3.1.0",
@@ -121,6 +121,7 @@
     "react-range": "^1.8.14",
     "react-slick": "^0.29.0",
     "react-table": "^7.7.0",
+    "remove": "^0.1.5",
     "use-debounce": "^8.0.3"
   },
   "resolutions": {

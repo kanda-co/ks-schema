@@ -1,4 +1,5 @@
 import { lookup } from "mime-types";
+import { FileCardFile } from "~/field/components/FileInput/FileCard/types";
 
 /**
  * Normalizes initial value
@@ -6,10 +7,7 @@ import { lookup } from "mime-types";
  * @param  maxFiles - limit of files
  * @returns  initial value
  */
-export const normalizeFilesValue = (
-  value: number,
-  maxFiles: number
-): number | number[] => {
+export const normalizeFilesValue = (value: File, maxFiles: number): File[] => {
   if (!value) {
     return [];
   }
@@ -18,7 +16,7 @@ export const normalizeFilesValue = (
     return [value];
   }
 
-  return value;
+  return value as unknown as File[];
 };
 
 /**
@@ -26,8 +24,8 @@ export const normalizeFilesValue = (
  * @param file
  * @returns true if file type is image
  */
-export const isImage = (file: File): boolean => {
-  const type = lookup(file.name);
+export const isImage = (file: FileCardFile): boolean => {
+  const type = lookup(file.name as string);
   if (!type) return false;
   return type.split("/")[0] === "image";
 };
