@@ -3,8 +3,8 @@ import { Button } from "@kanda-libs/ks-design-library";
 import { CLASS_NAMES, BUTTONS } from "./constants";
 
 export interface CropperTopOptionsProps {
-  handleRotateClockwise: () => void;
-  handleRotateCounterClockwise: () => void;
+  handleRotateClockwise?: () => void;
+  handleRotateCounterClockwise?: () => void;
 }
 
 const CropperTopOptions: FunctionComponent<CropperTopOptionsProps> = function ({

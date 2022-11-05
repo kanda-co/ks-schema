@@ -5,7 +5,7 @@ import "cropperjs/dist/cropper.css";
 import { CLASS_NAMES, SAVE_BUTTON } from "./constants";
 
 export interface CropperFooterProps {
-  onSave: (e?: MouseEvent) => void;
+  onSave?: (e?: MouseEvent) => void;
 }
 
 const CropperFooter: FunctionComponent<CropperFooterProps> = function ({

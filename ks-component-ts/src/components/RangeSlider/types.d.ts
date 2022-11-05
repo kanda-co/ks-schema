@@ -23,5 +23,5 @@ export interface RangeSliderProps {
   /**
    * Event to handle change
    */
-  onChange: (value?: number | number[]) => void;
+  onChange?: (value?: number | number[]) => void;
 }

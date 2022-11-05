@@ -5,6 +5,8 @@ import Cropper from "./Cropper";
 import DropZoneCard from "./DropZoneCard";
 import JobPdfFileCard from "~/field/components/FileInput/JobPdfFileCard";
 import FileCard from "~/field/components/FileInput/FileCard";
+import withFieldInfo from "~/field/components/FieldInfo/withFieldInfo";
+import withFieldFormController from "~/field/components/FieldFormController/withFieldFormController";
 
 const FileInput: FunctionComponent<FileInputProps> = function ({
   name,
@@ -73,4 +75,5 @@ const FileInput: FunctionComponent<FileInputProps> = function ({
   );
 };
 
-export default FileInput;
+// TODO: Move this into a proper thing
+export default withFieldFormController(withFieldInfo(FileInput));

@@ -42,46 +42,50 @@ import TableColumnOptionInput, {
   type TableColumnOptionInputProps,
 } from "~/field/components/TableColumnOptionInput";
 import Address from "~/field/components/Address";
+import FileInput from "~/field/components/FileInput";
+import type { FileInputProps } from "~/field/components/FileInput/types";
 
 const Field = {
   Address,
-  Validator,
-  Input,
-  NumberInput,
-  UncontrolledInput,
-  PasswordInput,
-  BooleanInput,
-  TextAreaInput,
-  NumberFormatInput,
-  PhoneNumberInput,
-  SortCodeInput,
-  QuantityInput,
-  PriceInput,
-  DatePickerInput,
-  FingerprintBooleanInput,
-  Postcode,
-  Select,
-  RadioSelect,
   Array,
+  BooleanInput,
   BuildFinancePlan,
   CompanyLookupInput,
+  DatePickerInput,
+  FileInput,
+  FingerprintBooleanInput,
+  Input,
+  NumberFormatInput,
+  NumberInput,
+  PasswordInput,
+  PhoneNumberInput,
+  Postcode,
+  PriceInput,
+  QuantityInput,
+  RadioSelect,
+  Select,
+  SortCodeInput,
   TableColumnOptionInput,
+  TextAreaInput,
+  UncontrolledInput,
+  Validator,
 };
 
 export default Field;
 
 export interface FieldProps {
-  Input: InputProps;
-  Select: SelectProps;
-  RadioSelect: RadioSelectProps;
+  BooleanInput: BooleanInputProps;
+  BuildFinancePlan: BuildFinancePlanProps;
+  CompanyLookupInput: CompanyLookupInputProps;
   DatePickerInput: DatePickerInputProps;
+  FileInput: FileInputProps;
+  Input: InputProps;
   NumberFormatInput: NumberFormatInputProps;
+  NumberInput: NumberInputProps;
   PhoneNumberInput: PhoneNumberInputProps;
   Postcode: PostcodeProps;
-  BuildFinancePlan: BuildFinancePlanProps;
-  NumberInput: NumberInputProps;
-  BooleanInput: BooleanInputProps;
-  CompanyLookupInput: CompanyLookupInputProps;
+  RadioSelect: RadioSelectProps;
+  Select: SelectProps;
   TableColumnOptionInput: TableColumnOptionInputProps;
 }
 

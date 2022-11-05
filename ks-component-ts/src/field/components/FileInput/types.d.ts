@@ -1,13 +1,12 @@
 import type { FieldFormControllerProps } from "~/field/components/FieldFormController";
 import type { FileCardFile } from "~/field/components/FileInput/FileCard/types";
-import type { Accept } from "react-dropzone";
 import type { FileCardFileProgress } from "~/field/components/FileInput/FileCard/types";
 
 export type FileInputProps = FieldFormControllerProps<{
   /**
    * array of MIME types that fileInput accepts
    */
-  accept?: Accept;
+  accept?: string | string[];
   /**
    * maximum number of files
    */

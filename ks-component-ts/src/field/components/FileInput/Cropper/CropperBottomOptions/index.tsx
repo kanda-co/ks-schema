@@ -12,10 +12,10 @@ import {
 } from "./constants";
 
 export interface CropperBottomOptionsProps {
-  zoomRange: number[];
-  handleZoom: (values?: number | number[]) => void;
-  handleFit: () => void;
-  handleReset: () => void;
+  zoomRange?: number[];
+  handleZoom?: (values?: number | number[]) => void;
+  handleFit?: () => void;
+  handleReset?: () => void;
 }
 
 const CropperBottomOptions: FunctionComponent<CropperBottomOptionsProps> =

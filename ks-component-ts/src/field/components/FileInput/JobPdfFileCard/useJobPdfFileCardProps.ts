@@ -32,7 +32,10 @@ export default function useJobPdfFileCardProps({
    * Updates progress when loadingFiles changes
    * */
   useEffect(() => {
-    if (Array.isArray(loadingFiles) && loadingFiles.includes(file.name))
+    if (
+      Array.isArray(loadingFiles) &&
+      loadingFiles.includes(file.name as string)
+    )
       setProgress(0);
     else setProgress(undefined);
   }, [loadingFiles, file]);

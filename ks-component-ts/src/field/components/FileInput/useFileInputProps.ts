@@ -46,7 +46,6 @@ export interface FileInputPropsHook {
 
 export default function useFileInputProps({
   name: inputName,
-  register,
   accept,
   maxFiles = 0,
   maxSize,
@@ -62,11 +61,11 @@ export default function useFileInputProps({
 }: FileInputPropsHookArgs): FileInputPropsHook {
   const name = getName(inputName as string);
 
+  const { setValue, register } = useFormContext();
+
   const [cropFile, setCropFile] = useState();
   const [fileError, setFileError] = useState<string>();
   const [compressing, setCompressing] = useState(false);
-
-  const { setValue } = useFormContext();
 
   const value = useWatch({ name, defaultValue });
 
@@ -82,6 +81,8 @@ export default function useFileInputProps({
 
     return newFiles;
   }, [value, maxFiles, onUpdateFiles]);
+
+  console.log("hell2o");
 
   /**
    * @param {Array.File} newFiles
@@ -270,17 +271,21 @@ export default function useFileInputProps({
   const { ref } = getInputProps() as StringIndexedObject;
 
   useEffect(() => {
-    // If input ref is empty or no input file, return
-    if (!ref.current || !inputFile) return;
-    // Extract input element
-    const input = ref.current;
-    // Create file list
-    const dt = new DataTransfer();
-    dt.items.add(inputFile);
-    // Add file list to input
-    input.files = dt.files;
-    // Dispatch event
-    input.dispatchEvent(new Event("change", { bubbles: true }));
+    // // If input ref is empty or no input file, return
+    // if (!ref.current || !inputFile) return;
+    console.log({
+      inputFile,
+      ref,
+    });
+    // // Extract input element
+    // const input = ref.current;
+    // // Create file list
+    // const dt = new DataTransfer();
+    // dt.items.add(inputFile);
+    // // Add file list to input
+    // input.files = dt.files;
+    // // Dispatch event
+    // input.dispatchEvent(new Event("change", { bubbles: true }));
   }, [inputFile, ref]);
 
   /**
@@ -288,7 +293,7 @@ export default function useFileInputProps({
    * this should run on component did mount and unmount
    */
   useEffect(() => {
-    (register as unknown as (name: string) => void)(name);
+    register(name);
   }, [register, name]);
 
   return {

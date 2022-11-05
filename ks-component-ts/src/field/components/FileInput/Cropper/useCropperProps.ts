@@ -21,7 +21,7 @@ export default function useCropperProps(
   onCrop: (file: File) => void,
   name?: string
 ): CropperPropsHook {
-  const { image, modalId } = useImage(name, file as File);
+  const { image, modalId } = useImage(name as string, file as File);
 
   const {
     cropperRef,

@@ -1,6 +1,5 @@
 import React, { type FunctionComponent } from "react";
 import type { DropzoneProps } from "./types";
-import type { Accept } from "react-dropzone";
 import { Icon, Text } from "@kanda-libs/ks-design-library";
 import useDropzoneProps from "./useDropzoneProps";
 import DropzoneContext from "components/Dropzone/DropzoneContext";
@@ -16,7 +15,7 @@ const Dropzone: FunctionComponent<DropzoneProps> = function ({
 }) {
   const { classNames, droppedFiles, parentDropZone, innerDropZone } =
     useDropzoneProps({
-      accept: accept as Accept,
+      accept: accept,
       ...dropzoneOptions,
     });
 
