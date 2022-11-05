@@ -139,7 +139,7 @@ func getKandaFormWidget(schema *openapi3.Schema) string {
 	case "Company":
 	    widget = "CompanyLookupInput"
 	case "File":
-		widget = "Input"
+		widget = "FileInput"
 	}
 	return widget
 }
