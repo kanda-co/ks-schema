@@ -7,7 +7,7 @@ import PasswordInput from "./components/PasswordInput";
 import BooleanInput, {
   BooleanInputProps,
 } from "~/field/components/BooleanInput";
-import TextAreaInput from "~/field/components/TextAreaInput";
+import TextAreaInput, { TextAreaProps } from "~/field/components/TextAreaInput";
 import NumberFormatInput, {
   type NumberFormatInputProps,
 } from "~/field/components/NumberFormatInput";
@@ -87,6 +87,7 @@ export interface FieldProps {
   RadioSelect: RadioSelectProps;
   Select: SelectProps;
   TableColumnOptionInput: TableColumnOptionInputProps;
+  TextAreaInput: TextAreaProps;
 }
 
 export type { ValidatedFieldProps } from "./types";

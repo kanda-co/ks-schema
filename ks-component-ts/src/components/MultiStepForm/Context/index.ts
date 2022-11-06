@@ -6,23 +6,23 @@ interface MultiStepFormContextValue {
   /**
    * Function to handle continuing to next step
    */
-  handleContinue?: (data: StringIndexedObject) => void;
+  handleContinue: (data: StringIndexedObject) => void;
   /**
    * Function to handle form submission
    */
-  handleSubmit?: (data: StringIndexedObject) => void;
+  handleSubmit: (data: StringIndexedObject) => void;
   /**
    * Function to handle going to next step - does not save data!
    */
-  nextStep?: () => void;
+  nextStep: () => void;
   /**
    * Function to handle going to previous step
    */
-  prevStep?: () => void;
+  prevStep: () => void;
   /**
    * Function to set data
    */
-  setData?: (data: StringIndexedObject) => void;
+  setData: (data: StringIndexedObject) => void;
   /**
    * Form data
    */
@@ -55,4 +55,25 @@ export const Context = createContext<MultiStepFormContextValue>({
   step: 0,
   steps: [],
   data: {},
+  handleContinue: () => {
+    // Empty
+  },
+  handleSubmit: () => {
+    // Empty
+  },
+  nextStep: () => {
+    // Empty
+  },
+  prevStep: () => {
+    // Empty
+  },
+  setData: () => {
+    // Empty
+  },
+  setStep: () => {
+    // Empty
+  },
+  setCurrentStepIndex: () => {
+    // Empty
+  },
 });

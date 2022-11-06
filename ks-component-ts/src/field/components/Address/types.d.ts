@@ -60,4 +60,8 @@ export interface PostcodeProps {
    * Callback fired when the value is changed.
    */
   onPostcodeSearch?: (postcode: string) => void;
+  /**
+   * Placeholder text
+   */
+  placeholder?: string;
 }

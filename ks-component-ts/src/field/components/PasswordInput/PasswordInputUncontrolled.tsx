@@ -7,7 +7,6 @@ import { ICON_SIZE, SKELETONS } from "./constants";
 
 export interface PasswordInputProps {
   placeholder?: string;
-  testProp: number;
 }
 
 const PasswordInputUncontrolled: FunctionComponent<
