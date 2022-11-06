@@ -1,79 +1,13 @@
-import React, { FunctionComponent } from "react";
-import type { FileInputProps } from "./types";
-import useFileInputProps from "~/field/components/FileInput/useFileInputProps";
-import Cropper from "./Cropper";
-import DropZoneCard from "./DropZoneCard";
-import JobPdfFileCard from "~/field/components/FileInput/JobPdfFileCard";
-import FileCard from "~/field/components/FileInput/FileCard";
+import Uncontrolled from "./FileInputUncontrolled";
 import withFieldInfo from "~/field/components/FieldInfo/withFieldInfo";
-import withFieldFormController from "~/field/components/FieldFormController/withFieldFormController";
+import type { FileInputUncontrolledProps } from "./types";
+import type { WrappedWithFieldInfoFormComponentProps } from "~/field/types";
 
-const FileInput: FunctionComponent<FileInputProps> = function ({
-  name,
-  isLoading,
-  placeholder,
-  fileProgress,
-  loadingFiles,
-  small,
-  hasLabel,
-  centerPlaceholder,
-  jobPdfInput,
-  ...hookProps
-}) {
-  const {
-    getRootProps,
-    getInputProps,
-    files,
-    isDragActive,
-    makeRemoveFile,
-    showFileZone,
-    cropFile,
-    onCrop,
-    onCancelCrop,
-    fileError,
-    compressing,
-  } = useFileInputProps({ name, ...hookProps });
+export type FileInputProps =
+  WrappedWithFieldInfoFormComponentProps<FileInputUncontrolledProps>;
 
-  const CardTag = jobPdfInput ? JobPdfFileCard : FileCard;
+export { Uncontrolled };
 
-  return (
-    <div className="flex flex-col w-full -mt-3">
-      <Cropper
-        name={name}
-        file={cropFile}
-        onCrop={onCrop}
-        onCancelCrop={onCancelCrop}
-      />
-      {showFileZone && (
-        <DropZoneCard
-          isDragActive={isDragActive}
-          placeholder={placeholder}
-          getRootProps={getRootProps}
-          getInputProps={getInputProps}
-          name={name}
-          isLoading={isLoading}
-          small={small}
-          hasLabel={hasLabel}
-          centerPlaceholder={centerPlaceholder}
-          fileError={fileError}
-          jobPdfInput={jobPdfInput}
-          compressing={compressing}
-        />
-      )}
-      {files.map((file, index) => (
-        <CardTag
-          file={file}
-          key={file.name}
-          onRemove={makeRemoveFile(index)}
-          loadingFiles={loadingFiles}
-          fileProgress={fileProgress}
-          small={small}
-          hasLabel={hasLabel}
-        />
-      ))}
-    </div>
-  );
-};
+const WithFieldInfo = withFieldInfo(Uncontrolled);
 
-// TODO: Move this into a proper thing
-export default withFieldFormController(withFieldInfo(FileInput));
+export default WithFieldInfo;

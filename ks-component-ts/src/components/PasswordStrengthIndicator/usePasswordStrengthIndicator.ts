@@ -3,7 +3,12 @@ import { useWatch, useFormContext } from "react-hook-form";
 import { useEffect, useMemo } from "react";
 import { useClasses } from "@kanda-libs/ks-design-library";
 import { StringIndexedObject } from "~/types";
-import { CLASS_NAMES, SCORE_LABELS, SCORE_COLORS } from "./constants";
+import {
+  CLASS_NAMES,
+  SCORE_LABELS,
+  SCORE_COLORS,
+  SCORE_TO_TEXT_CLASS,
+} from "./constants";
 import useDictionaries from "./useDictionaries";
 import { PasswordStrengthIndicatorProps } from "./types";
 
@@ -62,7 +67,7 @@ export default function usePasswordStrengthIndicator({
 
   const classNames = useClasses(CLASS_NAMES, {
     container: [".baseContainer", className],
-    label: [".baseLabel", `text-${color}`],
+    label: [".baseLabel", SCORE_TO_TEXT_CLASS[color]],
   });
 
   useEffect(() => {

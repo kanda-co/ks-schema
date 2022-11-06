@@ -776,10 +776,10 @@
     react-toastify "^9.0.8"
     use-debounce "^8.0.4"
 
-"@kanda-libs/ks-frontend-services@^0.0.106-ts-15":
-  version "0.0.106-ts-15"
-  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-frontend-services/-/ks-frontend-services-0.0.106-ts-15.tgz#0b7110dc36afebf5a8a7ca3e5e7d239ca5040083"
-  integrity sha512-NVS4iGCOAcQPSYbsiP1c4K0MR5yNthdi+lL9YBYnHfoXM4xj8Du0sGpEzrowLG5kpbEtfByKpvfjghqH7+TPrQ==
+"@kanda-libs/ks-frontend-services@^0.0.106-ts-18":
+  version "0.0.106-ts-18"
+  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-frontend-services/-/ks-frontend-services-0.0.106-ts-18.tgz#77b9cb3625f425dd19ecde4bf857e4b559ff8605"
+  integrity sha512-fLzudtYJK6GsUNilq2UgyKWjTB/1lDK8jRAPx1gR2g18KvMsfmPDlhACghffEX+YSKzGJAxSYzlhaGoQV9EVMQ==
   dependencies:
     "@openapi-io-ts/runtime" "^0.3.1"
     "@stripe/stripe-js" "^1.35.0"

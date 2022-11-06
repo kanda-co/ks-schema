@@ -43,7 +43,7 @@ import TableColumnOptionInput, {
 } from "~/field/components/TableColumnOptionInput";
 import Address from "~/field/components/Address";
 import FileInput from "~/field/components/FileInput";
-import type { FileInputProps } from "~/field/components/FileInput/types";
+import type { FileInputUncontrolledProps } from "~/field/components/FileInput/types";
 
 const Field = {
   Address,
@@ -78,7 +78,7 @@ export interface FieldProps {
   BuildFinancePlan: BuildFinancePlanProps;
   CompanyLookupInput: CompanyLookupInputProps;
   DatePickerInput: DatePickerInputProps;
-  FileInput: FileInputProps;
+  FileInput: FileInputUncontrolledProps;
   Input: InputProps;
   NumberFormatInput: NumberFormatInputProps;
   NumberInput: NumberInputProps;

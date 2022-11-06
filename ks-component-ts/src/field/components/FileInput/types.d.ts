@@ -2,7 +2,7 @@ import type { FieldFormControllerProps } from "~/field/components/FieldFormContr
 import type { FileCardFile } from "~/field/components/FileInput/FileCard/types";
 import type { FileCardFileProgress } from "~/field/components/FileInput/FileCard/types";
 
-export type FileInputProps = FieldFormControllerProps<{
+export type FileInputUncontrolledProps = FieldFormControllerProps<{
   /**
    * array of MIME types that fileInput accepts
    */
@@ -37,4 +37,7 @@ export type FileInputProps = FieldFormControllerProps<{
   jobPdfInput?: boolean;
 }>;
 
-export type FileInputPropsHookArgs = Omit<FileInputProps, "children">;
+export type FileInputPropsHookArgs = Omit<
+  FileInputUncontrolledProps,
+  "children"
+>;
