@@ -29,14 +29,14 @@ const processResponse = flow((response: Response): Either<Error, Response> => {
 }, fromEither);
 
 export const createGetter = (baseUrl: string) => {
-  const requestAdapter = fetchRequestAdapter(baseUrl);
+  const requestAdapter = fetchRequestAdapter(baseUrl, false);
 
   return (url: string): TaskEither<Error, Response> =>
     pipe(safeResponse(url, requestAdapter), chain(processResponse));
 };
 
 export const createPoster = (baseUrl: string) => {
-  const requestAdapter = fetchRequestAdapter(baseUrl);
+  const requestAdapter = fetchRequestAdapter(baseUrl, false);
 
   return (
     url: string,
@@ -44,11 +44,11 @@ export const createPoster = (baseUrl: string) => {
   ): TaskEither<Error, Response> =>
     pipe(
       safeResponse(url, requestAdapter, {
-        method: 'POST',
-        mode: 'no-cors',
         headers: {
+          Accept: 'application/json',
           'Content-Type': 'application/json',
         },
+        method: 'POST',
         body: JSON.stringify(body),
       }),
       chain(processResponse),

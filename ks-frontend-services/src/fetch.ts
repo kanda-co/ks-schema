@@ -34,7 +34,7 @@ interface FetchArgs {
   init?: RequestInit;
 }
 
-const originalFetch = () => fetch.bind(window);
+export const originalFetch = () => fetch.bind(window);
 
 /**
  * Alter the fetch method so that it will automatically retry the request

@@ -37,7 +37,7 @@ export default function useSubmit<Value, Params, Body>(
     async ({
       body = {} as Body,
       params = {} as Params,
-    }: Partial<ServiceParams<Params, Body>>): Promise<
+    }: Partial<ServiceParams<Params, Body>> = {}): Promise<
       ServiceMethodReturnParams<Value>
     > => {
       if (!service || !service.method) {
