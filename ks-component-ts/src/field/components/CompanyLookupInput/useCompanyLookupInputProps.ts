@@ -18,11 +18,11 @@ export type CompanyLookupInputArgs = Omit<
 
 export interface CompanyLookupInputPropsHook {
   error?: string | null;
-  companySelected: boolean;
-  handleUnSelect: () => void;
-  searchInputProps: InputProps;
-  searchResultsProps: SearchResultsProps;
-  noCompanyCallback: (name?: string) => void;
+  companySelected?: boolean;
+  handleUnSelect?: () => void;
+  searchInputProps?: InputProps;
+  searchResultsProps?: SearchResultsProps;
+  noCompanyCallback?: (name?: string) => void;
 }
 
 export default function useCompanyLookupInputProps({
@@ -39,7 +39,7 @@ export default function useCompanyLookupInputProps({
 
   const modalId = `${name}-search-modal`;
 
-  const companyName = useWatch({ name: companySearchName });
+  const companyName = useWatch({ name: companySearchName as string });
 
   const [companySelected, setCompanySelected] = useState(false);
 
@@ -126,7 +126,7 @@ export default function useCompanyLookupInputProps({
    * Handles click
    */
   const handleClick = useCallback(() => {
-    setValue(props.companyFocusName, Math.random());
+    setValue(props.companyFocusName as string, Math.random());
   }, [props.companyFocusName, setValue]);
 
   /**

@@ -21,7 +21,7 @@ export default function useItemProps({
     (e: MouseEvent) => {
       e.stopPropagation();
 
-      handleSelect(company as InfoCompany);
+      if (handleSelect) handleSelect(company as InfoCompany);
     },
     [handleSelect, company]
   );

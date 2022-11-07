@@ -4,7 +4,7 @@ export interface ItemProps {
   /**
    * Handle select customer
    */
-  handleSelect(company: InfoCompany): void;
+  handleSelect?: (company: InfoCompany) => void;
   /**
    * Loading state
    */

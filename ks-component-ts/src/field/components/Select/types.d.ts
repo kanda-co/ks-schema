@@ -18,7 +18,7 @@ export interface SelectUncontrolledProps {
   /**
    * Text that would be displayed when there is no value
    */
-  placeholder?: string;
+  placeholder?: string | JSX.Element;
   /**
    * class name
    */

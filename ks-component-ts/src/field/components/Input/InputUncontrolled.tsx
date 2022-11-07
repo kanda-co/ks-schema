@@ -1,20 +1,16 @@
-import React, {
-  FunctionComponent,
-  HTMLAttributes,
-  InputHTMLAttributes,
-} from "react";
+import React, { FunctionComponent, InputHTMLAttributes } from "react";
 import { Icon, SkeletonLoader } from "@kanda-libs/ks-design-library";
 import AutosizeInput from "react-input-autosize";
 import { DefaultFormFieldProps } from "~/field/types";
 import useInputProps from "./useInputProps";
 
 export interface InputUncontrolledProps
-  extends InputHTMLAttributes<HTMLInputElement> {
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, "placeholder"> {
   icon?: string;
   iconColor?: string;
   iconVariant?: string;
   italic?: string;
-  placeholder?: string;
+  placeholder?: string | JSX.Element;
   autoSize?: boolean;
 }
 
@@ -60,7 +56,12 @@ const InputUncontrolled: FunctionComponent<
                 <Icon {...iconProps} icon={icon} />
               </div>
             )}
-            <InputTag ref={forwardRef} {...inputProps} {...restProps} />
+            <InputTag
+              ref={forwardRef}
+              {...inputProps}
+              {...restProps}
+              placeholder={restProps.placeholder as string}
+            />
           </>
         }
       />

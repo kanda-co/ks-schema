@@ -20,12 +20,14 @@ export default function useDesktopProps({
   noCompanyCallback,
 }: DesktopPropsHookArgs): DesktopPropsHook | null {
   const [query, visible] = useWatch({
-    name: [companySearchName, companyFocusName],
+    name: [companySearchName as string, companyFocusName as string],
   });
 
   const { results, isLoading, searchWords, debouncedQuery } = useSearch(query);
 
-  const onClick = () => noCompanyCallback(query);
+  const onClick = () => {
+    if (noCompanyCallback) noCompanyCallback(query);
+  };
 
   const showButton =
     (!isLoading && results.length !== 0) ||

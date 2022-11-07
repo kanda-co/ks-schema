@@ -63,7 +63,7 @@ export type ValidError = string | ErrorMessage | undefined;
 export type DefaultFormFieldProps<T> = {
   name?: string;
   id?: string;
-  placeholder?: string;
+  placeholder?: string | JSX.Element;
   defaultValue?: string | number | readonly string[];
   ref?: MutableRefObject<any>;
   forwardRef?: MutableRefObject<any>;

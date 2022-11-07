@@ -19,7 +19,7 @@ const SelectUncontrolled: FunctionComponent<
   const { options, classNames, currentValue, defaultValue, skeletonClasses } =
     useSelectUncontrolled(
       name as string,
-      placeholder,
+      placeholder as string,
       initialOptions,
       isLoading,
       error,

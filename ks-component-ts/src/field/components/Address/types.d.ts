@@ -1,4 +1,5 @@
 import { InputHTMLAttributes } from "react";
+import { DefaultFormFieldProps, FieldInfoWrapperProps } from "~/field/types";
 
 export interface AddressApiResponseAddress {
   building_number?: string;
@@ -29,8 +30,11 @@ export type PostcodeCallbackArgs = AddressApiData;
 
 export type PostcodeCallback = (args: PostcodeCallbackArgs) => void;
 
-export interface PostcodeProps
-  extends Pick<InputHTMLAttributes<HTMLInputElement>, "autoComplete"> {
+export type PostcodeBaseProps<T> = DefaultFormFieldProps<T> &
+  FieldInfoWrapperProps &
+  Pick<InputHTMLAttributes<HTMLInputElement>, "autoComplete">;
+
+export type PostcodeProps = PostcodeBaseProps<{
   /**
    * The api response from the address lookup service
    */
@@ -50,7 +54,7 @@ export interface PostcodeProps
   /**
    * Name of the input required for form to work
    */
-  callback: PostcodeCallback;
+  callback?: PostcodeCallback;
   /**
    * icon name
    */
@@ -66,5 +70,5 @@ export interface PostcodeProps
   /**
    * Placeholder text
    */
-  placeholder?: string;
-}
+  placeholder?: string | JSX.Element;
+}>;

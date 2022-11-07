@@ -23,7 +23,12 @@ const TextAreaInputUncontrolled: FunctionComponent<
           </div>
         </div>
       ) : (
-        <textarea className={textAreaClassName} ref={forwardRef} {...props} />
+        <textarea
+          className={textAreaClassName}
+          ref={forwardRef}
+          {...props}
+          placeholder={props.placeholder as string}
+        />
       )}
     </>
   );

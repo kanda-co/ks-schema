@@ -17,12 +17,12 @@ export interface CompanyLookupInputSharedProps extends ValidationProps {
   /**
    * Company search field name
    */
-  companySearchName: string;
+  companySearchName?: string;
   /**
    * Company focus field name
    */
-  companyFocusName: string;
-  noCompanyCallback: (query?: string) => void;
+  companyFocusName?: string;
+  noCompanyCallback?: (query?: string) => void;
 }
 
 export interface CompanyLookupInputProps extends CompanyLookupInputSharedProps {
@@ -39,7 +39,7 @@ export interface CompanyLookupInputProps extends CompanyLookupInputSharedProps {
   /**
    * Company search field label
    */
-  placeholder?: string;
+  placeholder?: string | JSX.Element;
   /**
    * City field name
    */

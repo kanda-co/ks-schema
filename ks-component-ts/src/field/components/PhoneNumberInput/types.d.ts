@@ -24,7 +24,7 @@ export interface PhoneNumberInputUncontrolledProps {
   /**
    * Text that would be displayed when there is no value
    */
-  placeholder?: string;
+  placeholder?: string | JSX.Element;
   /**
    * Default value of input
    */

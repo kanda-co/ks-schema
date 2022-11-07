@@ -4,7 +4,8 @@ import {
   type RefAttributes,
 } from "react";
 
-export interface HandleProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface HandleProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, "placeholder"> {
   /**
    * Name of the input required for form to work
    */

@@ -46,7 +46,7 @@ const PhoneNumberInputUncontrolled: FunctionComponent<PhoneNumberInputUncontroll
               id={id}
               className={classNames.phoneInput}
               name={name}
-              placeholder={placeholder}
+              placeholder={placeholder as string}
               {...phoneNumberProps}
             />
           </>

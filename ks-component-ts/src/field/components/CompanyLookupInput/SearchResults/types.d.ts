@@ -3,5 +3,5 @@ import type { CompanyLookupInputSharedProps } from "../types";
 
 export interface SearchResultsProps extends CompanyLookupInputSharedProps {
   modalId?: string;
-  handleSelect: (company: InfoCompany) => void;
+  handleSelect?: (company?: InfoCompany) => void;
 }

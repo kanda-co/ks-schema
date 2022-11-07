@@ -12,7 +12,7 @@ export interface SelectedCompanyProps extends Partial<Address> {
   /**
    * Company search field label
    */
-  placeholder: string;
+  placeholder?: string | JSX.Element;
   /**
    * City field name
    */
@@ -36,7 +36,7 @@ export interface SelectedCompanyProps extends Partial<Address> {
   /**
    * Remove selected callback
    */
-  removeSelected(...args: unknown[]): unknown;
+  removeSelected?: () => void;
   /**
    * Field remove selected label
    */

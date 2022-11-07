@@ -34,10 +34,14 @@ export interface TableHeaderColumn {
   Header: string;
   getToggleHiddenProps: () => HTMLAttributes<HTMLDivElement>;
   subAccessors?: string[];
+  width?: number;
+  minWidth?: number;
+  maxWidth?: number;
   renderComponent?: {
-    component: FunctionComponent<unknown>;
-    value: string;
-    props: StringIndexedObject<unknown>;
+    component?: FunctionComponent<any>;
+    value?: string;
+    props?: StringIndexedObject;
+    optionalProps?: string[];
   };
 }
 
