@@ -33,6 +33,12 @@ export interface TableHeaderColumn {
   getResizerProps: () => HTMLAttributes<HTMLDivElement>;
   Header: string;
   getToggleHiddenProps: () => HTMLAttributes<HTMLDivElement>;
+  subAccessors?: string[];
+  renderComponent?: {
+    component: FunctionComponent<unknown>;
+    value: string;
+    props: StringIndexedObject<unknown>;
+  };
 }
 
 export interface TableProps {

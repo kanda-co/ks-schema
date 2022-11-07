@@ -64,7 +64,7 @@ export type DefaultFormFieldProps<T> = {
   name?: string;
   id?: string;
   placeholder?: string;
-  defaultValue?: string;
+  defaultValue?: string | number | readonly string[];
   ref?: MutableRefObject<any>;
   forwardRef?: MutableRefObject<any>;
   onChange?: () => void;
@@ -107,7 +107,12 @@ export type FieldRegisterMethod = (
   options?: RegisterOptions
 ) => UseFormRegisterReturn;
 
-export type ValidationValue = boolean | string | number | RegExp;
+export type ValidationValue =
+  | boolean
+  | string
+  | number
+  | RegExp
+  | (() => boolean);
 
 export type ValidationError = string | StringIndexedObject<string>;
 

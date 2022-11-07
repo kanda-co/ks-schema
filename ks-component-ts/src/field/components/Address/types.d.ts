@@ -1,3 +1,5 @@
+import { InputHTMLAttributes } from "react";
+
 export interface AddressApiResponseAddress {
   building_number?: string;
   sub_building_number?: string;
@@ -27,7 +29,8 @@ export type PostcodeCallbackArgs = AddressApiData;
 
 export type PostcodeCallback = (args: PostcodeCallbackArgs) => void;
 
-export interface PostcodeProps {
+export interface PostcodeProps
+  extends Pick<InputHTMLAttributes<HTMLInputElement>, "autoComplete"> {
   /**
    * The api response from the address lookup service
    */
@@ -43,7 +46,7 @@ export interface PostcodeProps {
   /**
    * Name of the input required for form to work
    */
-  name: string;
+  name?: string;
   /**
    * Name of the input required for form to work
    */

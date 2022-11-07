@@ -16,7 +16,7 @@ export interface PostcodeInputHook
 }
 
 export default function usePostcodeInput({
-  name,
+  name = "",
   callback,
   data,
   error: apiError,

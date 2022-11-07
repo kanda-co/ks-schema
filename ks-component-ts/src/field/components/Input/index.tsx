@@ -5,10 +5,8 @@ import withFieldFormController, {
 } from "~/field/components/FieldFormController/withFieldFormController";
 import {
   DefaultFormFieldProps,
-  WrappedWithFieldInfoFormComponent,
   WrappedWithFieldInfoFormComponentProps,
 } from "~/field/types";
-import { FunctionComponent } from "react";
 
 const WithFieldInfo = withFieldInfo(Uncontrolled);
 
