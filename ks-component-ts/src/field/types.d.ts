@@ -112,7 +112,10 @@ export type ValidationValue =
   | string
   | number
   | RegExp
-  | (() => boolean);
+  | ((value?: boolean) => boolean)
+  | {
+      valid: (value: boolean) => boolean;
+    };
 
 export type ValidationError = string | StringIndexedObject<string>;
 

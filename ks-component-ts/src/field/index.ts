@@ -11,7 +11,9 @@ import TextAreaInput, { TextAreaProps } from "~/field/components/TextAreaInput";
 import NumberFormatInput, {
   type NumberFormatInputProps,
 } from "~/field/components/NumberFormatInput";
-import SortCodeInput from "~/field/components/SortCodeInput";
+import SortCodeInput, {
+  type SortCodeInputProps,
+} from "~/field/components/SortCodeInput";
 import QuantityInput from "~/field/components/QuantityInput";
 import PriceInput from "~/field/components/PriceInput";
 import DatePickerInput, {
@@ -88,6 +90,7 @@ export interface FieldProps {
   Select: SelectProps;
   TableColumnOptionInput: TableColumnOptionInputProps;
   TextAreaInput: TextAreaProps;
+  SortCodeInput: SortCodeInputProps;
 }
 
 export type { ValidatedFieldProps } from "./types";

@@ -3720,12 +3720,12 @@ components:
           title: account number
           minLength: 1
           pattern: "^[0-9]{7,8}$"
-          x-kanda-form-widget: NumberFormInput
+          x-kanda-form-widget: NumberFormatInput
         sort_code:
           type: string
           title: sort code
           pattern: "^[0-9]{2}[-][0-9]{2}[-][0-9]{2}$"
-          x-kanda-form-widget: SortCodeInput
+          x-kanda-form-widget: NumberInput
         months_held:
           type: integer
           title: months held for bank account
