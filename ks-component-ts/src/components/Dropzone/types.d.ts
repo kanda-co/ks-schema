@@ -2,7 +2,7 @@ import type { DropEvent, FileRejection } from "react-dropzone";
 
 export interface DropzoneProps {
   children?: JSX.Element | JSX.Element[];
-  accept: string | string[];
+  accept?: string | string[];
   className?: string;
   icon?: string;
   text?: string;
