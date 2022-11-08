@@ -1,0 +1,54 @@
+import type {
+  ChangeEventHandler,
+  HTMLAttributes,
+  MutableRefObject,
+} from "react";
+import { ValidError } from "~/field/types";
+
+export interface DropDownInputOption {
+  name: string;
+  value: string;
+}
+
+export interface DropDownInputUncontrolledProps
+  extends HTMLAttributes<HTMLSelectElement> {
+  /**
+   * Name of the input required for form to work
+   */
+  name?: string;
+  /**
+   * The HTML element ID.
+   */
+  id?: string;
+  /**
+   * Text that would be displayed when there is no value
+   */
+  placeholder?: string;
+  className?: string;
+  /**
+   * Default value of input
+   */
+  defaultValue?: string;
+  /**
+   * Forward ref from parent component
+   */
+  forwardRef?: MutableRefObject<HTMLSelectElement>;
+  /**
+   * This function is triggered when the input is changed
+   */
+  onChange?: ChangeEventHandler<HTMLSelectElement>;
+  /**
+   * This function is triggered when the input is unfocused
+   */
+  onBlur?: () => void;
+  /**
+   * Field error message
+   */
+  error?: ValidError;
+  /**
+   * Display Loading state
+   */
+  isLoading?: boolean;
+  inline?: boolean;
+  options?: DropDownInputOption[];
+}
