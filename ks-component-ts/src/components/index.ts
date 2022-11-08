@@ -4,6 +4,7 @@ export { default as FieldHandle } from "./Handle";
 export { default as Form } from "./Form";
 export { default as FormState } from "./FormState";
 export { default as FormTheme } from "./FormTheme";
+export { default as HeaderSearch } from "./HeaderSearch";
 export { default as MultiStepForm } from "./MultiStepForm";
 export { default as PasswordStrengthIndicator } from "./PasswordStrengthIndicator";
 export { default as RangeSlider } from "./RangeSlider";
