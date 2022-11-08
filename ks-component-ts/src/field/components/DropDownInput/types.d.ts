@@ -1,8 +1,4 @@
-import type {
-  ChangeEventHandler,
-  HTMLAttributes,
-  MutableRefObject,
-} from "react";
+import type { HTMLAttributes, MutableRefObject } from "react";
 import { ValidError } from "~/field/types";
 
 export interface DropDownInputOption {
@@ -30,13 +26,13 @@ export interface DropDownInputUncontrolledProps
    */
   defaultValue?: string;
   /**
-   * Forward ref from parent component
+   * Forwared ref from parent component
    */
   forwardRef?: MutableRefObject<HTMLSelectElement>;
   /**
    * This function is triggered when the input is changed
    */
-  onChange?: ChangeEventHandler<HTMLSelectElement>;
+  onChange?: (value: string) => void;
   /**
    * This function is triggered when the input is unfocused
    */

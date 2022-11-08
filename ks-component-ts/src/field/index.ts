@@ -46,6 +46,9 @@ import TableColumnOptionInput, {
 import Address from "~/field/components/Address";
 import FileInput from "~/field/components/FileInput";
 import type { FileInputUncontrolledProps } from "~/field/components/FileInput/types";
+import DropDownInput, {
+  DropDownInputProps,
+} from "~/field/components/DropDownInput";
 
 const Field = {
   Address,
@@ -54,6 +57,7 @@ const Field = {
   BuildFinancePlan,
   CompanyLookupInput,
   DatePickerInput,
+  DropDownInput,
   FileInput,
   FingerprintBooleanInput,
   Input,
@@ -80,6 +84,7 @@ export interface FieldProps {
   BuildFinancePlan: BuildFinancePlanProps;
   CompanyLookupInput: CompanyLookupInputProps;
   DatePickerInput: DatePickerInputProps;
+  DropDownInput: DropDownInputProps;
   FileInput: FileInputUncontrolledProps;
   Input: InputProps;
   NumberFormatInput: NumberFormatInputProps;
