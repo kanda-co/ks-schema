@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import HeaderBase from "@kanda-libs/ks-design-library/dist/components/Header/HeaderBase";
+import { Header } from "@kanda-libs/ks-design-library";
 import InputUncontrolled, {
   type InputUncontrolledProps,
 } from "~/field/components/Input/InputUncontrolled";
@@ -20,7 +20,7 @@ const HeaderSearch: FunctionComponent<HeaderSearchProps> = function ({
   ...inputProps
 }) {
   return (
-    <HeaderBase className={className} help={help} options={options}>
+    <Header.Base className={className} help={help} options={options}>
       <div className="w-full -ml-4">
         <FormTheme variant="clean">
           <InputUncontrolled
@@ -31,7 +31,7 @@ const HeaderSearch: FunctionComponent<HeaderSearchProps> = function ({
           />
         </FormTheme>
       </div>
-    </HeaderBase>
+    </Header.Base>
   );
 };
 
