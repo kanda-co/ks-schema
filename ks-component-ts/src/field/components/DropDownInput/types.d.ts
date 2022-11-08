@@ -7,7 +7,7 @@ export interface DropDownInputOption {
 }
 
 export interface DropDownInputUncontrolledProps
-  extends HTMLAttributes<HTMLSelectElement> {
+  extends Omit<HTMLAttributes<HTMLSelectElement>, "onChange"> {
   /**
    * Name of the input required for form to work
    */
