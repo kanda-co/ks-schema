@@ -5,7 +5,7 @@ import { ErrorMessage } from "~/field/types";
 export const getError = (
   fieldError: ErrorMessage | undefined,
   errors: StringIndexedObject<ErrorMessage> = {},
-  validationErrors: StringIndexedObject<string>,
+  validationErrors: StringIndexedObject<string> = {},
   name: string
 ) => {
   const errorValue = fieldError || get(errors, name);
