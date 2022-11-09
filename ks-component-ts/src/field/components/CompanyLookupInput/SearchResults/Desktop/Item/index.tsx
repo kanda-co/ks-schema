@@ -1,14 +1,14 @@
 import React, { FunctionComponent } from "react";
 import Highlighter from "react-highlight-words";
-import { ItemProps } from "field/components/CompanyLookupInput/SearchResults/Desktop/Item/types";
-import useItemProps from "field/components/CompanyLookupInput/SearchResults/Desktop/Item/useItemProps";
+import { SkeletonLoader } from "@kanda-libs/ks-design-library";
+import useItemProps from "./useItemProps";
 import {
   CLASS_NAMES,
   HIGHLIGHT_PROPS,
   SEPERATOR,
   SKELETONS,
-} from "field/components/CompanyLookupInput/SearchResults/Desktop/Item/constants";
-import { SkeletonLoader } from "@kanda-libs/ks-design-library";
+} from "./constants";
+import type { ItemProps } from "../../types";
 
 const Item: FunctionComponent<ItemProps> = function ({
   handleSelect,
