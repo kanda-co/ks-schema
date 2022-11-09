@@ -406,32 +406,6 @@ paths:
                 $ref: "#/components/schemas/Error"
 
   /api/info/cache:
-    post:
-      operationId: infoPostCache
-      summary: post cache info
-      tags:
-        - InfoCache
-      requestBody:
-        description: post cache info details
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Cache"
-      responses:
-        200:
-          description: posted me info
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Cache"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
     get:
       operationId: infoGetCache
       summary: get cache info
