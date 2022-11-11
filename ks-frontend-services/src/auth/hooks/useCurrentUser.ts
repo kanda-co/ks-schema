@@ -19,16 +19,14 @@ export default function useCurrentUser(): Hook {
   );
 
   function revalidate(): Promise<void> {
-    return new Promise<void>((resolve, reject) => {
-      FirebaseAuthService.isUserLoggedIn().then((value) => {
+    return new Promise<void>((resolve) => {
+      FirebaseAuthService.isUserLoggedIn().then((value: boolean) => {
         setIsUserLoggedIn(value);
+        FirebaseAuthService.user().then((value) => {
+          setUser(value);
+          resolve();
+        });
       });
-
-      FirebaseAuthService.user().then((value) => {
-        setUser(value);
-      });
-
-      resolve();
     });
   }
 
