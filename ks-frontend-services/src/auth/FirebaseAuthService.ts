@@ -56,8 +56,8 @@ class FirebaseAuthService {
    * the currently logged in user or an error
    */
   onAuthStateChangedPromise = async (): Promise<User> => {
-    return new Promise((resolve, reject) => {
-      onAuthStateChanged(this.auth, (user, ...args) => {
+    return new Promise((resolve) => {
+      onAuthStateChanged(this.auth, (user) => {
         if (user) {
           resolve(user);
         }
@@ -101,14 +101,15 @@ class FirebaseAuthService {
   /**
    * Allows the user to login with an email and password
    */
-  signInWithEmailAndPassword = async ({
-    email,
-    password,
-  }: StringIndexedObject<string>) => {
+  signInWithEmailAndPassword = async (
+    { email, password }: StringIndexedObject<string>,
+    redirect = true,
+  ) => {
     await this.setPersistence();
     await signInWithEmailAndPassword(this.auth, email, password);
-
-    redirectTo(HOME_URL);
+    if (redirect) {
+      redirectTo(HOME_URL);
+    }
   };
 
   /**
@@ -133,14 +134,11 @@ class FirebaseAuthService {
   signInWithFacebook = async () => {
     await this.setPersistence();
     await signInWithPopup(this.auth, this.providers.facebook);
-
-    redirectTo(HOME_URL);
   };
 
   signInWithCustomToken = async (token: string, redirect = true) => {
     await this.setPersistence();
     await signInWithCustomToken(this.auth, token);
-
     if (redirect) {
       redirectTo(HOME_URL);
     }
@@ -149,7 +147,7 @@ class FirebaseAuthService {
   /**
    * Apply action code
    */
-  applyActionCode = async (code) => {
+  applyActionCode = async (code: string) => {
     const result = await applyFirebaseActionCode(this.auth, code);
     return result;
   };
@@ -157,7 +155,7 @@ class FirebaseAuthService {
   /**
    * Reset the password
    */
-  resetPassword = async (code, newPassword) => {
+  resetPassword = async (code: string, newPassword: string) => {
     const confirmation = await confirmPasswordReset(
       this.auth,
       code,
@@ -169,7 +167,7 @@ class FirebaseAuthService {
   /**
    * Verify the reset password code
    */
-  verifyResetCode = async (code) => {
+  verifyResetCode = async (code: string) => {
     const confirmation = await verifyPasswordResetCode(this.auth, code);
     return confirmation;
   };
@@ -178,7 +176,7 @@ class FirebaseAuthService {
    * Parse action code
    */
   parseActionCode = async (url: string) => {
-    const result = await parseActionCodeURL(url);
+    const result = parseActionCodeURL(url);
     return result;
   };
 
@@ -202,7 +200,7 @@ class FirebaseAuthService {
   /**
    * Update user's email
    */
-  updateEmail = async (newEmail) => {
+  updateEmail = async (newEmail: string) => {
     const result = await updateEmail(this.auth.currentUser, newEmail);
     return result;
   };
