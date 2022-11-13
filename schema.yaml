@@ -405,6 +405,71 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/cache:
+    get:
+      operationId: infoGetCache
+      summary: get cache info
+      tags:
+        - InfoCache
+      responses:
+        200:
+          description: got cache info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Cache"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: infoPutCache
+      summary: put cache info
+      tags:
+        - InfoCache
+      requestBody:
+        description: put cache info details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Cache"
+      responses:
+        200:
+          description: put me info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Cache"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      operationId: infoDeleteCache
+      summary: delete cache info
+      tags:
+        - InfoCache
+      responses:
+        200:
+          description: deleted cache info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Cache"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/company:
     get:
       operationId: getCompanies
@@ -4217,6 +4282,29 @@ components:
         failure:
           type: string
           title: failure reason
+
+    Cache:
+      type: object
+      properties:
+        id:
+          type: string
+          title: cache id
+          readOnly: true
+        cid:
+          type: string
+          title: company id
+          readOnly: true
+        oid:
+          type: string
+          title: owner id
+          readOnly: true
+        metadata:
+          type: object
+          $ref: "#/components/schemas/Metadata"
+          title: metadata
+          readOnly: true
+      additionalProperties:
+        type: string
 
     Error:
       type: object
