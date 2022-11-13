@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from "react";
-import type { CompanyLookupInputProps } from "./types";
-import useCompanyLookupInputProps from "./useCompanyLookupInputProps";
-import SelectedCompany from "./SelectedCompany";
-import { CLASS_NAMES, FIELDS } from "./constants";
-import Input from "~/field/components/Input";
 import { BreakPoints } from "@kanda-libs/ks-design-library";
-import SearchResults from "~/field/components/CompanyLookupInput/SearchResults";
+import Input from "~/field/components/Input";
+import useCompanyLookupInputProps from "./useCompanyLookupInputProps";
+import { CLASS_NAMES, FIELDS } from "./constants";
+import type { CompanyLookupInputProps } from "./types";
+import SelectedCompany from "./SelectedCompany";
+import SearchResults from "./SearchResults";
 
 export type { CompanyLookupInputProps };
 
