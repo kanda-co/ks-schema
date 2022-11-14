@@ -3785,7 +3785,6 @@ components:
           title: account number
           minLength: 1
           pattern: "^[0-9]{7,8}$"
-          x-kanda-form-widget: NumberFormatInput
         sort_code:
           type: string
           title: sort code

@@ -16,12 +16,14 @@ export interface AddressOption {
  * Creates select field options from address api data
  */
 export const getOptions = (
-  addresses?: AddressApiResponseAddress[]
+  addresses: AddressApiResponseAddress[] = []
 ): AddressOption[] => {
-  if (!addresses)
+  if (!addresses) {
     return [{ value: "", name: "Enter a postcode above to search address" }];
-  if (addresses.length === 0)
+  }
+  if (addresses.length === 0) {
     return [{ value: "", name: NO_ADDRESS_FOUND_LABEL }];
+  }
   return [
     {
       value: "",

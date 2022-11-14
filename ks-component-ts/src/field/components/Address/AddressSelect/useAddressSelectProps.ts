@@ -16,14 +16,14 @@ export interface AddressSelectPropsHook {
 export default function useAddressSelectProps(
   postcodeName: string,
   data: AddressApiData
-): AddressSelectPropsHook | null {
+): AddressSelectPropsHook | {} {
   const {
     isLoading,
     addresses,
     postcode: apiPostcode,
   } = data || {
     isLoading: null,
-    addresses: null,
+    addresses: [],
     postcode: null,
   };
 
@@ -101,7 +101,7 @@ export default function useAddressSelectProps(
     setValue(name, "");
   }, [prefix, postcode, name, setValue]);
 
-  if (!prefix) return null;
+  if (!prefix) return {};
 
   return {
     onChange: handleChange,

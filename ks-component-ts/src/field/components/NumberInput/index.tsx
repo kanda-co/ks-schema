@@ -7,17 +7,23 @@ import {
   DefaultFormFieldProps,
   WrappedWithFieldInfoFormComponentProps,
 } from "~/field/types";
+import withFieldFormController, {
+  FieldFormControllerPropsWithoutChildren,
+} from "~/field/components/FieldFormController/withFieldFormController";
 
 const WithFieldInfo = withFieldInfo(Controlled);
 
 export { Controlled, WithFieldInfo };
 
-const NumberInput = WithFieldInfo;
+const NumberInput = withFieldFormController(WithFieldInfo);
 
 export default NumberInput;
 
 export type NumberInputBaseProps =
   DefaultFormFieldProps<NumberInputControlledProps>;
 
-export type NumberInputProps =
+export type NumberInputWithInfoProps =
   WrappedWithFieldInfoFormComponentProps<NumberInputBaseProps>;
+
+export type NumberInputProps =
+  FieldFormControllerPropsWithoutChildren<NumberInputWithInfoProps>;
