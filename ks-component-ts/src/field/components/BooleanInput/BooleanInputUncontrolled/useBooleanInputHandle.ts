@@ -12,15 +12,13 @@ export interface Hook {
   skeletonClassName: string;
 }
 
-export default function useBooleanInputHandle(
-  type: HandleType | undefined
-): Hook {
+export default function useBooleanInputHandle(type?: string): Hook {
   const { skeletonClasses } = useFormTheme();
 
   const skeletonClassName = clsx(skeletonClasses, CLASS_NAMES.skeleton);
 
   return {
-    Handle: getHandle(type),
+    Handle: getHandle(type as HandleType),
     skeletonClassName,
   };
 }

@@ -2,7 +2,7 @@ import Controlled from "./NumberFormatInputControlled";
 import withFieldInfo from "../FieldInfo/withFieldInfo";
 import {
   type DefaultFormFieldProps,
-  type WrappedWithFieldInfoFormComponent,
+  type WrappedWithFieldInfoFormComponentProps,
 } from "~/field/types";
 import { type NumberFormatInputControlledProps } from "~/field/components/NumberFormatInput/types";
 
@@ -16,7 +16,7 @@ export type NumberFormatInputBaseProps =
   DefaultFormFieldProps<NumberFormatInputControlledProps>;
 
 export type NumberFormatInputWithInfoProps =
-  WrappedWithFieldInfoFormComponent<NumberFormatInputBaseProps>;
+  WrappedWithFieldInfoFormComponentProps<NumberFormatInputBaseProps>;
 
 export type NumberFormatInputProps = NumberFormatInputWithInfoProps;
 

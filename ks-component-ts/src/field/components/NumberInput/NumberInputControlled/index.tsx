@@ -4,7 +4,6 @@ import type {
   NumberTagInputProps,
 } from "~/field/components/NumberInput/types";
 import { getNumberTag } from "~/field/components/NumberInput/helpers";
-import type { NumberFormatInputWithInfoProps } from "~/field/components/NumberFormatInput";
 
 export type NumberInputControlledProps = {
   type?: NumberInputType;

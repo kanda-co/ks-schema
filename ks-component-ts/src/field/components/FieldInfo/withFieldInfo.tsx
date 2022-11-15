@@ -1,4 +1,4 @@
-import React, { forwardRef, FunctionComponent } from "react";
+import React, { forwardRef, FunctionComponent, useRef } from "react";
 import FieldInfo from "~/field/components/FieldInfo";
 import {
   DefaultFormFieldProps,
@@ -10,53 +10,52 @@ import {
 export default function withFieldInfo<T>(
   Component: FunctionComponent<DefaultFormFieldProps<T>>
 ): WrappedWithFieldInfoFormComponent<T> {
-  return forwardRef<
-    HTMLElement,
+  const RenderedComponent: FunctionComponent<
     DefaultFormFieldProps<T> & FieldInfoWrapperProps
-  >(
-    (
-      {
-        id,
-        name,
-        label,
-        helperText,
-        error,
-        warning,
-        isLoading,
-        autoWidth,
-        prepend,
-        append,
-        className,
-        ...restProps
-      },
-      ref
-    ) => {
-      return (
-        <FieldInfo
-          id={id || name}
-          name={name}
-          label={label}
-          helperText={helperText}
-          error={error}
-          warning={warning}
-          isLoading={isLoading}
-          autoWidth={autoWidth}
-          prepend={prepend}
-          append={append}
-          className={className}
-        >
-          <>
-            <Component
-              error={error}
-              id={id}
-              isLoading={isLoading}
-              name={name}
-              {...(restProps as WrappedFormComponentRestProps<T>)}
-              forwardRef={ref}
-            />
-          </>
-        </FieldInfo>
-      );
-    }
-  );
+  > = function ({
+    id,
+    name,
+    label,
+    helperText,
+    error,
+    warning,
+    isLoading,
+    autoWidth,
+    prepend,
+    append,
+    className,
+    wrapperProps,
+    forwardRef,
+    ...restProps
+  }) {
+    return (
+      <FieldInfo
+        id={id || name}
+        name={name}
+        label={label}
+        helperText={helperText}
+        error={error}
+        warning={warning}
+        isLoading={isLoading}
+        autoWidth={autoWidth}
+        prepend={prepend}
+        append={append}
+        wrapperProps={wrapperProps}
+        className={className}
+      >
+        <>
+          <Component
+            error={error}
+            id={id}
+            isLoading={isLoading}
+            name={name}
+            {...(restProps as WrappedFormComponentRestProps<T>)}
+            forwardRef={forwardRef}
+          />
+        </>
+      </FieldInfo>
+    );
+  };
+
+  return RenderedComponent;
 }

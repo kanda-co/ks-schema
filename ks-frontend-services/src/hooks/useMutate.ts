@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 
-interface Hook {
+export interface MutateHook {
   mutate: (
     // TODO: Argument generic
     ...arg: any[]
@@ -14,7 +14,7 @@ interface Hook {
   isLoading: boolean;
 }
 
-export default function useMutate(method: Function): Hook {
+export default function useMutate(method: Function): MutateHook {
   const [error, setError] = useState();
   const [data, setData] = useState<Record<string, unknown>>();
   const [isSubmitting, setIsSubmitting] = useState(false);

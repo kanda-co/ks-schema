@@ -16,17 +16,25 @@ const DefaultFieldInfo: FunctionComponent<FieldInfoWrapperProps> = function ({
   autoWidth,
   prepend,
   append,
+  wrapperProps = {},
   children,
 }) {
+  const { className: wrapperClassName, ...restWrapperProps } = wrapperProps;
+
   const { classNames, errorText } = useDefaultFieldInfo(
     error,
     isLoading,
     className,
-    autoWidth
+    autoWidth,
+    wrapperClassName
   );
 
   return (
-    <div id={`${id || name}-wrapper`} className={classNames.container}>
+    <div
+      id={`${id || name}-wrapper`}
+      className={classNames.container}
+      {...restWrapperProps}
+    >
       {label && (
         <Label
           id={id}

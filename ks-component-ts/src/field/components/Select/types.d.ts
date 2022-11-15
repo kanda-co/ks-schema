@@ -10,7 +10,7 @@ export interface SelectUncontrolledProps {
   /**
    * Name of the input required for form to work
    */
-  name: string;
+  name?: string;
   /**
    * The HTML element ID.
    */
@@ -18,7 +18,7 @@ export interface SelectUncontrolledProps {
   /**
    * Text that would be displayed when there is no value
    */
-  placeholder?: string;
+  placeholder?: string | JSX.Element;
   /**
    * class name
    */

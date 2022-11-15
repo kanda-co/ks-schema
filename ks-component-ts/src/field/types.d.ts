@@ -1,6 +1,7 @@
 import {
   type ForwardRefExoticComponent,
   type FunctionComponent,
+  HTMLAttributes,
   type MutableRefObject,
   type PropsWithoutRef,
   type RefAttributes,
@@ -50,6 +51,7 @@ export interface FieldInfoWrapperProps
     WarningProps {
   prepend?: JSX.Element | JSX.Element[];
   append?: JSX.Element | JSX.Element[];
+  wrapperProps?: HTMLAttributes<HTMLDivElement>;
   name?: string;
 }
 
@@ -58,11 +60,11 @@ export type ValidError = string | ErrorMessage | undefined;
 /**
  * Shared props that all field components will have
  */
-export type DefaultFormFieldProps<T = {}> = {
+export type DefaultFormFieldProps<T> = {
   name?: string;
   id?: string;
-  placeholder?: string;
-  defaultValue?: string;
+  placeholder?: string | JSX.Element;
+  defaultValue?: string | number | readonly string[];
   ref?: MutableRefObject<any>;
   forwardRef?: MutableRefObject<any>;
   onChange?: () => void;
@@ -71,13 +73,15 @@ export type DefaultFormFieldProps<T = {}> = {
   isLoading?: boolean;
 } & T;
 
-export type WrappedWithFieldInfoFormComponent<T = {}> =
-  ForwardRefExoticComponent<
-    PropsWithoutRef<DefaultFormFieldProps<T> & FieldInfoWrapperProps> &
-      RefAttributes<HTMLElement>
-  >;
+export type WrappedWithFieldInfoFormComponentProps<T> = DefaultFormFieldProps<
+  T & FieldInfoWrapperProps
+>;
 
-export type InputFunctionComponent<T = any> = FunctionComponent<
+export type WrappedWithFieldInfoFormComponent<T> = FunctionComponent<
+  WrappedWithFieldInfoFormComponentProps<T>
+>;
+
+export type InputFunctionComponent<T = StringIndexedObject> = FunctionComponent<
   DefaultFormFieldProps<T>
 >;
 
@@ -103,7 +107,15 @@ export type FieldRegisterMethod = (
   options?: RegisterOptions
 ) => UseFormRegisterReturn;
 
-export type ValidationValue = boolean | string | number | RegExp;
+export type ValidationValue =
+  | boolean
+  | string
+  | number
+  | RegExp
+  | ((value?: boolean) => boolean)
+  | {
+      valid: (value: boolean) => boolean;
+    };
 
 export type ValidationError = string | StringIndexedObject<string>;
 
@@ -122,3 +134,8 @@ export interface ValidationProps {
   validationConditions?: ValidationConditions;
   validationErrors?: ValidationErrors;
 }
+
+export type ValidatedFieldProps<T> = T & {
+  validation?: ValidationItems;
+  nested?: boolean;
+};

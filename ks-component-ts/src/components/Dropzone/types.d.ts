@@ -1,8 +1,8 @@
-import type { Accept, DropEvent, FileRejection } from "react-dropzone";
+import type { DropEvent, FileRejection } from "react-dropzone";
 
 export interface DropzoneProps {
   children?: JSX.Element | JSX.Element[];
-  accept: Accept;
+  accept?: string | string[];
   className?: string;
   icon?: string;
   text?: string;

@@ -1,6 +1,11 @@
-import { type ForwardRefExoticComponent, type RefAttributes } from "react";
+import {
+  type ForwardRefExoticComponent,
+  InputHTMLAttributes,
+  type RefAttributes,
+} from "react";
 
-export interface HandleProps {
+export interface HandleProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, "placeholder"> {
   /**
    * Name of the input required for form to work
    */

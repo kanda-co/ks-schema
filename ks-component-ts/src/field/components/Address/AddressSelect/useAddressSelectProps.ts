@@ -9,21 +9,21 @@ export interface AddressSelectPropsHook {
   onChange: (e: FormEvent) => void;
   options: AddressOption[];
   name: string;
-  placeholder: string | null;
+  placeholder?: string | JSX.Element;
   isLoading?: boolean;
 }
 
 export default function useAddressSelectProps(
   postcodeName: string,
   data: AddressApiData
-): AddressSelectPropsHook | null {
+): AddressSelectPropsHook | {} {
   const {
     isLoading,
     addresses,
     postcode: apiPostcode,
   } = data || {
     isLoading: null,
-    addresses: null,
+    addresses: [],
     postcode: null,
   };
 
@@ -88,7 +88,7 @@ export default function useAddressSelectProps(
     [addresses, apiPostcode, prefix, setValue]
   );
 
-  const placeholder = data?.postcode ? SELECT_ADDRESS_LABEL : null;
+  const placeholder = data?.postcode ? SELECT_ADDRESS_LABEL : "";
 
   useEffect(() => {
     if (!prefix || !postcode) return;
@@ -101,7 +101,7 @@ export default function useAddressSelectProps(
     setValue(name, "");
   }, [prefix, postcode, name, setValue]);
 
-  if (!prefix) return null;
+  if (!prefix) return {};
 
   return {
     onChange: handleChange,

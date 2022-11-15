@@ -4,16 +4,18 @@ import useValidationProps from "./useValidationProps";
 
 export interface ValidatorProps {
   name?: string;
+  nested?: boolean;
   validation: ValidationItems;
   children: JSX.Element;
 }
 
 const Validator: FunctionComponent<ValidatorProps> = function ({
   name,
+  nested = false,
   validation,
   children,
 }) {
-  const validationProps = useValidationProps(validation, name);
+  const validationProps = useValidationProps(validation, name, nested);
 
   return cloneElement(children, validationProps);
 };

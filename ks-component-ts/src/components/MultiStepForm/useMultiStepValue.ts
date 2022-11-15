@@ -13,7 +13,7 @@ export type MultiStepFormValueArgs = Omit<MultiStepFormProps, "children">;
 
 export interface MultiStepValueHook extends Omit<StepsHook, "nextStep"> {
   data: StringIndexedObject;
-  steps: number[];
+  steps: string[];
   setData: (data: StringIndexedObject) => void;
   handleSubmit: (data: StringIndexedObject) => void;
   handleContinue: (data: StringIndexedObject) => void;
@@ -21,7 +21,7 @@ export interface MultiStepValueHook extends Omit<StepsHook, "nextStep"> {
 }
 
 export default function useMultiStepValue({
-  steps,
+  steps = [],
   onSubmit,
   initialData,
   initialStepIndex,
@@ -34,7 +34,7 @@ export default function useMultiStepValue({
   const initialDataRef = useRef(initialData);
   const [data, setData] = useState(initialData);
   const { nextStep, ...stepProps } = useSteps(
-    steps as number[],
+    steps,
     initialStepIndex as number,
     initialStepSafeIndex as number,
     addStepsToUrl as boolean
@@ -86,7 +86,7 @@ export default function useMultiStepValue({
   return {
     ...stepProps,
     data: data as StringIndexedObject,
-    steps: steps as number[],
+    steps,
     setData,
     handleSubmit,
     handleContinue,

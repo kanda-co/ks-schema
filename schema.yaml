@@ -2886,6 +2886,7 @@ components:
         contact_phone:
           type: string
           title: contact phone number
+          x-kanda-form-widget: PhoneNumberInput
         contact_address:
           type: object
           title: contact address
@@ -3442,6 +3443,7 @@ components:
           type: string
           title: job item description
           minLength: 1
+          x-kanda-form-widget: TextAreaInput
         quantity:
           title: job item quantity
           $ref: "#/components/schemas/Pence"
@@ -3787,6 +3789,7 @@ components:
           type: string
           title: sort code
           pattern: "^[0-9]{2}[-][0-9]{2}[-][0-9]{2}$"
+          x-kanda-form-widget: NumberInput
         months_held:
           type: integer
           title: months held for bank account

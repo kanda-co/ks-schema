@@ -3,6 +3,7 @@ import {
   Control,
   FieldValues,
   useFormContext,
+  UseFormRegisterReturn,
   useFormState,
 } from "react-hook-form";
 import { getError } from "~/field/helpers";
@@ -16,7 +17,7 @@ import type { StringIndexedObject } from "~/types";
 import type { ErrorMessage, ValidationConditions } from "~/field/types";
 
 export type FieldFormControllerProps<T> = {
-  register?: boolean;
+  register?: UseFormRegisterReturn;
   passRegister?: boolean;
   control?: boolean & Control<FieldValues, any>;
   onBlur?: (...event: any[]) => void;

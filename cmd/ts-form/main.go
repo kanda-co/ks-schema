@@ -59,7 +59,7 @@ func main() {
 	fmt.Println(`
 import React from "react";
 // @ts-ignore
-import Field, { type FieldProps } from "~/field";`)
+import Field, { type FieldProps, type ValidatedFieldProps } from "~/field";`)
 	for name, ref := range doc.Components.Schemas {
 		// write to individual module for Schema Form Fields
 
@@ -136,8 +136,10 @@ func getKandaFormWidget(schema *openapi3.Schema) string {
 	}
 	// FIXME: once we have the components, remove these lines
 	switch widget {
-	case "File", "BooleanInput", "Company":
-		widget = "Input"
+	case "Company":
+	    widget = "CompanyLookupInput"
+	case "File":
+		widget = "FileInput"
 	}
 	return widget
 }
@@ -169,21 +171,37 @@ func renderModule(name string, schema *openapi3.Schema) (string, string) {
 	moduleDef := strings.Join(moduleDefs, "\n\n")
 
 	for _, md := range moduleDefs {
-		if !strings.HasPrefix(md, "export function ") {
-			continue
+	    isTsConst := strings.Contains(md, "export const")
+
+	 	if isTsConst {
+	 	    exports = append(
+                exports,
+                strings.Split(
+                    strings.Replace(md, "export const ", "", 1),
+                    "=",
+                )[0],
+            )
+            continue
 		}
+
 		exports = append(
-			exports,
-			strings.Split(
-				strings.Replace(md, "export function ", "", 1),
-				"(",
-			)[0],
-		)
+            exports,
+            strings.Split(
+                strings.Replace(md, "export function ", "", 1),
+                "(",
+            )[0],
+        )
 	}
 
-	defaultExports := strings.Join(exports, ",\n")
+	defaultExports := []string{}
 
-	return moduleDef, defaultExports
+	for _, export := range exports {
+	    if export != "" {
+	        defaultExports = append(defaultExports, export)
+        }
+	}
+
+	return moduleDef, strings.Join(defaultExports, ",\n")
 }
 
 func renderDefaultExports(defaultExports []string) string {
@@ -573,9 +591,9 @@ func inputField(type_, prefix, name string, props Props, validation Validation) 
 	return fmt.Sprintf(`
 export const %sValidation = %v;
 
-export function %s(props: FieldProps["%s"]) {
+export function %s(props: ValidatedFieldProps<FieldProps["%s"]>) {
 	return (
-		<Field.Validator validation={%sValidation}>
+		<Field.Validator validation={props.validation || %sValidation} nested={props.nested}>
 			<Field.%s
 				%s
 				{...props}
@@ -614,13 +632,13 @@ func selectField(
 	return fmt.Sprintf(`
 export const %sValidation = %v;
 
-export function %s(props: FieldProps["%s"]) {
+export function %s(props: ValidatedFieldProps<FieldProps["%s"]>) {
 	return (
-		<Field.Validator validation={%sValidation}>
+		<Field.Validator validation={props.validation || %sValidation} nested={props.nested}>
 			<Field.%s
 				%s
-				options={%v}
 				{...props}
+				options={props.options || %v}
 				name={props.name || '%s'}
 			/>
 		</Field.Validator>
@@ -652,7 +670,7 @@ export const %sArrayInputValidation = %v;
 export function %sArrayInput(props: any) {
 	return (
 		<Field.Array.Input name={props.name || '%s'} index={props.index || 0}>
-			<Field.Validator validation={%sArrayInputValidation}>
+			<Field.Validator validation={props.validation || %sArrayInputValidation} nested={props.nested}>
 				<Field.%s
 					%s
 					{...props}
@@ -695,11 +713,11 @@ export const %sArraySelectValidation = %v;
 export function %sArraySelect(props: any) {
 	return (
 		<Field.Array.Input name={props.name || '%s'} index={props.index || 0}>
-			<Field.Validator validation={%sArraySelectValidation}>
+			<Field.Validator validation={props.validation || %sArraySelectValidation} nested={props.nested}>
 				<Field.%s
 					%s
-					options={%v}
 					{...props}
+					options={props.options || %v}
 				/>
 			</Field.Validator>
 		</Field.Array.Input>

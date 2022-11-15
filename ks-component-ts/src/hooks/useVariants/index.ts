@@ -13,5 +13,5 @@ export default function useVariants(variants: StringIndexedObject): Hook {
 
   const media = isDesktop ? "desktop" : "mobile";
 
-  return { media, loading, ...variants };
+  return { media, loading: loading as boolean, ...variants };
 }

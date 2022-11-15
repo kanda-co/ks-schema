@@ -53,7 +53,7 @@ export function createRollupConfig(options, callback) {
         terser({
           output: { comments: false },
           compress: {
-            drop_console: true,
+            drop_console: false,
           },
         }),
       copy({

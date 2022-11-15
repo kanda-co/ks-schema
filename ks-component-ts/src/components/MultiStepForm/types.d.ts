@@ -20,7 +20,7 @@ export interface MultiStepFormProps {
   /**
    * Steps as array
    */
-  steps?: number[];
+  steps: string[];
   /**
    * Redirect
    */

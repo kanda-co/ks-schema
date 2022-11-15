@@ -1,3 +1,5 @@
+import type { StringIndexedObject } from "~/types";
+
 export const CLASS_NAMES = {
   baseContainer: "flex flex-1 flex-col w-full items-start mb-6 -mt-3 text-left",
   info: "flex flex-1 flex-row w-full items-center mb-1",
@@ -36,3 +38,15 @@ export const SCORE_COLORS = [
 export const PASSWORD_REGEX = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
 
 export const RETRY_INTERVAL = 100;
+
+/**
+ * Whilst we could just do `text-${score}`, this wouldn't be picked up by tailwind's
+ * JIT build. So we need to explicitly define the colors.
+ */
+export const SCORE_TO_TEXT_CLASS: StringIndexedObject<string> = {
+  "neutral-200": "text-neutral-200",
+  "red-200": "text-red-200",
+  "orange-200": "text-orange-200",
+  "turquoise-300": "text-turquoise-300",
+  "turquoise-400": "text-turquoise-400",
+};

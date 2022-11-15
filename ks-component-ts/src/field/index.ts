@@ -4,12 +4,16 @@ import Input, {
   type InputProps,
 } from "./components/Input";
 import PasswordInput from "./components/PasswordInput";
-import BooleanInput from "~/field/components/BooleanInput";
-import TextAreaInput from "~/field/components/TextAreaInput";
+import BooleanInput, {
+  BooleanInputProps,
+} from "~/field/components/BooleanInput";
+import TextAreaInput, { TextAreaProps } from "~/field/components/TextAreaInput";
 import NumberFormatInput, {
   type NumberFormatInputProps,
 } from "~/field/components/NumberFormatInput";
-import SortCodeInput from "~/field/components/SortCodeInput";
+import SortCodeInput, {
+  type SortCodeInputProps,
+} from "~/field/components/SortCodeInput";
 import QuantityInput from "~/field/components/QuantityInput";
 import PriceInput from "~/field/components/PriceInput";
 import DatePickerInput, {
@@ -29,40 +33,69 @@ import BuildFinancePlan, {
 } from "~/field/components/BuildFinancePlan";
 import Postcode, {
   type PostcodeProps,
-} from "~/field/components/Address/Postcode";
+} from "~/field/components/Address/AddressPostcode";
+import PhoneNumberInput, {
+  type PhoneNumberInputProps,
+} from "~/field/components/PhoneNumberInput";
+import CompanyLookupInput, {
+  type CompanyLookupInputProps,
+} from "~/field/components/CompanyLookupInput";
+import TableColumnOptionInput, {
+  type TableColumnOptionInputProps,
+} from "~/field/components/TableColumnOptionInput";
 import Address from "~/field/components/Address";
+import FileInput from "~/field/components/FileInput";
+import type { FileInputUncontrolledProps } from "~/field/components/FileInput/types";
+import DropDownInput, {
+  DropDownInputProps,
+} from "~/field/components/DropDownInput";
 
 const Field = {
   Address,
-  Validator,
-  Input,
-  NumberInput,
-  UncontrolledInput,
-  PasswordInput,
-  BooleanInput,
-  TextAreaInput,
-  NumberFormatInput,
-  SortCodeInput,
-  QuantityInput,
-  PriceInput,
-  DatePickerInput,
-  FingerprintBooleanInput,
-  Postcode,
-  Select,
-  RadioSelect,
   Array,
+  BooleanInput,
   BuildFinancePlan,
+  CompanyLookupInput,
+  DatePickerInput,
+  DropDownInput,
+  FileInput,
+  FingerprintBooleanInput,
+  Input,
+  NumberFormatInput,
+  NumberInput,
+  PasswordInput,
+  PhoneNumberInput,
+  Postcode,
+  PriceInput,
+  QuantityInput,
+  RadioSelect,
+  Select,
+  SortCodeInput,
+  TableColumnOptionInput,
+  TextAreaInput,
+  UncontrolledInput,
+  Validator,
 };
 
 export default Field;
 
 export interface FieldProps {
-  Input: InputProps;
-  Select: SelectProps;
-  RadioSelect: RadioSelectProps;
-  DatePickerInput: DatePickerInputProps;
-  NumberFormatInput: NumberFormatInputProps;
-  Postcode: PostcodeProps;
+  BooleanInput: BooleanInputProps;
   BuildFinancePlan: BuildFinancePlanProps;
+  CompanyLookupInput: CompanyLookupInputProps;
+  DatePickerInput: DatePickerInputProps;
+  DropDownInput: DropDownInputProps;
+  FileInput: FileInputUncontrolledProps;
+  Input: InputProps;
+  NumberFormatInput: NumberFormatInputProps;
   NumberInput: NumberInputProps;
+  PhoneNumberInput: PhoneNumberInputProps;
+  Postcode: PostcodeProps;
+  RadioSelect: RadioSelectProps;
+  Select: SelectProps;
+  TableColumnOptionInput: TableColumnOptionInputProps;
+  TextAreaInput: TextAreaProps;
+  SortCodeInput: SortCodeInputProps;
 }
+
+export type { ValidatedFieldProps } from "./types";

@@ -1,8 +1,8 @@
 import React, { FunctionComponent, HTMLAttributes } from "react";
-import { FormProvider, FormProviderProps } from "react-hook-form";
+import { FormProvider, UseFormReturn } from "react-hook-form";
 
 export interface FormProps extends HTMLAttributes<HTMLFormElement> {
-  form: FormProviderProps;
+  form: UseFormReturn<any>;
   isLoading?: boolean;
   onSubmit: (data: any) => void;
 }

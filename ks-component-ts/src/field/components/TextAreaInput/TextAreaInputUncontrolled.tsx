@@ -4,12 +4,12 @@ import useTextAreaInputClasses from "./useTextAreaInputClasses";
 import { SKELETON_COUNT } from "./constants";
 import { DefaultFormFieldProps } from "~/field/types";
 
-export interface Props {
+export interface TextAreaInputUncontrolledProps {
   className?: string;
 }
 
 const TextAreaInputUncontrolled: FunctionComponent<
-  DefaultFormFieldProps<Props>
+  DefaultFormFieldProps<TextAreaInputUncontrolledProps>
 > = function ({ forwardRef, error, className, isLoading, ...props }) {
   const { className: textAreaClassName, skeletonClasses } =
     useTextAreaInputClasses(className);
@@ -23,7 +23,12 @@ const TextAreaInputUncontrolled: FunctionComponent<
           </div>
         </div>
       ) : (
-        <textarea className={textAreaClassName} ref={forwardRef} {...props} />
+        <textarea
+          className={textAreaClassName}
+          ref={forwardRef}
+          {...props}
+          placeholder={props.placeholder as string}
+        />
       )}
     </>
   );

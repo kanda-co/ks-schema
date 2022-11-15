@@ -28,7 +28,8 @@ export default function useDefaultFieldInfo(
   error: DefaultWrapperContainerProps["error"],
   isLoading: DefaultWrapperContainerProps["isLoading"],
   className: DefaultWrapperContainerProps["className"],
-  autoWidth: DefaultWrapperContainerProps["autoWidth"]
+  autoWidth: DefaultWrapperContainerProps["autoWidth"],
+  wrapperClassName?: string
 ): Hook {
   const { wrapperClasses } = useFormTheme();
 
@@ -44,6 +45,7 @@ export default function useDefaultFieldInfo(
       isLoading && "field-loading",
       className,
       width,
+      wrapperClassName,
     ],
     content: [".baseContent", width],
   });

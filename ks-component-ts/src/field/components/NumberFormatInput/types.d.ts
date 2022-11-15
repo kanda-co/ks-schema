@@ -75,7 +75,7 @@ export interface NumberFormatInputControlledProps
   /**
    * Placeholder
    */
-  placeholder?: string;
+  placeholder?: string | JSX.Element;
   /**
    * Format value for display
    */

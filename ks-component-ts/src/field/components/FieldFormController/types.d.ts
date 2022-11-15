@@ -15,18 +15,18 @@ export interface FieldFormControllerCommonArgs {
 }
 
 export interface FieldFormControllerExtraProps<T = any> {
-  rules: Omit<
+  rules?: Omit<
     RegisterOptions<any, string>,
     "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"
   >;
-  controlProps: ControllerProps<any, string>;
-  value: T;
-  onChange: (value: T) => void;
+  controlProps?: ControllerProps<any, string>;
+  value?: T;
+  onChange?: (value: T) => void;
 }
 
 export type FieldFormControllerChildrenArgs<T = any> = {
-  control: Control<FieldValues, T>;
-  register: FieldRegisterMethod;
+  control?: Control<FieldValues, T>;
+  register?: FieldRegisterMethod;
 } & FieldFormControllerCommonArgs &
   FieldFormControllerExtraProps<T> &
   T;

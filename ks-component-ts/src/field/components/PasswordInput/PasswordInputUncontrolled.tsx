@@ -6,8 +6,7 @@ import { DefaultFormFieldProps } from "~/field/types";
 import { ICON_SIZE, SKELETONS } from "./constants";
 
 export interface PasswordInputProps {
-  placeholder?: string;
-  testProp: number;
+  placeholder?: string | JSX.Element;
 }
 
 const PasswordInputUncontrolled: FunctionComponent<
@@ -53,6 +52,7 @@ const PasswordInputUncontrolled: FunctionComponent<
             ref={forwardRef}
             {...restProps}
             type={type}
+            placeholder={restProps.placeholder as string}
           />
         </>
       )}

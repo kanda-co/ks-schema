@@ -1,12 +1,12 @@
 import Uncontrolled from "./RadioSelectUncontrolled";
 import { type RadioSelectUncontrolledProps } from "./types";
 import withFieldFormController, {
-  FieldFormControllerPropsWithoutChildren,
+  type FieldFormControllerPropsWithoutChildren,
 } from "~/field/components/FieldFormController/withFieldFormController";
 import withFieldInfo from "../FieldInfo/withFieldInfo";
 import {
-  DefaultFormFieldProps,
-  WrappedWithFieldInfoFormComponent,
+  type DefaultFormFieldProps,
+  type WrappedWithFieldInfoFormComponentProps,
 } from "~/field/types";
 
 export { Uncontrolled };
@@ -19,7 +19,7 @@ export type RadioSelectBaseProps =
   DefaultFormFieldProps<RadioSelectUncontrolledProps>;
 
 export type RadioSelectWithInfoProps =
-  WrappedWithFieldInfoFormComponent<RadioSelectBaseProps>;
+  WrappedWithFieldInfoFormComponentProps<RadioSelectBaseProps>;
 
 export type RadioSelectProps =
   FieldFormControllerPropsWithoutChildren<RadioSelectWithInfoProps>;
