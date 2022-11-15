@@ -20,6 +20,7 @@ const PriceInputControlled: FunctionComponent<
       prefix={symbol}
       thousandSeparator
       fixedDecimalScale
+      decimalScale={2}
       onValueChange={(
         event: NumberFormatValues,
         onChange: (...event: any[]) => void
