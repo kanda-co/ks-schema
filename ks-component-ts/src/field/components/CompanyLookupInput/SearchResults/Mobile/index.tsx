@@ -20,7 +20,6 @@ const Mobile: FunctionComponent<MobileProps> = function ({
     <ModalContainer id={modalId}>
       {({ handleClose }) => (
         <>
-          Hello world
           <Container handleClose={handleClose} {...rest}>
             {({
               handleSearch,
