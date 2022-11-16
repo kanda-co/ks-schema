@@ -1,5 +1,5 @@
 import { AddressApiResponseAddress } from "../types";
-import { NO_ADDRESS_FOUND_LABEL, SELECT_ADDRESS_LABEL } from "./constants";
+import { NO_ADDRESS_FOUND_LABEL } from "./constants";
 
 /**
  * Format address for proper display on select field
@@ -24,16 +24,10 @@ export const getOptions = (
   if (addresses.length === 0) {
     return [{ value: "", name: NO_ADDRESS_FOUND_LABEL }];
   }
-  return [
-    {
-      value: "",
-      name: SELECT_ADDRESS_LABEL,
-    },
-    ...addresses.map((address, i) => ({
-      name: formatSelectName(address),
-      value: `${i}`,
-    })),
-  ];
+  return addresses.map((address, i) => ({
+    name: formatSelectName(address),
+    value: `${i}`,
+  }));
 };
 
 /**
