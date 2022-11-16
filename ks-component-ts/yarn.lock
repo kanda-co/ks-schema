@@ -760,10 +760,10 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@kanda-libs/ks-design-library@0.0.76-ts-22":
-  version "0.0.76-ts-22"
-  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-design-library/-/ks-design-library-0.0.76-ts-22.tgz#09316723b1844e7fb865e1888c6eb718e0093f77"
-  integrity sha512-eiXGAtJLJOg/JZvd5x6ILL+G415iO8LHgZw31Lmac8AhDP7Dkym82gW/kgkwGlE7dCHDdwg4XxrG4EJ0c2YTvA==
+"@kanda-libs/ks-design-library@0.0.77":
+  version "0.0.77"
+  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-design-library/-/ks-design-library-0.0.77.tgz#58bba8a1e26b0b4b82cbedac98346701051718fc"
+  integrity sha512-PFA3oksisvD5HGN1sym41DUtOZCAed8Hte8IIzNhM/Jmt/lktasdjB23nvoPzMg8Nip5P22k8hM7z1fq9boEYA==
   dependencies:
     file-saver "^2.0.5"
     lodash.get "^4.4.2"
@@ -772,7 +772,6 @@
     react-image "^4.0.3"
     react-number-format "^4.6.4"
     react-teleporter "^3.0.2"
-    react-timeago "^6.2.1"
     react-toastify "^9.0.8"
     use-debounce "^8.0.4"
 
@@ -4755,11 +4754,6 @@ react-teleporter@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/react-teleporter/-/react-teleporter-3.0.2.tgz#b62fa7303ccf80d0438df7fbf4fb6186fe59b8f0"
   integrity sha512-6kxP/r01akC0NO/oWgz6bFJQFsDD0CSqKB6c+F3f2locfBUrDK+I8fic17W6idVL/Hv3ab72N2c3DyrL2+y4kQ==
-
-react-timeago@^6.2.1:
-  version "6.2.1"
-  resolved "https://registry.yarnpkg.com/react-timeago/-/react-timeago-6.2.1.tgz#f19716811156617ceb9c9f9a44315d85197c7fba"
-  integrity sha512-b9EObWO8wy4qwfOzj+g/RQZRrPvtMv1Pz12FCdAWKWCXbDGt0rZLyiyTGEr0Lh1O8w5xa48CtRpl3LI+CtGCyw==
 
 react-toastify@^9.0.8:
   version "9.0.8"
