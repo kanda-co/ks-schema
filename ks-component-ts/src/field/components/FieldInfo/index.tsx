@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import { FieldInfoWrapperProps } from "~/field/types";
 import useFormTheme from "~/hooks/useFormTheme";
 import DefaultFieldInfo from "~/field/components/DefaultFieldInfo";

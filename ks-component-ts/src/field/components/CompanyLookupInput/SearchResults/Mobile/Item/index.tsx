@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import { Card, SkeletonLoader } from "@kanda-libs/ks-design-library";
 import Highlighter from "react-highlight-words";
 import type { ItemProps } from "../../types";

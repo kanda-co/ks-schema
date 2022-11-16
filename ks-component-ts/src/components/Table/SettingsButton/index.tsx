@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import type { SettingsButtonProps } from "./types";
 import { CLASS_NAMES, BUTTON_PROPS } from "./constants";
 import { Button, Popover } from "@kanda-libs/ks-design-library";

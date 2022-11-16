@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import { Button, Card, Icon } from "@kanda-libs/ks-design-library";
 import Input from "~/field/components/Input";
 import useSelectedCompanyProps from "./useSelectedCompanyProps";

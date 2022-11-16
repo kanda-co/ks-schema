@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import { ModalLayoutFullScreen } from "@kanda-libs/ks-design-library";
 import Cropper from "react-cropper";
 import "cropperjs/dist/cropper.css";

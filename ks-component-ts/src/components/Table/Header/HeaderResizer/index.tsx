@@ -1,7 +1,7 @@
-import React, { FunctionComponent } from 'react';
-import type { TableHeaderColumn } from '~/components/Table/types';
-import useHeaderResizerProps from './useHeaderResizerProps';
-import { CLASS_NAMES } from './constants';
+import React, { type FunctionComponent } from "react";
+import type { TableHeaderColumn } from "~/components/Table/types";
+import useHeaderResizerProps from "./useHeaderResizerProps";
+import { CLASS_NAMES } from "./constants";
 
 export interface HeaderResizerProps {
   column: TableHeaderColumn;

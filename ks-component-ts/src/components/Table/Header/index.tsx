@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import HeaderGroup from "./HeaderGroup";
 import type { HeaderGroupProps } from "./HeaderGroup/types";
 import type { Column } from "react-table";

@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import type { FileInputUncontrolledProps } from "./types";
 import useFileInputProps from "~/field/components/FileInput/useFileInputProps";
 import Cropper from "./Cropper";

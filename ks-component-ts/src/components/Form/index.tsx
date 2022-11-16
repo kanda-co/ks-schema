@@ -1,4 +1,4 @@
-import React, { FunctionComponent, HTMLAttributes } from "react";
+import React, { type FunctionComponent, HTMLAttributes } from "react";
 import { FormProvider, UseFormReturn } from "react-hook-form";
 
 export interface FormProps extends HTMLAttributes<HTMLFormElement> {

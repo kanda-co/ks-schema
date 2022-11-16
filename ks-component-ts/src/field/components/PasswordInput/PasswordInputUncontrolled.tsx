@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import { Icon } from "@kanda-libs/ks-design-library";
 import Skeleton from "react-loading-skeleton";
 import usePasswordInput from "./usePasswordInput";

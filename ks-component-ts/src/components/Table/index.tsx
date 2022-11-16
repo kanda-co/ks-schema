@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import { TableProps } from "./types";
 import useTableProps from "~/components/Table/useTableProps";
 import SettingsButton from "~/components/Table/SettingsButton";

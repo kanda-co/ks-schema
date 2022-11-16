@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import { Text, SkeletonLoader } from "@kanda-libs/ks-design-library";
 import { LabelProps } from "~/field/types";
 import { LABEL_SKELETON } from "~/field/components/Label/constants";

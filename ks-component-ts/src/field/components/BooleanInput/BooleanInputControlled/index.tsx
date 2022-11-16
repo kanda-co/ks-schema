@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import { Controller } from "react-hook-form";
 import Uncontrolled, {
   type BooleanFieldProps,

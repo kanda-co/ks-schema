@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import type { CropperProps } from "./types";
 import useCropperProps from "~/field/components/FileInput/Cropper/useCropperProps";
 import { BreakPoints, ModalContainer } from "@kanda-libs/ks-design-library";

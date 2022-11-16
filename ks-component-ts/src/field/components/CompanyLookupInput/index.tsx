@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import { BreakPoints } from "@kanda-libs/ks-design-library";
 import Input from "~/field/components/Input";
 import useCompanyLookupInputProps from "./useCompanyLookupInputProps";

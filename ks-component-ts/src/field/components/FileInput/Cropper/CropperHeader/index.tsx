@@ -1,5 +1,5 @@
 import { Button, Header } from "@kanda-libs/ks-design-library";
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import { ICON_PROPS, TITLE } from "./constants";
 
 export interface CropperHeaderProps {

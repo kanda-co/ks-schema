@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import type { TableCellProps } from "./types";
 import useCellProps from "~/components/Table/Rows/Cell/useCellProps";
 import { SkeletonLoader } from "@kanda-libs/ks-design-library";

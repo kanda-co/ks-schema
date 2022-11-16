@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import type { DesktopProps } from "./types";
 import useDesktopProps from "~/field/components/CompanyLookupInput/SearchResults/Desktop/useDesktopProps";
 import { Button, Card, Popover } from "@kanda-libs/ks-design-library";

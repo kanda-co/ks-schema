@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import type { TableRow } from "~/components/Table/types";
 import usePopoverButtonProps from "./usePopoverButtonProps";
 import { CLASS_NAMES, BUTTON_PROPS } from "./constants";

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, HTMLAttributes } from "react";
+import React, { type FunctionComponent, HTMLAttributes } from "react";
 import { Icon } from "@kanda-libs/ks-design-library";
 import { BUTTON_CLASSNAME, ICON_PROPS } from "./constants";
 

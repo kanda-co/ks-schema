@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import type { Column } from "react-table";
 import { Popover, SkeletonLoader } from "@kanda-libs/ks-design-library";
 import type { ActionsHook } from "~/components/Table/useActions";

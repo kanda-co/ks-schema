@@ -91,11 +91,6 @@ export default function useFileInputProps({
         setValue(name, maxFiles === 1 ? base64Files[0] : base64Files);
         return;
       }
-      console.log("Setting value", {
-        name,
-        maxFiles,
-        newFiles,
-      });
       setValue(name, maxFiles === 1 ? newFiles[0] : newFiles);
     },
     [maxFiles, name, setValue, asBase64]
@@ -279,6 +274,11 @@ export default function useFileInputProps({
     const input = ref.current;
     // Create file list
     const dt = new DataTransfer();
+
+    const inputFileIsFile = inputFile instanceof File;
+    const inputFileIsBlob = inputFile instanceof Blob;
+
+    if (!(inputFileIsFile || inputFileIsBlob)) return;
     dt.items.add(inputFile);
     // Add file list to input
     input.files = dt.files;
