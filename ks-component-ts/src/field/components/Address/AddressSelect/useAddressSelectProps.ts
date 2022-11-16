@@ -82,6 +82,7 @@ export default function useAddressSelectProps(
       setValue(`${prefix}.city`, address?.town_or_city);
       setValue(`${prefix}.county`, address?.county);
       setValue(`${prefix}.country`, address?.country);
+      setValue(`${prefix}.postcode`, apiPostcode);
 
       postCodeRef.current = apiPostcode;
     },
