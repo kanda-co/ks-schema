@@ -74,4 +74,27 @@ const FileInputUncontrolled: FunctionComponent<FileInputUncontrolledProps> =
     );
   };
 
+FileInputUncontrolled.defaultProps = {
+  hasLabel: true,
+  maxFiles: 0,
+  maxSize: undefined,
+  placeholder: undefined,
+  accept: undefined,
+  defaultValue: undefined,
+  onAddFiles: undefined,
+  onUpdateFiles: undefined,
+  onRemoveFile: undefined,
+  resolveFile: undefined,
+  fileProgress: undefined,
+  loadingFiles: undefined,
+  cropImage: undefined,
+  isLoading: undefined,
+  small: false,
+  centerPlaceholder: false,
+  asBase64: true,
+  inputFile: undefined,
+  jobPdfInput: false,
+  compressImages: true,
+};
+
 export default FileInputUncontrolled;

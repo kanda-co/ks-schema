@@ -26,8 +26,8 @@ export type FileInputUncontrolledProps = Omit<
     onUpdateFiles?: (files: File[]) => void;
     onRemoveFile?: (file: File) => void;
     cropImage?: boolean;
-    asBase64?: string;
-    inputFile?: File[];
+    asBase64?: boolean;
+    inputFile?: File;
     compressImages?: boolean;
     placeholder?: string | JSX.Element;
     fileProgress?: FileCardFileProgress;

@@ -1,11 +1,11 @@
 import { createContext } from "react";
 
 export interface DropzoneContextValue {
-  droppedFiles: [File[]];
+  droppedFiles: File[][];
 }
 
 const DropzoneContext = createContext<DropzoneContextValue>({
-  droppedFiles: [[]],
+  droppedFiles: [],
 });
 
 DropzoneContext.displayName = "DropzoneContext";
