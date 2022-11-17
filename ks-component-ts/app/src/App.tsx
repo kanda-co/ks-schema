@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
 import "../../dist/library.css";
 import { FormWrapper } from "../../src";
-import FieldFormTest from "./FieldFormTest";
+// import FieldFormTest from "./FieldFormTest";
 import DirectorForm from "./DirectorForm";
-import DirectorSalary from "./DirectorForm/DirectorSalary";
+// import DirectorSalary from "./DirectorForm/DirectorSalary";
 
 function App() {
   const form = useForm({
@@ -28,8 +28,8 @@ function App() {
       <div className="px-4 py-4">
         <FormWrapper
           form={form}
-          onSubmit={(values) => {
-            console.log("Hello world", values);
+          onSubmit={() => {
+            console.log("Hello world");
           }}
         >
           <DirectorForm />
