@@ -103,7 +103,7 @@ export interface NumberFormatInputControlledProps
   /**
    * Value
    */
-  value?: number | null;
+  value?: string | number | null;
   /**
    * Override for the component used to render the input
    */
