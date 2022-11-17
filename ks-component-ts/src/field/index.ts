@@ -47,11 +47,17 @@ import Address from "~/field/components/Address";
 import FileInput from "~/field/components/FileInput";
 import type { FileInputUncontrolledProps } from "~/field/components/FileInput/types";
 import DropDownInput, {
-  DropDownInputProps,
+  type DropDownInputProps,
 } from "~/field/components/DropDownInput";
 import SelectionModal, {
-  SelectionModalProps,
+  type SelectionModalProps,
 } from "~/field/components/SelectionModal";
+import AutoSizeInput, {
+  type AutoSizeInputProps,
+} from "~/field/components/AutoSizeInput";
+import AutoSizePriceInput, {
+  type AutoSizePriceInputProps,
+} from "~/field/components/AutoSizePriceInput";
 
 const Field = {
   Address,
@@ -79,6 +85,8 @@ const Field = {
   UncontrolledInput,
   Validator,
   SelectionModal,
+  AutoSizeInput,
+  AutoSizePriceInput,
 };
 
 export default Field;
@@ -101,6 +109,8 @@ export interface FieldProps {
   TextAreaInput: TextAreaProps;
   SortCodeInput: SortCodeInputProps;
   SelectionModal: SelectionModalProps;
+  AutoSizeInput: AutoSizeInputProps;
+  AutoSizePriceInput: AutoSizePriceInputProps;
 }
 
 export type { ValidatedFieldProps } from "./types";

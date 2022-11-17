@@ -1,7 +1,11 @@
 import { type FieldFormControllerChildrenArgs } from "~/field/components/FieldFormController/types";
-import { type ExtendControllerProps, ValidError } from "~/field/types";
+import {
+  type ExtendControllerProps,
+  ValidationItems,
+  ValidError,
+} from "~/field/types";
 import { NumberFormatValues } from "react-number-format";
-import { StringIndexedObject } from "~/types";
+import { FunctionComponent } from "react";
 
 export interface NumberFormatInputControlledProps
   extends ExtendControllerProps {
@@ -100,4 +104,8 @@ export interface NumberFormatInputControlledProps
    * Value
    */
   value?: number | null;
+  /**
+   * Override for the component used to render the input
+   */
+  customInput?: FunctionComponent<any>;
 }
