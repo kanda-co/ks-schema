@@ -11,7 +11,7 @@ const format = (value: string, pattern: string) => {
   });
 };
 
-export const formatValue = (value: string | number | null) =>
+export const formatValue = (value: string | number | null | undefined) =>
   (value as string | null)?.split("-")?.reverse()?.join("") || null;
 
 export const onValueChange = (
