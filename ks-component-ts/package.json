@@ -24,7 +24,7 @@
     "lint": "node_modules/.bin/eslint '**/*.{js,ts,tsx}'",
     "type": "node_modules/.bin/tsc --noEmit",
     "bundlesize": "yarn build:style && yarn build:modern && node_modules/.bin/bundlesize",
-    "start:app": "yarn clean && node_modules/.bin/tsc && yarn build:style && yarn build:esm && yarn link && yarn --cwd node_modules/react link && yarn --cwd ./app link react @kanda-libs/ks-form-library-2 && yarn --cwd ./app && yarn --cwd ./app run dev"
+    "start:app": "yarn clean && node_modules/.bin/tsc && yarn build:style && yarn build:esm && yarn link && yarn --cwd node_modules/react link && yarn --cwd ./app && yarn --cwd ./app run dev"
   },
   "author": "rob@kanda.co.uk",
   "license": "MIT",

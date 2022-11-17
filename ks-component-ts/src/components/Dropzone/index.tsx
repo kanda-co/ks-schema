@@ -2,7 +2,7 @@ import React, { type FunctionComponent } from "react";
 import type { DropzoneProps } from "./types";
 import { Icon, Text } from "@kanda-libs/ks-design-library";
 import useDropzoneProps from "./useDropzoneProps";
-import DropzoneContext from "~/components/Dropzone/DropzoneContext";
+import DropzoneContext from "./DropzoneContext";
 import { ICON_PROPS } from "./constants";
 
 const Dropzone: FunctionComponent<DropzoneProps> = function ({
