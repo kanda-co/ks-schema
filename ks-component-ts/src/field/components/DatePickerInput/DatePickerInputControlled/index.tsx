@@ -11,6 +11,7 @@ export type DatePickerInputControlledProps = {
 
 const DatePickerInputControlled: FunctionComponent<DatePickerInputControlledProps> =
   function ({ symbol = "£", currencyDecimal = 100, value, ...props }) {
+    console.log({ iValue: value });
     return (
       <NumberFormatInputControlled
         {...props}

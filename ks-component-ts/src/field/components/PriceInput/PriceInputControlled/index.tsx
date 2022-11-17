@@ -9,13 +9,22 @@ export interface PriceInputControlledProps {
   currencyDecimal?: number;
 }
 
+const formatValue = (
+  value: string | number | null | undefined,
+  currencyDecimal: number
+) => {
+  if (!value) return null;
+  if (typeof value === "string") return parseInt(value, 10) / currencyDecimal;
+  return value / currencyDecimal;
+};
+
 const PriceInputControlled: FunctionComponent<
   NumberFormatInputControlledProps & PriceInputControlledProps
 > = function ({ symbol = "£", currencyDecimal = 100, value, ...props }) {
   return (
     <NumberFormatInputControlled
       {...props}
-      value={value ? value / currencyDecimal : null}
+      value={formatValue(value, currencyDecimal)}
       placeholder={`${symbol}0.00`}
       prefix={symbol}
       thousandSeparator
