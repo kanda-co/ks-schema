@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import "../../dist/library.css";
-import { FormWrapper } from "../../src";
+import { FormWrapper } from "../../dist";
 import FieldFormTest from "./FieldFormTest";
 import DirectorForm from "./DirectorForm";
 import DirectorSalary from "./DirectorForm/DirectorSalary";
@@ -33,21 +33,6 @@ function App() {
           }}
         >
           <DirectorForm />
-          {/*<FieldFormTest />*/}
-          <button
-            onClick={() => {
-              form.handleSubmit(
-                () => {
-                  alert("yo!");
-                },
-                () => {
-                  alert("oh no!");
-                }
-              );
-            }}
-          >
-            Hello world
-          </button>
         </FormWrapper>
       </div>
     </div>

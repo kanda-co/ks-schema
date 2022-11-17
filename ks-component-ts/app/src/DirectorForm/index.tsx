@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { Field } from "../../../src";
+import { Field } from "../../../dist";
 import AddDirectorButton from "./AddDirectorButton";
 import DirectorName from "./DirectorName";
 import DirectorSalary from "./DirectorSalary";
@@ -14,10 +14,8 @@ const DirectorForm: FunctionComponent<Props> = function ({}) {
           {fields.map((field, index) => (
             <>
               <DirectorName id={field.id} index={index} />
-              {/*<DirectorSalary id={field.id} index={index} />*/}
             </>
           ))}
-          <AddDirectorButton append={append} />
         </>
       )}
     </Field.Array.Wrapper>

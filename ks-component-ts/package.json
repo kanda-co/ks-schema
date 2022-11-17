@@ -113,6 +113,7 @@
     "lodash.trim": "^4.5.1",
     "mime-types": "^2.1.35",
     "react-beautiful-dnd": "^13.1.1",
+    "react-cropper": "^2.1.8",
     "react-dropzone": "^11.3.4",
     "react-hook-form": "^7.35.0",
     "react-input-autosize": "^3.0.0",
