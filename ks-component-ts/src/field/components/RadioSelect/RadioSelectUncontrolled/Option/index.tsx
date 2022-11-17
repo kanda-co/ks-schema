@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import { RadioSelectVariant } from "~/field/components/RadioSelect/types";
 import { FieldRegisterMethod } from "~/field/types";
 import useOption from "./useOption";

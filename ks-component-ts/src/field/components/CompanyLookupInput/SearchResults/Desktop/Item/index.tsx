@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import Highlighter from "react-highlight-words";
 import { SkeletonLoader } from "@kanda-libs/ks-design-library";
 import useItemProps from "./useItemProps";

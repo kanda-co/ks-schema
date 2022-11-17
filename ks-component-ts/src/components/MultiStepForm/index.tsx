@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import { Context } from "./Context";
 import useMultiStepValue from "./useMultiStepValue";
 import type { MultiStepFormProps } from "./types";

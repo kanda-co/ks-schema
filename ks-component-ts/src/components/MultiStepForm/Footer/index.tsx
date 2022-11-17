@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import { Button } from "@kanda-libs/ks-design-library";
 import { StringIndexedObject } from "~/types";
 import useFooterButtonProps from "~/components/MultiStepForm/Footer/useFooterButtonProps";

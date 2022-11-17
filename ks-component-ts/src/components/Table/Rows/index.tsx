@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import type { Row as RowType } from "react-table";
 import { RowProps } from "./Row/types";
 import Row from "~/components/Table/Rows/Row";

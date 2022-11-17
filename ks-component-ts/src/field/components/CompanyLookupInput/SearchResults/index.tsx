@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import { BreakPoints } from "@kanda-libs/ks-design-library";
 import { SearchResultsProps } from "./types";
 import Desktop from "./Desktop";

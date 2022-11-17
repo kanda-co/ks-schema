@@ -5,12 +5,13 @@ import {
   type WrappedWithFieldInfoFormComponentProps,
 } from "~/field/types";
 import { type NumberFormatInputControlledProps } from "~/field/components/NumberFormatInput/types";
+import withFieldFormController from "~/field/components/FieldFormController/withFieldFormController";
 
 const WithFieldInfo = withFieldInfo(Controlled);
 
 export { Controlled, WithFieldInfo };
 
-const NumberFormatInput = WithFieldInfo;
+const NumberFormatInput = withFieldFormController(WithFieldInfo);
 
 export type NumberFormatInputBaseProps =
   DefaultFormFieldProps<NumberFormatInputControlledProps>;

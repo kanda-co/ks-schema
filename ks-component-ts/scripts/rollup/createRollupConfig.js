@@ -49,13 +49,13 @@ export function createRollupConfig(options, callback) {
           include: /\/node_modules\//,
         }),
       sourcemaps(),
-      options.format !== "esm" &&
-        terser({
-          output: { comments: false },
-          compress: {
-            drop_console: false,
-          },
-        }),
+      // options.format !== "esm" &&
+      //   terser({
+      //     output: { comments: false },
+      //     compress: {
+      //       drop_console: false,
+      //     },
+      //   }),
       copy({
         targets: [
           { src: "src/styles/library.css", dest: "dist" },

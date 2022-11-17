@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import { Uncontrolled } from "~/field/components/Input";
 import FormTheme from "~/components/FormTheme";
 import { CLASS_NAMES } from "./constants";

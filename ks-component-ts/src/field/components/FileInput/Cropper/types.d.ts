@@ -1,19 +1,14 @@
 import type { HTMLProps } from "react";
 import type { MutableRefObject } from "react";
-import Cropper from "cropperjs";
+// import Cropper from "cropperjs";
 import { CropperBottomOptionsProps } from "~/field/components/FileInput/Cropper/CropperBottomOptions";
 import { CropperTopOptionsProps } from "~/field/components/FileInput/Cropper/CropperTopOptions";
 import { MouseEvent } from "react";
+import type { ReactCropperProps } from "react-cropper";
 
 export type CropperRef = MutableRefObject<{
   cropper: Cropper;
 }>;
-
-export interface ReactCropperProps
-  extends Cropper.Options,
-    Omit<HTMLProps<HTMLImageElement>, "data" | "ref"> {
-  ref: CropperRef;
-}
 
 export interface CropperProps {
   /**

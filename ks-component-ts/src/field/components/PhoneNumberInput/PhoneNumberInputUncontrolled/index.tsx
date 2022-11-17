@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import Skeleton from "react-loading-skeleton";
 import { PhoneNumberInputUncontrolledProps } from "../types";
 import usePhoneNumberInputUncontrolled from "~/field/components/PhoneNumberInput/PhoneNumberInputUncontrolled/usePhoneNumberInputUncontrolled";

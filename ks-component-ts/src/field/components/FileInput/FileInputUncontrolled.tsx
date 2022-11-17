@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import type { FileInputUncontrolledProps } from "./types";
 import useFileInputProps from "~/field/components/FileInput/useFileInputProps";
 import Cropper from "./Cropper";
@@ -73,5 +73,28 @@ const FileInputUncontrolled: FunctionComponent<FileInputUncontrolledProps> =
       </div>
     );
   };
+
+FileInputUncontrolled.defaultProps = {
+  hasLabel: true,
+  maxFiles: 0,
+  maxSize: undefined,
+  placeholder: undefined,
+  accept: undefined,
+  defaultValue: undefined,
+  onAddFiles: undefined,
+  onUpdateFiles: undefined,
+  onRemoveFile: undefined,
+  resolveFile: undefined,
+  fileProgress: undefined,
+  loadingFiles: undefined,
+  cropImage: undefined,
+  isLoading: undefined,
+  small: false,
+  centerPlaceholder: false,
+  asBase64: true,
+  inputFile: undefined,
+  jobPdfInput: false,
+  compressImages: true,
+};
 
 export default FileInputUncontrolled;

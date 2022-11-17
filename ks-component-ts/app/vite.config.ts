@@ -10,6 +10,7 @@ export default defineConfig({
     fs: {
       allow: [".."],
     },
+    port: 8000,
   },
   optimizeDeps: {
     esbuildOptions: {

@@ -1,10 +1,10 @@
 import { useCallback } from "react";
+import type { ReactCropperProps } from "react-cropper";
 
 import { dataURItoFile } from "./helpers";
 import { CROPPER_PROPS } from "./constants";
 import useImage from "./useImage";
 import useImageManipulation from "./useImageManipulation";
-import type { ReactCropperProps } from "./types";
 import type { CropperBottomOptionsProps } from "./CropperBottomOptions";
 import type { CropperTopOptionsProps } from "./CropperTopOptions";
 

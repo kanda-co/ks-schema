@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import FieldFormController from "~/field/components/FieldFormController";
 import PhoneNumberInputUncontrolled from "../PhoneNumberInputUncontrolled";
 import { FieldFormControllerChildrenArgs } from "~/field/components/FieldFormController/types";

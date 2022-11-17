@@ -1,4 +1,8 @@
-import React, { FunctionComponent, MutableRefObject, useMemo } from "react";
+import React, {
+  type FunctionComponent,
+  MutableRefObject,
+  useMemo,
+} from "react";
 import clsx from "clsx";
 import {
   CLASS_NAMES,

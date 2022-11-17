@@ -1,4 +1,4 @@
-import React, { FunctionComponent, Suspense } from "react";
+import React, { type FunctionComponent, Suspense } from "react";
 import { Pages, SliderProps } from "~/components/MultiStepForm/types";
 import useRouterProps from "~/components/MultiStepForm/Router/useRouterProps";
 

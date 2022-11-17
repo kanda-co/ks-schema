@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { Field } from "~/index";
+import { Field } from "../../../dist";
 
 export interface Props {
   id: string;

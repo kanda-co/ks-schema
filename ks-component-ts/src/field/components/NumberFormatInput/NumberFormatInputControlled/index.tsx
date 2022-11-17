@@ -4,6 +4,7 @@ import { Controller } from "react-hook-form";
 import { Uncontrolled as InputUncontrolled } from "~/field/components/Input";
 import { type NumberFormatInputControlledProps } from "../types";
 import { defaultOnValueChange } from "./helpers";
+import { getValidationConditions } from "~/field/components/Validator/useValidationProps/helpers";
 
 const NumberFormatInputControlled: FunctionComponent<NumberFormatInputControlledProps> =
   function ({
@@ -13,6 +14,7 @@ const NumberFormatInputControlled: FunctionComponent<NumberFormatInputControlled
     isLoading,
     isNumericString = false,
     rules = {},
+    validation,
     formatValue: valueFormatter = (value: string) => value,
     onValueChange,
     ...restProps
@@ -21,7 +23,7 @@ const NumberFormatInputControlled: FunctionComponent<NumberFormatInputControlled
       <Controller
         name={name as string}
         control={control}
-        rules={rules}
+        rules={validation ? getValidationConditions(validation) : rules}
         {...controlProps}
         render={({ field: { onChange, onBlur, value, ref } }) => (
           <NumberFormat

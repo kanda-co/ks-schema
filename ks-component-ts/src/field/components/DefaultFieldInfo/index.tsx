@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import { FieldInfoWrapperProps } from "~/field/types";
 import Label from "~/field/components/Label";
 import Error from "~/field/components/Error";

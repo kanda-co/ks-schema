@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import { Range } from "react-range";
 
 import type { RangeSliderProps } from "./types";

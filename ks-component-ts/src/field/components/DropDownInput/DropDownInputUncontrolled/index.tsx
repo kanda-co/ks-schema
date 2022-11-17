@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import Skeleton from "react-loading-skeleton";
 import useDropDownInputUncontrolledProps from "~/field/components/DropDownInput/DropDownInputUncontrolled/useDropDownInputUncontrolledProps";
 import { Button } from "@kanda-libs/ks-design-library";

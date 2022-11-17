@@ -1,4 +1,4 @@
-import React, { FunctionComponent, InputHTMLAttributes } from "react";
+import React, { type FunctionComponent, InputHTMLAttributes } from "react";
 import { Icon, SkeletonLoader } from "@kanda-libs/ks-design-library";
 import AutosizeInput from "react-input-autosize";
 import { DefaultFormFieldProps } from "~/field/types";

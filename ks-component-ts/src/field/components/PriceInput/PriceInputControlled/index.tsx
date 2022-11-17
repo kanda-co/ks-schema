@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import NumberFormatInputControlled from "~/field/components/NumberFormatInput/NumberFormatInputControlled";
 import { type NumberFormatInputControlledProps } from "~/field/components/NumberFormatInput/types";
 import { formatValue, onValueChange } from "./helpers";
@@ -20,6 +20,7 @@ const PriceInputControlled: FunctionComponent<
       prefix={symbol}
       thousandSeparator
       fixedDecimalScale
+      decimalScale={2}
       onValueChange={(
         event: NumberFormatValues,
         onChange: (...event: any[]) => void

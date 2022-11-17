@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import useSettingsPopoverOnDragEnd from "./useSettingsPopoverOnDragEnd";
 import { CLASS_NAMES, HEADING_TEXT, DROP_ID } from "./constants";

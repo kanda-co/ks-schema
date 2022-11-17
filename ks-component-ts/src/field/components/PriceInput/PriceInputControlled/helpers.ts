@@ -9,6 +9,8 @@ export const onValueChange = (
   currencyDecimal: number
 ): void => {
   onChange(
-    event.value ? (event.value as unknown as number) * currencyDecimal : null
+    event.floatValue
+      ? (event.floatValue as unknown as number) * currencyDecimal
+      : null
   );
 };

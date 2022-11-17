@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import {
   Button,
   ModalContainer,
@@ -20,7 +20,6 @@ const Mobile: FunctionComponent<MobileProps> = function ({
     <ModalContainer id={modalId}>
       {({ handleClose }) => (
         <>
-          Hello world
           <Container handleClose={handleClose} {...rest}>
             {({
               handleSearch,

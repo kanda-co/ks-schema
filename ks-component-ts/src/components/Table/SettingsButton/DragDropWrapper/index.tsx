@@ -1,4 +1,4 @@
-import React, { FunctionComponent, MutableRefObject } from "react";
+import React, { type FunctionComponent, MutableRefObject } from "react";
 import { DragDropWrapperProps } from "~/components/Table/SettingsButton/DragDropWrapper/types";
 import useDragDropWrapper from "~/components/Table/SettingsButton/DragDropWrapper/useDragDropWrapper";
 import TableColumnOptionInput from "~/field/components/TableColumnOptionInput";

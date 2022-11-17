@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import { DefaultFormFieldProps } from "~/field/types";
 import { type RadioSelectUncontrolledProps } from "../types";
 import useRadioSelectUncontrolledClassNames from "./useRadioSelectUncontrolledClassNames";

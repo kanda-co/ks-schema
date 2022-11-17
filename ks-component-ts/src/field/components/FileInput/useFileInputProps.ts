@@ -70,7 +70,6 @@ export default function useFileInputProps({
   const value = useWatch({ name, defaultValue });
 
   const { submit: compress } = useSubmit(
-    // TODO: Remove need to cast
     services.pdf.compress as unknown as Service<any, any, any>
   );
 
@@ -81,8 +80,6 @@ export default function useFileInputProps({
 
     return newFiles;
   }, [value, maxFiles, onUpdateFiles]);
-
-  console.log("hell2o");
 
   /**
    * @param {Array.File} newFiles
@@ -271,21 +268,22 @@ export default function useFileInputProps({
   const { ref } = getInputProps() as StringIndexedObject;
 
   useEffect(() => {
-    // // If input ref is empty or no input file, return
-    // if (!ref.current || !inputFile) return;
-    console.log({
-      inputFile,
-      ref,
-    });
-    // // Extract input element
-    // const input = ref.current;
-    // // Create file list
-    // const dt = new DataTransfer();
-    // dt.items.add(inputFile);
-    // // Add file list to input
-    // input.files = dt.files;
-    // // Dispatch event
-    // input.dispatchEvent(new Event("change", { bubbles: true }));
+    // If input ref is empty or no input file, return
+    if (!ref.current || !inputFile) return;
+    // Extract input element
+    const input = ref.current;
+    // Create file list
+    const dt = new DataTransfer();
+
+    const inputFileIsFile = inputFile instanceof File;
+    const inputFileIsBlob = inputFile instanceof Blob;
+
+    if (!(inputFileIsFile || inputFileIsBlob)) return;
+    dt.items.add(inputFile);
+    // Add file list to input
+    input.files = dt.files;
+    // Dispatch event
+    input.dispatchEvent(new Event("change", { bubbles: true }));
   }, [inputFile, ref]);
 
   /**

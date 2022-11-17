@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import useAddressSelectProps from "./useAddressSelectProps";
 import { AddressApiData } from "~/field/components/Address/types";
 import Select, { type SelectProps } from "../../Select";

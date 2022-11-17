@@ -88,12 +88,9 @@ export default function useBuildFinancePlanProps({
    */
   useEffect(() => {
     if (isLoading || !rate) return;
-    // console.log('Not loading.');
     if (rate === rateRef.current) {
-      // console.log('Same rate');
       return;
     }
-    // console.log('Rate chosen: ', rate);
     rateRef.current = rate;
     const initialTerm = terms[rate][0].value.toString();
     setValue(fields.term, initialTerm);
