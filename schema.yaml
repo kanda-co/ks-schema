@@ -3462,6 +3462,7 @@ components:
             - "20%"
             - "custom"
           default: "vat_not_set"
+          x-kanda-form-widget: SelectionModal
         vat:
           type: object
           $ref: "#/components/schemas/Money"
