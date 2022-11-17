@@ -74,7 +74,6 @@ const FileInputUncontrolled: FunctionComponent<FileInputUncontrolledProps> =
     );
   };
 
-<<<<<<< HEAD
 FileInputUncontrolled.defaultProps = {
   hasLabel: true,
   maxFiles: 0,
@@ -98,6 +97,4 @@ FileInputUncontrolled.defaultProps = {
   compressImages: true,
 };
 
-=======
->>>>>>> 453c6b73fb4afe719ae50c552b83701309886a5e
 export default FileInputUncontrolled;
