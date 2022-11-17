@@ -23,7 +23,7 @@ const PriceInputControlled: FunctionComponent<
   return (
     <NumberFormatInputControlled
       {...props}
-      value={value ? value / currencyDecimal : null}
+      value={value ? (value as number) / currencyDecimal : null}
       placeholder={`${symbol}0.00`}
       prefix={symbol}
       thousandSeparator

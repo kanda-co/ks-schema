@@ -2456,6 +2456,7 @@ components:
         amount:
           title: amount in pence
           $ref: "#/components/schemas/Pence"
+          x-kanda-form-widget: AutoSizePriceInput
 
     Pence:
       type: integer
