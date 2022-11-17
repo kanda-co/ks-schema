@@ -99,5 +99,5 @@ export interface NumberFormatInputControlledProps
   /**
    * Value
    */
-  value?: number | null;
+  value?: string | number | null;
 }
