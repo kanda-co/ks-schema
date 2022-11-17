@@ -70,6 +70,9 @@ export default function useTableProps({
   const data = useMemo(() => {
     if (isLoading) return generatePlaceholderData(columns);
 
+    if (isValidating)
+      return [{ reference: "skeleton", isValidating: true }, ...dataInput];
+
     return dataInput;
   }, [isLoading, columns, isValidating, dataInput]);
 
