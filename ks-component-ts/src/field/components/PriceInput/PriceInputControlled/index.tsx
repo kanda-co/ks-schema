@@ -1,7 +1,7 @@
 import React, { type FunctionComponent } from "react";
 import NumberFormatInputControlled from "~/field/components/NumberFormatInput/NumberFormatInputControlled";
 import { type NumberFormatInputControlledProps } from "~/field/components/NumberFormatInput/types";
-import { formatValue, onValueChange } from "./helpers";
+import { onValueChange } from "./helpers";
 import { NumberFormatValues } from "react-number-format";
 
 export interface PriceInputControlledProps {
@@ -11,11 +11,11 @@ export interface PriceInputControlledProps {
 
 const PriceInputControlled: FunctionComponent<
   NumberFormatInputControlledProps & PriceInputControlledProps
-> = function ({ symbol = "£", currencyDecimal = 100, ...props }) {
+> = function ({ symbol = "£", currencyDecimal = 100, value, ...props }) {
   return (
     <NumberFormatInputControlled
       {...props}
-      formatValue={(value) => formatValue(value as number, currencyDecimal)}
+      value={value ? value / currencyDecimal : null}
       placeholder={`${symbol}0.00`}
       prefix={symbol}
       thousandSeparator

@@ -49,6 +49,9 @@ import type { FileInputUncontrolledProps } from "~/field/components/FileInput/ty
 import DropDownInput, {
   DropDownInputProps,
 } from "~/field/components/DropDownInput";
+import SelectionModal, {
+  SelectionModalProps,
+} from "~/field/components/SelectionModal";
 
 const Field = {
   Address,
@@ -75,6 +78,7 @@ const Field = {
   TextAreaInput,
   UncontrolledInput,
   Validator,
+  SelectionModal,
 };
 
 export default Field;
@@ -96,6 +100,7 @@ export interface FieldProps {
   TableColumnOptionInput: TableColumnOptionInputProps;
   TextAreaInput: TextAreaProps;
   SortCodeInput: SortCodeInputProps;
+  SelectionModal: SelectionModalProps;
 }
 
 export type { ValidatedFieldProps } from "./types";

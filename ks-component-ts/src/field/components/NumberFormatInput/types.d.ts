@@ -92,4 +92,12 @@ export interface NumberFormatInputControlledProps
    * Icon
    */
   icon?: string;
+  /**
+   * Validation
+   */
+  validation?: ValidationItems;
+  /**
+   * Value
+   */
+  value?: number | null;
 }
