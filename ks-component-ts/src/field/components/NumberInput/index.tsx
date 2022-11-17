@@ -13,7 +13,7 @@ const WithFieldInfo = withFieldInfo(Controlled);
 
 export { Controlled, WithFieldInfo };
 
-const NumberInput = withFieldFormController(WithFieldInfo, null, false, true);
+const NumberInput = withFieldFormController(WithFieldInfo, null, true, true);
 
 export default NumberInput;
 

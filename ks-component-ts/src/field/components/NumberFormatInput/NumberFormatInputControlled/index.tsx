@@ -13,7 +13,6 @@ const NumberFormatInputControlled: FunctionComponent<NumberFormatInputControlled
     isLoading,
     isNumericString = false,
     rules = {},
-    validation,
     formatValue: valueFormatter = (value: string) => value,
     onValueChange,
     ...restProps
@@ -22,7 +21,7 @@ const NumberFormatInputControlled: FunctionComponent<NumberFormatInputControlled
       <Controller
         name={name as string}
         control={control}
-        rules={validation || rules}
+        rules={rules}
         {...controlProps}
         render={({ field: { onChange, onBlur, value, ref } }) => (
           <NumberFormat
