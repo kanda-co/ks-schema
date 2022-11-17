@@ -10,7 +10,7 @@ const WithFieldInfo = withFieldInfo(Controlled);
 
 export { Controlled, WithFieldInfo };
 
-const NumberFormatInput = WithFieldInfo;
+const NumberFormatInput = Controlled;
 
 export type NumberFormatInputBaseProps =
   DefaultFormFieldProps<NumberFormatInputControlledProps>;

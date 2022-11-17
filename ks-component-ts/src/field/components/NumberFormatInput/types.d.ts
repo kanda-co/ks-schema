@@ -1,6 +1,7 @@
 import { type FieldFormControllerChildrenArgs } from "~/field/components/FieldFormController/types";
 import { type ExtendControllerProps, ValidError } from "~/field/types";
 import { NumberFormatValues } from "react-number-format";
+import { StringIndexedObject } from "~/types";
 
 export interface NumberFormatInputControlledProps
   extends ExtendControllerProps {
