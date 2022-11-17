@@ -101,7 +101,7 @@
   },
   "dependencies": {
     "@kanda-libs/ks-design-library": "0.0.78-ts-10",
-    "@kanda-libs/ks-frontend-services": "^0.0.106-ts-20",
+    "@kanda-libs/ks-frontend-services": "0.0.106-ts-26",
     "@kanda-libs/ks-tailwind-config": "^0.0.5",
     "@types/lodash.get": "^4.4.7",
     "@types/lodash.trim": "^4.5.7",
