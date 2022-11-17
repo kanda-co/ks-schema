@@ -1,43 +1,23 @@
-import React, { type FunctionComponent, type MouseEvent } from "react";
+import withFieldInfo from "~/field/components/FieldInfo/withFieldInfo";
+import type {
+  DefaultFormFieldProps,
+  WrappedWithFieldInfoFormComponentProps,
+} from "~/field/types";
+import withFieldFormController from "~/field/components/FieldFormController/withFieldFormController";
+import Uncontrolled, {
+  SelectionModalButtonUncontrolledProps,
+} from "./SelectionModalButtonUncontrolled";
 
-export interface SelectionModalButtonProps {
-  /**
-   * ClassName
-   */
-  className?: string;
-  /**
-   * The HTML element ID.
-   */
-  id?: string;
-  /**
-   * Field error message
-   */
-  error?:
-    | string
-    | {
-        message?: string;
-      };
-  /**
-   * Display Loading state
-   */
-  isLoading?: boolean;
-  /**
-   * Text to display on button
-   */
-  buttonText?: string;
-  /**
-   * Button onclick function to display modal
-   */
-  onClick?(e: MouseEvent): unknown;
-  /**
-   * Forwared ref from parent component
-   */
-  forwardRef?: any;
-}
+const WithFieldInfo = withFieldInfo(Uncontrolled);
 
-const SelectionModalButton: FunctionComponent<SelectionModalButtonProps> =
-  function ({}) {
-    return <></>;
-  };
+const SelectionModalButton = withFieldFormController(WithFieldInfo);
+
+export type SelectionModalButtonBaseProps =
+  DefaultFormFieldProps<SelectionModalButtonUncontrolledProps>;
+
+export type SelectionModalButtonWithInfoProps =
+  WrappedWithFieldInfoFormComponentProps<SelectionModalButtonBaseProps>;
+
+export type SelectionModalButtonProps = SelectionModalButtonWithInfoProps;
 
 export default SelectionModalButton;
