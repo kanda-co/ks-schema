@@ -3059,7 +3059,7 @@ components:
             - company-manager
             - company-staff
           title: company role
-          x-kanda-form-widget: RadioSelect
+          x-kanda-form-widget: Select
         first_name:
           type: string
           title: first name
