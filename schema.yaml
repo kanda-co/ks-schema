@@ -3451,6 +3451,7 @@ components:
           type: object
           $ref: "#/components/schemas/Money"
           title: job item unit price in pence (vat exclusive)
+          x-kanda-form-widget: AutoSizePriceInput
         vat_rate:
           type: string
           title: vat applicable rate
