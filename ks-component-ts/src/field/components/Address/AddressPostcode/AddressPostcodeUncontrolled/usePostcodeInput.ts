@@ -65,9 +65,10 @@ export default function usePostcodeInput({
 
   const [toSearch, setToSearch] = useState(null);
 
-  const error = apiError
-    ? "This postcode returned no results - you'll have to enter your address manually"
-    : "";
+  const error =
+    isPostcodeValid && apiError
+      ? "This postcode returned no results - you'll have to enter your address manually"
+      : "";
 
   /**
    * Effect passes fetched data back through callback
