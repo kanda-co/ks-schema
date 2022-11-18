@@ -1,6 +1,6 @@
 {
   "name": "@kanda-libs/ks-component-ts",
-  "version": "0.0.137-ts-4-8",
+  "version": "0.0.137-ts-5-8",
   "description": "Kanda form components library",
   "main": "dist/index.cjs.js",
   "source": "src/index.ts",
@@ -123,6 +123,7 @@
     "react-slick": "^0.29.0",
     "react-table": "^7.7.0",
     "remove": "^0.1.5",
+    "rollup-plugin-dotenv": "^0.4.1",
     "use-debounce": "^8.0.3"
   },
   "resolutions": {
