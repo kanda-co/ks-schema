@@ -1,7 +1,8 @@
+import { type ComponentType } from "react";
+import { type NumberFormatValues } from "react-number-format";
+import { type StringIndexedObject } from "@kanda-libs/ks-frontend-services";
 import { type FieldFormControllerChildrenArgs } from "~/field/components/FieldFormController/types";
 import { type ExtendControllerProps, ValidError } from "~/field/types";
-import { NumberFormatValues } from "react-number-format";
-import { StringIndexedObject } from "@kanda-libs/ks-frontend-services";
 
 export interface NumberFormatInputControlledProps
   extends ExtendControllerProps {
@@ -92,5 +93,12 @@ export interface NumberFormatInputControlledProps
    * Icon
    */
   icon?: string;
+  /**
+   * Validation
+   */
   validation?: StringIndexedObject;
+  /**
+   * Function component to render instead of InputControlled
+   */
+  customInput?: ComponentType;
 }

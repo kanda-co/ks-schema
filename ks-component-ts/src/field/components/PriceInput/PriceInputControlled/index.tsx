@@ -1,17 +1,25 @@
-import React, { type FunctionComponent } from "react";
+import React, { type ComponentType, type FunctionComponent } from "react";
+import { NumberFormatValues } from "react-number-format";
 import NumberFormatInputControlled from "~/field/components/NumberFormatInput/NumberFormatInputControlled";
 import { type NumberFormatInputControlledProps } from "~/field/components/NumberFormatInput/types";
+import AutoSizeInputUncontrolled from "~/field/components/AutoSizeInput/AutoSizeInputUncontrolled";
+import InputUncontrolled from "~/field/components/Input/InputUncontrolled";
 import { formatValue, onValueChange } from "./helpers";
-import { NumberFormatValues } from "react-number-format";
 
 export interface PriceInputControlledProps {
   symbol?: string;
   currencyDecimal?: number;
+  autoSize?: boolean;
 }
 
 const PriceInputControlled: FunctionComponent<
   NumberFormatInputControlledProps & PriceInputControlledProps
-> = function ({ symbol = "£", currencyDecimal = 100, ...props }) {
+> = function ({
+  symbol = "£",
+  currencyDecimal = 100,
+  autoSize = false,
+  ...props
+}) {
   return (
     <NumberFormatInputControlled
       {...props}
@@ -21,6 +29,11 @@ const PriceInputControlled: FunctionComponent<
       thousandSeparator
       fixedDecimalScale
       decimalScale={2}
+      customInput={
+        (autoSize
+          ? AutoSizeInputUncontrolled
+          : InputUncontrolled) as ComponentType
+      }
       onValueChange={(
         event: NumberFormatValues,
         onChange: (...event: any[]) => void
