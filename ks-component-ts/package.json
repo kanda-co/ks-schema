@@ -20,6 +20,7 @@
     "watch:modern": "yarn build:modern -w",
     "build:esm": "node_modules/.bin/rollup -c ./scripts/rollup/rollup.esm.config.js",
     "build:style": "npx tailwindcss --postcss ./tailwind.postcss.config.js -i ./src/styles/tailwind.css -c ./tailwind.config.js -o ./src/styles/library.css",
+    "build:dev": "APP_ENV=dev yarn build",
     "watch:style": "yarn build:style --watch",
     "lint": "node_modules/.bin/eslint '**/*.{js,ts,tsx}'",
     "type": "node_modules/.bin/tsc --noEmit",

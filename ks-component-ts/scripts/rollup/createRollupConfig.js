@@ -51,13 +51,14 @@ export function createRollupConfig(options, callback) {
           include: /\/node_modules\//,
         }),
       sourcemaps(),
-      // options.format !== "esm" &&
-      //   terser({
-      //     output: { comments: false },
-      //     compress: {
-      //       drop_console: false,
-      //     },
-      //   }),
+      process.env.APP_ENV !== "dev" &&
+        options.format !== "esm" &&
+        terser({
+          output: { comments: false },
+          compress: {
+            drop_console: false,
+          },
+        }),
       copy({
         targets: [
           { src: "src/styles/library.css", dest: "dist" },
@@ -65,10 +66,6 @@ export function createRollupConfig(options, callback) {
         ],
       }),
       // Generate widget types
-      // execute(
-      //   "./node_modules/.bin/dts-bundle-generator -o dist/widget.d.ts src/generated/widget/index.tsx"
-      // ),
-      // Generate index.d.ts file
       execute(
         "./node_modules/.bin/dts-bundle-generator --external-inlines=./generated -o dist/index.d.ts src/index.ts"
       ),
