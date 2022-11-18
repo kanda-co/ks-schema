@@ -7,6 +7,7 @@ import copy from "rollup-plugin-copy";
 import postcss from "rollup-plugin-postcss";
 import reactSvg from "rollup-plugin-react-svg";
 import execute from "rollup-plugin-shell";
+import dotenv from "rollup-plugin-dotenv";
 
 export function createRollupConfig(options, callback) {
   const name = options.name;
@@ -34,6 +35,7 @@ export function createRollupConfig(options, callback) {
       exports: "named",
     },
     plugins: [
+      dotenv(),
       reactSvg(),
       postcss({
         extensions: [".css"],

@@ -4,6 +4,13 @@ import { useWatch } from "react-hook-form";
 import { DEBOUNCE_INTERVAL, NO_ADDRESSES } from "./constants";
 import { validatePostcode, checkPostcodesMatch } from "./helpers";
 import type { PostcodeProps } from "~/field/components/Address/types";
+import {
+  Address,
+  Service,
+  services,
+  useLoadData,
+} from "@kanda-libs/ks-frontend-services";
+import { StringIndexedObject } from "~/types";
 
 export type PostcodeInputArgs = Omit<
   PostcodeProps,
@@ -18,23 +25,41 @@ export interface PostcodeInputHook
 export default function usePostcodeInput({
   name = "",
   callback,
-  data,
-  error: apiError,
-  isValidating: isLoading,
   onPostcodeSearch,
   ...restProps
 }: PostcodeInputArgs): PostcodeInputHook {
   /**
    * Gets postcode value
    */
-  const postalCode = useWatch({ name });
+  const postCode = useWatch({ name });
 
   /**
    * Debounces values to reduce number of calls
    */
-  const [debouncedPostalCode] = useDebounce(postalCode, DEBOUNCE_INTERVAL);
+  const [debouncedPostalCode] = useDebounce(postCode, DEBOUNCE_INTERVAL);
 
   const isPostcodeValid = validatePostcode(debouncedPostalCode || "");
+
+  const {
+    data,
+    error: apiError,
+    isValidating,
+    mutate,
+  } = useLoadData(
+    isPostcodeValid &&
+      (services.address.find as unknown as Service<
+        Address,
+        StringIndexedObject,
+        StringIndexedObject
+      >),
+    {
+      shouldRetryOnError: false,
+      useParamsAsKey: true,
+    },
+    {
+      params: { postCode: debouncedPostalCode },
+    }
+  );
 
   const postCodeRef = useRef(debouncedPostalCode);
 
@@ -58,12 +83,12 @@ export default function usePostcodeInput({
     }
     callback({
       ...data,
-      isLoading,
+      isLoading: isValidating,
     });
   }, [
     toSearch,
     callback,
-    isLoading,
+    isValidating,
     isPostcodeValid,
     data,
     apiError,
