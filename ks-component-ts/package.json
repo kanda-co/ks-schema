@@ -1,6 +1,6 @@
 {
   "name": "@kanda-libs/ks-component-ts",
-  "version": "0.0.137-ts-8-8",
+  "version": "0.0.137-ts-9-9",
   "description": "Kanda form components library",
   "main": "dist/index.cjs.js",
   "source": "src/index.ts",
@@ -100,7 +100,7 @@
     "url": "git+https://github.com/kanda-co/ks-form-library.git"
   },
   "dependencies": {
-    "@kanda-libs/ks-design-library": "0.0.78-ts-10",
+    "@kanda-libs/ks-design-library": "0.0.78-ts-13",
     "@kanda-libs/ks-frontend-services": "0.0.106-ts-26",
     "@kanda-libs/ks-tailwind-config": "^0.0.5",
     "@types/lodash.get": "^4.4.7",
