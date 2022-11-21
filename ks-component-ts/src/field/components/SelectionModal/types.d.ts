@@ -1,8 +1,8 @@
 import { SelectOption } from "~/field/components/Select/types";
-import { ValidError } from "~/field/types";
+import { DefaultFormFieldProps, ValidError } from "~/field/types";
 import { MutableRefObject } from "react";
 
-export interface SelectionModalProps {
+export type SelectionModalUncontrolledProps = DefaultFormFieldProps<{
   /**
    * Children
    */
@@ -44,4 +44,4 @@ export interface SelectionModalProps {
    */
   error?: ValidError;
   forwardRef?: MutableRefObject<HTMLElement>;
-}
+}>;
