@@ -2,7 +2,6 @@ import React, { type FunctionComponent } from "react";
 import AutosizeInput, { type AutosizeInputProps } from "react-input-autosize";
 import Skeleton from "react-loading-skeleton";
 import { type DefaultFormFieldProps } from "~/field/types";
-import withFieldFormController from "~/field/components/FieldFormController/withFieldFormController";
 import useAutoSizeInputUncontrolledClassNames from "./useAutoSizeInputUncontrolledClassNames";
 import { SKELETONS } from "./constants";
 import { FieldFormControllerChildrenArgs } from "~/field/components/FieldFormController/types";
@@ -46,4 +45,4 @@ const AutoSizeInputUncontrolled: FunctionComponent<
   );
 };
 
-export default withFieldFormController(AutoSizeInputUncontrolled);
+export default AutoSizeInputUncontrolled;

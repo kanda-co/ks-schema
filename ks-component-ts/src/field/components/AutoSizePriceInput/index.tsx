@@ -5,7 +5,7 @@ export type AutoSizePriceInputProps = Omit<NumberInputProps, "autoSize">;
 
 const AutoSizePriceInput: FunctionComponent<AutoSizePriceInputProps> =
   function (props) {
-    return <NumberInput autoSize {...props} />;
+    return <NumberInput {...props} type="price" autoSize />;
   };
 
 export default AutoSizePriceInput;
