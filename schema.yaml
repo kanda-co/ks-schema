@@ -2455,7 +2455,7 @@ components:
           default: GBP
         amount:
           title: amount in pence
-          $ref: "#/components/schemas/PenceAutoSize"
+          $ref: "#/components/schemas/Pence"
 
     Pence:
       type: integer
@@ -2464,14 +2464,6 @@ components:
       minimum: 0
       maximum: 2147483647
       x-kanda-form-widget: NumberInput
-
-    PenceAutoSize:
-      type: integer
-      format: int32
-      title: amount / number in pence
-      minimum: 0
-      maximum: 2147483647
-      x-kanda-form-widget: AutoSizePriceInput
 
     Metadata:
       type: object
