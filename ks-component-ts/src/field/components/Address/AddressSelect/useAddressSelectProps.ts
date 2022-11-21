@@ -1,6 +1,13 @@
-import { useMemo, useCallback, useRef, useEffect, FormEvent } from "react";
+import {
+  useMemo,
+  useCallback,
+  useRef,
+  useEffect,
+  type FormEvent,
+  type ChangeEvent,
+} from "react";
 import { useWatch, useFormContext } from "react-hook-form";
-import { getOptions, checkPostcodesMatch, AddressOption } from "./helpers";
+import { getOptions, checkPostcodesMatch, type AddressOption } from "./helpers";
 import { SELECT_ADDRESS_LABEL } from "./constants";
 
 import type { AddressApiResponseAddress, AddressApiData } from "../types";
@@ -51,10 +58,10 @@ export default function useAddressSelectProps(
    * Handles address change
    */
   const handleChange = useCallback(
-    (e) => {
+    (e: ChangeEvent<HTMLInputElement>) => {
       const id = parseInt(e.target.value, 10);
 
-      selectedRef.current = e.target.value;
+      selectedRef.current = id;
 
       const address = addresses && (addresses[id] as AddressApiResponseAddress);
 
