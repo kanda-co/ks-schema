@@ -2318,6 +2318,10 @@ components:
           type: string
           title: photo URL
           format: uri
+        referrer:
+          type: string
+          title: referrer URL
+          format: uri
 
     InfoGhost:
       type: object
@@ -2584,6 +2588,11 @@ components:
         aid:
           type: string
           title: author id
+          readOnly: true
+        analytics:
+          type: object
+          title: referrer
+          $ref: "#/components/schemas/Analytics"
           readOnly: true
         emails:
           type: array
@@ -4306,6 +4315,38 @@ components:
           readOnly: true
       additionalProperties:
         type: string
+
+    Analytics:
+      type: object
+      properties:
+        utms:
+          type: array
+          title: UTM parameters
+          items:
+            $ref: "#/components/schemas/UTM"
+
+    UTM:
+      type: object
+      title: UTM parameter
+      required:
+        - utm_source
+      properties:
+        utm_source:
+          type: string
+          title: utm source
+          default: kanda
+        utm_medium:
+          type: string
+          title: utm medium
+        utm_campaign:
+          type: string
+          title: utm campaign
+        utm_term:
+          type: string
+          title: utm term
+        utm_content:
+          type: string
+          title: utm content
 
     Error:
       type: object
