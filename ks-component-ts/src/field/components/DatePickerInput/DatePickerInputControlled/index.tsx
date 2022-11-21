@@ -15,7 +15,7 @@ const DatePickerInputControlled: FunctionComponent<DatePickerInputControlledProp
       <NumberFormatInputControlled
         {...props}
         icon="calendar"
-        placeholder="DD/MM/ YYYY"
+        placeholder="DD/MM/YYYY"
         formatValue={formatValue}
         format="##/##/####"
         mask={["D", "D", "M", "M", "Y", "Y", "Y", "Y"]}
