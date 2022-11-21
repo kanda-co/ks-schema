@@ -2455,7 +2455,7 @@ components:
           default: GBP
         amount:
           title: amount in pence
-          $ref: "#/components/schemas/Pence"
+          $ref: "#/components/schemas/PenceAutoSize"
 
     Pence:
       type: integer
@@ -2463,6 +2463,15 @@ components:
       title: amount / number in pence
       minimum: 0
       maximum: 2147483647
+      x-kanda-form-widget: NumberInput
+
+    PenceAutoSize:
+      type: integer
+      format: int32
+      title: amount / number in pence
+      minimum: 0
+      maximum: 2147483647
+      x-kanda-form-widget: AutoSizePriceInput
 
     Metadata:
       type: object
@@ -3059,7 +3068,7 @@ components:
             - company-manager
             - company-staff
           title: company role
-          x-kanda-form-widget: RadioSelect
+          x-kanda-form-widget: Select
         first_name:
           type: string
           title: first name
@@ -3462,6 +3471,7 @@ components:
             - "20%"
             - "custom"
           default: "vat_not_set"
+          x-kanda-form-widget: SelectionModal
         vat:
           type: object
           $ref: "#/components/schemas/Money"
