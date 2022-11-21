@@ -1,13 +1,11 @@
 import React, { FunctionComponent } from "react";
-import { NumberFormatInputControlledProps } from "~/field/components/NumberFormatInput/types";
-import PriceInput, { PriceInputProps } from "~/field/components/PriceInput";
+import NumberInput, { NumberInputProps } from "~/field/components/NumberInput";
 
-export type AutoSizePriceInputProps = NumberFormatInputControlledProps &
-  Omit<PriceInputProps, "autoSize">;
+export type AutoSizePriceInputProps = Omit<NumberInputProps, "autoSize">;
 
 const AutoSizePriceInput: FunctionComponent<AutoSizePriceInputProps> =
   function (props) {
-    return <PriceInput autoSize {...props} />;
+    return <NumberInput autoSize {...props} />;
   };
 
 export default AutoSizePriceInput;

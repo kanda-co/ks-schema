@@ -7,13 +7,15 @@ import { getNumberTag } from "~/field/components/NumberInput/helpers";
 
 export type NumberInputControlledProps = {
   type?: NumberInputType;
+  autoSize?: boolean;
 };
 
 const NumberInputControlled: FunctionComponent<NumberInputControlledProps> =
-  function ({ type = "default", ...props }) {
+  function ({ type = "default", autoSize = false, ...props }) {
     const Tag = getNumberTag(type) as FunctionComponent<NumberTagInputProps>;
+    const priceProps = type === "price" ? { autoSize } : {};
 
-    return <Tag {...props} />;
+    return <Tag {...props} {...priceProps} />;
   };
 
 export default NumberInputControlled;
