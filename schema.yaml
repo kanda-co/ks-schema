@@ -2455,9 +2455,16 @@ components:
           default: GBP
         amount:
           title: amount in pence
-          $ref: "#/components/schemas/Pence"
+          $ref: "#/components/schemas/PenceAutoSize"
 
     Pence:
+      type: integer
+      format: int32
+      title: amount / number in pence
+      minimum: 0
+      maximum: 2147483647
+
+    PenceAutoSize:
       type: integer
       format: int32
       title: amount / number in pence
