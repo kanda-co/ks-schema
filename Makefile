@@ -38,7 +38,7 @@ gen-backend:
 	mkdir -p pkg/schema
 	oapi-codegen -generate types,server,spec -package schema schema.yaml > pkg/schema/schema.gen.go
 
-build-frontend: gen-frontend widget
+build-frontend: gen-frontend widget ts-widget
 	@echo Build frontend...
 	npx openapi2schema -i schema.yaml > frontend/generated/schema.json
 	echo "import * as Widget from './widget';" >> frontend/generated/index.ts
