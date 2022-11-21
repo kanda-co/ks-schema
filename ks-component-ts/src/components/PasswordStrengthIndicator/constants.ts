@@ -29,8 +29,8 @@ export const SCORE_LABELS = [
 export const SCORE_COLORS = [
   "neutral-200",
   "red-200",
-  "red-200",
   "orange-200",
+  "turquoise-300",
   "turquoise-300",
   "turquoise-400",
 ];
