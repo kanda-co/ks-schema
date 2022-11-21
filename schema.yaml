@@ -2463,6 +2463,7 @@ components:
       title: amount / number in pence
       minimum: 0
       maximum: 2147483647
+      x-kanda-form-widget: NumberInput
 
     PenceAutoSize:
       type: integer

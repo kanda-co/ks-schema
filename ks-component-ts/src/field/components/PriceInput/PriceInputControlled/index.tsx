@@ -10,6 +10,8 @@ export interface PriceInputControlledProps {
   symbol?: string;
   currencyDecimal?: number;
   autoSize?: boolean;
+  placeholder?: string;
+  fixedDecimalScale?: boolean;
 }
 
 const PriceInputControlled: FunctionComponent<
@@ -18,16 +20,18 @@ const PriceInputControlled: FunctionComponent<
   symbol = "£",
   currencyDecimal = 100,
   autoSize = false,
+  placeholder,
+  fixedDecimalScale = true,
   ...props
 }) {
   return (
     <NumberFormatInputControlled
       {...props}
-      formatValue={(value) => formatValue(value as number, currencyDecimal)}
-      placeholder={`${symbol}0.00`}
-      prefix={symbol}
       thousandSeparator
-      fixedDecimalScale
+      formatValue={(value) => formatValue(value as number, currencyDecimal)}
+      placeholder={placeholder || `${symbol}0.00`}
+      prefix={symbol}
+      fixedDecimalScale={fixedDecimalScale}
       decimalScale={2}
       customInput={
         (autoSize
