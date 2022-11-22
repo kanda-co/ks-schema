@@ -3,27 +3,16 @@ import Skeleton from "react-loading-skeleton";
 import useTextAreaInputClasses from "./useTextAreaInputClasses";
 import { SKELETON_COUNT } from "./constants";
 import { DefaultFormFieldProps } from "~/field/types";
-import AutoSizeTextArea from "~/field/components/AutoSizeTextArea";
 
 export interface TextAreaInputUncontrolledProps {
   className?: string;
-  autoSize?: string;
 }
 
 const TextAreaInputUncontrolled: FunctionComponent<
   DefaultFormFieldProps<TextAreaInputUncontrolledProps>
-> = function ({
-  forwardRef,
-  error,
-  className,
-  autoSize = false,
-  isLoading,
-  ...props
-}) {
+> = function ({ forwardRef, error, className, isLoading, ...props }) {
   const { className: textAreaClassName, skeletonClasses } =
     useTextAreaInputClasses(className);
-
-  const TextArea = autoSize ? AutoSizeTextArea : "textarea";
 
   return (
     <>
@@ -34,7 +23,7 @@ const TextAreaInputUncontrolled: FunctionComponent<
           </div>
         </div>
       ) : (
-        <TextArea
+        <textarea
           className={textAreaClassName}
           ref={forwardRef}
           {...props}
