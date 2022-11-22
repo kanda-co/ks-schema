@@ -10,7 +10,9 @@ export type AutoSizeInputUncontrolledProps = AutosizeInputProps &
   FieldFormControllerChildrenArgs<{
     className?: string;
     placeholder?: string;
-  }>;
+  }> & {
+    onChange: () => void;
+  };
 
 const AutoSizeInputUncontrolled: FunctionComponent<
   DefaultFormFieldProps<AutoSizeInputUncontrolledProps>

@@ -55,6 +55,12 @@ import SelectionModal, {
 import AutoSizePriceInput, {
   type AutoSizePriceInputProps,
 } from "~/field/components/AutoSizePriceInput";
+import AutoSizeInput, {
+  type AutoSizeInputProps,
+} from "~/field/components/AutoSizeInput";
+import AutoSizeTextArea, {
+  type AutoSizeTextAreaProps,
+} from "~/field/components/AutoSizeTextArea";
 
 const Field = {
   Address,
@@ -82,7 +88,9 @@ const Field = {
   UncontrolledInput,
   Validator,
   SelectionModal,
+  AutoSizeInput,
   AutoSizePriceInput,
+  AutoSizeTextArea,
 };
 
 export default Field;
@@ -105,7 +113,9 @@ export interface FieldProps {
   TextAreaInput: TextAreaProps;
   SortCodeInput: SortCodeInputProps;
   SelectionModal: SelectionModalProps;
+  AutoSizeInput: AutoSizeInputProps;
   AutoSizePriceInput: AutoSizePriceInputProps;
+  AutoSizeTextArea: AutoSizeTextAreaProps;
 }
 
 export type { ValidatedFieldProps } from "./types";
