@@ -15,11 +15,12 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "baseUrl": "./src/",
+    "typeRoots": ["./src/@types", "./node_modules/@types"],
     "paths": {
       "~/*": ["*"]
     }
   },
-  "include": ["./src/", "./src/types/svg.d.ts"],
+  "include": ["./src/", "./src/modulesTypes.d.ts"],
   "exclude": ["./node_modules", "./app"],
   "rootDirs": ["./src/"]
 }
