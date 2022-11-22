@@ -1,7 +1,6 @@
 import React, { type FunctionComponent } from "react";
 import { type SelectOption } from "~/field/components/Select/types";
 import RadioSelect, { type RadioSelectProps } from "../../RadioSelect";
-import useClickEventListener from "./useClickEventListener";
 
 export interface SelectionModalSelectProps extends RadioSelectProps {
   /**
@@ -30,14 +29,17 @@ const SelectionModalSelect: FunctionComponent<SelectionModalSelectProps> =
     options = [],
     ...restProps
   }) {
-    useClickEventListener(handleClose, name, multiple);
-
     return (
       <RadioSelect
         name={name}
         multiple={multiple}
         options={options}
         {...restProps}
+        onClick={() => {
+          if (!multiple) {
+            handleClose();
+          }
+        }}
       />
     );
   };

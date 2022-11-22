@@ -37,6 +37,10 @@ export interface Props {
    * Register function
    */
   register?: FieldRegisterMethod;
+  /**
+   * Event handler for clicking the option
+   */
+  onClick?: () => void;
 }
 
 const Option: FunctionComponent<Props> = function ({
@@ -48,6 +52,7 @@ const Option: FunctionComponent<Props> = function ({
   isLoading,
   inline = false,
   register,
+  onClick = () => {},
 }) {
   const { id, classNames, handleProps, Handle } = useOption(
     multiple,
@@ -61,7 +66,12 @@ const Option: FunctionComponent<Props> = function ({
   return (
     <label htmlFor={id} key={value} className={classNames.option as string}>
       <div className={classNames.container as string}>
-        <div className={classNames.handleContainer as string}>
+        <div
+          className={classNames.handleContainer as string}
+          onClick={() => {
+            onClick();
+          }}
+        >
           <Handle
             id={id}
             {...handleProps}

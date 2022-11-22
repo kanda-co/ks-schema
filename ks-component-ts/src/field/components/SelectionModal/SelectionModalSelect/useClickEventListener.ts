@@ -1,4 +1,5 @@
 import { useEffect, type MouseEvent as ReactMouseEvent } from "react";
+import { useOuterClick } from "@kanda-libs/ks-design-library";
 
 export type ClickEventListenerHook = void;
 
