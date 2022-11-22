@@ -3449,6 +3449,7 @@ components:
           type: string
           title: job item title
           minLength: 1
+          x-kanda-form-widget: TextAreaInput
         description:
           type: string
           title: job item description
