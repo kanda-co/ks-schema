@@ -3,6 +3,7 @@ import { Controller } from "react-hook-form";
 import AutoSizeInputUncontrolled, {
   type AutoSizeInputUncontrolledProps,
 } from "./AutoSizeInputUncontrolled";
+import type { StringIndexedObject } from "~/types";
 
 export interface AutoSizeInputProps extends AutoSizeInputUncontrolledProps {}
 
@@ -26,10 +27,10 @@ const AutoSizeInput: FunctionComponent<AutoSizeInputProps> = function ({
           name={name}
           value={value}
           inputRef={ref}
-          onChange={onChange}
-          onBlur={onBlur}
           isLoading={isLoading}
-          {...restProps}
+          {...(restProps as StringIndexedObject)}
+          onBlur={onBlur as unknown as () => void}
+          onChange={onChange as unknown as () => void}
         />
       )}
     />

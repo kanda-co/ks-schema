@@ -1293,6 +1293,10 @@ video {
   min-width: 216px;
 }
 
+.min-w-0 {
+  min-width: 0;
+}
+
 .min-w-6 {
   min-width: 24px;
 }
@@ -1344,6 +1348,10 @@ video {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+}
+
+.resize-none {
+  resize: none;
 }
 
 .appearance-none {
@@ -2992,6 +3000,14 @@ Modified version of toast CSS to match designs
   opacity: 1;
 }
 
+.focus\:relative:focus {
+  position: relative;
+}
+
+.focus\:h-auto:focus {
+  height: auto;
+}
+
 .focus\:border:focus {
   border-width: 1px;
 }
@@ -3013,6 +3029,10 @@ Modified version of toast CSS to match designs
 .focus\:px-2:focus {
   padding-left: 8px;
   padding-right: 8px;
+}
+
+.focus\:opacity-100:focus {
+  opacity: 1;
 }
 
 .focus\:outline-none:focus {
@@ -3041,6 +3061,10 @@ input[type="checkbox"]:checked ~ .label-checked\:border-transparent {
 input[type="checkbox"]:checked ~ .label-checked\:bg-turquoise-300 {
   --tw-bg-opacity: 1;
   background-color: rgb(39 222 191 / var(--tw-bg-opacity));
+}
+
+:focus-within > .field-focus\:hidden {
+  display: none;
 }
 
 @media (min-width: 768px) {
