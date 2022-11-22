@@ -1,9 +1,7 @@
 import { useForm } from "react-hook-form";
-import "../../dist/library.css";
-import { FormWrapper } from "../../dist";
-import FieldFormTest from "./FieldFormTest";
+import "@kanda-libs/ks-component-ts/dist/library.css";
+import { FormWrapper } from "@kanda-libs/ks-component-ts";
 import DirectorForm from "./DirectorForm";
-// import DirectorSalary from "./DirectorForm/DirectorSalary";
 
 function App() {
   const form = useForm({
