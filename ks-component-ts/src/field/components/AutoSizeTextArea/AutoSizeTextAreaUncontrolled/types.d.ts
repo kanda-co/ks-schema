@@ -29,7 +29,7 @@ export interface AutoSizeTextAreaUncontrolledProps {
   /**
    * This function is triggered when the input is changed
    */
-  onChange?: ChangeEventHandler<HTMLTextAreaElement>;
+  onChange?: () => void;
   /**
    * This function is triggered when the input is unfocused
    */
