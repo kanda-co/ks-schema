@@ -1,12 +1,10 @@
 import {
   MutableRefObject,
   useCallback,
-  useContext,
   useEffect,
   useRef,
   useState,
 } from "react";
-import { Context } from "./Context";
 
 export interface SliderRefValue {
   slickGoTo: (index: number) => void;
@@ -34,9 +32,6 @@ export default function useSteps(
   const sliderRef = useRef<SliderRefValue>();
   const lockButtons = useRef(false);
 
-  const parentContext = useContext(Context);
-  const isNested = Boolean(parentContext);
-
   const stepIndexRef = useRef(initialStepIndex || 0);
   const stepSafeIndexRef = useRef(initialStepSafeIndex || 0);
 
@@ -58,7 +53,7 @@ export default function useSteps(
       setCurrentStep(steps[stepIndex]);
       setCurrentStepState(stepIndex);
 
-      if (!isNested && changeUrl) {
+      if (changeUrl) {
         // Set timeout needed for firefix
 
         setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 0);
@@ -70,7 +65,7 @@ export default function useSteps(
         }
       }
     },
-    [addStepsToUrl, isNested, steps]
+    [addStepsToUrl, steps]
   );
 
   /**
@@ -125,8 +120,6 @@ export default function useSteps(
   );
 
   useEffect(() => {
-    if (isNested) return undefined;
-
     const url = new URL(window.location.href);
     const urlStep = url.searchParams.get("step");
 
@@ -135,7 +128,7 @@ export default function useSteps(
     }
 
     return setCurrentStepIndex(initialStepIndex, true, false);
-  }, [initialStepIndex, isNested, setCurrentStepIndex, setStep]);
+  }, [initialStepIndex, setCurrentStepIndex, setStep]);
 
   return {
     sliderRef,
