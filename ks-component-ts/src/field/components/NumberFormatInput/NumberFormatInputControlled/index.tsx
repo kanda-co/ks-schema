@@ -1,10 +1,10 @@
 import React, { type FunctionComponent } from "react";
 import NumberFormat from "react-number-format";
 import { Controller } from "react-hook-form";
+import { Uncontrolled as InputUncontrolled } from "~/field/components/Input";
 import { type NumberFormatInputControlledProps } from "../types";
 import { defaultOnValueChange } from "./helpers";
 import { getValidationConditions } from "~/field/components/Validator/useValidationProps/helpers";
-import NumberInputUncontrolled from "~/field/components/Input/NumberInputUncontrolled";
 
 const NumberFormatInputControlled: FunctionComponent<NumberFormatInputControlledProps> =
   function ({
@@ -17,7 +17,7 @@ const NumberFormatInputControlled: FunctionComponent<NumberFormatInputControlled
     validation,
     placeholder,
     formatValue: valueFormatter = (value: string) => value,
-    customInput = NumberInputUncontrolled,
+    customInput = InputUncontrolled,
     onValueChange,
     ...restProps
   }) {
