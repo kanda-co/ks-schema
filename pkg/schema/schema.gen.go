@@ -27,9 +27,9 @@ const (
 
 // Defines values for CheckoutOption.
 const (
-	ApplyForFinance CheckoutOption = "apply_for_finance"
-	DeclineJob      CheckoutOption = "decline_job"
-	PayOnCompletion CheckoutOption = "pay_on_completion"
+	CheckoutOptionApplyForFinance CheckoutOption = "apply_for_finance"
+	CheckoutOptionDeclineJob      CheckoutOption = "decline_job"
+	CheckoutOptionPayOnCompletion CheckoutOption = "pay_on_completion"
 )
 
 // Defines values for CompanyBilling.
@@ -250,9 +250,9 @@ const (
 
 // Defines values for FinanceProvider.
 const (
-	Allium    FinanceProvider = "allium"
-	Omni      FinanceProvider = "omni"
-	Propensio FinanceProvider = "propensio"
+	FinanceProviderAllium    FinanceProvider = "allium"
+	FinanceProviderOmni      FinanceProvider = "omni"
+	FinanceProviderPropensio FinanceProvider = "propensio"
 )
 
 // Defines values for FinanceStatus.
@@ -307,8 +307,8 @@ const (
 
 // Defines values for JobJobType.
 const (
-	Solar    JobJobType = "solar"
-	Standard JobJobType = "standard"
+	JobJobTypeSolar    JobJobType = "solar"
+	JobJobTypeStandard JobJobType = "standard"
 )
 
 // Defines values for JobStatus.
@@ -481,6 +481,68 @@ const (
 	CompanyStaff   UserTypeRole = "company-staff"
 )
 
+// Defines values for DeclineCompanyParamsReason.
+const (
+	DeclinedCcjAgainstBusinessOrDirector   DeclineCompanyParamsReason = "declined_ccj_against_business_or_director"
+	DeclinedCcjAgainstPreviousAssociation  DeclineCompanyParamsReason = "declined_ccj_against_previous_association"
+	DeclinedListedTradeTypeNotCovered      DeclineCompanyParamsReason = "declined_listed_trade_type_not_covered"
+	DeclinedSeveralNegativesAgainstCompany DeclineCompanyParamsReason = "declined_several_negatives_against_company"
+	DeclinedUnableToCompleteIdChecks       DeclineCompanyParamsReason = "declined_unable_to_complete_id_checks"
+	RejectedContactUsOnApplicationError    DeclineCompanyParamsReason = "rejected_contact_us_on_application_error"
+	RejectedInvalidInsurnaceDocument       DeclineCompanyParamsReason = "rejected_invalid_insurnace_document"
+	RejectedNotOnTradeBodyWebsite          DeclineCompanyParamsReason = "rejected_not_on_trade_body_website"
+	RejectedOutdatedInsuranceDocument      DeclineCompanyParamsReason = "rejected_outdated_insurance_document"
+)
+
+// Defines values for PayoutsJobParamsJobType.
+const (
+	PayoutsJobParamsJobTypeSolar    PayoutsJobParamsJobType = "solar"
+	PayoutsJobParamsJobTypeStandard PayoutsJobParamsJobType = "standard"
+)
+
+// Defines values for MarkPaymentParamsStatus.
+const (
+	MarkPaymentParamsStatusPaid            MarkPaymentParamsStatus = "paid"
+	MarkPaymentParamsStatusPayOnCompletion MarkPaymentParamsStatus = "pay_on_completion"
+	MarkPaymentParamsStatusUnpaid          MarkPaymentParamsStatus = "unpaid"
+)
+
+// Defines values for RunnerParamsEvent.
+const (
+	Housekeeping RunnerParamsEvent = "housekeeping"
+	Reminder     RunnerParamsEvent = "reminder"
+)
+
+// Defines values for RunnerParamsTask.
+const (
+	Dbv3HoApplicationCustomerActionReminder RunnerParamsTask = "dbv3_ho_application_customer_action_reminder"
+	Dbv3HoApplicationSatNoteSentReminder    RunnerParamsTask = "dbv3_ho_application_sat_note_sent_reminder"
+	Dbv3HoApplicationSignDocsReminder       RunnerParamsTask = "dbv3_ho_application_sign_docs_reminder"
+	Dbv3HoInitialFollowUp                   RunnerParamsTask = "dbv3_ho_initial_follow_up"
+	Dbv3TpInitialFollowUp                   RunnerParamsTask = "dbv3_tp_initial_follow_up"
+	Dbv3UserCompanySetupReminder            RunnerParamsTask = "dbv3_user_company_setup_reminder"
+	Dbv3UserVerifyDirectorReminder          RunnerParamsTask = "dbv3_user_verify_director_reminder"
+	HousekeepingCheckReferralExpiry         RunnerParamsTask = "housekeeping_check_referral_expiry"
+)
+
+// Defines values for ProviderCheckWebhookParamsProvider.
+const (
+	ProviderCheckWebhookParamsProviderAllium     ProviderCheckWebhookParamsProvider = "allium"
+	ProviderCheckWebhookParamsProviderGocardless ProviderCheckWebhookParamsProvider = "gocardless"
+	ProviderCheckWebhookParamsProviderOmni       ProviderCheckWebhookParamsProvider = "omni"
+	ProviderCheckWebhookParamsProviderStripe     ProviderCheckWebhookParamsProvider = "stripe"
+	ProviderCheckWebhookParamsProviderVeriff     ProviderCheckWebhookParamsProvider = "veriff"
+)
+
+// Defines values for ProviderWebhookParamsProvider.
+const (
+	Allium     ProviderWebhookParamsProvider = "allium"
+	Gocardless ProviderWebhookParamsProvider = "gocardless"
+	Omni       ProviderWebhookParamsProvider = "omni"
+	Stripe     ProviderWebhookParamsProvider = "stripe"
+	Veriff     ProviderWebhookParamsProvider = "veriff"
+)
+
 // Address defines model for Address.
 type Address struct {
 	BuildingName    *string `json:"building_name,omitempty"`
@@ -550,7 +612,7 @@ type Cache struct {
 	AdditionalProperties map[string]string `json:"-"`
 }
 
-// checkout option picked by customer, updated only via custom action
+// CheckoutOption checkout option picked by customer, updated only via custom action
 type CheckoutOption string
 
 // Company defines model for Company.
@@ -657,7 +719,7 @@ type Credit struct {
 	ExtraApplicants             *[]ApplicantDetails  `json:"extra_applicants,omitempty"`
 	FinanceDetails              *FinanceDetails      `json:"finance_details,omitempty"`
 
-	// finance option
+	// FinanceOption finance option
 	FinanceOption *string          `json:"finance_option,omitempty"`
 	Id            *string          `json:"id,omitempty"`
 	Kid           *string          `json:"kid,omitempty"`
@@ -690,7 +752,7 @@ type Customer struct {
 type CustomerDetails struct {
 	CurrentAddress Address `json:"current_address"`
 
-	// Customer's date of birth. Format to use: `dd/mm/yyyy`
+	// DateOfBirth Customer's date of birth. Format to use: `dd/mm/yyyy`
 	DateOfBirth          time.Time                        `json:"date_of_birth"`
 	Email                openapi_types.Email              `json:"email"`
 	FirstName            string                           `json:"first_name"`
@@ -724,11 +786,11 @@ type CustomerDetailsTitle string
 
 // CustomerOptions defines model for CustomerOptions.
 type CustomerOptions struct {
-	// checkout option picked by customer, updated only via custom action
+	// CheckoutOption checkout option picked by customer, updated only via custom action
 	CheckoutOption CheckoutOption `json:"checkout_option"`
 	DepositValue   *Money         `json:"deposit_value,omitempty"`
 
-	// finance option
+	// FinanceOption finance option
 	FinanceOption string `json:"finance_option"`
 }
 
@@ -865,30 +927,30 @@ type InfoIP struct {
 type InfoLegacyRedirect struct {
 	Deposit *Pence `json:"deposit,omitempty"`
 
-	// The description of the goods.
+	// DescriptionOfGoods The description of the goods.
 	DescriptionOfGoods string `json:"description_of_goods"`
 
-	// The email of the customer applying for the loan
+	// Email The email of the customer applying for the loan
 	Email openapi_types.Email `json:"email"`
 
-	// specified the enabled rates for the loan
+	// EnabledRates specified the enabled rates for the loan
 	EnabledRates *[]string `json:"enabled_rates,omitempty"`
 
-	// Your enterprise ID
+	// EnterpriseId Your enterprise ID
 	EnterpriseId string `json:"enterprise_id"`
 
-	// The first name of the customer applying for the loan
+	// FirstName The first name of the customer applying for the loan
 	FirstName *string `json:"first_name,omitempty"`
 
-	// The last name of the customer applying for the loan
+	// LastName The last name of the customer applying for the loan
 	LastName *string `json:"last_name,omitempty"`
 
-	// The mobile number of the customer applying for the loan
+	// Mobile The mobile number of the customer applying for the loan
 	Mobile       *string       `json:"mobile,omitempty"`
 	Price        Pence         `json:"price"`
 	RedirectUrls *RedirectURLs `json:"redirect_urls,omitempty"`
 
-	// The reference for the loan application. Is mainly used for tracking loan applications
+	// Reference The reference for the loan application. Is mainly used for tracking loan applications
 	Reference string `json:"reference"`
 }
 
@@ -1078,7 +1140,7 @@ type PaymentOption struct {
 type PaymentOptionPaymentMethod string
 
 // Pence defines model for Pence.
-type Pence int32
+type Pence = int32
 
 // RedirectURLs defines model for RedirectURLs.
 type RedirectURLs struct {
@@ -1224,15 +1286,9 @@ type UserType struct {
 // UserTypeRole defines model for UserType.Role.
 type UserTypeRole string
 
-// PostCompanyJSONBody defines parameters for PostCompany.
-type PostCompanyJSONBody Company
-
-// PutCompanyJSONBody defines parameters for PutCompany.
-type PutCompanyJSONBody Company
-
 // DeclineCompanyParams defines parameters for DeclineCompany.
 type DeclineCompanyParams struct {
-	// reject or decline reason
+	// Reason reject or decline reason
 	Reason DeclineCompanyParamsReason `form:"reason" json:"reason"`
 }
 
@@ -1241,130 +1297,58 @@ type DeclineCompanyParamsReason string
 
 // GetCompanyDirectorVerificationParams defines parameters for GetCompanyDirectorVerification.
 type GetCompanyDirectorVerificationParams struct {
-	// filter owner / director by email
+	// Email filter owner / director by email
 	Email *string `form:"email,omitempty" json:"email,omitempty"`
 }
 
-// PostCompanyDirectorVerificationJSONBody defines parameters for PostCompanyDirectorVerification.
-type PostCompanyDirectorVerificationJSONBody DirectorVerification
-
 // PostCompanyDirectorVerificationParams defines parameters for PostCompanyDirectorVerification.
 type PostCompanyDirectorVerificationParams struct {
-	// owner / director email
+	// Email owner / director email
 	Email string `form:"email" json:"email"`
 }
 
-// PostCreditJSONBody defines parameters for PostCredit.
-type PostCreditJSONBody Credit
-
-// PutCreditJSONBody defines parameters for PutCredit.
-type PutCreditJSONBody Credit
-
-// SignCreditJSONBody defines parameters for SignCredit.
-type SignCreditJSONBody SignDocument
-
-// PostDocumentJSONBody defines parameters for PostDocument.
-type PostDocumentJSONBody Document
-
-// PutDocumentJSONBody defines parameters for PutDocument.
-type PutDocumentJSONBody Document
-
-// InfoAuthJSONBody defines parameters for InfoAuth.
-type InfoAuthJSONBody InfoAuth
-
-// InfoPutCacheJSONBody defines parameters for InfoPutCache.
-type InfoPutCacheJSONBody Cache
-
-// InfoClaimAccountJSONBody defines parameters for InfoClaimAccount.
-type InfoClaimAccountJSONBody InfoAuth
-
 // InfoCompanyParams defines parameters for InfoCompany.
 type InfoCompanyParams struct {
-	// query keyword of company name
+	// CompanyName query keyword of company name
 	CompanyName *string `form:"company_name,omitempty" json:"company_name,omitempty"`
 
-	// exact company number match
+	// CompanyNumber exact company number match
 	CompanyNumber *string `form:"company_number,omitempty" json:"company_number,omitempty"`
 
-	// include directors info?
+	// Directors include directors info?
 	Directors *bool `form:"directors,omitempty" json:"directors,omitempty"`
 }
 
 // InfoCustomerParams defines parameters for InfoCustomer.
 type InfoCustomerParams struct {
-	// query keyword of loosely matched customer
+	// Q query keyword of loosely matched customer
 	Q *string `form:"q,omitempty" json:"q,omitempty"`
 }
 
-// InfoGhostJSONBody defines parameters for InfoGhost.
-type InfoGhostJSONBody InfoGhost
-
-// InfoLegacyRedirectJSONBody defines parameters for InfoLegacyRedirect.
-type InfoLegacyRedirectJSONBody InfoLegacyRedirect
-
-// InfoPasswordJSONBody defines parameters for InfoPassword.
-type InfoPasswordJSONBody InfoAuth
-
-// InfoSessionJSONBody defines parameters for InfoSession.
-type InfoSessionJSONBody InfoSession
-
 // InfoValidateEmailParams defines parameters for InfoValidateEmail.
 type InfoValidateEmailParams struct {
-	// validate this given email
+	// Email validate this given email
 	Email openapi_types.Email `form:"email" json:"email"`
 }
 
-// InfoVerifyJSONBody defines parameters for InfoVerify.
-type InfoVerifyJSONBody InfoAuth
-
-// PostJobJSONBody defines parameters for PostJob.
-type PostJobJSONBody Job
-
 // PayoutsJobParams defines parameters for PayoutsJob.
 type PayoutsJobParams struct {
-	// optional job type for clearing particular payouts
+	// JobType optional job type for clearing particular payouts
 	JobType *PayoutsJobParamsJobType `form:"job_type,omitempty" json:"job_type,omitempty"`
 }
 
 // PayoutsJobParamsJobType defines parameters for PayoutsJob.
 type PayoutsJobParamsJobType string
 
-// PutJobJSONBody defines parameters for PutJob.
-type PutJobJSONBody Job
-
-// ApplyJobJSONBody defines parameters for ApplyJob.
-type ApplyJobJSONBody CustomerOptions
-
-// OverrideJobJSONBody defines parameters for OverrideJob.
-type OverrideJobJSONBody JobOverride
-
-// PayJobJSONBody defines parameters for PayJob.
-type PayJobJSONBody PaymentOption
-
-// SignJobSateNoteJSONBody defines parameters for SignJobSateNote.
-type SignJobSateNoteJSONBody SatNote
-
-// PostMeJSONBody defines parameters for PostMe.
-type PostMeJSONBody InfoMe
-
-// PutMeJSONBody defines parameters for PutMe.
-type PutMeJSONBody InfoMe
-
-// PostPaymentJSONBody defines parameters for PostPayment.
-type PostPaymentJSONBody Payment
-
-// PutPaymentJSONBody defines parameters for PutPayment.
-type PutPaymentJSONBody Payment
-
 // MarkPaymentParamsStatus defines parameters for MarkPayment.
 type MarkPaymentParamsStatus string
 
 // RunnerParams defines parameters for Runner.
 type RunnerParams struct {
-	// runner event type
+	// Event runner event type
 	Event RunnerParamsEvent `form:"event" json:"event"`
 
-	// runner task name
+	// Task runner task name
 	Task RunnerParamsTask `form:"task" json:"task"`
 }
 
@@ -1374,12 +1358,6 @@ type RunnerParamsEvent string
 // RunnerParamsTask defines parameters for Runner.
 type RunnerParamsTask string
 
-// PostSubscriptionJSONBody defines parameters for PostSubscription.
-type PostSubscriptionJSONBody Subscription
-
-// PutSubscriptionJSONBody defines parameters for PutSubscription.
-type PutSubscriptionJSONBody Subscription
-
 // ProviderCheckWebhookParamsProvider defines parameters for ProviderCheckWebhook.
 type ProviderCheckWebhookParamsProvider string
 
@@ -1387,88 +1365,88 @@ type ProviderCheckWebhookParamsProvider string
 type ProviderWebhookParamsProvider string
 
 // PostCompanyJSONRequestBody defines body for PostCompany for application/json ContentType.
-type PostCompanyJSONRequestBody PostCompanyJSONBody
+type PostCompanyJSONRequestBody = Company
 
 // PutCompanyJSONRequestBody defines body for PutCompany for application/json ContentType.
-type PutCompanyJSONRequestBody PutCompanyJSONBody
+type PutCompanyJSONRequestBody = Company
 
 // PostCompanyDirectorVerificationJSONRequestBody defines body for PostCompanyDirectorVerification for application/json ContentType.
-type PostCompanyDirectorVerificationJSONRequestBody PostCompanyDirectorVerificationJSONBody
+type PostCompanyDirectorVerificationJSONRequestBody = DirectorVerification
 
 // PostCreditJSONRequestBody defines body for PostCredit for application/json ContentType.
-type PostCreditJSONRequestBody PostCreditJSONBody
+type PostCreditJSONRequestBody = Credit
 
 // PutCreditJSONRequestBody defines body for PutCredit for application/json ContentType.
-type PutCreditJSONRequestBody PutCreditJSONBody
+type PutCreditJSONRequestBody = Credit
 
 // SignCreditJSONRequestBody defines body for SignCredit for application/json ContentType.
-type SignCreditJSONRequestBody SignCreditJSONBody
+type SignCreditJSONRequestBody = SignDocument
 
 // PostDocumentJSONRequestBody defines body for PostDocument for application/json ContentType.
-type PostDocumentJSONRequestBody PostDocumentJSONBody
+type PostDocumentJSONRequestBody = Document
 
 // PutDocumentJSONRequestBody defines body for PutDocument for application/json ContentType.
-type PutDocumentJSONRequestBody PutDocumentJSONBody
+type PutDocumentJSONRequestBody = Document
 
 // InfoAuthJSONRequestBody defines body for InfoAuth for application/json ContentType.
-type InfoAuthJSONRequestBody InfoAuthJSONBody
+type InfoAuthJSONRequestBody = InfoAuth
 
 // InfoPutCacheJSONRequestBody defines body for InfoPutCache for application/json ContentType.
-type InfoPutCacheJSONRequestBody InfoPutCacheJSONBody
+type InfoPutCacheJSONRequestBody = Cache
 
 // InfoClaimAccountJSONRequestBody defines body for InfoClaimAccount for application/json ContentType.
-type InfoClaimAccountJSONRequestBody InfoClaimAccountJSONBody
+type InfoClaimAccountJSONRequestBody = InfoAuth
 
 // InfoGhostJSONRequestBody defines body for InfoGhost for application/json ContentType.
-type InfoGhostJSONRequestBody InfoGhostJSONBody
+type InfoGhostJSONRequestBody = InfoGhost
 
 // InfoLegacyRedirectJSONRequestBody defines body for InfoLegacyRedirect for application/json ContentType.
-type InfoLegacyRedirectJSONRequestBody InfoLegacyRedirectJSONBody
+type InfoLegacyRedirectJSONRequestBody = InfoLegacyRedirect
 
 // InfoPasswordJSONRequestBody defines body for InfoPassword for application/json ContentType.
-type InfoPasswordJSONRequestBody InfoPasswordJSONBody
+type InfoPasswordJSONRequestBody = InfoAuth
 
 // InfoSessionJSONRequestBody defines body for InfoSession for application/json ContentType.
-type InfoSessionJSONRequestBody InfoSessionJSONBody
+type InfoSessionJSONRequestBody = InfoSession
 
 // InfoVerifyJSONRequestBody defines body for InfoVerify for application/json ContentType.
-type InfoVerifyJSONRequestBody InfoVerifyJSONBody
+type InfoVerifyJSONRequestBody = InfoAuth
 
 // PostJobJSONRequestBody defines body for PostJob for application/json ContentType.
-type PostJobJSONRequestBody PostJobJSONBody
+type PostJobJSONRequestBody = Job
 
 // PutJobJSONRequestBody defines body for PutJob for application/json ContentType.
-type PutJobJSONRequestBody PutJobJSONBody
+type PutJobJSONRequestBody = Job
 
 // ApplyJobJSONRequestBody defines body for ApplyJob for application/json ContentType.
-type ApplyJobJSONRequestBody ApplyJobJSONBody
+type ApplyJobJSONRequestBody = CustomerOptions
 
 // OverrideJobJSONRequestBody defines body for OverrideJob for application/json ContentType.
-type OverrideJobJSONRequestBody OverrideJobJSONBody
+type OverrideJobJSONRequestBody = JobOverride
 
 // PayJobJSONRequestBody defines body for PayJob for application/json ContentType.
-type PayJobJSONRequestBody PayJobJSONBody
+type PayJobJSONRequestBody = PaymentOption
 
 // SignJobSateNoteJSONRequestBody defines body for SignJobSateNote for application/json ContentType.
-type SignJobSateNoteJSONRequestBody SignJobSateNoteJSONBody
+type SignJobSateNoteJSONRequestBody = SatNote
 
 // PostMeJSONRequestBody defines body for PostMe for application/json ContentType.
-type PostMeJSONRequestBody PostMeJSONBody
+type PostMeJSONRequestBody = InfoMe
 
 // PutMeJSONRequestBody defines body for PutMe for application/json ContentType.
-type PutMeJSONRequestBody PutMeJSONBody
+type PutMeJSONRequestBody = InfoMe
 
 // PostPaymentJSONRequestBody defines body for PostPayment for application/json ContentType.
-type PostPaymentJSONRequestBody PostPaymentJSONBody
+type PostPaymentJSONRequestBody = Payment
 
 // PutPaymentJSONRequestBody defines body for PutPayment for application/json ContentType.
-type PutPaymentJSONRequestBody PutPaymentJSONBody
+type PutPaymentJSONRequestBody = Payment
 
 // PostSubscriptionJSONRequestBody defines body for PostSubscription for application/json ContentType.
-type PostSubscriptionJSONRequestBody PostSubscriptionJSONBody
+type PostSubscriptionJSONRequestBody = Subscription
 
 // PutSubscriptionJSONRequestBody defines body for PutSubscription for application/json ContentType.
-type PutSubscriptionJSONRequestBody PutSubscriptionJSONBody
+type PutSubscriptionJSONRequestBody = Subscription
 
 // Getter for additional properties for Cache. Returns the specified
 // element and whether it was found
@@ -1533,7 +1511,7 @@ func (a *Cache) UnmarshalJSON(b []byte) error {
 			var fieldVal string
 			err := json.Unmarshal(fieldBuf, &fieldVal)
 			if err != nil {
-				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+				return fmt.Errorf("error unmarshalling field %s: %w", fieldName, err)
 			}
 			a.AdditionalProperties[fieldName] = fieldVal
 		}
