@@ -20,7 +20,7 @@ export interface AutoSizeTextAreaUncontrolledPropsHook {
   skeletonClasses: string;
   onKeyDown?: false | ((e: KeyboardEvent) => boolean);
   onBlur?: false | ((e: ChangeEvent<HTMLInputElement>) => void);
-  value?: string;
+  value?: string | number | readonly string[];
   showPlaceholder?: boolean;
 }
 

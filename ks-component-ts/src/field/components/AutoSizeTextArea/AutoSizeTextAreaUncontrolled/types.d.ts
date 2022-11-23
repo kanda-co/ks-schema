@@ -9,7 +9,7 @@ export interface AutoSizeTextAreaUncontrolledProps {
   /**
    * Name of the textarea required for form to work
    */
-  name: string;
+  name?: string;
   /**
    * The HTML element ID.
    */
@@ -21,7 +21,7 @@ export interface AutoSizeTextAreaUncontrolledProps {
   /**
    * Default value of input
    */
-  defaultValue?: string;
+  defaultValue?: string | number | readonly string[];
   /**
    * Forwared ref from parent component
    */
