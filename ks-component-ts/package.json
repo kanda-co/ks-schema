@@ -1,6 +1,6 @@
 {
   "name": "@kanda-libs/ks-component-ts",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "description": "Kanda form components library",
   "main": "dist/index.cjs.js",
   "source": "src/index.ts",
@@ -93,8 +93,8 @@
     }
   ],
   "peerDependencies": {
-    "@kanda-libs/ks-design-library": "0.0.78-ts-21",
-    "@kanda-libs/ks-frontend-services": "0.0.106-ts-26",
+    "@kanda-libs/ks-design-library": "0.2.0",
+    "@kanda-libs/ks-frontend-services": "0.2.0",
     "clsx": "^1.1.1",
     "lodash.get": "^4.4.2",
     "react": "^16.8.0 || ^17",
