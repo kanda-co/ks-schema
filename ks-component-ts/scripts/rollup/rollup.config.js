@@ -11,12 +11,6 @@ const options = [
     input: pkg.source,
   },
   { name, format: "esm", input: pkg.source },
-  {
-    name,
-    format: "umd",
-    input: pkg.source,
-    plugins: [],
-  },
 ];
 
 const plugins = [typescriptPaths()];
