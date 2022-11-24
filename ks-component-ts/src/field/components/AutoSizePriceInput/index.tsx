@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import NumberInput, { NumberInputProps } from "~/field/components/NumberInput";
 
-export type AutoSizePriceInputProps = Omit<NumberInputProps, "autoSize">;
+export type AutoSizePriceInputProps = Omit<NumberInputProps, "autoSize" | "control">;
 
 const AutoSizePriceInput: FunctionComponent<AutoSizePriceInputProps> =
   function (props) {

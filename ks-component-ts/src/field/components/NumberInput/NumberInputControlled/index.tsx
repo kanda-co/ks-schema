@@ -8,7 +8,7 @@ import { getNumberTag } from "~/field/components/NumberInput/helpers";
 export type NumberInputControlledProps = {
   type?: NumberInputType;
   autoSize?: boolean;
-};
+} & Omit<NumberTagInputProps, 'controlProps' | 'control' | 'rules'>;
 
 const NumberInputControlled: FunctionComponent<NumberInputControlledProps> =
   function ({ type = "default", autoSize = false, ...props }) {
