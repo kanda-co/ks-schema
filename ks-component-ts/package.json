@@ -15,6 +15,7 @@
   ],
   "scripts": {
     "clean": "node_modules/.bin/rimraf dist",
+    "remove:link": "rm -rf ~/.config/yarn/link/*",
     "prebuild": "yarn clean",
     "build": "yarn build:style && yarn build:esbuild",
     "build:types": "./node_modules/.bin/dts-bundle-generator --external-inlines=./generated -o dist/index.d.ts src/index.ts",
