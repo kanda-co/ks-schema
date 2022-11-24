@@ -18,13 +18,14 @@ export default defineConfig({
   //   },
   // },
   optimizeDeps: {
-    include: ["@kanda-libs/ks-component-ts", "react-cropper"],
+    include: ["@kanda-libs/ks-component-ts", "react-cropper","cropperjs"],
   },
   build: {
     commonjsOptions: {
       include: [
         /@kanda-libs\/ks-component-ts/,
         /react-cropper/,
+        /cropperjs/,
         /node_modules/,
       ],
     },
