@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import "@kanda-libs/ks-component-ts/dist/library.css";
-import { FormWrapper } from "@kanda-libs/ks-component-ts";
+import { Field } from "@kanda-libs/ks-component-ts";
 import DirectorForm from "./DirectorForm";
 
 function App() {
@@ -24,14 +24,16 @@ function App() {
     <div className="App">
       <h2 className="block mt-2">Form values</h2>
       <div className="px-4 py-4">
-        <FormWrapper
-          form={form}
-          onSubmit={() => {
-            console.log("Hello world");
-          }}
-        >
-          <DirectorForm />
-        </FormWrapper>
+        Hello world
+        <Field.BooleanInput />
+        {/*<FormWrapper*/}
+        {/*  form={form}*/}
+        {/*  onSubmit={() => {*/}
+        {/*    console.log("Hello world");*/}
+        {/*  }}*/}
+        {/*>*/}
+        {/*  <DirectorForm />*/}
+        {/*</FormWrapper>*/}
       </div>
     </div>
   );
