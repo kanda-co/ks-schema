@@ -3,7 +3,7 @@ import Skeleton from "react-loading-skeleton";
 import useTextAreaInputClasses from "./useTextAreaInputClasses";
 import { SKELETON_COUNT } from "./constants";
 import { DefaultFormFieldProps } from "~/field/types";
-import AutoSizeTextArea from "~/field/components/AutoSizeTextArea";
+import { Uncontrolled as AutoSizeTextArea } from "~/field/components/AutoSizeTextArea";
 
 export interface TextAreaInputUncontrolledProps {
   className?: string;

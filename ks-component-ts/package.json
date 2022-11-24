@@ -1,6 +1,6 @@
 {
   "name": "@kanda-libs/ks-component-ts",
-  "version": "0.0.137-ts-23-23-dev28",
+  "version": "0.2.7",
   "description": "Kanda form components library",
   "main": "dist/index.cjs.js",
   "source": "src/index.ts",
@@ -93,8 +93,8 @@
     }
   ],
   "peerDependencies": {
-    "@kanda-libs/ks-design-library": "0.0.78-ts-21",
-    "@kanda-libs/ks-frontend-services": "0.0.106-ts-26",
+    "@kanda-libs/ks-design-library": "0.2.0",
+    "@kanda-libs/ks-frontend-services": "0.2.0",
     "clsx": "^1.1.1",
     "lodash.get": "^4.4.2",
     "react": "^16.8.0 || ^17",
@@ -125,6 +125,7 @@
     "react-range": "^1.8.14",
     "react-slick": "^0.29.0",
     "react-table": "^7.7.0",
+    "react-textarea-autosize": "^8.4.0",
     "remove": "^0.1.5",
     "rollup-plugin-dotenv": "^0.4.1",
     "use-debounce": "^8.0.3"

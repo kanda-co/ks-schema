@@ -3449,11 +3449,12 @@ components:
           type: string
           title: job item title
           minLength: 1
+          x-kanda-form-widget: AutoSizeTextArea
         description:
           type: string
           title: job item description
           minLength: 1
-          x-kanda-form-widget: TextAreaInput
+          x-kanda-form-widget: AutoSizeTextArea
         quantity:
           title: job item quantity
           $ref: "#/components/schemas/Pence"

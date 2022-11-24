@@ -1,4 +1,4 @@
-import type { ChangeEvent, MutableRefObject } from "react";
+import type { ChangeEvent, ChangeEventHandler, MutableRefObject } from "react";
 import type { ValidError } from "~/field/types";
 
 export interface AutoSizeTextAreaUncontrolledProps {

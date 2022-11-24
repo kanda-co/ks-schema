@@ -3,8 +3,8 @@ import React, {
   type FunctionComponent,
   type KeyboardEventHandler,
 } from "react";
-import TextareaAutosize from "react-textarea-autosize";
 import type { AutoSizeTextAreaUncontrolledProps } from "./types";
+import TextareaAutosize from "react-textarea-autosize";
 import useAutoSizeTextAreaUncontrolledProps from "./useAutoSizeTextAreaUncontrolledProps";
 import Skeleton from "react-loading-skeleton";
 import type { DefaultFormFieldProps } from "~/field/types";
