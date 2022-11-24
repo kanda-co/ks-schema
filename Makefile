@@ -34,9 +34,8 @@ gen-frontend:
 
 gen-backend:
 	@echo Code generation for backend from OpenAPI...
-	go get github.com/deepmap/oapi-codegen/cmd/oapi-codegen@v1.11.0
 	mkdir -p pkg/schema
-	oapi-codegen -generate types,server,spec -package schema schema.yaml > pkg/schema/schema.gen.go
+	go run github.com/deepmap/oapi-codegen/cmd/oapi-codegen@v1.11.0 -generate types,client,server,spec -package schema schema.yaml > pkg/schema/schema.gen.go
 
 build-frontend: gen-frontend widget ts-widget
 	@echo Build frontend...
