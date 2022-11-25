@@ -1,6 +1,6 @@
 {
   "name": "@kanda-libs/ks-component-ts",
-  "version": "0.0.0-ts-5",
+  "version": "0.2.12",
   "description": "Kanda form components library",
   "main": "dist/index.esm.js",
   "module": "dist/index.esm.js",
@@ -15,6 +15,7 @@
   ],
   "scripts": {
     "clean": "node_modules/.bin/rimraf dist",
+    "remove:link": "rm -rf ~/.config/yarn/link/*",
     "prebuild": "yarn clean",
     "build": "yarn build:style && yarn build:esbuild",
     "build:types": "./node_modules/.bin/dts-bundle-generator --external-inlines=./generated -o dist/index.d.ts src/index.ts",
@@ -31,7 +32,7 @@
   "author": "rob@kanda.co.uk",
   "license": "MIT",
   "devDependencies": {
-    "@kanda-libs/ks-design-library": "0.0.0-ts-2",
+    "@kanda-libs/ks-design-library": "0.2.0",
     "@kanda-libs/ks-frontend-services": "0.0.106-ts-26",
     "@types/browser-image-compression": "^1.0.9",
     "@types/mime-types": "^2.1.1",
@@ -88,7 +89,7 @@
     }
   ],
   "peerDependencies": {
-    "@kanda-libs/ks-design-library": "0.0.0-ts-2",
+    "@kanda-libs/ks-design-library": "0.2.0",
     "@kanda-libs/ks-frontend-services": "0.2.0",
     "clsx": "^1.1.1",
     "lodash.get": "^4.4.2",

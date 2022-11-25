@@ -1,5 +1,6 @@
 import "@kanda-libs/ks-component-ts/dist/library.css";
 import { Field, useForm, FormWrapper } from "@kanda-libs/ks-component-ts";
+import Address from "./Address";
 
 function App() {
   const form = useForm({
@@ -30,6 +31,8 @@ function App() {
           }}
         >
           <Field.Input name="testing" />
+
+          <Address />
         </FormWrapper>
       </div>
     </div>
