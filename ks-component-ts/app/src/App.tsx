@@ -1,9 +1,6 @@
-import { useForm } from "react-hook-form";
-import "../../dist/library.css";
-import { FormWrapper } from "../../dist";
-import FieldFormTest from "./FieldFormTest";
-import DirectorForm from "./DirectorForm";
-// import DirectorSalary from "./DirectorForm/DirectorSalary";
+import "@kanda-libs/ks-component-ts/dist/library.css";
+import { Field, useForm, FormWrapper } from "@kanda-libs/ks-component-ts";
+import Address from "./Address";
 
 function App() {
   const form = useForm({
@@ -26,13 +23,16 @@ function App() {
     <div className="App">
       <h2 className="block mt-2">Form values</h2>
       <div className="px-4 py-4">
+        Hello world
         <FormWrapper
           form={form}
           onSubmit={() => {
             console.log("Hello world");
           }}
         >
-          <DirectorForm />
+          <Field.Input name="testing" />
+
+          <Address />
         </FormWrapper>
       </div>
     </div>

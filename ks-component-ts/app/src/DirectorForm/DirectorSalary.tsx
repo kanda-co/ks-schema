@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { Field } from "../../../dist";
+import { Field } from "@kanda-libs/ks-component-ts";
 
 export interface Props {
   id: string;
@@ -17,12 +17,7 @@ const VALIDATION = {
 
 const DirectorSalary: FunctionComponent<Props> = function ({ id, index }) {
   return (
-    <Field.Array.Input
-      arrayName="director"
-      name="salary"
-      key={id}
-      index={index}
-    >
+    <Field.Array.Input name="salary" key={id} index={index}>
       <Field.PriceInput label="Salary" />
     </Field.Array.Input>
   );

@@ -28,26 +28,28 @@ const Desktop: FunctionComponent<DesktopProps> = function ({
       <Popover.Standard visible={visible} className="w-full -mt-5">
         {({ handleClose }) => (
           <Card padding="p-2" className={CLASS_NAMES.card}>
-            {showButton && (
-              <Button.Link
-                label="I can't find my company"
-                className="w-full sticky top-0 px-3 pb-1 bg-neutral-000"
-                onClick={() => {
-                  handleClose();
-                  onClick();
-                }}
-              />
-            )}
-            {results &&
-              results.map((item) => (
-                <Item
-                  handleSelect={handleSelect}
-                  searchWords={searchWords}
-                  key={item.id}
-                  company={item as InfoCompany}
-                  isLoading={isLoading}
+            <>
+              {showButton && (
+                <Button.Link
+                  label="I can't find my company"
+                  className="w-full sticky top-0 px-3 pb-1 bg-neutral-000"
+                  onClick={() => {
+                    handleClose();
+                    onClick();
+                  }}
                 />
-              ))}
+              )}
+              {results &&
+                results.map((item) => (
+                  <Item
+                    handleSelect={handleSelect}
+                    searchWords={searchWords}
+                    key={item.id}
+                    company={item as InfoCompany}
+                    isLoading={isLoading}
+                  />
+                ))}
+            </>
           </Card>
         )}
       </Popover.Standard>

@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { Field } from "../../../dist";
+import { Field } from "@kanda-libs/ks-component-ts";
 import AddDirectorButton from "./AddDirectorButton";
 import DirectorName from "./DirectorName";
 import DirectorSalary from "./DirectorSalary";
