@@ -18,7 +18,7 @@ export default defineConfig({
   //   },
   // },
   optimizeDeps: {
-    include: ["@kanda-libs/ks-component-ts", "react-cropper","cropperjs"],
+    include: ["@kanda-libs/ks-component-ts", "react-cropper", "cropperjs"],
   },
   build: {
     commonjsOptions: {
@@ -31,7 +31,9 @@ export default defineConfig({
     },
   },
   define: {
-    "process.env": "{}",
+    "process.env": {
+      REACT_APP_GET_ADDRESS_API_KEY: "byJL3HWLC0a39cnl5OKNBA31556",
+    },
     exports: "{}",
     global: "{}",
   },
