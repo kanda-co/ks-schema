@@ -14,7 +14,11 @@ import type {
   FieldFormControllerOptions,
 } from "./types";
 import type { StringIndexedObject } from "~/types";
-import type { ErrorMessage, ValidationConditions } from "~/field/types";
+import type {
+  ErrorMessage,
+  ValidationConditions,
+  ValidationErrors
+} from "~/field/types";
 
 export type FieldFormControllerProps<T> = {
   register?: UseFormRegisterReturn;
@@ -23,7 +27,7 @@ export type FieldFormControllerProps<T> = {
   onBlur?: (...event: any[]) => void;
   onChange?: (...event: any[]) => void;
   validationConditions?: ValidationConditions;
-  validationErrors?: ValidationConditions;
+  validationErrors?: ValidationErrors;
   children: (args: FieldFormControllerChildrenArgs<T>) => JSX.Element;
 } & FieldFormControllerCommonArgs &
   T;
