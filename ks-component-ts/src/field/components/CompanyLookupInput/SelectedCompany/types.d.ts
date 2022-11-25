@@ -8,7 +8,7 @@ export interface SelectedCompanyProps extends Partial<Address> {
   /**
    * Field selected label
    */
-  selectedLabel: string;
+  selectedLabel: string | JSX.Element | JSX.Element[];
   /**
    * Company search field label
    */

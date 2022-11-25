@@ -37,7 +37,7 @@ const HeaderColumn: FunctionComponent<HeaderColumnProps> = function ({
           <>
             <Popover.Advanced
               {...popoverProps}
-              onAction={handleAction}
+              onAction={handleAction as () => void}
               className="w-48"
               button={<HeaderButton label={label} />}
               wrapper={({ children }: { children: JSX.Element }) => (
