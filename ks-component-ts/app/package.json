@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "remove:link": "rm -rf ~/.config/yarn/link/*"
   },
   "dependencies": {
     "cordova": "^11.0.0",
