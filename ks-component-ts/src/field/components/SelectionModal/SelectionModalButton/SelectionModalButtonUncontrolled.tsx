@@ -44,23 +44,19 @@ export interface SelectionModalButtonUncontrolledProps {
 
 const SelectionModalButtonUncontrolled: FunctionComponent<
   DefaultFormFieldProps<SelectionModalButtonUncontrolledProps>
-> = function ({ isLoading, buttonText, children, placeholder, error, ...restProps }) {
+> = function ({ isLoading, buttonText, forwardRef, error, ...restProps }) {
   const className = useSelectModalButtonClassName();
   return (
     <div className={className}>
       <Button.Link
         {...restProps}
+        ref={forwardRef}
         isLoading={isLoading}
         variant="grey"
         size={12}
         icon="chevron-down"
         label={buttonText}
-        placeholder={placeholder as string}
-      >
-        <>
-          {children}
-        </>
-      </Button.Link>
+      />
     </div>
   );
 };

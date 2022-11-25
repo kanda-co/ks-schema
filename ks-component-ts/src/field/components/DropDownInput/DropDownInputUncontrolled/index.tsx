@@ -60,6 +60,7 @@ const DropDownInput: FunctionComponent<
             ))}
           </select>
           <Button.Link
+            ref={forwardRef}
             isLoading={isLoading}
             className="pointer-events-none"
             variant="grey"

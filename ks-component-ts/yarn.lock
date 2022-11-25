@@ -735,10 +735,10 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@kanda-libs/ks-design-library@0.0.0-ts-2":
-  version "0.0.0-ts-2"
-  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-design-library/-/ks-design-library-0.0.0-ts-2.tgz#680d9107dc40b58b22676b33b328295bae2b193d"
-  integrity sha512-JwhOYWLz/tR84yV2GEWsooizu9FkwEOI9cgeIBjwTC5lAqIzM5CJmcB3zltzN65WW2qbk3xKkmfYFL2lsp4vMw==
+"@kanda-libs/ks-design-library@0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-design-library/-/ks-design-library-0.2.0.tgz#6a8a312855a35543f5acb4a582cf6c179d642598"
+  integrity sha512-DGM0f0DUCOaK+AtxTlZYVUPuKW5A5k2QXko0EvMBL7x4XMWiAEHfSDkA7OggHamJTBX1pcz6q661C4HuM6PCuQ==
   dependencies:
     file-saver "^2.0.5"
     lodash.get "^4.4.2"

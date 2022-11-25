@@ -1,8 +1,3 @@
-import type {
-  ButtonIconSize,
-  ButtonIconVariant
-} from "@kanda-libs/ks-design-library";
-
 export const CLASS_NAMES = {
   stickyContainer: "sticky h-full right-0 hidden group-hover:block z-50",
   relativeContainer: "relative h-full",
@@ -13,8 +8,8 @@ export const CLASS_NAMES = {
 };
 
 export const BUTTON_PROPS = {
-  variant: "ghost-grey" as ButtonIconVariant,
-  size: "32-20" as ButtonIconSize,
+  variant: "ghost-grey",
+  size: "32-20",
   icon: "more",
   className: "my-auto hover:bg-neutral-200",
 };
