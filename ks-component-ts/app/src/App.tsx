@@ -1,23 +1,15 @@
 import "@kanda-libs/ks-component-ts/dist/library.css";
-import { Field, useForm, FormWrapper } from "@kanda-libs/ks-component-ts";
+import {
+  Field,
+  useForm,
+  FormWrapper,
+  type StringIndexedObject,
+} from "@kanda-libs/ks-component-ts";
+import { Button } from "@kanda-libs/ks-design-library";
 import Address from "./Address";
 
 function App() {
-  const form = useForm({
-    defaultValues: {
-      select: "three",
-      boolean: true,
-      customer_details: {
-        gender: "Male",
-      },
-      director: [
-        {
-          firstName: "Steve",
-          lastName: "Jones",
-        },
-      ],
-    },
-  });
+  const form = useForm();
 
   return (
     <div className="App">
@@ -26,13 +18,12 @@ function App() {
         Hello world
         <FormWrapper
           form={form}
-          onSubmit={() => {
-            console.log("Hello world");
-          }}
+          onSubmit={(formValues: StringIndexedObject) =>
+            console.log(formValues)
+          }
         >
-          <Field.Input name="testing" />
-
           <Address />
+          <Button.Text label="Submit" submit />
         </FormWrapper>
       </div>
     </div>
