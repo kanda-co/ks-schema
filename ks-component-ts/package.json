@@ -17,7 +17,7 @@
     "clean": "node_modules/.bin/rimraf dist",
     "remove:link": "rm -rf ~/.config/yarn/link/*",
     "prebuild": "yarn clean",
-    "build": "yarn build:style && yarn build:esbuild",
+    "build": "yarn build:style && yarn build:esbuild && yalc publish",
     "build:types": "./node_modules/.bin/dts-bundle-generator --external-inlines=./generated -o dist/index.d.ts src/index.ts",
     "build:esbuild": "yarn clean && yarn build:style && node build.ts && yarn build:types",
     "build:style": "npx tailwindcss --postcss ./tailwind.postcss.config.js -i ./src/styles/tailwind.css -c ./tailwind.config.js -o ./src/styles/library.css",
@@ -27,7 +27,7 @@
     "lint": "node_modules/.bin/eslint '**/*.{js,ts,tsx}'",
     "type": "node_modules/.bin/tsc --noEmit",
     "bundlesize": "yarn build:style && yarn build:modern && node_modules/.bin/bundlesize",
-    "test:app": "yarn clean && yarn build && yarn --cwd ./app && yarn --cwd ./app dev",
+    "test:app": "yarn clean && yarn && yarn build && cd app && yalc update && cd .. && yarn --cwd ./app && yarn --cwd ./app dev --force",
     "start:app": "yarn clean && node_modules/.bin/tsc && yarn build:style && yarn build:esm && yarn link && yarn --cwd node_modules/react link && yarn --cwd ./app && yarn --cwd ./app run dev"
   },
   "author": "rob@kanda.co.uk",
