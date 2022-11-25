@@ -9,6 +9,7 @@
     "remove:link": "rm -rf ~/.config/yarn/link/*"
   },
   "dependencies": {
+    "@kanda-libs/ks-component-ts": "file:.yalc/@kanda-libs/ks-component-ts",
     "cordova": "^11.0.0",
     "firebase": "^9.9.3",
     "lodash.get": "^4.4.2",
