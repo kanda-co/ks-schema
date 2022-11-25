@@ -12,11 +12,6 @@ export default defineConfig({
     },
     port: 8000,
   },
-  // optimizeDeps: {
-  //   esbuildOptions: {
-  //     plugins: [esbuildCommonjs(["@kanda-libs/ks-component-ts"])],
-  //   },
-  // },
   optimizeDeps: {
     include: ["@kanda-libs/ks-component-ts", "react-cropper", "cropperjs"],
   },
