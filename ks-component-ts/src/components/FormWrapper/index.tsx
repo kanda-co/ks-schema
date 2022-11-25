@@ -1,9 +1,11 @@
 import React, { type FunctionComponent } from "react";
 import { FormProvider } from "react-hook-form";
 
+import { type StringIndexedObject } from "~/types";
+
 export interface FormWrapperProps {
   form: any;
-  onSubmit?: () => void;
+  onSubmit?: (value?: StringIndexedObject) => void;
   children?: JSX.Element | JSX.Element[];
 }
 

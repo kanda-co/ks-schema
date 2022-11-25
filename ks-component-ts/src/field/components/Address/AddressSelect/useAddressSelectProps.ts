@@ -52,7 +52,7 @@ export default function useAddressSelectProps(
   });
 
   const postCodeRef = useRef(postcode || null);
-  const selectedRef = useRef(selected || null);
+  const selectedRef = useRef(selected || undefined);
 
   /**
    * Handles address change

@@ -2,8 +2,9 @@ import React, { type FunctionComponent } from "react";
 import useAddressSelectProps from "./useAddressSelectProps";
 import { AddressApiData } from "~/field/components/Address/types";
 import Select, { type SelectProps } from "../../Select";
+import Validator from "../../Validator";
 
-export interface AddressSelectProps {
+export interface AddressSelectProps extends SelectProps {
   /**
    * Postcode field name
    */
@@ -33,13 +34,16 @@ export interface AddressSelectProps {
 const AddressSelect: FunctionComponent<AddressSelectProps> = function ({
   postcodeName,
   data,
+  ...rest
 }) {
   const selectProps = useAddressSelectProps(
     postcodeName,
     data
   ) as unknown as SelectProps;
 
-  return <Select {...selectProps} />;
+  console.log({ rest });
+
+  return <Select {...selectProps} {...rest} />;
 };
 
 export default AddressSelect;
