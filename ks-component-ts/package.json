@@ -27,6 +27,7 @@
     "lint": "node_modules/.bin/eslint '**/*.{js,ts,tsx}'",
     "type": "node_modules/.bin/tsc --noEmit",
     "bundlesize": "yarn build:style && yarn build:modern && node_modules/.bin/bundlesize",
+    "test:app": "yarn clean && yarn remove:link && yarn --cwd ./app remove:link && yarn clean && yarn build && yarn link && yarn --cwd ./app && yarn --cwd ./app link \"@kanda-libs/ks-component-ts\" && yarn --cwd ./app dev",
     "start:app": "yarn clean && node_modules/.bin/tsc && yarn build:style && yarn build:esm && yarn link && yarn --cwd node_modules/react link && yarn --cwd ./app && yarn --cwd ./app run dev"
   },
   "author": "rob@kanda.co.uk",

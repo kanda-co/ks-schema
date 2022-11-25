@@ -50,6 +50,7 @@ const getValidationErrors = (validation: any) =>
   }, {});
 
 const validateAddressSelect = (formValues: any, addressFieldName: string) => {
+  console.log(formValues);
   if (!addressFieldName) return null;
   const address = get(formValues, addressFieldName);
   if (!address) return false;

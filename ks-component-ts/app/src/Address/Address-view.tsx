@@ -1,8 +1,8 @@
-import { Field, Widget } from '@kanda-libs/ks-component-ts';
-import { Button } from '@kanda-libs/ks-design-library';
+import { Field, Widget } from "@kanda-libs/ks-component-ts";
+import { Button } from "@kanda-libs/ks-design-library";
 
-import Container from './Address-container';
-import { POSTCODE_NAME } from './Address-constants';
+import Container from "./Address-container";
+import { POSTCODE_NAME } from "./Address-constants";
 
 const ViewComponent = () => (
   <Container>
@@ -59,6 +59,6 @@ const ViewComponent = () => (
   </Container>
 );
 
-ViewComponent.displayName = 'CreateJob-Desktop-Customer-Field-Address-view';
+ViewComponent.displayName = "CreateJob-Desktop-Customer-Field-Address-view";
 
 export default ViewComponent;
