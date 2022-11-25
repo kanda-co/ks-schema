@@ -15,7 +15,7 @@ const FormWrapper: FunctionComponent<FormWrapperProps> = function ({
   children,
 }) {
   return (
-    <FormProvider {...form}>
+    <FormProvider {...form} onSubmit={onSubmit}>
       <form
         noValidate
         onSubmit={form.handleSubmit(onSubmit)}

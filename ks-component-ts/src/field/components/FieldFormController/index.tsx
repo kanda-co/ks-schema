@@ -46,9 +46,6 @@ const FieldFormController: FieldFormControllerComponent = function ({
   children,
   ...restProps
 }) {
-  console.log({ validationConditions });
-  console.log({ validationErrors });
-
   // TODO: Change form context to allow isLoading. Requires:
   // - Extend FormProvider
   // - Extend useFormContext
