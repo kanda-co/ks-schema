@@ -61,6 +61,10 @@ import AutoSizeInput, {
 import AutoSizeTextArea, {
   type AutoSizeTextAreaProps,
 } from "~/field/components/AutoSizeTextArea";
+import type { WidgetArrayInputProps, WidgetArrayWrapperProps } from "~/field/components/Array/types";
+import type {
+  ArrayWrapperChildrenArgs
+} from "~/field/components/Array/Wrapper/types";
 
 const Field = {
   Address,
@@ -118,4 +122,6 @@ export interface FieldProps {
   AutoSizeTextArea: AutoSizeTextAreaProps;
 }
 
-export type { ValidatedFieldProps } from "./types";
+export type { WidgetArrayWrapperProps, ArrayWrapperChildrenArgs, WidgetArrayInputProps };
+
+export type { ValidatedFieldProps,  } from "./types";

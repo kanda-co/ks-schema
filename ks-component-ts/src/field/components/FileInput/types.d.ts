@@ -34,6 +34,7 @@ export type FileInputUncontrolledProps = Omit<
     loadingFiles?: string[];
     small?: boolean;
     hasLabel?: boolean;
+    label?: string | JSX.Element | JSX.Element[];
     centerPlaceholder?: boolean;
     jobPdfInput?: boolean;
   }>,

@@ -22,6 +22,6 @@
     }
   },
   "include": ["./src/", "./src/modulesTypes.d.ts"],
-  "exclude": ["./node_modules", "./app"],
+  "exclude": ["./node_modules", "./app", "./dist"],
   "rootDirs": ["./src/"]
 }
