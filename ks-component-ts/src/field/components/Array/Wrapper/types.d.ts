@@ -3,6 +3,10 @@ import { type ArrayProps } from "../types";
 
 export interface ArrayWrapperChildrenArgs {
   arrayName: string;
-  fields: FieldArrayWithId[];
+  fields: {
+    id: string;
+    state: string;
+    index: number;
+  }[];
   arrayProps: ArrayProps;
 }
