@@ -59,7 +59,7 @@ func main() {
 	fmt.Println(`
 import React from "react";
 // @ts-ignore
-import Field, { type FieldProps, type ValidatedFieldProps } from "~/field";`)
+import Field, { type FieldProps, type ValidatedFieldProps, type WidgetArrayWrapperProps, type ArrayWrapperChildrenArgs, type ArrayInputProps } from "~/field";`)
 	for name, ref := range doc.Components.Schemas {
 		// write to individual module for Schema Form Fields
 
@@ -565,13 +565,13 @@ func arrayField(prefix, name string, props Props, validation Validation) string 
 	return fmt.Sprintf(`
 export const %sValidation = %v;
 
-export function %sArrayWrapper({ children, initialData = null }: any) {
+export function %sArrayWrapper({ children, initialData = null }: WidgetArrayWrapperProps) {
   return (
 		<Field.Array.Wrapper
 			arrayName="%s"
 			initialData={initialData}
 		>
-			{(props: any) => children(props)}
+			{(props: ArrayWrapperChildrenArgs) => children(props)}
 		</Field.Array.Wrapper>
 	);
 }`,
@@ -667,7 +667,7 @@ func arrayInputField(type_, prefix, name string, props Props, validation Validat
 	return fmt.Sprintf(`
 export const %sArrayInputValidation = %v;
 
-export function %sArrayInput(props: any) {
+export function %sArrayInput(props: ArrayInputProps<ValidatedFieldProps<FieldProps["%s"]>>) {
 	return (
 		<Field.Array.Input name={props.name || '%s'} index={props.index || 0}>
 			<Field.Validator validation={props.validation || %sArrayInputValidation} nested={props.nested}>
@@ -682,6 +682,7 @@ export function %sArrayInput(props: any) {
 		toPascal(prefix+" "+name),
 		validationRegexReplace(b),
 		toPascal(prefix+" "+name),
+		type_,
 		pathName,
 		toPascal(prefix+" "+name),
 		type_,

@@ -1,15 +1,9 @@
 import { cloneElement, type FunctionComponent, useContext } from "react";
-import { type ValidationProps } from "~/field/types";
 import { ArrayWrapperContext } from "~/field/components/Array/Wrapper";
-import { type StringIndexedObject } from "~/types";
+import type { StringIndexedObject } from "~/types";
+import type { ArrayInputProps } from "~/field/components/Array/types";
 
-export interface ArrayInputProps extends ValidationProps {
-  index?: number;
-  name: string;
-  children: JSX.Element;
-}
-
-const ArrayInput: FunctionComponent<ArrayInputProps> = function (props) {
+const ArrayInput: FunctionComponent<ArrayInputProps<{}>> = function (props) {
   const {
     index = 0,
     name,
