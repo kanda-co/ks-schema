@@ -1,8 +1,18 @@
 import { type FieldArrayWithId } from "react-hook-form";
 import { type ArrayProps } from "../types";
 
-export interface ChildrenArgs {
+export type ArrayWrapperField = {
+  id: string,
+  state: string;
+  index: string;
+}
+
+export interface ArrayWrapperChildrenArgs {
   arrayName: string;
-  fields: FieldArrayWithId[];
+  fields: {
+    id: string;
+    state: string;
+    index: number;
+  }[];
   arrayProps: ArrayProps;
 }

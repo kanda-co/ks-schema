@@ -22,7 +22,7 @@ function App() {
             console.log(formValues)
           }
         >
-          <Address />
+          <Field.NumberInput type="price" name="price" label="Price " />
           <Button.Text label="Submit" submit />
         </FormWrapper>
       </div>

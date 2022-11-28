@@ -1,7 +1,6 @@
 import React, { createContext, FunctionComponent, useEffect } from "react";
-import { useFormContext, useFieldArray } from "react-hook-form";
-import { type StringIndexedObject } from "~/types";
-import { type ChildrenArgs } from "./types";
+import { useFieldArray, useFormContext } from "react-hook-form";
+import type { ArrayWrapperProps } from "~/field/components/Array/types";
 
 interface ArrayWrapperContextValue {
   arrayName: string;
@@ -10,12 +9,6 @@ interface ArrayWrapperContextValue {
 export const ArrayWrapperContext = createContext<ArrayWrapperContextValue>({
   arrayName: "",
 });
-
-export interface ArrayWrapperProps {
-  arrayName: string;
-  initialData?: StringIndexedObject;
-  children: (args: ChildrenArgs) => JSX.Element;
-}
 
 const ArrayWrapper: FunctionComponent<ArrayWrapperProps> = function ({
   arrayName,
@@ -56,7 +49,11 @@ const ArrayWrapper: FunctionComponent<ArrayWrapperProps> = function ({
     >
       {children({
         arrayName,
-        fields,
+        fields: fields as {
+          id: string;
+          state: string;
+          index: number;
+        }[],
         arrayProps: { ...arrayProps, showRemove },
       })}
     </ArrayWrapperContext.Provider>
