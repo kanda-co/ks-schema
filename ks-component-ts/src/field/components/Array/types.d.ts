@@ -12,7 +12,7 @@ export interface ArrayProps extends Omit<UseFieldArrayReturn, "fields"> {
 export type ArrayWrapperProps  = {
   arrayName: string;
   initialData?: StringIndexedObject | null;
-  children: (args: ArrayWrapperChildrenArgs) => JSX.Element;
+  children: (args: ArrayWrapperChildrenArgs) => JSX.Element | JSX.Element[];
 };
 
 export type WidgetArrayWrapperProps = Omit<ArrayWrapperProps, 'arrayName'>
