@@ -49,7 +49,11 @@ const ArrayWrapper: FunctionComponent<ArrayWrapperProps> = function ({
     >
       {children({
         arrayName,
-        fields,
+        fields: fields as {
+          id: string;
+          state: string;
+          index: number;
+        }[],
         arrayProps: { ...arrayProps, showRemove },
       })}
     </ArrayWrapperContext.Provider>
