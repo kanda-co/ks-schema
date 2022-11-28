@@ -1,3 +1,5 @@
+import type { ButtonIconVariant } from "@kanda-libs/ks-design-library";
+
 export const CLASS_NAMES = {
   container: "flex h-14 pb-px absolute top-0 right-2 z-30",
   fadeLeft: "w-6 bg-gradient-to-r from-transparent to-neutral-000",
@@ -7,7 +9,7 @@ export const CLASS_NAMES = {
 };
 
 export const BUTTON_PROPS = {
-  variant: "ghost-grey",
-  size: "40-20",
+  variant: "ghost-grey" as ButtonIconVariant,
+  size: "40-20" as unknown as number,
   icon: "settings",
 };

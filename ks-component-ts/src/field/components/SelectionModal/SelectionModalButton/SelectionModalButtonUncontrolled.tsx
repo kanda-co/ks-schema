@@ -47,16 +47,18 @@ const SelectionModalButtonUncontrolled: FunctionComponent<
 > = function ({ isLoading, buttonText, forwardRef, error, ...restProps }) {
   const className = useSelectModalButtonClassName();
   return (
-    <div className={className}>
+    <div className={className} ref={forwardRef}>
       <Button.Link
         {...restProps}
-        ref={forwardRef}
         isLoading={isLoading}
         variant="grey"
         size={12}
         icon="chevron-down"
         label={buttonText}
-      />
+        placeholder={restProps.placeholder as string}
+      >
+        <>{restProps.children}</>
+      </Button.Link>
     </div>
   );
 };

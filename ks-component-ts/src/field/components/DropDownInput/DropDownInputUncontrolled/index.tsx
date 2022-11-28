@@ -59,15 +59,16 @@ const DropDownInput: FunctionComponent<
               </option>
             ))}
           </select>
-          <Button.Link
-            ref={forwardRef}
-            isLoading={isLoading}
-            className="pointer-events-none"
-            variant="grey"
-            size={12}
-            icon="chevron-down"
-            label={selectedLabel}
-          />
+          <div ref={forwardRef}>
+            <Button.Link
+              isLoading={isLoading}
+              className="pointer-events-none"
+              variant="grey"
+              size={12}
+              icon="chevron-down"
+              label={selectedLabel}
+            />
+          </div>
         </div>
       )}
     </>

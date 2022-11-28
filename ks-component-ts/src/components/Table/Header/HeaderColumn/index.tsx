@@ -1,12 +1,16 @@
-import React, { type FunctionComponent } from "react";
+import React, { type FunctionComponent, MouseEvent } from "react";
 import type { Column } from "react-table";
-import { Popover, SkeletonLoader } from "@kanda-libs/ks-design-library";
+import {
+  Popover,
+  SkeletonLoader,
+  type StringIndexedObject
+} from "@kanda-libs/ks-design-library";
 import type { ActionsHook } from "~/components/Table/useActions";
 import HeaderResizer from "../HeaderResizer";
 import HeaderButtonWrapper from "../HeaderButtonWrapper";
 import HeaderButton from "../HeaderButton";
 import useHeaderColumnProps from "./useHeaderColumnProps";
-import { TableHeaderColumn } from "~/components/Table/types";
+import type { TableHeaderColumn } from "~/components/Table/types";
 
 export interface HeaderColumnProps {
   isLoading?: boolean;
@@ -37,7 +41,7 @@ const HeaderColumn: FunctionComponent<HeaderColumnProps> = function ({
           <>
             <Popover.Advanced
               {...popoverProps}
-              onAction={handleAction}
+              onAction={handleAction as (action: StringIndexedObject, e: MouseEvent) => void}
               className="w-48"
               button={<HeaderButton label={label} />}
               wrapper={({ children }: { children: JSX.Element }) => (
