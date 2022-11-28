@@ -61,7 +61,7 @@ import AutoSizeInput, {
 import AutoSizeTextArea, {
   type AutoSizeTextAreaProps,
 } from "~/field/components/AutoSizeTextArea";
-import type { ArrayInputProps, WidgetArrayWrapperProps } from "~/field/components/Array/types";
+import type { WidgetArrayInputProps, WidgetArrayWrapperProps } from "~/field/components/Array/types";
 import type {
   ArrayWrapperChildrenArgs
 } from "~/field/components/Array/Wrapper/types";
@@ -122,6 +122,6 @@ export interface FieldProps {
   AutoSizeTextArea: AutoSizeTextAreaProps;
 }
 
-export type { WidgetArrayWrapperProps, ArrayWrapperChildrenArgs, ArrayInputProps };
+export type { WidgetArrayWrapperProps, ArrayWrapperChildrenArgs, WidgetArrayInputProps };
 
 export type { ValidatedFieldProps,  } from "./types";

@@ -3,7 +3,7 @@ import { ArrayWrapperContext } from "~/field/components/Array/Wrapper";
 import type { StringIndexedObject } from "~/types";
 import type { ArrayInputProps } from "~/field/components/Array/types";
 
-const ArrayInput: FunctionComponent<ArrayInputProps<{}>> = function (props) {
+const ArrayInput: FunctionComponent<ArrayInputProps<{children: JSX.Element}>> = function (props) {
   const {
     index = 0,
     name,

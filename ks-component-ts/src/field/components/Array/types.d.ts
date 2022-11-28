@@ -19,6 +19,8 @@ export type WidgetArrayWrapperProps = Omit<ArrayWrapperProps, 'arrayName'>
 
 export type ArrayInputProps <T> = {
   index?: number;
-  name: string;
-  children: JSX.Element;
+  name?: string;
+  children?: JSX.Element;
 } & ValidationProps & T;
+
+export type WidgetArrayInputProps <T> = Omit<ArrayInputProps<T>, 'children'>

@@ -59,7 +59,7 @@ func main() {
 	fmt.Println(`
 import React from "react";
 // @ts-ignore
-import Field, { type FieldProps, type ValidatedFieldProps, type WidgetArrayWrapperProps, type ArrayWrapperChildrenArgs, type ArrayInputProps } from "~/field";`)
+import Field, { type FieldProps, type ValidatedFieldProps, type WidgetArrayWrapperProps, type ArrayWrapperChildrenArgs, type WidgetArrayInputProps } from "~/field";`)
 	for name, ref := range doc.Components.Schemas {
 		// write to individual module for Schema Form Fields
 
@@ -667,7 +667,7 @@ func arrayInputField(type_, prefix, name string, props Props, validation Validat
 	return fmt.Sprintf(`
 export const %sArrayInputValidation = %v;
 
-export function %sArrayInput(props: ArrayInputProps<ValidatedFieldProps<FieldProps["%s"]>>) {
+export function %sArrayInput(props: WidgetArrayInputProps<ValidatedFieldProps<FieldProps["%s"]>>) {
 	return (
 		<Field.Array.Input name={props.name || '%s'} index={props.index || 0}>
 			<Field.Validator validation={props.validation || %sArrayInputValidation} nested={props.nested}>
