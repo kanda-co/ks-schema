@@ -1,4 +1,3 @@
-/// <reference path="./types.d.ts" />
 export * from './handlers';
 export * from './hooks';
 export * from './service';

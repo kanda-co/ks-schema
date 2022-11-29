@@ -3,7 +3,7 @@ import { User } from 'firebase/auth';
 import FirebaseAuthService from '../FirebaseAuthService';
 import useMutate from '../../hooks/useMutate';
 
-interface Hook {
+interface CurrentUserHook {
   user?: User;
   isUserLoggedIn: boolean;
   isValidating: boolean;
@@ -11,7 +11,7 @@ interface Hook {
   logout: (redirect?: boolean) => Promise<void>;
 }
 
-export default function useCurrentUser(): Hook {
+export default function useCurrentUser(): CurrentUserHook {
   const [user, setUser] = useState<User>(null);
   const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>(null);
   const { mutate: logoutMutate } = useMutate(
