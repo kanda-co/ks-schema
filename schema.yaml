@@ -4490,6 +4490,14 @@ components:
           cid:
             type: string
             title: cid of request
+          method:
+            type: string
+            title: method of request
+            enum:
+              - get
+              - post
+              - put
+              - delete
           resource:
             type: string
             title: resource of request
