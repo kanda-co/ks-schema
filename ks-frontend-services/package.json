@@ -5,8 +5,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "generate-service-module": "./node_modules/.bin/ts-node ./src/service/generator/",
-    "build:types": "./node_modules/.bin/dts-bundle-generator --external-inlines=./generated -o src/generated/dist/index.d.ts src/index.ts",
-    "build": "yarn clean && yarn generate-service-module && yarn build:types && node ./build.ts",
+    "build": "yarn clean && yarn generate-service-module && node ./build.ts",
     "test:app": "yarn clean && yarn && yarn build && cd app && yalc update && cd .. && yarn --cwd ./app && yarn --cwd ./app dev --force"
   },
   "main": "dist/index.esm.js",
