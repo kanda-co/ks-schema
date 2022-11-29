@@ -1,8 +1,8 @@
 const { build } = require("esbuild");
 const { dependencies } = require("./package.json");
 const svgrPlugin = require("esbuild-plugin-svgr");
-const copyStaticFiles  = require("esbuild-copy-static-files");
-const { nodeExternalsPlugin } = require('esbuild-node-externals');
+const copyStaticFiles = require("esbuild-copy-static-files");
+const { nodeExternalsPlugin } = require("esbuild-node-externals");
 
 const entryFile = "./src/index.ts";
 const shared = {
@@ -13,14 +13,14 @@ const shared = {
   plugins: [
     svgrPlugin(),
     copyStaticFiles({
-      src: './src/styles/library.css',
-      dest: './dist/library.css',
+      src: "./src/styles/library.css",
+      dest: "./dist/library.css",
     }),
     copyStaticFiles({
-      src: './src/styles/fonts',
-      dest: './dist/fonts',
+      src: "./src/styles/fonts",
+      dest: "./dist/fonts",
     }),
-    nodeExternalsPlugin()
+    nodeExternalsPlugin(),
   ],
   logLevel: "info",
   minify: true,
@@ -33,4 +33,3 @@ build({
   outfile: "./dist/index.esm.js",
   target: ["esnext", "node12.22.0"],
 });
-
