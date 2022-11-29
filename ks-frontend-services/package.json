@@ -1,6 +1,6 @@
 {
   "name": "@kanda-libs/ks-frontend-services",
-  "version": "0.2.1-qa",
+  "version": "0.2.1-qa-1",
   "license": "private",
   "scripts": {
     "clean": "rimraf dist",
@@ -13,7 +13,8 @@
   "module": "dist/index.esm.js",
   "types": "src/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "src/**/*.d.ts"
   ],
   "dependencies": {
     "@openapi-io-ts/runtime": "^0.3.1",
