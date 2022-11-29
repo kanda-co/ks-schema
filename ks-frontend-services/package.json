@@ -4,9 +4,10 @@
   "license": "private",
   "scripts": {
     "clean": "rimraf dist",
-    "generate-service-module": "ts-node ./src/service/generator/",
+    "generate-service-module": "./node_modules/.bin/ts-node ./src/service/generator/",
     "build:types": "./node_modules/.bin/dts-bundle-generator --external-inlines=./generated -o src/generated/dist/index.d.ts src/index.ts",
-    "build": "yarn clean && yarn generate-service-module && yarn build:types && ts-node build.ts"
+    "build": "yarn clean && yarn generate-service-module && yarn build:types && node ./build.ts",
+    "test:app": "yarn clean && yarn && yarn build && cd app && yalc update && cd .. && yarn --cwd ./app && yarn --cwd ./app dev --force"
   },
   "main": "dist/index.esm.js",
   "module": "dist/index.esm.js",
@@ -36,6 +37,7 @@
     "@types/react-dom": "^18.0.6",
     "dts-bundle-generator": "^7.1.0",
     "esbuild": "^0.15.16",
+    "esbuild-copy-static-files": "^0.1.0",
     "esbuild-node-externals": "^1.5.0",
     "prettier": "^2.7.1",
     "ts-node": "^10.9.1",

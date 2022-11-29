@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@kanda-libs/ks-frontend-services": "file:.yalc/@kanda-libs/ks-frontend-services",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
