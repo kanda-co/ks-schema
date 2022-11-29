@@ -1,8 +1,8 @@
 import useSWR from 'swr';
-import { PublicConfiguration } from 'swr/dist/types';
+import type { PublicConfiguration } from 'swr/dist/types';
 
 import { handleResponse } from '../handlers';
-import { Service } from 'types';
+import type { Service } from '../types';
 
 const useRefreshingData = <Value, Params, Body>(
   service: Service<Value, Params, Body>,

@@ -3,7 +3,7 @@ import { Either, right, left } from 'fp-ts/lib/Either';
 import { flow } from 'fp-ts/lib/function';
 import { pipe } from 'fp-ts/lib/pipeable';
 import { fetchRequestAdapter } from '../../helpers';
-import { StringIndexedObject } from 'types';
+import type { StringIndexedObject } from '../../types';
 
 type RequestAdapter = (
   url: string,

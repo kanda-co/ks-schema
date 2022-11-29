@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from 'react';
-import { StringIndexedObject } from 'types';
+import React, { type FunctionComponent } from 'react';
+import type { StringIndexedObject } from '../../../types';
 import FirebaseAuthWrapper from '.';
 
 function withFirebaseAuthWrapper<T extends StringIndexedObject>(
