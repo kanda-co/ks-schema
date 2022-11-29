@@ -4,20 +4,21 @@ import { handleResponse } from '../../handlers';
 import { getKey } from './helpers';
 import type { LoadDataHookOptions } from './types';
 
-const useLoadData = <Value, Args = undefined>(
-  service?: Service<Value, Args | undefined>,
+const useLoadData = <Value, Params = undefined, Body = undefined>(
+  service?: Service<Value, Params, Body> | false,
   options: LoadDataHookOptions = {},
-  enabled: boolean = true,
   ...arg
 ) => {
   const method = (
-    enabled ? (service.method as unknown as Function) : () => () => {}
+    service !== false
+      ? (service?.method as unknown as Function)
+      : () => () => {}
   ) as Function;
 
   const fetcher = () => method(...arg)().then((res) => handleResponse(res));
 
   const { params = {} } = arg[0] ? arg[0] : {};
-  const serviceKey = enabled ? service?.key : null;
+  const serviceKey = service !== false ? service?.key : null;
   const key = getKey(serviceKey, options, params);
 
   return useSWRImmutable<Value>(key, fetcher, {

@@ -9,12 +9,10 @@ const useRefreshingData = <Value, Params, Body>(
   options: Pick<PublicConfiguration, 'revalidateOnMount' | 'refreshInterval'>,
   ...arg
 ) => {
-  const { method: serviceMethod = false, key: serviceKey = '' } =
-    service !== false ? service : {};
-  const method = (serviceMethod as unknown as Function) || (() => () => {});
+  const method = (service?.method as unknown as Function) || (() => () => {});
   const fetcher = () => method(...arg)().then((res) => handleResponse(res));
 
-  return useSWR(serviceKey, fetcher, {
+  return useSWR(service?.key, fetcher, {
     ...options,
   });
 };

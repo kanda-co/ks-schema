@@ -1,5 +1,5 @@
 import { Service, ServiceSubmit, StringIndexedObject } from '../types';
-export interface Hook<Value, Params, Body = {}> {
+export interface Hook<Value, Params, Body> {
     submit: ServiceSubmit<Value, Params, Body>;
     error?: string;
     data?: StringIndexedObject;
@@ -10,4 +10,4 @@ export interface Hook<Value, Params, Body = {}> {
  * @param service ServiceMethod
  * @param formatResponse
  */
-export default function useSubmit<Value, Args>(service: Service<Value, Args>, formatResponse?: boolean): Hook<Value, Args>;
+export default function useSubmit<Value, Params, Body>(service: Service<Value, Params, Body>, formatResponse?: boolean): Hook<Value, Params, Body>;
