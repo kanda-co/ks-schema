@@ -9,7 +9,7 @@ export default defineConfig({
     fs: {
       allow: ['..'],
     },
-    port: 8000,
+    port: 8001,
   },
   optimizeDeps: {
     include: ['@kanda-libs/ks-frontend-services'],
