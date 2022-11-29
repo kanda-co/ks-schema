@@ -6,3 +6,6 @@ node_modules/
 .idea
 .idea/
 ks-component-ts/src/generated/
+ks-frontend-services/yalc.*
+ks-frontend-services/app/.yalc
+ks-frontend-services/app/yalc.lock
