@@ -10,7 +10,8 @@ import {
 } from '../types';
 import { handleResponse, Response } from '../handlers';
 
-export interface Hook<Value, Params, Body> {
+// TODO: Fix
+export interface Hook<Value, Params, Body = {}> {
   submit: ServiceSubmit<Value, Params, Body>;
   error?: string;
   data?: StringIndexedObject;
@@ -22,11 +23,11 @@ export interface Hook<Value, Params, Body> {
  * @param service ServiceMethod
  * @param formatResponse
  */
-export default function useSubmit<Value, Params, Body>(
-  service: Service<Value, Params, Body>,
+export default function useSubmit<Value, Args>(
+  service: Service<Value, Args>,
   formatResponse = true,
-): Hook<Value, Params, Body> {
-  const [error, setError] = useState<string>();
+): Hook<Value, Args> {
+  const [error, setError] = useState<string | null>();
   const [data, setData] = useState<StringIndexedObject>();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -36,8 +37,8 @@ export default function useSubmit<Value, Params, Body>(
   const submit = useCallback(
     async ({
       body = {} as Body,
-      params = {} as Params,
-    }: Partial<ServiceParams<Params, Body>>): Promise<
+      params = {} as Args,
+    }: Partial<ServiceParams<Args, Body>>): Promise<
       ServiceMethodReturnParams<Value>
     > => {
       if (!service || !service.method) {
@@ -60,7 +61,7 @@ export default function useSubmit<Value, Params, Body>(
       };
 
       const method = service.method as unknown as (
-        args: Partial<ServiceParams<Params, Body>>,
+        args: Partial<ServiceParams<Args, Body>>,
       ) => ServiceMethodReturn<Value>;
 
       const response = formatResponse
@@ -74,8 +75,8 @@ export default function useSubmit<Value, Params, Body>(
         setData(result as Value);
         return { data: result };
       } catch (e) {
-        setError(e);
-        return { error: e };
+        setError(e as string);
+        return { error: e as string };
       } finally {
         setIsSubmitting(false);
       }
@@ -84,8 +85,8 @@ export default function useSubmit<Value, Params, Body>(
   );
 
   return {
-    submit: submit as unknown as ServiceSubmit<Value, Params, Body>,
-    error,
+    submit: submit as unknown as ServiceSubmit<Value, Args, {}>,
+    error: error as string,
     data,
     isSubmitting,
   };

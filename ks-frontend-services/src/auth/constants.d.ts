@@ -1,0 +1,9 @@
+export declare const FIREBASE_API_KEY: string;
+export declare const FIREBASE_AUTH_DOMAIN: string;
+export declare const FIREBASE_PROJECT_ID: string;
+export declare const FIREBASE_STORAGE_BUCKET: string;
+export declare const FIREBASE_MESSAGING_SENDER_ID: string;
+export declare const FIREBASE_APP_ID: string;
+export declare const FIREBASE_MEASUREMENT_ID: string;
+export declare const HOME_URL: string;
+export declare const LOGIN_URL: string;

@@ -12,27 +12,21 @@ export interface AuthenticationHeaders {
 
 export type StringIndexedObject<T = any> = Record<string, T>;
 
-export interface ServiceParams<
-  Params extends StringIndexedObject,
-  Body extends StringIndexedObject,
-> {
-  params: Params;
+export interface ServiceParams<Params extends StringIndexedObject, Body> {
+  params: Params | undefined;
   body: Body;
 }
 
+// TODO: Delete this when no longer needed
 export type ServiceMethod<
   Value extends StringIndexedObject,
   Params extends StringIndexedObject,
   Body extends StringIndexedObject,
 > = RequestFunction<ServiceParams<Params, Body>, Value>;
 
-export interface Service<
-  Value extends StringIndexedObject,
-  Params extends StringIndexedObject,
-  Body extends StringIndexedObject,
-> {
+export interface Service<Value, Params = undefined> {
   key: string;
-  method: ServiceMethod<Value, Params, Body>;
+  method: RequestFunction<Params, Value>;
 }
 
 export interface ServiceMethodReturnParams<T> {
