@@ -706,10 +706,10 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@kanda-libs/ks-component-ts@0.2.25":
-  version "0.2.25"
-  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-component-ts/-/ks-component-ts-0.2.25.tgz#7d174e74a0b64dd04580cfe08e97ea9ce1009f70"
-  integrity sha512-IbH1OtBf7aGokQxGNtAwMxDlErRnq/qvyfJDI/l3QrwFyxIp9qcGW51H5/4P50ZSF4UtBMgEJ2Vtk1eHTzHzFQ==
+"@kanda-libs/ks-component-ts@0.2.35":
+  version "0.2.35"
+  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-component-ts/-/ks-component-ts-0.2.35.tgz#490c7234d98f4a4dd6d688311b1897c2be08c3b6"
+  integrity sha512-5bS6/87/deOdkTo05PA/acSUTbaOXJ1xOTYq/JU4uEm8FClsWP+xJf5FOFOMTdpY2wy6TIGg4bwtawjKENjwFw==
   dependencies:
     "@kanda-libs/ks-tailwind-config" "^0.0.5"
     "@types/lodash.get" "^4.4.7"

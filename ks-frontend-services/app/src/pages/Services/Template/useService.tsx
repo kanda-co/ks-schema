@@ -1,23 +1,16 @@
 import { useState, useMemo, useCallback } from 'react';
 import { services, useSubmit } from '@kanda-libs/ks-frontend-services';
-import type { StringIndexedObject } from '@kanda-libs/ks-component-ts';
+import { type StringIndexedObject, useForm } from '@kanda-libs/ks-component-ts';
 import get from 'lodash.get';
-
-interface UseServiceHook {
-  show: boolean;
-  onShow: () => void;
-  onClick: () => void;
-  onReset: () => void;
-  isSubmitting?: boolean;
-  response?: StringIndexedObject;
-}
 
 export default function useService(
   service: string,
   params?: StringIndexedObject,
-): UseServiceHook {
+) {
   const [show, setShow] = useState(false);
   const [response, setResponse] = useState(null);
+
+  const form = useForm();
 
   const serviceObject = useMemo(() => {
     if (!service) return null;
