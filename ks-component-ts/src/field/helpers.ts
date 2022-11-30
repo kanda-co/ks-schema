@@ -47,7 +47,7 @@ export const makeIsAllowed =
  * that is used before passing all the props to a rendered dom element
  */
 export const stripUnneededProps = (props: StringIndexedObject) => {
-  const { validationConditions, validationErrors, ...rest } =
+  const { validationConditions, validationErrors, register, ...rest } =
     props as StringIndexedObject;
 
   return rest;
