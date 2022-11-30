@@ -34,7 +34,7 @@
   "license": "MIT",
   "devDependencies": {
     "@kanda-libs/ks-design-library": "0.2.7",
-    "@kanda-libs/ks-frontend-services": "0.2.20",
+    "@kanda-libs/ks-frontend-services": "0.2.0",
     "@types/browser-image-compression": "^1.0.9",
     "@types/mime-types": "^2.1.1",
     "@types/node": "^18.11.9",
@@ -92,7 +92,7 @@
   ],
   "peerDependencies": {
     "@kanda-libs/ks-design-library": "0.2.7",
-    "@kanda-libs/ks-frontend-services": "0.2.19",
+    "@kanda-libs/ks-frontend-services": "0.2.0",
     "clsx": "^1.1.1",
     "lodash.get": "^4.4.2",
     "react": "^16.8.0 || ^17",
