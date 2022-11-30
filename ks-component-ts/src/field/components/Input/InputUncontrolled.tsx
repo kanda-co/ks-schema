@@ -39,9 +39,13 @@ const InputUncontrolled: FunctionComponent<
   const inputProps = autoSize
     ? {
         inputClassName: classNames.input,
+        inputRef: forwardRef as
+          | ((instance: HTMLInputElement | null) => void)
+          | undefined,
       }
     : {
         className: classNames.input,
+        ref: forwardRef,
       };
 
   return (
@@ -58,7 +62,6 @@ const InputUncontrolled: FunctionComponent<
               </div>
             )}
             <InputTag
-              ref={forwardRef}
               {...inputProps}
               {...stripUnneededProps(restProps)}
               placeholder={restProps.placeholder as string}
