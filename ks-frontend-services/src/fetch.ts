@@ -50,6 +50,10 @@ const interceptedFetch = (
 ) => {
   const token = FirebaseAuthService?.auth?.currentUser?.accessToken;
 
+  console.log({ url });
+  console.log({ options });
+  console.log({ args });
+
   return originalFetch()
     .apply(window, [url, buildRequestHeaders(options, token), ...args])
     .then(async (data) => {
