@@ -752,7 +752,7 @@
     use-debounce "^8.0.4"
 
 "@kanda-libs/ks-frontend-services@file:.yalc/@kanda-libs/ks-frontend-services":
-  version "0.2.1-qa-1"
+  version "0.2.20"
   dependencies:
     "@openapi-io-ts/runtime" "^0.3.1"
     "@stripe/stripe-js" "^1.35.0"

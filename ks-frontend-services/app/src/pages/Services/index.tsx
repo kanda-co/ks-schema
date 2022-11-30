@@ -1,10 +1,13 @@
-function Services() {
-  console.log('test');
+// import { services } from '@kanda-libs/ks-frontend-services';
+import AuthUserMe from './AuthUserMe';
+
+const Services = () => {
   return (
-    <div className="flex">
-      <p className="read-the-docs">Services</p>
+    <div className="flex flex-col w-full">
+      <p className="text-xl mb-6">Services</p>
+      <AuthUserMe />
     </div>
   );
-}
+};
 
 export default Services;

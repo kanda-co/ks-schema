@@ -27,6 +27,7 @@ export default defineConfig({
   define: {
     'process.env': {
       REACT_APP_GET_ADDRESS_API_KEY: 'byJL3HWLC0a39cnl5OKNBA31556',
+      REACT_APP_ENV: 'qa',
     },
     exports: '{}',
     global: '{}',
