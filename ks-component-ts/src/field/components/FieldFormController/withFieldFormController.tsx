@@ -6,7 +6,6 @@ import type {
   DefaultFormFieldProps,
   InputFunctionComponent,
 } from "~/field/types";
-import { StringIndexedObject } from "~/types";
 
 export type FieldFormControllerPropsWithoutChildren<T> = Omit<
   FieldFormControllerProps<T>,
@@ -29,10 +28,14 @@ export default function withFieldFormController<T>(
       passRegister={passRegister}
       control={control}
     >
-      {(fieldProps: DefaultFormFieldProps<T>) => (
+      {/*
+        The ref is taken out of fieldProps because ref cannot be passed
+        as a prop to function components
+      */}
+      {({ ref, ...fieldProps }: DefaultFormFieldProps<T>) => (
         <Component
-          {...fieldProps}
-          forwardRef={fieldProps.forwardRef || fieldProps.ref}
+          {...(fieldProps as DefaultFormFieldProps<T>)}
+          forwardRef={fieldProps.forwardRef || ref}
         />
       )}
     </FieldFormController>
