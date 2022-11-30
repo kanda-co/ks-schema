@@ -12,6 +12,8 @@ export default function useService(
 
   const form = useForm();
 
+  const name = `${service}.id`;
+
   const serviceObject = useMemo(() => {
     if (!service) return null;
     return get(services, service);
@@ -19,8 +21,17 @@ export default function useService(
 
   const { submit, isSubmitting } = useSubmit(serviceObject);
 
-  const onClick = useCallback(
-    () => submit({ params }).then((response) => setResponse(response)),
+  const onSubmit = useCallback(
+    (formValues: StringIndexedObject) => {
+      const id = get(formValues, name);
+      const combinedParams = {
+        ...params,
+        ...(id && { id }),
+      };
+      submit({ params: combinedParams }).then((response) =>
+        setResponse(response),
+      );
+    },
     [submit, params],
   );
 
@@ -32,11 +43,13 @@ export default function useService(
   }, [show]);
 
   return {
-    onClick,
+    onSubmit,
     onReset,
     show,
     onShow,
     isSubmitting,
     response,
+    form,
+    name,
   };
 }

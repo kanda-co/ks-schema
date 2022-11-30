@@ -706,10 +706,10 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@kanda-libs/ks-component-ts@0.2.35":
-  version "0.2.35"
-  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-component-ts/-/ks-component-ts-0.2.35.tgz#490c7234d98f4a4dd6d688311b1897c2be08c3b6"
-  integrity sha512-5bS6/87/deOdkTo05PA/acSUTbaOXJ1xOTYq/JU4uEm8FClsWP+xJf5FOFOMTdpY2wy6TIGg4bwtawjKENjwFw==
+"@kanda-libs/ks-component-ts@0.2.36":
+  version "0.2.36"
+  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-component-ts/-/ks-component-ts-0.2.36.tgz#c77032bc9dc5c3d08c5a91a892a52aedd2d0e1a6"
+  integrity sha512-YCx9QSa+VWa+z3bs6j6rn8rhO0CY+HMesg1dOP4eaiGxB3OvsCSWoJ+vayFl2jsM2RcYambzMEnimNrrrYbw0w==
   dependencies:
     "@kanda-libs/ks-tailwind-config" "^0.0.5"
     "@types/lodash.get" "^4.4.7"
@@ -724,6 +724,7 @@
     react-beautiful-dnd "^13.1.1"
     react-cropper "^2.1.8"
     react-dropzone "^11.3.4"
+    react-highlight-words "^0.18.0"
     react-hook-form "^7.35.0"
     react-input-autosize "^3.0.0"
     react-loading-skeleton "^3.1.0"
@@ -1498,6 +1499,11 @@ has@^1.0.3:
   dependencies:
     traverse ">=0.2.4"
 
+highlight-words-core@^1.2.0:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/highlight-words-core/-/highlight-words-core-1.2.2.tgz#1eff6d7d9f0a22f155042a00791237791b1eeaaa"
+  integrity sha512-BXUKIkUuh6cmmxzi5OIbUJxrG8OAk2MqoL1DtO3Wo9D2faJg2ph5ntyuQeLqaHJmzER6H5tllCDA9ZnNe9BVGg==
+
 hoist-non-react-statics@^3.3.0, hoist-non-react-statics@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
@@ -1676,6 +1682,11 @@ magic-string@^0.26.4, magic-string@^0.26.7:
   integrity sha512-hX9XH3ziStPoPhJxLq1syWuZMxbDvGNbVchfrdCtanC7D13888bMFow61x8axrx+GfHLtVeAx2kxL7tTGRl+Ow==
   dependencies:
     sourcemap-codec "^1.4.8"
+
+memoize-one@^4.0.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/memoize-one/-/memoize-one-4.1.0.tgz#a2387c58c03fff27ca390c31b764a79addf3f906"
+  integrity sha512-2GApq0yI/b22J2j9rhbrAlsHb0Qcz+7yWxeLG8h+95sl1XPUgeLimQSOdur4Vw7cUhrBHwaUZxWFZueojqNRzA==
 
 memoize-one@^5.1.1:
   version "5.2.1"
@@ -1926,6 +1937,15 @@ react-helmet@^6.1.0:
     prop-types "^15.7.2"
     react-fast-compare "^3.1.1"
     react-side-effect "^2.1.0"
+
+react-highlight-words@^0.18.0:
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/react-highlight-words/-/react-highlight-words-0.18.0.tgz#ff3b3ef7cb497fa2e8fa4d54c1a1a98ac6390d0e"
+  integrity sha512-5z+46eLPjB4JWgOhuQ0E+6iUPTD1U3amiy5KKjzZmeJ5zyvHr91hnzBT3UHya/KlySm5KRTKpYpba9vs67oO2A==
+  dependencies:
+    highlight-words-core "^1.2.0"
+    memoize-one "^4.0.0"
+    prop-types "^15.5.8"
 
 react-hook-form@^7.35.0:
   version "7.40.0"
