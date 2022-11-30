@@ -1,6 +1,7 @@
 import React, { ForwardedRef, FunctionComponent } from "react";
 import { SkeletonLoader } from "@kanda-libs/ks-design-library";
-import { type HandleType, type HandleProps } from "~/components/Handle/types";
+import { type HandleProps } from "~/components/Handle/types";
+import { stripUnneededProps } from "~/field/helpers";
 import useBooleanInputHandle from "./useBooleanInputHandle";
 import { CLASS_NAMES } from "./constants";
 
@@ -37,7 +38,7 @@ const BooleanInputUncontrolled: FunctionComponent<BooleanFieldProps> =
           ref={forwardRef}
           name={name}
           isLoading={isLoading}
-          {...restProps}
+          {...stripUnneededProps(restProps)}
         />
         {fieldText && (
           <SkeletonLoader
