@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "yalc:update": "yalc add @kanda-libs/ks-frontend-services && yalc update"
@@ -12,7 +12,11 @@
   "dependencies": {
     "@kanda-libs/ks-frontend-services": "file:.yalc/@kanda-libs/ks-frontend-services",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.3",
+    "@kanda-libs/ks-component-ts": "0.2.25",
+    "@kanda-libs/ks-design-library": "0.2.6",
+    "@kanda-libs/ks-tailwind-config": "0.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.15",
