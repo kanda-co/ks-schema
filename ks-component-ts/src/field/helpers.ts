@@ -41,3 +41,19 @@ export const makeIsAllowed =
   ({ value }) => {
     return value <= maxValue && value >= minValue;
   };
+
+/**
+ * Strips unneeded props from an object (like validationConditions and validationErrors)
+ * that is used before passing all the props to a rendered dom element
+ */
+export const stripUnneededProps = (props: StringIndexedObject) => {
+  const {
+    validationConditions,
+    validationErrors,
+    register,
+    isValidating,
+    ...rest
+  } = props as StringIndexedObject;
+
+  return rest;
+};

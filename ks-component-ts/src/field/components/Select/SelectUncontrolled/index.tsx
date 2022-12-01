@@ -36,11 +36,10 @@ const SelectUncontrolled: FunctionComponent<
         </div>
       ) : (
         <select
+          required
           name={name}
           className={classNames.select}
-          defaultValue={defaultValue}
-          required
-          value={currentValue}
+          value={currentValue || defaultValue}
           ref={forwardRef as ForwardedRef<HTMLSelectElement>}
           {...restProps}
         >
