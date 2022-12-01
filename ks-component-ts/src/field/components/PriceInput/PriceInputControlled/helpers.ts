@@ -1,7 +1,7 @@
 import { NumberFormatValues } from "react-number-format";
 
 export const formatValue = (value: number | null, currencyDecimal: number) =>
-  (value as number) / currencyDecimal;
+  (value !== 0 ? (value as number) / currencyDecimal : undefined);
 
 export const onValueChange = (
   event: NumberFormatValues,
@@ -9,8 +9,8 @@ export const onValueChange = (
   currencyDecimal: number
 ): void => {
   onChange(
-    event.floatValue
+    event.floatValue && event.floatValue > 0
       ? (event.floatValue as unknown as number) * currencyDecimal
-      : null
+      : undefined
   );
 };
