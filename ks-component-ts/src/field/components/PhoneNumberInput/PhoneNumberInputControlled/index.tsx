@@ -52,7 +52,7 @@ const PhoneNumberInputControlled: FunctionComponent<PhoneNumberInputControlledPr
             countryCodeName={countryCodeName}
             phoneNumberProps={{
               ...register(name, restProps),
-              ...phoneNumberProps,
+              ...phoneNumberProps
             }}
             {...fieldProps}
           />
