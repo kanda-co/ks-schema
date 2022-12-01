@@ -59,7 +59,6 @@ const DropDownInput: FunctionComponent<
               </option>
             ))}
           </select>
-          <div ref={forwardRef}>
             <Button.Link
               isLoading={isLoading}
               className="pointer-events-none"
@@ -67,8 +66,8 @@ const DropDownInput: FunctionComponent<
               size={12}
               icon="chevron-down"
               label={selectedLabel}
+              forwardRef={forwardRef}
             />
-          </div>
         </div>
       )}
     </>

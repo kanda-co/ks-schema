@@ -47,7 +47,7 @@ const SelectionModalButtonUncontrolled: FunctionComponent<
 > = function ({ isLoading, buttonText, forwardRef, error, ...restProps }) {
   const className = useSelectModalButtonClassName();
   return (
-    <div className={className} ref={forwardRef}>
+    <div className={className}>
       <Button.Link
         {...restProps}
         isLoading={isLoading}
@@ -56,6 +56,7 @@ const SelectionModalButtonUncontrolled: FunctionComponent<
         icon="chevron-down"
         label={buttonText}
         placeholder={restProps.placeholder as string}
+        forwardRef={forwardRef}
       >
         <>{restProps.children}</>
       </Button.Link>
