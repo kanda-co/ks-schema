@@ -1,11 +1,16 @@
 import React, { type FunctionComponent } from "react";
 import FieldFormController from "~/field/components/FieldFormController";
 import PhoneNumberInputUncontrolled from "../PhoneNumberInputUncontrolled";
-import { FieldFormControllerChildrenArgs } from "~/field/components/FieldFormController/types";
-import { PhoneNumberInputUncontrolledProps } from "../types";
+import type {
+  FieldFormControllerChildrenArgs
+} from "~/field/components/FieldFormController/types";
+import type { PhoneNumberInputUncontrolledProps } from "../types";
+import type {
+  FieldFormControllerPropsWithoutChildren
+} from "~/field/components/FieldFormController/withFieldFormController";
 
-export interface PhoneNumberInputControlledProps
-  extends PhoneNumberInputUncontrolledProps {
+export type PhoneNumberInputControlledProps
+  = FieldFormControllerPropsWithoutChildren<PhoneNumberInputUncontrolledProps & {
   /**
    * Name of the input required for form to work
    */
@@ -34,7 +39,7 @@ export interface PhoneNumberInputControlledProps
    * Display Loading state
    */
   isLoading?: boolean;
-}
+}>
 
 const PhoneNumberInputControlled: FunctionComponent<PhoneNumberInputControlledProps> =
   function ({
