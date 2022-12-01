@@ -7,7 +7,7 @@ const Login = () => {
 
   return (
     <div className="flex flex-col">
-      <p className="mb-4">Login</p>
+      <p className="text-xl mb-6">Login</p>
       <Button.Text label="Login" onClick={signInWithGoogle} />
       <Loader isLoading={isSubmitting} />
     </div>
