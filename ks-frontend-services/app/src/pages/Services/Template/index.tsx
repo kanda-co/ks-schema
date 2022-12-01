@@ -1,5 +1,4 @@
 import { Button } from '@kanda-libs/ks-design-library';
-import { services } from '@kanda-libs/ks-frontend-services';
 import { Form, Field } from '@kanda-libs/ks-component-ts';
 
 import useService from './useService';

@@ -57,6 +57,7 @@ const interceptedFetch = (
   return originalFetch()
     .apply(window, [url, buildRequestHeaders(options, token), ...args])
     .then(async (data) => {
+      console.log(data);
       if (data.status === 403) {
         console.log('Unauthorised request, refreshing token');
 

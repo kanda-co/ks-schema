@@ -5,6 +5,7 @@
 export const URLS = {
   HOME: '/',
   LOGIN: '/login',
+  LOGOUT: '/logout',
   SIGNUP: '/signup',
 };
 

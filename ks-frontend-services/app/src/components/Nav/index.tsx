@@ -3,7 +3,7 @@ import { type FunctionComponent } from 'react';
 import useNav from './useNav';
 
 const Nav: FunctionComponent = function () {
-  const { links } = useNav();
+  const links = useNav();
 
   return (
     <div className="flex flex-row mb-4">

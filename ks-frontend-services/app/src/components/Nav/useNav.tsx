@@ -4,7 +4,6 @@ import { URLS } from '../../config';
 
 export default function useNav() {
   const location = useLocation();
-  console.log(location);
 
   const links = Object.keys(URLS).map((url) => {
     const isActive = location.pathname === URLS[url];
@@ -20,9 +19,5 @@ export default function useNav() {
     };
   });
 
-  console.log(links);
-
-  return {
-    links,
-  };
+  return links;
 }

@@ -28,6 +28,8 @@ export default defineConfig({
     'process.env': {
       REACT_APP_GET_ADDRESS_API_KEY: 'byJL3HWLC0a39cnl5OKNBA31556',
       REACT_APP_ENV: 'qa',
+      REACT_APP_HOME_URL: 'http://localhost:8001/',
+      REACT_APP_LOGIN_URL: 'http://localhost:8001/login',
     },
     exports: '{}',
     global: '{}',
