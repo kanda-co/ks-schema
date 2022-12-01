@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { Field, RowFields } from "~/index";
+import { Field, RowFields } from "@kanda-libs/ks-component-ts";
 
 export interface Props {
   id: string;

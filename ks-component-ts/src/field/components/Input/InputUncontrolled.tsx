@@ -3,6 +3,7 @@ import { Icon, SkeletonLoader } from "@kanda-libs/ks-design-library";
 import AutosizeInput from "react-input-autosize";
 import { DefaultFormFieldProps } from "~/field/types";
 import useInputProps from "./useInputProps";
+import { stripUnneededProps } from "~/field/helpers";
 
 export interface InputUncontrolledProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "placeholder"> {
@@ -38,9 +39,13 @@ const InputUncontrolled: FunctionComponent<
   const inputProps = autoSize
     ? {
         inputClassName: classNames.input,
+        inputRef: forwardRef as
+          | ((instance: HTMLInputElement | null) => void)
+          | undefined,
       }
     : {
         className: classNames.input,
+        ref: forwardRef,
       };
 
   return (
@@ -57,9 +62,8 @@ const InputUncontrolled: FunctionComponent<
               </div>
             )}
             <InputTag
-              ref={forwardRef}
               {...inputProps}
-              {...restProps}
+              {...stripUnneededProps(restProps)}
               placeholder={restProps.placeholder as string}
             />
           </>

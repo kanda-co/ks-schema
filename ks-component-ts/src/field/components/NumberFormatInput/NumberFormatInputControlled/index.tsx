@@ -27,9 +27,8 @@ const NumberFormatInputControlled: FunctionComponent<NumberFormatInputControlled
         control={control}
         rules={validation ? getValidationConditions(validation) : rules}
         {...controlProps}
-        render={({ field: { onChange, onBlur, value, ref } }) => (
+        render={({ field: { onChange, onBlur, value } }) => (
           <NumberFormat
-            getInputRef={ref}
             customInput={customInput}
             name={name}
             value={restProps.mask ? value : valueFormatter(value)}
