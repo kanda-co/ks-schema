@@ -1,6 +1,6 @@
 import React, { type FunctionComponent } from "react";
 import FieldFormController, {
-  FieldFormControllerProps,
+  type FieldFormControllerProps,
 } from "~/field/components/FieldFormController";
 import type {
   DefaultFormFieldProps,
@@ -16,7 +16,8 @@ export default function withFieldFormController<T>(
   Component: InputFunctionComponent<T> | FunctionComponent<T>,
   formatName: null | ((name: string) => string) = null,
   passRegister = false,
-  control = false
+  control = false,
+  valueAsNumber = false
 ) {
   const formatNameMethod = formatName || ((name) => name);
 
@@ -27,6 +28,7 @@ export default function withFieldFormController<T>(
       register={!passRegister}
       passRegister={passRegister}
       control={control}
+      valueAsNumber={valueAsNumber}
     >
       {/*
         The ref is taken out of fieldProps because ref cannot be passed

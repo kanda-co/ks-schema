@@ -33,11 +33,7 @@ export type FieldFormControllerChildrenArgs<T = any> = {
 
 export type FieldFormControllerEvent = (e: FormEvent<HTMLInputElement>) => void;
 
-export interface FieldFormControllerOptions {
-  onBlur?: FieldFormControllerEvent;
-  onChange?: FieldFormControllerEvent;
-  shouldUnregister?: boolean;
-}
+export type FieldFormControllerOptions = RegisterOptions;
 
 export interface ExtendedRegisterReturn extends UseFormRegisterReturn {
   onBlur: FieldFormControllerEvent;
