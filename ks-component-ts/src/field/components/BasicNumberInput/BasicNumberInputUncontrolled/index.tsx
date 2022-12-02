@@ -22,7 +22,7 @@ const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontroll
     suffix = "",
     ...props
   }) {
-    const { currentValue, focused, setFocused, formattedValue, onChange } =
+    const { currentValue, focused, setFocused, displayValue, onChange } =
       useBasicInputUncontrolledProps({
         name,
         prefix,
@@ -36,9 +36,10 @@ const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontroll
       <>
         {!focused && (
           <WithFieldInfo
+            readOnly
             {...props}
             type="string"
-            value={formattedValue}
+            defaultValue={displayValue}
             onFocus={() => {
               setFocused(true);
             }}
@@ -50,9 +51,7 @@ const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontroll
             autoFocus
             type="number"
             name={name}
-            valueOverride={
-              currentValue ? formatForDisplay(currentValue) : undefined
-            }
+            valueOverride={currentValue ? formatForDisplay(currentValue) : ""}
             onChange={onChange}
             onBlur={() => {
               if (props.onBlur) {

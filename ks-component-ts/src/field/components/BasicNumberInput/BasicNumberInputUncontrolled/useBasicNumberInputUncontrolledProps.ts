@@ -21,7 +21,7 @@ export interface BasicInputUncontrolledPropsHook {
   currentValue: number;
   focused: boolean;
   setFocused: Dispatch<SetStateAction<boolean>>;
-  formattedValue: string;
+  displayValue: string;
   // TODO: Proper types
   onChange: (...args: unknown[]) => void;
 }
@@ -40,19 +40,14 @@ export default function useBasicInputUncontrolledProps({
     name: [name as string],
   });
 
-  const getDisplayValue = useCallback(
-    (nextValue: string) =>
+  const displayValue = useMemo(
+    () =>
       renderDisplayValue({
-        value: nextValue,
+        value: currentValue,
         prefix,
         suffix,
         formatForDisplay,
       }),
-    [formatForDisplay]
-  );
-
-  const formattedValue = useMemo(
-    () => getDisplayValue(currentValue),
     [currentValue]
   );
 
@@ -68,7 +63,7 @@ export default function useBasicInputUncontrolledProps({
     currentValue,
     focused,
     setFocused,
-    formattedValue,
+    displayValue,
     onChange,
   };
 }
