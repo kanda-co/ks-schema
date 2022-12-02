@@ -9,10 +9,21 @@ import { type InputProps, WithFieldInfo } from "~/field/components/Input";
 import NumberInput from "../NumberInput";
 import { formatValue } from "./helpers";
 
-export type BasicNumberInputUncontrolledProps = InputProps;
+export interface BasicNumberInputUncontrolledProps extends InputProps {
+  formatForDisplay?: (value: number) => number;
+  formatForValue?: (value: number) => number;
+}
 
 const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontrolledProps> =
-  function ({ onChange: initialOnChange, name, value, children, ...props }) {
+  function ({
+    onChange: initialOnChange = () => {},
+    name,
+    value,
+    children,
+    formatForValue = (value) => value,
+    formatForDisplay = (value) => value,
+    ...props
+  }) {
     const { setValue } = useFormContext();
     const [focused, setFocused] = useState(false);
     const [currentValue] = useWatch({
@@ -20,14 +31,14 @@ const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontroll
     });
 
     const formattedValue = useMemo(
-      () => formatValue(currentValue),
+      () => formatValue(currentValue, formatForDisplay),
       [currentValue]
     );
 
     const onChange = useCallback(
       (e) => {
-        if (initialOnChange) initialOnChange(e);
-        return parseFloat(e.target.value);
+        initialOnChange(e);
+        setValue(name as string, formatForValue(parseFloat(e.target.value)));
       },
       [currentValue]
     );
@@ -50,7 +61,11 @@ const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontroll
             autoFocus
             type="number"
             name={name}
-            value={value}
+            valueOverride={
+              currentValue
+                ? formatForDisplay(currentValue).toString()
+                : undefined
+            }
             onChange={onChange}
             onBlur={() => {
               if (props.onBlur) {
