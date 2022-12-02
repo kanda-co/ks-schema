@@ -17,7 +17,7 @@ import type { StringIndexedObject } from "~/types";
 import type {
   ErrorMessage,
   ValidationConditions,
-  ValidationErrors,
+  ValidationErrors
 } from "~/field/types";
 
 export type FieldFormControllerProps<T> = {
@@ -29,7 +29,6 @@ export type FieldFormControllerProps<T> = {
   validationConditions?: ValidationConditions;
   validationErrors?: ValidationErrors;
   children: (args: FieldFormControllerChildrenArgs<T>) => JSX.Element;
-  valueAsNumber?: boolean;
 } & FieldFormControllerCommonArgs &
   T;
 
@@ -49,7 +48,6 @@ const FieldFormController: FieldFormControllerComponent = function ({
   validationConditions,
   validationErrors,
   children,
-  valueAsNumber = false,
   ...restProps
 }) {
   // TODO: Change form context to allow isLoading. Requires:
@@ -75,10 +73,7 @@ const FieldFormController: FieldFormControllerComponent = function ({
       fieldName: string,
       options: FieldFormControllerOptions
     ): ExtendedRegisterReturn => {
-      const registerProps = formRegister(fieldName, {
-        ...validationConditions,
-        valueAsNumber,
-      });
+      const registerProps = formRegister(fieldName, validationConditions);
 
       /**
        * extends on blur function
