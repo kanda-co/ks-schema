@@ -8,7 +8,9 @@ export default defineConfig({
   plugins: [
     react(),
     tsconfigPaths(),
-    liveReload("./node_modules/@kanda-libs/ks-component-ts/dist/index.esm.js"),
+    liveReload(
+      "./node_modules/@kanda-libs/ks-component-ts/dist/(index.esm.js | index.d.ts)"
+    ),
   ],
   server: {
     fs: {
