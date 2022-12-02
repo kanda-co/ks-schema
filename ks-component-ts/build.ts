@@ -33,7 +33,12 @@ const shared = {
       else console.log("watch build succeeded");
       // @ts-ignore
       exec("yalc publish", (e, stdout) => {
-        console.log(`Yalc publish: ${stdout}`);
+        console.log("New version of package published to yalc");
+        // @ts-ignore
+        exec("cd ./app && yalc update", (e, stdout) => {
+          console.log(stdout);
+          console.log("App now using new version of package from yalc");
+        });
       });
     },
   },
