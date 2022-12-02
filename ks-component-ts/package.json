@@ -19,6 +19,7 @@
     "prebuild": "yarn clean",
     "build": "yarn build:style && yarn build:esbuild && yalc publish",
     "watch": "yarn build:style && DEV_WATCH=true yarn build:esbuild",
+    "app:dev": "cd ./app && yalc update && yarn dev --force && cd ..",
     "build:types": "./node_modules/.bin/dts-bundle-generator --external-inlines=./generated -o dist/index.d.ts src/index.ts",
     "build:esbuild": "yarn clean && yarn build:style && node build.ts && yarn build:types",
     "build:style": "npx tailwindcss --postcss ./tailwind.postcss.config.js -i ./src/styles/tailwind.css -c ./tailwind.config.js -o ./src/styles/library.css",
