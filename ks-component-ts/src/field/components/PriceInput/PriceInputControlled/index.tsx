@@ -28,7 +28,7 @@ const PriceInputControlled: FunctionComponent<
     <NumberFormatInputControlled
       {...props}
       thousandSeparator
-      formatValue={(value) => formatValue(value as number, currencyDecimal)}
+      formatValue={(value) => formatValue(value as number, currencyDecimal) as number}
       placeholder={placeholder || `${symbol}0.00`}
       prefix={symbol}
       fixedDecimalScale={fixedDecimalScale}
