@@ -7,11 +7,13 @@ import React, {
 import { useFormContext, useWatch } from "react-hook-form";
 import { type InputProps, WithFieldInfo } from "~/field/components/Input";
 import NumberInput from "../NumberInput";
-import { formatValue } from "./helpers";
+import { renderDisplayValue } from "./helpers";
 
 export interface BasicNumberInputUncontrolledProps extends InputProps {
   formatForDisplay?: (value: number) => number;
   formatForValue?: (value: number) => number;
+  prefix?: string;
+  suffix?: string;
 }
 
 const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontrolledProps> =
@@ -22,6 +24,8 @@ const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontroll
     children,
     formatForValue = (value) => value,
     formatForDisplay = (value) => value,
+    prefix = "",
+    suffix = "",
     ...props
   }) {
     const { setValue } = useFormContext();
@@ -30,8 +34,19 @@ const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontroll
       name: [name as string],
     });
 
+    const getDisplayValue = useCallback(
+      (nextValue: string) =>
+        renderDisplayValue({
+          value: nextValue,
+          prefix,
+          suffix,
+          formatForDisplay,
+        }),
+      [formatForDisplay]
+    );
+
     const formattedValue = useMemo(
-      () => formatValue(currentValue, formatForDisplay),
+      () => getDisplayValue(currentValue),
       [currentValue]
     );
 
@@ -62,9 +77,7 @@ const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontroll
             type="number"
             name={name}
             valueOverride={
-              currentValue
-                ? formatForDisplay(currentValue).toString()
-                : undefined
+              currentValue ? formatForDisplay(currentValue) : undefined
             }
             onChange={onChange}
             onBlur={() => {

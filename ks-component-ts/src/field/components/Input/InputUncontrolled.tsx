@@ -13,7 +13,7 @@ export interface InputUncontrolledProps
   italic?: string;
   placeholder?: string | JSX.Element;
   autoSize?: boolean;
-  valueOverride?: string;
+  valueOverride?: string | number;
 }
 
 const InputUncontrolled: FunctionComponent<

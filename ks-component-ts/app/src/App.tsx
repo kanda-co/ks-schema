@@ -5,8 +5,8 @@ import { useWatch } from "react-hook-form";
 function App() {
   const form = useForm();
 
-  const [quantity] = useWatch({
-    name: ["quantity"],
+  const [quantity, price] = useWatch({
+    name: ["quantity", "price"],
     control: form.control,
   });
 
@@ -21,9 +21,10 @@ function App() {
           formatForDisplay={(value: number) => value / 100}
           formatForValue={(value: number) => value * 100}
         />
+        <Field.NumberInput type="price" name="price" label="Price" />
       </Form>
       <div>
-        <pre>{JSON.stringify(quantity)}</pre>
+        <pre>{JSON.stringify({ quantity, price })}</pre>
       </div>
     </div>
   );
