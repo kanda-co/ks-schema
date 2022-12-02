@@ -4384,6 +4384,8 @@ components:
         - user_agent
         - x_forwarded_for
         - url
+        - provider
+        - sid
       properties:
         name:
           type: string
@@ -4452,16 +4454,49 @@ components:
           type: string
           title: auth provider of request
           enum:
+            - public
             - system
             - firebase
             - google
             - facebook
+          default: public
         oid:
           type: string
           title: oid of request
         cid:
           type: string
           title: cid of request
+        did:
+          type: string
+          title: device id, if omitted user agent or request id would be used.
+        sid:
+          type: string
+          title: >
+            session id, can use timestamp or propagated via kanda-session-id header.
+        props:
+          type: object
+          title: event props, or the resource payload
+          additionalProperties: true
+        api:
+          type: object
+          title: api event
+          $ref: "#/components/schemas/ApiEvent"
+        purchase:
+          type: object
+          title: purchase event
+          $ref: "#/components/schemas/PurchaseEvent"
+        tracked_at:
+          type: string
+          format: date-time
+          title: tracked at
+
+    ApiEvent:
+      type: object
+      title: api event
+      required:
+        - method
+        - resource
+      properties:
         method:
           type: string
           title: method of request
@@ -4488,14 +4523,6 @@ components:
         error:
           type: string
           title: error of request
-        props:
-          type: object
-          title: event props
-          additionalProperties: true
-        purchase:
-          type: object
-          title: purchase event
-          $ref: "#/components/schemas/PurchaseEvent"
 
     PurchaseEvent:
       type: object
