@@ -1,10 +1,15 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tsconfigPaths from "vite-tsconfig-paths";
+import liveReload from "vite-plugin-live-reload";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), tsconfigPaths()],
+  plugins: [
+    react(),
+    tsconfigPaths(),
+    liveReload("./node_modules/@kanda-libs/ks-component-ts/dist/index.esm.js"),
+  ],
   server: {
     fs: {
       allow: [".."],
@@ -12,7 +17,7 @@ export default defineConfig({
     port: 8000,
   },
   optimizeDeps: {
-    include: ["@kanda-libs/ks-component-ts", "react-cropper", "cropperjs"],
+    include: ["cropperjs"],
   },
   build: {
     commonjsOptions: {
