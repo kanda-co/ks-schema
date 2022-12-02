@@ -3,6 +3,7 @@ const { dependencies } = require("./package.json");
 const svgrPlugin = require("esbuild-plugin-svgr");
 const copyStaticFiles = require("esbuild-copy-static-files");
 const { nodeExternalsPlugin } = require("esbuild-node-externals");
+const { exec } = require("child_process");
 
 const entryFile = "./src/index.ts";
 const shared = {
@@ -25,6 +26,17 @@ const shared = {
   logLevel: "info",
   minify: true,
   sourcemap: true,
+  watch: process.env.DEV_WATCH === "true" && {
+    // @ts-ignore
+    onRebuild(error) {
+      if (error) console.error("watch build failed:", error);
+      else console.log("watch build succeeded");
+      // @ts-ignore
+      exec("yalc publish", (e, stdout) => {
+        console.log(`Yalc publish: ${stdout}`);
+      });
+    },
+  },
 };
 
 build({
