@@ -6,7 +6,6 @@ import {
   type StringIndexedObject,
 } from "@kanda-libs/ks-component-ts";
 import { Button } from "@kanda-libs/ks-design-library";
-import Address from "./Address";
 
 function App() {
   const form = useForm();
