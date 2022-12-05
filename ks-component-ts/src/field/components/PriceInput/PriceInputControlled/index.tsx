@@ -1,4 +1,4 @@
-import React, { ComponentType, type FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import BasicNumberInput, {
   BasicNumberInputProps,
 } from "~/field/components/BasicNumberInput";
