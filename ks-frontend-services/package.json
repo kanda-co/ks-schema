@@ -7,6 +7,8 @@
     "generate-service-module": "./node_modules/.bin/ts-node ./src/service/generator/",
     "build:types": "tsc src/index.ts --declaration --emitDeclarationOnly --jsx react-jsx --esModuleInterop",
     "build": "yarn clean && yarn generate-service-module && yarn build:types && node ./build.ts",
+    "watch": "DEV_WATCH=true yarn build",
+    "app:dev": "cd ./app && yalc update && yarn dev --force && cd ..",
     "test:app": "yarn clean && yarn && yarn build && yalc publish && yarn --cwd ./app yalc:update && yarn --cwd ./app && yarn --cwd ./app dev --force"
   },
   "main": "dist/index.esm.js",

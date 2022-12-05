@@ -1,18 +1,22 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tsconfigPaths from 'vite-tsconfig-paths';
+import liveReload from 'vite-plugin-live-reload';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), tsconfigPaths()],
+  plugins: [
+    react(),
+    tsconfigPaths(),
+    liveReload(
+      './node_modules/@kanda-libs/ks-frontend-services/dist/index.esm.js',
+    ),
+  ],
   server: {
     fs: {
       allow: ['..'],
     },
     port: 8001,
-  },
-  optimizeDeps: {
-    include: ['@kanda-libs/ks-frontend-services'],
   },
   build: {
     commonjsOptions: {
