@@ -3,6 +3,18 @@ const { dependencies } = require("./package.json");
 const svgrPlugin = require("esbuild-plugin-svgr");
 const copyStaticFiles = require("esbuild-copy-static-files");
 const { nodeExternalsPlugin } = require("esbuild-node-externals");
+const { exec } = require("child_process");
+
+const handleYalcPublish = () => {
+  // @ts-ignore
+  exec("yalc publish", (e, stdout) => {
+    console.log("New version of package published to yalc");
+    // @ts-ignore
+    exec("cd ./app && yalc update", (e, stdout) => {
+      console.log("App now using new version of package from yalc");
+    });
+  });
+};
 
 const entryFile = "./src/index.ts";
 const shared = {
@@ -25,6 +37,15 @@ const shared = {
   logLevel: "info",
   minify: true,
   sourcemap: true,
+  watch: process.env.DEV_WATCH === "true" && {
+    // @ts-ignore
+    onRebuild(error) {
+      if (error) console.error("watch build failed:", error);
+      else console.log("watch build succeeded");
+      // @ts-ignore
+      handleYalcPublish();
+    },
+  },
 };
 
 build({
@@ -32,4 +53,4 @@ build({
   format: "esm",
   outfile: "./dist/index.esm.js",
   target: ["esnext", "node12.22.0"],
-});
+}).finally(handleYalcPublish);

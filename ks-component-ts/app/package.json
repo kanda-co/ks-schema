@@ -9,7 +9,7 @@
     "remove:link": "rm -rf ~/.config/yarn/link/*"
   },
   "dependencies": {
-    "@kanda-libs/ks-component-ts": "file:.yalc/@kanda-libs/ks-component-ts",
+    "@kanda-libs/ks-component-ts": "link:.yalc/@kanda-libs/ks-component-ts",
     "cordova": "^11.0.0",
     "firebase": "^9.9.3",
     "lodash.get": "^4.4.2",
@@ -29,6 +29,7 @@
     "@types/react-dom": "^17.0.11",
     "@vitejs/plugin-react": "^1.3.0",
     "typescript": "^4.6.3",
-    "vite": "^2.9.5"
+    "vite": "^2.9.5",
+    "vite-plugin-live-reload": "^3.0.1"
   }
 }
