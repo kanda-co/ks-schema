@@ -75,10 +75,9 @@ const interceptedFetch = (
   ...args
 ) => {
   const token = FirebaseAuthService?.auth?.currentUser?.accessToken;
-  console.log(FirebaseAuthService?.auth);
 
   const trackingBody = formatTrackingBody(url, options);
-  console.log(trackingBody);
+  console.log({ trackingBody });
 
   return originalFetch()
     .apply(window, [url, buildRequestHeaders(options, token), ...args])
