@@ -1,4 +1,6 @@
 import { useCallback, useState } from 'react';
+// import { useAmplitude } from '@kanda-libs/ks-design-library';
+
 import {
   Service,
   ServiceMethod,
@@ -30,6 +32,9 @@ export default function useSubmit<Value, Params, Body>(
   const [data, setData] = useState<StringIndexedObject>();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // const { user } = useCurrentUser();
+  // const { amplitude } = useAmplitude();
+
   /**
    * Calls the method and handles loading / error states
    */
@@ -40,9 +45,7 @@ export default function useSubmit<Value, Params, Body>(
     }: Partial<ServiceParams<Params, Body>>): Promise<
       ServiceMethodReturnParams<Value>
     > => {
-      console.log(service);
-      console.log(body);
-      console.log(params);
+      // console.log(user);
 
       if (!service || !service.method) {
         const errorLabel = 'No such method exists';

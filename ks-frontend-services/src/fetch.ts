@@ -1,4 +1,4 @@
-import FirebaseAuthService from './auth/FirebaseAuthService';
+import { FirebaseAuthService } from './auth';
 import { AuthenticationHeaders, StringIndexedObject } from './types';
 
 interface Request extends StringIndexedObject {
@@ -34,6 +34,32 @@ interface FetchArgs {
   init?: RequestInit;
 }
 
+const UUID_REGEX =
+  /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
+
+const formatTrackingBody = (inputUrl: string, options: StringIndexedObject) => {
+  const url = inputUrl.replace(/https?:\/\/hub\-qa?.kanda.co.uk\//gm, '');
+  const parts = url.split('/');
+  const containsUUID = parts.some((part) => UUID_REGEX.test(part));
+
+  const resource = parts?.[1] || '*';
+  const resourceId = containsUUID ? parts?.[2] || '*' : '*';
+  const action = containsUUID ? parts?.[3] || '*' : parts?.[2] || '*';
+
+  const { method, body } = options;
+
+  return {
+    url: `/${url}`,
+    api: {
+      method,
+      resource,
+      resource_id: resourceId,
+      action,
+    },
+    body,
+  };
+};
+
 export const originalFetch = () => fetch.bind(window);
 
 /**
@@ -49,10 +75,10 @@ const interceptedFetch = (
   ...args
 ) => {
   const token = FirebaseAuthService?.auth?.currentUser?.accessToken;
+  console.log(FirebaseAuthService?.auth);
 
-  console.log({ url });
-  console.log({ options });
-  console.log({ args });
+  const trackingBody = formatTrackingBody(url, options);
+  console.log(trackingBody);
 
   return originalFetch()
     .apply(window, [url, buildRequestHeaders(options, token), ...args])

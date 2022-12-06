@@ -1,4 +1,4 @@
-import { Button } from '@kanda-libs/ks-design-library';
+import { Button, LogOnMount } from '@kanda-libs/ks-design-library';
 import { Form, Field } from '@kanda-libs/ks-component-ts';
 
 import useSignup from './useSignup';
@@ -45,6 +45,12 @@ const SignUp = () => {
           </div>
         </Form>
       </div>
+      <LogOnMount
+        eventType="page-view"
+        eventProperties={{
+          path: '/sign-up',
+        }}
+      />
     </div>
   );
 };

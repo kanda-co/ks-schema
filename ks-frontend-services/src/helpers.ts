@@ -18,5 +18,5 @@ export const fetchRequestAdapter = (baseURL: string, requireAuth = true) => {
  * Build request functions for operations using baseUrl
  * @param baseURL
  */
-export const requestFunctions = (baseURL) =>
+export const requestFunctions = (baseURL: string) =>
   operations.requestFunctionsBuilder(fetchRequestAdapter(baseURL));
