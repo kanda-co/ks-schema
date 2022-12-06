@@ -4380,12 +4380,7 @@ components:
       type: object
       required:
         - name
-        - domain
-        - user_agent
-        - x_forwarded_for
-        - url
-        - provider
-        - sid
+        - event_options
       properties:
         name:
           type: string
@@ -4425,70 +4420,112 @@ components:
             - "onboarding-verified"
             - "onboarding-rejected"
             - "onboarding-declined"
-        domain:
-          type: string
-          title: domain name
-          description: Domain name of the site.
-        user_agent:
-          type: string
-          title: user agent header
-          description: >
-            The raw value of User-Agent is used to calculate the user_id 
-            which identifies a unique visitor.
-        x_forwarded_for:
-          type: string
-          title: x forwarded for header
-          description: Used to get the IP address of the client.
-        url:
-          type: string
-          title: url where the event happens
-          description: >
-            URL of the page where the event was triggered.
-            If the URL contains UTM parameters, they will be extracted and stored.
-            When using the script, this is set to window.location.href.
-        referrer:
-          type: string
-          title: referrer where the event happens
-          description: Referrer for this event.
-        provider:
-          type: string
-          title: auth provider of request
-          enum:
-            - public
-            - system
-            - firebase
-            - google
-            - facebook
-          default: public
-        oid:
-          type: string
-          title: oid of request
-        cid:
-          type: string
-          title: cid of request
-        did:
-          type: string
-          title: device id, if omitted user agent or request id would be used.
-        sid:
-          type: string
-          title: >
-            session id, can use timestamp or propagated via kanda-session-id header.
-        props:
+        event_options:
           type: object
-          title: event props, or the resource payload
-          additionalProperties: true
-        api:
+          title: event options
+          $ref: "#/components/schemas/EventOptions"
+        event_props:
           type: object
-          title: api event
-          $ref: "#/components/schemas/ApiEvent"
+          title: event props
+          $ref: "#/components/schemas/EventProps"
         purchase:
           type: object
           title: purchase event
           $ref: "#/components/schemas/PurchaseEvent"
-        tracked_at:
+
+    EventOptions:
+      type: object
+      title: event options
+      required:
+        - device_id
+        - session_id
+        - ip
+        - time
+      properties:
+        user_id:
           type: string
+          title: user id
+        device_id:
+          type: string
+          title: device id
+        session_id:
+          type: integer
+          title: session id
+        ip:
+          type: string
+          title: ip address associated with the event
+        time:
+          type: string
+          title: event time tracked at
           format: date-time
-          title: tracked at
+
+    EventProps:
+      type: object
+      title: event props
+      properties:
+        domain:
+          type: string
+          title: event domain
+        url:
+          type: string
+          title: event url
+        referrer:
+          type: string
+          title: event referrer
+        request_user:
+          type: object
+          title: request user
+          $ref: "#/components/schemas/UserEvent"
+        api:
+          type: object
+          title: api event
+          $ref: "#/components/schemas/ApiEvent"
+        info:
+          type: object
+          title: event info props, in a map object
+          additionalProperties: true
+
+    UserEvent:
+      type: object
+      title: user event
+      required:
+        - id
+        - verified
+        - name
+        - email
+        - provider
+      properties:
+        id:
+          type: string
+          title: oid of event user
+        cid:
+          type: string
+          title: cid of event user
+        verified:
+          type: boolean
+          title: event user is verified
+        name:
+          type: string
+          title: event user name
+        email:
+          type: string
+          title: event user email
+          format: email
+        mobile:
+          type: string
+          title: event user mobile
+        role:
+          type: string
+          title: event user role
+        provider:
+          type: string
+          title: event user provider
+          enum:
+            - system
+            - firebase
+            - google
+            - facebook
+          default: system
 
     ApiEvent:
       type: object
@@ -4496,6 +4533,8 @@ components:
       required:
         - method
         - resource
+        - resource_id
+        - action
       properties:
         method:
           type: string
@@ -4514,6 +4553,10 @@ components:
         action:
           type: string
           title: action of request
+        resource_data:
+          type: object
+          title: resource data
+          additionalProperties: true
         element:
           type: string
           title: element label of request
