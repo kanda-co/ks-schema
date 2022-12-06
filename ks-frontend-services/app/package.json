@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@kanda-libs/ks-component-ts": "0.2.36",
-    "@kanda-libs/ks-design-library": "0.2.10",
+    "@kanda-libs/ks-design-library": "0.2.11-qa.3",
     "@kanda-libs/ks-frontend-services": "link:.yalc/@kanda-libs/ks-frontend-services",
     "@kanda-libs/ks-tailwind-config": "0.2.0",
     "lodash.get": "^4.4.2",

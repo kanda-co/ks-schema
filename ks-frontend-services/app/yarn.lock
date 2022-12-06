@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@amplitude/analytics-browser@^1.6.4":
-  version "1.6.4"
-  resolved "https://registry.yarnpkg.com/@amplitude/analytics-browser/-/analytics-browser-1.6.4.tgz#7c705281ec41091b58155cfa387cdf938a8393a8"
-  integrity sha512-Wx6rVmWLn8Y7GZNYIKlEELygtIOcyZgRpd1nwRfxqsjiQbwsB9nlSNQbsQaunzuKxiJEFSDszMuxj2HNjgZjcg==
+"@amplitude/analytics-browser@^1.6.4", "@amplitude/analytics-browser@^1.6.6":
+  version "1.6.6"
+  resolved "https://registry.yarnpkg.com/@amplitude/analytics-browser/-/analytics-browser-1.6.6.tgz#33d92d60aa6e7269bfdbbfea66b2dd1b7ad0b049"
+  integrity sha512-tR7JH5TPNt9h1PMOhnMP+aJdmty81ZaFg9UhIXHf86Crdac2GoYLXnzq3vMNK2Ad809jcGKssXJnVFkfXGxgIg==
   dependencies:
     "@amplitude/analytics-client-common" "^0.5.0"
     "@amplitude/analytics-core" "^0.11.0"
@@ -783,10 +783,10 @@
     rollup-plugin-dotenv "^0.4.1"
     use-debounce "^8.0.3"
 
-"@kanda-libs/ks-design-library@0.2.10":
-  version "0.2.10"
-  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-design-library/-/ks-design-library-0.2.10.tgz#45c118fce8f7a3b763c00e2b0bc4852eacb2da3e"
-  integrity sha512-gJw6W4429NlHh/R/+deWL0LGbGeNuViMHoC/EaDnt+TXppxQAKTRlIC6xCYWHU0SOEmWHHH0QvMR6vuQPov2KA==
+"@kanda-libs/ks-design-library@0.2.11-qa.3":
+  version "0.2.11-qa.3"
+  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-design-library/-/ks-design-library-0.2.11-qa.3.tgz#c3bbc7650a74eb3c7ece15c0038daa6db8cf9345"
+  integrity sha512-Ayf/bWol7VxQfuq5geRAXch4lNtbV9JmrnWrN9ZDRlsnHVO5m+ukAJuAIHRLzlxOBvDv1NdacfAfEofVXI5Wlg==
   dependencies:
     "@amplitude/analytics-browser" "^1.6.4"
     file-saver "^2.0.5"
@@ -946,9 +946,9 @@
   integrity sha512-MqTGEo5bj5t157U6fA/BiDynNkn0YknVdh48CMPkTSpFTVmvao5UQmm7uEF6xBEo7qIMAlY/JSleYaE6VOdpaA==
 
 "@types/node@>=12.12.47", "@types/node@>=13.7.0":
-  version "18.11.10"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.10.tgz#4c64759f3c2343b7e6c4b9caf761c7a3a05cee34"
-  integrity sha512-juG3RWMBOqcOuXC643OAdSA525V44cVgGV6dUDuiFtss+8Fk5x1hI93Rsld43VeJVIeqlP9I7Fn9/qaVqoEAuQ==
+  version "18.11.11"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.11.tgz#1d455ac0211549a8409d3cdb371cd55cc971e8dc"
+  integrity sha512-KJ021B1nlQUBLopzZmPBVuGU9un7WJd/W4ya7Ih02B4Uwky5Nja0yGYav2EfYIk0RR2Q9oVhf60S2XR1BCWJ2g==
 
 "@types/prop-types@*":
   version "15.7.5"

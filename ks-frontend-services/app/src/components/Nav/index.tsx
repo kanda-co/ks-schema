@@ -8,7 +8,9 @@ const Nav: FunctionComponent = function () {
   return (
     <div className="flex flex-row mb-4">
       {links.map(({ name, Component, linkProps }) => (
-        <Component {...linkProps}>{name}</Component>
+        <Component {...linkProps} key={name}>
+          {name}
+        </Component>
       ))}
     </div>
   );

@@ -1,5 +1,4 @@
 import { useCallback, useState } from 'react';
-// import { useAmplitude } from '@kanda-libs/ks-design-library';
 
 import {
   Service,
@@ -11,6 +10,8 @@ import {
   StringIndexedObject,
 } from '../types';
 import { handleResponse, Response } from '../handlers';
+
+import { init } from './helpers';
 
 export interface Hook<Value, Params, Body> {
   submit: ServiceSubmit<Value, Params, Body>;
@@ -31,9 +32,6 @@ export default function useSubmit<Value, Params, Body>(
   const [error, setError] = useState<string>();
   const [data, setData] = useState<StringIndexedObject>();
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  // const { user } = useCurrentUser();
-  // const { amplitude } = useAmplitude();
 
   /**
    * Calls the method and handles loading / error states
@@ -89,6 +87,8 @@ export default function useSubmit<Value, Params, Body>(
     },
     [service?.method],
   );
+
+  init();
 
   return {
     submit: submit as unknown as ServiceSubmit<Value, Params, Body>,
