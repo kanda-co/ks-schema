@@ -4390,7 +4390,7 @@ components:
             Can specify pageview which is a special type of event.
             All other names will be treated as custom events.
           enum:
-            - "pageview"
+            - "page-view"
             - "signup-attempted"
             - "signup-succeeded"
             - "signup-failed"
@@ -4469,6 +4469,9 @@ components:
         url:
           type: string
           title: event url
+        path:
+          type: string
+          title: event path
         referrer:
           type: string
           title: event referrer
