@@ -1,4 +1,4 @@
-import { FirebaseAuthService } from './auth';
+import FirebaseAuthService from './auth/FirebaseAuthService';
 import { AuthenticationHeaders, StringIndexedObject } from './types';
 
 interface Request extends StringIndexedObject {
