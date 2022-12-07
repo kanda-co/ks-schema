@@ -9,11 +9,10 @@
     "allowSyntheticDefaultImports": true,
     "types": [
       "node"
-    ]
+    ],
+    "resolveJsonModule": true
   },
   "ts-node": {
-    "compilerOptions": {
-      "module": "commonjs"
-    }
+    "esm": true
   }
 }

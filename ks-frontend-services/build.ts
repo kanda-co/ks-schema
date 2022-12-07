@@ -1,7 +1,9 @@
-const { build } = require('esbuild');
-const { nodeExternalsPlugin } = require('esbuild-node-externals');
-const { dependencies } = require('./package.json');
-const { exec } = require('child_process');
+import { build } from 'esbuild';
+import { nodeExternalsPlugin } from 'esbuild-node-externals';
+import packageConfig from './package.json' assert { type: 'json' };
+import { exec } from 'child_process';
+import { StringIndexedObject } from '@kanda-libs/ks-design-library';
+console.log(packageConfig.dependencies);
 
 const handleYalcPublish = () => {
   // @ts-ignore
@@ -19,7 +21,7 @@ const shared = {
   bundle: true,
   entryPoints: [entryFile],
   // Treat all dependencies in package.json as externals to keep bundle size to a minimum
-  external: Object.keys(dependencies),
+  external: Object.keys(packageConfig.dependencies),
   plugins: [nodeExternalsPlugin()],
   logLevel: 'info',
   minify: true,
@@ -39,4 +41,4 @@ build({
   format: 'esm',
   outfile: './dist/index.esm.js',
   target: ['esnext', 'node12.22.0'],
-}).finally(handleYalcPublish);
+} as StringIndexedObject).finally(handleYalcPublish);

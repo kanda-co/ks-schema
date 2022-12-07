@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react';
+import { useAmplitude } from '@kanda-libs/ks-design-library';
 
 import {
   Service,
@@ -32,6 +33,8 @@ export default function useSubmit<Value, Params, Body>(
   const [error, setError] = useState<string>();
   const [data, setData] = useState<StringIndexedObject>();
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const { amplitude } = useAmplitude();
 
   /**
    * Calls the method and handles loading / error states
