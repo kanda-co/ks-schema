@@ -27,6 +27,7 @@ import './config';
 import { StringIndexedObject } from '../types';
 import { redirectTo } from './helpers';
 import { HOME_URL, LOGIN_URL } from './constants';
+import { reset } from '@amplitude/analytics-browser';
 
 interface AugmentedCurrentUser extends User {
   accessToken?: string;
@@ -230,6 +231,7 @@ class FirebaseAuthService {
    */
   logout = async (redirect = true) => {
     await signOut(this.auth);
+    reset();
     if (!redirect) return;
     redirectTo(LOGIN_URL);
   };
