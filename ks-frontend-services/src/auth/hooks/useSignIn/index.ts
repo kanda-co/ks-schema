@@ -5,6 +5,7 @@ import { track, flush } from '@amplitude/analytics-browser';
 import { SIGN_IN_METHODS } from './constants';
 
 import type { MutateHook } from '../../../hooks/useMutate';
+import { init } from '../../../hooks/helpers';
 import { APP_ENV } from '../../../config';
 
 type SignInType = keyof typeof SIGN_IN_METHODS;
@@ -78,6 +79,8 @@ export default function useSignIn(type: SignInType): MutateHook {
     },
     [type],
   );
+
+  init();
 
   return {
     mutate,

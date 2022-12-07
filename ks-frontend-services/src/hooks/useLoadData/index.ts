@@ -1,8 +1,11 @@
 import useSWRImmutable from 'swr/immutable';
-import type { Service } from '../../types';
-import { handleResponse } from '../../handlers';
+
 import { getKey } from './helpers';
 import type { LoadDataHookOptions } from './types';
+
+import { init } from '../helpers';
+import type { Service } from '../../types';
+import { handleResponse } from '../../handlers';
 
 const useLoadData = <Value, Params = undefined, Body = undefined>(
   service?: Service<Value, Params, Body> | false,
@@ -20,6 +23,8 @@ const useLoadData = <Value, Params = undefined, Body = undefined>(
   const { params = {} } = arg[0] ? arg[0] : {};
   const serviceKey = service !== false ? service?.key : null;
   const key = getKey(serviceKey, options, params);
+
+  init();
 
   return useSWRImmutable<Value>(key, fetcher, {
     ...options,

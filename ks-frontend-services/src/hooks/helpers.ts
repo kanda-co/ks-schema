@@ -11,6 +11,7 @@ export const init = (): void => {
   const storedIds = JSON.parse(
     window.localStorage.getItem(AMPLITUDE_STORAGE_KEY),
   );
+  if (!storedIds || !storedIds?.deviceId) return;
   const ids = {
     deviceId: undefined,
     sessionId: undefined,
