@@ -7,6 +7,7 @@ import {
 } from '../config';
 
 export const init = (): void => {
+  if (amplitude.getSessionId()) return;
   const storedIds = JSON.parse(
     window.localStorage.getItem(AMPLITUDE_STORAGE_KEY),
   );

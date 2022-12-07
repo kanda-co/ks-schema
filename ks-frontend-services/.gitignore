@@ -4,3 +4,4 @@ node_modules/
 yarn-error.log
 src/service/index.ts
 src/generated
+.DS_Store
