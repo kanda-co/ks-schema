@@ -1261,6 +1261,10 @@ video {
   margin-left: -1px;
 }
 
+.mr-7 {
+  margin-right: 28px;
+}
+
 .mr-6 {
   margin-right: 24px;
 }
@@ -4067,6 +4071,14 @@ input[type="checkbox"]:checked ~ .label-checked\:border-transparent {
 input[type="checkbox"]:checked ~ .label-checked\:bg-turquoise-300 {
   --tw-bg-opacity: 1;
   background-color: rgb(39 222 191 / var(--tw-bg-opacity));
+}
+
+.field-loading .field-loading\:hidden {
+  display: none;
+}
+
+.field-error .field-error\:hidden {
+  display: none;
 }
 
 :focus-within > .field-focus\:hidden {

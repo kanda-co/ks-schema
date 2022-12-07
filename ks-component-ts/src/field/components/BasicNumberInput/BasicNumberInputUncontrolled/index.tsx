@@ -1,6 +1,7 @@
 import React, { type FunctionComponent } from "react";
-import { type InputProps, WithFieldInfo } from "~/field/components/Input";
-import NumberInput from "../NumberInput";
+import { type InputProps } from "~/field/components/Input";
+import { stripUnneededProps } from "~/field/helpers";
+import NumberInput, { WithFieldInfo } from "../AutoSizeNumberInput";
 import useBasicInputUncontrolledProps from "./useBasicNumberInputUncontrolledProps";
 
 export interface BasicNumberInputUncontrolledProps extends InputProps {
@@ -20,6 +21,7 @@ const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontroll
     formatForDisplay = (value) => value,
     prefix = "",
     suffix = "",
+    placeholder,
     ...props
   }) {
     const { currentValue, focused, setFocused, displayValue, onChange } =
@@ -32,12 +34,15 @@ const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontroll
         initialOnChange,
       });
 
+    const focusedValue = currentValue ? formatForDisplay(currentValue) : "";
+    const formattedProps = stripUnneededProps(props);
+
     return (
       <>
         {!focused && (
           <WithFieldInfo
             readOnly
-            {...props}
+            {...formattedProps}
             type="string"
             defaultValue={displayValue}
             onFocus={() => {
@@ -47,11 +52,12 @@ const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontroll
         )}
         {focused && (
           <NumberInput
-            {...props}
+            {...stripUnneededProps(props)}
             autoFocus
             type="number"
             name={name}
-            valueOverride={currentValue ? formatForDisplay(currentValue) : ""}
+            value={focusedValue}
+            valueOverride={focusedValue}
             onChange={onChange}
             onBlur={() => {
               if (props.onBlur) {
@@ -59,6 +65,7 @@ const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontroll
               }
               setFocused(false);
             }}
+            placeholder={placeholder as string}
           />
         )}
       </>

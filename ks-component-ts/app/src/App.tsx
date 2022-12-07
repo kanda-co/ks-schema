@@ -2,6 +2,29 @@ import "@kanda-libs/ks-component-ts/dist/library.css";
 import { Form, useForm, Field } from "@kanda-libs/ks-component-ts";
 import { useWatch } from "react-hook-form";
 
+const Append = () => (
+  <span className="relative field-focus:hidden field-error:hidden field-loading:hidden">
+    <span className="py-1 -ml-4 inline-block text-style-f mt-px absolute">
+      x
+    </span>
+  </span>
+);
+
+export const QUANTITY_COMPONENT_PROPS = {
+  autoWidth: true,
+  label: "Qty",
+  placeholder: "1",
+  symbol: "",
+  fixedDecimalScale: false,
+  wrapperProps: {
+    className: "mr-7",
+  },
+  append: <Append />,
+  autoSize: true,
+  quantity: true,
+  type: "price",
+};
+
 function App() {
   const form = useForm();
 
@@ -21,7 +44,7 @@ function App() {
           formatForDisplay={(value: number) => value / 100}
           formatForValue={(value: number) => value * 100}
         />
-        <Field.NumberInput type="price" name="price" label="Price" />
+        <Field.NumberInput autoSize type="price" name="price" label="Price 2" />
       </Form>
       <div>
         <pre>{JSON.stringify({ quantity, price })}</pre>

@@ -12,6 +12,7 @@ const handleYalcPublish = () => {
     // @ts-ignore
     exec("cd ./app && yalc update", (e, stdout) => {
       console.log("App now using new version of package from yalc");
+      exec("yarn build:types");
     });
   });
 };

@@ -1,7 +1,10 @@
-import React, { type FunctionComponent } from "react";
-import BasicNumberInput, {
-  BasicNumberInputProps,
-} from "~/field/components/BasicNumberInput";
+import React, { type ComponentType, type FunctionComponent } from "react";
+import { NumberFormatValues } from "react-number-format";
+import NumberFormatInputControlled from "~/field/components/NumberFormatInput/NumberFormatInputControlled";
+import { type NumberFormatInputControlledProps } from "~/field/components/NumberFormatInput/types";
+import AutoSizeInputUncontrolled from "~/field/components/AutoSizeInput/AutoSizeInputUncontrolled";
+import InputUncontrolled from "~/field/components/Input/InputUncontrolled";
+import { formatValue, onValueChange } from "./helpers";
 
 export interface PriceInputControlledProps {
   symbol?: string;
@@ -12,7 +15,7 @@ export interface PriceInputControlledProps {
 }
 
 const PriceInputControlled: FunctionComponent<
-  BasicNumberInputProps & PriceInputControlledProps
+  NumberFormatInputControlledProps & PriceInputControlledProps
 > = function ({
   symbol = "£",
   currencyDecimal = 100,
@@ -22,18 +25,25 @@ const PriceInputControlled: FunctionComponent<
   ...props
 }) {
   return (
-    <BasicNumberInput
+    <NumberFormatInputControlled
       {...props}
-      formatForDisplay={(value: number) => value / 100}
-      formatForValue={(value: number) => value * 100}
+      thousandSeparator
+      formatValue={(value) => formatValue(value as number, currencyDecimal) as number}
       placeholder={placeholder || `${symbol}0.00`}
       prefix={symbol}
-      // TODO
-      // customInput={
-      //   (autoSize
-      //     ? AutoSizeInputUncontrolled
-      //     : InputUncontrolled) as ComponentType
-      // }
+      fixedDecimalScale={fixedDecimalScale}
+      decimalScale={2}
+      customInput={
+        (autoSize
+          ? AutoSizeInputUncontrolled
+          : InputUncontrolled) as ComponentType
+      }
+      onValueChange={(
+        event: NumberFormatValues,
+        onChange: (...event: any[]) => void
+      ) => {
+        return onValueChange(event, onChange, currencyDecimal);
+      }}
     />
   );
 };
