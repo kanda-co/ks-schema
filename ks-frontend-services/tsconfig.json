@@ -1,5 +1,6 @@
 {
   "include": ["./src/**.ts*"],
+  "exclude": ["../node_modules/*"],
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
@@ -7,13 +8,10 @@
     "baseUrl": "./src",
     "jsx": "react-jsx",
     "allowSyntheticDefaultImports": true,
-    "types": [
-      "node"
-    ]
+    "types": ["node"],
+    "resolveJsonModule": true
   },
   "ts-node": {
-    "compilerOptions": {
-      "module": "commonjs"
-    }
+    "esm": true
   }
 }

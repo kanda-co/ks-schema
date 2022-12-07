@@ -12,84 +12,6 @@ declare const authUser: {
         method: import("../generated/operations/putMe").PutMeRequestFunction;
     };
 };
-declare const infoHealth: {
-    infoHealth: {
-        key: string;
-        method: import("../generated/operations/infoHealth").InfoHealthRequestFunction;
-    };
-};
-declare const infoGhost: {
-    infoGhost: {
-        key: string;
-        method: import("../generated/operations/infoGhost").InfoGhostRequestFunction;
-    };
-};
-declare const infoCompany: {
-    infoCompany: {
-        key: string;
-        method: import("../generated/operations/infoCompany").InfoCompanyRequestFunction;
-    };
-};
-declare const infoCustomer: {
-    infoCustomer: {
-        key: string;
-        method: import("../generated/operations/infoCustomer").InfoCustomerRequestFunction;
-    };
-};
-declare const infoAuth: {
-    infoAuth: {
-        key: string;
-        method: import("../generated/operations/infoAuth").InfoAuthRequestFunction;
-    };
-    infoVerify: {
-        key: string;
-        method: import("../generated/operations/infoVerify").InfoVerifyRequestFunction;
-    };
-    infoPassword: {
-        key: string;
-        method: import("../generated/operations/infoPassword").InfoPasswordRequestFunction;
-    };
-    infoSession: {
-        key: string;
-        method: import("../generated/operations/infoSession").InfoSessionRequestFunction;
-    };
-    infoClaimAccount: {
-        key: string;
-        method: import("../generated/operations/infoClaimAccount").InfoClaimAccountRequestFunction;
-    };
-};
-declare const infoRedirect: {
-    infoLegacyRedirect: {
-        key: string;
-        method: import("../generated/operations/infoLegacyRedirect").InfoLegacyRedirectRequestFunction;
-    };
-};
-declare const infoIP: {
-    infoIP: {
-        key: string;
-        method: import("../generated/operations/infoIP").InfoIPRequestFunction;
-    };
-};
-declare const infoValidation: {
-    infoValidateEmail: {
-        key: string;
-        method: import("../generated/operations/infoValidateEmail").InfoValidateEmailRequestFunction;
-    };
-};
-declare const infoCache: {
-    infoGetCache: {
-        key: string;
-        method: import("../generated/operations/infoGetCache").InfoGetCacheRequestFunction;
-    };
-    infoPutCache: {
-        key: string;
-        method: import("../generated/operations/infoPutCache").InfoPutCacheRequestFunction;
-    };
-    infoDeleteCache: {
-        key: string;
-        method: import("../generated/operations/infoDeleteCache").InfoDeleteCacheRequestFunction;
-    };
-};
 declare const company: {
     getCompanies: {
         key: string;
@@ -130,6 +52,144 @@ declare const company: {
     declineCompany: {
         key: string;
         method: import("../generated/operations/declineCompany").DeclineCompanyRequestFunction;
+    };
+};
+declare const credit: {
+    getCredits: {
+        key: string;
+        method: import("../generated/operations/getCredits").GetCreditsRequestFunction;
+    };
+    postCredit: {
+        key: string;
+        method: import("../generated/operations/postCredit").PostCreditRequestFunction;
+    };
+    getCredit: {
+        key: string;
+        method: import("../generated/operations/getCredit").GetCreditRequestFunction;
+    };
+    putCredit: {
+        key: string;
+        method: import("../generated/operations/putCredit").PutCreditRequestFunction;
+    };
+    deleteCredit: {
+        key: string;
+        method: import("../generated/operations/deleteCredit").DeleteCreditRequestFunction;
+    };
+    quoteCredit: {
+        key: string;
+        method: import("../generated/operations/quoteCredit").QuoteCreditRequestFunction;
+    };
+    applyCredit: {
+        key: string;
+        method: import("../generated/operations/applyCredit").ApplyCreditRequestFunction;
+    };
+    checkCredit: {
+        key: string;
+        method: import("../generated/operations/checkCredit").CheckCreditRequestFunction;
+    };
+    signCredit: {
+        key: string;
+        method: import("../generated/operations/signCredit").SignCreditRequestFunction;
+    };
+};
+declare const document: {
+    getDocuments: {
+        key: string;
+        method: import("../generated/operations/getDocuments").GetDocumentsRequestFunction;
+    };
+    postDocument: {
+        key: string;
+        method: import("../generated/operations/postDocument").PostDocumentRequestFunction;
+    };
+    getDocument: {
+        key: string;
+        method: import("../generated/operations/getDocument").GetDocumentRequestFunction;
+    };
+    putDocument: {
+        key: string;
+        method: import("../generated/operations/putDocument").PutDocumentRequestFunction;
+    };
+    deleteDocument: {
+        key: string;
+        method: import("../generated/operations/deleteDocument").DeleteDocumentRequestFunction;
+    };
+};
+declare const infoAuth: {
+    infoAuth: {
+        key: string;
+        method: import("../generated/operations/infoAuth").InfoAuthRequestFunction;
+    };
+    infoVerify: {
+        key: string;
+        method: import("../generated/operations/infoVerify").InfoVerifyRequestFunction;
+    };
+    infoPassword: {
+        key: string;
+        method: import("../generated/operations/infoPassword").InfoPasswordRequestFunction;
+    };
+    infoSession: {
+        key: string;
+        method: import("../generated/operations/infoSession").InfoSessionRequestFunction;
+    };
+    infoClaimAccount: {
+        key: string;
+        method: import("../generated/operations/infoClaimAccount").InfoClaimAccountRequestFunction;
+    };
+};
+declare const infoCache: {
+    infoGetCache: {
+        key: string;
+        method: import("../generated/operations/infoGetCache").InfoGetCacheRequestFunction;
+    };
+    infoPutCache: {
+        key: string;
+        method: import("../generated/operations/infoPutCache").InfoPutCacheRequestFunction;
+    };
+    infoDeleteCache: {
+        key: string;
+        method: import("../generated/operations/infoDeleteCache").InfoDeleteCacheRequestFunction;
+    };
+};
+declare const infoCompany: {
+    infoCompany: {
+        key: string;
+        method: import("../generated/operations/infoCompany").InfoCompanyRequestFunction;
+    };
+};
+declare const infoCustomer: {
+    infoCustomer: {
+        key: string;
+        method: import("../generated/operations/infoCustomer").InfoCustomerRequestFunction;
+    };
+};
+declare const infoGhost: {
+    infoGhost: {
+        key: string;
+        method: import("../generated/operations/infoGhost").InfoGhostRequestFunction;
+    };
+};
+declare const infoHealth: {
+    infoHealth: {
+        key: string;
+        method: import("../generated/operations/infoHealth").InfoHealthRequestFunction;
+    };
+};
+declare const infoIP: {
+    infoIP: {
+        key: string;
+        method: import("../generated/operations/infoIP").InfoIPRequestFunction;
+    };
+};
+declare const infoRedirect: {
+    infoLegacyRedirect: {
+        key: string;
+        method: import("../generated/operations/infoLegacyRedirect").InfoLegacyRedirectRequestFunction;
+    };
+};
+declare const infoValidation: {
+    infoValidateEmail: {
+        key: string;
+        method: import("../generated/operations/infoValidateEmail").InfoValidateEmailRequestFunction;
     };
 };
 declare const job: {
@@ -240,66 +300,6 @@ declare const payment: {
         method: import("../generated/operations/markPayment").MarkPaymentRequestFunction;
     };
 };
-declare const credit: {
-    getCredits: {
-        key: string;
-        method: import("../generated/operations/getCredits").GetCreditsRequestFunction;
-    };
-    postCredit: {
-        key: string;
-        method: import("../generated/operations/postCredit").PostCreditRequestFunction;
-    };
-    getCredit: {
-        key: string;
-        method: import("../generated/operations/getCredit").GetCreditRequestFunction;
-    };
-    putCredit: {
-        key: string;
-        method: import("../generated/operations/putCredit").PutCreditRequestFunction;
-    };
-    deleteCredit: {
-        key: string;
-        method: import("../generated/operations/deleteCredit").DeleteCreditRequestFunction;
-    };
-    quoteCredit: {
-        key: string;
-        method: import("../generated/operations/quoteCredit").QuoteCreditRequestFunction;
-    };
-    applyCredit: {
-        key: string;
-        method: import("../generated/operations/applyCredit").ApplyCreditRequestFunction;
-    };
-    checkCredit: {
-        key: string;
-        method: import("../generated/operations/checkCredit").CheckCreditRequestFunction;
-    };
-    signCredit: {
-        key: string;
-        method: import("../generated/operations/signCredit").SignCreditRequestFunction;
-    };
-};
-declare const document: {
-    getDocuments: {
-        key: string;
-        method: import("../generated/operations/getDocuments").GetDocumentsRequestFunction;
-    };
-    postDocument: {
-        key: string;
-        method: import("../generated/operations/postDocument").PostDocumentRequestFunction;
-    };
-    getDocument: {
-        key: string;
-        method: import("../generated/operations/getDocument").GetDocumentRequestFunction;
-    };
-    putDocument: {
-        key: string;
-        method: import("../generated/operations/putDocument").PutDocumentRequestFunction;
-    };
-    deleteDocument: {
-        key: string;
-        method: import("../generated/operations/deleteDocument").DeleteDocumentRequestFunction;
-    };
-};
 declare const subscription: {
     getSubscriptions: {
         key: string;
@@ -326,6 +326,12 @@ declare const subscription: {
         method: import("../generated/operations/pendingSubscription").PendingSubscriptionRequestFunction;
     };
 };
+declare const task: {
+    runner: {
+        key: string;
+        method: import("../generated/operations/runner").RunnerRequestFunction;
+    };
+};
 declare const webhook: {
     providerCheckWebhook: {
         key: string;
@@ -334,12 +340,6 @@ declare const webhook: {
     providerWebhook: {
         key: string;
         method: import("../generated/operations/providerWebhook").ProviderWebhookRequestFunction;
-    };
-};
-declare const task: {
-    runner: {
-        key: string;
-        method: import("../generated/operations/runner").RunnerRequestFunction;
     };
 };
 declare const address: {
@@ -374,84 +374,6 @@ declare const services: {
         putMe: {
             key: string;
             method: import("../generated/operations/putMe").PutMeRequestFunction;
-        };
-    };
-    infoHealth: {
-        infoHealth: {
-            key: string;
-            method: import("../generated/operations/infoHealth").InfoHealthRequestFunction;
-        };
-    };
-    infoGhost: {
-        infoGhost: {
-            key: string;
-            method: import("../generated/operations/infoGhost").InfoGhostRequestFunction;
-        };
-    };
-    infoCompany: {
-        infoCompany: {
-            key: string;
-            method: import("../generated/operations/infoCompany").InfoCompanyRequestFunction;
-        };
-    };
-    infoCustomer: {
-        infoCustomer: {
-            key: string;
-            method: import("../generated/operations/infoCustomer").InfoCustomerRequestFunction;
-        };
-    };
-    infoAuth: {
-        infoAuth: {
-            key: string;
-            method: import("../generated/operations/infoAuth").InfoAuthRequestFunction;
-        };
-        infoVerify: {
-            key: string;
-            method: import("../generated/operations/infoVerify").InfoVerifyRequestFunction;
-        };
-        infoPassword: {
-            key: string;
-            method: import("../generated/operations/infoPassword").InfoPasswordRequestFunction;
-        };
-        infoSession: {
-            key: string;
-            method: import("../generated/operations/infoSession").InfoSessionRequestFunction;
-        };
-        infoClaimAccount: {
-            key: string;
-            method: import("../generated/operations/infoClaimAccount").InfoClaimAccountRequestFunction;
-        };
-    };
-    infoRedirect: {
-        infoLegacyRedirect: {
-            key: string;
-            method: import("../generated/operations/infoLegacyRedirect").InfoLegacyRedirectRequestFunction;
-        };
-    };
-    infoIP: {
-        infoIP: {
-            key: string;
-            method: import("../generated/operations/infoIP").InfoIPRequestFunction;
-        };
-    };
-    infoValidation: {
-        infoValidateEmail: {
-            key: string;
-            method: import("../generated/operations/infoValidateEmail").InfoValidateEmailRequestFunction;
-        };
-    };
-    infoCache: {
-        infoGetCache: {
-            key: string;
-            method: import("../generated/operations/infoGetCache").InfoGetCacheRequestFunction;
-        };
-        infoPutCache: {
-            key: string;
-            method: import("../generated/operations/infoPutCache").InfoPutCacheRequestFunction;
-        };
-        infoDeleteCache: {
-            key: string;
-            method: import("../generated/operations/infoDeleteCache").InfoDeleteCacheRequestFunction;
         };
     };
     company: {
@@ -494,6 +416,144 @@ declare const services: {
         declineCompany: {
             key: string;
             method: import("../generated/operations/declineCompany").DeclineCompanyRequestFunction;
+        };
+    };
+    credit: {
+        getCredits: {
+            key: string;
+            method: import("../generated/operations/getCredits").GetCreditsRequestFunction;
+        };
+        postCredit: {
+            key: string;
+            method: import("../generated/operations/postCredit").PostCreditRequestFunction;
+        };
+        getCredit: {
+            key: string;
+            method: import("../generated/operations/getCredit").GetCreditRequestFunction;
+        };
+        putCredit: {
+            key: string;
+            method: import("../generated/operations/putCredit").PutCreditRequestFunction;
+        };
+        deleteCredit: {
+            key: string;
+            method: import("../generated/operations/deleteCredit").DeleteCreditRequestFunction;
+        };
+        quoteCredit: {
+            key: string;
+            method: import("../generated/operations/quoteCredit").QuoteCreditRequestFunction;
+        };
+        applyCredit: {
+            key: string;
+            method: import("../generated/operations/applyCredit").ApplyCreditRequestFunction;
+        };
+        checkCredit: {
+            key: string;
+            method: import("../generated/operations/checkCredit").CheckCreditRequestFunction;
+        };
+        signCredit: {
+            key: string;
+            method: import("../generated/operations/signCredit").SignCreditRequestFunction;
+        };
+    };
+    document: {
+        getDocuments: {
+            key: string;
+            method: import("../generated/operations/getDocuments").GetDocumentsRequestFunction;
+        };
+        postDocument: {
+            key: string;
+            method: import("../generated/operations/postDocument").PostDocumentRequestFunction;
+        };
+        getDocument: {
+            key: string;
+            method: import("../generated/operations/getDocument").GetDocumentRequestFunction;
+        };
+        putDocument: {
+            key: string;
+            method: import("../generated/operations/putDocument").PutDocumentRequestFunction;
+        };
+        deleteDocument: {
+            key: string;
+            method: import("../generated/operations/deleteDocument").DeleteDocumentRequestFunction;
+        };
+    };
+    infoAuth: {
+        infoAuth: {
+            key: string;
+            method: import("../generated/operations/infoAuth").InfoAuthRequestFunction;
+        };
+        infoVerify: {
+            key: string;
+            method: import("../generated/operations/infoVerify").InfoVerifyRequestFunction;
+        };
+        infoPassword: {
+            key: string;
+            method: import("../generated/operations/infoPassword").InfoPasswordRequestFunction;
+        };
+        infoSession: {
+            key: string;
+            method: import("../generated/operations/infoSession").InfoSessionRequestFunction;
+        };
+        infoClaimAccount: {
+            key: string;
+            method: import("../generated/operations/infoClaimAccount").InfoClaimAccountRequestFunction;
+        };
+    };
+    infoCache: {
+        infoGetCache: {
+            key: string;
+            method: import("../generated/operations/infoGetCache").InfoGetCacheRequestFunction;
+        };
+        infoPutCache: {
+            key: string;
+            method: import("../generated/operations/infoPutCache").InfoPutCacheRequestFunction;
+        };
+        infoDeleteCache: {
+            key: string;
+            method: import("../generated/operations/infoDeleteCache").InfoDeleteCacheRequestFunction;
+        };
+    };
+    infoCompany: {
+        infoCompany: {
+            key: string;
+            method: import("../generated/operations/infoCompany").InfoCompanyRequestFunction;
+        };
+    };
+    infoCustomer: {
+        infoCustomer: {
+            key: string;
+            method: import("../generated/operations/infoCustomer").InfoCustomerRequestFunction;
+        };
+    };
+    infoGhost: {
+        infoGhost: {
+            key: string;
+            method: import("../generated/operations/infoGhost").InfoGhostRequestFunction;
+        };
+    };
+    infoHealth: {
+        infoHealth: {
+            key: string;
+            method: import("../generated/operations/infoHealth").InfoHealthRequestFunction;
+        };
+    };
+    infoIP: {
+        infoIP: {
+            key: string;
+            method: import("../generated/operations/infoIP").InfoIPRequestFunction;
+        };
+    };
+    infoRedirect: {
+        infoLegacyRedirect: {
+            key: string;
+            method: import("../generated/operations/infoLegacyRedirect").InfoLegacyRedirectRequestFunction;
+        };
+    };
+    infoValidation: {
+        infoValidateEmail: {
+            key: string;
+            method: import("../generated/operations/infoValidateEmail").InfoValidateEmailRequestFunction;
         };
     };
     job: {
@@ -604,66 +664,6 @@ declare const services: {
             method: import("../generated/operations/markPayment").MarkPaymentRequestFunction;
         };
     };
-    credit: {
-        getCredits: {
-            key: string;
-            method: import("../generated/operations/getCredits").GetCreditsRequestFunction;
-        };
-        postCredit: {
-            key: string;
-            method: import("../generated/operations/postCredit").PostCreditRequestFunction;
-        };
-        getCredit: {
-            key: string;
-            method: import("../generated/operations/getCredit").GetCreditRequestFunction;
-        };
-        putCredit: {
-            key: string;
-            method: import("../generated/operations/putCredit").PutCreditRequestFunction;
-        };
-        deleteCredit: {
-            key: string;
-            method: import("../generated/operations/deleteCredit").DeleteCreditRequestFunction;
-        };
-        quoteCredit: {
-            key: string;
-            method: import("../generated/operations/quoteCredit").QuoteCreditRequestFunction;
-        };
-        applyCredit: {
-            key: string;
-            method: import("../generated/operations/applyCredit").ApplyCreditRequestFunction;
-        };
-        checkCredit: {
-            key: string;
-            method: import("../generated/operations/checkCredit").CheckCreditRequestFunction;
-        };
-        signCredit: {
-            key: string;
-            method: import("../generated/operations/signCredit").SignCreditRequestFunction;
-        };
-    };
-    document: {
-        getDocuments: {
-            key: string;
-            method: import("../generated/operations/getDocuments").GetDocumentsRequestFunction;
-        };
-        postDocument: {
-            key: string;
-            method: import("../generated/operations/postDocument").PostDocumentRequestFunction;
-        };
-        getDocument: {
-            key: string;
-            method: import("../generated/operations/getDocument").GetDocumentRequestFunction;
-        };
-        putDocument: {
-            key: string;
-            method: import("../generated/operations/putDocument").PutDocumentRequestFunction;
-        };
-        deleteDocument: {
-            key: string;
-            method: import("../generated/operations/deleteDocument").DeleteDocumentRequestFunction;
-        };
-    };
     subscription: {
         getSubscriptions: {
             key: string;
@@ -690,6 +690,12 @@ declare const services: {
             method: import("../generated/operations/pendingSubscription").PendingSubscriptionRequestFunction;
         };
     };
+    task: {
+        runner: {
+            key: string;
+            method: import("../generated/operations/runner").RunnerRequestFunction;
+        };
+    };
     webhook: {
         providerCheckWebhook: {
             key: string;
@@ -698,12 +704,6 @@ declare const services: {
         providerWebhook: {
             key: string;
             method: import("../generated/operations/providerWebhook").ProviderWebhookRequestFunction;
-        };
-    };
-    task: {
-        runner: {
-            key: string;
-            method: import("../generated/operations/runner").RunnerRequestFunction;
         };
     };
     address: {
@@ -723,5 +723,5 @@ declare const services: {
         };
     };
 };
-export { authUser, infoHealth, infoGhost, infoCompany, infoCustomer, infoAuth, infoRedirect, infoIP, infoValidation, infoCache, company, job, payment, credit, document, subscription, webhook, task, address, pdf, };
+export { authUser, company, credit, document, infoAuth, infoCache, infoCompany, infoCustomer, infoGhost, infoHealth, infoIP, infoRedirect, infoValidation, job, payment, subscription, task, webhook, address, pdf, };
 export default services;
