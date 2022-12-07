@@ -16,3 +16,5 @@ export const AMPLITUDE_SERVER_URL =
 
 export const AMPLITUDE_STORAGE_KEY =
   process.env.REACT_APP_AMPLITUDE_STORAGE_KEY || 'amplitude-kanda-ids';
+
+export const APP_ENV = process.env.REACT_APP_ENV || 'qa';
