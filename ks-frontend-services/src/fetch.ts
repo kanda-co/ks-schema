@@ -89,6 +89,7 @@ const formatTrackingBody = (
   inputUrl: string,
   options: StringIndexedObject,
 ): StringIndexedObject => {
+  const domain = new URL(inputUrl)?.origin;
   const url = inputUrl.replace(/https?:\/\/hub\-qa?.kanda.co.uk\//gm, '');
   const parts = url.split('/');
   const containsUUID = parts.some((part) => UUID_REGEX.test(part));
@@ -98,16 +99,20 @@ const formatTrackingBody = (
   const action = containsUUID ? parts?.[3] || '*' : parts?.[2] || '*';
 
   const { method, body } = options;
+  const { origin, pathname } = window?.location || {};
 
   return {
+    domain,
     url: `/${url}`,
+    path: pathname,
+    referrer: origin,
     api: {
       method,
       resource,
       resource_id: resourceId,
       action,
+      ...(body && { resource_data: body }),
     },
-    body,
   };
 };
 
@@ -130,8 +135,8 @@ const interceptedFetch = (
   const trackingBody = formatTrackingBody(url, options);
   const ids = getIds(amplitude);
 
-  console.log({ trackingBody });
-  console.log({ ids });
+  amplitude.track('api-attempted', trackingBody);
+  amplitude.flush();
 
   return originalFetch()
     .apply(window, [url, buildRequestHeaders(options, token, ids), ...args])
