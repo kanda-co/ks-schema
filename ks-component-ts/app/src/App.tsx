@@ -40,9 +40,9 @@ function App() {
       <Form form={form} onSubmit={() => {}}>
         <Field.BasicNumberInput
           name="quantity"
-          label="Quantity"
           formatForDisplay={(value: number) => value / 100}
           formatForValue={(value: number) => value * 100}
+          {...QUANTITY_COMPONENT_PROPS}
         />
         <Field.NumberInput autoSize type="price" name="price" label="Price 2" />
       </Form>

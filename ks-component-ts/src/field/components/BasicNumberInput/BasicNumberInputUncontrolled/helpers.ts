@@ -20,6 +20,6 @@ export const renderDisplayValue = ({
   formatForDisplay,
 }: RenderDisplayValueArgs) => {
   const parsedValue = value ? formatForDisplay(parseFloat(value)) : "";
-  if (!parsedValue) return "";
+  if (!parsedValue) return [prefix, "0.00"].join("");
   return [prefix, formatValue(parsedValue), suffix].join("");
 };

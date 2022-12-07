@@ -1,7 +1,10 @@
 import React, { type FunctionComponent } from "react";
 import { type InputProps } from "~/field/components/Input";
 import { stripUnneededProps } from "~/field/helpers";
-import NumberInput, { WithFieldInfo } from "../AutoSizeNumberInput";
+import AutoSizeNumberInput, {
+  WithFieldInfo as AutoSizeWithFieldInfo,
+} from "../AutoSizeNumberInput";
+import NumberInput, { WithFieldInfo } from "../NumberInput";
 import useBasicInputUncontrolledProps from "./useBasicNumberInputUncontrolledProps";
 
 export interface BasicNumberInputUncontrolledProps extends InputProps {
@@ -9,6 +12,7 @@ export interface BasicNumberInputUncontrolledProps extends InputProps {
   formatForValue?: (value: number) => number;
   prefix?: string;
   suffix?: string;
+  autoSize?: boolean;
 }
 
 const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontrolledProps> =
@@ -22,6 +26,7 @@ const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontroll
     prefix = "",
     suffix = "",
     placeholder,
+    autoSize = false,
     ...props
   }) {
     const { currentValue, focused, setFocused, displayValue, onChange } =
@@ -37,10 +42,13 @@ const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontroll
     const focusedValue = currentValue ? formatForDisplay(currentValue) : "";
     const formattedProps = stripUnneededProps(props);
 
+    const ReadOnlyInputTag = autoSize ? AutoSizeWithFieldInfo : WithFieldInfo;
+    const FocusedInputTag = autoSize ? AutoSizeNumberInput : NumberInput;
+
     return (
       <>
         {!focused && (
-          <WithFieldInfo
+          <ReadOnlyInputTag
             readOnly
             {...formattedProps}
             type="string"
@@ -51,7 +59,7 @@ const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontroll
           />
         )}
         {focused && (
-          <NumberInput
+          <FocusedInputTag
             {...stripUnneededProps(props)}
             autoFocus
             type="number"
