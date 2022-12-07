@@ -10,3 +10,4 @@ ks-frontend-services/yalc.*
 ks-frontend-services/app/.yalc
 ks-frontend-services/app/yalc.lock
 .DS_Store
+*.code-workspace
