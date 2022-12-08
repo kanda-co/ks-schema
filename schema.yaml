@@ -4482,6 +4482,15 @@ components:
           type: object
           title: request user
           $ref: "#/components/schemas/UserEvent"
+        element:
+          type: string
+          title: element label of component
+        element_id:
+          type: string
+          title: element id of component
+        element_path:
+          type: string
+          title: element path of component
         api:
           type: object
           title: api event
@@ -4563,12 +4572,6 @@ components:
           type: object
           title: resource data
           additionalProperties: true
-        element:
-          type: string
-          title: element label of request
-        element_id:
-          type: string
-          title: element id of request
         error:
           type: string
           title: error of request
