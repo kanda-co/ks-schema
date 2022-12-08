@@ -3,6 +3,7 @@ import {
   DraggableProvidedDraggableProps,
   DraggableProvidedDragHandleProps,
   DraggableStateSnapshot,
+  DragHandleProps,
 } from "react-beautiful-dnd";
 import { HandleProps } from "~/components/Handle/types";
 import { MutableRefObject } from "react";
@@ -20,7 +21,7 @@ export interface ContainerChildrenArgs {
   name: string;
   innerRef: MutableRefObject<HTMLElement>;
   draggableProps: DraggableProvidedDraggableProps;
-  dragHandleProps?: DraggableProvidedDragHandleProps | undefined;
+  dragHandleProps: ?DragHandleProps;
   classNames: {
     container: string;
     text: string;
