@@ -11,7 +11,7 @@
     "yalc:link": "yalc add --link @kanda-libs/ks-component-ts && yalc update"
   },
   "dependencies": {
-    "@kanda-libs/ks-component-ts": "file:.yalc/@kanda-libs/ks-component-ts",
+    "@kanda-libs/ks-component-ts": "link:.yalc/@kanda-libs/ks-component-ts",
     "@kanda-libs/ks-design-library": "0.2.14",
     "cordova": "^11.0.0",
     "firebase": "^9.9.3",
