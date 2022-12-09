@@ -57,7 +57,8 @@ export default function useBasicInputUncontrolledProps({
   const onChange = useCallback(
     (e) => {
       initialOnChange(e);
-      setValue(name as string, formatForValue(parseFloat(e.target.value)));
+      const nextValue = formatForValue(parseFloat(e.target.value)) || 0;
+      setValue(name as string, nextValue >= 0 ? nextValue : nextValue * -1);
     },
     [currentValue]
   );
