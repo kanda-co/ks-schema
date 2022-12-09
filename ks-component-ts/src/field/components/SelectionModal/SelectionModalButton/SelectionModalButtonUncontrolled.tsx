@@ -56,7 +56,6 @@ const SelectionModalButtonUncontrolled: FunctionComponent<
         icon="chevron-down"
         label={buttonText}
         placeholder={restProps.placeholder as string}
-        forwardRef={forwardRef}
       >
         <>{restProps.children}</>
       </Button.Link>
