@@ -38,19 +38,34 @@ function App() {
       <h2 className="block mt-2">Form values</h2>
       <div className="px-4 py-4">Hello world</div>
       <Form form={form} onSubmit={() => {}}>
-        <Field.BasicNumberInput
-          name="quantity"
-          formatForDisplay={(value: number) => value / 100}
-          formatForValue={(value: number) => value * 100}
-          {...QUANTITY_COMPONENT_PROPS}
-        />
-        <Field.NumberInput
-          autoSize
-          type="price"
-          name="quantity"
-          label="Quantity 2"
-        />
-        <Field.NumberInput autoSize type="price" name="price" label="Price 2" />
+        <Field.Validator
+          validation={{
+            min: {
+              value: 500,
+              message: "Must be more than 5",
+            },
+            max: {
+              value: 1000,
+              message: "Must be less than 10",
+            },
+          }}
+        >
+          <Field.NumberInput type="price" label="Quantity" name="quantity" />
+        </Field.Validator>
+        <Field.Validator
+          validation={{
+            min: {
+              value: 500,
+              message: "Must be more than 5",
+            },
+            max: {
+              value: 1000,
+              message: "Must be less than 10",
+            },
+          }}
+        >
+          <Field.NumberInput label="Quantity" name="quantity2" />
+        </Field.Validator>
       </Form>
       <div>
         <pre>{JSON.stringify({ quantity, price })}</pre>

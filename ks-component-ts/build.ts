@@ -7,12 +7,23 @@ const { exec } = require("child_process");
 
 const handleYalcPublish = () => {
   // @ts-ignore
-  exec("yalc publish", (e, stdout) => {
-    console.log("New version of package published to yalc");
+  exec("yarn build:types", (e, stdout) => {
     // @ts-ignore
-    exec("cd ./app && yalc update", (e, stdout) => {
-      console.log("App now using new version of package from yalc");
-      exec("yarn build:types");
+    exec("yalc publish", (e, stdout) => {
+      console.log("New version of package published to yalc");
+      // @ts-ignore
+      exec("cd ./app && yalc update", (e, stdout) => {
+        console.log("App now using new version of package from yalc");
+        if (process.env.DEV_DASHBOARD === "true") {
+          // @ts-ignore
+          exec(
+            "yarn --cwd ../../ks-dashboard-frontend yalc:update && yarn --cwd ../../ks-dashboard-frontend",
+            (e, stdout) => {
+              console.log("Dashboard updated");
+            }
+          );
+        }
+      });
     });
   });
 };
