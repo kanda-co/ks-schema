@@ -752,34 +752,9 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@kanda-libs/ks-component-ts@file:.yalc/@kanda-libs/ks-component-ts":
-  version "0.2.44"
-  dependencies:
-    "@kanda-libs/ks-tailwind-config" "^0.0.5"
-    "@types/lodash.get" "^4.4.7"
-    "@types/lodash.trim" "^4.5.7"
-    "@types/react-dropzone" "^5.1.0"
-    "@zxcvbn-ts/core" "^1.0.0"
-    browser-image-compression "^2.0.0"
-    cropperjs "^1.5.12"
-    lodash.get "^4.4.2"
-    lodash.trim "^4.5.1"
-    mime-types "^2.1.35"
-    react-beautiful-dnd "^13.1.1"
-    react-cropper "^2.1.8"
-    react-dropzone "^11.3.4"
-    react-highlight-words "^0.18.0"
-    react-hook-form "^7.35.0"
-    react-input-autosize "^3.0.0"
-    react-loading-skeleton "^3.1.0"
-    react-number-format "^4.6.4"
-    react-range "^1.8.14"
-    react-slick "^0.29.0"
-    react-table "^7.7.0"
-    react-textarea-autosize "^8.4.0"
-    remove "^0.1.5"
-    rollup-plugin-dotenv "^0.4.1"
-    use-debounce "^8.0.3"
+"@kanda-libs/ks-component-ts@link:.yalc/@kanda-libs/ks-component-ts":
+  version "0.0.0"
+  uid ""
 
 "@kanda-libs/ks-design-library@0.2.14":
   version "0.2.14"
