@@ -1,4 +1,4 @@
-import React, { type FunctionComponent } from "react";
+import React, { ChangeEvent, type FunctionComponent } from "react";
 import { type InputProps } from "~/field/components/Input";
 import { stripUnneededProps } from "~/field/helpers";
 import AutoSizeNumberInput, {
@@ -7,13 +7,15 @@ import AutoSizeNumberInput, {
 import NumberInput, { WithFieldInfo } from "../NumberInput";
 import useBasicInputUncontrolledProps from "./useBasicNumberInputUncontrolledProps";
 
-export interface BasicNumberInputUncontrolledProps extends InputProps {
+export interface BasicNumberInputUncontrolledProps
+  extends Omit<InputProps, "onChange"> {
   formatForDisplay?: (value: number) => number;
   formatForValue?: (value: number) => number;
   prefix?: string;
   suffix?: string;
   autoSize?: boolean;
   fixedDecimalScale?: boolean;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontrolledProps> =
@@ -73,7 +75,7 @@ const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontroll
             name={name}
             value={focusedValue}
             valueOverride={focusedValue}
-            onChange={onChange}
+            onChange={onChange as (...args: any[]) => void}
             onBlur={() => {
               if (props.onBlur) {
                 props.onBlur();

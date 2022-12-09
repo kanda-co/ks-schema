@@ -1,4 +1,5 @@
 import React, { type FunctionComponent } from "react";
+import { DefaultFormFieldProps } from "~/field/types";
 import BasicNumberInput, {
   type BasicNumberInputProps,
 } from "../../BasicNumberInput";
@@ -12,7 +13,7 @@ export interface PriceInputControlledProps {
 }
 
 const PriceInputControlled: FunctionComponent<
-  BasicNumberInputProps & PriceInputControlledProps
+  DefaultFormFieldProps<BasicNumberInputProps & PriceInputControlledProps>
 > = function ({
   symbol = "£",
   currencyDecimal = 100,
