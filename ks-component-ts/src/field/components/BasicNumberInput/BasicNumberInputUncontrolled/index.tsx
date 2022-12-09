@@ -2,10 +2,8 @@ import React, { ChangeEvent, type FunctionComponent } from "react";
 import { type InputProps } from "~/field/components/Input";
 import { stripUnneededProps } from "~/field/helpers";
 import type { StringIndexedObject } from "~/types";
-import NumberInput from "~/field/components/Input/InputUncontrolled";
-import AutoSizeInputUncontrolled from "~/field/components/AutoSizeInput/AutoSizeInputUncontrolled";
 import useBasicInputUncontrolledProps from "./useBasicNumberInputUncontrolledProps";
-import InputUncontrolled from "~/field/components/Input/InputUncontrolled";
+import { getInputTag } from "./helpers";
 
 export interface BasicNumberInputUncontrolledProps
   extends Omit<InputProps, "onChange"> {
@@ -49,18 +47,16 @@ const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontroll
       });
 
     const focusedValue = currentValue ? formatForDisplay(currentValue) : "";
-    const formattedProps = stripUnneededProps(props);
+    const readOnlyProps = stripUnneededProps(props);
+    const { register, ...focusedProps } = props;
 
-    const ReadOnlyInputTag = autoSize
-      ? AutoSizeInputUncontrolled
-      : InputUncontrolled;
-    const FocusedInputTag = autoSize ? AutoSizeInputUncontrolled : NumberInput;
+    const InputTag = getInputTag(autoSize);
 
     return (
       <>
         {!focused && (
-          <ReadOnlyInputTag
-            {...formattedProps}
+          <InputTag
+            {...readOnlyProps}
             readOnly
             name={name}
             value={currentValue}
@@ -72,8 +68,8 @@ const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontroll
           />
         )}
         {focused && (
-          <FocusedInputTag
-            {...formattedProps}
+          <InputTag
+            {...focusedProps}
             autoFocus
             type="number"
             name={name}
