@@ -1,6 +1,6 @@
 import AuthUserMe from './AuthUserMe';
 import JobGetJob from './JobGetJob';
-import { LogOnMount } from '@kanda-libs/ks-design-library';
+// import { LogOnMount } from '@kanda-libs/ks-design-library';
 
 const Services = () => {
   return (
@@ -8,12 +8,12 @@ const Services = () => {
       <p className="text-xl mb-6">Services</p>
       <AuthUserMe />
       <JobGetJob />
-      <LogOnMount
+      {/* <LogOnMount
         eventType="page-view"
         eventProperties={{
           path: '/',
         }}
-      />
+      /> */}
     </div>
   );
 };
