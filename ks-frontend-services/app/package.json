@@ -7,10 +7,12 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "yalc:update": "yalc add @kanda-libs/ks-frontend-services && yalc update"
+    "yalc:update": "yalc update",
+    "yalc:link": "yalc add --link @kanda-libs/ks-frontend-services && yarn yarn:update"
   },
   "dependencies": {
-    "@kanda-libs/ks-frontend-services": "file:.yalc/@kanda-libs/ks-frontend-services",
+    "@kanda-libs/ks-component-ts": "file:.yalc/@kanda-libs/ks-component-ts",
+    "@kanda-libs/ks-frontend-services": "link:.yalc/@kanda-libs/ks-frontend-services",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -20,6 +22,7 @@
     "@vitejs/plugin-react": "^2.0.0",
     "typescript": "^4.6.4",
     "vite": "^3.0.0",
+    "vite-plugin-live-reload": "^3.0.1",
     "vite-tsconfig-paths": "^3.6.0",
     "yalc": "^1.0.0-pre.53"
   }
