@@ -22,7 +22,7 @@ const AutoSizeInputUncontrolled: FunctionComponent<
   error,
   className: initialClassName,
   isLoading,
-  minWidth = 20,
+  minWidth,
   valueOverride,
   ...restProps
 }) {

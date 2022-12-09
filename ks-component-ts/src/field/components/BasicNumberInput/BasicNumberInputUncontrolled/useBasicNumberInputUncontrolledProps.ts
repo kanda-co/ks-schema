@@ -8,6 +8,7 @@ import {
   useState,
 } from "react";
 import { renderDisplayValue } from "~/field/components/BasicNumberInput/BasicNumberInputUncontrolled/helpers";
+import { StringIndexedObject } from "~/types";
 
 export interface BasicInputUncontrolledArgs {
   name?: string;
@@ -17,6 +18,7 @@ export interface BasicInputUncontrolledArgs {
   formatForDisplay: (value: number) => number;
   initialOnChange: (e: ChangeEvent<HTMLInputElement>) => void;
   decimalScale: number;
+  isAllowed?: (values: StringIndexedObject) => boolean;
 }
 export interface BasicInputUncontrolledPropsHook {
   currentValue: number;
@@ -34,6 +36,7 @@ export default function useBasicInputUncontrolledProps({
   formatForDisplay,
   initialOnChange,
   decimalScale,
+  isAllowed = () => true,
 }: BasicInputUncontrolledArgs): BasicInputUncontrolledPropsHook {
   const { setValue } = useFormContext();
   const [focused, setFocused] = useState(false);
@@ -55,9 +58,18 @@ export default function useBasicInputUncontrolledProps({
 
   const onChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
+      const { value } = e.target;
+
+      const validValue = isAllowed({ value });
+
+      if (!validValue) return;
+
       initialOnChange(e);
-      const nextValue = formatForValue(parseFloat(e.target.value)) || 0;
-      setValue(name as string, nextValue >= 0 ? nextValue : nextValue * -1);
+
+      const nextValue = formatForValue(parseFloat(value)) || 0;
+      const formattedNextValue = nextValue >= 0 ? nextValue : nextValue * -1;
+
+      setValue(name as string, formattedNextValue);
     },
     [currentValue]
   );

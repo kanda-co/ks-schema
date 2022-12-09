@@ -1,11 +1,11 @@
 import React, { ChangeEvent, type FunctionComponent } from "react";
 import { type InputProps } from "~/field/components/Input";
 import { stripUnneededProps } from "~/field/helpers";
-import AutoSizeNumberInput, {
-  WithFieldInfo as AutoSizeWithFieldInfo,
-} from "../AutoSizeNumberInput";
-import NumberInput, { WithFieldInfo } from "../NumberInput";
+import type { StringIndexedObject } from "~/types";
+import NumberInput from "~/field/components/Input/InputUncontrolled";
+import AutoSizeInputUncontrolled from "~/field/components/AutoSizeInput/AutoSizeInputUncontrolled";
 import useBasicInputUncontrolledProps from "./useBasicNumberInputUncontrolledProps";
+import InputUncontrolled from "~/field/components/Input/InputUncontrolled";
 
 export interface BasicNumberInputUncontrolledProps
   extends Omit<InputProps, "onChange"> {
@@ -16,6 +16,7 @@ export interface BasicNumberInputUncontrolledProps
   autoSize?: boolean;
   fixedDecimalScale?: boolean;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  isAllowed?: (values: StringIndexedObject) => boolean;
 }
 
 const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontrolledProps> =
@@ -31,6 +32,7 @@ const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontroll
     placeholder = "0.00",
     autoSize = false,
     fixedDecimalScale = true,
+    isAllowed,
     ...props
   }) {
     const decimalScale = fixedDecimalScale ? 2 : 0;
@@ -43,33 +45,35 @@ const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontroll
         formatForDisplay,
         initialOnChange,
         decimalScale,
+        isAllowed,
       });
 
     const focusedValue = currentValue ? formatForDisplay(currentValue) : "";
     const formattedProps = stripUnneededProps(props);
 
-    const ReadOnlyInputTag = autoSize ? AutoSizeWithFieldInfo : WithFieldInfo;
-    const FocusedInputTag = autoSize ? AutoSizeNumberInput : NumberInput;
+    const ReadOnlyInputTag = autoSize
+      ? AutoSizeInputUncontrolled
+      : InputUncontrolled;
+    const FocusedInputTag = autoSize ? AutoSizeInputUncontrolled : NumberInput;
 
     return (
       <>
         {!focused && (
-          <div className="min-w-8">
-            <ReadOnlyInputTag
-              readOnly
-              {...formattedProps}
-              type="string"
-              defaultValue={displayValue}
-              onFocus={() => {
-                setFocused(true);
-              }}
-              placeholder={placeholder as string}
-            />
-          </div>
+          <ReadOnlyInputTag
+            {...formattedProps}
+            readOnly
+            name={name}
+            value={currentValue}
+            valueOverride={displayValue}
+            onFocus={() => {
+              setFocused(true);
+            }}
+            placeholder={placeholder as string}
+          />
         )}
         {focused && (
           <FocusedInputTag
-            {...stripUnneededProps(props)}
+            {...formattedProps}
             autoFocus
             type="number"
             name={name}
