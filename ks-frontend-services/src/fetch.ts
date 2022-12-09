@@ -1,7 +1,8 @@
 import FirebaseAuthService from './auth/FirebaseAuthService';
 import type { BrowserClient } from '@amplitude/analytics-types';
 import { AuthenticationHeaders, StringIndexedObject } from './types';
-import { Amplitude } from '@kanda-libs/ks-design-library';
+import { Amplitude } from '@kanda-libs/ks-amplitude-provider';
+import { APP_ENV } from './config';
 
 interface Request extends StringIndexedObject {
   headers: StringIndexedObject & AuthenticationHeaders;
@@ -141,15 +142,13 @@ const interceptedFetch = (
   return originalFetch()
     .apply(window, [url, buildRequestHeaders(options, token, ids), ...args])
     .then(async (data) => {
-      console.log(data);
       if (data.status === 403) {
-        console.log('Unauthorised request, refreshing token');
+        if (APP_ENV === 'qa')
+          console.log('Unauthorised request, refreshing token');
 
         if (!token) {
           const newToken = await FirebaseAuthService.token();
-
-          console.log('Token refreshed');
-
+          if (APP_ENV === 'qa') console.log('Token refreshed');
           return originalFetch().apply(window, [
             url,
             buildRequestHeaders(options, newToken),

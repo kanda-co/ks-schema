@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { RequestFunction } from '@openapi-io-ts/runtime';
-import { Amplitude } from '@kanda-libs/ks-design-library';
+import { Amplitude } from '@kanda-libs/ks-amplitude-provider';
 
 import { SIGN_IN_METHODS } from './constants';
 

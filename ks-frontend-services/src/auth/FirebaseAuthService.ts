@@ -27,7 +27,7 @@ import './config';
 import { StringIndexedObject } from '../types';
 import { redirectTo } from './helpers';
 import { HOME_URL, LOGIN_URL } from './constants';
-import { Amplitude } from '@kanda-libs/ks-design-library';
+import { Amplitude } from '@kanda-libs/ks-amplitude-provider';
 
 interface AugmentedCurrentUser extends User {
   accessToken?: string;
