@@ -13,6 +13,7 @@ export interface BasicNumberInputUncontrolledProps extends InputProps {
   prefix?: string;
   suffix?: string;
   autoSize?: boolean;
+  fixedDecimalScale?: boolean;
 }
 
 const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontrolledProps> =
@@ -25,10 +26,12 @@ const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontroll
     formatForDisplay = (value) => value,
     prefix = "",
     suffix = "",
-    placeholder,
+    placeholder = "0.00",
     autoSize = false,
+    fixedDecimalScale = true,
     ...props
   }) {
+    const decimalScale = fixedDecimalScale ? 2 : 0;
     const { currentValue, focused, setFocused, displayValue, onChange } =
       useBasicInputUncontrolledProps({
         name,
@@ -37,6 +40,7 @@ const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontroll
         formatForValue,
         formatForDisplay,
         initialOnChange,
+        decimalScale,
       });
 
     const focusedValue = currentValue ? formatForDisplay(currentValue) : "";
@@ -48,15 +52,18 @@ const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontroll
     return (
       <>
         {!focused && (
-          <ReadOnlyInputTag
-            readOnly
-            {...formattedProps}
-            type="string"
-            defaultValue={displayValue}
-            onFocus={() => {
-              setFocused(true);
-            }}
-          />
+          <div className="min-w-8">
+            <ReadOnlyInputTag
+              readOnly
+              {...formattedProps}
+              type="string"
+              defaultValue={displayValue}
+              onFocus={() => {
+                setFocused(true);
+              }}
+              placeholder={placeholder as string}
+            />
+          </div>
         )}
         {focused && (
           <FocusedInputTag

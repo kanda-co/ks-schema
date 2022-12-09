@@ -44,6 +44,12 @@ function App() {
           formatForValue={(value: number) => value * 100}
           {...QUANTITY_COMPONENT_PROPS}
         />
+        <Field.NumberInput
+          autoSize
+          type="price"
+          name="quantity"
+          label="Quantity 2"
+        />
         <Field.NumberInput autoSize type="price" name="price" label="Price 2" />
       </Form>
       <div>

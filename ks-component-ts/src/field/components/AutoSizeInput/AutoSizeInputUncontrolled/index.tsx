@@ -22,6 +22,7 @@ const AutoSizeInputUncontrolled: FunctionComponent<
   error,
   className: initialClassName,
   isLoading,
+  minWidth = 50,
   valueOverride,
   ...restProps
 }) {
@@ -44,6 +45,7 @@ const AutoSizeInputUncontrolled: FunctionComponent<
           ref={forwardRef}
           {...restProps}
           value={valueOverride || restProps.value}
+          minWidth={minWidth}
         />
       )}
     </>

@@ -16,6 +16,7 @@ export interface BasicInputUncontrolledArgs {
   formatForDisplay: (value: number) => number;
   // TODO: Proper type for this + FieldFormController onChange
   initialOnChange: (...args: unknown[]) => void;
+  decimalScale: number;
 }
 export interface BasicInputUncontrolledPropsHook {
   currentValue: number;
@@ -33,6 +34,7 @@ export default function useBasicInputUncontrolledProps({
   formatForValue,
   formatForDisplay,
   initialOnChange,
+  decimalScale,
 }: BasicInputUncontrolledArgs): BasicInputUncontrolledPropsHook {
   const { setValue } = useFormContext();
   const [focused, setFocused] = useState(false);
@@ -47,6 +49,7 @@ export default function useBasicInputUncontrolledProps({
         prefix,
         suffix,
         formatForDisplay,
+        decimalScale,
       }),
     [currentValue]
   );

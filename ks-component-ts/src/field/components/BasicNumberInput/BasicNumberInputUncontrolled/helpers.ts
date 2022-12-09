@@ -1,8 +1,11 @@
-export const formatValue = (value: number | undefined) => {
+export const formatValue = (
+  value: number | undefined,
+  decimalScale: number
+) => {
   if (typeof value === "undefined") return "";
   return value.toLocaleString("en-US", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
+    minimumFractionDigits: decimalScale,
+    maximumFractionDigits: decimalScale,
   });
 };
 
@@ -11,6 +14,7 @@ export interface RenderDisplayValueArgs {
   prefix: string;
   suffix: string;
   formatForDisplay: (value: number) => number;
+  decimalScale: number;
 }
 
 export const renderDisplayValue = ({
@@ -18,8 +22,9 @@ export const renderDisplayValue = ({
   prefix,
   suffix,
   formatForDisplay,
+  decimalScale,
 }: RenderDisplayValueArgs) => {
   const parsedValue = value ? formatForDisplay(parseFloat(value)) : "";
-  if (!parsedValue) return [prefix, "0.00"].join("");
-  return [prefix, formatValue(parsedValue), suffix].join("");
+  if (!parsedValue) return "";
+  return [prefix, formatValue(parsedValue, decimalScale), suffix].join("");
 };

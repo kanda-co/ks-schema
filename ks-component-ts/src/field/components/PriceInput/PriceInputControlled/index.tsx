@@ -20,12 +20,16 @@ const PriceInputControlled: FunctionComponent<
   fixedDecimalScale = true,
   ...props
 }) {
+  console.log({
+    fixedDecimalScale,
+  });
   return (
     <BasicNumberInput
       {...props}
-      formatForDisplay={(value: number) => value / 100}
-      formatForValue={(value: number) => value * 100}
+      formatForDisplay={(value: number) => value / currencyDecimal}
+      formatForValue={(value: number) => value * currencyDecimal}
       prefix={symbol}
+      fixedDecimalScale={fixedDecimalScale}
     />
   );
 };
