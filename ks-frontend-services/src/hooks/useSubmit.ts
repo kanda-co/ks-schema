@@ -11,8 +11,6 @@ import {
 } from '../types';
 import { handleResponse, Response } from '../handlers';
 
-import { init } from './helpers';
-
 export interface Hook<Value, Params, Body> {
   submit: ServiceSubmit<Value, Params, Body>;
   error?: string;
@@ -87,8 +85,6 @@ export default function useSubmit<Value, Params, Body>(
     },
     [service?.method],
   );
-
-  init();
 
   return {
     submit: submit as unknown as ServiceSubmit<Value, Params, Body>,

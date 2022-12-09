@@ -1,5 +1,4 @@
 import { useState, useCallback } from 'react';
-import { init } from './helpers';
 
 export interface MutateHook {
   mutate: (
@@ -54,8 +53,6 @@ export default function useMutate(method: Function): MutateHook {
       setIsSubmitting(false);
     }
   }, []);
-
-  init();
 
   return {
     mutate,
