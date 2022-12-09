@@ -4,6 +4,7 @@ import React, {
   type HTMLAttributes,
 } from "react";
 import { SubmitHandler, FormProvider, UseFormReturn } from "react-hook-form";
+import { Amplitude, useAmplitude } from "@kanda-libs/ks-amplitude-provider";
 
 import { type StringIndexedObject } from "~/types";
 
@@ -21,24 +22,30 @@ const Form: FunctionComponent<FormProps> = function ({
   form,
   id,
   isLoading = false,
-  onSubmit: inputOnSubmit,
+  onSubmit,
   children,
   ...restProps
 }) {
-  const onSubmit: SubmitHandler<StringIndexedObject> = useCallback(
+  const { logEvent } = useAmplitude();
+  const { flush } = Amplitude;
+
+  const interceptedSubmit: SubmitHandler<StringIndexedObject> = useCallback(
     (values: StringIndexedObject, event?: React.BaseSyntheticEvent): void => {
-      console.log(id);
-      console.log(event);
-      inputOnSubmit(values, event);
+      logEvent("form-submitted", {
+        element_id: id,
+        info: values,
+      });
+      flush();
+      onSubmit(values, event);
     },
-    [id, inputOnSubmit]
+    [id, onSubmit, logEvent]
   );
 
   return (
     <FormProvider {...form}>
       <form
         noValidate
-        onSubmit={form.handleSubmit(onSubmit)}
+        onSubmit={form.handleSubmit(interceptedSubmit)}
         className="w-full"
         id={id}
         {...restProps}
