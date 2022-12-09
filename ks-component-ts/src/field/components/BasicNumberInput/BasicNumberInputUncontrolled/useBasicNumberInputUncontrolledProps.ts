@@ -1,5 +1,6 @@
 import { useFormContext, useWatch } from "react-hook-form";
 import {
+  ChangeEvent,
   Dispatch,
   SetStateAction,
   useCallback,
@@ -14,8 +15,7 @@ export interface BasicInputUncontrolledArgs {
   suffix: string;
   formatForValue: (value: number) => number;
   formatForDisplay: (value: number) => number;
-  // TODO: Proper type for this + FieldFormController onChange
-  initialOnChange: (...args: unknown[]) => void;
+  initialOnChange: (e: ChangeEvent<HTMLInputElement>) => void;
   decimalScale: number;
 }
 export interface BasicInputUncontrolledPropsHook {
@@ -23,8 +23,7 @@ export interface BasicInputUncontrolledPropsHook {
   focused: boolean;
   setFocused: Dispatch<SetStateAction<boolean>>;
   displayValue: string;
-  // TODO: Proper types
-  onChange: (...args: unknown[]) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function useBasicInputUncontrolledProps({
@@ -55,7 +54,7 @@ export default function useBasicInputUncontrolledProps({
   );
 
   const onChange = useCallback(
-    (e) => {
+    (e: ChangeEvent<HTMLInputElement>) => {
       initialOnChange(e);
       const nextValue = formatForValue(parseFloat(e.target.value)) || 0;
       setValue(name as string, nextValue >= 0 ? nextValue : nextValue * -1);
