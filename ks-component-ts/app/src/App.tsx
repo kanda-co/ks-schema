@@ -35,7 +35,8 @@ function App() {
                   },
                 }}
               />
-              <Button.Text label="Submit" submit />
+
+              <Button.Text id="test-form-button" label="Submit" submit />
             </Form>
           </div>
         </div>

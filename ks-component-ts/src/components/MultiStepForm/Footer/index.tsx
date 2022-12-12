@@ -22,8 +22,10 @@ const Footer: FunctionComponent<FooterProps> = function ({
 
   return (
     <div className={CLASS_NAMES.container}>
-      <Button.Icon {...prevButtonProps} />
-      {nextButton || <Button.Text {...nextButtonProps} />}
+      <Button.Icon id="multistep-form-previous" {...prevButtonProps} />
+      {nextButton || (
+        <Button.Text id="multistep-form-next" {...nextButtonProps} />
+      )}
     </div>
   );
 };

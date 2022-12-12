@@ -13,7 +13,7 @@ const CropperFooter: FunctionComponent<CropperFooterProps> = function ({
 }) {
   return (
     <div className={CLASS_NAMES.footer}>
-      <Button.Text onClick={onSave}>
+      <Button.Text id="cropper-save" onClick={onSave}>
         <>{SAVE_BUTTON}</>
       </Button.Text>
     </div>

@@ -16,8 +16,8 @@ const Modal: FunctionComponent<ModalProps> = function ({
 }) {
   return (
     <ModalContainer id={modalId}>
-      {({ handleClose }) => (
-        <ModalLayoutSlideUp onClose={handleClose}>
+      {({ id, handleClose }) => (
+        <ModalLayoutSlideUp id={id} onClose={handleClose}>
           <SelectionModalSelect
             variant="text-only"
             {...restProps}
