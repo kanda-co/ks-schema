@@ -4391,6 +4391,8 @@ components:
             All other names will be treated as custom events.
           enum:
             - "page-view"
+            - "page-closed"
+            - "page-error"
             - "signup-attempted"
             - "signup-succeeded"
             - "signup-failed"
@@ -4400,6 +4402,7 @@ components:
             - "button-interacted"
             - "form-filled"
             - "form-submitted"
+            - "form-error"
             - "api-attempted"
             - "api-succeeded"
             - "api-failed"
