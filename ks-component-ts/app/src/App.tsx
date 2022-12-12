@@ -30,18 +30,16 @@ function App() {
                 console.log(formValues)
               }
             >
-              <Field.NumberInput
-                type="price"
-                name="price"
-                label="Price"
+              <Field.Validator
                 validation={{
                   required: {
                     value: true,
-                    message: "error",
+                    message: "Price is required",
                   },
                 }}
-              />
-
+              >
+                <Field.NumberInput type="price" name="price" label="Price" />
+              </Field.Validator>
               <Button.Text id="test-form-button" label="Submit" submit />
             </Form>
           </div>
