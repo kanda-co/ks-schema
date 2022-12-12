@@ -33,7 +33,11 @@ const Form: FunctionComponent<FormProps> = function ({
     (values: StringIndexedObject, event?: React.BaseSyntheticEvent): void => {
       logEvent("form-submitted", {
         element_id: id,
-        info: values,
+        info: {
+          form: {
+            [id]: values,
+          },
+        },
       });
       flush();
       onSubmit(values, event);
