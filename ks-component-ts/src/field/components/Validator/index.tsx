@@ -17,7 +17,7 @@ const Validator: FunctionComponent<ValidatorProps> = function ({
 }) {
   const validationProps = useValidationProps(validation, name, nested);
 
-  return cloneElement(children, validationProps);
+  return cloneElement(children, { ...validationProps, validation });
 };
 
 export default Validator;
