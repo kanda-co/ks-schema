@@ -3,9 +3,15 @@ import React, {
   type FunctionComponent,
   type HTMLAttributes,
 } from "react";
-import { SubmitHandler, FormProvider, UseFormReturn } from "react-hook-form";
+import {
+  SubmitHandler,
+  FormProvider,
+  UseFormReturn,
+  useFormContext,
+} from "react-hook-form";
 import { Amplitude, useAmplitude } from "@kanda-libs/ks-amplitude-provider";
 
+import { FormErrorTracker } from "~/components";
 import { type StringIndexedObject } from "~/types";
 
 export interface FormProps extends HTMLAttributes<HTMLFormElement> {
@@ -54,7 +60,10 @@ const Form: FunctionComponent<FormProps> = function ({
         id={id}
         {...restProps}
       >
-        {children}
+        <>
+          {children}
+          <FormErrorTracker id={id} />
+        </>
       </form>
     </FormProvider>
   );
