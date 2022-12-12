@@ -4,9 +4,15 @@ import {
   useForm,
   Form,
   type StringIndexedObject,
+  Widget,
 } from "@kanda-libs/ks-component-ts";
 import { Button, CommonWrapper } from "@kanda-libs/ks-design-library";
 import { AmplitudeProvider } from "@kanda-libs/ks-amplitude-provider";
+import { ArrayWrapperChildrenArgs, WidgetArrayWrapperProps } from "~/field";
+
+const BASE_ITEM = {
+  title: undefined,
+};
 
 function App() {
   const form = useForm();

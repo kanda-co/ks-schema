@@ -11,7 +11,6 @@ import {
 } from "react-hook-form";
 import { Amplitude, useAmplitude } from "@kanda-libs/ks-amplitude-provider";
 
-import { FormErrorTracker } from "~/components";
 import { type StringIndexedObject } from "~/types";
 
 export interface FormProps extends HTMLAttributes<HTMLFormElement> {
@@ -35,6 +34,14 @@ const Form: FunctionComponent<FormProps> = function ({
   const { logEvent } = useAmplitude();
   const { flush } = Amplitude;
 
+  const onError: SubmitHandler<StringIndexedObject> = useCallback(
+    (errors: StringIndexedObject, event?: React.BaseSyntheticEvent): void => {
+      console.log({ errors });
+      console.log({ id });
+    },
+    [id]
+  );
+
   const interceptedSubmit: SubmitHandler<StringIndexedObject> = useCallback(
     (values: StringIndexedObject, event?: React.BaseSyntheticEvent): void => {
       logEvent("form-submitted", {
@@ -55,15 +62,12 @@ const Form: FunctionComponent<FormProps> = function ({
     <FormProvider {...form}>
       <form
         noValidate
-        onSubmit={form.handleSubmit(interceptedSubmit)}
+        onSubmit={form.handleSubmit(interceptedSubmit, onError)}
         className="w-full"
         id={id}
         {...restProps}
       >
-        <>
-          {children}
-          <FormErrorTracker id={id} />
-        </>
+        {children}
       </form>
     </FormProvider>
   );
