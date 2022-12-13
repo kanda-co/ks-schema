@@ -35,6 +35,16 @@ function App() {
                 validation={{
                   required: {
                     value: true,
+                    message: "title is required",
+                  },
+                }}
+              >
+                <Field.Input name="test.title" label="Title" />
+              </Field.Validator>
+              <Field.Validator
+                validation={{
+                  required: {
+                    value: true,
                     message: "Price is required",
                   },
                 }}
