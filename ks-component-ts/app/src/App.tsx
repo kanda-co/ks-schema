@@ -8,7 +8,8 @@ import {
 } from "@kanda-libs/ks-component-ts";
 import { Button, CommonWrapper } from "@kanda-libs/ks-design-library";
 import { AmplitudeProvider } from "@kanda-libs/ks-amplitude-provider";
-import { ArrayWrapperChildrenArgs, WidgetArrayWrapperProps } from "~/field";
+
+import DirectorForm from "./DirectorForm";
 
 const BASE_ITEM = {
   title: undefined,
@@ -40,6 +41,7 @@ function App() {
               >
                 <Field.NumberInput type="price" name="price" label="Price" />
               </Field.Validator>
+              <DirectorForm />
               <Button.Text id="test-form-button" label="Submit" submit />
             </Form>
           </div>
