@@ -1490,10 +1490,10 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@kanda-libs/ks-amplitude-provider@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-amplitude-provider/-/ks-amplitude-provider-0.0.1.tgz#97079f32bf18eb710ba75e0c107b1e7fb6af1e05"
-  integrity sha512-5JugaB4etxErMZY0LvMpaYER++rO2xsS3L/8dkxzYr6KUr06g6/Qqf42HK5iH2L7tDzD7qqCXovH1QairIsllA==
+"@kanda-libs/ks-amplitude-provider@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-amplitude-provider/-/ks-amplitude-provider-0.0.4.tgz#0547f63dd5eb6d63b89a0819b516f677c3522afc"
+  integrity sha512-qdQ7IJlc4fSV3dfShFFAChuB+o753vj4WBADLer5NShNQ1shvUG6gTZQLQvje0KEm7W2wpYIRHtPG/oIEkTGXw==
   dependencies:
     "@amplitude/analytics-browser" "^1.6.4"
 
