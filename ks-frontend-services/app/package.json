@@ -8,7 +8,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "yalc:update": "yalc update",
-    "yalc:link": "yalc add --link @kanda-libs/ks-frontend-services && yalc update"
+    "yalc:link": "yalc add --link @kanda-libs/ks-frontend-services && yarn yarn:update"
   },
   "dependencies": {
     "@kanda-libs/ks-amplitude-provider": "0.0.1",
