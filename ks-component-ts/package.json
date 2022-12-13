@@ -7,7 +7,8 @@
   "source": "src/index.ts",
   "types": "dist/index.d.ts",
   "sideEffects": [
-    "**/*.css"
+    "**/*.css",
+    "**/*.d.ts"
   ],
   "files": [
     "dist",
@@ -21,6 +22,7 @@
     "watch": "yarn && yarn clean && yarn build:style && DEV_WATCH=true yarn build:esbuild",
     "app:dev": "yarn --cwd ./app && yarn --cwd ./app yalc:update && yarn --cwd ./app dev --force",
     "build:types": "./node_modules/.bin/dts-bundle-generator --external-inlines=./generated -o dist/index.d.ts src/index.ts",
+    "watch:dashboard": "DEV_DASHBOARD=true && yarn watch",
     "build:esbuild": "yarn clean && yarn build:style && node build.ts && yarn build:types",
     "build:style": "npx tailwindcss --postcss ./tailwind.postcss.config.js -i ./src/styles/tailwind.css -c ./tailwind.config.js -o ./src/styles/library.css",
     "watch:modern": "yarn build:modern -w",
@@ -30,7 +32,8 @@
     "type": "node_modules/.bin/tsc --noEmit",
     "bundlesize": "yarn build:style && yarn build:modern && node_modules/.bin/bundlesize",
     "test:app": "yarn clean && yarn && yarn build && cd app && yalc update && cd .. && yarn --cwd ./app && yarn --cwd ./app dev --force",
-    "start:app": "yarn clean && node_modules/.bin/tsc && yarn build:style && yarn build:esm && yarn link && yarn --cwd node_modules/react link && yarn --cwd ./app && yarn --cwd ./app run dev"
+    "start:app": "yarn clean && node_modules/.bin/tsc && yarn build:style && yarn build:esm && yarn link && yarn --cwd node_modules/react link && yarn --cwd ./app && yarn --cwd ./app run dev",
+    "yalc:update": "yalc update"
   },
   "author": "rob@kanda.co.uk",
   "license": "MIT",
