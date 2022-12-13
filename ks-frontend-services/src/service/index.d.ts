@@ -114,6 +114,12 @@ declare const document: {
         method: import("../generated/operations/deleteDocument").DeleteDocumentRequestFunction;
     };
 };
+declare const event: {
+    postEvent: {
+        key: string;
+        method: import("../generated/operations/postEvent").PostEventRequestFunction;
+    };
+};
 declare const infoAuth: {
     infoAuth: {
         key: string;
@@ -478,6 +484,12 @@ declare const services: {
             method: import("../generated/operations/deleteDocument").DeleteDocumentRequestFunction;
         };
     };
+    event: {
+        postEvent: {
+            key: string;
+            method: import("../generated/operations/postEvent").PostEventRequestFunction;
+        };
+    };
     infoAuth: {
         infoAuth: {
             key: string;
@@ -723,5 +735,5 @@ declare const services: {
         };
     };
 };
-export { authUser, company, credit, document, infoAuth, infoCache, infoCompany, infoCustomer, infoGhost, infoHealth, infoIP, infoRedirect, infoValidation, job, payment, subscription, task, webhook, address, pdf, };
+export { authUser, company, credit, document, event, infoAuth, infoCache, infoCompany, infoCustomer, infoGhost, infoHealth, infoIP, infoRedirect, infoValidation, job, payment, subscription, task, webhook, address, pdf, };
 export default services;
