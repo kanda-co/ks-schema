@@ -39,6 +39,7 @@ export type FieldFormControllerComponent<T = any> = FunctionComponent<
 const FieldFormController: FieldFormControllerComponent = function ({
   name,
   register,
+  validation,
   passRegister,
   control,
   isLoading: fieldIsLoading,
@@ -115,6 +116,11 @@ const FieldFormController: FieldFormControllerComponent = function ({
   );
 
   const isLoading = formIsLoading || fieldIsLoading;
+  const validationProps = {
+    validation,
+    validationErrors,
+    validationConditions,
+  };
 
   return children({
     name,
@@ -131,6 +137,7 @@ const FieldFormController: FieldFormControllerComponent = function ({
       })),
     ...(control && { control: formControl }),
     ...restProps,
+    ...validationProps,
   });
 };
 

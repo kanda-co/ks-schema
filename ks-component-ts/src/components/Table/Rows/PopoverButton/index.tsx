@@ -18,7 +18,7 @@ const PopoverButton: FunctionComponent<PopoverButtonProps> = function ({
   row,
   hoverPopover: HoverPopover,
 }) {
-  const popoverProps = usePopoverButtonProps(row);
+  const { id, ...popoverProps } = usePopoverButtonProps(row);
 
   return (
     <div className={CLASS_NAMES.stickyContainer}>
@@ -28,7 +28,7 @@ const PopoverButton: FunctionComponent<PopoverButtonProps> = function ({
           <div className={CLASS_NAMES.button}>
             <div className={CLASS_NAMES.wrapper}>
               <Popover.Standard
-                button={<Button.Icon {...BUTTON_PROPS} />}
+                button={<Button.Icon id={id} {...BUTTON_PROPS} />}
                 {...popoverProps}
               >
                 {({ handleClose }) => (

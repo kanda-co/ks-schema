@@ -46,7 +46,7 @@ const JobPdfFileCard: FunctionComponent<JobPdfFileCardProps> = function ({
               <Icon {...icons.progress} />
             </React.Fragment>
           ) : (
-            <Button.Icon {...icons.delete} onClick={onRemove} />
+            <Button.Icon {...icons.delete} id="pdf-remove" onClick={onRemove} />
           )}
         </div>
       </div>

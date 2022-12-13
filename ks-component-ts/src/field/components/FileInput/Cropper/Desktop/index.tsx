@@ -8,7 +8,7 @@ import { CLASS_NAMES } from "../constants";
 import CropperBottomOptions from "../CropperBottomOptions";
 import CropperFooter from "../CropperFooter";
 
-export type DesktopProps = Pick<
+export type DesktopCropperProps = Pick<
   CropperProps,
   | "cropperTopOptionsProps"
   | "cropperBottomOptionsProps"
@@ -17,15 +17,20 @@ export type DesktopProps = Pick<
   | "cropperProps"
 >;
 
+export interface DesktopProps extends DesktopCropperProps {
+  id: string;
+}
+
 const Desktop: FunctionComponent<DesktopProps> = function ({
   cropperTopOptionsProps,
   cropperBottomOptionsProps,
   onSave,
   onCancelCrop,
   cropperProps,
+  id,
 }) {
   return (
-    <ModalLayoutCenter className="w-5/6 h-5/6" onClose={onCancelCrop}>
+    <ModalLayoutCenter id={id} className="w-5/6 h-5/6" onClose={onCancelCrop}>
       <div className="flex flex-1 flex-col h-full mb-6">
         <CropperTopOptions {...cropperTopOptionsProps} />
         <div className={CLASS_NAMES.container}>

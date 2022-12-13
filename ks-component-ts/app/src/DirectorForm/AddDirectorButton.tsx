@@ -5,12 +5,18 @@ export interface Props {
   append: (director: Director) => void;
 }
 
+const BASE_ITEM = {
+  firstName: "",
+  lastName: "",
+};
+
 const AddDirectorButton: FunctionComponent<Props> = function ({ append }) {
   return (
     <div>
       <button
+        type="button"
         onClick={() => {
-          append({ firstName: "", lastName: "", salary: "" });
+          append(BASE_ITEM);
         }}
       >
         Add new director
