@@ -26,7 +26,6 @@ const Desktop: FunctionComponent<SelectionModalProps> = function ({
           buttonText={children || buttonText}
           error={error}
           isLoading={isLoading}
-          forwardRef={forwardRef}
         />
       }
     >
