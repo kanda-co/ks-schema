@@ -1,6 +1,6 @@
 {
   "name": "@kanda-libs/ks-frontend-services",
-  "version": "0.2.20",
+  "version": "0.2.39",
   "license": "private",
   "scripts": {
     "clean-incorrect-imports": "egrep -rl \"DateFromISOString\" src | xargs -I@ sed -i \"\" \"s/\\/DateFromISOString//g\" @",
