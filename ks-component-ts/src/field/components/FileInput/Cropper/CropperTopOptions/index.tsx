@@ -14,12 +14,12 @@ const CropperTopOptions: FunctionComponent<CropperTopOptionsProps> = function ({
   return (
     <div className={CLASS_NAMES.container}>
       <Button.Icon
-        id="cropper-roatate-ccw"
+        id="cropper-rotate-ccw"
         onClick={handleRotateCounterClockwise}
         {...BUTTONS.rotateCounterClockwise}
       />
       <Button.Icon
-        id="cropper-roatate-cw"
+        id="cropper-rotate-cw"
         onClick={handleRotateClockwise}
         {...BUTTONS.rotateClockwise}
       />
