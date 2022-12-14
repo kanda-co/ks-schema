@@ -3,7 +3,7 @@
   "version": "0.2.42",
   "license": "private",
   "scripts": {
-    "clean-incorrect-imports": "egrep -rl \"DateFromISOString\" src | xargs -I@ sed -i \"\" \"s/\\/DateFromISOString//g\" @",
+    "clean-incorrect-imports": "grep -rlw \"./src\" -e \"DateFromISOString\" | xargs -I@ sed -i.bak \"s/\\/DateFromISOString//g\" @ && rm -rf **/*.bak",
     "generate-service-module": "ts-node --experimental-specifier-resolution=node ./src/service/generator/",
     "clean": "rimraf dist",
     "remove:nodemodules": "rimraf yarn.lock && rimraf node_modules",
