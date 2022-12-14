@@ -6,7 +6,9 @@ import liveReload from 'vite-plugin-live-reload';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    react(),
+    react({
+      include: '**/*.tsx',
+    }),
     tsconfigPaths(),
     liveReload(
       './node_modules/@kanda-libs/ks-frontend-services/dist/index.esm.js',
@@ -26,6 +28,9 @@ export default defineConfig({
   define: {
     'process.env': {
       REACT_APP_GET_ADDRESS_API_KEY: 'byJL3HWLC0a39cnl5OKNBA31556',
+      REACT_APP_ENV: 'qa',
+      REACT_APP_HOME_URL: 'http://localhost:8001/',
+      REACT_APP_LOGIN_URL: 'http://localhost:8001/login',
     },
     exports: '{}',
     global: '{}',

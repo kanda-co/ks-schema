@@ -15,7 +15,7 @@ export interface SelectionModalButtonUncontrolledProps {
   /**
    * The HTML element ID.
    */
-  id?: string;
+  id: string;
   /**
    * Field error message
    */

@@ -8,6 +8,6 @@ interface ResponseBody {
     data: unknown;
     json: () => Promise<unknown>;
 }
-export declare type Response = Either<Error, ResponseBody>;
+export type Response = Either<Error, ResponseBody>;
 export declare const handleResponse: (response: Response) => Promise<unknown>;
 export {};

@@ -15,10 +15,10 @@ const Cropper: FunctionComponent<CropperProps> = function ({
 
   return (
     <ModalContainer id={modalId}>
-      {() => (
+      {({ id }) => (
         <BreakPoints
           mobile={<Mobile {...props} onCancelCrop={onCancelCrop} />}
-          desktop={<Desktop {...props} onCancelCrop={onCancelCrop} />}
+          desktop={<Desktop {...props} id={id} onCancelCrop={onCancelCrop} />}
         />
       )}
     </ModalContainer>

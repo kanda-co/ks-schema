@@ -23,7 +23,9 @@ const CropperBottomOptions: FunctionComponent<CropperBottomOptionsProps> =
     return (
       <div className={CLASS_NAMES.container}>
         <div className={CLASS_NAMES.left}>
-          <Button.Link onClick={handleFit}>{FIT_LABEL}</Button.Link>
+          <Button.Link id="cropper-fit" onClick={handleFit}>
+            {FIT_LABEL}
+          </Button.Link>
         </div>
         <div className={CLASS_NAMES.center}>
           <Icon {...ICONS.minus} />
@@ -35,7 +37,9 @@ const CropperBottomOptions: FunctionComponent<CropperBottomOptionsProps> =
           <Icon {...ICONS.plus} />
         </div>
         <div className={CLASS_NAMES.right}>
-          <Button.Link onClick={handleReset}>{RESET_LABEL}</Button.Link>
+          <Button.Link id="cropper-reset" onClick={handleReset}>
+            {RESET_LABEL}
+          </Button.Link>
         </div>
       </div>
     );

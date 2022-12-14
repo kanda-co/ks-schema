@@ -9,4 +9,4 @@ export declare const fetchRequestAdapter: (baseURL: string, requireAuth?: boolea
  * Build request functions for operations using baseUrl
  * @param baseURL
  */
-export declare const requestFunctions: (baseURL: any) => operations.OperationRequestFunctionMap;
+export declare const requestFunctions: (baseURL: string) => operations.OperationRequestFunctionMap;

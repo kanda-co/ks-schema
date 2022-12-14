@@ -5,6 +5,7 @@ import { type StringIndexedObject } from "~/types";
 
 export interface FormWrapperProps {
   form: any;
+  id: string;
   onSubmit?: (value?: StringIndexedObject) => void;
   children?: JSX.Element | JSX.Element[];
 }

@@ -28,6 +28,8 @@ const handleYalcPublish = () => {
   });
 };
 
+const DEV_WATCH = process.env.DEV_WATCH === "true";
+
 const entryFile = "./src/index.ts";
 const shared = {
   bundle: true,
@@ -47,9 +49,9 @@ const shared = {
     nodeExternalsPlugin(),
   ],
   logLevel: "info",
-  minify: true,
+  minify: !DEV_WATCH,
   sourcemap: true,
-  watch: process.env.DEV_WATCH === "true" && {
+  watch: DEV_WATCH && {
     // @ts-ignore
     onRebuild(error) {
       if (error) console.error("watch build failed:", error);

@@ -4,11 +4,13 @@ import HeaderSearch from "~/components/HeaderSearch";
 import { SEARCH_PLACEHOLDER } from "../../constants";
 
 export interface HeaderProps {
+  id: string;
   handleClose?: () => void;
   handleSearch?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Header: FunctionComponent<HeaderProps> = function ({
+  id,
   handleClose,
   handleSearch = () => {},
 }) {
@@ -17,7 +19,14 @@ const Header: FunctionComponent<HeaderProps> = function ({
       autoFocus
       onChange={handleSearch as () => void}
       placeholder={SEARCH_PLACEHOLDER}
-      options={[<Button.Icon key="close" icon="close" onClick={handleClose} />]}
+      options={[
+        <Button.Icon
+          id={`${id}-close`}
+          key="close"
+          icon="close"
+          onClick={handleClose}
+        />,
+      ]}
     />
   );
 };

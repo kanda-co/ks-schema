@@ -28,5 +28,4 @@ export const HOME_URL =
   process.env.REACT_APP_LOGIN_URL || 'http://localhost:3000/';
 
 export const LOGIN_URL =
-  process.env.REACT_APP_LOGIN_URL ||
-  'http://localhost:3001/?path=/story/firebase-auth--sign-in-with-google';
+  process.env.REACT_APP_LOGIN_URL || 'http://localhost:3000/login';

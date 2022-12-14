@@ -4,17 +4,22 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "yalc:update": "yalc update",
     "yalc:link": "yalc add --link @kanda-libs/ks-frontend-services && yarn yarn:update"
   },
   "dependencies": {
-    "@kanda-libs/ks-component-ts": "file:.yalc/@kanda-libs/ks-component-ts",
+    "@kanda-libs/ks-amplitude-provider": "0.0.1",
+    "@kanda-libs/ks-component-ts": "0.2.36",
+    "@kanda-libs/ks-design-library": "0.2.17-qa.1",
     "@kanda-libs/ks-frontend-services": "link:.yalc/@kanda-libs/ks-frontend-services",
+    "@kanda-libs/ks-tailwind-config": "0.2.0",
+    "lodash.get": "^4.4.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.3"
   },
   "devDependencies": {
     "@types/react": "^18.0.15",

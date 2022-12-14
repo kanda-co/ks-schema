@@ -1,12 +1,12 @@
 import { TableHeaderColumn } from "~/components/Table/types";
 import { DroppableProvided, DroppableProvidedProps } from "react-beautiful-dnd";
-import { HTMLAttributes, MutableRefObject, ReactElement } from "react";
+import { HTMLAttributes, MutableRefObject, ReactNode } from "react";
 
 export interface DragDropWrapperHook {
   visibleColumns: number;
   droppableProps: DroppableProvidedProps;
   innerRef: MutableRefObject<HTMLElement>;
-  placeholder: ReactElement<HTMLElement> | null | undefined;
+  placeholder: ReactNode;
 }
 
 export default function useDragDropWrapper(
