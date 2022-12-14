@@ -4,7 +4,7 @@
   "license": "private",
   "scripts": {
     "clean-incorrect-imports": "egrep -rl \"DateFromISOString\" src | xargs -I@ sed -i \"\" \"s/\\/DateFromISOString//g\" @",
-    "generate-service-module": "yarn clean-incorrect-imports && ts-node --experimental-specifier-resolution=node ./src/service/generator/",
+    "generate-service-module": "ts-node --experimental-specifier-resolution=node ./src/service/generator/",
     "clean": "rimraf dist",
     "build:types": "tsc src/index.ts --declaration --emitDeclarationOnly --jsx react-jsx --esModuleInterop",
     "build": "yarn && yarn clean && yarn generate-service-module && yarn build:types && ts-node ./build.ts",
