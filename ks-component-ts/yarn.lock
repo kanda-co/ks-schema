@@ -786,6 +786,13 @@
   dependencies:
     "@amplitude/analytics-browser" "^1.6.4"
 
+"@kanda-libs/ks-amplitude-provider@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-amplitude-provider/-/ks-amplitude-provider-0.0.7.tgz#08f166736b229c44402e3f64debd98321af88842"
+  integrity sha512-gzkZzFcBwh4MQz/VJ8M0TGcuWQzLv0V2bYHOrr8Bc6ErlV/cIE+1NtocsfI7uv+0QRAbmO6YctU4/KztTtui/A==
+  dependencies:
+    "@amplitude/analytics-browser" "^1.6.4"
+
 "@kanda-libs/ks-design-library@0.2.20":
   version "0.2.20"
   resolved "https://registry.yarnpkg.com/@kanda-libs/ks-design-library/-/ks-design-library-0.2.20.tgz#29fdcb9d4bbc0681dd525db50d988412dbd1fa6d"
@@ -802,12 +809,12 @@
     react-toastify "^9.0.8"
     use-debounce "^8.0.4"
 
-"@kanda-libs/ks-frontend-services@0.2.39":
-  version "0.2.39"
-  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-frontend-services/-/ks-frontend-services-0.2.39.tgz#e44994489fd03ed32fda2d52dadd2ca17f203e25"
-  integrity sha512-1DBCGxR+88k6Mt7N+VB8YhF6CWuEHa+FrXiEykx9mUo/qJNxOtJWOnYYETHpcqfaPHpyB6bGD/BK542tJcn2lA==
+"@kanda-libs/ks-frontend-services@0.2.42":
+  version "0.2.42"
+  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-frontend-services/-/ks-frontend-services-0.2.42.tgz#822090fe6d3e4388dbf6d555988a8c8199f72876"
+  integrity sha512-MSLNh5yxFRUyW493lWU50lWrtnEBXJEWsmBqbQnNWEg0o3tKlhDvhslEyg97SCuH2LzSV5kNBoIrUtWI3k/kIQ==
   dependencies:
-    "@kanda-libs/ks-amplitude-provider" "^0.0.5"
+    "@kanda-libs/ks-amplitude-provider" "^0.0.7"
     "@openapi-io-ts/runtime" "^0.3.1"
     "@stripe/stripe-js" "^1.35.0"
     append-query "^2.1.1"
