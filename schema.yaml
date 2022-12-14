@@ -4478,6 +4478,10 @@ components:
         referrer:
           type: string
           title: event referrer
+        params:
+          type: object
+          title: event page search parameters
+          additionalProperties: true
         user_agent:
           type: string
           title: event user agent, if applicable

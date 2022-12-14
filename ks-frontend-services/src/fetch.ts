@@ -1,7 +1,10 @@
 import FirebaseAuthService from './auth/FirebaseAuthService';
 import type { BrowserClient } from '@amplitude/analytics-types';
 import { AuthenticationHeaders, StringIndexedObject } from './types';
-import { Amplitude } from '@kanda-libs/ks-amplitude-provider';
+import {
+  Amplitude,
+  getEventWindowProperties,
+} from '@kanda-libs/ks-amplitude-provider';
 import { APP_ENV } from './config';
 
 interface Request extends StringIndexedObject {
@@ -100,13 +103,14 @@ const formatTrackingBody = (
   const action = containsUUID ? parts?.[3] || '*' : parts?.[2] || '*';
 
   const { method, body } = options;
-  const { origin, pathname } = window?.location || {};
+  const { path, referrer, params } = getEventWindowProperties();
 
   return {
     domain,
     url: `/${url}`,
-    path: pathname,
-    referrer: origin,
+    path,
+    referrer,
+    ...(params && { params }),
     api: {
       method,
       resource,

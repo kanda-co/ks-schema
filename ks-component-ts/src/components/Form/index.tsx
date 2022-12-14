@@ -104,6 +104,14 @@ const Form: FunctionComponent<FormProps> = function ({
     (errors: StringIndexedObject, event?: React.BaseSyntheticEvent): void => {
       const paths = getErrorObjectKeys(errors);
       const obj = createErrorObject(paths, errors, getValues);
+      console.log("Form Error", {
+        element_id: id,
+        info: {
+          form: {
+            [id]: obj,
+          },
+        },
+      });
       logEvent("form-error", {
         element_id: id,
         info: {

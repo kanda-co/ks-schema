@@ -43,6 +43,10 @@ function App() {
               </Field.Validator>
               <Field.Validator
                 validation={{
+                  min: {
+                    value: 70000,
+                    message: "Must be at least 7 characters",
+                  },
                   required: {
                     value: true,
                     message: "Price is required",
