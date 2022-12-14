@@ -1,6 +1,9 @@
 import { useState, useCallback } from 'react';
 import { RequestFunction } from '@openapi-io-ts/runtime';
-import { Amplitude } from '@kanda-libs/ks-amplitude-provider';
+import {
+  Amplitude,
+  getEventWindowProperties,
+} from '@kanda-libs/ks-amplitude-provider';
 
 import { SIGN_IN_METHODS } from './constants';
 
@@ -25,11 +28,12 @@ export default function useSignIn(type: SignInType): MutateHook {
       setIsSubmitting(true);
 
       const email = arg?.[0]?.email || null;
-      const { origin, pathname } = window?.location || {};
+      const { path, referrer, params } = getEventWindowProperties();
 
       const trackingBody = {
-        path: pathname,
-        referrer: origin,
+        path,
+        referrer,
+        ...(params && { params }),
         info: {
           login: {
             type,
