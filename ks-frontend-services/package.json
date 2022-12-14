@@ -6,6 +6,7 @@
     "clean-incorrect-imports": "egrep -rl \"DateFromISOString\" src | xargs -I@ sed -i \"\" \"s/\\/DateFromISOString//g\" @",
     "generate-service-module": "ts-node --experimental-specifier-resolution=node ./src/service/generator/",
     "clean": "rimraf dist",
+    "remove:nodemodules": "rimraf yarn.lock && rimraf node_modules",
     "build:types": "tsc src/index.ts --declaration --emitDeclarationOnly --jsx react-jsx --esModuleInterop",
     "build": "yarn && yarn clean && yarn generate-service-module && yarn build:types && ts-node ./build.ts",
     "watch": "yarn && yarn clean && DEV_WATCH=true yarn build",
