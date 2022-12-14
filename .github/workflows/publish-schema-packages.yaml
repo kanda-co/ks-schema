@@ -36,7 +36,7 @@ jobs:
           go-version: "<=1.16.0"
 
       - name: "build npm package"
-        run: npm install && make qa clean build-frontend
+        run: yarn && make qa clean build-frontend
 
       - name: "publish npm package"
         if: ${{ github.event_name != 'pull_request' }}
