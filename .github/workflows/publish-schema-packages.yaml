@@ -54,7 +54,7 @@ jobs:
         run: make qa clean ts-widget
 
       - name: "install yarn deps + build frontend services"
-        run: cd ks-frontend-services && yarn remove:nodemodules && yarn && yarn build
+        run: cd ks-frontend-services && yarn && yarn remove:nodemodules && yarn && yarn build
 
       - name: "publish frontend services npm package"
         if: ${{ github.event_name != 'pull_request' }}
