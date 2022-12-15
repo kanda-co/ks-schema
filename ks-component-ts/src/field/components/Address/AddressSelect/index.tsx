@@ -40,7 +40,7 @@ const AddressSelect: FunctionComponent<AddressSelectProps> = function ({
     data
   ) as unknown as SelectProps;
 
-  return <Select {...selectProps} {...rest} />;
+  return <Select {...selectProps} {...rest} disableDefaultValue={false} />;
 };
 
 export default AddressSelect;
