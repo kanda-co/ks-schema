@@ -4,6 +4,8 @@ import { AuthenticationHeaders, StringIndexedObject } from './types';
 import {
   Amplitude,
   getEventWindowProperties,
+  replaceKeyWordValues,
+  replacePasswordValues,
 } from '@kanda-libs/ks-amplitude-provider';
 import { APP_ENV } from './config';
 
@@ -95,7 +97,6 @@ const formatTrackingBody = (
   inputUrl: string,
   options: StringIndexedObject,
 ): StringIndexedObject => {
-
   const domain = new URL(inputUrl)?.origin;
   const url = inputUrl.replace(HUB_URL_REGEX, '');
   const parts = url.split('/');
@@ -108,6 +109,12 @@ const formatTrackingBody = (
   const { method, body } = options;
   const { path, referrer, params } = getEventWindowProperties();
 
+  const resourceData = body
+    ? JSON.stringify(
+        replaceKeyWordValues(replacePasswordValues(JSON.parse(body))),
+      )
+    : null;
+
   return {
     domain,
     url: `/${url}`,
@@ -119,7 +126,7 @@ const formatTrackingBody = (
       resource,
       resource_id: resourceId,
       action,
-      ...(body && { resource_data: body }),
+      ...(resourceData && { resource_data: resourceData }),
     },
   };
 };
