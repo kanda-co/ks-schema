@@ -16,7 +16,7 @@ const SignUp = () => {
         <div className="flex flex-row justify-between px-4 py-3 bg-neutral-600 rounded-t">
           <p className="text-neutral-300">Sign up</p>
         </div>
-        <Form form={form} onSubmit={onSubmit}>
+        <Form id="test-signup" form={form} onSubmit={onSubmit}>
           <div className="px-4 py-5 bg-neutral-700 rounded-b-lg">
             <Field.Validator validation={FORM_PROPS.firstName.validation}>
               <Field.Input {...FORM_PROPS.firstName} />
@@ -35,7 +35,12 @@ const SignUp = () => {
             </Field.Validator>
 
             <div className="flex flex-row">
-              <Button.Text label="Submit" submit disabled={isSubmitting} />
+              <Button.Text
+                id="test-signup-submit"
+                label="Submit"
+                submit
+                disabled={isSubmitting}
+              />
             </div>
             {response && (
               <div className="p-6 bg-neutral-900 mt-6">
