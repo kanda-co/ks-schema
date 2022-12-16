@@ -779,12 +779,15 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@kanda-libs/ks-amplitude-provider@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-amplitude-provider/-/ks-amplitude-provider-0.0.5.tgz#fcfb57394732444c488b92f0cc6598c583bcaf79"
-  integrity sha512-41iTB8Be5gw9LIAyBixiN6SUbtEmzfmCP4cqE1MkW3rUtRxlnxduAGKkt2/xqCQiqsMp7OKLGUrzq/PYoiNpJg==
+"@kanda-libs/ks-amplitude-provider@^0.0.12":
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-amplitude-provider/-/ks-amplitude-provider-0.0.12.tgz#980dcc995df505769f57119f9d97d4c42293fead"
+  integrity sha512-Ib1BSxdoFYrdLMXZOeBki1ODfBhCGXztmYXHFvSg65AqWHZUd8ebiWriGoR1HP57dvu5gBpWHcB0WQkpAxluxg==
   dependencies:
     "@amplitude/analytics-browser" "^1.6.4"
+    lodash.clonedeep "^4.5.0"
+    lodash.get "^4.4.2"
+    lodash.set "^4.3.2"
 
 "@kanda-libs/ks-amplitude-provider@^0.0.7":
   version "0.0.7"
@@ -793,12 +796,12 @@
   dependencies:
     "@amplitude/analytics-browser" "^1.6.4"
 
-"@kanda-libs/ks-design-library@0.2.20":
-  version "0.2.20"
-  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-design-library/-/ks-design-library-0.2.20.tgz#29fdcb9d4bbc0681dd525db50d988412dbd1fa6d"
-  integrity sha512-bEHZ6b2vgtuBvDLU3I6wiAknEp8afaT1VcdJ9SBtF/aqgr83u7Zl+cFuy7sae5tIYIwxwdq5JR5JgC/UBHjwxA==
+"@kanda-libs/ks-design-library@0.2.22":
+  version "0.2.22"
+  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-design-library/-/ks-design-library-0.2.22.tgz#9de87ffe4d43f950751a0fd88dab88214f98e4a9"
+  integrity sha512-Z3vrX10u808R6MD4qDJNStBdwERp8JGzNtzFV2budo8VYOYJ4FQtUqpcqi9jvqSZvaIQXh0KXDel+LtWC+rxlw==
   dependencies:
-    "@kanda-libs/ks-amplitude-provider" "^0.0.5"
+    "@kanda-libs/ks-amplitude-provider" "^0.0.7"
     file-saver "^2.0.5"
     lodash.get "^4.4.2"
     lodash.set "^4.3.2"
@@ -809,12 +812,12 @@
     react-toastify "^9.0.8"
     use-debounce "^8.0.4"
 
-"@kanda-libs/ks-frontend-services@0.2.42":
-  version "0.2.42"
-  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-frontend-services/-/ks-frontend-services-0.2.42.tgz#822090fe6d3e4388dbf6d555988a8c8199f72876"
-  integrity sha512-MSLNh5yxFRUyW493lWU50lWrtnEBXJEWsmBqbQnNWEg0o3tKlhDvhslEyg97SCuH2LzSV5kNBoIrUtWI3k/kIQ==
+"@kanda-libs/ks-frontend-services@0.2.48":
+  version "0.2.48"
+  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-frontend-services/-/ks-frontend-services-0.2.48.tgz#9af761365379b82c2a219848c15612ce310d91fa"
+  integrity sha512-KGcSlkM4BMhvMlFAeg2w8S6/8Wy/TXe/nFnP+gReVASy6Q2KFLBTIWQUX5etwOgxFP68MuEeCNncjRhAcdVDwQ==
   dependencies:
-    "@kanda-libs/ks-amplitude-provider" "^0.0.7"
+    "@kanda-libs/ks-amplitude-provider" "^0.0.12"
     "@openapi-io-ts/runtime" "^0.3.1"
     "@stripe/stripe-js" "^1.35.0"
     append-query "^2.1.1"
@@ -3974,6 +3977,11 @@ lodash.camelcase@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/lodash.camelcase/-/lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6"
   integrity sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==
+
+lodash.clonedeep@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
+  integrity sha512-H5ZhCF25riFd9uB5UCkVKo61m3S/xZk1x4wA6yp/L3RFP6Z/eHH1ymQcGLo7J3GMPfm0V/7m1tryHuGVxpqEBQ==
 
 lodash.debounce@^4.0.8:
   version "4.0.8"

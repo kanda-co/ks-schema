@@ -38,9 +38,9 @@
   "author": "rob@kanda.co.uk",
   "license": "MIT",
   "devDependencies": {
-    "@kanda-libs/ks-amplitude-provider": "^0.0.7",
-    "@kanda-libs/ks-design-library": "0.2.20",
-    "@kanda-libs/ks-frontend-services": "0.2.42",
+    "@kanda-libs/ks-amplitude-provider": "^0.0.12",
+    "@kanda-libs/ks-design-library": "0.2.22",
+    "@kanda-libs/ks-frontend-services": "0.2.48",
     "@types/browser-image-compression": "^1.0.9",
     "@types/mime-types": "^2.1.1",
     "@types/node": "^18.11.9",
