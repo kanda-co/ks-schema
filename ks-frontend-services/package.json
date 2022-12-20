@@ -23,6 +23,7 @@
   ],
   "dependencies": {
     "@kanda-libs/ks-amplitude-provider": "^0.0.7",
+    "@kanda-libs/ks-design-library": "link:.yalc/@kanda-libs/ks-design-library",
     "@openapi-io-ts/runtime": "^0.3.1",
     "@stripe/stripe-js": "^1.35.0",
     "append-query": "^2.1.1",
