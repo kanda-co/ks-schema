@@ -56,7 +56,7 @@ export interface TableProps {
   pageIndex: number;
   totalPages: number;
   setPage: (page: number) => void;
-  hoverPopover: FunctionComponent<PopoverButtonHoverPopoverProps>;
+  hoverPopover: FunctionComponent<PopoverButtonHoverPopoverProps> | null;
 }
 
 export interface TableRow {
