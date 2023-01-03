@@ -60,11 +60,6 @@ export default function useCompanyLookupInputProps({
         props.companyNumberName as string,
         company.limited_company?.company_number
       );
-      console.log(
-        "BuildingNumber",
-        props.buildingNumberName,
-        company?.limited_company?.company_address?.building_number
-      );
       setValue(
         props.buildingNumberName as string,
         company?.limited_company?.company_address?.building_number
