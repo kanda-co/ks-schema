@@ -27,7 +27,7 @@
     "@stripe/stripe-js": "^1.35.0",
     "append-query": "^2.1.1",
     "firebase": "^9.9.3",
-    "fp-ts": "^2.12.1",
+    "fp-ts": "^2.13.1",
     "io-ts": "^2.2.16",
     "io-ts-types": "^0.5.19",
     "remove": "^0.1.5",

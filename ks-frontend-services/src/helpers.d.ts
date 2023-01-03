@@ -1,5 +1,5 @@
 import * as operations from './generated/operations';
-import { StringIndexedObject } from './types';
+import type { StringIndexedObject } from './types';
 /**
  * Call fetch, including the baseUrl and attaching headers including authentication
  * @param baseURL
