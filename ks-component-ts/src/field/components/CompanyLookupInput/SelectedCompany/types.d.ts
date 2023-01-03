@@ -18,6 +18,10 @@ export interface SelectedCompanyProps extends Partial<Address> {
    */
   cityName: string;
   /**
+   * Building number field name
+   */
+  buildingNumberName: string;
+  /**
    * Address line one field name
    */
   addressLineOneName: string;

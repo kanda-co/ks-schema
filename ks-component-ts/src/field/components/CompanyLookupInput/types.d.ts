@@ -45,6 +45,10 @@ export interface CompanyLookupInputProps extends CompanyLookupInputSharedProps {
    */
   cityName?: string;
   /**
+   * Building number field name
+   */
+  buildingNumberName?: string;
+  /**
    * Address line one field name
    */
   addressLineOneName?: string;
