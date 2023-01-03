@@ -32,7 +32,7 @@ export interface Service<
   Body extends StringIndexedObject,
 > {
   key: string;
-  method: ServiceMethod<Value, Params, Body>;
+  method: ServiceMethod<Value, Params | undefined, Body | undefined>;
 }
 
 export interface ServiceMethodReturnParams<T> {

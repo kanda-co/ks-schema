@@ -9,14 +9,14 @@ export const loadServerData = async <
   Params extends StringIndexedObject<any> = {},
   Body extends StringIndexedObject<any> = {},
 >(
-  serviceMethod: ServiceMethod<Value, Params, Body>,
+  serviceMethod: ServiceMethod<Value, Params | undefined, Body | undefined>,
   ...args: any[]
-) => {
+): Promise<Value> => {
   const method = serviceMethod || (() => () => {});
-  const fetcher = () =>
+  const fetcher = (): Promise<Value> =>
     (method(...args)() as unknown as Promise<ServiceResponse>).then((res) =>
       handleResponse(res),
-    );
+    ) as Promise<Value>;
 
   return fetcher();
 };
