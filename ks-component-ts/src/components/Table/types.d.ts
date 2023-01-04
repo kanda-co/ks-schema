@@ -46,7 +46,7 @@ export interface TableHeaderColumn {
 }
 
 export interface TableProps {
-  onRowClicked: () => void;
+  onRowClicked: (row?: StringIndexedObject) => void;
   onAction: () => void;
   isValidating: boolean;
   data: any[];
