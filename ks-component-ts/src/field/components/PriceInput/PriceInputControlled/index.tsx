@@ -28,7 +28,7 @@ const PriceInputControlled: FunctionComponent<
     <BasicNumberInput
       {...props}
       formatForDisplay={(value: number) => value / currencyDecimal}
-      formatForValue={(value: number) => value * currencyDecimal}
+      formatForValue={(value: number) => Math.round(value * currencyDecimal)}
       prefix={symbol}
       fixedDecimalScale={fixedDecimalScale}
     />
