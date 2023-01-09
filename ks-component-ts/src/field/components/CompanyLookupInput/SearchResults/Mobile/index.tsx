@@ -34,11 +34,13 @@ const Mobile: FunctionComponent<MobileProps> = function ({
                 header={
                   <React.Fragment>
                     <Header
+                      id={modalId}
                       handleClose={handleClose}
                       handleSearch={handleSearch}
                     />
                     {showButton && (
                       <Button.Link
+                        id="company-lookup-not-listed"
                         onClick={onClick}
                         className="w-full text-center mx-auto mb-2"
                         label="I can't find my company"

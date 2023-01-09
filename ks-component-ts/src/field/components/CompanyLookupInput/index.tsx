@@ -13,6 +13,7 @@ const CompanyLookupInput: FunctionComponent<CompanyLookupInputProps> =
   function ({
     name = "companyName",
     companyNumberName = "companyNumber",
+    buildingNumberName = "buildingNumber",
     addressLineOneName = "addressLineOne",
     addressLineTwoName = "addressLineTwo",
     cityName = "city",
@@ -42,6 +43,7 @@ const CompanyLookupInput: FunctionComponent<CompanyLookupInputProps> =
       companySearchName,
       companyFocusName,
       companyNumberName,
+      buildingNumberName,
       addressLineOneName,
       addressLineTwoName,
       cityName,
@@ -65,6 +67,7 @@ const CompanyLookupInput: FunctionComponent<CompanyLookupInputProps> =
             removeSelected={handleUnSelect}
             selectedLabel={selectedLabel}
             cityName={cityName}
+            buildingNumberName={buildingNumberName}
             addressLineOneName={addressLineOneName}
             addressLineTwoName={addressLineTwoName}
             postalCodeName={postalCodeName}

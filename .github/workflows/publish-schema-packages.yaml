@@ -36,7 +36,7 @@ jobs:
           go-version: "<=1.16.0"
 
       - name: "build npm package"
-        run: npm install && make qa clean build-frontend
+        run: yarn && make qa clean build-frontend
 
       - name: "publish npm package"
         if: ${{ github.event_name != 'pull_request' }}
@@ -54,13 +54,17 @@ jobs:
         run: make qa clean ts-widget
 
       - name: "install yarn deps + build frontend services"
-        run: cd ks-frontend-services && yarn && yarn build
+        run: cd ks-frontend-services && yarn && yarn remove:nodemodules && yarn && yarn build
 
       - name: "publish frontend services npm package"
         if: ${{ github.event_name != 'pull_request' }}
         run: rm -rf .git/ && cd ks-frontend-services && rm -rf .git/ && yarn publish --new-version $(yarn info @kanda-libs/ks-frontend-services versions | grep '[0-9].[0-9].[0-9]' | sort -t "." -k1,1n -k2,2n -k3,3n | tail -1 | cut -d "'" -f 2 |  awk 'BEGIN{FS=OFS="."} {$3+=1} 1')
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_SECRET }}
+
+      - name: c-hive/gha-yarn-cache@v2
+        with:
+          directory: ks-component-ts
 
       - name: "install yarn deps + build TS npm package"
         run: cd ks-component-ts && yarn && yarn build

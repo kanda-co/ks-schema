@@ -1358,6 +1358,34 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/job/{id}/checkoutLink:
+    post:
+      operationId: jobCheckoutLink
+      summary: kanda staff only to generate a job checkout link with code
+      tags:
+        - Job
+      parameters:
+        - name: id
+          in: path
+          description: job id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing job generated checkout link with code
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RedirectURLs"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/job/{id}/companyInfo:
     post:
       operationId: jobCompanyInfo
@@ -2175,6 +2203,33 @@ paths:
       responses:
         200:
           description: provider webhook accepted
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/event:
+    post:
+      operationId: postEvent
+      summary: post event by kanda staff
+      tags:
+        - Event
+      requestBody:
+        description: post event record
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Event"
+      responses:
+        200:
+          description: posted event
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Event"
         default:
           description: unexpected error
           content:
@@ -4348,6 +4403,234 @@ components:
         utm_content:
           type: string
           title: utm content
+
+    Event:
+      type: object
+      required:
+        - name
+        - event_options
+      properties:
+        name:
+          type: string
+          title: event name
+          description: >
+            Name of the event. 
+            Can specify pageview which is a special type of event.
+            All other names will be treated as custom events.
+          enum:
+            - "page-view"
+            - "page-closed"
+            - "page-error"
+            - "signup-attempted"
+            - "signup-succeeded"
+            - "signup-failed"
+            - "login-attempted"
+            - "login-succeeded"
+            - "login-failed"
+            - "button-interacted"
+            - "form-filled"
+            - "form-submitted"
+            - "form-error"
+            - "api-attempted"
+            - "api-succeeded"
+            - "api-failed"
+            - "comms-sent"
+            - "onboarding-registered"
+            - "onboarding-legacy"
+            - "onboarding-billing-subscribed"
+            - "onboarding-billing-referred"
+            - "onboarding-billing-cancelled"
+            - "onboarding-director-info-provided"
+            - "onboarding-director-verified"
+            - "onboarding-director-pending"
+            - "onboarding-director-failed"
+            - "onboarding-onboarded"
+            - "onboarding-insurance-uploaded"
+            - "onboarding-contract-signed"
+            - "onboarding-completed"
+            - "onboarding-verified"
+            - "onboarding-rejected"
+            - "onboarding-declined"
+        event_options:
+          type: object
+          title: event options
+          $ref: "#/components/schemas/EventOptions"
+        event_props:
+          type: object
+          title: event props
+          $ref: "#/components/schemas/EventProps"
+        purchase:
+          type: object
+          title: purchase event
+          $ref: "#/components/schemas/PurchaseEvent"
+
+    EventOptions:
+      type: object
+      title: event options
+      required:
+        - device_id
+        - session_id
+        - ip
+        - time
+      properties:
+        user_id:
+          type: string
+          title: user id
+        device_id:
+          type: string
+          title: device id
+        session_id:
+          type: integer
+          title: session id
+        ip:
+          type: string
+          title: ip address associated with the event
+        time:
+          type: string
+          title: event time tracked at
+          format: date-time
+
+    EventProps:
+      type: object
+      title: event props
+      properties:
+        domain:
+          type: string
+          title: event domain
+        url:
+          type: string
+          title: event url
+        path:
+          type: string
+          title: event path
+        referrer:
+          type: string
+          title: event referrer
+        params:
+          type: object
+          title: event page search parameters
+          additionalProperties: true
+        user_agent:
+          type: string
+          title: event user agent, if applicable
+        request_user:
+          type: object
+          title: request user
+          $ref: "#/components/schemas/UserEvent"
+        element:
+          type: string
+          title: element label of component
+        element_id:
+          type: string
+          title: element id of component
+        element_path:
+          type: string
+          title: element path of component
+        api:
+          type: object
+          title: api event
+          $ref: "#/components/schemas/ApiEvent"
+        info:
+          type: object
+          title: event info props, in a map object
+          additionalProperties: true
+
+    UserEvent:
+      type: object
+      title: user event
+      required:
+        - id
+        - verified
+        - name
+        - email
+        - provider
+      properties:
+        id:
+          type: string
+          title: oid of event user
+        cid:
+          type: string
+          title: cid of event user
+        verified:
+          type: boolean
+          title: event user is verified
+        name:
+          type: string
+          title: event user name
+        email:
+          type: string
+          title: event user email
+          format: email
+        mobile:
+          type: string
+          title: event user mobile
+        role:
+          type: string
+          title: event user role
+        provider:
+          type: string
+          title: event user provider
+          enum:
+            - system
+            - firebase
+            - google
+            - facebook
+          default: system
+
+    ApiEvent:
+      type: object
+      title: api event
+      required:
+        - method
+        - resource
+        - resource_id
+        - action
+      properties:
+        method:
+          type: string
+          title: method of request
+          enum:
+            - get
+            - post
+            - put
+            - delete
+        resource:
+          type: string
+          title: resource of request
+        resource_id:
+          type: string
+          title: resource id of request
+        action:
+          type: string
+          title: action of request
+        resource_data:
+          type: object
+          title: resource data
+          additionalProperties: true
+        error:
+          type: string
+          title: error of request
+
+    PurchaseEvent:
+      type: object
+      title: purchase event
+      required:
+        - kind
+        - payment
+      properties:
+        pid:
+          type: string
+          title: product id
+        kind:
+          type: string
+          title: purchase kind
+        kid:
+          type: string
+          title: purchase kind id
+        payment:
+          type: string
+          title: product type
+          $ref: "#/components/schemas/PaymentOption"
 
     Error:
       type: object

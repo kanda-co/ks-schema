@@ -31,6 +31,7 @@ const Desktop: FunctionComponent<DesktopProps> = function ({
             <>
               {showButton && (
                 <Button.Link
+                  id="company-lookup-not-listed"
                   label="I can't find my company"
                   className="w-full sticky top-0 px-3 pb-1 bg-neutral-000"
                   onClick={() => {

@@ -7,6 +7,7 @@ import { getValidationConditions, getValidationErrors } from "./helpers";
 
 interface ValidationProps {
   name?: string;
+  validation?: ValidationItems;
   validationConditions: ValidationConditions;
   validationErrors: ValidationErrors;
 }
@@ -39,6 +40,7 @@ export default function useValidationProps(
     );
 
     props = {
+      validation,
       validationConditions: nestedValidationConditions,
       validationErrors: nestedValidationErrors,
     };

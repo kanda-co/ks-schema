@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react';
+
 import {
   Service,
   ServiceMethod,
@@ -40,6 +41,8 @@ export default function useSubmit<Value, Params, Body>(
     }: Partial<ServiceParams<Params, Body>>): Promise<
       ServiceMethodReturnParams<Value>
     > => {
+      // console.log(user);
+
       if (!service || !service.method) {
         const errorLabel = 'No such method exists';
         setError(errorLabel);

@@ -1,12 +1,24 @@
+import { BrowserRouter } from 'react-router-dom';
+import { CommonWrapper } from '@kanda-libs/ks-design-library';
+import { AmplitudeProvider } from '@kanda-libs/ks-amplitude-provider';
+
+import { Nav } from './components';
+import Pages from './pages';
 import './App.css';
-import { services } from '@kanda-libs/ks-frontend-services';
+import './styles/library.css';
 
 function App() {
   return (
-    <div className="App">
-      <p className="read-the-docs">ks-frontend-services</p>
-      <pre>{JSON.stringify(services)}</pre>
-    </div>
+    <AmplitudeProvider>
+      <CommonWrapper>
+        <div className="App">
+          <BrowserRouter>
+            <Nav />
+            <Pages />
+          </BrowserRouter>
+        </div>
+      </CommonWrapper>
+    </AmplitudeProvider>
   );
 }
 

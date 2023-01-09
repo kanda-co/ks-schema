@@ -1,7 +1,8 @@
 import { readFileSync, writeFileSync } from 'fs';
-import { join } from 'path';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
 import * as operations from '../../generated/operations';
-import * as externalServices from '../external';
+import * as externalServices from '../external/index';
 import {
   SERVICE_FILE_NAME,
   HEADER_FILE_NAME,
@@ -30,6 +31,8 @@ try {
    * The header is stored in a template file to make changing imports etc easier
    * and more maintainable
    */
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
   const header = readFileSync(join(__dirname, HEADER_FILE_NAME), 'utf-8');
   fileContents += `${header}\n`;
 

@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { APP_ENV } from '../config';
 
 export interface MutateHook {
   mutate: (
@@ -41,7 +42,7 @@ export default function useMutate(method: Function): MutateHook {
       /**
        * logs the error for debugging
        */
-      console.log('Mutate error', e.errors || e);
+      if (APP_ENV === 'qa') console.log('Mutate error', e.errors || e);
 
       setError(e);
 

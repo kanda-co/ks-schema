@@ -22,6 +22,7 @@ const SelectedCompany: FunctionComponent<SelectedCompanyProps> = function ({
       <div className="flex absolute right-0 top-0">
         <Button.InlineLink
           variant="turquoise"
+          id="company-lookup-remove-selected"
           label={removeSelectedLabel}
           onClick={removeSelected}
         />

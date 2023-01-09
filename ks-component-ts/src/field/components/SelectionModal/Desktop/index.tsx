@@ -12,7 +12,6 @@ const Desktop: FunctionComponent<SelectionModalProps> = function ({
   label,
   error,
   isLoading,
-  forwardRef,
   children,
 }) {
   const { buttonId, buttonText } = useDesktopProps(name, options);
@@ -26,7 +25,6 @@ const Desktop: FunctionComponent<SelectionModalProps> = function ({
           buttonText={children || buttonText}
           error={error}
           isLoading={isLoading}
-          forwardRef={forwardRef}
         />
       }
     >

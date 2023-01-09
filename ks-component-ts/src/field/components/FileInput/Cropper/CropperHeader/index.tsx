@@ -12,7 +12,12 @@ const CropperHeader: FunctionComponent<CropperHeaderProps> = function ({
   return (
     <Header.Base
       options={[
-        <Button.Icon key="close" {...ICON_PROPS} onClick={onCancelCrop} />,
+        <Button.Icon
+          key="close"
+          id="cropper-close"
+          {...ICON_PROPS}
+          onClick={onCancelCrop}
+        />,
       ]}
     >
       <>{TITLE}</>

@@ -60,6 +60,17 @@ export default function useCompanyLookupInputProps({
         props.companyNumberName as string,
         company.limited_company?.company_number
       );
+      const buildingNumber =
+        company.limited_company?.company_address?.building_number || "";
+      const lineOne = company.limited_company?.company_address?.line_1 || "";
+
+      if (buildingNumber && lineOne.indexOf(buildingNumber) === 0) {
+        setValue(
+          props.buildingNumberName as string,
+          company?.limited_company?.company_address?.building_number
+        );
+      }
+
       setValue(
         props.addressLineOneName as string,
         company.limited_company?.company_address?.line_1

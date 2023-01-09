@@ -1,4 +1,5 @@
 import { fold, Either } from 'fp-ts/Either';
+import { APP_ENV } from './config';
 
 interface Error {
   response: {
@@ -17,7 +18,7 @@ export const handleResponse = (response: Response) =>
   new Promise((resolve, reject) =>
     fold(
       async (error: Error) => {
-        console.log('Error:', error);
+        if (APP_ENV === 'qa') console.log('Error:', error);
         if (error.response) {
           reject(await error.response.json());
         } else {

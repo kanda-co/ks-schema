@@ -4,7 +4,7 @@ import { useWatch } from "react-hook-form";
 
 const Append = () => (
   <span className="relative field-focus:hidden field-error:hidden field-loading:hidden">
-    <span className="py-1 -ml-4 inline-block text-style-f mt-px absolute">
+    <span className="absolute inline-block py-1 mt-px -ml-4 text-style-f">
       x
     </span>
   </span>
@@ -37,7 +37,7 @@ function App() {
     <div className="App">
       <h2 className="block mt-2">Form values</h2>
       <div className="px-4 py-4">Hello world</div>
-      <Form form={form} onSubmit={() => {}}>
+      <Form id="test-form" form={form} onSubmit={() => {}}>
         <Field.Validator
           validation={{
             min: {
