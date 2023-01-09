@@ -14,6 +14,7 @@ const SelectUncontrolled: FunctionComponent<
   isLoading,
   className,
   name,
+  disableDefaultValue = true,
   ...restProps
 }) {
   const { options, classNames, currentValue, defaultValue, skeletonClasses } =
@@ -44,7 +45,11 @@ const SelectUncontrolled: FunctionComponent<
           {...restProps}
         >
           {options.map(({ value, name: optionName }) => (
-            <option key={value} disabled={value === defaultValue} value={value}>
+            <option
+              key={value}
+              disabled={disableDefaultValue && value === defaultValue}
+              value={value}
+            >
               {optionName}
             </option>
           ))}

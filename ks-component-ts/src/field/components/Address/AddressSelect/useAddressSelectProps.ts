@@ -8,7 +8,6 @@ import {
 } from "react";
 import { useWatch, useFormContext } from "react-hook-form";
 import { getOptions, checkPostcodesMatch, type AddressOption } from "./helpers";
-import { SELECT_ADDRESS_LABEL } from "./constants";
 
 import type { AddressApiResponseAddress, AddressApiData } from "../types";
 
@@ -16,7 +15,6 @@ export interface AddressSelectPropsHook {
   onChange: (e: FormEvent) => void;
   options: AddressOption[];
   name: string;
-  placeholder?: string | JSX.Element;
   isLoading?: boolean;
 }
 
@@ -96,8 +94,6 @@ export default function useAddressSelectProps(
     [addresses, apiPostcode, prefix, setValue]
   );
 
-  const placeholder = data?.postcode ? SELECT_ADDRESS_LABEL : "";
-
   useEffect(() => {
     if (!prefix || !postcode) return;
 
@@ -115,7 +111,6 @@ export default function useAddressSelectProps(
     onChange: handleChange,
     options,
     name,
-    placeholder,
     isLoading,
   };
 }

@@ -68,7 +68,16 @@ export default function useSignIn(type: SignInType): MutateHook {
         /**
          * track login failure
          */
-        Amplitude?.track('login-failed', trackingBody);
+        Amplitude?.track('login-failed', {
+          ...trackingBody,
+          info: {
+            ...trackingBody.info,
+            login: {
+              ...trackingBody.info.login,
+              error: e.message,
+            },
+          },
+        });
         Amplitude?.flush();
         setError(e);
 

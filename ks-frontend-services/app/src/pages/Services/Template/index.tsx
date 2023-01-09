@@ -28,15 +28,25 @@ const Template = ({ service, showIdField = false }: TemplateProps) => {
         }-lg`}
       >
         <p className="text-neutral-300">{service}</p>
-        <Button.Link label={show ? 'Hide' : 'Show'} onClick={onShow} />
+        <Button.Link
+          id={`${service}-show`}
+          label={show ? 'Hide' : 'Show'}
+          onClick={onShow}
+        />
       </div>
       {show && (
-        <Form form={form} onSubmit={onSubmit}>
+        <Form id={service} form={form} onSubmit={onSubmit}>
           <div className="px-4 py-5 bg-neutral-700 rounded-b-lg">
             {showIdField && <Field.Input name={name} />}
             <div className="flex flex-row">
-              <Button.Text label="Submit" submit disabled={isSubmitting} />
               <Button.Text
+                id={`${service}-submit`}
+                label="Submit"
+                submit
+                disabled={isSubmitting}
+              />
+              <Button.Text
+                id={`${service}-reset`}
                 label="Reset"
                 onClick={onReset}
                 className="ml-4"

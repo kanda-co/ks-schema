@@ -51,4 +51,8 @@ export interface SelectUncontrolledProps {
    * Display Loading state
    */
   isLoading?: boolean;
+  /**
+   * Disable the default value
+   */
+  disableDefaultValue?: boolean;
 }

@@ -4,6 +4,8 @@ import { AuthenticationHeaders, StringIndexedObject } from './types';
 import {
   Amplitude,
   getEventWindowProperties,
+  replaceKeyWordValues,
+  replacePasswordValues,
 } from '@kanda-libs/ks-amplitude-provider';
 import { APP_ENV } from './config';
 
@@ -91,12 +93,14 @@ const getIds = (amplitude?: BrowserClient): Ids => {
 const UUID_REGEX =
   /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
 
+const HUB_URL_REGEX = /https:\/\/hub(-qa)?\.kanda\.co\.uk\//gm;
+
 const formatTrackingBody = (
   inputUrl: string,
   options: StringIndexedObject,
 ): StringIndexedObject => {
   const domain = new URL(inputUrl)?.origin;
-  const url = inputUrl.replace(/https?:\/\/hub\-qa?.kanda.co.uk\//gm, '');
+  const url = inputUrl.replace(HUB_URL_REGEX, '');
   const parts = url.split('/');
   const containsUUID = parts.some((part) => UUID_REGEX.test(part));
 
@@ -106,6 +110,12 @@ const formatTrackingBody = (
 
   const { method, body } = options;
   const { path, referrer, params } = getEventWindowProperties();
+
+  const resourceData = body
+    ? JSON.stringify(
+        replaceKeyWordValues(replacePasswordValues(JSON.parse(body))),
+      )
+    : null;
 
   return {
     domain,
@@ -118,7 +128,7 @@ const formatTrackingBody = (
       resource,
       resource_id: resourceId,
       action,
-      ...(body && { resource_data: body }),
+      ...(resourceData && { resource_data: resourceData }),
     },
   };
 };
