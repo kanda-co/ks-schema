@@ -10,13 +10,7 @@ export const onValueChange = (
 ): void => {
   onChange(
     event.floatValue && event.floatValue > 0
-      ? parseInt(
-          parseFloat(
-            ((event.floatValue as unknown as number) *
-              currencyDecimal) as unknown as string
-          ).toPrecision(7),
-          10
-        )
+      ? Math.round((event.floatValue as unknown as number) * currencyDecimal)
       : undefined
   );
 };
