@@ -6,7 +6,8 @@ import {
   useSubmit,
 } from "@kanda-libs/ks-frontend-services";
 import { useCallback, useState } from "react";
-import { downloadBase64, isJobCustom } from "./helpers";
+import { isJobCustom } from "./helpers";
+import { downloadBase64 } from "../../helpers";
 
 export interface DownloadPdfHook {
   downloadPdf: (id: string) => void;
