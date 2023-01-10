@@ -13,6 +13,8 @@ export {
 
 export { makeIsAllowed } from "./field/helpers";
 
+export { default as useDownloadPdf } from "./hooks/useDownloadPdf";
+
 export { type FieldProps };
 
 export * from "./components";
