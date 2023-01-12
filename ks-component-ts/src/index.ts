@@ -33,5 +33,3 @@ export {
   useWatch,
   useController,
 } from "react-hook-form";
-
-export type { KeyedMutator } from "swr";

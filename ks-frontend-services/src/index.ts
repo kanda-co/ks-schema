@@ -19,3 +19,5 @@ export type {
   ServiceSubmit,
   ServiceMethodReturnParams,
 } from './types';
+
+export type { KeyedMutator } from 'swr';
