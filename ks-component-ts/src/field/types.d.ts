@@ -67,8 +67,8 @@ export type DefaultFormFieldProps<T> = {
   defaultValue?: string | number | readonly string[];
   ref?: MutableRefObject<any>;
   forwardRef?: MutableRefObject<any>;
-  onChange?: () => void;
-  onBlur?: () => void;
+  onChange?: (...args: unknown[]) => void;
+  onBlur?: (...args: unknown[]) => void;
   error?: ValidError;
   isLoading?: boolean;
 } & T;

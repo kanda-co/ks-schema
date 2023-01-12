@@ -13,6 +13,7 @@ export interface InputUncontrolledProps
   italic?: string;
   placeholder?: string | JSX.Element;
   autoSize?: boolean;
+  valueOverride?: string | number;
 }
 
 const InputUncontrolled: FunctionComponent<
@@ -26,6 +27,7 @@ const InputUncontrolled: FunctionComponent<
   iconVariant = "default",
   italic,
   autoSize = false,
+  valueOverride,
   ...restProps
 }) {
   const { classNames, iconProps } = useInputProps(
@@ -64,6 +66,7 @@ const InputUncontrolled: FunctionComponent<
             <InputTag
               {...inputProps}
               {...stripUnneededProps(restProps)}
+              value={valueOverride || restProps.value}
               placeholder={restProps.placeholder as string}
             />
           </>

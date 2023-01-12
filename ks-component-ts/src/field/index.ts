@@ -23,6 +23,9 @@ import FingerprintBooleanInput from "~/field/components/FingerprintBooleanInput"
 import NumberInput, {
   type NumberInputProps,
 } from "~/field/components/NumberInput";
+import BasicNumberInput, {
+  type BasicNumberInputProps,
+} from "~/field/components/BasicNumberInput";
 import Select, { type SelectProps } from "~/field/components/Select";
 import RadioSelect, {
   type RadioSelectProps,
@@ -61,10 +64,11 @@ import AutoSizeInput, {
 import AutoSizeTextArea, {
   type AutoSizeTextAreaProps,
 } from "~/field/components/AutoSizeTextArea";
-import type { WidgetArrayInputProps, WidgetArrayWrapperProps } from "~/field/components/Array/types";
 import type {
-  ArrayWrapperChildrenArgs
-} from "~/field/components/Array/Wrapper/types";
+  WidgetArrayInputProps,
+  WidgetArrayWrapperProps,
+} from "~/field/components/Array/types";
+import type { ArrayWrapperChildrenArgs } from "~/field/components/Array/Wrapper/types";
 
 const Field = {
   Address,
@@ -79,6 +83,7 @@ const Field = {
   Input,
   NumberFormatInput,
   NumberInput,
+  BasicNumberInput,
   PasswordInput,
   PhoneNumberInput,
   Postcode,
@@ -122,6 +127,10 @@ export interface FieldProps {
   AutoSizeTextArea: AutoSizeTextAreaProps;
 }
 
-export type { WidgetArrayWrapperProps, ArrayWrapperChildrenArgs, WidgetArrayInputProps };
+export type {
+  WidgetArrayWrapperProps,
+  ArrayWrapperChildrenArgs,
+  WidgetArrayInputProps,
+};
 
-export type { ValidatedFieldProps,  } from "./types";
+export type { ValidatedFieldProps } from "./types";

@@ -10,8 +10,9 @@ export type AutoSizeInputUncontrolledProps = AutosizeInputProps &
   FieldFormControllerChildrenArgs<{
     className?: string;
     placeholder?: string;
+    valueOverride?: string | number;
   }> & {
-    onChange: () => void;
+    onChange?: () => void;
   };
 
 const AutoSizeInputUncontrolled: FunctionComponent<
@@ -21,6 +22,8 @@ const AutoSizeInputUncontrolled: FunctionComponent<
   error,
   className: initialClassName,
   isLoading,
+  minWidth,
+  valueOverride,
   ...restProps
 }) {
   const { className, skeletonClasses } = useAutoSizeInputUncontrolledClassNames(
@@ -41,6 +44,8 @@ const AutoSizeInputUncontrolled: FunctionComponent<
           inputClassName={className}
           ref={forwardRef}
           {...restProps}
+          value={valueOverride || restProps.value}
+          minWidth={minWidth}
         />
       )}
     </>

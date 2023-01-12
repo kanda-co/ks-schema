@@ -51,6 +51,9 @@ export const stripUnneededProps = (props: StringIndexedObject) => {
     validationConditions,
     validationErrors,
     register,
+    control,
+    arrayName,
+    index,
     isValidating,
     ...rest
   } = props as StringIndexedObject;
