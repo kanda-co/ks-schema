@@ -150,16 +150,16 @@ const interceptedFetch = (
   const token =
     global?.token || FirebaseAuthService?.auth?.currentUser?.accessToken;
 
-  //  const trackingBody = formatTrackingBody(url, options);
-  //  const ids = getIds(Amplitude);
-  //
-  //  Amplitude?.track('api-attempted', trackingBody);
-  //  Amplitude?.flush();
+  const trackingBody = formatTrackingBody(url, options);
+  const ids = getIds(Amplitude);
+
+  Amplitude?.track('api-attempted', trackingBody);
+  Amplitude?.flush();
 
   return originalFetch()
     .apply(currentWindow, [
       url,
-      buildRequestHeaders(options, token, currentWindow),
+      buildRequestHeaders(options, token, ids),
       ...args,
     ])
     .then(async (data) => {
