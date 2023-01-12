@@ -110,6 +110,7 @@
     "url": "git+https://github.com/kanda-co/ks-form-library.git"
   },
   "dependencies": {
+    "@kanda-libs/kanda-quotes": "^0.0.2",
     "@kanda-libs/ks-tailwind-config": "^0.0.5",
     "@types/lodash.get": "^4.4.7",
     "@types/lodash.trim": "^4.5.7",

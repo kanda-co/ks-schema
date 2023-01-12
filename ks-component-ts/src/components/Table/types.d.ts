@@ -46,7 +46,7 @@ export interface TableHeaderColumn {
 }
 
 export interface TableProps {
-  onRowClicked: () => void;
+  onRowClicked: (row?: StringIndexedObject) => void;
   onAction: () => void;
   isValidating: boolean;
   data: any[];
@@ -56,7 +56,7 @@ export interface TableProps {
   pageIndex: number;
   totalPages: number;
   setPage: (page: number) => void;
-  hoverPopover: FunctionComponent<PopoverButtonHoverPopoverProps>;
+  hoverPopover: FunctionComponent<PopoverButtonHoverPopoverProps> | null;
 }
 
 export interface TableRow {

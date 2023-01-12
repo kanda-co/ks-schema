@@ -30,6 +30,8 @@ interface Ids {
   userId?: string | undefined;
 }
 
+const currentWindow = typeof window !== 'undefined' ? window : {};
+
 export const buildIds = (ids: Ids): IdHeaders => ({
   ...(ids?.deviceId
     ? {
@@ -131,7 +133,7 @@ const formatTrackingBody = (
   };
 };
 
-export const originalFetch = () => fetch.bind(window);
+export const originalFetch = () => fetch.bind(currentWindow);
 
 /**
  * Alter the fetch method so that it will automatically retry the request
@@ -145,16 +147,21 @@ const interceptedFetch = (
   options: StringIndexedObject,
   ...args
 ) => {
-  const token = FirebaseAuthService?.auth?.currentUser?.accessToken;
+  const token =
+    global?.token || FirebaseAuthService?.auth?.currentUser?.accessToken;
 
-  const trackingBody = formatTrackingBody(url, options);
-  const ids = getIds(Amplitude);
-
-  Amplitude?.track('api-attempted', trackingBody);
-  Amplitude?.flush();
+  //  const trackingBody = formatTrackingBody(url, options);
+  //  const ids = getIds(Amplitude);
+  //
+  //  Amplitude?.track('api-attempted', trackingBody);
+  //  Amplitude?.flush();
 
   return originalFetch()
-    .apply(window, [url, buildRequestHeaders(options, token, ids), ...args])
+    .apply(currentWindow, [
+      url,
+      buildRequestHeaders(options, token, currentWindow),
+      ...args,
+    ])
     .then(async (data) => {
       if (data.status === 403) {
         if (APP_ENV === 'qa')
@@ -163,7 +170,7 @@ const interceptedFetch = (
         if (!token) {
           const newToken = await FirebaseAuthService.token();
           if (APP_ENV === 'qa') console.log('Token refreshed');
-          return originalFetch().apply(window, [
+          return originalFetch().apply(currentWindow, [
             url,
             buildRequestHeaders(options, newToken),
             ...args,

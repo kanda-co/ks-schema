@@ -3106,6 +3106,31 @@ components:
           type: string
           title: date of birth
 
+    CommPreferences:
+      type: object
+      title: comm preferences
+      properties:
+        pre_job:
+          type: string
+          title: bucket 1
+          $ref: "#/components/schemas/PreferenceOption"
+        post_job:
+          type: string
+          title: bucket 1
+          $ref: "#/components/schemas/PreferenceOption"
+        other:
+          type: string
+          title: bucket 1
+          $ref: "#/components/schemas/PreferenceOption"
+
+    PreferenceOption:
+      type: string
+      title: preference option
+      enum:
+        - "enabled"
+        - "disabled"
+      default: "disabled"
+
     UserType:
       type: object
       required:
@@ -3141,6 +3166,9 @@ components:
           type: string
           title: mobile
           minLength: 1
+        comm_preferences:
+          type: object
+          $ref: "#/components/schemas/CommPreferences"
 
     AvailableRate:
       type: object

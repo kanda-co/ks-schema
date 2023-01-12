@@ -62,10 +62,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_SECRET }}
 
-      - name: c-hive/gha-yarn-cache@v2
-        with:
-          directory: ks-component-ts
-
       - name: "install yarn deps + build TS npm package"
         run: cd ks-component-ts && yarn && yarn build
 

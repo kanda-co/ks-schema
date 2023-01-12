@@ -13,6 +13,9 @@ export {
 
 export { makeIsAllowed } from "./field/helpers";
 
+export { default as useDownloadPdf } from "./hooks/useDownloadPdf";
+export { default as useDownloadDocument } from "./hooks/useDownloadDocument";
+
 export { type FieldProps };
 
 export * from "./components";
