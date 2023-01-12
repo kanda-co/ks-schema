@@ -6,6 +6,8 @@ export * from './lib';
 
 export { default as services } from './service';
 
+export { loadServerData } from './service/helpers';
+
 export { type OperationRequestFunctionMap } from './generated/operations';
 
 export * from './generated/components/schemas';

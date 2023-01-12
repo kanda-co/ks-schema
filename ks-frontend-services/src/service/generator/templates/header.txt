@@ -8,5 +8,5 @@ const dns = {
   dev: servers[2],
 };
 
-const server = dns[process.env.REACT_APP_ENV || 'dev'];
+const server = dns[process.env.REACT_APP_ENV || process.env.NEXT_PUBLIC_ENV || 'dev'];
 const serverFunctions = requestFunctions(server);

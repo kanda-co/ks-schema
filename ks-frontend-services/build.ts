@@ -22,7 +22,7 @@ const shared = {
   external: Object.keys(packageConfig.dependencies),
   plugins: [nodeExternalsPlugin()],
   logLevel: 'info' as LogLevel,
-  minify: true,
+  minify: false,
   sourcemap: true,
   watch: process.env.DEV_WATCH === 'true' && {
     // @ts-ignore

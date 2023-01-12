@@ -275,6 +275,10 @@ declare const job: {
         key: string;
         method: import("../generated/operations/overrideJob").OverrideJobRequestFunction;
     };
+    jobCheckoutLink: {
+        key: string;
+        method: import("../generated/operations/jobCheckoutLink").JobCheckoutLinkRequestFunction;
+    };
     jobCompanyInfo: {
         key: string;
         method: import("../generated/operations/jobCompanyInfo").JobCompanyInfoRequestFunction;
@@ -644,6 +648,10 @@ declare const services: {
         overrideJob: {
             key: string;
             method: import("../generated/operations/overrideJob").OverrideJobRequestFunction;
+        };
+        jobCheckoutLink: {
+            key: string;
+            method: import("../generated/operations/jobCheckoutLink").JobCheckoutLinkRequestFunction;
         };
         jobCompanyInfo: {
             key: string;

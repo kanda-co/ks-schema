@@ -123,7 +123,8 @@ export default function useTableProps({
     showPagination: totalPages > 1 && !isLoading,
     isLoading: isLoading || false,
     paginationProps,
-    hoverPopover,
+    hoverPopover:
+      hoverPopover as FunctionComponent<PopoverButtonHoverPopoverProps>,
     classNames,
     handleAction,
   };
