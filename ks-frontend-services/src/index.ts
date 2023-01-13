@@ -21,3 +21,5 @@ export type {
 } from './types';
 
 export type { KeyedMutator } from 'swr';
+
+export { SWRConfig, default as useSWR } from 'swr';

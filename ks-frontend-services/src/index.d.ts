@@ -9,3 +9,4 @@ export { type OperationRequestFunctionMap } from './generated/operations';
 export * from './generated/components/schemas';
 export type { Service, ServiceParams, ServiceMethod, ServiceSubmit, ServiceMethodReturnParams, } from './types';
 export type { KeyedMutator } from 'swr';
+export { SWRConfig, default as useSWR } from 'swr';
