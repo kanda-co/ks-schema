@@ -25,7 +25,6 @@
     "watch:dashboard": "DEV_DASHBOARD=true && yarn watch",
     "build:esbuild": "yarn clean && yarn build:style && node build.ts && yarn build:types && yalc publish",
     "build:style": "npx tailwindcss --postcss ./tailwind.postcss.config.js -i ./src/styles/tailwind.css -c ./tailwind.config.js -o ./src/styles/library.css",
-    "watch:dashboard": "DEV_DASHBOARD=true && yarn watch",
     "watch:modern": "yarn build:modern -w",
     "build:dev": "APP_ENV=dev yarn build",
     "watch:style": "yarn build:style --watch",
