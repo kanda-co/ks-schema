@@ -775,6 +775,7 @@ paths:
               - "declined_listed_trade_type_not_covered"
               - "declined_several_negatives_against_company"
               - "declined_unable_to_complete_id_checks"
+              - "declined_stop_comms"
       responses:
         200:
           description: got rejected or declined company
