@@ -62,6 +62,7 @@ export interface TableProps {
 export interface TableRow {
   id: number;
   index: number;
+  link?: string;
   cells: Cell[];
   getRowProps: (args: StringIndexedObject) => HTMLAttributes<HTMLDivElement>;
   original?: TableRow;
