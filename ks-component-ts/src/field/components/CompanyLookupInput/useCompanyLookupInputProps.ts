@@ -64,7 +64,7 @@ export default function useCompanyLookupInputProps({
         company.limited_company?.company_address?.building_number || "";
       const lineOne = company.limited_company?.company_address?.line_1 || "";
 
-      if (buildingNumber && lineOne.indexOf(buildingNumber) === 0) {
+      if (buildingNumber && lineOne.indexOf(buildingNumber) === -1) {
         setValue(
           props.buildingNumberName as string,
           company?.limited_company?.company_address?.building_number
