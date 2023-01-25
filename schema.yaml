@@ -2197,6 +2197,7 @@ paths:
             enum:
               - gocardless
               - omni
+              - etika
               - allium
               - stripe
               - veriff
@@ -2225,6 +2226,7 @@ paths:
             enum:
               - gocardless
               - omni
+              - etika
               - allium
               - stripe
               - veriff
@@ -3888,6 +3890,7 @@ components:
       title: provider name
       enum:
         - omni
+        - etika
         - propensio
         - allium
       default: omni
