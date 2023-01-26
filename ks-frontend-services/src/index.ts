@@ -20,4 +20,4 @@ export type {
   ServiceMethodReturnParams,
 } from './types';
 
-export type { KeyedMutator } from 'swr';
+export { default as useSWR, SWRConfig, type KeyedMutator } from 'swr';

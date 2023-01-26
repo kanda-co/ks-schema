@@ -1490,10 +1490,10 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@kanda-libs/ks-amplitude-provider@^0.0.15":
-  version "0.0.15"
-  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-amplitude-provider/-/ks-amplitude-provider-0.0.15.tgz#cba7a700f9901a6ac351c878e7c6eebe3a38e1f6"
-  integrity sha512-i7KBpWQiPKIlzaqEKTKBcRExcpKup4ldN+6gCVeL1J1ooxktG666Fpk9wVahEJ6heui6WjeZau0OTAcQfmCmSA==
+"@kanda-libs/ks-amplitude-provider@^0.0.16":
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-amplitude-provider/-/ks-amplitude-provider-0.0.16.tgz#11a2619fda6a6dfacf566fd488a6ff7f6a58cbf1"
+  integrity sha512-Tv1doN27SRlEQsoAVbL4cuqpIcS8T2geCKC65hvCJmcuBt++ZEpSr6m5ngqEO2fhXOwXsJV3GO8oo9itbtlOyw==
   dependencies:
     "@amplitude/analytics-browser" "^1.6.4"
     lodash.clonedeep "^4.5.0"

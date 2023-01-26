@@ -8,4 +8,4 @@ export { loadServerData } from './service/helpers';
 export { type OperationRequestFunctionMap } from './generated/operations';
 export * from './generated/components/schemas';
 export type { Service, ServiceParams, ServiceMethod, ServiceSubmit, ServiceMethodReturnParams, } from './types';
-export type { KeyedMutator } from 'swr';
+export { default as useSWR, SWRConfig, type KeyedMutator } from 'swr';
