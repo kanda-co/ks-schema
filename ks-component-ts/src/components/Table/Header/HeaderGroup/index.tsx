@@ -7,6 +7,7 @@ import useHeaderGroupProps from "~/components/Table/Header/HeaderGroup/useHeader
 import HeaderColumn from "../HeaderColumn";
 import { CLASS_NAMES } from "./constants";
 import { TableColumn } from "~/components/Table/types";
+import { Column } from "react-table";
 
 const HeaderGroup: FunctionComponent<HeaderGroupProps> = function ({
   isLoading = false,
@@ -25,7 +26,7 @@ const HeaderGroup: FunctionComponent<HeaderGroupProps> = function ({
         <HeaderColumn
           key={column.id}
           index={i}
-          column={column}
+          column={column as Column}
           isLoading={isLoading}
           totalVisible={totalVisible}
           handleAction={handleAction}

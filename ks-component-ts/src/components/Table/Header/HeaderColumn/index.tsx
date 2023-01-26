@@ -3,7 +3,7 @@ import type { Column } from "react-table";
 import {
   Popover,
   SkeletonLoader,
-  type StringIndexedObject
+  type StringIndexedObject,
 } from "@kanda-libs/ks-design-library";
 import type { ActionsHook } from "~/components/Table/useActions";
 import HeaderResizer from "../HeaderResizer";
@@ -41,7 +41,12 @@ const HeaderColumn: FunctionComponent<HeaderColumnProps> = function ({
           <>
             <Popover.Advanced
               {...popoverProps}
-              onAction={handleAction as (action: StringIndexedObject, e: MouseEvent) => void}
+              onAction={
+                handleAction as (
+                  action: StringIndexedObject,
+                  e: MouseEvent
+                ) => void
+              }
               className="w-48"
               button={<HeaderButton label={label} />}
               wrapper={({ children }: { children: JSX.Element }) => (

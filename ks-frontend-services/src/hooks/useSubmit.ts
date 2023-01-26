@@ -2,7 +2,6 @@ import { useCallback, useState } from 'react';
 
 import {
   Service,
-  ServiceMethod,
   ServiceMethodReturn,
   ServiceMethodReturnParams,
   ServiceParams,

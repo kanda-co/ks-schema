@@ -14,7 +14,7 @@ export interface HeaderColumnPropsHook {
     loading: string;
     wrapper: string;
   };
-  headerProps: HTMLAttributes<HTMLDivElement>;
+  headerProps: void | HTMLAttributes<HTMLDivElement>;
   popoverProps: Pick<
     AdvancedProps,
     | "items"
@@ -32,9 +32,9 @@ export default function useHeaderColumnProps(
   totalVisible: number
 ): HeaderColumnPropsHook {
   const {
-    id,
-    render,
-    getHeaderProps,
+    id = "",
+    render = () => {},
+    getHeaderProps = () => {},
     items: originalItems = [],
     popoverButtons,
     search,
@@ -90,6 +90,6 @@ export default function useHeaderColumnProps(
     classNames,
     headerProps: getHeaderProps(),
     popoverProps,
-    label: render("Header"),
+    label: render("Header") || "",
   };
 }

@@ -12,7 +12,7 @@ export default function useHeaderGroupProps(
   headerGroup: HeaderGroup,
   allColumns: TableColumn[]
 ): HeaderGroupPropsHook {
-  const { headers, getHeaderGroupProps } = headerGroup;
+  const { headers = [], getHeaderGroupProps } = headerGroup;
   const headerGroupProps = getHeaderGroupProps({});
 
   const totalVisible = allColumns.filter((column) => column.isVisible).length;

@@ -10,7 +10,7 @@ export type { TableColumnOptionInputProps };
 const TableColumnOptionInput: FunctionComponent<TableColumnOptionInputProps> =
   function ({ column, index, ...props }) {
     return (
-      <Draggable draggableId={column.id} index={index}>
+      <Draggable draggableId={column.id as string} index={index}>
         {(provided, snapshot) => (
           <Container
             provided={provided}

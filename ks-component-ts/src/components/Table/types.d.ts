@@ -18,12 +18,12 @@ export interface TableAction {
 }
 
 export interface TableHeaderColumn {
-  id: DraggableId;
-  render: (label: string) => string;
+  id?: DraggableId;
+  render?: (label: string) => string;
   accessor: string;
-  getHeaderProps: () => HTMLAttributes<HTMLDivElement>;
+  getHeaderProps?: () => HTMLAttributes<HTMLDivElement>;
   items: AdvancedItem[];
-  popoverButtons: boolean;
+  popoverButtons?: boolean;
   search?: FunctionComponent;
   searchPlaceholder?: string;
   searchDebounceInterval?: number;
@@ -74,6 +74,6 @@ export interface TableHook extends TableInstance {
 }
 
 export interface TableColumn extends Column {
-  id: string;
+  id?: string;
   isVisible: boolean;
 }
