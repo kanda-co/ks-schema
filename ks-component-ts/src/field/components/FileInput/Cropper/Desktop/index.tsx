@@ -1,7 +1,6 @@
 import React, { type FunctionComponent } from "react";
 import { ModalLayoutCenter } from "@kanda-libs/ks-design-library";
 import Cropper from "react-cropper";
-import "cropperjs/dist/cropper.css";
 import CropperTopOptions from "../CropperTopOptions";
 import type { CropperProps } from "../types";
 import { CLASS_NAMES } from "../constants";
@@ -31,7 +30,7 @@ const Desktop: FunctionComponent<DesktopProps> = function ({
 }) {
   return (
     <ModalLayoutCenter id={id} className="w-5/6 h-5/6" onClose={onCancelCrop}>
-      <div className="flex flex-1 flex-col h-full mb-6">
+      <div className="flex flex-col flex-1 h-full mb-6">
         <CropperTopOptions {...cropperTopOptionsProps} />
         <div className={CLASS_NAMES.container}>
           <Cropper {...cropperProps} />
