@@ -1,6 +1,5 @@
 import React, { type FunctionComponent, type MouseEvent } from "react";
 import { Button } from "@kanda-libs/ks-design-library";
-import "cropperjs/dist/cropper.css";
 
 import { CLASS_NAMES, SAVE_BUTTON } from "./constants";
 
