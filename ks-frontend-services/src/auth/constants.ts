@@ -25,7 +25,11 @@ export const FIREBASE_MEASUREMENT_ID =
   process.env.REACT_APP_FIREBASE_MEASUREMENT_ID || 'G-VTWGD7NKTV';
 
 export const HOME_URL =
-  process.env.REACT_APP_LOGIN_URL || 'http://localhost:3000/';
+  process.env.REACT_APP_LOGIN_URL ||
+  process.env.NEXT_PUBLIC_HOME_URL ||
+  'http://localhost:3000/';
 
 export const LOGIN_URL =
-  process.env.REACT_APP_LOGIN_URL || 'http://localhost:3000/login';
+  process.env.REACT_APP_LOGIN_URL ||
+  process.env.NEXT_PUBLIC_LOGIN_URL ||
+  'http://localhost:3000/login';
