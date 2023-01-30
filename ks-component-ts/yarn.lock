@@ -780,10 +780,10 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@kanda-libs/kanda-quotes@0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@kanda-libs/kanda-quotes/-/kanda-quotes-0.0.5.tgz#be881fd5815c66db09bccf0a2dbd3cdfb6dcf474"
-  integrity sha512-7Nmhfow8X/DTWVWQGYh4Mj486ftVxpT0CHeXAyBHDXuHtfPE5i+P1JTNMm5kB43KFozyOYLP1g5Kk98ekKjaqA==
+"@kanda-libs/kanda-quotes@0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@kanda-libs/kanda-quotes/-/kanda-quotes-0.0.6.tgz#4f879ca84e596fdbef22a5445dc9eb7eb460bf7f"
+  integrity sha512-QCjst5sG03OTSA5lfm70kIcvoQI57L1+SLfUnMGzhNwyRu/R6Ip4naLbr5nNbqvxMcgNOREPf0OH7t1ORzX09Q==
   dependencies:
     "@react-pdf/font" "2.3.1"
     "@react-pdf/renderer" "3.0.0"
