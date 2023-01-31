@@ -14,7 +14,7 @@ import { handleResponse, Response } from '../handlers';
 export interface Hook<Value, Params, Body> {
   submit: ServiceSubmit<Value, Params, Body>;
   error?: string;
-  data?: StringIndexedObject;
+  data?: Value;
   isSubmitting?: boolean;
 }
 
@@ -23,12 +23,12 @@ export interface Hook<Value, Params, Body> {
  * @param service ServiceMethod
  * @param formatResponse
  */
-export default function useSubmit<Value, Params, Body>(
-  service: Service<Value, Params, Body>,
+export default function useSubmit<Method, Value, Params, Body>(
+  service: Service<Method>,
   formatResponse = true,
 ): Hook<Value, Params, Body> {
   const [error, setError] = useState<string>();
-  const [data, setData] = useState<StringIndexedObject>();
+  const [data, setData] = useState<Value>();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   /**

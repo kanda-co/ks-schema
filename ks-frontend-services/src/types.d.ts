@@ -12,27 +12,19 @@ export interface AuthenticationHeaders {
 
 export type StringIndexedObject<T = any> = Record<string, T>;
 
-export interface ServiceParams<
-  Params extends StringIndexedObject,
-  Body extends StringIndexedObject,
-> {
+export interface ServiceParams<Params, Body> {
   params: Params;
   body: Body;
 }
 
-export type ServiceMethod<
-  Value extends StringIndexedObject,
-  Params extends StringIndexedObject,
-  Body extends StringIndexedObject,
-> = RequestFunction<ServiceParams<Params, Body>, Value>;
+export type ServiceMethod<Value, Params, Body> = RequestFunction<
+  ServiceParams<Params, Body>,
+  Value
+>;
 
-export interface Service<
-  Value extends StringIndexedObject,
-  Params extends StringIndexedObject,
-  Body extends StringIndexedObject,
-> {
+export interface Service<Method> {
   key: string;
-  method: ServiceMethod<Value, Params, Body>;
+  method: Method;
 }
 
 export interface ServiceMethodReturnParams<T> {
@@ -40,11 +32,7 @@ export interface ServiceMethodReturnParams<T> {
   error?: StringIndexedObject | string;
 }
 
-export type ServiceSubmit<
-  Value extends StringIndexedObject,
-  Params extends StringIndexedObject,
-  Body extends StringIndexedObject,
-> = (
+export type ServiceSubmit<Value, Params, Body> = (
   args: Partial<ServiceParams<Params, Body>>,
 ) => Promise<ServiceMethodReturnParams<Value>>;
 
