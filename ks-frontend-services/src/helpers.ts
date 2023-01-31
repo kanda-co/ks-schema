@@ -20,3 +20,6 @@ export const fetchRequestAdapter = (baseURL: string, requireAuth = true) => {
  */
 export const requestFunctions = (baseURL: string) =>
   operations.requestFunctionsBuilder(fetchRequestAdapter(baseURL));
+
+export const capitalise = (value: string): string =>
+  value.charAt(0).toUpperCase() + value.slice(1);

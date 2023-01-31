@@ -1,6 +1,14 @@
+import { readFileSync } from 'fs';
+import { join, dirname } from 'path';
 import { StringIndexedObject } from '../../types';
-import { EXCLUDED_OPERATION_KEYS, SERVICE_BUILDER_TAG } from './constants';
+import {
+  EXCLUDED_OPERATION_KEYS,
+  GENERATED_FOLDER_NAME,
+  SERVICE_BUILDER_TAG,
+} from './constants';
 import * as operations from '../../generated/operations';
+import { capitalise } from '../../helpers';
+import { fileURLToPath } from 'url';
 
 /**
  * Returns a string array of operation keys that we want to define services for.
@@ -67,8 +75,73 @@ export function formatServiceDefinitionLine(operationKey: string): string {
     '};',
   ].join('\n');
 
+  formatServiceHooks(operationKey);
+
   return formattedOperation;
 }
+
+export const formatServiceHook = (operationName: string, methodKey: string) => {
+  let hook = '';
+  const hookName = `use${capitalise(operationName)}${capitalise(methodKey)}`;
+  const requestFunctionType = `${capitalise(methodKey)}RequestFunction`;
+  const paramsType = `${capitalise(methodKey)}Params`;
+  const requestFunctionImport = `import type { ${requestFunctionType} } from '../generated/operations/${methodKey}';`;
+
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
+  const operationFile = `${GENERATED_FOLDER_NAME}/operations/${methodKey}.ts`;
+
+  const operationFileContents = readFileSync(
+    join(__dirname, operationFile),
+    'utf-8',
+  );
+
+  const hasParams = operationFileContents.indexOf(paramsType) !== -1;
+
+  console.log(operationFileContents);
+
+  const imports = [
+    "import services from '../service';",
+    "import useSubmit from '../useSubmit';",
+    requestFunctionImport,
+  ];
+
+  hook += `export default function ${hookName}() {\n`;
+  hook += `return useSubmit<\n`;
+  hook += `TODO, TODO, TODO, TODO\n`;
+  hook += `>(services.${operationName}.${methodKey});\n`;
+  hook += `}\n`;
+
+  console.log(operationFile);
+};
+
+export const formatServiceHooks = (operationKey: string): string => {
+  const operationName = getOperationName(operationKey);
+  let originalMethods;
+  let methods = (originalMethods = (operations as StringIndexedObject)[
+    operationKey
+  ](() => {}));
+
+  // Start temp filtering
+  if (operationName !== 'job') {
+    return '';
+  }
+  methods = Object.keys(methods)
+    .filter((key) => key === 'payoutJob')
+    .reduce((acc, key) => {
+      acc[key] = originalMethods[key];
+      return acc;
+    }, {} as StringIndexedObject);
+  // End temp filtering
+
+  Object.keys(methods).forEach((method) => {
+    formatServiceHook(operationName, method);
+  });
+
+  console.log({ operationName, methods });
+
+  return 'hello';
+};
 
 /**
  * Formats the exports for the services. A prefix param is provided so that

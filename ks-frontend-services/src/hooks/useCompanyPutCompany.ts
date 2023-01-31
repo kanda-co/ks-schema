@@ -31,4 +31,7 @@ function useJobPayoutJob() {
 
 function useMyOtherHook() {
   const { data } = useCompanyPutCompany();
+  const { submit } = useJobPayoutJob();
+
+  submit({ params: { jobId: '123' } });
 }
