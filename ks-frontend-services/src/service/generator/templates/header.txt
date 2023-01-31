@@ -6,6 +6,7 @@ const dns = {
   production: servers[0],
   qa: servers[1],
   dev: servers[2],
+  test: servers[1],
 };
 
 const server = dns[process.env.REACT_APP_ENV || process.env.NEXT_PUBLIC_ENV || 'dev'];
