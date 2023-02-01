@@ -2752,6 +2752,7 @@ components:
             - registered
             - subscribed
             - director_info_provided
+            - director_details_submitted
             - onboarded
             - insurance_uploaded
             - completed_setup
