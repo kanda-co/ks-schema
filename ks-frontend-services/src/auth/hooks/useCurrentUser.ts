@@ -54,14 +54,14 @@ export default function useCurrentUser(
   };
 
   useEffect(() => {
-    if (fetchUserDetails && !userDetails) {
+    if (fetchUserDetails && isUserLoggedIn && !userDetails) {
       me({}).then(({ data, error }) => {
         if (!error) {
           setUserDetails(data);
         }
       });
     }
-  }, [fetchUserDetails]);
+  }, [fetchUserDetails, isUserLoggedIn]);
 
   useEffect(() => {
     revalidate();
