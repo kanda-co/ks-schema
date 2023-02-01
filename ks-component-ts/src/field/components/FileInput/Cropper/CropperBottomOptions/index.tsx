@@ -1,5 +1,4 @@
 import React, { type FunctionComponent } from "react";
-import "cropperjs/dist/cropper.css";
 
 import { Button, Icon } from "@kanda-libs/ks-design-library";
 import RangeSlider from "~/components/RangeSlider";

@@ -117,11 +117,38 @@ paths:
               $ref: "#/components/schemas/InfoGhost"
       responses:
         200:
-          description: put me info
+          description: info ghosted mode to return custom token
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/InfoGhost"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/info/query:
+    put:
+      operationId: infoQuery
+      summary: info query to return analytics, only available to Kanda staff
+      tags:
+        - InfoQuery
+      requestBody:
+        description: info query to return analytics
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InfoQuery"
+      responses:
+        200:
+          description: info queried to return analytics
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoQuery"
         default:
           description: unexpected error
           content:
@@ -2429,6 +2456,19 @@ components:
           type: string
           title: bearer token
 
+    InfoQuery:
+      type: object
+      title: info query
+      required:
+        - query
+      properties:
+        query:
+          type: string
+          title: query for analytics
+        result:
+          type: string
+          title: queried result in JSON string format
+
     InfoAuth:
       type: object
       title: info auth
@@ -2741,6 +2781,7 @@ components:
             - registered
             - subscribed
             - director_info_provided
+            - director_details_submitted
             - onboarded
             - insurance_uploaded
             - completed_setup
