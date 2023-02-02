@@ -3146,6 +3146,7 @@ components:
           title: home address
         date_of_birth:
           type: string
+          format: date-time
           title: date of birth
 
     CommPreferences:
