@@ -5,7 +5,13 @@ import useRichTextInput from "./useRichTextInput";
 import RichTextInputContext from "./RichTextInputContext";
 import RichTextInputStyleButton from "./RichTextInputStyleButton";
 
-const RichTextInput: FunctionComponent = function () {
+export interface RichTextInputProps {
+  placeholder?: string;
+}
+
+const RichTextInput: FunctionComponent<RichTextInputProps> = function ({
+  placeholder,
+}) {
   const { editorState, setEditorState, handleKeyCommand, editorRef } =
     useRichTextInput();
 
@@ -36,6 +42,7 @@ const RichTextInput: FunctionComponent = function () {
         editorState={editorState}
         onChange={setEditorState}
         handleKeyCommand={handleKeyCommand}
+        placeholder={placeholder}
         ref={editorRef as MutableRefObject<Editor>}
       />
     </RichTextInputContext.Provider>

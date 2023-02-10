@@ -10,11 +10,11 @@ export interface RichTextInputStyleButtonProps {
 
 const RichTextInputStyleButton: FunctionComponent<RichTextInputStyleButtonProps> =
   function ({ label, editorStyle, isBlock = false }) {
-    const { active, onClick } = useRichTextStyle(editorStyle, isBlock);
+    const { active, onMouseDown } = useRichTextStyle(editorStyle, isBlock);
 
     return (
       <button
-        onClick={onClick}
+        onMouseDown={onMouseDown}
         type="button"
         style={{
           padding: "5px 10px",

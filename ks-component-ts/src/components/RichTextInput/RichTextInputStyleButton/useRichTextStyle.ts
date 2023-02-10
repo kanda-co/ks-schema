@@ -1,10 +1,10 @@
-import { useCallback, useContext, useEffect, useMemo } from "react";
+import { useCallback, useContext, type MouseEvent, useMemo } from "react";
 import { RichUtils } from "draft-js";
 import type { RichTextSupportedStyle } from "../types";
 import RichTextInputContext from "../RichTextInputContext";
 
 export interface RichTextStyleHook {
-  onClick: () => void;
+  onMouseDown: (e: MouseEvent) => void;
   active: boolean;
 }
 
@@ -26,15 +26,16 @@ export default function useRichTextStyle(
     [editorState, selection]
   );
 
-  const onClick = useCallback(() => {
-    if (!editorState || !setEditorState) return;
-    const method = isBlock ? "toggleBlockType" : "toggleInlineStyle";
-    setEditorState(RichUtils[method](editorState, formattedStyle));
-  }, [editorState, formattedStyle, setEditorState, isBlock]);
-
-  useEffect(() => {
-    editorRef?.current?.focus();
-  }, [editorState, editorRef]);
+  const onMouseDown = useCallback(
+    (e: MouseEvent) => {
+      if (!editorState || !setEditorState) return;
+      e.preventDefault();
+      e.stopPropagation();
+      const method = isBlock ? "toggleBlockType" : "toggleInlineStyle";
+      setEditorState(RichUtils[method](editorState, formattedStyle));
+    },
+    [editorState, formattedStyle, editorRef, setEditorState, isBlock]
+  );
 
   const active = useMemo(() => {
     if (isBlock) return blockType === formattedStyle;
@@ -42,7 +43,7 @@ export default function useRichTextStyle(
   }, [editorState, formattedStyle, blockType, isBlock]);
 
   return {
-    onClick,
+    onMouseDown,
     active,
   };
 }
