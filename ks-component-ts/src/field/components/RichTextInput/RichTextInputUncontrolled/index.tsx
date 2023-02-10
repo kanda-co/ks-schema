@@ -50,7 +50,7 @@ const RichTextInputUncontrolled: FunctionComponent<RichTextInputUncontrolledProp
           <div className="min-h-20" ref={forwardRef}>
             <Editor
               editorState={editorState}
-              onChange={setEditorState}
+              onChange={handleChange}
               handleKeyCommand={handleKeyCommand}
               placeholder={placeholder}
               ref={editorRef as MutableRefObject<Editor>}

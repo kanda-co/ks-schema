@@ -7,11 +7,9 @@ import withFieldFormController, {
 import withFieldInfo from "../FieldInfo/withFieldInfo";
 import { type WrappedWithFieldInfoFormComponentProps } from "~/field/types";
 
-const WithFieldInfo = withFieldInfo(Uncontrolled);
+export { Uncontrolled };
 
-export { Uncontrolled, WithFieldInfo };
-
-const RichTextInput = withFieldFormController(WithFieldInfo);
+const RichTextInput = withFieldFormController(Uncontrolled);
 
 export type RichTextInputBaseProps = RichTextInputUncontrolledProps;
 
