@@ -1,11 +1,12 @@
 import {
-  MutableRefObject,
+  type MutableRefObject,
   useCallback,
   useMemo,
   useRef,
   useState,
 } from "react";
 import { EditorState, RichUtils, convertToRaw, type Editor } from "draft-js";
+// @ts-ignore
 import draftToMarkdown from "draftjs-to-markdown";
 
 export interface RichTextEditorHook {

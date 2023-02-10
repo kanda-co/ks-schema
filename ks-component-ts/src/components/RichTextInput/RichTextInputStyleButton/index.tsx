@@ -1,4 +1,4 @@
-import { type FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import type { RichTextSupportedStyle } from "../types";
 import useRichTextStyle from "./useRichTextStyle";
 

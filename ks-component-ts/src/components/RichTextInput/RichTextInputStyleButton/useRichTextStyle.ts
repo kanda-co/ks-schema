@@ -1,7 +1,7 @@
-import { useCallback, useContext, useEffect, useMemo } from 'react';
-import { RichUtils } from 'draft-js';
-import type { RichTextSupportedStyle } from '../types';
-import RichTextEditorContext from '../RichTextEditorContext';
+import { useCallback, useContext, useEffect, useMemo } from "react";
+import { RichUtils } from "draft-js";
+import type { RichTextSupportedStyle } from "../types";
+import RichTextInputContext from "../RichTextInputContext";
 
 export interface RichTextStyleHook {
   onClick: () => void;
@@ -10,11 +10,10 @@ export interface RichTextStyleHook {
 
 export default function useRichTextStyle(
   style: RichTextSupportedStyle,
-  isBlock: boolean,
+  isBlock: boolean
 ): RichTextStyleHook {
-  const { editorState, setEditorState, editorRef } = useContext(
-    RichTextEditorContext,
-  );
+  const { editorState, setEditorState, editorRef } =
+    useContext(RichTextInputContext);
   const formattedStyle = isBlock ? style : style.toUpperCase();
 
   const selection = useMemo(() => editorState?.getSelection(), [editorState]);
@@ -24,12 +23,12 @@ export default function useRichTextStyle(
         ?.getCurrentContent()
         .getBlockForKey(selection?.getStartKey() as string)
         .getType(),
-    [editorState, selection],
+    [editorState, selection]
   );
 
   const onClick = useCallback(() => {
     if (!editorState || !setEditorState) return;
-    const method = isBlock ? 'toggleBlockType' : 'toggleInlineStyle';
+    const method = isBlock ? "toggleBlockType" : "toggleInlineStyle";
     setEditorState(RichUtils[method](editorState, formattedStyle));
   }, [editorState, formattedStyle, setEditorState, isBlock]);
 
