@@ -1524,12 +1524,12 @@ video {
   max-height: 256px;
 }
 
-.min-h-28 {
-  min-height: 112px;
-}
-
 .min-h-20 {
   min-height: 80px;
+}
+
+.min-h-28 {
+  min-height: 112px;
 }
 
 .min-h-full {
