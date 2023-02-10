@@ -18,9 +18,12 @@ export interface RichTextEditorHook {
   ) => "handled" | "not-handled";
   asMarkdown: string;
   editorRef: MutableRefObject<Editor | undefined>;
+  handleChange: (editorState: EditorState) => void;
 }
 
-export default function useRichTextEditor(): RichTextEditorHook {
+export default function useRichTextEditor(
+  onChange: (value: string) => void
+): RichTextEditorHook {
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
@@ -51,11 +54,21 @@ export default function useRichTextEditor(): RichTextEditorHook {
     []
   );
 
+  const handleChange = useCallback(
+    (nextEditorState: EditorState, ...args) => {
+      onChange(asMarkdown);
+      console.log(args);
+      setEditorState(nextEditorState);
+    },
+    [onChange, setEditorState, asMarkdown]
+  );
+
   return {
     editorState,
     setEditorState,
     handleKeyCommand,
     asMarkdown,
     editorRef,
+    handleChange,
   };
 }

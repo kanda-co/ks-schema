@@ -17,10 +17,7 @@ const RichTextInputStyleButton: FunctionComponent<RichTextInputStyleButtonProps>
         onMouseDown={onMouseDown}
         type="button"
         style={{
-          padding: "5px 10px",
-          border: `1px solid ${active ? "red" : "grey"}`,
-          borderRadius: "5px",
-          marginRight: "5px",
+          padding: "3px 5px",
           fontWeight: active ? "bold" : "normal",
         }}
       >
