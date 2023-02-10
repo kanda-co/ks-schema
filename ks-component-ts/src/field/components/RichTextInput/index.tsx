@@ -1,17 +1,16 @@
 import Uncontrolled, {
-  RichTextInputUncontrolledProps,
-} from "./RichTextInputUncontrolled";
+  RichTextInputControlledProps,
+} from "./RichTextInputControlled";
 import withFieldFormController, {
   type FieldFormControllerPropsWithoutChildren,
 } from "~/field/components/FieldFormController/withFieldFormController";
-import withFieldInfo from "../FieldInfo/withFieldInfo";
 import { type WrappedWithFieldInfoFormComponentProps } from "~/field/types";
 
 export { Uncontrolled };
 
 const RichTextInput = withFieldFormController(Uncontrolled);
 
-export type RichTextInputBaseProps = RichTextInputUncontrolledProps;
+export type RichTextInputBaseProps = RichTextInputControlledProps;
 
 export type RichTextInputWithInfoProps =
   WrappedWithFieldInfoFormComponentProps<RichTextInputBaseProps>;

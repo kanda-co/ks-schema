@@ -1,5 +1,4 @@
 import React, { type FunctionComponent, type MutableRefObject } from "react";
-import "core-js";
 import { Editor, type EditorState } from "draft-js";
 import "draft-js/dist/Draft.css";
 import useRichTextInput from "./useRichTextInput";
@@ -8,15 +7,15 @@ import RichTextInputStyleButton from "./RichTextInputStyleButton";
 import { Controller } from "react-hook-form";
 import type { FieldFormControllerChildrenArgs } from "../../FieldFormController/types";
 
-export interface RichTextInputUncontrolledProps {
+export interface RichTextInputControlledProps {
   name: string;
   placeholder?: string;
   forwardRef?: MutableRefObject<HTMLDivElement>;
   onChange: (value: string) => void;
 }
 
-const RichTextInputUncontrolled: FunctionComponent<
-  FieldFormControllerChildrenArgs<RichTextInputUncontrolledProps>
+const RichTextInputControlled: FunctionComponent<
+  FieldFormControllerChildrenArgs<RichTextInputControlledProps>
 > = function ({ name, placeholder, control, forwardRef }) {
   const {
     editorState,
@@ -30,7 +29,7 @@ const RichTextInputUncontrolled: FunctionComponent<
     <Controller
       name={name}
       control={control}
-      render={({ field: { onChange, onBlur, value } }) => (
+      render={({ field: { onChange } }) => (
         <RichTextInputContext.Provider
           value={{
             editorState,
@@ -72,4 +71,4 @@ const RichTextInputUncontrolled: FunctionComponent<
   );
 };
 
-export default RichTextInputUncontrolled;
+export default RichTextInputControlled;
