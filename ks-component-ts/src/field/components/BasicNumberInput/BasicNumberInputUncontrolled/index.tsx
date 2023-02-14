@@ -4,6 +4,7 @@ import { stripUnneededProps } from "~/field/helpers";
 import type { StringIndexedObject } from "~/types";
 import useBasicInputUncontrolledProps from "./useBasicNumberInputUncontrolledProps";
 import { getInputTag } from "./helpers";
+import { DISALLOWED_KEYS } from "./constants";
 
 export interface BasicNumberInputUncontrolledProps
   extends Omit<InputProps, "onChange"> {
@@ -75,6 +76,12 @@ const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontroll
             name={name}
             value={focusedValue}
             valueOverride={focusedValue}
+            onKeyDown={(e) => {
+              if (DISALLOWED_KEYS.includes(e.keyCode)) {
+                e.preventDefault();
+                e.stopPropagation();
+              }
+            }}
             onChange={onChange as (...args: any[]) => void}
             onBlur={() => {
               if (props.onBlur) {
