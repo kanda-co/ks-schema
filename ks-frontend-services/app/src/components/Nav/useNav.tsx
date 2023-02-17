@@ -7,8 +7,12 @@ export default function useNav() {
 
   const links = Object.keys(URLS).map((url) => {
     const isActive = location.pathname === URLS[url];
+    const name = url
+      .split('_')
+      .map((part: string) => part.charAt(0) + part.toLowerCase().slice(1))
+      .join(' ');
     return {
-      name: url.charAt(0) + url.toLowerCase().slice(1),
+      name,
       Component: isActive ? 'div' : Link,
       linkProps: {
         className: isActive
