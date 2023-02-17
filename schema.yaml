@@ -222,6 +222,33 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/credit:
+    put:
+      operationId: infoCredit
+      summary: info credit to return an eligibility result (AIP) which can be used on financed job
+      tags:
+        - Credit
+      requestBody:
+        description: info credit to return an eligibility result (AIP)
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Credit"
+      responses:
+        200:
+          description: put me info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Credit"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/info/auth:
     put:
       operationId: infoAuth
@@ -2197,6 +2224,7 @@ paths:
             enum:
               - gocardless
               - omni
+              - etika
               - allium
               - stripe
               - veriff
@@ -2225,6 +2253,7 @@ paths:
             enum:
               - gocardless
               - omni
+              - etika
               - allium
               - stripe
               - veriff
@@ -3905,6 +3934,7 @@ components:
       title: provider name
       enum:
         - omni
+        - etika
         - propensio
         - allium
       default: omni
