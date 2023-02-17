@@ -22,6 +22,13 @@ export interface CompressRequest {
   };
 }
 
+export interface CreateRequest {
+  body: {
+    job: StringIndexedObject;
+    company: StringIndexedObject;
+  };
+}
+
 export interface FindResponse {
   addresses: Array<string[]>;
 }
@@ -38,6 +45,16 @@ export default {
       pdfPoster(`/kspdf-compress`, {
         content,
         mimetype,
+      }),
+  },
+  create: {
+    key: '/create',
+    method: ({
+      body: { job, company },
+    }: CreateRequest): RequestFunction<{ body: FindResponse }, FindResponse> =>
+      pdfPoster(`/kspdf-create`, {
+        job,
+        company,
       }),
   },
 };
