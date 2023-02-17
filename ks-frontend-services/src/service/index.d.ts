@@ -275,10 +275,6 @@ declare const job: {
         key: string;
         method: import("../generated/operations/overrideJob").OverrideJobRequestFunction;
     };
-    jobCheckoutLink: {
-        key: string;
-        method: import("../generated/operations/jobCheckoutLink").JobCheckoutLinkRequestFunction;
-    };
     jobCompanyInfo: {
         key: string;
         method: import("../generated/operations/jobCompanyInfo").JobCompanyInfoRequestFunction;
@@ -364,6 +360,12 @@ declare const pdf: {
     compress: {
         key: string;
         method: ({ body: { content, mimetype }, }: import("./external/pdf").CompressRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+            body: import("./external/pdf").FindResponse;
+        }, import("./external/pdf").FindResponse>;
+    };
+    create: {
+        key: string;
+        method: ({ body: { job, company }, }: import("./external/pdf").CreateRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
             body: import("./external/pdf").FindResponse;
         }, import("./external/pdf").FindResponse>;
     };
@@ -649,10 +651,6 @@ declare const services: {
             key: string;
             method: import("../generated/operations/overrideJob").OverrideJobRequestFunction;
         };
-        jobCheckoutLink: {
-            key: string;
-            method: import("../generated/operations/jobCheckoutLink").JobCheckoutLinkRequestFunction;
-        };
         jobCompanyInfo: {
             key: string;
             method: import("../generated/operations/jobCompanyInfo").JobCompanyInfoRequestFunction;
@@ -738,6 +736,12 @@ declare const services: {
         compress: {
             key: string;
             method: ({ body: { content, mimetype }, }: import("./external/pdf").CompressRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+                body: import("./external/pdf").FindResponse;
+            }, import("./external/pdf").FindResponse>;
+        };
+        create: {
+            key: string;
+            method: ({ body: { job, company }, }: import("./external/pdf").CreateRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
                 body: import("./external/pdf").FindResponse;
             }, import("./external/pdf").FindResponse>;
         };
