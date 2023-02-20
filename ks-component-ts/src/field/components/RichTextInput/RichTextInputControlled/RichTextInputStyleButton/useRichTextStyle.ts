@@ -2,10 +2,11 @@ import { useCallback, useContext, type MouseEvent, useMemo } from "react";
 import { RichUtils } from "draft-js";
 import type { RichTextSupportedStyle } from "../types";
 import RichTextInputContext from "../RichTextInputContext";
+import clsx from "clsx";
 
 export interface RichTextStyleHook {
   onMouseDown: (e: MouseEvent) => void;
-  active: boolean;
+  className: string;
 }
 
 export default function useRichTextStyle(
@@ -43,8 +44,13 @@ export default function useRichTextStyle(
     return editorState?.getCurrentInlineStyle().has(formattedStyle) || false;
   }, [editorState, formattedStyle, blockType, isBlock]);
 
+  const className = useMemo(
+    () => clsx(active ? "bg-neutral-200" : "hover:bg-neutral-200"),
+    [active]
+  );
+
   return {
     onMouseDown,
-    active,
+    className,
   };
 }
