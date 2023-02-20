@@ -4,11 +4,13 @@ import {
   useMemo,
   useRef,
   useState,
+  useEffect,
 } from "react";
 import { EditorState, RichUtils, convertToRaw, type Editor } from "draft-js";
 // @ts-ignore
 import draftToMarkdown from "draftjs-to-markdown";
 import { DISABLED_COMMANDS } from "./constants";
+import { getSelectionPosition } from "./helpers";
 
 export interface RichTextEditorHook {
   editorState: EditorState;
@@ -65,6 +67,10 @@ export default function useRichTextEditor(): RichTextEditorHook {
     },
     [setEditorState, asMarkdown]
   );
+
+  useEffect(() => {
+    console.log("Positioning", getSelectionPosition(editorState));
+  }, [editorState]);
 
   return {
     editorState,
