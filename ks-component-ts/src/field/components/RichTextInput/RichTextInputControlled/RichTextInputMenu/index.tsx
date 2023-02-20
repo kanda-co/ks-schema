@@ -5,16 +5,16 @@ import { CLASS_NAMES } from "./constants";
 const RichTextInputMenu: FunctionComponent = function () {
   return (
     <div className={CLASS_NAMES.wrapper}>
-      <RichTextInputStyleButton label="B" editorStyle="bold" />
-      <RichTextInputStyleButton label="I" editorStyle="italic" />
+      <RichTextInputStyleButton icon="bold" editorStyle="bold" />
+      <RichTextInputStyleButton icon="italic" editorStyle="italic" />
       <RichTextInputStyleButton
         isBlock
-        label="UL"
+        icon="ordered-list"
         editorStyle="unordered-list-item"
       />
       <RichTextInputStyleButton
         isBlock
-        label="OL"
+        icon="unordered-list"
         editorStyle="ordered-list-item"
       />
     </div>

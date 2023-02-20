@@ -1,15 +1,16 @@
+import { Icon } from "@kanda-libs/ks-design-library";
 import React, { type FunctionComponent } from "react";
 import type { RichTextSupportedStyle } from "../types";
 import useRichTextStyle from "./useRichTextStyle";
 
 export interface RichTextInputStyleButtonProps {
-  label: string;
+  icon: string;
   editorStyle: RichTextSupportedStyle;
   isBlock?: boolean;
 }
 
 const RichTextInputStyleButton: FunctionComponent<RichTextInputStyleButtonProps> =
-  function ({ label, editorStyle, isBlock = false }) {
+  function ({ icon, editorStyle, isBlock = false }) {
     const { active, onMouseDown } = useRichTextStyle(editorStyle, isBlock);
 
     return (
@@ -21,7 +22,7 @@ const RichTextInputStyleButton: FunctionComponent<RichTextInputStyleButtonProps>
           fontWeight: active ? "bold" : "normal",
         }}
       >
-        <>{label}</>
+        <Icon icon={icon} />
       </button>
     );
   };
