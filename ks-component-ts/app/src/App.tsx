@@ -1,6 +1,8 @@
+window.global ||= window;
 import "@kanda-libs/ks-component-ts/dist/library.css";
 import { useForm, Field, Form } from "@kanda-libs/ks-component-ts";
 import { useWatch } from "react-hook-form";
+import { StringIndexedObject } from "~/types";
 
 const Append = () => (
   <span className="relative field-focus:hidden field-error:hidden field-loading:hidden">
@@ -24,6 +26,12 @@ export const QUANTITY_COMPONENT_PROPS = {
   quantity: true,
   type: "price",
 };
+
+if (!(Window.prototype as StringIndexedObject).setImmediate) {
+  (Window.prototype as StringIndexedObject).setImmediate = function () {
+    return false;
+  };
+}
 
 function App() {
   const form = useForm();
@@ -49,6 +57,7 @@ function App() {
             <Field.RichTextInput
               name="description"
               placeholder="Enter a description"
+              onChange={() => {}}
             />
           </div>
           <pre>{JSON.stringify({ description })}</pre>

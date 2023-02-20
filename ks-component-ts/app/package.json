@@ -26,6 +26,7 @@
     "react-loading-skeleton": "^3.1.0",
     "react-number-format": "^4.9.3",
     "react-slick": "^0.29.0",
+    "setimmediate": "^1.0.5",
     "vite-tsconfig-paths": "^3.5.0"
   },
   "devDependencies": {
