@@ -9,15 +9,14 @@ import RichTextInputMenu from "./RichTextInputMenu";
 import { CLASS_NAMES } from "./constants";
 
 export interface RichTextInputControlledProps {
-  name: string;
+  name?: string;
   placeholder?: string;
   forwardRef?: MutableRefObject<HTMLDivElement>;
-  onChange: (value: string) => void;
 }
 
 const RichTextInputControlled: FunctionComponent<
   FieldFormControllerChildrenArgs<RichTextInputControlledProps>
-> = function ({ name, placeholder, control, forwardRef }) {
+> = function ({ name = "", placeholder, control, forwardRef }) {
   const {
     editorState,
     setEditorState,
