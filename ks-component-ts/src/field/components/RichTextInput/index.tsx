@@ -4,11 +4,21 @@ import Uncontrolled, {
 import withFieldFormController, {
   type FieldFormControllerPropsWithoutChildren,
 } from "~/field/components/FieldFormController/withFieldFormController";
-import { type WrappedWithFieldInfoFormComponentProps } from "~/field/types";
+import {
+  DefaultFormFieldProps,
+  type WrappedWithFieldInfoFormComponentProps,
+} from "~/field/types";
+import withFieldInfo from "../FieldInfo/withFieldInfo";
+import { FunctionComponent } from "react";
 
-export { Uncontrolled };
+const WithFieldInfo = withFieldInfo(
+  Uncontrolled as FunctionComponent<DefaultFormFieldProps<RichTextInputProps>>,
+  false
+);
 
-const RichTextInput = withFieldFormController(Uncontrolled);
+export { Uncontrolled, WithFieldInfo };
+
+const RichTextInput = withFieldFormController(WithFieldInfo);
 
 export type RichTextInputBaseProps = RichTextInputControlledProps;
 

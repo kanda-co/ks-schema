@@ -24,6 +24,9 @@ const RichTextInputControlled: FunctionComponent<
     handleKeyCommand,
     editorRef,
     handleChange,
+    onFocus,
+    onBlur,
+    focused,
   } = useRichTextInput();
 
   return (
@@ -40,7 +43,7 @@ const RichTextInputControlled: FunctionComponent<
             }}
           >
             <div className={CLASS_NAMES.wrapper}>
-              <RichTextInputMenu />
+              {focused && <RichTextInputMenu />}
               <div className={CLASS_NAMES.editorWrapper} ref={forwardRef}>
                 <Editor
                   editorState={editorState}
@@ -50,6 +53,8 @@ const RichTextInputControlled: FunctionComponent<
                   handleKeyCommand={handleKeyCommand}
                   placeholder={placeholder}
                   ref={editorRef as MutableRefObject<Editor>}
+                  onFocus={onFocus}
+                  onBlur={onBlur}
                 />
               </div>
             </div>

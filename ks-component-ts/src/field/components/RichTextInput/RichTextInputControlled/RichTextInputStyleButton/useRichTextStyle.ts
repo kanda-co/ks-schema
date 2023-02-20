@@ -7,6 +7,7 @@ import clsx from "clsx";
 export interface RichTextStyleHook {
   onMouseDown: (e: MouseEvent) => void;
   className: string;
+  iconClassName: string;
 }
 
 export default function useRichTextStyle(
@@ -49,8 +50,14 @@ export default function useRichTextStyle(
     [active]
   );
 
+  const iconClassName = useMemo(
+    () => clsx(active ? "text-red-200" : "text-neutral-500 hover:text-red-200"),
+    [active]
+  );
+
   return {
     onMouseDown,
     className,
+    iconClassName,
   };
 }

@@ -52,6 +52,7 @@ export interface FieldInfoWrapperProps
   prepend?: JSX.Element | JSX.Element[];
   append?: JSX.Element | JSX.Element[];
   wrapperProps?: HTMLAttributes<HTMLDivElement>;
+  contentRelative?: boolean;
   name?: string;
 }
 

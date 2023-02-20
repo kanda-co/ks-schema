@@ -24,9 +24,13 @@ export interface RichTextEditorHook {
     nextEditorState: EditorState,
     onChange: (...event: any[]) => any
   ) => void;
+  onFocus: () => void;
+  onBlur: () => void;
+  focused: boolean;
 }
 
 export default function useRichTextEditor(): RichTextEditorHook {
+  const [focused, setFocused] = useState(false);
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
@@ -68,6 +72,13 @@ export default function useRichTextEditor(): RichTextEditorHook {
     [setEditorState, asMarkdown]
   );
 
+  const onFocus = useCallback(() => {
+    setFocused(true);
+  }, [setFocused]);
+  const onBlur = useCallback(() => {
+    setFocused(false);
+  }, [setFocused]);
+
   return {
     editorState,
     setEditorState,
@@ -76,5 +87,8 @@ export default function useRichTextEditor(): RichTextEditorHook {
     editorRef,
     menuRef,
     handleChange,
+    onFocus,
+    onBlur,
+    focused,
   };
 }

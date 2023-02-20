@@ -11,11 +11,14 @@ export interface RichTextInputStyleButtonProps {
 
 const RichTextInputStyleButton: FunctionComponent<RichTextInputStyleButtonProps> =
   function ({ icon, editorStyle, isBlock = false }) {
-    const { className, onMouseDown } = useRichTextStyle(editorStyle, isBlock);
+    const { className, iconClassName, onMouseDown } = useRichTextStyle(
+      editorStyle,
+      isBlock
+    );
 
     return (
       <button onMouseDown={onMouseDown} type="button" className={className}>
-        <Icon icon={icon} />
+        <Icon className={iconClassName} icon={icon} />
       </button>
     );
   };
