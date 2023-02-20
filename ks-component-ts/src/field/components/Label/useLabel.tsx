@@ -12,6 +12,7 @@ interface ClassNames {
   helperText?: string | undefined;
   labelContainer: string;
   baseSkeletonWrapper: string;
+  labelInnerWrapper: string;
 }
 
 export interface Hook {

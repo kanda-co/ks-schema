@@ -3,6 +3,7 @@ import { FieldInfoWrapperProps } from "~/field/types";
 import Label from "~/field/components/Label";
 import Error from "~/field/components/Error";
 import useDefaultFieldInfo from "~/field/components/DefaultFieldInfo/useDefaultFieldInfo";
+import { LabelSuffix as LabelSuffixTeleporter } from "./teleporters";
 
 const DefaultFieldInfo: FunctionComponent<FieldInfoWrapperProps> = function ({
   name,
@@ -44,19 +45,20 @@ const DefaultFieldInfo: FunctionComponent<FieldInfoWrapperProps> = function ({
           isLoading={isLoading}
           autoWidth={autoWidth}
           helperText={helperText}
+          suffixElement={<LabelSuffixTeleporter.Target />}
         />
       )}
-
       <div className={classNames.content}>
         {prepend}
         {children}
         {append}
       </div>
-
       {!isLoading && warning && !errorText && <span>{warning}</span>}
       {!isLoading && errorText && <Error error={errorText} />}
     </div>
   );
 };
+
+export const LabelSuffix = LabelSuffixTeleporter.Source;
 
 export default DefaultFieldInfo;

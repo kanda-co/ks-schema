@@ -1,0 +1,10 @@
+{
+  "version": "v1",
+  "packages": {
+    "@kanda-libs/ks-design-library": {
+      "signature": "a404a8e22e47f1fd117512242fea0598",
+      "link": true,
+      "replaced": "^0.2.23"
+    }
+  }
+}

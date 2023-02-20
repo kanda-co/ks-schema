@@ -10,6 +10,7 @@ const Label: FunctionComponent<LabelProps> = function ({
   helperText,
   isLoading,
   autoWidth,
+  suffixElement,
 }) {
   const labelProps = useLabel(label, helperText, autoWidth);
 
@@ -44,12 +45,14 @@ const Label: FunctionComponent<LabelProps> = function ({
           {...LABEL_SKELETON}
           afterLoading={
             <label className={classNames.label} htmlFor={id}>
-              {label}
+              <div className={classNames.labelInnerWrapper}>
+                {label}
+                {suffixElement}
+              </div>
             </label>
           }
         />
       )}
-
       {stringHelper ? (
         <Text
           isLoading={isLoading}
