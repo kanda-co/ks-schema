@@ -32,15 +32,6 @@ const RichTextInputControlled: FunctionComponent<
       control={control}
       render={({ field: { onChange } }) => (
         <>
-          <div
-            style={{
-              position: "absolute",
-              top: `${selectionPosition.y}px`,
-              left: `${selectionPosition.x}px`,
-            }}
-          >
-            MENU!
-          </div>
           <div>
             <RichTextInputContext.Provider
               value={{
@@ -50,7 +41,15 @@ const RichTextInputControlled: FunctionComponent<
               }}
             >
               <div className="flex flex-col">
-                <div className="flex flex-row mb-2 border border-solid gap-x-2 border-neutral-200">
+                <div
+                  className="flex flex-row mb-2 border border-solid gap-x-2 border-neutral-200"
+                  style={{
+                    position: "absolute",
+                    zIndex: 100,
+                    top: `${selectionPosition.y}px`,
+                    left: `${selectionPosition.x}px`,
+                  }}
+                >
                   <RichTextInputStyleButton label="B" editorStyle="bold" />
                   <RichTextInputStyleButton label="I" editorStyle="italic" />
                   <RichTextInputStyleButton

@@ -31,6 +31,7 @@ export default function useRichTextStyle(
       if (!editorState || !setEditorState) return;
       e.preventDefault();
       e.stopPropagation();
+      console.log("nice");
       const method = isBlock ? "toggleBlockType" : "toggleInlineStyle";
       setEditorState(RichUtils[method](editorState, formattedStyle));
     },
