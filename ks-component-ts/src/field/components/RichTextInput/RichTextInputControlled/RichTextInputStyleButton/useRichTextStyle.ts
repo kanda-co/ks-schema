@@ -33,7 +33,6 @@ export default function useRichTextStyle(
       if (!editorState || !setEditorState) return;
       e.preventDefault();
       e.stopPropagation();
-      console.log("nice");
       const method = isBlock ? "toggleBlockType" : "toggleInlineStyle";
       setEditorState(RichUtils[method](editorState, formattedStyle));
     },
@@ -51,8 +50,8 @@ export default function useRichTextStyle(
   );
 
   const iconClassName = useMemo(
-    () => clsx(active ? "text-red-200" : "text-neutral-500 hover:text-red-200"),
-    [active]
+    () => clsx("text-neutral-500 w-8 h-8 md:w-auto md:h-auto"),
+    []
   );
 
   return {
