@@ -1,32 +1,15 @@
-import { EditorState } from "draft-js";
+import type { SelectionPosition } from "./types";
 
-export interface SelectionPosition {
-  x: number;
-  y: number;
-}
-
-export const getSelectionPosition = (
-  editorState: EditorState
-): SelectionPosition => {
+export const getSelectionPosition = (): SelectionPosition => {
   let selection = window.getSelection();
-  if (!selection || selection.rangeCount === 0) return;
+  if (!selection || selection.rangeCount === 0) return { x: 0, y: 0 };
   let selectionRange = selection?.getRangeAt(0).cloneRange();
 
-  if (!selectionRange) return;
+  if (!selectionRange) return { x: 0, y: 0 };
 
-  selectionRange.collapse(false);
-  //-----
-  let caretMarker = document.createElement("span");
-  caretMarker.id = "__caret";
-  selectionRange.insertNode(caretMarker);
-  let caretPosition = document
-    .querySelector("#__caret")
-    ?.getBoundingClientRect();
+  const selectionPosition = selectionRange.getBoundingClientRect();
 
-  //-----
-  selectionRange.deleteContents();
-
-  const { x, y } = caretPosition || { x: 0, y: 0 };
+  const { x, y } = selectionPosition || { x: 0, y: 0 };
 
   return { x, y };
 };

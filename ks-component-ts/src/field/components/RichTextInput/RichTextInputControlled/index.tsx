@@ -23,6 +23,7 @@ const RichTextInputControlled: FunctionComponent<
     handleKeyCommand,
     editorRef,
     handleChange,
+    selectionPosition,
   } = useRichTextInput();
 
   return (
@@ -30,41 +31,54 @@ const RichTextInputControlled: FunctionComponent<
       name={name}
       control={control}
       render={({ field: { onChange } }) => (
-        <RichTextInputContext.Provider
-          value={{
-            editorState,
-            setEditorState,
-            editorRef,
-          }}
-        >
-          <div className="flex flex-col">
-            <div className="flex flex-row mb-2 border border-solid gap-x-2 border-neutral-200">
-              <RichTextInputStyleButton label="B" editorStyle="bold" />
-              <RichTextInputStyleButton label="I" editorStyle="italic" />
-              <RichTextInputStyleButton
-                isBlock
-                label="UL"
-                editorStyle="unordered-list-item"
-              />
-              <RichTextInputStyleButton
-                isBlock
-                label="OL"
-                editorStyle="ordered-list-item"
-              />
-            </div>
-            <div className="min-h-20" ref={forwardRef}>
-              <Editor
-                editorState={editorState}
-                onChange={(nextEditorState: EditorState) => {
-                  handleChange(nextEditorState, onChange);
-                }}
-                handleKeyCommand={handleKeyCommand}
-                placeholder={placeholder}
-                ref={editorRef as MutableRefObject<Editor>}
-              />
-            </div>
+        <>
+          <div
+            style={{
+              position: "absolute",
+              top: `${selectionPosition.y}px`,
+              left: `${selectionPosition.x}px`,
+            }}
+          >
+            MENU!
           </div>
-        </RichTextInputContext.Provider>
+          <div>
+            <RichTextInputContext.Provider
+              value={{
+                editorState,
+                setEditorState,
+                editorRef,
+              }}
+            >
+              <div className="flex flex-col">
+                <div className="flex flex-row mb-2 border border-solid gap-x-2 border-neutral-200">
+                  <RichTextInputStyleButton label="B" editorStyle="bold" />
+                  <RichTextInputStyleButton label="I" editorStyle="italic" />
+                  <RichTextInputStyleButton
+                    isBlock
+                    label="UL"
+                    editorStyle="unordered-list-item"
+                  />
+                  <RichTextInputStyleButton
+                    isBlock
+                    label="OL"
+                    editorStyle="ordered-list-item"
+                  />
+                </div>
+                <div className="min-h-20" ref={forwardRef}>
+                  <Editor
+                    editorState={editorState}
+                    onChange={(nextEditorState: EditorState) => {
+                      handleChange(nextEditorState, onChange);
+                    }}
+                    handleKeyCommand={handleKeyCommand}
+                    placeholder={placeholder}
+                    ref={editorRef as MutableRefObject<Editor>}
+                  />
+                </div>
+              </div>
+            </RichTextInputContext.Provider>
+          </div>
+        </>
       )}
     />
   );

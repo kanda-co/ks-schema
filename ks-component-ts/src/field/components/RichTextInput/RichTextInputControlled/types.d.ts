@@ -5,3 +5,8 @@ export type RichTextSupportedStyle =
   | "blockquote"
   | "ordered-list-item"
   | "unordered-list-item";
+
+export interface SelectionPosition {
+  x: number;
+  y: number;
+}
