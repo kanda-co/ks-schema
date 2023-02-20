@@ -4,10 +4,10 @@ import { getMenuStyle } from "./helpers";
 import useMenuSelectionPosition from "./useMenuSelectionPosition";
 
 const RichTextInputMenu: FunctionComponent = function () {
-  const selectionPosition = useMenuSelectionPosition();
+  const { hideMenu, ...selectionPosition } = useMenuSelectionPosition();
 
   // Don't show the menu if the selection is at the beginning of the editor
-  if (selectionPosition.x === 0 && selectionPosition.y === 0) {
+  if (hideMenu) {
     return <></>;
   }
 
