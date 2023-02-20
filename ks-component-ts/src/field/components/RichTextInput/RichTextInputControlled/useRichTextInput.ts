@@ -8,6 +8,7 @@ import {
 import { EditorState, RichUtils, convertToRaw, type Editor } from "draft-js";
 // @ts-ignore
 import draftToMarkdown from "draftjs-to-markdown";
+import { DISABLED_COMMANDS } from "./constants";
 
 export interface RichTextEditorHook {
   editorState: EditorState;
@@ -43,6 +44,8 @@ export default function useRichTextEditor(): RichTextEditorHook {
 
   const handleKeyCommand = useCallback(
     (command: string, newEditorState: EditorState) => {
+      if (DISABLED_COMMANDS.includes(command)) return "not-handled";
+
       const newState = RichUtils.handleKeyCommand(newEditorState, command);
 
       if (newState) {
