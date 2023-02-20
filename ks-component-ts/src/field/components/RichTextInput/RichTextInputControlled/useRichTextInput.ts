@@ -4,14 +4,11 @@ import {
   useMemo,
   useRef,
   useState,
-  useEffect,
 } from "react";
 import { EditorState, RichUtils, convertToRaw, type Editor } from "draft-js";
 // @ts-ignore
 import draftToMarkdown from "draftjs-to-markdown";
-import { CLASS_NAMES, DISABLED_COMMANDS } from "./constants";
-import useInputBaseClass from "../../Input/useInputBaseClass";
-import clsx from "clsx";
+import { DISABLED_COMMANDS } from "./constants";
 
 export interface RichTextEditorHook {
   editorState: EditorState;
@@ -40,10 +37,6 @@ export default function useRichTextEditor(): RichTextEditorHook {
 
   const editorRef = useRef<Editor>();
   const menuRef = useRef<HTMLDivElement>();
-
-  const inputBaseClass = useInputBaseClass();
-
-  const inputClass = clsx(inputBaseClass, "py-0 rounded-lg");
 
   const rawContentState = useMemo(
     () => convertToRaw(editorState.getCurrentContent()),
@@ -78,24 +71,6 @@ export default function useRichTextEditor(): RichTextEditorHook {
     },
     [setEditorState, asMarkdown]
   );
-
-  // A useEffect call to set the input base class, as draft.js does not
-  // support this being passed via props
-  useEffect(() => {
-    if (editorRef.current?.editor) {
-      const classList = editorRef.current?.editor?.classList;
-
-      inputClass.split(" ").forEach((className) => {
-        classList.add(className);
-      });
-
-      const focusClassMethod = focused ? "add" : "remove";
-
-      CLASS_NAMES.focusedInput.split(" ").forEach((className) => {
-        classList[focusClassMethod](className);
-      });
-    }
-  }, [editorRef.current?.editor, inputClass, focused]);
 
   const onFocus = useCallback(() => {
     setFocused(true);

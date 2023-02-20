@@ -7,7 +7,6 @@ import { Controller } from "react-hook-form";
 import type { FieldFormControllerChildrenArgs } from "../../FieldFormController/types";
 import RichTextInputMenu from "./RichTextInputMenu";
 import { CLASS_NAMES } from "./constants";
-import { LabelSuffix } from "../../DefaultFieldInfo";
 
 export interface RichTextInputControlledProps {
   name: string;
@@ -44,7 +43,7 @@ const RichTextInputControlled: FunctionComponent<
             }}
           >
             <div className={CLASS_NAMES.wrapper}>
-              <LabelSuffix>{focused && <RichTextInputMenu />}</LabelSuffix>
+              {focused && <RichTextInputMenu />}
               <div className={CLASS_NAMES.editorWrapper} ref={forwardRef}>
                 <Editor
                   editorState={editorState}
