@@ -1,9 +1,10 @@
 import React, { type FunctionComponent } from "react";
 import RichTextInputStyleButton from "../RichTextInputStyleButton";
+import { CLASS_NAMES } from "./constants";
 
 const RichTextInputMenu: FunctionComponent = function () {
   return (
-    <div className="flex flex-row mb-2 border border-solid gap-x-2 border-neutral-200">
+    <div className={CLASS_NAMES.wrapper}>
       <RichTextInputStyleButton label="B" editorStyle="bold" />
       <RichTextInputStyleButton label="I" editorStyle="italic" />
       <RichTextInputStyleButton

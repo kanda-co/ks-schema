@@ -6,6 +6,7 @@ import RichTextInputContext from "./RichTextInputContext";
 import { Controller } from "react-hook-form";
 import type { FieldFormControllerChildrenArgs } from "../../FieldFormController/types";
 import RichTextInputMenu from "./RichTextInputMenu";
+import { CLASS_NAMES } from "./constants";
 
 export interface RichTextInputControlledProps {
   name: string;
@@ -31,30 +32,28 @@ const RichTextInputControlled: FunctionComponent<
       control={control}
       render={({ field: { onChange } }) => (
         <>
-          <div>
-            <RichTextInputContext.Provider
-              value={{
-                editorState,
-                setEditorState,
-                editorRef,
-              }}
-            >
-              <div className="flex flex-col">
-                <RichTextInputMenu />
-                <div className="min-h-20" ref={forwardRef}>
-                  <Editor
-                    editorState={editorState}
-                    onChange={(nextEditorState: EditorState) => {
-                      handleChange(nextEditorState, onChange);
-                    }}
-                    handleKeyCommand={handleKeyCommand}
-                    placeholder={placeholder}
-                    ref={editorRef as MutableRefObject<Editor>}
-                  />
-                </div>
+          <RichTextInputContext.Provider
+            value={{
+              editorState,
+              setEditorState,
+              editorRef,
+            }}
+          >
+            <div className={CLASS_NAMES.wrapper}>
+              <RichTextInputMenu />
+              <div className={CLASS_NAMES.editorWrapper} ref={forwardRef}>
+                <Editor
+                  editorState={editorState}
+                  onChange={(nextEditorState: EditorState) => {
+                    handleChange(nextEditorState, onChange);
+                  }}
+                  handleKeyCommand={handleKeyCommand}
+                  placeholder={placeholder}
+                  ref={editorRef as MutableRefObject<Editor>}
+                />
               </div>
-            </RichTextInputContext.Provider>
-          </div>
+            </div>
+          </RichTextInputContext.Provider>
         </>
       )}
     />
