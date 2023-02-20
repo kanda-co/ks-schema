@@ -1,14 +1,11 @@
 import React, { type FunctionComponent } from "react";
 import RichTextInputStyleButton from "../RichTextInputStyleButton";
 import { getMenuStyle } from "./helpers";
+import useMenuSelectionPosition from "./useMenuSelectionPosition";
 
-export interface RichTextInputMenuProps {
-  selectionPosition: { x: number; y: number };
-}
+const RichTextInputMenu: FunctionComponent = function () {
+  const selectionPosition = useMenuSelectionPosition();
 
-const RichTextInputMenu: FunctionComponent<RichTextInputMenuProps> = function ({
-  selectionPosition,
-}) {
   // Don't show the menu if the selection is at the beginning of the editor
   if (selectionPosition.x === 0 && selectionPosition.y === 0) {
     return <></>;

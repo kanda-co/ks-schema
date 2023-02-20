@@ -3,9 +3,9 @@ import { Editor, type EditorState } from "draft-js";
 import "draft-js/dist/Draft.css";
 import useRichTextInput from "./useRichTextInput";
 import RichTextInputContext from "./RichTextInputContext";
-import RichTextInputStyleButton from "./RichTextInputStyleButton";
 import { Controller } from "react-hook-form";
 import type { FieldFormControllerChildrenArgs } from "../../FieldFormController/types";
+import RichTextInputMenu from "./RichTextInputMenu";
 
 export interface RichTextInputControlledProps {
   name: string;
@@ -23,7 +23,6 @@ const RichTextInputControlled: FunctionComponent<
     handleKeyCommand,
     editorRef,
     handleChange,
-    selectionPosition,
   } = useRichTextInput();
 
   return (
@@ -41,28 +40,7 @@ const RichTextInputControlled: FunctionComponent<
               }}
             >
               <div className="flex flex-col">
-                <div
-                  className="flex flex-row mb-2 border border-solid gap-x-2 border-neutral-200"
-                  style={{
-                    position: "absolute",
-                    zIndex: 100,
-                    top: `${selectionPosition.y}px`,
-                    left: `${selectionPosition.x}px`,
-                  }}
-                >
-                  <RichTextInputStyleButton label="B" editorStyle="bold" />
-                  <RichTextInputStyleButton label="I" editorStyle="italic" />
-                  <RichTextInputStyleButton
-                    isBlock
-                    label="UL"
-                    editorStyle="unordered-list-item"
-                  />
-                  <RichTextInputStyleButton
-                    isBlock
-                    label="OL"
-                    editorStyle="ordered-list-item"
-                  />
-                </div>
+                <RichTextInputMenu />
                 <div className="min-h-20" ref={forwardRef}>
                   <Editor
                     editorState={editorState}

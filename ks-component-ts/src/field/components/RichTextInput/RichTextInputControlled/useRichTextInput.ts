@@ -4,14 +4,11 @@ import {
   useMemo,
   useRef,
   useState,
-  useEffect,
 } from "react";
 import { EditorState, RichUtils, convertToRaw, type Editor } from "draft-js";
 // @ts-ignore
 import draftToMarkdown from "draftjs-to-markdown";
 import { DISABLED_COMMANDS } from "./constants";
-import { getSelectionPosition } from "./helpers";
-import { SelectionPosition } from "./types";
 
 export interface RichTextEditorHook {
   editorState: EditorState;
@@ -23,7 +20,6 @@ export interface RichTextEditorHook {
   asMarkdown: string;
   editorRef: MutableRefObject<Editor | undefined>;
   menuRef: MutableRefObject<HTMLDivElement | undefined>;
-  selectionPosition: SelectionPosition;
   handleChange: (
     nextEditorState: EditorState,
     onChange: (...event: any[]) => any
@@ -33,9 +29,6 @@ export interface RichTextEditorHook {
 export default function useRichTextEditor(): RichTextEditorHook {
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
-  );
-  const [selectionPosition, setSelectionPosition] = useState<SelectionPosition>(
-    getSelectionPosition()
   );
 
   const editorRef = useRef<Editor>();
@@ -75,10 +68,6 @@ export default function useRichTextEditor(): RichTextEditorHook {
     [setEditorState, asMarkdown]
   );
 
-  useEffect(() => {
-    setSelectionPosition(getSelectionPosition());
-  }, [editorState, setSelectionPosition]);
-
   return {
     editorState,
     setEditorState,
@@ -86,7 +75,6 @@ export default function useRichTextEditor(): RichTextEditorHook {
     asMarkdown,
     editorRef,
     menuRef,
-    selectionPosition,
     handleChange,
   };
 }
