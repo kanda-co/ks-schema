@@ -1925,11 +1925,6 @@ video {
   justify-items: center;
 }
 
-.gap-x-2 {
-  -moz-column-gap: 8px;
-       column-gap: 8px;
-}
-
 .self-center {
   align-self: center;
 }

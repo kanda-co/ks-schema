@@ -2,6 +2,7 @@ import useFormTheme from "~/hooks/useFormTheme";
 import clsx from "clsx";
 import { ErrorMessage } from "~/field/types";
 import { CLASS_NAMES, ICON_PROPS } from "./constants";
+import useInputBaseClass from "./useInputBaseClass";
 
 interface HookClassNames {
   containerBase: string;
@@ -36,8 +37,9 @@ export default function useInputProps(
     focusClasses,
     makeErrorClasses,
     skeletonClasses,
-    inputClasses,
   } = useFormTheme();
+
+  const inputBaseClass = useInputBaseClass(italic);
 
   const classNames = {
     ...CLASS_NAMES,
@@ -56,12 +58,7 @@ export default function useInputProps(
           iconVariant as "default" | "dark" | "search"
         ]
     ),
-    input: clsx(
-      CLASS_NAMES.input.base,
-      paddingClasses,
-      inputClasses,
-      italic && CLASS_NAMES.input.italic
-    ),
+    input: inputBaseClass,
   };
 
   const iconProps = {

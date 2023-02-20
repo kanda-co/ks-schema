@@ -75,6 +75,7 @@ export default function useRichTextEditor(): RichTextEditorHook {
   const onFocus = useCallback(() => {
     setFocused(true);
   }, [setFocused]);
+
   const onBlur = useCallback(() => {
     setFocused(false);
   }, [setFocused]);
