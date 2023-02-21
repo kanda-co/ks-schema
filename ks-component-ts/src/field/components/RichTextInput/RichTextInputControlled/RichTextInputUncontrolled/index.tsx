@@ -17,6 +17,7 @@ const RichTextInputUncontrolled: FunctionComponent<RichTextInputUncontrolledProp
     forwardRef,
     initialValue,
     readOnly = false,
+    inputHasMinHeight = true,
     onChange = () => {},
   }) {
     const {
@@ -40,7 +41,10 @@ const RichTextInputUncontrolled: FunctionComponent<RichTextInputUncontrolledProp
       >
         <div className={CLASS_NAMES.wrapper}>
           {focused && !readOnly && <RichTextInputMenu />}
-          <div className={CLASS_NAMES.editorWrapper} ref={forwardRef}>
+          <div
+            className={inputHasMinHeight ? CLASS_NAMES.editorWrapper : ""}
+            ref={forwardRef}
+          >
             <Editor
               readOnly={readOnly}
               editorState={editorState}
