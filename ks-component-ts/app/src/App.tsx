@@ -1,5 +1,6 @@
 window.global ||= window;
 import "@kanda-libs/ks-component-ts/dist/library.css";
+import "@kanda-libs/ks-design-library/dist/library.css";
 import { useForm, Field, Form } from "@kanda-libs/ks-component-ts";
 import { useWatch } from "react-hook-form";
 import { StringIndexedObject } from "~/types";
@@ -55,10 +56,19 @@ function App() {
 
           <div>
             <Field.RichTextInput
+              readOnly
               name="description"
               placeholder="Enter a description"
               onChange={() => {}}
-              initialValue="**Hello world!**"
+              initialValue={`HELLO
+
+EHLLOsd
+
+ELL!!
+
+- asdasdasdasd
+- **asdasdasd**
+- qweqweqweqwe`}
             />
           </div>
           <pre>{JSON.stringify({ description })}</pre>
