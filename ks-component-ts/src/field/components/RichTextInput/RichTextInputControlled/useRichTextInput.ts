@@ -38,7 +38,8 @@ export interface RichTextEditorHook {
 }
 
 export default function useRichTextEditor(
-  initialValue?: string
+  initialValue?: string,
+  readOnly = false
 ): RichTextEditorHook {
   const [focused, setFocused] = useState(false);
   const [initialValueSet, setInitialValueSet] = useState(false);
@@ -107,6 +108,8 @@ export default function useRichTextEditor(
   // useEffect call to add focus states / input base classes to the
   // input as draft-js does not support the className attribute
   useEffect(() => {
+    // Don't apply input classes if readOnly is true
+    if (readOnly) return;
     if (editorRef?.current?.editor) {
       const classList = editorRef.current.editor.classList;
 
