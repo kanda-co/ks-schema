@@ -58,6 +58,7 @@ function App() {
               name="description"
               placeholder="Enter a description"
               onChange={() => {}}
+              initialValue="**Hello world!**"
             />
           </div>
           <pre>{JSON.stringify({ description })}</pre>

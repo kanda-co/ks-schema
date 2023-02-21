@@ -12,11 +12,12 @@ export interface RichTextInputControlledProps {
   name?: string;
   placeholder?: string;
   forwardRef?: MutableRefObject<HTMLDivElement>;
+  initialValue?: string;
 }
 
 const RichTextInputControlled: FunctionComponent<
   FieldFormControllerChildrenArgs<RichTextInputControlledProps>
-> = function ({ name = "", placeholder, control, forwardRef }) {
+> = function ({ name = "", placeholder, control, forwardRef, initialValue }) {
   const {
     editorState,
     setEditorState,
@@ -26,7 +27,7 @@ const RichTextInputControlled: FunctionComponent<
     onFocus,
     onBlur,
     focused,
-  } = useRichTextInput();
+  } = useRichTextInput(initialValue);
 
   return (
     <Controller

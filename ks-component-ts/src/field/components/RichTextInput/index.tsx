@@ -1,4 +1,4 @@
-import Uncontrolled, {
+import Controlled, {
   RichTextInputControlledProps,
 } from "./RichTextInputControlled";
 import withFieldFormController, {
@@ -12,13 +12,13 @@ import withFieldInfo from "../FieldInfo/withFieldInfo";
 import { FunctionComponent } from "react";
 
 const WithFieldInfo = withFieldInfo(
-  Uncontrolled as FunctionComponent<DefaultFormFieldProps<RichTextInputProps>>,
+  Controlled as FunctionComponent<DefaultFormFieldProps<RichTextInputProps>>,
   false
 );
 
-export { Uncontrolled, WithFieldInfo };
+export { Controlled, WithFieldInfo };
 
-const RichTextInput = withFieldFormController(WithFieldInfo);
+const RichTextInput = WithFieldInfo;
 
 export type RichTextInputBaseProps = RichTextInputControlledProps;
 

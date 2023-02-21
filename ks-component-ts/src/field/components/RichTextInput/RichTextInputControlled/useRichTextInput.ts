@@ -6,7 +6,14 @@ import {
   useState,
   useEffect,
 } from "react";
-import { EditorState, RichUtils, convertToRaw, type Editor } from "draft-js";
+import {
+  EditorState,
+  RichUtils,
+  convertToRaw,
+  type Editor,
+  convertFromRaw,
+} from "draft-js";
+import { markdownToDraft } from "markdown-draft-js";
 // @ts-ignore
 import draftToMarkdown from "draftjs-to-markdown";
 import { CLASS_NAMES, DISABLED_COMMANDS } from "./constants";
@@ -32,7 +39,9 @@ export interface RichTextEditorHook {
   focused: boolean;
 }
 
-export default function useRichTextEditor(): RichTextEditorHook {
+export default function useRichTextEditor(
+  initialValue?: string
+): RichTextEditorHook {
   const [focused, setFocused] = useState(false);
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
@@ -86,6 +95,17 @@ export default function useRichTextEditor(): RichTextEditorHook {
     setFocused(false);
   }, [setFocused]);
 
+  // useEffect call to set the initial value of the editor
+  useEffect(() => {
+    if (initialValue) {
+      const rawData = markdownToDraft(initialValue);
+      const contentState = convertFromRaw(rawData);
+      setEditorState(EditorState.createWithContent(contentState));
+    }
+  }, [initialValue]);
+
+  // useEffect call to add focus states / input base classes to the
+  // input as draft-js does not support the className attribute
   useEffect(() => {
     if (editorRef?.current?.editor) {
       const classList = editorRef.current.editor.classList;
