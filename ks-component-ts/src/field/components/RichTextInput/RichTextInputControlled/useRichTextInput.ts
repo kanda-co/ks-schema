@@ -43,6 +43,7 @@ export default function useRichTextEditor(
   initialValue?: string
 ): RichTextEditorHook {
   const [focused, setFocused] = useState(false);
+  const [initialValueSet, setInitialValueSet] = useState(false);
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
@@ -97,12 +98,13 @@ export default function useRichTextEditor(
 
   // useEffect call to set the initial value of the editor
   useEffect(() => {
-    if (initialValue) {
+    if (initialValue && !initialValueSet) {
       const rawData = markdownToDraft(initialValue);
       const contentState = convertFromRaw(rawData);
       setEditorState(EditorState.createWithContent(contentState));
+      setInitialValueSet(true);
     }
-  }, [initialValue]);
+  }, [initialValue, initialValueSet]);
 
   // useEffect call to add focus states / input base classes to the
   // input as draft-js does not support the className attribute
@@ -114,11 +116,22 @@ export default function useRichTextEditor(
         classList.add(className);
       });
 
+      const placeholder =
+        editorRef.current.editorContainer?.parentElement?.querySelector(
+          ".public-DraftEditorPlaceholder-inner"
+        );
+
       const focusClassMethod = focused ? "add" : "remove";
 
       CLASS_NAMES.focusedInput.split(" ").forEach((className) => {
         classList[focusClassMethod](className);
       });
+
+      if (placeholder) {
+        CLASS_NAMES.focusedPlaceHolder.split(" ").forEach((className) => {
+          placeholder?.classList[focusClassMethod](className);
+        });
+      }
     }
   }, [editorRef, inputClass, focused]);
 
