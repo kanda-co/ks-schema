@@ -1261,8 +1261,8 @@ video {
   margin-left: -1px;
 }
 
-.-mt-8 {
-  margin-top: -32px;
+.-mt-10 {
+  margin-top: -40px;
 }
 
 .mr-7 {
@@ -1339,6 +1339,10 @@ video {
 
 .mb-1\.5 {
   margin-bottom: 6px;
+}
+
+.-mt-8 {
+  margin-top: -32px;
 }
 
 .mt-8 {
@@ -4129,6 +4133,10 @@ input[type="checkbox"]:checked ~ .label-checked\:bg-turquoise-300 {
     font-weight: 600;
     font-size: 14px;
     line-height: 22px;
+  }
+
+  .md\:-mt-8 {
+    margin-top: -32px;
   }
 
   .md\:block {
