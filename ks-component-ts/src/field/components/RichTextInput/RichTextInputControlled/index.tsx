@@ -13,11 +13,19 @@ export interface RichTextInputControlledProps {
   placeholder?: string;
   forwardRef?: MutableRefObject<HTMLDivElement>;
   initialValue?: string;
+  readOnly?: boolean;
 }
 
 const RichTextInputControlled: FunctionComponent<
   FieldFormControllerChildrenArgs<RichTextInputControlledProps>
-> = function ({ name = "", placeholder, control, forwardRef, initialValue }) {
+> = function ({
+  name = "",
+  placeholder,
+  control,
+  forwardRef,
+  initialValue,
+  readOnly = false,
+}) {
   const {
     editorState,
     setEditorState,
@@ -43,9 +51,10 @@ const RichTextInputControlled: FunctionComponent<
             }}
           >
             <div className={CLASS_NAMES.wrapper}>
-              {focused && <RichTextInputMenu />}
+              {focused && !readOnly && <RichTextInputMenu />}
               <div className={CLASS_NAMES.editorWrapper} ref={forwardRef}>
                 <Editor
+                  readOnly={readOnly}
                   editorState={editorState}
                   onChange={(nextEditorState: EditorState) => {
                     handleChange(nextEditorState, onChange);

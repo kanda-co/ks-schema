@@ -1,9 +1,7 @@
 import Controlled, {
   RichTextInputControlledProps,
 } from "./RichTextInputControlled";
-import withFieldFormController, {
-  type FieldFormControllerPropsWithoutChildren,
-} from "~/field/components/FieldFormController/withFieldFormController";
+import { type FieldFormControllerPropsWithoutChildren } from "~/field/components/FieldFormController/withFieldFormController";
 import {
   DefaultFormFieldProps,
   type WrappedWithFieldInfoFormComponentProps,

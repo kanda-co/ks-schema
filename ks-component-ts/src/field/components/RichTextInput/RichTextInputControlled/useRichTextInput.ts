@@ -13,9 +13,7 @@ import {
   type Editor,
   convertFromRaw,
 } from "draft-js";
-import { markdownToDraft } from "markdown-draft-js";
-// @ts-ignore
-import draftToMarkdown from "draftjs-to-markdown";
+import { markdownToDraft, draftToMarkdown } from "markdown-draft-js";
 import { CLASS_NAMES, DISABLED_COMMANDS } from "./constants";
 import useInputBaseClass from "../../Input/useInputBaseClass";
 import clsx from "clsx";
@@ -133,7 +131,7 @@ export default function useRichTextEditor(
         });
       }
     }
-  }, [editorRef, inputClass, focused]);
+  }, [editorRef, editorState, inputClass, focused]);
 
   return {
     editorState,
