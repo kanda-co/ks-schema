@@ -1,5 +1,5 @@
 import React, { type FunctionComponent } from "react";
-import Field from "~/field";
+import RichTextInputUncontrolled from "~/field/components/RichTextInput/RichTextInputControlled/RichTextInputUncontrolled";
 
 export interface MarkdownDisplayProps {
   children: string;
@@ -8,7 +8,7 @@ export interface MarkdownDisplayProps {
 const MarkdownDisplay: FunctionComponent<MarkdownDisplayProps> = function ({
   children,
 }) {
-  return <Field.RichTextInput readOnly initialValue={children} />;
+  return <RichTextInputUncontrolled readOnly initialValue={children} />;
 };
 
 export default MarkdownDisplay;

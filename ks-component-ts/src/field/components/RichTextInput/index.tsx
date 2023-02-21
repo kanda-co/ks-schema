@@ -1,7 +1,9 @@
 import Controlled, {
   RichTextInputControlledProps,
 } from "./RichTextInputControlled";
-import { type FieldFormControllerPropsWithoutChildren } from "~/field/components/FieldFormController/withFieldFormController";
+import withFieldFormController, {
+  type FieldFormControllerPropsWithoutChildren,
+} from "~/field/components/FieldFormController/withFieldFormController";
 import {
   DefaultFormFieldProps,
   type WrappedWithFieldInfoFormComponentProps,
@@ -16,7 +18,7 @@ const WithFieldInfo = withFieldInfo(
 
 export { Controlled, WithFieldInfo };
 
-const RichTextInput = WithFieldInfo;
+const RichTextInput = withFieldFormController(WithFieldInfo);
 
 export type RichTextInputBaseProps = RichTextInputControlledProps;
 
