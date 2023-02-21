@@ -4,9 +4,13 @@ import MarkdownDisplay from "../MarkdownDisplay";
 
 export interface NotesDisplayProps {
   note: string;
+  compact?: boolean;
 }
 
-const NotesDisplay: FunctionComponent<NotesDisplayProps> = function ({ note }) {
+const NotesDisplay: FunctionComponent<NotesDisplayProps> = function ({
+  note,
+  compact = false,
+}) {
   return (
     <div className="flex flex-col">
       <div className="flex flex-row mb-4">
@@ -16,12 +20,19 @@ const NotesDisplay: FunctionComponent<NotesDisplayProps> = function ({ note }) {
           className="my-auto mr-3"
           stroke="neutral-500"
         />
-        <Text text="Note" className="text-14-22-em text-neutral-500" />
+        {!compact && (
+          <Text text="Note" className="text-14-22-em text-neutral-500" />
+        )}
+        {compact && (
+          <Text text={note} className="text-14-22 text-neutral-700" />
+        )}
       </div>
-      <Text
-        text={<MarkdownDisplay>{note}</MarkdownDisplay>}
-        className="text-16-24 text-neutral-700"
-      />
+      {!compact && (
+        <Text
+          text={<MarkdownDisplay>{note}</MarkdownDisplay>}
+          className="text-16-24 text-neutral-700"
+        />
+      )}
     </div>
   );
 };
