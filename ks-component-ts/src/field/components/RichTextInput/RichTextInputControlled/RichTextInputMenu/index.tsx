@@ -9,12 +9,12 @@ const RichTextInputMenu: FunctionComponent = function () {
       <RichTextInputStyleButton icon="italic" editorStyle="italic" />
       <RichTextInputStyleButton
         isBlock
-        icon="ordered-list"
+        icon="unordered-list"
         editorStyle="unordered-list-item"
       />
       <RichTextInputStyleButton
         isBlock
-        icon="unordered-list"
+        icon="ordered-list"
         editorStyle="ordered-list-item"
       />
     </div>
