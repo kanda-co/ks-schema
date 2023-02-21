@@ -24,7 +24,10 @@ const NotesDisplay: FunctionComponent<NotesDisplayProps> = function ({
           <Text text="Note" className="text-14-22-em text-neutral-500" />
         )}
         {compact && (
-          <Text text={note} className="text-14-22 text-neutral-700" />
+          <Text
+            text={<MarkdownDisplay>{note}</MarkdownDisplay>}
+            className="text-14-22 text-neutral-700"
+          />
         )}
       </div>
       {!compact && (
