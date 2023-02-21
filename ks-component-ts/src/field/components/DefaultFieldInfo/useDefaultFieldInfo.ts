@@ -29,7 +29,8 @@ export default function useDefaultFieldInfo(
   isLoading: DefaultWrapperContainerProps["isLoading"],
   className: DefaultWrapperContainerProps["className"],
   autoWidth: DefaultWrapperContainerProps["autoWidth"],
-  wrapperClassName?: string
+  wrapperClassName?: string,
+  contentRelative: boolean = false
 ): Hook {
   const { wrapperClasses } = useFormTheme();
 
@@ -47,7 +48,7 @@ export default function useDefaultFieldInfo(
       width,
       wrapperClassName,
     ],
-    content: [".baseContent", width],
+    content: [contentRelative && ".baseContent", width],
   });
 
   const errorText = typeof error === "string" ? error : error?.message;

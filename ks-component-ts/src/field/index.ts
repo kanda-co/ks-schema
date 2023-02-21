@@ -58,6 +58,9 @@ import SelectionModal, {
 import AutoSizePriceInput, {
   type AutoSizePriceInputProps,
 } from "~/field/components/AutoSizePriceInput";
+import RichTextInput, {
+  type RichTextInputProps,
+} from "~/field/components/RichTextInput";
 import AutoSizeInput, {
   type AutoSizeInputProps,
 } from "~/field/components/AutoSizeInput";
@@ -97,6 +100,7 @@ const Field = {
   UncontrolledInput,
   Validator,
   SelectionModal,
+  RichTextInput,
   AutoSizeInput,
   AutoSizePriceInput,
   AutoSizeTextArea,
@@ -122,6 +126,7 @@ export interface FieldProps {
   TextAreaInput: TextAreaProps;
   SortCodeInput: SortCodeInputProps;
   SelectionModal: SelectionModalProps;
+  RichTextInput: RichTextInputProps;
   AutoSizeInput: AutoSizeInputProps;
   AutoSizePriceInput: AutoSizePriceInputProps;
   AutoSizeTextArea: AutoSizeTextAreaProps;

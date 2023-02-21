@@ -17,6 +17,7 @@ const DefaultFieldInfo: FunctionComponent<FieldInfoWrapperProps> = function ({
   prepend,
   append,
   wrapperProps = {},
+  contentRelative = true,
   children,
 }) {
   const { className: wrapperClassName, ...restWrapperProps } = wrapperProps;
@@ -26,7 +27,8 @@ const DefaultFieldInfo: FunctionComponent<FieldInfoWrapperProps> = function ({
     isLoading,
     className,
     autoWidth,
-    wrapperClassName
+    wrapperClassName,
+    contentRelative
   );
 
   return (

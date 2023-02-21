@@ -8,7 +8,8 @@ import {
 } from "~/field/types";
 
 export default function withFieldInfo<T>(
-  Component: FunctionComponent<DefaultFormFieldProps<T>>
+  Component: FunctionComponent<DefaultFormFieldProps<T>>,
+  contentRelative = true
 ): WrappedWithFieldInfoFormComponent<T> {
   const RenderedComponent: FunctionComponent<
     DefaultFormFieldProps<T> & FieldInfoWrapperProps
@@ -42,6 +43,7 @@ export default function withFieldInfo<T>(
         append={append}
         wrapperProps={wrapperProps}
         className={className}
+        contentRelative={contentRelative}
       >
         <>
           <Component

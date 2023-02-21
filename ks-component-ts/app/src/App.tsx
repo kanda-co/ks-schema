@@ -1,6 +1,9 @@
+window.global ||= window;
 import "@kanda-libs/ks-component-ts/dist/library.css";
-import { Form, useForm, Field } from "@kanda-libs/ks-component-ts";
+import "@kanda-libs/ks-design-library/dist/library.css";
+import { useForm, Field, Form } from "@kanda-libs/ks-component-ts";
 import { useWatch } from "react-hook-form";
+import { StringIndexedObject } from "~/types";
 
 const Append = () => (
   <span className="relative field-focus:hidden field-error:hidden field-loading:hidden">
@@ -25,52 +28,53 @@ export const QUANTITY_COMPONENT_PROPS = {
   type: "price",
 };
 
+if (!(Window.prototype as StringIndexedObject).setImmediate) {
+  (Window.prototype as StringIndexedObject).setImmediate = function () {
+    return false;
+  };
+}
+
 function App() {
   const form = useForm();
 
-  const [quantity, price] = useWatch({
-    name: ["quantity", "price"],
+  const [description] = useWatch({
+    name: ["description"],
     control: form.control,
   });
 
   return (
-    <div className="App">
-      <h2 className="block mt-2">Form values</h2>
-      <div className="px-4 py-4">Hello world</div>
-      <Form id="test-form" form={form} onSubmit={() => {}}>
-        <Field.Validator
-          validation={{
-            min: {
-              value: 500,
-              message: "Must be more than 5",
-            },
-            max: {
-              value: 1000,
-              message: "Must be less than 10",
-            },
-          }}
-        >
-          <Field.NumberInput type="price" label="Quantity" name="quantity" />
-        </Field.Validator>
-        <Field.Validator
-          validation={{
-            min: {
-              value: 500,
-              message: "Must be more than 5",
-            },
-            max: {
-              value: 1000,
-              message: "Must be less than 10",
-            },
-          }}
-        >
-          <Field.NumberInput label="Quantity" name="quantity2" />
-        </Field.Validator>
-      </Form>
-      <div>
-        <pre>{JSON.stringify({ quantity, price })}</pre>
+    <Form
+      id="app"
+      form={form}
+      onSubmit={() => {
+        console.log("test");
+      }}
+    >
+      <div className="App">
+        <div className="px-8 py-4">
+          <h2 className="block mt-2">Rich text editor</h2>
+
+          <div>
+            <Field.RichTextInput
+              readOnly
+              name="description"
+              placeholder="Enter a description"
+              onChange={() => {}}
+              initialValue={`HELLO
+
+EHLLOsd
+
+ELL!!
+
+- asdasdasdasd
+- **asdasdasd**
+- qweqweqweqwe`}
+            />
+          </div>
+          <pre>{JSON.stringify({ description })}</pre>
+        </div>
       </div>
-    </div>
+    </Form>
   );
 }
 
