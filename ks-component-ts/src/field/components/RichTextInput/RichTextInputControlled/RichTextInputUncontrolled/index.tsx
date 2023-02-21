@@ -17,7 +17,7 @@ const RichTextInputUncontrolled: FunctionComponent<RichTextInputUncontrolledProp
     forwardRef,
     initialValue,
     readOnly = false,
-    onChange,
+    onChange = () => {},
   }) {
     const {
       editorState,

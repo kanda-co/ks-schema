@@ -2347,16 +2347,16 @@ video {
   padding: 12px;
 }
 
+.p-1 {
+  padding: 4px;
+}
+
 .p-4 {
   padding: 16px;
 }
 
 .p-1\.5 {
   padding: 6px;
-}
-
-.p-1 {
-  padding: 4px;
 }
 
 .p-2\.5 {

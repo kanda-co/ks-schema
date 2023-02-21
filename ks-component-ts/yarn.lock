@@ -798,6 +798,30 @@
     lodash.get "^4.4.2"
     lodash.set "^4.3.2"
 
+"@kanda-libs/ks-amplitude-provider@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-amplitude-provider/-/ks-amplitude-provider-0.0.7.tgz#08f166736b229c44402e3f64debd98321af88842"
+  integrity sha512-gzkZzFcBwh4MQz/VJ8M0TGcuWQzLv0V2bYHOrr8Bc6ErlV/cIE+1NtocsfI7uv+0QRAbmO6YctU4/KztTtui/A==
+  dependencies:
+    "@amplitude/analytics-browser" "^1.6.4"
+
+"@kanda-libs/ks-design-library@^0.2.36":
+  version "0.2.36"
+  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-design-library/-/ks-design-library-0.2.36.tgz#df1b91b1309c1246c830d2fd39cc11104bf2141b"
+  integrity sha512-6224WIhx71cUUA1BPZ+VyXy/EYPq+FYBMTJlb1ewlwJ+f+r2H3DiZ58j8xT0oVdX6rDzcXQlMT9/jQhQsPNFqg==
+  dependencies:
+    "@kanda-libs/ks-amplitude-provider" "^0.0.7"
+    file-saver "^2.0.5"
+    fuse.js "^6.6.2"
+    lodash.get "^4.4.2"
+    lodash.set "^4.3.2"
+    react-image "^4.0.3"
+    react-loading-skeleton "^3.1.0"
+    react-number-format "^4.6.4"
+    react-teleporter "^3.0.2"
+    react-toastify "^9.0.8"
+    use-debounce "^8.0.4"
+
 "@kanda-libs/ks-frontend-services@^0.2.51":
   version "0.2.58"
   resolved "https://registry.yarnpkg.com/@kanda-libs/ks-frontend-services/-/ks-frontend-services-0.2.58.tgz#542639cbb5196f940851510945007793798211dc"
@@ -3147,6 +3171,11 @@ file-entry-cache@^6.0.1:
   dependencies:
     flat-cache "^3.0.4"
 
+file-saver@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/file-saver/-/file-saver-2.0.5.tgz#d61cfe2ce059f414d899e9dd6d4107ee25670c38"
+  integrity sha512-P9bmyZ3h/PRG+Nzga+rbdI4OEpNDzAVyy74uVO9ATgzLK6VtAsYybF/+TOCvrc0MO793d6+42lLyZTw7/ArVzA==
+
 file-selector@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/file-selector/-/file-selector-0.4.0.tgz#59ec4f27aa5baf0841e9c6385c8386bef4d18b17"
@@ -3367,6 +3396,11 @@ functions-have-names@^1.2.2:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/functions-have-names/-/functions-have-names-1.2.3.tgz#0404fe4ee2ba2f607f0e0ec3c80bae994133b834"
   integrity sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==
+
+fuse.js@^6.6.2:
+  version "6.6.2"
+  resolved "https://registry.yarnpkg.com/fuse.js/-/fuse.js-6.6.2.tgz#fe463fed4b98c0226ac3da2856a415576dc9a111"
+  integrity sha512-cJaJkxCCxC8qIIcPBF9yGxY0W/tVZS3uEISDxhYIdtk8OL93pe+6Zj7LjCqVV4dzbqcriOZ+kQ/NE4RXZHsIGA==
 
 gauge@~2.7.3:
   version "2.7.4"
@@ -5370,6 +5404,11 @@ react-hook-form@^7.35.0:
   resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.41.5.tgz#dcd0e7438c15044eadc99df6deb889da5858a03b"
   integrity sha512-DAKjSJ7X9f16oQrP3TW2/eD9N6HOgrmIahP4LOdFphEWVfGZ2LulFd6f6AQ/YS/0cx/5oc4j8a1PXxuaurWp/Q==
 
+react-image@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/react-image/-/react-image-4.0.3.tgz#6fa722877660b67295298a914bff1ed87ad2cf83"
+  integrity sha512-19MUK9u1qaw9xys8XEsVkSpVhHctEBUeYFvrLTe1PN+4w5Co13AN2WA7xtBshPM6SthsOj77SlDrEAeOaJpf7g==
+
 react-input-autosize@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/react-input-autosize/-/react-input-autosize-3.0.0.tgz#6b5898c790d4478d69420b55441fcc31d5c50a85"
@@ -5447,6 +5486,11 @@ react-table@^7.7.0:
   resolved "https://registry.yarnpkg.com/react-table/-/react-table-7.8.0.tgz#07858c01c1718c09f7f1aed7034fcfd7bda907d2"
   integrity sha512-hNaz4ygkZO4bESeFfnfOft73iBUj8K5oKi1EcSHPAibEydfsX2MyU6Z8KCr3mv3C9Kqqh71U+DhZkFvibbnPbA==
 
+react-teleporter@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/react-teleporter/-/react-teleporter-3.0.2.tgz#b62fa7303ccf80d0438df7fbf4fb6186fe59b8f0"
+  integrity sha512-6kxP/r01akC0NO/oWgz6bFJQFsDD0CSqKB6c+F3f2locfBUrDK+I8fic17W6idVL/Hv3ab72N2c3DyrL2+y4kQ==
+
 react-textarea-autosize@^8.4.0:
   version "8.4.0"
   resolved "https://registry.yarnpkg.com/react-textarea-autosize/-/react-textarea-autosize-8.4.0.tgz#4d0244d6a50caa897806b8c44abc0540a69bfc8c"
@@ -5455,6 +5499,13 @@ react-textarea-autosize@^8.4.0:
     "@babel/runtime" "^7.10.2"
     use-composed-ref "^1.3.0"
     use-latest "^1.2.1"
+
+react-toastify@^9.0.8:
+  version "9.1.1"
+  resolved "https://registry.yarnpkg.com/react-toastify/-/react-toastify-9.1.1.tgz#9280caea4a13dc1739c350d90660a630807bf10b"
+  integrity sha512-pkFCla1z3ve045qvjEmn2xOJOy4ZciwRXm1oMPULVkELi5aJdHCN/FHnuqXq8IwGDLB7PPk2/J6uP9D8ejuiRw==
+  dependencies:
+    clsx "^1.1.1"
 
 react@17.0.2, react@^17.0.2:
   version "17.0.2"
@@ -6545,7 +6596,7 @@ use-composed-ref@^1.3.0:
   resolved "https://registry.yarnpkg.com/use-composed-ref/-/use-composed-ref-1.3.0.tgz#3d8104db34b7b264030a9d916c5e94fbe280dbda"
   integrity sha512-GLMG0Jc/jiKov/3Ulid1wbv3r54K9HlMW29IWcDFPEqFkSO2nS0MuefWgMJpeHQ9YJeXDL3ZUF+P3jdXlZX/cQ==
 
-use-debounce@^8.0.3:
+use-debounce@^8.0.3, use-debounce@^8.0.4:
   version "8.0.4"
   resolved "https://registry.yarnpkg.com/use-debounce/-/use-debounce-8.0.4.tgz#27e93b2f010bd0b8ad06e9fc7de891d9ee5d6b8e"
   integrity sha512-fGqsYQzl8kLHF2QpQSgIwgOgJmnh6j5L6SIzQiHdLfwp3q1egUL3btq5Bg2SJysH6A0ILLgT2IqXZKoNJr0nFw==
