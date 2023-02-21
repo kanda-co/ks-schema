@@ -8,7 +8,13 @@ export interface MarkdownDisplayProps {
 const MarkdownDisplay: FunctionComponent<MarkdownDisplayProps> = function ({
   children,
 }) {
-  return <RichTextInputUncontrolled readOnly initialValue={children} />;
+  return (
+    <RichTextInputUncontrolled
+      readOnly
+      inputHasMinHeight={false}
+      initialValue={children}
+    />
+  );
 };
 
 export default MarkdownDisplay;

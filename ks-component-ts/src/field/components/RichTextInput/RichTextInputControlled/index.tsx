@@ -10,6 +10,7 @@ export interface RichTextInputControlledProps {
   forwardRef?: MutableRefObject<HTMLDivElement>;
   initialValue?: string;
   readOnly?: boolean;
+  inputHasMinHeight?: boolean;
 }
 
 const RichTextInputControlled: FunctionComponent<

@@ -12,3 +12,4 @@ export { default as RowFields } from "./RowFields";
 export { default as Search } from "./Search";
 export { default as Table } from "./Table";
 export { default as MarkdownDisplay } from "./MarkdownDisplay";
+export { default as NotesDisplay } from "./NotesDisplay";

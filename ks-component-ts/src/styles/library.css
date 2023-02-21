@@ -785,6 +785,12 @@ video {
   line-height: 22px;
 }
 
+.text-16-24 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
 .text-14-22-em {
   font-weight: 600;
   font-size: 14px;
@@ -1177,6 +1183,10 @@ video {
   margin-left: -16px;
 }
 
+.mr-3 {
+  margin-right: 12px;
+}
+
 .-mt-3 {
   margin-top: -12px;
 }
@@ -1215,10 +1225,6 @@ video {
 
 .mt-3 {
   margin-top: 12px;
-}
-
-.mr-3 {
-  margin-right: 12px;
 }
 
 .ml-auto {
