@@ -17,7 +17,7 @@ const NotesDisplay: FunctionComponent<NotesDisplayProps> = function ({
         <Icon
           icon="paper"
           size={20}
-          className="my-auto mr-3"
+          className="mt-2 mr-3"
           stroke="neutral-500"
         />
         {!compact && (
