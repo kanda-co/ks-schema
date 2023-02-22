@@ -11,6 +11,7 @@ export interface RichTextInputControlledProps {
   initialValue?: string;
   readOnly?: boolean;
   inputHasMinHeight?: boolean;
+  inputHasFocusedBorder?: boolean;
 }
 
 const RichTextInputControlled: FunctionComponent<

@@ -18,6 +18,7 @@ const RichTextInputUncontrolled: FunctionComponent<RichTextInputUncontrolledProp
     initialValue,
     readOnly = false,
     inputHasMinHeight = true,
+    inputHasFocusedBorder = true,
     onChange = () => {},
   }) {
     const {
@@ -29,7 +30,7 @@ const RichTextInputUncontrolled: FunctionComponent<RichTextInputUncontrolledProp
       onFocus,
       onBlur,
       focused,
-    } = useRichTextInput(initialValue, readOnly);
+    } = useRichTextInput(initialValue, readOnly, inputHasFocusedBorder);
 
     return (
       <RichTextInputContext.Provider

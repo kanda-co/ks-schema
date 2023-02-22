@@ -39,7 +39,8 @@ export interface RichTextEditorHook {
 
 export default function useRichTextEditor(
   initialValue?: string,
-  readOnly = false
+  readOnly = false,
+  inputHasFocusedBorder = true
 ): RichTextEditorHook {
   const [focused, setFocused] = useState(false);
   const [initialValueSet, setInitialValueSet] = useState(false);
@@ -117,6 +118,8 @@ export default function useRichTextEditor(
         classList.add(className);
       });
 
+      if (!inputHasFocusedBorder) return;
+
       const placeholder =
         editorRef.current.editorContainer?.parentElement?.querySelector(
           ".public-DraftEditorPlaceholder-inner"
@@ -134,7 +137,7 @@ export default function useRichTextEditor(
         });
       }
     }
-  }, [editorRef, editorState, inputClass, focused]);
+  }, [editorRef, editorState, inputClass, focused, inputHasFocusedBorder]);
 
   return {
     editorState,
