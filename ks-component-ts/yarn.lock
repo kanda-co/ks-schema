@@ -805,10 +805,10 @@
   dependencies:
     "@amplitude/analytics-browser" "^1.6.4"
 
-"@kanda-libs/ks-design-library@^0.2.39":
-  version "0.2.39"
-  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-design-library/-/ks-design-library-0.2.39.tgz#43be8db21d938addec8cda2606517f38487df0e5"
-  integrity sha512-Fl2D25A0KQ0QzBy4ZzMyHXi4KqqljEYyKPa6J7nxm5pj4hc6m/acVzn/6q1fKkz/6MltO1g5oFCjkKUgZbe7gA==
+"@kanda-libs/ks-design-library@0.2.42":
+  version "0.2.42"
+  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-design-library/-/ks-design-library-0.2.42.tgz#9fd855228e771e5598d51a01f72aa71ef0ec69cb"
+  integrity sha512-AuaI1wDd6MNmOWtvXgoDjlGG6TpOIONmJ+Ly22DfBN1zv2cvKqb22Ansb9sNm4LhALhk+50/yurJpY3+fhI45g==
   dependencies:
     "@kanda-libs/ks-amplitude-provider" "^0.0.7"
     file-saver "^2.0.5"
