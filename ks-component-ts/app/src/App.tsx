@@ -54,21 +54,11 @@ function App() {
         <div className="px-8 py-4">
           <h2 className="block mt-2">Rich text editor</h2>
 
-          <div>
+          <div style={{ maxWidth: "400px" }}>
             <Field.RichTextInput
-              readOnly
               name="description"
               placeholder="Enter a description"
               onChange={() => {}}
-              initialValue={`HELLO
-
-EHLLOsd
-
-ELL!!
-
-- asdasdasdasd
-- **asdasdasd**
-- qweqweqweqwe`}
             />
           </div>
           <pre>{JSON.stringify({ description })}</pre>

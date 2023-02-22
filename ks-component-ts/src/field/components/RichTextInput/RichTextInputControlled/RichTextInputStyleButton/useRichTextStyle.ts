@@ -45,7 +45,7 @@ export default function useRichTextStyle(
   }, [editorState, formattedStyle, blockType, isBlock]);
 
   const className = useMemo(
-    () => clsx(active ? "bg-neutral-200" : "hover:bg-neutral-200"),
+    () => clsx(active ? "bg-neutral-200" : "md:hover:bg-neutral-200"),
     [active]
   );
 
