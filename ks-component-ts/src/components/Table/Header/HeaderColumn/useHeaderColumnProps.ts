@@ -79,7 +79,7 @@ export default function useHeaderColumnProps(
   const right = index === totalVisible - 1 && totalVisible > 1;
 
   const popoverProps = {
-    items,
+    items: items as AdvancedItem[],
     right,
     search,
     searchPlaceholder,
