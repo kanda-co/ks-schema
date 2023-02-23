@@ -2,7 +2,7 @@ import { createContext, MutableRefObject } from "react";
 import { StringIndexedObject } from "~/types";
 import { SliderRef } from "~/components/MultiStepForm/useSteps";
 
-interface MultiStepFormContextValue<T = StringIndexedObject> {
+export interface MultiStepFormContextValue<T = StringIndexedObject> {
   /**
    * Function to handle continuing to next step
    */
