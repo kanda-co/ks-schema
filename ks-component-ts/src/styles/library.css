@@ -4188,6 +4188,11 @@ input[type="checkbox"]:checked ~ .label-checked\:bg-turquoise-300 {
   .md\:text-sm {
     font-size: 14px;
   }
+
+  .md\:hover\:bg-neutral-200:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(237 241 247 / var(--tw-bg-opacity));
+  }
 }
 
 @media (min-width: 1024px) {
