@@ -2,15 +2,15 @@ import { createContext, MutableRefObject } from "react";
 import { StringIndexedObject } from "~/types";
 import { SliderRef } from "~/components/MultiStepForm/useSteps";
 
-interface MultiStepFormContextValue {
+interface MultiStepFormContextValue<T = StringIndexedObject> {
   /**
    * Function to handle continuing to next step
    */
-  handleContinue: (data: StringIndexedObject) => void;
+  handleContinue: (data: T) => void;
   /**
    * Function to handle form submission
    */
-  handleSubmit: (data: StringIndexedObject) => void;
+  handleSubmit: (data: T) => void;
   /**
    * Function to handle going to next step - does not save data!
    */
@@ -22,11 +22,11 @@ interface MultiStepFormContextValue {
   /**
    * Function to set data
    */
-  setData: (data: StringIndexedObject) => void;
+  setData: (data: T) => void;
   /**
    * Form data
    */
-  data: StringIndexedObject;
+  data: T;
   /**
    * Function to set specific step
    */
