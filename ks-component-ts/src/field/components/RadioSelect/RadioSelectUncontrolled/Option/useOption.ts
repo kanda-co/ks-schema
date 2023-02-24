@@ -68,6 +68,8 @@ export default function useOption(
    */
   const handleProps = register ? register(fieldName, {}) : {};
 
+  console.log({ handleProps });
+
   return {
     id,
     classNames,

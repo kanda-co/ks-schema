@@ -803,6 +803,12 @@ video {
   line-height: 22px;
 }
 
+.text-13-14 {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 14px;
+}
+
 .text-12-18-em {
   font-weight: 600;
   font-size: 12px;
@@ -1273,6 +1279,10 @@ video {
 
 .-ml-px {
   margin-left: -1px;
+}
+
+.mr-1\.5 {
+  margin-right: 6px;
 }
 
 .-mt-10 {
@@ -2454,6 +2464,11 @@ video {
 .py-2\.25 {
   padding-top: 9px;
   padding-bottom: 9px;
+}
+
+.px-2\.5 {
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .px-6 {
@@ -4088,13 +4103,18 @@ Modified version of toast CSS to match designs
   color: rgb(195 207 223 / var(--tw-text-opacity));
 }
 
-input[type="checkbox"]:checked ~ .label-checked\:border-transparent {
+input:checked ~ .label-checked\:border-transparent {
   border-color: transparent;
 }
 
-input[type="checkbox"]:checked ~ .label-checked\:bg-turquoise-300 {
+input:checked ~ .label-checked\:bg-turquoise-300 {
   --tw-bg-opacity: 1;
   background-color: rgb(39 222 191 / var(--tw-bg-opacity));
+}
+
+input[type="checkbox"][disabled]:checked ~ .label-checked-disabled\:bg-neutral-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(224 231 240 / var(--tw-bg-opacity));
 }
 
 :focus-within > .field-focus\:hidden {
@@ -4131,14 +4151,14 @@ input[type="checkbox"]:checked ~ .label-checked\:bg-turquoise-300 {
     margin-right: 80px;
   }
 
+  .md\:-mt-8 {
+    margin-top: -32px;
+  }
+
   .md\:text-style-g-em {
     font-weight: 600;
     font-size: 14px;
     line-height: 22px;
-  }
-
-  .md\:-mt-8 {
-    margin-top: -32px;
   }
 
   .md\:block {

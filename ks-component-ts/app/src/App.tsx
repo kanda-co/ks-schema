@@ -42,35 +42,15 @@ function App() {
 
           <div style={{ maxWidth: "400px" }}>
             <Field.RadioSelect
-              name="test"
-              label="Test"
+              name="gender"
+              id="gender"
+              label="Gender"
               inline
               wrap
-              variant="streamline"
+              variant="streamline-radio"
               options={[
-                { name: "1 year", value: "12" },
-                { name: "2 years", value: "24" },
-                { name: "3 years", value: "36" },
-                { name: "4 years", value: "48" },
-                { name: "5 years", value: "60" },
-                { name: "6 years", value: "72" },
-              ]}
-            />
-          </div>
-
-          <div style={{ maxWidth: "400px" }}>
-            <Field.RadioSelect
-              name="test2"
-              label="Test2"
-              inline
-              wrap
-              variant="streamline"
-              options={[
-                { name: "1 year", value: "12" },
-                { name: "2 years", value: "24" },
-                { name: "3 years", value: "36" },
-                { name: "4 years", value: "48" },
-                { name: "5 years", value: "60" },
+                { name: "Male", value: "male" },
+                { name: "Female", value: "female" },
               ]}
             />
           </div>

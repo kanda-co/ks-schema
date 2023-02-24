@@ -9,7 +9,8 @@ type RadioSelectVariant =
   | "narrow"
   | "narrow-lg"
   | "clean"
-  | "streamline";
+  | "streamline"
+  | "streamline-radio";
 
 export interface RadioSelectUncontrolledProps {
   multiple?: boolean;
