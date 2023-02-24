@@ -21,6 +21,7 @@ export default function useOption(
   optionValue: string,
   variantName: RadioSelectVariant,
   inline: boolean,
+  wrap: boolean,
   register: FieldRegisterMethod | null = null
 ): Hook {
   const { skeletonClasses } = useFormTheme();
@@ -47,7 +48,7 @@ export default function useOption(
   const selectedPrefix = isSelected ? "selected" : "notSelected";
 
   const classNames = useClasses(variant, {
-    option: [optionFlex, `.${selectedPrefix}.option`],
+    option: [optionFlex, `.${selectedPrefix}.option`, wrap && "mt-2 ml-2"],
     container: [`.${selectedPrefix}.container`],
     skeleton: [skeletonClasses],
   });

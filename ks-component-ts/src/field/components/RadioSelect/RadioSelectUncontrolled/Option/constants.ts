@@ -166,6 +166,27 @@ export const VARIANTS = {
       option: "flex flex-1 last:mr-0 first:rounded-l-lg last:rounded-r-lg",
     },
   },
+  streamline: {
+    span: "select-none w-full text-14-22-em whitespace-nowrap my-auto text-center",
+    skeletonWrapper: "mx-2 w-full",
+    handleContainer: "hidden",
+    selected: {
+      option: "border border-turquoise-300 cursor-pointer bg-turquoise-100",
+      container:
+        "rounded bg-turquoise-100 flex flex-full w-full px-4 py-2 text-turquoise-300",
+    },
+    notSelected: {
+      option: "border border-neutral-300 cursor-pointer",
+      container:
+        "rounded bg-neutral-000 flex flex-full w-full px-4 py-2 text-neutral-600",
+    },
+    multiline: {
+      option: "",
+    },
+    inline: {
+      option: "rounded",
+    },
+  },
 };
 
 export const CLASS_NAMES_MULTIPLE = {

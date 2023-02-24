@@ -5,29 +5,6 @@ import { useForm, Field, Form } from "@kanda-libs/ks-component-ts";
 import { useWatch } from "react-hook-form";
 import { StringIndexedObject } from "~/types";
 
-const Append = () => (
-  <span className="relative field-focus:hidden field-error:hidden field-loading:hidden">
-    <span className="absolute inline-block py-1 mt-px -ml-4 text-style-f">
-      x
-    </span>
-  </span>
-);
-
-export const QUANTITY_COMPONENT_PROPS = {
-  autoWidth: true,
-  label: "Qty",
-  placeholder: "1",
-  symbol: "",
-  fixedDecimalScale: false,
-  wrapperProps: {
-    className: "mr-7",
-  },
-  append: <Append />,
-  autoSize: true,
-  quantity: true,
-  type: "price",
-};
-
 if (!(Window.prototype as StringIndexedObject).setImmediate) {
   (Window.prototype as StringIndexedObject).setImmediate = function () {
     return false;
@@ -36,11 +13,6 @@ if (!(Window.prototype as StringIndexedObject).setImmediate) {
 
 function App() {
   const form = useForm();
-
-  const [description] = useWatch({
-    name: ["description"],
-    control: form.control,
-  });
 
   return (
     <Form
@@ -52,16 +24,56 @@ function App() {
     >
       <div className="App">
         <div className="px-8 py-4">
-          <h2 className="block mt-2">Rich text editor</h2>
-
           <div style={{ maxWidth: "400px" }}>
-            <Field.RichTextInput
-              name="description"
-              placeholder="Enter a description"
-              onChange={() => {}}
+            <Field.RadioSelect
+              name="term"
+              label="Term"
+              inline
+              wrap
+              variant="streamline"
+              options={[
+                { name: "\u00201 year\u0020", value: "12" },
+                { name: "2 years", value: "24" },
+                { name: "5 years", value: "60" },
+                { name: "10 years", value: "120" },
+              ]}
             />
           </div>
-          <pre>{JSON.stringify({ description })}</pre>
+
+          <div style={{ maxWidth: "400px" }}>
+            <Field.RadioSelect
+              name="test"
+              label="Test"
+              inline
+              wrap
+              variant="streamline"
+              options={[
+                { name: "1 year", value: "12" },
+                { name: "2 years", value: "24" },
+                { name: "3 years", value: "36" },
+                { name: "4 years", value: "48" },
+                { name: "5 years", value: "60" },
+                { name: "6 years", value: "72" },
+              ]}
+            />
+          </div>
+
+          <div style={{ maxWidth: "400px" }}>
+            <Field.RadioSelect
+              name="test2"
+              label="Test2"
+              inline
+              wrap
+              variant="streamline"
+              options={[
+                { name: "1 year", value: "12" },
+                { name: "2 years", value: "24" },
+                { name: "3 years", value: "36" },
+                { name: "4 years", value: "48" },
+                { name: "5 years", value: "60" },
+              ]}
+            />
+          </div>
         </div>
       </div>
     </Form>

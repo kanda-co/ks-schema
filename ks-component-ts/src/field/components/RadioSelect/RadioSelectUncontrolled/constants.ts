@@ -7,4 +7,8 @@ export const CLASS_NAMES = {
     container: "w-full flex flex-row",
     optionWrapper: "flex flex-1",
   },
+  wrap: {
+    container: "w-full flex flex-row flex-wrap -mt-2 -ml-2",
+    optionWrapper: "flex",
+  },
 };

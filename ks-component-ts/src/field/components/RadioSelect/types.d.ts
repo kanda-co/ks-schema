@@ -8,11 +8,13 @@ type RadioSelectVariant =
   | "text-only"
   | "narrow"
   | "narrow-lg"
-  | "clean";
+  | "clean"
+  | "streamline";
 
 export interface RadioSelectUncontrolledProps {
   multiple?: boolean;
   inline?: boolean;
+  wrap?: boolean;
   variant?: RadioSelectVariant;
   options?: SelectOption[];
   onClick?: () => void;
