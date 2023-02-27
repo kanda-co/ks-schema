@@ -1,7 +1,7 @@
 window.global ||= window;
 import "@kanda-libs/ks-component-ts/dist/library.css";
 import "@kanda-libs/ks-design-library/dist/library.css";
-import { useForm, Field, Form } from "@kanda-libs/ks-component-ts";
+import { useForm, Field, Form, FormTheme } from "@kanda-libs/ks-component-ts";
 import { useWatch } from "react-hook-form";
 import { StringIndexedObject } from "~/types";
 
@@ -10,6 +10,40 @@ if (!(Window.prototype as StringIndexedObject).setImmediate) {
     return false;
   };
 }
+
+export const PRICE_COMPONENT_PROPS = {
+  autoWidth: true,
+  label: "Price",
+  placeholder: "1.00",
+  prefix: "",
+  wrapperProps: {
+    className: "mr-2",
+  },
+  // append: <Append />,
+  // isAllowed: makeIsAllowed(0, 1000000),
+  type: "price",
+  // validation: PRICE_VALIDATION,
+};
+
+export const FIRST_NAME_COMPONENT_PROPS = {
+  label: "First Name",
+  placeholder: "First name",
+};
+
+export const TITLE_COMPONENT_PROPS = {
+  label: "Title",
+  placeholder: "Select...",
+  options: [
+    {
+      name: "Mr",
+      value: "mr",
+    },
+    {
+      name: "Mrs",
+      value: "mrs",
+    },
+  ],
+};
 
 function App() {
   const form = useForm();
@@ -54,6 +88,27 @@ function App() {
               ]}
             />
           </div>
+          <FormTheme variant="streamline">
+            <div style={{ maxWidth: "400px" }}>
+              <Field.NumberInput
+                name="price"
+                id="price"
+                {...PRICE_COMPONENT_PROPS}
+              />
+              <Field.Input
+                name="firstName"
+                id="firstName"
+                {...FIRST_NAME_COMPONENT_PROPS}
+              />
+              <Field.Select
+                name="title"
+                id="title"
+                {...TITLE_COMPONENT_PROPS}
+              />
+              <Field.Input name="test" id="test" icon="pound" />
+              <Field.DatePickerInput name="date" id="date" />
+            </div>
+          </FormTheme>
         </div>
       </div>
     </Form>
@@ -61,3 +116,13 @@ function App() {
 }
 
 export default App;
+
+// <div style={{ maxWidth: "400px" }}>
+// <Field.NumberIncrementInput
+//   name="deposit"
+//   id="deposit"
+//   label="Deposit"
+//   minValue={10}
+//   maxValue={50}
+// />
+// </div>

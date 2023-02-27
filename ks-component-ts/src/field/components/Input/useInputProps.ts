@@ -37,9 +37,12 @@ export default function useInputProps(
     focusClasses,
     makeErrorClasses,
     skeletonClasses,
+    themeIconVariant,
   } = useFormTheme();
 
   const inputBaseClass = useInputBaseClass(italic);
+
+  const baseIconVariant = themeIconVariant || iconVariant || null;
 
   const classNames = {
     ...CLASS_NAMES,
@@ -53,9 +56,9 @@ export default function useInputProps(
     icon: clsx(CLASS_NAMES.iconBase, iconColor),
     iconContainer: clsx(
       CLASS_NAMES.iconContainer.base,
-      iconVariant &&
+      baseIconVariant &&
         CLASS_NAMES.iconContainer["@iconVariant"][
-          iconVariant as "default" | "dark" | "search"
+          baseIconVariant as "default" | "dark" | "search" | "small"
         ]
     ),
     input: inputBaseClass,
@@ -63,8 +66,8 @@ export default function useInputProps(
 
   const iconProps = {
     className: classNames.icon,
-    ...(iconVariant &&
-      ICON_PROPS[iconVariant as "default" | "dark" | "search"]),
+    ...(baseIconVariant &&
+      ICON_PROPS[baseIconVariant as "default" | "dark" | "search" | "small"]),
   };
 
   return {
