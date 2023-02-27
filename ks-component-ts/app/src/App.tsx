@@ -46,7 +46,11 @@ export const TITLE_COMPONENT_PROPS = {
 };
 
 function App() {
-  const form = useForm();
+  const form = useForm({
+    defaultValues: {
+      deposit: 10,
+    },
+  });
 
   return (
     <Form
@@ -89,24 +93,13 @@ function App() {
             />
           </div>
           <FormTheme variant="streamline">
-            <div style={{ maxWidth: "400px" }}>
-              <Field.NumberInput
-                name="price"
-                id="price"
-                {...PRICE_COMPONENT_PROPS}
+            <div style={{ maxWidth: "145px" }}>
+              <Field.PercentageIncrementInput
+                label="Deposit"
+                name="deposit"
+                id="deposit"
+                placeholder="0"
               />
-              <Field.Input
-                name="firstName"
-                id="firstName"
-                {...FIRST_NAME_COMPONENT_PROPS}
-              />
-              <Field.Select
-                name="title"
-                id="title"
-                {...TITLE_COMPONENT_PROPS}
-              />
-              <Field.Input name="test" id="test" icon="pound" />
-              <Field.DatePickerInput name="date" id="date" />
             </div>
           </FormTheme>
         </div>
@@ -126,3 +119,21 @@ export default App;
 //   maxValue={50}
 // />
 // </div>
+
+// {/* <Field.NumberInput
+// name="price"
+// id="price"
+// {...PRICE_COMPONENT_PROPS}
+// />
+// <Field.Input
+// name="firstName"
+// id="firstName"
+// {...FIRST_NAME_COMPONENT_PROPS}
+// />
+// <Field.Select
+// name="title"
+// id="title"
+// {...TITLE_COMPONENT_PROPS}
+// />
+// <Field.Input name="test" id="test" icon="pound" />
+// <Field.DatePickerInput name="date" id="date" /> */}
