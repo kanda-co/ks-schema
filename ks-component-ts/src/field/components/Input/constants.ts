@@ -11,6 +11,7 @@ export const CLASS_NAMES = {
       default: "pl-4",
       dark: "min-w-10 bg-neutral-200 icon-stroke-md",
       search: "pl-4 pr-3",
+      small: "pl-2 w-5 min-w-5",
     },
   },
 };
@@ -24,5 +25,8 @@ export const ICON_PROPS = {
   },
   dark: {
     size: 16,
+  },
+  small: {
+    size: 12,
   },
 };

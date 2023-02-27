@@ -838,10 +838,10 @@
     remove "^0.1.5"
     swr "^1.3.0"
 
-"@kanda-libs/ks-tailwind-config@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-tailwind-config/-/ks-tailwind-config-0.0.5.tgz#46865a63e9309db3fa16cba0a8e935b3d89d8654"
-  integrity sha512-Q90jd7yrOnPzvVXdWRXJOY51Y3JEBILpWrB0ARzXIhGiB6gbsOymHRpH+2/c66Oe087J4lX0vUh/rY9k6wAYMA==
+"@kanda-libs/ks-tailwind-config@^0.2.6":
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-tailwind-config/-/ks-tailwind-config-0.2.6.tgz#987decaf02698c95220bee4ec3b41b54d5e1ffbf"
+  integrity sha512-O+HwlszvO7thCLWcXb1xyOY28GXw/VRiKaxhw5hR6F1fPv6UQPVsWRKt4sqypjAYSmVDnAZsRcGyywe8hYbDng==
   dependencies:
     esm "^3.2.25"
 

@@ -1,32 +1,9 @@
 window.global ||= window;
 import "@kanda-libs/ks-component-ts/dist/library.css";
 import "@kanda-libs/ks-design-library/dist/library.css";
-import { useForm, Field, Form } from "@kanda-libs/ks-component-ts";
+import { useForm, Field, Form, FormTheme } from "@kanda-libs/ks-component-ts";
 import { useWatch } from "react-hook-form";
 import { StringIndexedObject } from "~/types";
-
-const Append = () => (
-  <span className="relative field-focus:hidden field-error:hidden field-loading:hidden">
-    <span className="absolute inline-block py-1 mt-px -ml-4 text-style-f">
-      x
-    </span>
-  </span>
-);
-
-export const QUANTITY_COMPONENT_PROPS = {
-  autoWidth: true,
-  label: "Qty",
-  placeholder: "1",
-  symbol: "",
-  fixedDecimalScale: false,
-  wrapperProps: {
-    className: "mr-7",
-  },
-  append: <Append />,
-  autoSize: true,
-  quantity: true,
-  type: "price",
-};
 
 if (!(Window.prototype as StringIndexedObject).setImmediate) {
   (Window.prototype as StringIndexedObject).setImmediate = function () {
@@ -34,13 +11,42 @@ if (!(Window.prototype as StringIndexedObject).setImmediate) {
   };
 }
 
+export const PRICE_COMPONENT_PROPS = {
+  autoWidth: true,
+  label: "Price",
+  placeholder: "1.00",
+  prefix: "",
+  wrapperProps: {
+    className: "mr-2",
+  },
+  // append: <Append />,
+  // isAllowed: makeIsAllowed(0, 1000000),
+  type: "price",
+  // validation: PRICE_VALIDATION,
+};
+
+export const FIRST_NAME_COMPONENT_PROPS = {
+  label: "First Name",
+  placeholder: "First name",
+};
+
+export const TITLE_COMPONENT_PROPS = {
+  label: "Title",
+  placeholder: "Select...",
+  options: [
+    {
+      name: "Mr",
+      value: "mr",
+    },
+    {
+      name: "Mrs",
+      value: "mrs",
+    },
+  ],
+};
+
 function App() {
   const form = useForm();
-
-  const [description] = useWatch({
-    name: ["description"],
-    control: form.control,
-  });
 
   return (
     <Form
@@ -52,16 +58,57 @@ function App() {
     >
       <div className="App">
         <div className="px-8 py-4">
-          <h2 className="block mt-2">Rich text editor</h2>
-
           <div style={{ maxWidth: "400px" }}>
-            <Field.RichTextInput
-              name="description"
-              placeholder="Enter a description"
-              onChange={() => {}}
+            <Field.RadioSelect
+              name="term"
+              label="Term"
+              inline
+              wrap
+              variant="streamline"
+              options={[
+                { name: "\u00201 year\u0020", value: "12" },
+                { name: "2 years", value: "24" },
+                { name: "5 years", value: "60" },
+                { name: "10 years", value: "120" },
+              ]}
             />
           </div>
-          <pre>{JSON.stringify({ description })}</pre>
+
+          <div style={{ maxWidth: "400px" }}>
+            <Field.RadioSelect
+              name="gender"
+              id="gender"
+              label="Gender"
+              inline
+              wrap
+              variant="streamline-radio"
+              options={[
+                { name: "Male", value: "male" },
+                { name: "Female", value: "female" },
+              ]}
+            />
+          </div>
+          <FormTheme variant="streamline">
+            <div style={{ maxWidth: "400px" }}>
+              <Field.NumberInput
+                name="price"
+                id="price"
+                {...PRICE_COMPONENT_PROPS}
+              />
+              <Field.Input
+                name="firstName"
+                id="firstName"
+                {...FIRST_NAME_COMPONENT_PROPS}
+              />
+              <Field.Select
+                name="title"
+                id="title"
+                {...TITLE_COMPONENT_PROPS}
+              />
+              <Field.Input name="test" id="test" icon="pound" />
+              <Field.DatePickerInput name="date" id="date" />
+            </div>
+          </FormTheme>
         </div>
       </div>
     </Form>
@@ -69,3 +116,13 @@ function App() {
 }
 
 export default App;
+
+// <div style={{ maxWidth: "400px" }}>
+// <Field.NumberIncrementInput
+//   name="deposit"
+//   id="deposit"
+//   label="Deposit"
+//   minValue={10}
+//   maxValue={50}
+// />
+// </div>

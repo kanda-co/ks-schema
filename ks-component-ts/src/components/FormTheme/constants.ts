@@ -8,6 +8,8 @@ export const DEFAULT_THEME = {
     "text-style-g text-neutral-900 placeholder-neutral-600 text-base md:text-sm",
   focusClasses:
     "border-solid border-transparent focus:outline-none focus:border-turquoise-300 focus:bg-neutral-000",
+  focusWithinClasses:
+    "border-solid border-transparent focus-within:outline-none focus-within:border-turquoise-300 focus-within:bg-neutral-000",
   paddingClasses: "px-4 py-3.25",
   skeletonClasses: "w-2/6",
   makeErrorClasses: (error?: string) =>
@@ -29,6 +31,8 @@ export const DEFAULT_WHITE_THEME = {
     "text-style-g text-neutral-900 placeholder-neutral-600 text-base md:text-sm",
   focusClasses:
     "focus:px-2 border-solid border-transparent focus:outline-none focus:border-turquoise-300 focus:bg-neutral-000",
+  focusWithinClasses:
+    "focus-within:px-2 border-solid border-transparent focus-within:outline-none focus-within:border-turquoise-300 focus-within:bg-neutral-000",
   paddingClasses: "py-2",
   skeletonClasses: "w-2/6",
   makeErrorClasses: (error?: string) =>
@@ -48,6 +52,8 @@ const EMPHASIZED_THEME = {
   inputClasses: "text-style-f text-neutral-900 placeholder-neutral-400",
   focusClasses:
     "focus:outline-none border-solid border-transparent focus:border-turquoise-300 focus:bg-neutral-000",
+  focusWithinClasses:
+    "focus-within:outline-none border-solid border-transparent focus-within:border-turquoise-300 focus-within:bg-neutral-000",
   paddingClasses: "px-4 py-3.25",
   skeletonClasses: "w-2/6",
   makeErrorClasses: (error?: string) =>
@@ -65,6 +71,7 @@ const CLEAN_THEME = {
   baseClasses:
     "rounded-lg text-style-g flex w-full text-neutral-900 placeholder-neutral-400 mb-1 caret-turquoise-300 text-left",
   focusClasses: "focus:outline-none",
+  focusWithinClasses: "focus-within:outline-none",
   paddingClasses: "py-3.25",
   skeletonClasses: "w-2/6",
   makeErrorClasses: (error?: string) =>
@@ -77,6 +84,8 @@ const NARROW_THEME = {
   inputClasses: "text-style-f text-neutral-800 placeholder-neutral-400",
   focusClasses:
     "focus:px-2 focus:outline-none border-solid border-transparent focus:border-turquoise-300 focus:border focus:bg-neutral-000",
+  focusWithinClasses:
+    "focus-within:px-2 focus-within:outline-none border-solid border-transparent focus-within:border-turquoise-300 focus-within:border focus-within:bg-neutral-000",
   paddingClasses: "py-1",
   skeletonClasses: "w-2/6",
   makeErrorClasses: (error?: string) =>
@@ -253,6 +262,31 @@ const POPOVER_SELECT_THEME = {
     error ? "ring-1 ring-red-200 px-2" : "",
 };
 
+const STREAMLINE_THEME = {
+  fieldWrapper: "Default" as FieldWrapperType,
+  baseClasses:
+    "rounded flex w-full bg-neutral-000 border border-neutral-300 caret-turquoise-300",
+  inputClasses: "text-13-14 text-neutral-900 placeholder-neutral-600",
+  focusClasses:
+    "border-solid border-transparent focus:outline-none focus:border-turquoise-300",
+  focusWithinClasses:
+    "border-solid border-transparent focus-within:outline-none focus-within:border-turquoise-300",
+  paddingClasses: "px-2 py-2.25",
+  skeletonClasses: "w-2/6",
+  chevronClasses:
+    "appearance-none bg-select-chevron focus:bg-select-chevron-active bg-no-repeat bg-right-2 invalid:text-neutral-400 overflow-hidden !pr-7",
+  themeIconVariant: "small",
+  makeErrorClasses: (error?: string) =>
+    error ? "border-solid border border-red-200" : "",
+  wrapperClasses: {
+    baseContainer: "flex flex-col mb-5 text-left",
+    error: "mt-2 text-12-18 text-red-200",
+    warning: "mt-2 text-12-18 text-neutral-600",
+    label: "w-full text-12-18-em text-neutral-600 mb-2",
+    helperText: "whitespace-nowrap text-12-18 text-neutral-500",
+  },
+};
+
 enum Variants {
   DEFAULT = "default",
   DEFAULT_WHITE = "default-white",
@@ -268,6 +302,7 @@ enum Variants {
   CUSTOMER_CHECKOUT = "customer-checkout",
   GROUP_DEFAULT = "group-default",
   POPOVER_SELECT = "popover-clean",
+  STREAMLINE = "streamline",
 }
 
 export const VARIANTS: StringIndexedObject<string> = {
@@ -285,6 +320,7 @@ export const VARIANTS: StringIndexedObject<string> = {
   CUSTOMER_CHECKOUT: Variants.CUSTOMER_CHECKOUT,
   GROUP_DEFAULT: Variants.GROUP_DEFAULT,
   POPOVER_SELECT: Variants.POPOVER_SELECT,
+  STREAMLINE: Variants.STREAMLINE,
 };
 
 export const FORM_THEME_VARIANTS: StringIndexedObject<Theme> = {
@@ -302,4 +338,5 @@ export const FORM_THEME_VARIANTS: StringIndexedObject<Theme> = {
   [VARIANTS.CUSTOMER_CHECKOUT]: CUSTOMER_CHECKOUT_THEME,
   [VARIANTS.GROUP_DEFAULT]: GROUP_DEFAULT_THEME,
   [VARIANTS.POPOVER_SELECT]: POPOVER_SELECT_THEME,
+  [VARIANTS.STREAMLINE]: STREAMLINE_THEME,
 };

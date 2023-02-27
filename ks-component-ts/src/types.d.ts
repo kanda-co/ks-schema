@@ -9,6 +9,8 @@ export interface Theme {
   focusClasses: string;
   paddingClasses: string;
   skeletonClasses: string;
+  chevronClasses?: string;
+  themeIconVariant?: "default" | "search" | "dark" | "small";
   makeErrorClasses: (error?: string) => string;
   wrapperClasses?: {
     baseContainer: string;

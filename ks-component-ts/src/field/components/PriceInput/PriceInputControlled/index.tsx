@@ -21,9 +21,6 @@ const PriceInputControlled: FunctionComponent<
   fixedDecimalScale = true,
   ...props
 }) {
-  console.log({
-    fixedDecimalScale,
-  });
   return (
     <BasicNumberInput
       {...props}

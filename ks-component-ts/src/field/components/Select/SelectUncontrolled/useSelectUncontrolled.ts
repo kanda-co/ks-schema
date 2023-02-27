@@ -30,6 +30,7 @@ export default function useSelectUncontrolled(
     focusClasses,
     makeErrorClasses,
     skeletonClasses,
+    chevronClasses,
   } = useFormTheme();
 
   const { trigger } = useFormContext();
@@ -50,6 +51,8 @@ export default function useSelectUncontrolled(
 
   const defaultValue = DEFAULT_VALUE;
 
+  const chevronClass = chevronClasses || ".baseSelect";
+
   const classNames = useClasses(CLASS_NAMES, {
     select: [
       baseClasses,
@@ -57,7 +60,7 @@ export default function useSelectUncontrolled(
       paddingClasses,
       focusClasses,
       makeErrorClasses(error as string),
-      !isLoading && ".baseSelect",
+      !isLoading && chevronClass,
       className,
     ],
     skeleton: [skeletonClasses],
