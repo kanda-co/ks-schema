@@ -3249,6 +3249,7 @@ components:
       required:
         - name
         - fee
+        - charge
         - enabled
         - finance_types
         - provider
@@ -3260,6 +3261,11 @@ components:
         fee:
           type: integer
           title: fee
+          minimum: 0
+          maximum: 2147483647
+        charge:
+          type: integer
+          title: charge
           minimum: 0
           maximum: 2147483647
         enabled:
