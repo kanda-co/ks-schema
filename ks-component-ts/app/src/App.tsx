@@ -4,6 +4,7 @@ import "@kanda-libs/ks-design-library/dist/library.css";
 import { useForm, Field, Form, FormTheme } from "@kanda-libs/ks-component-ts";
 import { useWatch } from "react-hook-form";
 import { StringIndexedObject } from "~/types";
+import { Button } from "@kanda-libs/ks-design-library";
 
 if (!(Window.prototype as StringIndexedObject).setImmediate) {
   (Window.prototype as StringIndexedObject).setImmediate = function () {
@@ -16,13 +17,13 @@ export const PRICE_COMPONENT_PROPS = {
   label: "Price",
   placeholder: "1.00",
   prefix: "",
-  wrapperProps: {
-    className: "mr-2",
-  },
-  // append: <Append />,
-  // isAllowed: makeIsAllowed(0, 1000000),
   type: "price",
-  // validation: PRICE_VALIDATION,
+};
+
+export const PERCENT_COMPONENT_PROPS = {
+  label: "Percentage",
+  placeholder: "0%",
+  type: "percentage",
 };
 
 export const FIRST_NAME_COMPONENT_PROPS = {
@@ -49,6 +50,7 @@ function App() {
   const form = useForm({
     defaultValues: {
       deposit: 10,
+      pct: 10,
     },
   });
 
@@ -56,8 +58,8 @@ function App() {
     <Form
       id="app"
       form={form}
-      onSubmit={() => {
-        console.log("test");
+      onSubmit={(formValues) => {
+        console.log(formValues);
       }}
     >
       <div className="App">
@@ -105,8 +107,14 @@ function App() {
                 id="price"
                 {...PRICE_COMPONENT_PROPS}
               />
+              <Field.NumberInput
+                name="pct"
+                id="pct"
+                {...PERCENT_COMPONENT_PROPS}
+              />
             </div>
           </FormTheme>
+          <Button.Text submit label="submit" id="test-submit" />
         </div>
       </div>
     </Form>

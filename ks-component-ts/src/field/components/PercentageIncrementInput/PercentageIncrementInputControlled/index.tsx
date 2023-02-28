@@ -48,6 +48,7 @@ const PercentageIncrementInputControlled: FunctionComponent<
           suffix="%"
           fixedDecimalScale={false}
           onBlur={onBlur}
+          formatForValue={(value: number) => Math.round(value)}
           {...props}
         />
         <div className="w-9 h-9 absolute right-0 border-l border-neutral-300 mt-px mr-px rounded-r-lg flex">
