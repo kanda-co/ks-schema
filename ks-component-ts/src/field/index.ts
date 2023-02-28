@@ -23,6 +23,9 @@ import FingerprintBooleanInput from "~/field/components/FingerprintBooleanInput"
 import NumberInput, {
   type NumberInputProps,
 } from "~/field/components/NumberInput";
+import PercentageIncrementInput, {
+  type PercentageIncrementInputProps,
+} from "~/field/components/PercentageIncrementInput";
 import BasicNumberInput, {
   type BasicNumberInputProps,
 } from "~/field/components/BasicNumberInput";
@@ -91,6 +94,7 @@ const Field = {
   PhoneNumberInput,
   Postcode,
   PriceInput,
+  PercentageIncrementInput,
   QuantityInput,
   RadioSelect,
   Select,
@@ -118,6 +122,7 @@ export interface FieldProps {
   Input: InputProps;
   NumberFormatInput: NumberFormatInputProps;
   NumberInput: NumberInputProps;
+  PercentageIncrementInput: PercentageIncrementInputProps;
   PhoneNumberInput: PhoneNumberInputProps;
   Postcode: PostcodeProps;
   RadioSelect: RadioSelectProps;

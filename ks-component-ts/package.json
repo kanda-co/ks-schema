@@ -111,8 +111,8 @@
   },
   "dependencies": {
     "@kanda-libs/kanda-quotes": "0.0.6",
-    "@kanda-libs/ks-design-library": "0.2.42",
-    "@kanda-libs/ks-tailwind-config": "^0.0.5",
+    "@kanda-libs/ks-design-library": "0.2.43",
+    "@kanda-libs/ks-tailwind-config": "^0.2.6",
     "@types/lodash.get": "^4.4.7",
     "@types/lodash.trim": "^4.5.7",
     "@types/react-dropzone": "^5.1.0",

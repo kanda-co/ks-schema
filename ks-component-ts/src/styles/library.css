@@ -599,6 +599,12 @@ video {
       format("woff");
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -801,6 +807,12 @@ video {
   font-weight: 400;
   font-size: 14px;
   line-height: 22px;
+}
+
+.text-13-14 {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 14px;
 }
 
 .text-12-18-em {
@@ -1179,6 +1191,10 @@ video {
   margin-bottom: 12px;
 }
 
+.mb-5 {
+  margin-bottom: 20px;
+}
+
 .-ml-4 {
   margin-left: -16px;
 }
@@ -1251,6 +1267,22 @@ video {
   margin-right: 4px;
 }
 
+.ml-px {
+  margin-left: 1px;
+}
+
+.mr-px {
+  margin-right: 1px;
+}
+
+.-mt-2 {
+  margin-top: -8px;
+}
+
+.-ml-2 {
+  margin-left: -8px;
+}
+
 .mt-4 {
   margin-top: 16px;
 }
@@ -1267,12 +1299,12 @@ video {
   margin-left: -1px;
 }
 
-.-mt-10 {
-  margin-top: -40px;
+.mr-1\.5 {
+  margin-right: 6px;
 }
 
-.mr-7 {
-  margin-right: 28px;
+.-mt-10 {
+  margin-top: -40px;
 }
 
 .mr-6 {
@@ -1675,6 +1707,10 @@ video {
   min-width: 40px;
 }
 
+.min-w-5 {
+  min-width: 20px;
+}
+
 .min-w-16 {
   min-width: 64px;
 }
@@ -1987,12 +2023,12 @@ video {
   border-radius: 0.5rem;
 }
 
-.rounded-full {
-  border-radius: 9999px;
-}
-
 .rounded {
   border-radius: 0.25rem;
+}
+
+.rounded-full {
+  border-radius: 9999px;
 }
 
 .\!rounded-full {
@@ -2069,6 +2105,10 @@ video {
 
 .border-t-0 {
   border-top-width: 0px;
+}
+
+.border-l {
+  border-left-width: 1px;
 }
 
 .border-l-0 {
@@ -2256,16 +2296,16 @@ video {
   --tw-bg-opacity: 1;
 }
 
+.bg-select-chevron {
+  background-image: url(data:image/svg+xml,%3Csvg%20style%3D%22color%3A%20%239CA9C4%22%20width%3D%2212%22%20height%3D%228%22%20viewBox%3D%220%200%2012%208%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M1.33331%201L5.99998%206.33333L10.6666%201%22%20stroke%3D%22currentColor%22%20stroke-width%3D%222%22%20stroke-miterlimit%3D%2210%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E);
+}
+
 .bg-gradient-to-r {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
 
 .bg-gradient-to-l {
   background-image: linear-gradient(to left, var(--tw-gradient-stops));
-}
-
-.bg-select-chevron {
-  background-image: url(data:image/svg+xml,%3Csvg%20style%3D%22color%3A%20%239CA9C4%22%20width%3D%2212%22%20height%3D%228%22%20viewBox%3D%220%200%2012%208%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M1.33331%201L5.99998%206.33333L10.6666%201%22%20stroke%3D%22currentColor%22%20stroke-width%3D%222%22%20stroke-miterlimit%3D%2210%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E);
 }
 
 .bg-placeholder-card {
@@ -2326,6 +2366,10 @@ video {
 
 .bg-100 {
   background-size: 100%;
+}
+
+.bg-right-2 {
+  background-position: calc(100% - 8px) center;
 }
 
 .bg-right-4 {
@@ -2417,14 +2461,24 @@ video {
   padding-right: 12px;
 }
 
-.px-8 {
-  padding-left: 32px;
-  padding-right: 32px;
+.py-2\.25 {
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
+
+.px-14 {
+  padding-left: 56px;
+  padding-right: 56px;
 }
 
 .py-1\.75 {
   padding-top: 7px;
   padding-bottom: 7px;
+}
+
+.px-8 {
+  padding-left: 32px;
+  padding-right: 32px;
 }
 
 .py-2\.5 {
@@ -2447,9 +2501,9 @@ video {
   padding-bottom: 14px;
 }
 
-.py-2\.25 {
-  padding-top: 9px;
-  padding-bottom: 9px;
+.px-2\.5 {
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .px-6 {
@@ -2489,6 +2543,10 @@ video {
 
 .pr-4 {
   padding-right: 16px;
+}
+
+.\!pr-7 {
+  padding-right: 28px !important;
 }
 
 .pb-px {
@@ -2533,6 +2591,10 @@ video {
 
 .pr-1 {
   padding-right: 4px;
+}
+
+.\!pr-12 {
+  padding-right: 48px !important;
 }
 
 .pb-30 {
@@ -3908,6 +3970,30 @@ Modified version of toast CSS to match designs
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.focus-within\:border:focus-within {
+  border-width: 1px;
+}
+
+.focus-within\:border-turquoise-300:focus-within {
+  --tw-border-opacity: 1;
+  border-color: rgb(39 222 191 / var(--tw-border-opacity));
+}
+
+.focus-within\:bg-neutral-000:focus-within {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.focus-within\:px-2:focus-within {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.focus-within\:outline-none:focus-within {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
 .hover\:bg-neutral-100:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(247 249 252 / var(--tw-bg-opacity));
@@ -4070,6 +4156,10 @@ Modified version of toast CSS to match designs
   color: rgb(195 207 223 / var(--tw-text-opacity));
 }
 
+.disabled\:opacity-25:disabled {
+  opacity: 0.25;
+}
+
 .disabled\:ring-neutral-100:disabled {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(247 249 252 / var(--tw-ring-opacity));
@@ -4084,21 +4174,18 @@ Modified version of toast CSS to match designs
   color: rgb(195 207 223 / var(--tw-text-opacity));
 }
 
-input[type="checkbox"]:checked ~ .label-checked\:border-transparent {
+input:checked ~ .label-checked\:border-transparent {
   border-color: transparent;
 }
 
-input[type="checkbox"]:checked ~ .label-checked\:bg-turquoise-300 {
+input:checked ~ .label-checked\:bg-turquoise-300 {
   --tw-bg-opacity: 1;
   background-color: rgb(39 222 191 / var(--tw-bg-opacity));
 }
 
-.field-loading .field-loading\:hidden {
-  display: none;
-}
-
-.field-error .field-error\:hidden {
-  display: none;
+input[type="checkbox"][disabled]:checked ~ .label-checked-disabled\:bg-neutral-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(224 231 240 / var(--tw-bg-opacity));
 }
 
 :focus-within > .field-focus\:hidden {
@@ -4135,14 +4222,14 @@ input[type="checkbox"]:checked ~ .label-checked\:bg-turquoise-300 {
     margin-right: 80px;
   }
 
+  .md\:-mt-8 {
+    margin-top: -32px;
+  }
+
   .md\:text-style-g-em {
     font-weight: 600;
     font-size: 14px;
     line-height: 22px;
-  }
-
-  .md\:-mt-8 {
-    margin-top: -32px;
   }
 
   .md\:block {

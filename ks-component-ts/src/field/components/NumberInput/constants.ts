@@ -3,5 +3,6 @@ export const NUMBER_INPUT_TYPE = [
   "sortCode",
   "datePicker",
   "quantity",
+  "percentage",
   "default",
 ];

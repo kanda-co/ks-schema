@@ -30,6 +30,10 @@ export interface Props {
    */
   inline?: boolean;
   /**
+   * Display options wrap
+   */
+  wrap?: boolean;
+  /**
    * Display variant
    */
   variant?: RadioSelectVariant;
@@ -51,6 +55,7 @@ const Option: FunctionComponent<Props> = function ({
   variant = "default",
   isLoading,
   inline = false,
+  wrap = false,
   register,
   onClick = () => {},
 }) {
@@ -60,6 +65,7 @@ const Option: FunctionComponent<Props> = function ({
     value as string,
     variant,
     inline,
+    wrap,
     register
   );
 
