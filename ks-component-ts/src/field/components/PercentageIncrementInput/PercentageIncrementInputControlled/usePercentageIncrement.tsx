@@ -1,5 +1,5 @@
 import { useFormContext, useWatch } from "react-hook-form";
-import { useCallback, useMemo } from "react";
+import React, { useCallback, useMemo } from "react";
 import { StringIndexedObject } from "~/types";
 import { makeIsAllowed } from "~/field/helpers";
 
@@ -67,7 +67,7 @@ export default function usePercentageIncrement({
   );
 
   const onBlur = useCallback(
-    (...event: any[]) => {
+    (event: React.BaseSyntheticEvent) => {
       const validValue = isAllowed({ value: currentValue });
       if (!validValue) {
         if (currentValue >= upperLimit) {
