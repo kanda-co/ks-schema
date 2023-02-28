@@ -83,9 +83,9 @@ const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontroll
               }
             }}
             onChange={onChange as (...args: any[]) => void}
-            onBlur={() => {
+            onBlur={(e) => {
               if (props.onBlur) {
-                props.onBlur();
+                props.onBlur(e);
               }
               setFocused(false);
             }}

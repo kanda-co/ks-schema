@@ -50,6 +50,8 @@ const InputUncontrolled: FunctionComponent<
         ref: forwardRef,
       };
 
+  const value = valueOverride || restProps.value;
+
   return (
     <div className={classNames.container}>
       <SkeletonLoader
@@ -66,7 +68,7 @@ const InputUncontrolled: FunctionComponent<
             <InputTag
               {...inputProps}
               {...stripUnneededProps(restProps)}
-              value={valueOverride || restProps.value}
+              value={value}
               placeholder={restProps.placeholder as string}
             />
           </>

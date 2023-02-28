@@ -913,3 +913,11 @@ Modified version of toast CSS to match designs
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 }
+
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}

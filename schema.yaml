@@ -2754,11 +2754,11 @@ components:
           type: object
           title: sole trader info
           $ref: "#/components/schemas/SoleTraderInfo"
-        available_rates:
+        finance_rates:
           type: array
           items:
-            $ref: "#/components/schemas/AvailableRate"
-          title: available rates
+            $ref: "#/components/schemas/FinanceRate"
+          title: finance rates
         quote_preference:
           type: string
           title: quote preference
@@ -3244,12 +3244,14 @@ components:
           type: object
           $ref: "#/components/schemas/CommPreferences"
 
-    AvailableRate:
+    FinanceRate:
       type: object
       required:
         - name
         - fee
+        - charge
         - enabled
+        - finance_types
         - provider
       properties:
         name:
@@ -3261,13 +3263,30 @@ components:
           title: fee
           minimum: 0
           maximum: 2147483647
+        charge:
+          type: integer
+          title: charge
+          minimum: 0
+          maximum: 2147483647
         enabled:
           type: boolean
           title: enabled?
+        finance_types:
+          type: array
+          title: finance type
+          items:
+            $ref: "#/components/schemas/FinanceType"
         provider:
           type: string
           title: provider
           $ref: "#/components/schemas/FinanceProvider"
+
+    FinanceType:
+      type: string
+      title: finance type
+      enum:
+        - "primary"
+        - "secondary"
 
     Customer:
       type: object
@@ -3436,7 +3455,8 @@ components:
           type: array
           title: finance options
           items:
-            type: string
+            type: object
+            $ref: "#/components/schemas/FinanceRate"
         customer_options:
           type: object
           title: customer selected options, updated only via custom endpoint
@@ -3499,9 +3519,9 @@ components:
           title: checkout option selected by customer
           $ref: "#/components/schemas/CheckoutOption"
         finance_option:
-          type: string
+          type: object
           title: finance option selected by customer
-          description: finance option
+          $ref: "#/components/schemas/FinanceRate"
         deposit_value:
           type: object
           $ref: "#/components/schemas/Money"
@@ -3884,9 +3904,9 @@ components:
           $ref: "#/components/schemas/Money"
           title: deposit value in pence
         finance_option:
-          type: string
+          type: object
+          $ref: "#/components/schemas/FinanceRate"
           title: finance option for this credit
-          description: finance option
           readOnly: true
         bank_account:
           type: object
@@ -3937,6 +3957,7 @@ components:
         - etika
         - propensio
         - allium
+        - demo
       default: omni
 
     BankAccount:

@@ -1,10 +1,11 @@
 import React, { type FunctionComponent } from "react";
-import { Context } from "./Context";
+import { Context, type MultiStepFormContextValue } from "./Context";
 import useMultiStepValue from "./useMultiStepValue";
 import type { MultiStepFormProps } from "./types";
 import Router from "./Router";
 import Indicator from "./Indicator";
 import Footer from "./Footer";
+import useMultiStepFormContext from "./Context/useMultiStepFormContext";
 
 const MultiStepForm: FunctionComponent<MultiStepFormProps> = function ({
   children,
@@ -34,6 +35,8 @@ export {
   Router as MultiStepFormRouter,
   Indicator as MultiStepFormIndicator,
   Footer as MultiStepFormFooter,
+  useMultiStepFormContext,
+  type MultiStepFormContextValue,
 };
 
 export default MultiStepForm;
