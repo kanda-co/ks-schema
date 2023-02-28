@@ -100,6 +100,11 @@ function App() {
                 id="deposit"
                 placeholder="0"
               />
+              <Field.NumberInput
+                name="price"
+                id="price"
+                {...PRICE_COMPONENT_PROPS}
+              />
             </div>
           </FormTheme>
         </div>
