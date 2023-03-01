@@ -50,14 +50,6 @@ export const TITLE_COMPONENT_PROPS = {
 
 const JOB_VALUE = 240000;
 
-// export const JobCompanyInfoBankAccountMonthsHeldValidation = {
-//   min: { value: 0, message: "Months Held must be great than 0" },
-//   max: {
-//     value: 2147483647,
-//     message: "Months Held must be smaller than 2.147483647e+09",
-//   },
-// };
-
 const formatToCurrency = (
   value: number,
   currency = "GBP",

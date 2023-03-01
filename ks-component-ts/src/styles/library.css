@@ -803,18 +803,6 @@ input[type="number"]::-webkit-inner-spin-button,
   line-height: 24px;
 }
 
-.text-16-24-em {
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 24px;
-}
-
-.\!text-16-24-em {
-  font-weight: 600 !important;
-  font-size: 16px !important;
-  line-height: 24px !important;
-}
-
 .text-14-22-em {
   font-weight: 600;
   font-size: 14px;
@@ -1169,11 +1157,6 @@ input[type="number"]::-webkit-inner-spin-button,
   margin-right: 16px;
 }
 
-.-my-px {
-  margin-top: -1px;
-  margin-bottom: -1px;
-}
-
 .mt-6 {
   margin-top: 24px;
 }
@@ -1322,6 +1305,14 @@ input[type="number"]::-webkit-inner-spin-button,
   margin-left: -1px;
 }
 
+.-mt-0\.5 {
+  margin-top: -2px;
+}
+
+.-mt-0 {
+  margin-top: 0;
+}
+
 .mr-1\.5 {
   margin-right: 6px;
 }
@@ -1412,22 +1403,6 @@ input[type="number"]::-webkit-inner-spin-button,
 
 .mr-auto {
   margin-right: auto;
-}
-
-.-mt-px {
-  margin-top: -1px;
-}
-
-.-mt-0\.5 {
-  margin-top: -2px;
-}
-
-.-mt-0 {
-  margin-top: 0;
-}
-
-.-mb-px {
-  margin-bottom: -1px;
 }
 
 .block {
@@ -1603,10 +1578,6 @@ input[type="number"]::-webkit-inner-spin-button,
 
 .max-h-64 {
   max-height: 256px;
-}
-
-.max-h-full {
-  max-height: 100%;
 }
 
 .min-h-20 {
@@ -1950,12 +1921,12 @@ input[type="number"]::-webkit-inner-spin-button,
   cursor: text;
 }
 
-.cursor-default {
-  cursor: default;
-}
-
 .cursor-not-allowed {
   cursor: not-allowed;
+}
+
+.cursor-default {
+  cursor: default;
 }
 
 .select-none {

@@ -5,7 +5,7 @@ import type { QuantityInputControlledProps } from "~/field/components/QuantityIn
 import type { PercentageIncrementInputControlledProps } from "~/field/components/PercentageIncrementInput/PercentageIncrementInputControlled";
 import { NumberFormatInputControlledProps } from "~/field/components/NumberFormatInput/types";
 
-export type NumberInputType = (typeof NUMBER_INPUT_TYPE)[number];
+export type NumberInputType = typeof NUMBER_INPUT_TYPE[number];
 
 export type NumberTagInputProps = PriceInputControlledProps &
   DatePickerInputControlledProps &
