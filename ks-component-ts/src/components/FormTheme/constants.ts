@@ -293,10 +293,9 @@ const PERCENTAGE_INCREMENT_THEME = {
     "rounded-lg flex w-full bg-neutral-000 border border-neutral-300 caret-turquoise-300",
   inputClasses:
     "text-14-22-em text-center appearance-none text-neutral-700 placeholder-neutral-600",
-  focusClasses:
-    "border-solid border-transparent focus:outline-none focus:border-turquoise-300",
+  focusClasses: "border-solid focus:outline-none focus:border-turquoise-300",
   focusWithinClasses:
-    "border-solid border-transparent focus-within:outline-none focus-within:border-turquoise-300",
+    "border-solid focus-within:outline-none focus-within:border-turquoise-300",
   paddingClasses: "px-14 py-1.75",
   skeletonClasses: "w-2/6",
   chevronClasses:
