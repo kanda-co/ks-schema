@@ -4,9 +4,8 @@ import "@kanda-libs/ks-design-library/dist/library.css";
 import { useForm, Field, Form, FormTheme } from "@kanda-libs/ks-component-ts";
 import { useWatch } from "react-hook-form";
 import { StringIndexedObject } from "~/types";
-import { Button } from "@kanda-libs/ks-design-library";
+import { Button, Icon, Text } from "@kanda-libs/ks-design-library";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { boolean } from "io-ts";
 
 if (!(Window.prototype as StringIndexedObject).setImmediate) {
   (Window.prototype as StringIndexedObject).setImmediate = function () {
@@ -23,7 +22,7 @@ export const PRICE_COMPONENT_PROPS = {
 };
 
 export const PERCENT_COMPONENT_PROPS = {
-  label: "Percentage (between 10% and 50%)",
+  label: "Deposit (between 10% and 50%)",
   placeholder: "0%",
   type: "percentage",
 };
@@ -48,30 +47,75 @@ export const TITLE_COMPONENT_PROPS = {
   ],
 };
 
-// {/* <Field.Validator
-//         validation={
-//           props.validation ||
-//           CreditExtraApplicantsCustomerDetailsGenderArraySelectValidation
-//         }
-//         nested={props.nested}
-//       >
-//         <Field.RadioSelect
-//           label="Gender"
-//           placeholder="gender"
-//           {...props}
-//           options={
-//             props.options || [
-//               { name: "Male", value: "male" },
-//               { name: "Female", value: "female" },
-//             ]
-//           }
-//         />
-//       </Field.Validator> */}
+const JOB_VALUE = 240000;
+
+// export const JobCompanyInfoBankAccountMonthsHeldValidation = {
+//   min: { value: 0, message: "Months Held must be great than 0" },
+//   max: {
+//     value: 2147483647,
+//     message: "Months Held must be smaller than 2.147483647e+09",
+//   },
+// };
+
+const formatToCurrency = (
+  value: number,
+  currency = "GBP",
+  locale = "en-US",
+  minorUnit = 2
+): string => {
+  const majorUnitValue = value / 10 ** minorUnit;
+  const formatter = new Intl.NumberFormat(locale, {
+    style: "currency",
+    currency,
+    minimumFractionDigits: minorUnit,
+  });
+  return formatter.format(majorUnitValue);
+};
+
+function PriceEdit() {
+  const [edit, setEdit] = useState<boolean>(false);
+  const [deposit, pct] = useWatch({ name: ["deposit", "pct"] });
+  console.log({ deposit });
+  console.log({ pct });
+
+  const displayDeposit = formatToCurrency(deposit);
+
+  const onClick = useCallback(() => setEdit(true), [setEdit]);
+  const onBlur = useCallback(() => {
+    console.log("blur");
+    setEdit(false), [setEdit];
+  }, []);
+
+  return (
+    <div className="flex flex-row w-full ml-4">
+      {edit && (
+        <FormTheme variant="streamline-inline">
+          <Field.NumberInput type="price" onBlur={onBlur} name="deposit" />
+        </FormTheme>
+      )}
+      {!edit && (
+        <button type="button" onClick={onClick} className="flex flex-row">
+          <Text
+            text={displayDeposit}
+            className="text-16-20-em text-neutral-700 my-auto mr-3"
+          />
+          <Icon
+            icon="edit"
+            stroke="neutral-700"
+            size={16}
+            className="my-auto"
+          />
+        </button>
+      )}
+    </div>
+  );
+}
 
 function App() {
   const form = useForm({
     defaultValues: {
       pct: 10,
+      deposit: JOB_VALUE * (10 / 100),
     },
   });
 
@@ -79,14 +123,19 @@ function App() {
   const pct = watch("pct");
   const term = watch("term");
   const options = [
-    { name: "1 year", value: "12" },
-    { name: "2 years", value: "24", disabled: pct < 10 },
-    { name: "5 years", value: "60", disabled: pct > 50 },
-    { name: "10 years", value: "120" },
+    { name: "1 year", value: 12 },
+    { name: "2 years", value: 24, disabled: pct < 10 },
+    { name: "5 years", value: 60, disabled: pct > 50 },
+    { name: "10 years", value: 120 },
   ];
 
   const [toggle, setToggle] = useState<boolean>(false);
   const onClick = useCallback(() => setToggle(!toggle), [toggle, setToggle]);
+
+  const limits = {
+    lowerLimit: 0,
+    upperLimit: 60,
+  };
 
   const warning = useMemo(() => {
     if (pct >= 10 && pct <= 50) return null;
@@ -122,17 +171,33 @@ function App() {
               />
             </Field.Validator>
           </div>
-          <FormTheme variant="streamline">
-            <Field.NumberInput
-              name="pct"
-              id="pct"
-              lowerLimit={0}
-              upperLimit={60}
-              isLoading={toggle}
-              appendComponent={<p>Append</p>}
-              {...PERCENT_COMPONENT_PROPS}
-            />
-          </FormTheme>
+          <div style={{ maxWidth: "400px" }}>
+            <FormTheme variant="streamline">
+              <Field.Validator
+                validation={{
+                  required: { value: true, message: "Pecentage is required." },
+                  min: {
+                    value: limits.lowerLimit,
+                    message: "Minimum 0% deposit",
+                  },
+                  max: {
+                    value: limits.upperLimit,
+                    message: "Maximum 60% deposit",
+                  },
+                }}
+              >
+                <Field.NumberInput
+                  name="pct"
+                  id="pct"
+                  lowerLimit={limits.lowerLimit}
+                  upperLimit={limits.upperLimit}
+                  isLoading={toggle}
+                  appendComponent={<PriceEdit />}
+                  {...PERCENT_COMPONENT_PROPS}
+                />
+              </Field.Validator>
+            </FormTheme>
+          </div>
           <Button.Text
             submit
             label="submit"
