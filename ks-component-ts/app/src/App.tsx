@@ -6,6 +6,7 @@ import { useWatch } from "react-hook-form";
 import { StringIndexedObject } from "~/types";
 import { Button, Icon, Text } from "@kanda-libs/ks-design-library";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { useFormContext } from "~/index";
 
 if (!(Window.prototype as StringIndexedObject).setImmediate) {
   (Window.prototype as StringIndexedObject).setImmediate = function () {
@@ -75,23 +76,27 @@ const formatToCurrency = (
 function PriceEdit() {
   const [edit, setEdit] = useState<boolean>(false);
   const [deposit, pct] = useWatch({ name: ["deposit", "pct"] });
-  console.log({ deposit });
-  console.log({ pct });
+  const { setValue } = useFormContext();
 
-  const displayDeposit = formatToCurrency(deposit);
+  const depositCalc = (pct * JOB_VALUE) / 100;
+
+  const displayDeposit = formatToCurrency(depositCalc);
 
   const onClick = useCallback(() => setEdit(true), [setEdit]);
   const onBlur = useCallback(() => {
-    console.log("blur");
     setEdit(false), [setEdit];
-  }, []);
+    const percent = (deposit / JOB_VALUE) * 100;
+    setValue("pct", percent);
+  }, [deposit, setValue]);
 
   return (
     <div className="flex flex-row w-full ml-4">
       {edit && (
-        <FormTheme variant="streamline-inline">
-          <Field.NumberInput type="price" onBlur={onBlur} name="deposit" />
-        </FormTheme>
+        <div className="my-auto">
+          <FormTheme variant="streamline-inline">
+            <Field.NumberInput type="price" onBlur={onBlur} name="deposit" />
+          </FormTheme>
+        </div>
       )}
       {!edit && (
         <button type="button" onClick={onClick} className="flex flex-row">
@@ -143,6 +148,11 @@ function App() {
     return "Some terms are not available above 50% deposit";
   }, [pct]);
 
+  useEffect(() => {
+    console.log({ pct });
+    setValue("deposit", Math.round((pct * JOB_VALUE) / 100));
+  }, [pct]);
+
   return (
     <Form
       id="app"
@@ -177,11 +187,11 @@ function App() {
                 validation={{
                   required: { value: true, message: "Pecentage is required." },
                   min: {
-                    value: limits.lowerLimit,
+                    value: 0,
                     message: "Minimum 0% deposit",
                   },
                   max: {
-                    value: limits.upperLimit,
+                    value: 60,
                     message: "Maximum 60% deposit",
                   },
                 }}
@@ -193,6 +203,20 @@ function App() {
                   upperLimit={limits.upperLimit}
                   isLoading={toggle}
                   appendComponent={<PriceEdit />}
+                  validation={{
+                    required: {
+                      value: true,
+                      message: "Pecentage is required.",
+                    },
+                    min: {
+                      value: limits.lowerLimit,
+                      message: "Minimum 0% deposit",
+                    },
+                    max: {
+                      value: limits.upperLimit,
+                      message: "Maximum 60% deposit",
+                    },
+                  }}
                   {...PERCENT_COMPONENT_PROPS}
                 />
               </Field.Validator>

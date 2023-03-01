@@ -12,6 +12,7 @@ export interface PercentageIncrementInputControlledProps {
   upperLimit?: number;
   lowerLimit?: number;
   appendComponent?: string | JSX.Element | JSX.Element[];
+  onBlur?: (...event: any[]) => void;
 }
 
 const PercentageIncrementInputControlled: FunctionComponent<
