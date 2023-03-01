@@ -4,7 +4,7 @@ import { CLASS_NAMES, SKELETONS } from "./constants";
 import { type HandleProps } from "../types";
 
 const RadioButton = forwardRef<JSX.Element, HandleProps>(
-  ({ id, name, isLoading, ...restProps }, ref) => (
+  ({ id, name, isLoading, disabled, ...restProps }, ref) => (
     <div className={CLASS_NAMES.container}>
       <SkeletonLoader
         isLoading={isLoading}
@@ -18,6 +18,7 @@ const RadioButton = forwardRef<JSX.Element, HandleProps>(
               name={name}
               id={id || name}
               className={CLASS_NAMES.checkBox}
+              disabled={disabled}
             />
             <label htmlFor={id || name} className={CLASS_NAMES.label}>
               <div className={CLASS_NAMES.icon} />

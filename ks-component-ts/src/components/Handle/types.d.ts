@@ -38,6 +38,10 @@ export interface HandleProps
    * Boolean to define whether to use small switch or not
    */
   small?: boolean;
+  /**
+   * Boolean to disable individual options
+   */
+  disabled?: boolean;
 }
 
 /**

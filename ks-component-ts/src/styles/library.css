@@ -1391,6 +1391,18 @@ input[type="number"]::-webkit-inner-spin-button,
   margin-right: auto;
 }
 
+.-mt-px {
+  margin-top: -1px;
+}
+
+.-mt-0\.5 {
+  margin-top: -2px;
+}
+
+.-mt-0 {
+  margin-top: 0;
+}
+
 .block {
   display: block;
 }
@@ -1735,6 +1747,10 @@ input[type="number"]::-webkit-inner-spin-button,
   min-width: 32px;
 }
 
+.max-w-36 {
+  max-width: 144px;
+}
+
 .max-w-120 {
   max-width: 480px;
 }
@@ -1905,6 +1921,10 @@ input[type="number"]::-webkit-inner-spin-button,
 
 .cursor-default {
   cursor: default;
+}
+
+.cursor-not-allowed {
+  cursor: not-allowed;
 }
 
 .select-none {

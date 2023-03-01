@@ -1,4 +1,8 @@
-import { UseFormRegisterReturn, useWatch } from "react-hook-form";
+import {
+  useFormContext,
+  UseFormRegisterReturn,
+  useWatch,
+} from "react-hook-form";
 import { useClasses } from "@kanda-libs/ks-design-library";
 import { HandleComponent } from "~/components/Handle/types";
 import useFormTheme from "~/hooks/useFormTheme";
@@ -7,6 +11,7 @@ import { FieldRegisterMethod } from "~/field/types";
 import { CLASS_NAMES_MULTIPLE, VARIANTS } from "./constants";
 import Handle from "~/components/Handle";
 import { StringIndexedObject } from "~/types";
+import { useEffect } from "react";
 
 export interface Hook {
   id: string;
@@ -22,7 +27,8 @@ export default function useOption(
   variantName: RadioSelectVariant,
   inline: boolean,
   wrap: boolean,
-  register: FieldRegisterMethod | null = null
+  register: FieldRegisterMethod | null = null,
+  disabled?: boolean
 ): Hook {
   const { skeletonClasses } = useFormTheme();
 
@@ -30,6 +36,8 @@ export default function useOption(
    * Get current value from react hook forms
    */
   const fieldValue = useWatch({ name: fieldName });
+
+  const { setValue } = useFormContext();
 
   /**
    * Checks if option is selected
@@ -48,9 +56,23 @@ export default function useOption(
   const selectedPrefix = isSelected ? "selected" : "notSelected";
 
   const classNames = useClasses(variant, {
-    option: [optionFlex, `.${selectedPrefix}.option`, wrap && "mt-2 ml-2"],
-    container: [`.${selectedPrefix}.container`],
-    skeleton: [skeletonClasses],
+    option: [
+      optionFlex,
+      wrap && "mt-2 ml-2",
+      disabled && variant?.disabled?.option
+        ? `.disabled.option`
+        : `.${selectedPrefix}.option`,
+      ,
+    ],
+    container: [
+      disabled && variant?.disabled?.container
+        ? `.disabled.container`
+        : `.${selectedPrefix}.container`,
+      ,
+    ],
+    skeleton: [
+      variant?.skeleton ? `.${selectedPrefix}.skeleton` : skeletonClasses,
+    ],
   });
 
   /**
@@ -67,6 +89,18 @@ export default function useOption(
    * return input props from react hook forms
    */
   const handleProps = register ? register(fieldName, {}) : {};
+
+  useEffect(() => {
+    if (!disabled) return;
+    if (multiple) {
+      const newArray = [...fieldValue].filter(
+        (value: string) => value !== optionValue
+      );
+      setValue(fieldName, newArray);
+      return;
+    }
+    setValue(fieldName, undefined);
+  }, [disabled, multiple, optionValue, fieldValue, setValue, fieldName]);
 
   return {
     id,

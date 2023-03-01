@@ -5,6 +5,8 @@ import { useForm, Field, Form, FormTheme } from "@kanda-libs/ks-component-ts";
 import { useWatch } from "react-hook-form";
 import { StringIndexedObject } from "~/types";
 import { Button } from "@kanda-libs/ks-design-library";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { boolean } from "io-ts";
 
 if (!(Window.prototype as StringIndexedObject).setImmediate) {
   (Window.prototype as StringIndexedObject).setImmediate = function () {
@@ -21,7 +23,7 @@ export const PRICE_COMPONENT_PROPS = {
 };
 
 export const PERCENT_COMPONENT_PROPS = {
-  label: "Percentage",
+  label: "Percentage (between 10% and 50%)",
   placeholder: "0%",
   type: "percentage",
 };
@@ -49,10 +51,34 @@ export const TITLE_COMPONENT_PROPS = {
 function App() {
   const form = useForm({
     defaultValues: {
-      deposit: 10,
       pct: 10,
     },
   });
+
+  const { watch, setValue } = form;
+  const pct = watch("pct");
+  const term = watch("term");
+  const options = [
+    { name: "1 year", value: "12" },
+    { name: "2 years", value: "24", disabled: pct < 10 },
+    { name: "5 years", value: "60", disabled: pct > 50 },
+    { name: "10 years", value: "120" },
+  ];
+
+  const [toggle, setToggle] = useState<boolean>(false);
+  const onClick = useCallback(() => setToggle(!toggle), [toggle, setToggle]);
+
+  const warning = useMemo(() => {
+    if (pct >= 10 && pct <= 50) return null;
+    if (pct < 10) return "Some terms are not available below 10% deposit";
+    return "Some terms are not available above 50% deposit";
+  }, [pct]);
+
+  // useEffect(() => {
+  //   if (!term || pct >= 10) return;
+  //   if (term !== "24") return;
+  //   setValue("term", null);
+  // }, [pct, term, setValue]);
 
   return (
     <Form
@@ -71,50 +97,36 @@ function App() {
               inline
               wrap
               variant="streamline"
-              options={[
-                { name: "\u00201 year\u0020", value: "12" },
-                { name: "2 years", value: "24" },
-                { name: "5 years", value: "60" },
-                { name: "10 years", value: "120" },
-              ]}
-            />
-          </div>
-
-          <div style={{ maxWidth: "400px" }}>
-            <Field.RadioSelect
-              name="gender"
-              id="gender"
-              label="Gender"
-              inline
-              wrap
-              variant="streamline-radio"
-              options={[
-                { name: "Male", value: "male" },
-                { name: "Female", value: "female" },
-              ]}
+              options={options}
+              warning={warning}
+              isLoading={toggle}
             />
           </div>
           <FormTheme variant="streamline">
-            <div style={{ maxWidth: "145px" }}>
-              <Field.PercentageIncrementInput
-                label="Deposit"
-                name="deposit"
-                id="deposit"
-                placeholder="0"
-              />
-              <Field.NumberInput
-                name="price"
-                id="price"
-                {...PRICE_COMPONENT_PROPS}
-              />
-              <Field.NumberInput
-                name="pct"
-                id="pct"
-                {...PERCENT_COMPONENT_PROPS}
-              />
-            </div>
+            <Field.NumberInput
+              name="pct"
+              id="pct"
+              lowerLimit={0}
+              upperLimit={60}
+              isLoading={toggle}
+              appendComponent={<p>Append</p>}
+              {...PERCENT_COMPONENT_PROPS}
+            />
           </FormTheme>
-          <Button.Text submit label="submit" id="test-submit" />
+          <Button.Text
+            submit
+            label="submit"
+            id="test-submit"
+            variant="gradient"
+          />
+
+          <Button.Text
+            submit
+            label="toggle"
+            id="test-submit"
+            variant="gradient"
+            onClick={onClick}
+          />
         </div>
       </div>
     </Form>
