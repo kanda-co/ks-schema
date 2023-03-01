@@ -92,6 +92,7 @@ export default function useOption(
 
   useEffect(() => {
     if (!disabled) return;
+    if (fieldValue !== optionValue) return;
     if (multiple) {
       const newArray = [...fieldValue].filter(
         (value: string) => value !== optionValue

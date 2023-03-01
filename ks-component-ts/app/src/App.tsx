@@ -48,6 +48,26 @@ export const TITLE_COMPONENT_PROPS = {
   ],
 };
 
+// {/* <Field.Validator
+//         validation={
+//           props.validation ||
+//           CreditExtraApplicantsCustomerDetailsGenderArraySelectValidation
+//         }
+//         nested={props.nested}
+//       >
+//         <Field.RadioSelect
+//           label="Gender"
+//           placeholder="gender"
+//           {...props}
+//           options={
+//             props.options || [
+//               { name: "Male", value: "male" },
+//               { name: "Female", value: "female" },
+//             ]
+//           }
+//         />
+//       </Field.Validator> */}
+
 function App() {
   const form = useForm({
     defaultValues: {
@@ -74,12 +94,6 @@ function App() {
     return "Some terms are not available above 50% deposit";
   }, [pct]);
 
-  // useEffect(() => {
-  //   if (!term || pct >= 10) return;
-  //   if (term !== "24") return;
-  //   setValue("term", null);
-  // }, [pct, term, setValue]);
-
   return (
     <Form
       id="app"
@@ -91,16 +105,22 @@ function App() {
       <div className="App">
         <div className="px-8 py-4">
           <div style={{ maxWidth: "400px" }}>
-            <Field.RadioSelect
-              name="term"
-              label="Term"
-              inline
-              wrap
-              variant="streamline"
-              options={options}
-              warning={warning}
-              isLoading={toggle}
-            />
+            <Field.Validator
+              validation={{
+                required: { value: true, message: "Term is required." },
+              }}
+            >
+              <Field.RadioSelect
+                name="term"
+                label="Term"
+                inline
+                wrap
+                variant="streamline"
+                options={options}
+                warning={warning}
+                isLoading={toggle}
+              />
+            </Field.Validator>
           </div>
           <FormTheme variant="streamline">
             <Field.NumberInput
