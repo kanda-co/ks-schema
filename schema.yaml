@@ -3280,6 +3280,73 @@ components:
           type: string
           title: provider
           $ref: "#/components/schemas/FinanceProvider"
+        min_deposit_pct:
+          type: integer
+          title: min deposit percentage
+          minimum: 0
+          maximum: 2147483647
+        max_deposit_pct:
+          type: integer
+          title: max deposit percentage
+          minimum: 0
+          maximum: 2147483647
+        min_deposit_value:
+          type: integer
+          title: min deposit value
+          minimum: 0
+          maximum: 2147483647
+        max_deposit_value:
+          type: integer
+          title: max deposit value
+          minimum: 0
+          maximum: 2147483647
+        min_job_value:
+          type: integer
+          title: min job value
+          minimum: 0
+          maximum: 2147483647
+        max_job_value:
+          type: integer
+          title: max job value
+          minimum: 0
+          maximum: 2147483647
+        work_types:
+          type: array
+          title: work types
+          items:
+            type: string
+            minLength: 1
+            enum:
+              - air_conditioning
+              - bathrooms
+              - battery_storage
+              - blinds_and_shutters
+              - carpentry
+              - cctv_and_security_installations
+              - conservatories
+              - decking
+              - driveways_and_patios
+              - electrician
+              - ev_charger_installer
+              - fencing
+              - fireplaces
+              - fitted_bedroom_furniture
+              - floor_layer
+              - garage_doors
+              - garden_rooms
+              - gas_engineer
+              - gates
+              - heat_pumps
+              - heating_systems
+              - kitchen_fitter
+              - landscaping
+              - plumbing
+              - resin_driveways
+              - roofing__excluding_flat_roofs
+              - security_systems
+              - tiler
+              - verandas
+              - windows_and_doors
 
     FinanceType:
       type: string
