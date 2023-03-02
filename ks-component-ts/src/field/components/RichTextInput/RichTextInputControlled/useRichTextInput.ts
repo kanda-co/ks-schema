@@ -13,10 +13,11 @@ import {
   type Editor,
   convertFromRaw,
 } from "draft-js";
+import clsx from "clsx";
 import { markdownToDraft, draftToMarkdown } from "markdown-draft-js";
+import useFormTheme from "~/hooks/useFormTheme";
 import { CLASS_NAMES, DISABLED_COMMANDS } from "./constants";
 import useInputBaseClass from "../../Input/useInputBaseClass";
-import clsx from "clsx";
 
 export interface RichTextEditorHook {
   editorState: EditorState;
@@ -35,6 +36,7 @@ export interface RichTextEditorHook {
   onFocus: () => void;
   onBlur: () => void;
   focused: boolean;
+  classNames: typeof CLASS_NAMES;
 }
 
 export default function useRichTextEditor(
@@ -133,11 +135,22 @@ export default function useRichTextEditor(
 
       if (placeholder) {
         CLASS_NAMES.focusedPlaceHolder.split(" ").forEach((className) => {
-          placeholder?.classList[focusClassMethod](className);
+          placeholder?.classList?.[focusClassMethod](className);
         });
       }
     }
   }, [editorRef, editorState, inputClass, focused, inputHasFocusedBorder]);
+
+  const { baseClasses } = useFormTheme();
+
+  const classNames = {
+    ...CLASS_NAMES,
+    wrapper: clsx(
+      baseClasses,
+      CLASS_NAMES.wrapper,
+      inputHasFocusedBorder && "py-4"
+    ),
+  };
 
   return {
     editorState,
@@ -150,5 +163,6 @@ export default function useRichTextEditor(
     onFocus,
     onBlur,
     focused,
+    classNames,
   };
 }

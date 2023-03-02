@@ -2,9 +2,7 @@ window.global ||= window;
 import "@kanda-libs/ks-component-ts/dist/library.css";
 import "@kanda-libs/ks-design-library/dist/library.css";
 import { useForm, Field, Form, FormTheme } from "@kanda-libs/ks-component-ts";
-import { useWatch } from "react-hook-form";
 import { StringIndexedObject } from "~/types";
-import { Button } from "@kanda-libs/ks-design-library";
 
 if (!(Window.prototype as StringIndexedObject).setImmediate) {
   (Window.prototype as StringIndexedObject).setImmediate = function () {
@@ -64,57 +62,21 @@ function App() {
     >
       <div className="App">
         <div className="px-8 py-4">
-          <div style={{ maxWidth: "400px" }}>
-            <Field.RadioSelect
-              name="term"
-              label="Term"
-              inline
-              wrap
-              variant="streamline"
-              options={[
-                { name: "\u00201 year\u0020", value: "12" },
-                { name: "2 years", value: "24" },
-                { name: "5 years", value: "60" },
-                { name: "10 years", value: "120" },
-              ]}
-            />
-          </div>
-
-          <div style={{ maxWidth: "400px" }}>
-            <Field.RadioSelect
-              name="gender"
-              id="gender"
-              label="Gender"
-              inline
-              wrap
-              variant="streamline-radio"
-              options={[
-                { name: "Male", value: "male" },
-                { name: "Female", value: "female" },
-              ]}
-            />
-          </div>
-          <FormTheme variant="streamline">
-            <div style={{ maxWidth: "145px" }}>
-              <Field.PercentageIncrementInput
-                label="Deposit"
-                name="deposit"
-                id="deposit"
-                placeholder="0"
+          <FormTheme variant="emphasized">
+            <div style={{ maxWidth: "400px" }}>
+              <Field.Select
+                name="hello"
+                options={[{ value: "123", name: "xxx" }]}
+                placeholder="test"
               />
-              <Field.NumberInput
-                name="price"
-                id="price"
-                {...PRICE_COMPONENT_PROPS}
-              />
-              <Field.NumberInput
-                name="pct"
-                id="pct"
-                {...PERCENT_COMPONENT_PROPS}
+              <Field.RichTextInput
+                name="term"
+                label="Term"
+                placeholder="Enter some test"
+                inputHasFocusedBorder
               />
             </div>
           </FormTheme>
-          <Button.Text submit label="submit" id="test-submit" />
         </div>
       </div>
     </Form>
