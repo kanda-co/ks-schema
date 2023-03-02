@@ -4,7 +4,7 @@ import { ValidError } from "~/field/types";
 export interface SelectOption {
   name: string;
   value: string;
-  option?: boolean;
+  disabled?: boolean;
 }
 
 export interface SelectUncontrolledProps {
