@@ -42,7 +42,7 @@ const PercentageIncrementInputControlled: FunctionComponent<
 
   return (
     <>
-      <div className="flex flex-row w-full max-w-36 relative">
+      <div className="flex flex-row w-36 min-w-36 max-w-36 relative">
         <SkeletonLoader
           width={144}
           height={34}

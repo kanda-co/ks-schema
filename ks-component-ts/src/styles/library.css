@@ -1676,6 +1676,10 @@ input[type="number"]::-webkit-inner-spin-button,
   width: 128px;
 }
 
+.w-36 {
+  width: 144px;
+}
+
 .w-1\/2 {
   width: 50%;
 }
@@ -2488,9 +2492,9 @@ input[type="number"]::-webkit-inner-spin-button,
   padding-bottom: 9px;
 }
 
-.px-14 {
-  padding-left: 56px;
-  padding-right: 56px;
+.px-10 {
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 .py-1\.75 {
