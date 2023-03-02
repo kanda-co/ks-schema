@@ -212,7 +212,7 @@ export const VARIANTS: StringIndexedObject<VariantProps> = {
     disabled: {
       option: "border border-neutral-300 cursor-not-allowed",
       container:
-        "ounded bg-neutral-200 flex flex-full w-full px-4 py-2 text-neutral-600",
+        "rounded bg-neutral-200 flex flex-full w-full px-4 py-2 text-neutral-600",
     },
     multiline: {
       option: "",
@@ -229,12 +229,12 @@ export const VARIANTS: StringIndexedObject<VariantProps> = {
     selected: {
       option: "border border-turquoise-300 cursor-pointer bg-turquoise-100",
       container:
-        "rounded bg-turquoise-100 flex flex-full w-full px-2.5 py-2 text-neutral-900",
+        "rounded bg-turquoise-100 flex flex-full w-full px-2.5 py-1.5 text-neutral-900",
     },
     notSelected: {
       option: "border border-neutral-300 cursor-pointer",
       container:
-        "rounded bg-neutral-000 flex flex-full w-full px-2.5 py-2 text-neutral-900",
+        "rounded bg-neutral-000 flex flex-full w-full px-2.5 py-1.5 text-neutral-900",
     },
     multiline: {
       option: "",

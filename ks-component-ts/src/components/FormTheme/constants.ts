@@ -267,10 +267,9 @@ const STREAMLINE_THEME = {
   baseClasses:
     "rounded flex w-full bg-neutral-000 border border-neutral-300 caret-turquoise-300",
   inputClasses: "text-13-14 text-neutral-900 placeholder-neutral-600",
-  focusClasses:
-    "border-solid border-transparent focus:outline-none focus:border-turquoise-300",
+  focusClasses: "border-solid focus:border-turquoise-300",
   focusWithinClasses:
-    "border-solid border-transparent focus-within:outline-none focus-within:border-turquoise-300",
+    "border-solid focus-within:outline-none focus-within:border-turquoise-300",
   paddingClasses: "px-2 py-2.25",
   skeletonClasses: "w-2/6",
   chevronClasses:
@@ -282,7 +281,7 @@ const STREAMLINE_THEME = {
     baseContainer: "flex flex-col mb-5 text-left",
     error: "mt-2 text-12-18 text-red-200",
     warning: "mt-2 text-12-18 text-neutral-600",
-    label: "w-full text-12-18-em text-neutral-600 mb-2",
+    label: "text-12-18-em text-neutral-600",
     helperText: "whitespace-nowrap text-12-18 text-neutral-500",
   },
 };

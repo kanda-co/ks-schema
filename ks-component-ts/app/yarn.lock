@@ -808,6 +808,10 @@
     react-toastify "^9.0.8"
     use-debounce "^8.0.4"
 
+"@kanda-libs/ks-design-library@link:.yalc/@kanda-libs/ks-design-library":
+  version "0.0.0"
+  uid ""
+
 "@kanda-libs/ks-tailwind-config@^0.2.6":
   version "0.2.6"
   resolved "https://registry.yarnpkg.com/@kanda-libs/ks-tailwind-config/-/ks-tailwind-config-0.2.6.tgz#987decaf02698c95220bee4ec3b41b54d5e1ffbf"

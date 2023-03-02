@@ -38,6 +38,7 @@ export interface LabelProps {
   helperText?: string | JSX.Element | JSX.Element[];
   isLoading?: boolean;
   autoWidth?: boolean;
+  inlineHelperText?: boolean;
 }
 
 export interface LabelContainerProps
