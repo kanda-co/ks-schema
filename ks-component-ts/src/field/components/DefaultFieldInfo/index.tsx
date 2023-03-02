@@ -2,6 +2,7 @@ import React, { type FunctionComponent } from "react";
 import { FieldInfoWrapperProps } from "~/field/types";
 import Label from "~/field/components/Label";
 import Error from "~/field/components/Error";
+import Warning from "~/field/components/Warning";
 import useDefaultFieldInfo from "~/field/components/DefaultFieldInfo/useDefaultFieldInfo";
 
 const DefaultFieldInfo: FunctionComponent<FieldInfoWrapperProps> = function ({
@@ -53,7 +54,7 @@ const DefaultFieldInfo: FunctionComponent<FieldInfoWrapperProps> = function ({
         {append}
       </div>
 
-      {!isLoading && warning && !errorText && <span>{warning}</span>}
+      {!isLoading && warning && !errorText && <Warning warning={warning} />}
       {!isLoading && errorText && <Error error={errorText} />}
     </div>
   );

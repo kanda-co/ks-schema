@@ -287,16 +287,40 @@ const STREAMLINE_THEME = {
   },
 };
 
+const STREAMLINE_INLINE_THEME = {
+  fieldWrapper: "Default" as FieldWrapperType,
+  baseClasses:
+    "rounded flex w-full bg-neutral-000 border border-neutral-300 caret-turquoise-300",
+  inputClasses: "text-13-14 text-neutral-900 placeholder-neutral-600",
+  focusClasses:
+    "border-solid border-transparent focus:outline-none focus:border-turquoise-300",
+  focusWithinClasses:
+    "border-solid border-transparent focus-within:outline-none focus-within:border-turquoise-300",
+  paddingClasses: "px-2 py-2.25",
+  skeletonClasses: "w-2/6",
+  chevronClasses:
+    "appearance-none bg-select-chevron focus:bg-select-chevron-active bg-no-repeat bg-right-2 invalid:text-neutral-400 overflow-hidden !pr-7",
+  themeIconVariant: "small",
+  makeErrorClasses: (error?: string) =>
+    error ? "border-solid border border-red-200" : "",
+  wrapperClasses: {
+    baseContainer: "flex flex-col text-left",
+    error: "mt-2 text-12-18 text-red-200",
+    warning: "mt-2 text-12-18 text-neutral-600",
+    label: "w-full text-12-18-em text-neutral-600 mb-2",
+    helperText: "whitespace-nowrap text-12-18 text-neutral-500",
+  },
+};
+
 const PERCENTAGE_INCREMENT_THEME = {
   fieldWrapper: "Default" as FieldWrapperType,
   baseClasses:
     "rounded-lg flex w-full bg-neutral-000 border border-neutral-300 caret-turquoise-300",
   inputClasses:
     "text-14-22-em text-center appearance-none text-neutral-700 placeholder-neutral-600",
-  focusClasses:
-    "border-solid border-transparent focus:outline-none focus:border-turquoise-300",
+  focusClasses: "border-solid focus:outline-none focus:border-turquoise-300",
   focusWithinClasses:
-    "border-solid border-transparent focus-within:outline-none focus-within:border-turquoise-300",
+    "border-solid focus-within:outline-none focus-within:border-turquoise-300",
   paddingClasses: "px-14 py-1.75",
   skeletonClasses: "w-2/6",
   chevronClasses:
@@ -329,6 +353,7 @@ enum Variants {
   GROUP_DEFAULT = "group-default",
   POPOVER_SELECT = "popover-clean",
   STREAMLINE = "streamline",
+  STREAMLINE_INLINE = "streamline-inline",
   PERCENTAGE_INCREMENT = "percentage-increment",
 }
 
@@ -348,6 +373,7 @@ export const VARIANTS: StringIndexedObject<string> = {
   GROUP_DEFAULT: Variants.GROUP_DEFAULT,
   POPOVER_SELECT: Variants.POPOVER_SELECT,
   STREAMLINE: Variants.STREAMLINE,
+  STREAMLINE_INLINE: Variants.STREAMLINE_INLINE,
   PERCENTAGE_INCREMENT: Variants.PERCENTAGE_INCREMENT,
 };
 
@@ -367,5 +393,6 @@ export const FORM_THEME_VARIANTS: StringIndexedObject<Theme> = {
   [VARIANTS.GROUP_DEFAULT]: GROUP_DEFAULT_THEME,
   [VARIANTS.POPOVER_SELECT]: POPOVER_SELECT_THEME,
   [VARIANTS.STREAMLINE]: STREAMLINE_THEME,
+  [VARIANTS.STREAMLINE_INLINE]: STREAMLINE_INLINE_THEME,
   [VARIANTS.PERCENTAGE_INCREMENT]: PERCENTAGE_INCREMENT_THEME,
 };

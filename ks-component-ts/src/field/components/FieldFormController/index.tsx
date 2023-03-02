@@ -133,6 +133,7 @@ const FieldFormController: FieldFormControllerComponent = function ({
     isLoading,
     ...(passRegister && {
       register: extendedRegister,
+      onBlur,
     }),
     ...(register &&
       extendedRegister(name, {

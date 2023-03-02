@@ -1,10 +1,11 @@
-import React, { ChangeEvent, type FunctionComponent } from "react";
+import React, { ChangeEvent, useEffect, type FunctionComponent } from "react";
 import { type InputProps } from "~/field/components/Input";
 import { stripUnneededProps } from "~/field/helpers";
 import type { StringIndexedObject } from "~/types";
 import useBasicInputUncontrolledProps from "./useBasicNumberInputUncontrolledProps";
 import { getInputTag } from "./helpers";
 import { DISALLOWED_KEYS } from "./constants";
+import { useFormContext } from "react-hook-form";
 
 export interface BasicNumberInputUncontrolledProps
   extends Omit<InputProps, "onChange"> {
@@ -34,6 +35,8 @@ const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontroll
     isAllowed,
     ...props
   }) {
+    const { register } = useFormContext();
+
     const decimalScale = fixedDecimalScale ? 2 : 0;
     const { currentValue, focused, setFocused, displayValue, onChange } =
       useBasicInputUncontrolledProps({
@@ -49,9 +52,21 @@ const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontroll
 
     const focusedValue = currentValue ? formatForDisplay(currentValue) : "";
     const readOnlyProps = stripUnneededProps(props);
-    const { register, ...focusedProps } = props;
+
+    // DEV_NOTE: removed register here as need to register name and
+    // validationConditions, but register had wrong type?
+    const {
+      register: propsRegitser,
+      validationConditions,
+      ...focusedProps
+    } = props;
 
     const InputTag = getInputTag(autoSize);
+
+    useEffect(() => {
+      if (!register || !validationConditions) return;
+      register(name as string, validationConditions);
+    }, [register, validationConditions]);
 
     return (
       <>

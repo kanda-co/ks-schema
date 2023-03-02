@@ -18,6 +18,10 @@ export interface Props {
    */
   value?: string | number;
   /**
+   * key to disable an option
+   */
+  disabled?: boolean;
+  /**
    * Enables multi option select
    */
   multiple?: boolean;
@@ -51,6 +55,7 @@ const Option: FunctionComponent<Props> = function ({
   fieldName,
   name,
   value,
+  disabled,
   multiple = false,
   variant = "default",
   isLoading,
@@ -66,7 +71,8 @@ const Option: FunctionComponent<Props> = function ({
     variant,
     inline,
     wrap,
-    register
+    register,
+    disabled
   );
 
   return (
@@ -83,6 +89,7 @@ const Option: FunctionComponent<Props> = function ({
             {...handleProps}
             value={value}
             isLoading={isLoading}
+            disabled={disabled}
           />
         </div>
         {isLoading ? (

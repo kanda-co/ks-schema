@@ -44,7 +44,7 @@ export default function usePercentageIncrement({
 
   const onIncrement = useCallback(() => {
     if (currentValue && currentValue >= upperLimit) return;
-    const newValue = currentValue ? currentValue + 1 : 1;
+    const newValue = currentValue ? Math.round(currentValue + 1) : 1;
     const validValue = isAllowed({ value: newValue });
     if (!validValue) return;
     setValue(name as string, newValue);
@@ -52,7 +52,7 @@ export default function usePercentageIncrement({
 
   const onDecrement = useCallback(() => {
     if (!currentValue || currentValue <= lowerLimit) return;
-    const newValue = currentValue - 1;
+    const newValue = Math.round(currentValue - 1);
     const validValue = isAllowed({ value: newValue });
     if (!validValue) return;
     setValue(name as string, newValue);
