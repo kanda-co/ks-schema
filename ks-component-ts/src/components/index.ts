@@ -1,3 +1,4 @@
+export { default as AddFieldButton } from "./AddFieldButton";
 export { default as Dropzone } from "./Dropzone";
 export { default as DropzoneContext } from "./Dropzone/DropzoneContext";
 export { default as FieldHandle } from "./Handle";

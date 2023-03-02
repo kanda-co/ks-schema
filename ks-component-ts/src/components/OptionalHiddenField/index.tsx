@@ -1,4 +1,5 @@
 import React, { type FunctionComponent } from "react";
+import AddFieldButton from "../AddFieldButton";
 import useOptionalHiddenField from "./useOptionalHiddenField";
 
 export interface OptionalHiddenFieldProps {
@@ -12,16 +13,7 @@ const OptionalHiddenField: FunctionComponent<OptionalHiddenFieldProps> =
 
     return (
       <div>
-        {!visible && (
-          <div
-            className="mb-4 cursor-pointer text-neutral-500"
-            onClick={() => {
-              onClick();
-            }}
-          >
-            + {label}
-          </div>
-        )}
+        {!visible && <AddFieldButton label={label} onClick={onClick} />}
         {visible && children}
       </div>
     );
