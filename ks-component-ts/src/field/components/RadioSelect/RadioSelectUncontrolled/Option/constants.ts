@@ -240,7 +240,7 @@ export const VARIANTS: StringIndexedObject<VariantProps> = {
       option: "",
     },
     inline: {
-      option: "rounded",
+      option: "rounded sibling:ml-2",
     },
   },
 };

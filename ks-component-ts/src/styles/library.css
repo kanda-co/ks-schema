@@ -2532,6 +2532,11 @@ input[type="number"]::-webkit-inner-spin-button,
   padding-right: 10px;
 }
 
+.py-1\.5 {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
 .px-6 {
   padding-left: 24px;
   padding-right: 24px;
