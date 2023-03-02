@@ -1,10 +1,16 @@
 window.global ||= window;
 import "@kanda-libs/ks-component-ts/dist/library.css";
 import "@kanda-libs/ks-design-library/dist/library.css";
-import { useForm, Field, Form, FormTheme } from "@kanda-libs/ks-component-ts";
+import {
+  useForm,
+  Field,
+  Form,
+  FormTheme,
+  OptionalHiddenField,
+} from "@kanda-libs/ks-component-ts";
 import { useWatch } from "react-hook-form";
 import { StringIndexedObject } from "~/types";
-import { Button, Icon, Text } from "@kanda-libs/ks-design-library";
+import { Icon, Text } from "@kanda-libs/ks-design-library";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useFormContext } from "~/index";
 
@@ -19,13 +25,13 @@ export const PRICE_COMPONENT_PROPS = {
   label: "Price",
   placeholder: "1.00",
   prefix: "",
+  wrapperProps: {
+    className: "mr-2",
+  },
+  // append: <Append />,
+  // isAllowed: makeIsAllowed(0, 1000000),
   type: "price",
-};
-
-export const PERCENT_COMPONENT_PROPS = {
-  label: "Deposit (between 10% and 50%)",
-  placeholder: "0%",
-  type: "percentage",
+  // validation: PRICE_VALIDATION,
 };
 
 export const FIRST_NAME_COMPONENT_PROPS = {
@@ -94,7 +100,7 @@ function PriceEdit() {
         <button type="button" onClick={onClick} className="flex flex-row">
           <Text
             text={displayDeposit}
-            className="text-16-20-em text-neutral-700 my-auto mr-3"
+            className="my-auto mr-3 text-16-20-em text-neutral-700"
           />
           <Icon
             icon="edit"
@@ -149,85 +155,65 @@ function App() {
     <Form
       id="app"
       form={form}
-      onSubmit={(formValues) => {
-        console.log(formValues);
+      onSubmit={() => {
+        console.log("test");
       }}
     >
       <div className="App">
         <div className="px-8 py-4">
           <div style={{ maxWidth: "400px" }}>
-            <Field.Validator
-              validation={{
-                required: { value: true, message: "Term is required." },
-              }}
-            >
-              <Field.RadioSelect
-                name="term"
-                label="Term"
-                inline
-                wrap
-                variant="streamline"
-                options={options}
-                warning={warning}
-                isLoading={toggle}
-              />
-            </Field.Validator>
+            <Field.RadioSelect
+              name="term"
+              label="Term"
+              inline
+              wrap
+              variant="streamline"
+              options={[
+                { name: "\u00201 year\u0020", value: "12" },
+                { name: "2 years", value: "24" },
+                { name: "5 years", value: "60" },
+                { name: "10 years", value: "120" },
+              ]}
+            />
           </div>
-          <div style={{ maxWidth: "400px" }}>
-            <FormTheme variant="streamline">
-              <Field.Validator
-                validation={{
-                  required: { value: true, message: "Pecentage is required." },
-                  min: {
-                    value: 0,
-                    message: "Minimum 0% deposit",
-                  },
-                  max: {
-                    value: 60,
-                    message: "Maximum 60% deposit",
-                  },
-                }}
-              >
-                <Field.NumberInput
-                  name="pct"
-                  id="pct"
-                  lowerLimit={limits.lowerLimit}
-                  upperLimit={limits.upperLimit}
-                  isLoading={toggle}
-                  appendComponent={<PriceEdit />}
-                  validation={{
-                    required: {
-                      value: true,
-                      message: "Pecentage is required.",
-                    },
-                    min: {
-                      value: limits.lowerLimit,
-                      message: "Minimum 0% deposit",
-                    },
-                    max: {
-                      value: limits.upperLimit,
-                      message: "Maximum 60% deposit",
-                    },
-                  }}
-                  {...PERCENT_COMPONENT_PROPS}
-                />
-              </Field.Validator>
-            </FormTheme>
-          </div>
-          <Button.Text
-            submit
-            label="submit"
-            id="test-submit"
-            variant="gradient"
-          />
 
-          <Button.Text
-            submit
-            label="toggle"
-            id="test-submit"
-            variant="gradient"
-            onClick={onClick}
-          />
+          <div style={{ maxWidth: "400px" }}>
+            <Field.RadioSelect
+              name="gender"
+              id="gender"
+              label="Gender"
+              inline
+              wrap
+              variant="streamline-radio"
+              options={[
+                { name: "Male", value: "male" },
+                { name: "Female", value: "female" },
+              ]}
+            />
+          </div>
+          <FormTheme variant="streamline">
+            <div style={{ maxWidth: "400px" }}>
+              <OptionalHiddenField label="Price">
+                <Field.NumberInput
+                  name="price"
+                  id="price"
+                  {...PRICE_COMPONENT_PROPS}
+                />
+              </OptionalHiddenField>
+              <Field.Input
+                name="firstName"
+                id="firstName"
+                {...FIRST_NAME_COMPONENT_PROPS}
+              />
+              <Field.Select
+                name="title"
+                id="title"
+                {...TITLE_COMPONENT_PROPS}
+              />
+              <Field.Input name="test" id="test" icon="pound" />
+              <Field.DatePickerInput name="date" id="date" />
+            </div>
+          </FormTheme>
         </div>
       </div>
     </Form>
@@ -245,21 +231,3 @@ export default App;
 //   maxValue={50}
 // />
 // </div>
-
-// {/* <Field.NumberInput
-// name="price"
-// id="price"
-// {...PRICE_COMPONENT_PROPS}
-// />
-// <Field.Input
-// name="firstName"
-// id="firstName"
-// {...FIRST_NAME_COMPONENT_PROPS}
-// />
-// <Field.Select
-// name="title"
-// id="title"
-// {...TITLE_COMPONENT_PROPS}
-// />
-// <Field.Input name="test" id="test" icon="pound" />
-// <Field.DatePickerInput name="date" id="date" /> */}

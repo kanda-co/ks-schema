@@ -10,8 +10,9 @@ const Label: FunctionComponent<LabelProps> = function ({
   helperText,
   isLoading,
   autoWidth,
+  inlineHelperText = false,
 }) {
-  const labelProps = useLabel(label, helperText, autoWidth);
+  const labelProps = useLabel(label, helperText, autoWidth, inlineHelperText);
 
   if (!labelProps) {
     return <></>;
@@ -49,7 +50,6 @@ const Label: FunctionComponent<LabelProps> = function ({
           }
         />
       )}
-
       {stringHelper ? (
         <Text
           isLoading={isLoading}
