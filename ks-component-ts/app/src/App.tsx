@@ -245,21 +245,3 @@ export default App;
 //   maxValue={50}
 // />
 // </div>
-
-// {/* <Field.NumberInput
-// name="price"
-// id="price"
-// {...PRICE_COMPONENT_PROPS}
-// />
-// <Field.Input
-// name="firstName"
-// id="firstName"
-// {...FIRST_NAME_COMPONENT_PROPS}
-// />
-// <Field.Select
-// name="title"
-// id="title"
-// {...TITLE_COMPONENT_PROPS}
-// />
-// <Field.Input name="test" id="test" icon="pound" />
-// <Field.DatePickerInput name="date" id="date" /> */}

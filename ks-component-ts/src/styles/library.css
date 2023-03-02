@@ -941,6 +941,10 @@ input[type="number"]::-webkit-inner-spin-button,
   visibility: visible;
 }
 
+.\!visible {
+  visibility: visible !important;
+}
+
 .invisible {
   visibility: hidden;
 }
