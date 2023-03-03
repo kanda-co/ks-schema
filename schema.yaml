@@ -4764,7 +4764,6 @@ components:
         id:
           type: string
           title: rate or comapny id
-          readOnly: true
         finance_rates:
           type: array
           title: finance rates
