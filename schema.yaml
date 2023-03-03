@@ -3280,6 +3280,23 @@ components:
           type: string
           title: provider
           $ref: "#/components/schemas/FinanceProvider"
+        apr_type:
+          type: string
+          title: apr type
+          enum:
+            - "interest_free"
+            - "interest_bearing"
+            - "buy_now_pay_later"
+        apr:
+          type: integer
+          title: apr
+          minimum: 0
+          maximum: 2147483647
+        duration:
+          type: integer
+          title: duration
+          minimum: 0
+          maximum: 2147483647
         min_deposit_pct:
           type: integer
           title: min deposit percentage
