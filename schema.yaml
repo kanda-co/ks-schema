@@ -493,7 +493,7 @@ paths:
               $ref: "#/components/schemas/Cache"
       responses:
         200:
-          description: put me info
+          description: put cache info
           content:
             application/json:
               schema:
@@ -1170,6 +1170,36 @@ paths:
       responses:
         200:
           description: got existing job with new payment
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/job/{id}/reapply:
+    post:
+      operationId: reapplyJob
+      summary: >
+        customer to reapply existing job with second line options,
+        only allowed when job is applied and primary finance not approved
+      tags:
+        - Job
+      parameters:
+        - name: id
+          in: path
+          description: job id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing job with new secondary loan payment
           content:
             application/json:
               schema:
@@ -2208,6 +2238,143 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/rate:
+    get:
+      operationId: getRates
+      summary: kanda staff to get all rates
+      tags:
+        - Rate
+      responses:
+        200:
+          description: got all rates
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Rate"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    post:
+      operationId: postRate
+      summary: kanda staff to post new rate
+      tags:
+        - Rate
+      requestBody:
+        description: post new rate
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Rate"
+      responses:
+        200:
+          description: posted new rate
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Rate"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/rate/{id}:
+    get:
+      operationId: getRate
+      summary: kanda staff to get existing rate
+      tags:
+        - Rate
+      parameters:
+        - name: id
+          in: path
+          description: rate id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing rate
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Rate"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: putRate
+      summary: kanda staff to put existing rate
+      tags:
+        - Rate
+      parameters:
+        - name: id
+          in: path
+          description: rate id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: put existing rate
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Rate"
+      responses:
+        200:
+          description: put existing rate
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Rate"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      operationId: deleteRate
+      summary: kanda staff to delete existing rate
+      tags:
+        - Rate
+      parameters:
+        - name: id
+          in: path
+          description: rate id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: deleted existing rate
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Rate"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/webhook/{provider}:
     get:
       operationId: providerCheckWebhook
@@ -2325,6 +2492,7 @@ paths:
               - dbv3_user_company_setup_reminder
               - dbv3_user_verify_director_reminder
               - housekeeping_check_referral_expiry
+              - housekeeping_check_lender_rate
       responses:
         200:
           description: runner has been completed
@@ -3280,6 +3448,95 @@ components:
           type: string
           title: provider
           $ref: "#/components/schemas/FinanceProvider"
+        apr_type:
+          type: string
+          title: apr type
+          enum:
+            - "INTEREST_FREE"
+            - "INTEREST_BEARING"
+            - "BUYNOW_PAYLATER"
+        apr:
+          type: integer
+          title: apr in pence
+          minimum: 0
+          maximum: 2147483647
+        deferred_duration:
+          type: integer
+          title: deferred duration in months
+          minimum: 0
+          maximum: 2147483647
+        duration:
+          type: integer
+          title: duration in months
+          minimum: 0
+          maximum: 2147483647
+        min_deposit_pct:
+          type: integer
+          title: min deposit percentage in pence
+          minimum: 0
+          maximum: 2147483647
+        max_deposit_pct:
+          type: integer
+          title: max deposit percentage in pence
+          minimum: 0
+          maximum: 2147483647
+        min_deposit_value:
+          type: integer
+          title: min deposit value in pence
+          minimum: 0
+          maximum: 2147483647
+        max_deposit_value:
+          type: integer
+          title: max deposit value in pence
+          minimum: 0
+          maximum: 2147483647
+        min_job_value:
+          type: integer
+          title: min job value in pence
+          minimum: 0
+          maximum: 2147483647
+        max_job_value:
+          type: integer
+          title: max job value in pence
+          minimum: 0
+          maximum: 2147483647
+        work_types:
+          type: array
+          title: work types
+          items:
+            type: string
+            minLength: 1
+            enum:
+              - air_conditioning
+              - bathrooms
+              - battery_storage
+              - blinds_and_shutters
+              - carpentry
+              - cctv_and_security_installations
+              - conservatories
+              - decking
+              - driveways_and_patios
+              - electrician
+              - ev_charger_installer
+              - fencing
+              - fireplaces
+              - fitted_bedroom_furniture
+              - floor_layer
+              - garage_doors
+              - garden_rooms
+              - gas_engineer
+              - gates
+              - heat_pumps
+              - heating_systems
+              - kitchen_fitter
+              - landscaping
+              - plumbing
+              - resin_driveways
+              - roofing__excluding_flat_roofs
+              - security_systems
+              - tiler
+              - verandas
+              - windows_and_doors
 
     FinanceType:
       type: string
@@ -4476,6 +4733,7 @@ components:
 
     Cache:
       type: object
+      title: cache
       properties:
         id:
           type: string
@@ -4496,6 +4754,27 @@ components:
           readOnly: true
       additionalProperties:
         type: string
+
+    Rate:
+      type: object
+      title: rate details
+      required:
+        - finance_rates
+      properties:
+        id:
+          type: string
+          title: rate or comapny id
+          readOnly: true
+        finance_rates:
+          type: array
+          title: finance rates
+          items:
+            $ref: "#/components/schemas/FinanceRate"
+        metadata:
+          type: object
+          $ref: "#/components/schemas/Metadata"
+          title: metadata
+          readOnly: true
 
     Analytics:
       type: object
