@@ -1,16 +1,19 @@
 import React, { type FunctionComponent } from "react";
-import { CLASS_NAMES, LEFT_ALIGNED_CLASS_NAMES } from "./constants";
+import useRowFieldsClassNames from "./useRowFieldsClassNames";
 
 export interface RowFieldsProps {
   children: JSX.Element | JSX.Element[];
   leftAligned?: boolean;
+  verticallyCentered?: boolean;
 }
 
 const RowFields: FunctionComponent<RowFieldsProps> = function ({
   children,
   leftAligned = false,
+  verticallyCentered = false,
 }) {
-  const classNames = leftAligned ? LEFT_ALIGNED_CLASS_NAMES : CLASS_NAMES;
+  const classNames = useRowFieldsClassNames(leftAligned, verticallyCentered);
+
   const items =
     (children as JSX.Element[]).length > 1
       ? (children as JSX.Element[])
