@@ -3284,47 +3284,47 @@ components:
           type: string
           title: apr type
           enum:
-            - "interest_free"
-            - "interest_bearing"
-            - "buy_now_pay_later"
+            - "INTEREST_FREE"
+            - "INTEREST_BEARING"
+            - "BUYNOW_PAYLATER"
         apr:
           type: integer
-          title: apr
+          title: apr in pence
           minimum: 0
           maximum: 2147483647
         duration:
           type: integer
-          title: duration
+          title: duration in months
           minimum: 0
           maximum: 2147483647
         min_deposit_pct:
           type: integer
-          title: min deposit percentage
+          title: min deposit percentage in pence
           minimum: 0
           maximum: 2147483647
         max_deposit_pct:
           type: integer
-          title: max deposit percentage
+          title: max deposit percentage in pence
           minimum: 0
           maximum: 2147483647
         min_deposit_value:
           type: integer
-          title: min deposit value
+          title: min deposit value in pence
           minimum: 0
           maximum: 2147483647
         max_deposit_value:
           type: integer
-          title: max deposit value
+          title: max deposit value in pence
           minimum: 0
           maximum: 2147483647
         min_job_value:
           type: integer
-          title: min job value
+          title: min job value in pence
           minimum: 0
           maximum: 2147483647
         max_job_value:
           type: integer
-          title: max job value
+          title: max job value in pence
           minimum: 0
           maximum: 2147483647
         work_types:
