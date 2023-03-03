@@ -4,6 +4,6 @@ export const CLASS_NAMES = {
 };
 
 export const LEFT_ALIGNED_CLASS_NAMES = {
-  container: "flex flex-row",
+  container: "flex flex-row items-center",
   field: "flex mr-4 last:mr-0",
 };
