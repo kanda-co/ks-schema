@@ -2241,7 +2241,7 @@ paths:
   /api/rate:
     get:
       operationId: getRates
-      summary: get all rates
+      summary: kanda staff to get all rates
       tags:
         - Rate
       responses:
@@ -2262,7 +2262,7 @@ paths:
 
     post:
       operationId: postRate
-      summary: post new rate
+      summary: kanda staff to post new rate
       tags:
         - Rate
       requestBody:
@@ -2289,7 +2289,7 @@ paths:
   /api/rate/{id}:
     get:
       operationId: getRate
-      summary: get existing rate
+      summary: kanda staff to get existing rate
       tags:
         - Rate
       parameters:
@@ -2316,7 +2316,7 @@ paths:
 
     put:
       operationId: putRate
-      summary: put existing rate
+      summary: kanda staff to put existing rate
       tags:
         - Rate
       parameters:
@@ -2350,7 +2350,7 @@ paths:
 
     delete:
       operationId: deleteRate
-      summary: delete existing rate
+      summary: kanda staff to delete existing rate
       tags:
         - Rate
       parameters:
@@ -2492,7 +2492,7 @@ paths:
               - dbv3_user_company_setup_reminder
               - dbv3_user_verify_director_reminder
               - housekeeping_check_referral_expiry
-              - housekeeping_check_lender_product
+              - housekeeping_check_lender_rate
       responses:
         200:
           description: runner has been completed

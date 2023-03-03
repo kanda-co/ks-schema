@@ -2233,19 +2233,19 @@ type ServerInterface interface {
 	// company to mark existing payment as given status, only allowed when payment method is cash
 	// (POST /api/payment/{id}/{status})
 	MarkPayment(ctx echo.Context, id string, status MarkPaymentParamsStatus) error
-	// get all rates
+	// kanda staff to get all rates
 	// (GET /api/rate)
 	GetRates(ctx echo.Context) error
-	// post new rate
+	// kanda staff to post new rate
 	// (POST /api/rate)
 	PostRate(ctx echo.Context) error
-	// delete existing rate
+	// kanda staff to delete existing rate
 	// (DELETE /api/rate/{id})
 	DeleteRate(ctx echo.Context, id string) error
-	// get existing rate
+	// kanda staff to get existing rate
 	// (GET /api/rate/{id})
 	GetRate(ctx echo.Context, id string) error
-	// put existing rate
+	// kanda staff to put existing rate
 	// (PUT /api/rate/{id})
 	PutRate(ctx echo.Context, id string) error
 	// runner for task event
@@ -4006,18 +4006,18 @@ var swaggerSpec = []string{
 	"5yZGFzWUMCj2OlvSJyf6Dqx5L9JohivfjTYaIoDlGI/9HBe5dceZ4QK3HImGVzcmM81mde/2JKmCiJvH",
 	"aVLNm+giuJt2ppz+Zi7M13GVynMsLudAlb303faqb5/mXHNhMrg0KAhAYNoMQuFivisGVmk9ZfvfPuEs",
 	"scoJyDgya8aICiwuSYawS2pj5z4zrzvMwD1XA9ufQgf2oL3dzZaoLQdFT4rltqXk6W8BgRUZuse8xIrc",
-	"zSXmpXXEn3qDEQDZDK8vwqLMIR0mNnxxgSq3c9a8jARF1MK3aMa+mxNmCCJ7WREzC8roIquztP5mmnhB",
-	"sSs+eIiAk/6nF1ARWd7evWRui9y9lITXejnIKj+vJW0dtnNbztYVJLaWscvHDNbyDo+Cqo+pGRwH1YyJ",
-	"K4Sy2KFQMTbwWMZL83mM1qCWfbLSJmcKpmTche6LIaFekIKyDEbe8kqSS0JKTX0XE+4bFhqF5eXQ40f6",
-	"+yRYstXuq2TLE28dE2cLTYypM/HgDVWXWCWMK5JIwtRoZbphScZTGapIGVUU58maa+E6qUr3TZXxb5Uk",
-	"InEvMEmiqrLXNVQxafgS95xPElmFBILyEkHWRAicJ+R9SQGzgUo50R0kpeBZlaoDrmLBNd1iiVaEeO4v",
-	"s8qlaoCEG64mPkfubuu91hTXbD1ZrbzO45ecV169u7ns+CMecumRLUhnePmRHVS6lWlNePgy1Kp6S652",
-	"LfQPXI5kH5a7ORWnQGgvS7JDS7O7NHWQGCGJ0KadeJnqUMzgSep3/+lJ4mNk0btkzZU4upetaTSynMTC",
-	"P28SaF3K5rr8rcvZ1LWPXdZmuPYf4ciq4hid0bFVfQLEOYTKQw+v05KwTBNGPCTSVPiTgX1SDMwu67F0",
-	"ckVWW84vT39zQZLX0fvJua0BmXj+btqNmh9d6KV/O2+Th6sy6YK+4SkWWU6kFul5wehiuSCKXuLFcoHz",
-	"nFbFYgnEA4oJuOSuj76J1sBbJNUpJWa1/g5Ik6/pql4Xt/BupQbuOraLP9d0bms6tJrQhKSVoGoPq/Qt",
-	"wYIIeB7h0dsLjQ7zbp9Zw0rki0eLrVKlfHR6uq1W9yGi+n7K71eXi+tloMbJr3ig0qPT05ynON9yqR59",
-	"8+CbB4vri+v/FwAA//8XYWjkLGUBAA==",
+	"zSXmpXXEn3qDEQDZfF0l3G1GWAy6NYB5Dt9joMrtHD0vIzEStSwumrHv5sAZgsjeXQSedUxYF3edlfa3",
+	"2sTriyWAwSMGXPg/vXCLyGr3bi0zX/PuDSa89MtBvvp5rXDrZJ756rauL7GljV1cZrC0d3huVH1MzeDs",
+	"qD4dWgthMHaCVIwNvLvx0nweIz2oZV+/tHmegtkdd6GrZ+h+IEhBWQYjb3klySUhpSbGiwlXFwuNwvJy",
+	"6B0l/X0SLNlq91Wy5Ym3rIkzqybGapp48IaqS6wSxhVJJGFqtDLdsCTjqQxVpIwqivNkzbWcnlSl+6bK",
+	"+LdKEpG4x5wkUVXZ6xqqmIx+iXsZKImsQgLxfYkgayIEzhPyvqSA2UClnOgOEiDC6Ve64IJusUQrQjw3",
+	"mlnlZDVAwk1ZU56jdbfvXmtya/adrFZe5/HL0iuv3t1cmvwRD7k8yRakM7QByQ4q3cq0Jjx8i2pVvSWX",
+	"vRb6B25Vsg/L3ZyQUyC0tyzZoaXZmYk6SIyQRGjTTrx2dShm8Bj1u//0hPQxsuhdx+ZKHN172DQaWU5i",
+	"4Z83CbTua3Nd/tZFberaxy5uM1z7j3BkVXGMzujYqj4B4hxC5aGH12lJWKYJIx5aaSr8ycA+KQZml/VY",
+	"Orkiqy3nl6e/uWDL6+j95NzWgIw+fzftRs2YLoTTv5q3ycNVmXQ73/AUiywnUov0vGB0sVwQRS/xYrnA",
+	"eU6rYrEE4gGtBNxw10ffRGvgLZLq1BSzWn8HpMn7dFWvi1t4t1IDdx3bxZ9rOrc1HVpNaELSSlC1h1X6",
+	"lmBBBDyz8OjthUaHef/PrGEl8sWjxVapUj46Pd1Wq/ugRryf8vvV5eJ6Gahx8iseqPTo9DTnKc63XKpH",
+	"3zz45sHi+uL6/wUAAP//kOzex3RlAQA=",
 }
 
 // GetSwagger returns the content of the embedded swagger specification file
