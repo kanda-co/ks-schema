@@ -493,7 +493,7 @@ paths:
               $ref: "#/components/schemas/Cache"
       responses:
         200:
-          description: put me info
+          description: put cache info
           content:
             application/json:
               schema:
@@ -517,6 +517,71 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Cache"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/info/product:
+    get:
+      operationId: infoGetProduct
+      summary: get product info
+      tags:
+        - InfoProduct
+      responses:
+        200:
+          description: got product info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoProduct"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: infoPutProduct
+      summary: put product info
+      tags:
+        - InfoProduct
+      requestBody:
+        description: put product info
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InfoProduct"
+      responses:
+        200:
+          description: put product info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoProduct"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      operationId: infoDeleteProduct
+      summary: delete product info
+      tags:
+        - InfoProduct
+      responses:
+        200:
+          description: deleted product info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoProduct"
         default:
           description: unexpected error
           content:
@@ -1170,6 +1235,36 @@ paths:
       responses:
         200:
           description: got existing job with new payment
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/job/{id}/reapply:
+    post:
+      operationId: reapplyJob
+      summary: >
+        customer to reapply existing job with second line options,
+        only allowed when job is applied and primary finance not approved
+      tags:
+        - Job
+      parameters:
+        - name: id
+          in: path
+          description: job id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing job with new secondary loan payment
           content:
             application/json:
               schema:
@@ -2325,6 +2420,7 @@ paths:
               - dbv3_user_company_setup_reminder
               - dbv3_user_verify_director_reminder
               - housekeeping_check_referral_expiry
+              - housekeeping_check_lender_product
       responses:
         200:
           description: runner has been completed
@@ -4565,6 +4661,7 @@ components:
 
     Cache:
       type: object
+      title: cache
       properties:
         id:
           type: string
@@ -4585,6 +4682,27 @@ components:
           readOnly: true
       additionalProperties:
         type: string
+
+    InfoProduct:
+      type: object
+      title: product info
+      required:
+        - finance_rates
+      properties:
+        id:
+          type: string
+          title: product or comapny id
+          readOnly: true
+        finance_rates:
+          type: array
+          title: finance rates
+          items:
+            $ref: "#/components/schemas/FinanceRate"
+        metadata:
+          type: object
+          $ref: "#/components/schemas/Metadata"
+          title: metadata
+          readOnly: true
 
     Analytics:
       type: object
