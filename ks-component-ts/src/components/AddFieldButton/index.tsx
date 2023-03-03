@@ -11,7 +11,7 @@ const AddFieldButton: FunctionComponent<AddFieldButtonProps> = function ({
 }) {
   return (
     <div
-      className="mb-3 cursor-pointer text-neutral-500"
+      className="mb-3 text-sm cursor-pointer text-neutral-500"
       onClick={() => {
         onClick();
       }}
