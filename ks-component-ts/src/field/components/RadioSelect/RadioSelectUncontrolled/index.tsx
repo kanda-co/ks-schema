@@ -18,6 +18,7 @@ const RadioSelectUncontrolled: FunctionComponent<
           inline={inline}
           wrap={wrap}
           key={option.value}
+          disabled={option?.disabled || false}
           {...restProps}
         />
       ))}

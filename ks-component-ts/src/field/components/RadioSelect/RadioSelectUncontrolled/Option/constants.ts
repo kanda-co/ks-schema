@@ -1,4 +1,32 @@
-export const VARIANTS = {
+import { string } from "io-ts";
+import { StringIndexedObject } from "~/types";
+
+interface VariantProps {
+  span: string;
+  skeleton?: string;
+  skeletonWrapper: string;
+  handleContainer?: string;
+  selected: {
+    option: string;
+    container: string;
+  };
+  notSelected: {
+    option: string;
+    container: string;
+  };
+  disabled?: {
+    option: string;
+    container: string;
+  };
+  multiline: {
+    option: string;
+  };
+  inline: {
+    option: string;
+  };
+}
+
+export const VARIANTS: StringIndexedObject<VariantProps> = {
   default: {
     span: "ml-3 select-none w-full text-style-f my-auto",
     skeletonWrapper: "mx-2 w-full",
@@ -168,7 +196,8 @@ export const VARIANTS = {
   },
   streamline: {
     span: "select-none w-full text-14-22-em whitespace-nowrap my-auto text-center",
-    skeletonWrapper: "mx-2 w-full",
+    skeleton: "w-full",
+    skeletonWrapper: "w-10 -mt-0.5",
     handleContainer: "hidden",
     selected: {
       option: "border border-turquoise-300 cursor-pointer bg-turquoise-100",
@@ -180,6 +209,11 @@ export const VARIANTS = {
       container:
         "rounded bg-neutral-000 flex flex-full w-full px-4 py-2 text-neutral-600",
     },
+    disabled: {
+      option: "border border-neutral-300 cursor-not-allowed",
+      container:
+        "rounded bg-neutral-200 flex flex-full w-full px-4 py-2 text-neutral-600",
+    },
     multiline: {
       option: "",
     },
@@ -189,28 +223,29 @@ export const VARIANTS = {
   },
   "streamline-radio": {
     span: "select-none w-full text-13-14 whitespace-nowrap my-auto text-center",
-    skeletonWrapper: "mx-2 w-full",
+    skeleton: "w-full",
+    skeletonWrapper: "w-10 -mt-0.5",
     handleContainer: "my-auto mr-1.5",
     selected: {
       option: "border border-turquoise-300 cursor-pointer bg-turquoise-100",
       container:
-        "rounded bg-turquoise-100 flex flex-full w-full px-2.5 py-2 text-neutral-900",
+        "rounded bg-turquoise-100 flex flex-full w-full px-2.5 py-1.5 text-neutral-900",
     },
     notSelected: {
       option: "border border-neutral-300 cursor-pointer",
       container:
-        "rounded bg-neutral-000 flex flex-full w-full px-2.5 py-2 text-neutral-900",
+        "rounded bg-neutral-000 flex flex-full w-full px-2.5 py-1.5 text-neutral-900",
     },
     multiline: {
       option: "",
     },
     inline: {
-      option: "rounded",
+      option: "rounded sibling:ml-2",
     },
   },
 };
 
-export const CLASS_NAMES_MULTIPLE = {
+export const CLASS_NAMES_MULTIPLE: VariantProps = {
   span: "flex text-left flex-1 select-none text-style-g-em my-auto mr-4",
   skeletonWrapper: "flex-row w-full",
   selected: {
