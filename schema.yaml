@@ -3545,13 +3545,6 @@ components:
         - "primary"
         - "secondary"
 
-    FinanceType:
-      type: string
-      title: finance type
-      enum:
-        - "primary"
-        - "secondary"
-
     Customer:
       type: object
       required:
