@@ -524,71 +524,6 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-  /api/info/product:
-    get:
-      operationId: infoGetProduct
-      summary: get product info
-      tags:
-        - InfoProduct
-      responses:
-        200:
-          description: got product info
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/InfoProduct"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-    put:
-      operationId: infoPutProduct
-      summary: put product info
-      tags:
-        - InfoProduct
-      requestBody:
-        description: put product info
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/InfoProduct"
-      responses:
-        200:
-          description: put product info
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/InfoProduct"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-    delete:
-      operationId: infoDeleteProduct
-      summary: delete product info
-      tags:
-        - InfoProduct
-      responses:
-        200:
-          description: deleted product info
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/InfoProduct"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
   /api/company:
     get:
       operationId: getCompanies
@@ -2296,6 +2231,143 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Subscription"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/rate:
+    get:
+      operationId: getRates
+      summary: get all rates
+      tags:
+        - Rate
+      responses:
+        200:
+          description: got all rates
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Rate"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    post:
+      operationId: postRate
+      summary: post new rate
+      tags:
+        - Rate
+      requestBody:
+        description: post new rate
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Rate"
+      responses:
+        200:
+          description: posted new rate
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Rate"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/rate/{id}:
+    get:
+      operationId: getRate
+      summary: get existing rate
+      tags:
+        - Rate
+      parameters:
+        - name: id
+          in: path
+          description: rate id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing rate
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Rate"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: putRate
+      summary: put existing rate
+      tags:
+        - Rate
+      parameters:
+        - name: id
+          in: path
+          description: rate id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: put existing rate
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Rate"
+      responses:
+        200:
+          description: put existing rate
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Rate"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      operationId: deleteRate
+      summary: delete existing rate
+      tags:
+        - Rate
+      parameters:
+        - name: id
+          in: path
+          description: rate id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: deleted existing rate
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Rate"
         default:
           description: unexpected error
           content:
@@ -4683,15 +4755,15 @@ components:
       additionalProperties:
         type: string
 
-    InfoProduct:
+    Rate:
       type: object
-      title: product info
+      title: rate details
       required:
         - finance_rates
       properties:
         id:
           type: string
-          title: product or comapny id
+          title: rate or comapny id
           readOnly: true
         finance_rates:
           type: array
