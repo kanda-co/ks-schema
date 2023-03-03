@@ -3292,6 +3292,11 @@ components:
           title: apr in pence
           minimum: 0
           maximum: 2147483647
+        deferred_duration:
+          type: integer
+          title: deferred duration in months
+          minimum: 0
+          maximum: 2147483647
         duration:
           type: integer
           title: duration in months
