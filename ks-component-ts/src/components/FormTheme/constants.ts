@@ -280,8 +280,8 @@ const STREAMLINE_THEME = {
   wrapperClasses: {
     baseContainer: "flex flex-col mb-5 text-left",
     error: "mt-2 text-12-18 text-red-200",
-    warning: "mt-2 text-12-18 text-neutral-600",
-    label: "text-12-18-em text-neutral-600",
+    warning: "mt-2 text-12-18 text-neutral-700",
+    label: "text-12-18-em text-neutral-700",
     helperText: "whitespace-nowrap text-12-18 text-neutral-500",
   },
 };
