@@ -3448,6 +3448,11 @@ components:
           title: charge
           minimum: 0
           maximum: 2147483647
+        min_charge:
+          type: integer
+          title: minimum charge
+          minimum: 0
+          maximum: 2147483647
         enabled:
           type: boolean
           title: enabled?
