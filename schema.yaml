@@ -3992,9 +3992,9 @@ components:
         - artificial_grass
         - bathrooms_supply_and_fitted
         - bathrooms_supply_only
-        - boilers
+        - boiler_swap
         - cctv
-        - central_heating
+        - central_heating_system
         - conservatory
         - conservatory_roof
         - decking
@@ -4002,7 +4002,7 @@ components:
         - doors
         - driveways
         - electrical_rewiring
-        - ev_chargers
+        - ev_charger
         - fencing
         - fireplaces
         - flooring_excluding_carpets
@@ -4022,7 +4022,7 @@ components:
         - resin_driveways
         - roofing_excl_flat_roofs
         - roofline
-        - roughcast_wallcoating
+        - rendering
         - security_lighting
         - staircases
         - tiling
