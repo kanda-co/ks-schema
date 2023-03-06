@@ -3051,12 +3051,15 @@ components:
           type: string
           enum:
             - air_conditioning
+            - artificial_grass_specialists
             - bathrooms
             - battery_storage
             - blinds_and_shutters
             - carpentry
             - cctv_and_security_installations
+            - cladding_sofits_and_guttering
             - conservatories
+            - curtains
             - decking
             - driveways_and_patios
             - electrician
@@ -3071,12 +3074,21 @@ components:
             - gates
             - heat_pumps
             - heating_systems
+            - home_insulation_excl_spray_foam
+            - hot_tub_specialist
             - kitchen_fitter
+            - kitchen_supplier
             - landscaping
+            - loft_boarding
+            - painting_and_decorating
+            - plasterer
             - plumbing
+            - rendering
+            - resin_drive_specialist
             - resin_driveways
             - roofing__excluding_flat_roofs
             - security_systems
+            - stair_case_specialist
             - tiler
             - verandas
             - windows_and_doors
