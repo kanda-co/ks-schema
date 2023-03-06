@@ -3051,12 +3051,15 @@ components:
           type: string
           enum:
             - air_conditioning
+            - artificial_grass_specialists
             - bathrooms
             - battery_storage
             - blinds_and_shutters
             - carpentry
             - cctv_and_security_installations
+            - cladding_sofits_and_guttering
             - conservatories
+            - curtains
             - decking
             - driveways_and_patios
             - electrician
@@ -3071,12 +3074,21 @@ components:
             - gates
             - heat_pumps
             - heating_systems
+            - home_insulation_excl_spray_foam
+            - hot_tub_specialist
             - kitchen_fitter
+            - kitchen_supplier
             - landscaping
+            - loft_boarding
+            - painting_and_decorating
+            - plasterer
             - plumbing
+            - rendering
+            - resin_drive_specialist
             - resin_driveways
             - roofing__excluding_flat_roofs
             - security_systems
+            - stair_case_specialist
             - tiler
             - verandas
             - windows_and_doors
@@ -3436,6 +3448,11 @@ components:
           title: charge
           minimum: 0
           maximum: 2147483647
+        min_charge:
+          type: integer
+          title: minimum charge
+          minimum: 0
+          maximum: 2147483647
         enabled:
           type: boolean
           title: enabled?
@@ -3702,6 +3719,9 @@ components:
         finance_status:
           title: finance status
           $ref: "#/components/schemas/FinanceStatus"
+        work_type:
+          title: work type
+          $ref: "#/components/schemas/WorkType"
         checkout_options:
           type: array
           title: checkout options
@@ -3962,6 +3982,56 @@ components:
         - finance_cancelled
       default: not_applied
       readOnly: true
+    
+    WorkType:
+      type: string
+      title: work type
+      enum:
+        - air_conditioning
+        - alarm_systems
+        - artificial_grass
+        - bathrooms_supply_and_fitted
+        - bathrooms_supply_only
+        - boilers
+        - cctv
+        - central_heating
+        - conservatory
+        - conservatory_roof
+        - decking
+        - door_canopy
+        - doors
+        - driveways
+        - electrical_rewiring
+        - ev_chargers
+        - fencing
+        - fireplaces
+        - flooring_excluding_carpets
+        - garage_doors
+        - garden_buildings
+        - gates
+        - granite_worktops
+        - home_study
+        - hot_tubs_and_spas
+        - kitchens_fitted
+        - kitchens_supply_only
+        - landscaping
+        - loft_boarding
+        - painting_and_decorating
+        - patios
+        - plastering
+        - resin_driveways
+        - roofing_excl_flat_roofs
+        - roofline
+        - roughcast_wallcoating
+        - security_lighting
+        - staircases
+        - tiling
+        - underfloor_heating
+        - verandas
+        - wall_insulation_and_cladding
+        - windows
+        - windows_and_doors
+        - other
 
     CheckoutOption:
       type: string
