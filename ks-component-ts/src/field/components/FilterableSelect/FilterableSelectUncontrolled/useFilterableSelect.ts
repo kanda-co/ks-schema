@@ -8,6 +8,7 @@ import {
   MutableRefObject,
   useMemo,
 } from "react";
+import useBoundValue from "~/hooks/useBoundValue";
 import { SelectOption } from "../../Select/types";
 import { SEARCH_OPTIONS } from "./constants";
 
@@ -16,6 +17,7 @@ export interface FilterableSelectHook {
   value: string;
   isFocused: boolean;
   isHoveringOptions: boolean;
+  selectedIndex: number;
   searchWords: string[];
   onSelectOption: (value: string) => void;
   onSearchInputFocus: () => void;
@@ -37,6 +39,13 @@ export default function useFilterableSelect(
 
   const { hits, setQuery } = useFuse(initialOptions, SEARCH_OPTIONS, "");
 
+  const [
+    selectedIndex,
+    setSelectedIndex,
+    incrementSelectedIndex,
+    decrementSelectedIndex,
+  ] = useBoundValue(0, hits.length - 1);
+
   const searchWords = useMemo(() => value.split(" "), [value]);
 
   const onSelectOption = useCallback(
@@ -45,6 +54,7 @@ export default function useFilterableSelect(
       setQuery(value);
       setIsHoveringOptions(false);
       inputRef?.current?.blur();
+      setSelectedIndex(0);
     },
     [setValue, setQuery]
   );
@@ -70,12 +80,29 @@ export default function useFilterableSelect(
 
   const onSearchInputKeyDown = useCallback(
     (e: KeyboardEvent<HTMLInputElement>) => {
-      // Check that the user pressed the enter key
-      if (e.key === "Enter") {
-        onSelectOption(hits[0].item.name);
+      switch (e.key) {
+        case "ArrowDown":
+          incrementSelectedIndex();
+          break;
+        case "Tab":
+          e.preventDefault();
+          if (e.shiftKey) {
+            decrementSelectedIndex();
+          } else {
+            incrementSelectedIndex();
+          }
+          break;
+        case "ArrowUp":
+          decrementSelectedIndex();
+          break;
+        case "Enter":
+          onSelectOption(hits[selectedIndex].item.name);
+          break;
+        default:
+          break;
       }
     },
-    [setValue, hits]
+    [setValue, hits, selectedIndex]
   );
 
   const onSearchInputChange = useCallback(
@@ -99,6 +126,7 @@ export default function useFilterableSelect(
     value,
     isFocused,
     isHoveringOptions,
+    selectedIndex,
     searchWords,
     onSelectOption,
     onSearchInputFocus,
