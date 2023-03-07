@@ -41,9 +41,11 @@ const FilterableSelectUncontrolled: FunctionComponent<
         onKeyDown={onSearchInputKeyDown as (...args: any[]) => any}
         onFocus={onSearchInputFocus}
         onBlur={onSearchInputBlur}
-        error={options.length === 0 ? "Enter a valid value" : ""}
+        error={isFocused && options.length === 0 ? "Enter a valid value" : ""}
       />
-      {options.length === 0 && <Error error="No matching results" />}
+      {isFocused && options.length === 0 && (
+        <Error error="No matching results" />
+      )}
       {isFocused && options.length > 0 && (
         <div
           className={CLASS_NAMES.options}
