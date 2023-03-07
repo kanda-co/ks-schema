@@ -95,11 +95,13 @@ function App() {
         <div className="px-8 py-4">
           <div style={{ maxWidth: "400px" }}>
             <Label label="Work Type" />
-            <FilterableSelect
+            <Field.FilterableSelect
               name="options"
               placeholder="Enter a value"
               options={options}
             />
+            <Field.Input name="pct" />
+            <Field.NumberInput name="test" />
           </div>
         </div>
       </div>

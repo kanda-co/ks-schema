@@ -1,9 +1,9 @@
-import { useCallback, useState } from "react";
+import { Dispatch, SetStateAction, useCallback, useState } from "react";
 
 export type BoundValueHook = [
   number,
   // Set value
-  (amount?: number) => void,
+  Dispatch<SetStateAction<number>>,
   // Increment
   (amount?: number) => void,
   // Decrement

@@ -32,7 +32,7 @@ const FilterableSelectUncontrolled: FunctionComponent<
   } = useFilterableSelect(initialOptions);
 
   return (
-    <div onMouseLeave={onOptionsMouseLeave}>
+    <div className={CLASS_NAMES.wrapper} onMouseLeave={onOptionsMouseLeave}>
       <InputUncontrolled
         forwardRef={inputRef}
         name={name}
