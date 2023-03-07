@@ -3982,7 +3982,7 @@ components:
         - finance_cancelled
       default: not_applied
       readOnly: true
-    
+
     WorkType:
       type: string
       title: work type
@@ -4001,7 +4001,7 @@ components:
         - door_canopy
         - doors
         - driveways
-        - electrical_rewiring
+        - electrical_installation
         - ev_charger
         - fencing
         - fireplaces
