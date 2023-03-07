@@ -12,22 +12,37 @@ export interface FilterableSelectUncontrolledProps {
 const FilterableSelectUncontrolled: FunctionComponent<
   DefaultFormFieldProps<FilterableSelectUncontrolledProps>
 > = function ({ name, options: initialOptions }) {
-  const { value, onSearchInputChange, options } =
-    useFilterableSelect(initialOptions);
+  const {
+    inputRef,
+    value,
+    isFocused,
+    onSelectOption,
+    onSearchInputFocus,
+    onSearchInputBlur,
+    onSearchInputKeyDown,
+    onSearchInputChange,
+    options,
+  } = useFilterableSelect(initialOptions);
 
   return (
     <div>
       <InputUncontrolled
+        forwardRef={inputRef}
         name={name}
         value={value}
         onChange={onSearchInputChange as (...args: any[]) => any}
+        onKeyDown={onSearchInputKeyDown as (...args: any[]) => any}
+        onFocus={onSearchInputFocus}
+        onBlur={onSearchInputBlur}
       />
-      {options.map((option) => (
-        <FilterableSelectOption
-          key={`filterable-select-${option.name}`}
-          {...option}
-        />
-      ))}
+      {isFocused &&
+        options.map((option) => (
+          <FilterableSelectOption
+            key={`filterable-select-${option.name}`}
+            onSelect={onSelectOption}
+            {...option}
+          />
+        ))}
     </div>
   );
 };

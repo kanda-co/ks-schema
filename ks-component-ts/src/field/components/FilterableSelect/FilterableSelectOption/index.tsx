@@ -1,11 +1,24 @@
-import React, { type FunctionComponent } from "react";
+import React, { type FunctionComponent, type MouseEvent } from "react";
 import { SelectOption } from "../../Select/types";
 
-export type FilterableSelectOptionProps = SelectOption;
+export interface FilterableSelectOptionProps extends SelectOption {
+  onSelect: (name: string) => void;
+}
 
 const FilterableSelectOption: FunctionComponent<FilterableSelectOptionProps> =
-  function ({ name, value }) {
-    return <div>{name}</div>;
+  function ({ name, onSelect }) {
+    return (
+      <div
+        className="cursor-pointer"
+        onClick={(e: MouseEvent) => {
+          e.stopPropagation();
+          e.preventDefault();
+          onSelect(name);
+        }}
+      >
+        {name}
+      </div>
+    );
   };
 
 export default FilterableSelectOption;
