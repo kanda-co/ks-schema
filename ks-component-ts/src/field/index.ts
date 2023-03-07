@@ -30,6 +30,9 @@ import BasicNumberInput, {
   type BasicNumberInputProps,
 } from "~/field/components/BasicNumberInput";
 import Select, { type SelectProps } from "~/field/components/Select";
+import FilterableSelect, {
+  type FilterableSelectProps,
+} from "~/field/components/FilterableSelect";
 import RadioSelect, {
   type RadioSelectProps,
 } from "~/field/components/RadioSelect";
@@ -98,6 +101,7 @@ const Field = {
   QuantityInput,
   RadioSelect,
   Select,
+  FilterableSelect,
   SortCodeInput,
   TableColumnOptionInput,
   TextAreaInput,
@@ -127,6 +131,7 @@ export interface FieldProps {
   Postcode: PostcodeProps;
   RadioSelect: RadioSelectProps;
   Select: SelectProps;
+  FilterableSelect: FilterableSelectProps;
   TableColumnOptionInput: TableColumnOptionInputProps;
   TextAreaInput: TextAreaProps;
   SortCodeInput: SortCodeInputProps;
