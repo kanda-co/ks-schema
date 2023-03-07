@@ -13,7 +13,7 @@ export interface FilterableSelectUncontrolledProps {
 
 const FilterableSelectUncontrolled: FunctionComponent<
   DefaultFormFieldProps<FilterableSelectUncontrolledProps>
-> = function ({ name, options: initialOptions }) {
+> = function ({ name, placeholder, options: initialOptions }) {
   const {
     inputRef,
     value,
@@ -30,11 +30,12 @@ const FilterableSelectUncontrolled: FunctionComponent<
   } = useFilterableSelect(initialOptions);
 
   return (
-    <div>
+    <div onMouseLeave={onOptionsMouseLeave}>
       <InputUncontrolled
         forwardRef={inputRef}
         name={name}
         value={value}
+        placeholder={placeholder}
         onChange={onSearchInputChange as (...args: any[]) => any}
         onKeyDown={onSearchInputKeyDown as (...args: any[]) => any}
         onFocus={onSearchInputFocus}

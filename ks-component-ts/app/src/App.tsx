@@ -6,6 +6,7 @@ import {
   Field,
   Form,
   OptionalHiddenField,
+  Label,
 } from "@kanda-libs/ks-component-ts";
 import { useWatch } from "react-hook-form";
 import { StringIndexedObject } from "~/types";
@@ -20,6 +21,8 @@ if (!(Window.prototype as StringIndexedObject).setImmediate) {
   };
 }
 
+const capitalise = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
+
 function App() {
   const form = useForm({
     defaultValues: {
@@ -30,12 +33,54 @@ function App() {
   const { watch, setValue } = form;
   const pct = watch("pct");
   const options = [
-    "kitchens_and_bathrooms",
-    "gas_engineering",
-    "web_development",
+    "air_conditioning",
+    "alarm_systems",
+    "artificial_grass",
+    "bathrooms_supply_and_fitted",
+    "bathrooms_supply_only",
+    "boilers",
+    "cctv",
+    "central_heating",
+    "conservatory",
+    "conservatory_roof",
+    "decking",
+    "door_canopy",
+    "doors",
+    "driveways",
+    "electrical_rewiring",
+    "ev_chargers",
+    "fencing",
+    "fireplaces",
+    "flooring_excuding_carpets",
+    "garage_doors",
+    "garden_buildings",
+    "gates",
+    "granite_worktops",
+    "home_study",
+    "hot_tubs_and_spas",
+    "kitchens_fitted",
+    "kitchens_supply_only",
+    "landscaping",
+    "loft_boarding",
+    "painting_and_decorating",
+    "patios",
+    "plastering",
+    "resin_driveways",
+    "roofing_excl_flat_roofs",
+    "roofline",
+    "roughcast_wallcoating",
+    "security_lighting",
+    "staircases",
+    "tiling",
+    "underfloor_heating",
+    "verandas",
+    "wall_insulation_and_cladding",
+    "windows",
+    "windows_and_doors",
+    "other",
   ].map((option) => ({
     value: option,
-    name: option.replace(/_/g, " ").replace("and", "&"),
+    name: capitalise(option.replace(/_/g, " ").replace("and", "&")),
   }));
 
   return (
@@ -49,7 +94,12 @@ function App() {
       <div className="App">
         <div className="px-8 py-4">
           <div style={{ maxWidth: "400px" }}>
-            <FilterableSelect name="options" options={options} />
+            <Label label="Work Type" />
+            <FilterableSelect
+              name="options"
+              placeholder="Enter a value"
+              options={options}
+            />
           </div>
         </div>
       </div>

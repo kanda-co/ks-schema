@@ -39,6 +39,7 @@ export default function useFilterableSelect(
     (value: string) => {
       setValue(value);
       setQuery(value);
+      setIsHoveringOptions(false);
       inputRef?.current?.blur();
     },
     [setValue, setQuery]
@@ -60,6 +61,7 @@ export default function useFilterableSelect(
     setTimeout(() => {
       setIsFocused(false);
     }, 100);
+    setIsHoveringOptions(false);
   }, [setIsFocused]);
 
   const onSearchInputKeyDown = useCallback(

@@ -6,5 +6,5 @@ export const SEARCH_OPTIONS = {
 
 export const CLASS_NAMES = {
   options:
-    "rounded-md overflow-hidden border border-solid border-neutral-300 mt-2",
+    "rounded-md overflow-hidden border border-solid border-neutral-300 mt-2 max-h-64 overflow-y-scroll",
 };
