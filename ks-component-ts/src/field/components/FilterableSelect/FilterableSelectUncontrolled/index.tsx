@@ -19,6 +19,7 @@ const FilterableSelectUncontrolled: FunctionComponent<
     value,
     isFocused,
     isHoveringOptions,
+    searchWords,
     onSelectOption,
     onSearchInputFocus,
     onSearchInputBlur,
@@ -54,6 +55,7 @@ const FilterableSelectUncontrolled: FunctionComponent<
               key={`filterable-select-${option.name}`}
               onSelect={onSelectOption}
               isFocused={key === 0 && !isHoveringOptions}
+              searchWords={searchWords}
               {...option}
             />
           ))}

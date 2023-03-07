@@ -1,16 +1,17 @@
 import React, { type FunctionComponent, type MouseEvent } from "react";
-import { Text } from "@kanda-libs/ks-design-library";
 import { SelectOption } from "../../Select/types";
 import { CLASS_NAMES } from "./constants";
 import clsx from "clsx";
+import Highlighter from "react-highlight-words";
 
 export interface FilterableSelectOptionProps extends SelectOption {
+  searchWords: string[];
   isFocused: boolean;
   onSelect: (name: string) => void;
 }
 
 const FilterableSelectOption: FunctionComponent<FilterableSelectOptionProps> =
-  function ({ name, isFocused, onSelect }) {
+  function ({ name, searchWords, isFocused, onSelect }) {
     return (
       <div
         className={clsx(
@@ -23,7 +24,12 @@ const FilterableSelectOption: FunctionComponent<FilterableSelectOptionProps> =
           onSelect(name);
         }}
       >
-        <Text text={name} className={CLASS_NAMES.text} />
+        <Highlighter
+          autoEscape
+          className={CLASS_NAMES.text}
+          searchWords={searchWords}
+          textToHighlight={name}
+        />
       </div>
     );
   };

@@ -6,6 +6,7 @@ import {
   useState,
   useRef,
   MutableRefObject,
+  useMemo,
 } from "react";
 import { SelectOption } from "../../Select/types";
 import { SEARCH_OPTIONS } from "./constants";
@@ -15,6 +16,7 @@ export interface FilterableSelectHook {
   value: string;
   isFocused: boolean;
   isHoveringOptions: boolean;
+  searchWords: string[];
   onSelectOption: (value: string) => void;
   onSearchInputFocus: () => void;
   onSearchInputBlur: () => void;
@@ -34,6 +36,8 @@ export default function useFilterableSelect(
   const [isHoveringOptions, setIsHoveringOptions] = useState(false);
 
   const { hits, setQuery } = useFuse(initialOptions, SEARCH_OPTIONS, "");
+
+  const searchWords = useMemo(() => value.split(" "), [value]);
 
   const onSelectOption = useCallback(
     (value: string) => {
@@ -95,6 +99,7 @@ export default function useFilterableSelect(
     value,
     isFocused,
     isHoveringOptions,
+    searchWords,
     onSelectOption,
     onSearchInputFocus,
     onSearchInputBlur,
