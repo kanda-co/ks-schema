@@ -1619,6 +1619,9 @@ type OverrideJobJSONBody = JobOverride
 // PayJobJSONBody defines parameters for PayJob.
 type PayJobJSONBody = PaymentOption
 
+// ReapplyJobJSONBody defines parameters for ReapplyJob.
+type ReapplyJobJSONBody = CustomerOptions
+
 // SignJobSateNoteJSONBody defines parameters for SignJobSateNote.
 type SignJobSateNoteJSONBody = SatNote
 
@@ -1741,6 +1744,9 @@ type OverrideJobJSONRequestBody = OverrideJobJSONBody
 
 // PayJobJSONRequestBody defines body for PayJob for application/json ContentType.
 type PayJobJSONRequestBody = PayJobJSONBody
+
+// ReapplyJobJSONRequestBody defines body for ReapplyJob for application/json ContentType.
+type ReapplyJobJSONRequestBody = ReapplyJobJSONBody
 
 // SignJobSateNoteJSONRequestBody defines body for SignJobSateNote for application/json ContentType.
 type SignJobSateNoteJSONRequestBody = SignJobSateNoteJSONBody
@@ -4034,27 +4040,28 @@ var swaggerSpec = []string{
 	"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",
-	"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",
+	"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",
+	"aQEA",
 }
 
 // GetSwagger returns the content of the embedded swagger specification file

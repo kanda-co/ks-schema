@@ -1197,6 +1197,14 @@ paths:
           schema:
             type: string
             minLength: 1
+      requestBody:
+        description: >
+          job reapply options selected by customer,
+          previous credit application details will be copied for submission
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CustomerOptions"
       responses:
         200:
           description: got existing job with new secondary loan payment
