@@ -3,3 +3,8 @@ export const SEARCH_OPTIONS = {
   includeMatches: true,
   matchAllOnEmptyQuery: true,
 };
+
+export const CLASS_NAMES = {
+  options:
+    "rounded-md overflow-hidden border border-solid border-neutral-300 mt-2",
+};

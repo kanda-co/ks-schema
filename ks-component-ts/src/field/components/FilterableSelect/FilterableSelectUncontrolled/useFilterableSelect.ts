@@ -14,11 +14,14 @@ export interface FilterableSelectHook {
   inputRef: MutableRefObject<HTMLInputElement | undefined>;
   value: string;
   isFocused: boolean;
+  isHoveringOptions: boolean;
   onSelectOption: (value: string) => void;
   onSearchInputFocus: () => void;
   onSearchInputBlur: () => void;
   onSearchInputKeyDown: (e: KeyboardEvent<HTMLInputElement>) => void;
   onSearchInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onOptionsMouseEnter: () => void;
+  onOptionsMouseLeave: () => void;
   options: SelectOption[];
 }
 
@@ -28,6 +31,7 @@ export default function useFilterableSelect(
   const inputRef = useRef<HTMLInputElement>();
   const [value, setValue] = useState("");
   const [isFocused, setIsFocused] = useState(false);
+  const [isHoveringOptions, setIsHoveringOptions] = useState(false);
 
   const { hits, setQuery } = useFuse(initialOptions, SEARCH_OPTIONS, "");
 
@@ -76,15 +80,26 @@ export default function useFilterableSelect(
     [setValue]
   );
 
+  const onOptionsMouseEnter = useCallback(() => {
+    setIsHoveringOptions(true);
+  }, [setIsHoveringOptions]);
+
+  const onOptionsMouseLeave = useCallback(() => {
+    setIsHoveringOptions(false);
+  }, [setIsHoveringOptions]);
+
   return {
     inputRef,
     value,
     isFocused,
+    isHoveringOptions,
     onSelectOption,
     onSearchInputFocus,
     onSearchInputBlur,
     onSearchInputKeyDown,
     onSearchInputChange,
+    onOptionsMouseEnter,
+    onOptionsMouseLeave,
     options: hits.map(({ item }) => item),
   };
 }

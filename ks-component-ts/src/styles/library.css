@@ -791,12 +791,6 @@ input[type="number"]::-webkit-inner-spin-button,
   line-height: 22px;
 }
 
-.text-16-20-em {
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 20px;
-}
-
 .text-16-24 {
   font-weight: 400;
   font-size: 16px;
@@ -2069,16 +2063,16 @@ input[type="number"]::-webkit-inner-spin-button,
   border-radius: 1rem;
 }
 
+.rounded-md {
+  border-radius: 0.375rem;
+}
+
 .\!rounded {
   border-radius: 0.25rem !important;
 }
 
 .rounded-xl {
   border-radius: 0.75rem;
-}
-
-.rounded-md {
-  border-radius: 0.375rem;
 }
 
 .rounded-b-xl {
@@ -2279,6 +2273,11 @@ input[type="number"]::-webkit-inner-spin-button,
   background-color: rgb(156 173 196 / var(--tw-bg-opacity));
 }
 
+.bg-blue-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 245 255 / var(--tw-bg-opacity));
+}
+
 .bg-neutral-900 {
   --tw-bg-opacity: 1;
   background-color: rgb(13 27 46 / var(--tw-bg-opacity));
@@ -2292,11 +2291,6 @@ input[type="number"]::-webkit-inner-spin-button,
 .bg-lavender-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(240 240 255 / var(--tw-bg-opacity));
-}
-
-.bg-blue-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(229 245 255 / var(--tw-bg-opacity));
 }
 
 .bg-red-200 {
@@ -4055,6 +4049,11 @@ Modified version of toast CSS to match designs
 .hover\:bg-neutral-50:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(251 252 254 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-blue-100:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 245 255 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-turquoise-400:hover {
