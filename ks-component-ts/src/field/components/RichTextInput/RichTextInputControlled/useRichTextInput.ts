@@ -134,9 +134,12 @@ export default function useRichTextEditor(
       });
 
       if (placeholder) {
-        CLASS_NAMES.focusedPlaceHolder.split(" ").forEach((className) => {
-          placeholder?.classList?.[focusClassMethod](className);
-        });
+        CLASS_NAMES.focusedPlaceHolder
+          .split(" ")
+          .filter(Boolean)
+          .forEach((className) => {
+            placeholder?.classList?.[focusClassMethod](className);
+          });
       }
     }
   }, [editorRef, editorState, inputClass, focused, inputHasFocusedBorder]);
