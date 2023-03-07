@@ -18,7 +18,7 @@ const FilterableSelectOption: FunctionComponent<FilterableSelectOptionProps> =
           CLASS_NAMES.wrapper,
           isFocused ? CLASS_NAMES.wrapperFocused : ""
         )}
-        onClick={(e: MouseEvent) => {
+        onMouseDown={(e: MouseEvent) => {
           e.stopPropagation();
           e.preventDefault();
           onSelect(name);

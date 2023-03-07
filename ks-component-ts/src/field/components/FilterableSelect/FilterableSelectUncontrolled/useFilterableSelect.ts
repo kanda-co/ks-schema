@@ -7,6 +7,7 @@ import {
   useRef,
   MutableRefObject,
   useMemo,
+  useEffect,
 } from "react";
 import useBoundValue from "~/hooks/useBoundValue";
 import { SelectOption } from "../../Select/types";
@@ -60,23 +61,21 @@ export default function useFilterableSelect(
   );
 
   const onSearchInputFocus = useCallback(() => {
-    setTimeout(() => {
-      setIsFocused(true);
-    }, 100);
-
     if (value) {
       // Clear the active value when the user focuses the input
       setValue("");
       setQuery("");
     }
+
+    setTimeout(() => {
+      setIsFocused(true);
+    }, 100);
   }, [setIsFocused, value, setValue]);
 
   const onSearchInputBlur = useCallback(() => {
-    setTimeout(() => {
-      setIsFocused(false);
-    }, 100);
+    setIsFocused(false);
     setIsHoveringOptions(false);
-  }, [setIsFocused]);
+  }, [setIsFocused, value, hits]);
 
   const onSearchInputKeyDown = useCallback(
     (e: KeyboardEvent<HTMLInputElement>) => {

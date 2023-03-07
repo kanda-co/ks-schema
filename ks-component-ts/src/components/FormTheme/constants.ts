@@ -62,7 +62,7 @@ const EMPHASIZED_THEME = {
   wrapperClasses: {
     baseContainer: "flex flex-col mb-6 text-left",
     error: "mt-2 text-style-h text-red-200",
-    label: "w-full text-style-f-em text-neutral-900 mb-6",
+    label: "w-full text-style-f-em text-neutral-600 mb-6",
     helperText: "whitespace-nowrap text-style-h text-neutral-500",
   },
 };
