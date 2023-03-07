@@ -79,7 +79,9 @@ export default function useFilterableSelect(
 
   // Used for converting the changed value -> label
   useEffect(() => {
-    setInputLabel(selectedOption?.name || "");
+    if (selectedOption?.name && !inputLabel) {
+      setInputLabel(selectedOption.name);
+    }
   }, [value, initialOptions, setInputLabel]);
 
   const onSelectOption = useCallback(
@@ -87,12 +89,13 @@ export default function useFilterableSelect(
       setFormValue(name, value);
       setValue(value);
       setQuery(value);
+      setInputLabel(getSelectedOption(initialOptions, value)?.name || "");
 
       setIsHoveringOptions(false);
       inputRef?.current?.blur();
       setSelectedIndex(0);
     },
-    [setValue, setQuery]
+    [setValue, setQuery, initialOptions]
   );
 
   const onSearchInputFocus = useCallback(() => {
