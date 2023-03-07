@@ -1163,6 +1163,7 @@ paths:
             minLength: 1
       requestBody:
         description: job apply options selected by customer
+        required: true
         content:
           application/json:
             schema:
@@ -1199,12 +1200,16 @@ paths:
             minLength: 1
       requestBody:
         description: >
-          job reapply options selected by customer,
-          previous credit application details will be copied for submission
+          when reapply job with empty object will populate secondary lender rates,
+          and reset status and finance_status ready for picking customer options;
+          when reapply job with customer options selected,
+          previous credit application details will be copied over to new credit record
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CustomerOptions"
+              anyOf:
+                - $ref: "#/components/schemas/CustomerOptions"
+                - {}
       responses:
         200:
           description: got existing job with new secondary loan payment
