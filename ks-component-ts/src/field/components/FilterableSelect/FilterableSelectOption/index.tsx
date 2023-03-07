@@ -11,7 +11,7 @@ export interface FilterableSelectOptionProps extends SelectOption {
 }
 
 const FilterableSelectOption: FunctionComponent<FilterableSelectOptionProps> =
-  function ({ name, searchWords, isFocused, onSelect }) {
+  function ({ name, value, searchWords, isFocused, onSelect }) {
     return (
       <div
         className={clsx(
@@ -21,7 +21,7 @@ const FilterableSelectOption: FunctionComponent<FilterableSelectOptionProps> =
         onMouseDown={(e: MouseEvent) => {
           e.stopPropagation();
           e.preventDefault();
-          onSelect(name);
+          onSelect(value);
         }}
       >
         <Highlighter

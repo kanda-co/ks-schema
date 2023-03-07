@@ -9,9 +9,11 @@ import {
   useMemo,
   useEffect,
 } from "react";
+import { useFormContext, useWatch } from "react-hook-form";
 import useBoundValue from "~/hooks/useBoundValue";
 import { SelectOption } from "../../Select/types";
 import { SEARCH_OPTIONS } from "./constants";
+import { getSelectedOption } from "./helpers";
 
 export interface FilterableSelectHook {
   inputRef: MutableRefObject<HTMLInputElement | undefined>;
@@ -31,14 +33,25 @@ export interface FilterableSelectHook {
 }
 
 export default function useFilterableSelect(
+  name: string,
   initialOptions: SelectOption[]
 ): FilterableSelectHook {
   const inputRef = useRef<HTMLInputElement>();
   const [value, setValue] = useState("");
+  // The value is stored as a key, but the input searches / displays
+  // as the label for the selected option
+  const [inputLabel, setInputLabel] = useState("");
   const [isFocused, setIsFocused] = useState(false);
   const [isHoveringOptions, setIsHoveringOptions] = useState(false);
+  const [hasGotInitialValue, setHasGotInitialValue] = useState(false);
 
   const { hits, setQuery } = useFuse(initialOptions, SEARCH_OPTIONS, "");
+
+  const options = useMemo(() => hits.map((hit) => hit.item), [hits]);
+  const selectedOption = useMemo(
+    () => getSelectedOption(initialOptions, value),
+    [initialOptions, value]
+  );
 
   const [
     selectedIndex,
@@ -49,10 +62,32 @@ export default function useFilterableSelect(
 
   const searchWords = useMemo(() => value.split(" "), [value]);
 
+  const { setValue: setFormValue } = useFormContext();
+
+  const formValue = useWatch({
+    name,
+  });
+
+  // Used for setting the initial value of the input
+  useEffect(() => {
+    if (!hasGotInitialValue && formValue && !value) {
+      setValue(formValue);
+      setQuery(formValue);
+      setHasGotInitialValue(true);
+    }
+  }, [formValue, value, setValue, setQuery]);
+
+  // Used for converting the changed value -> label
+  useEffect(() => {
+    setInputLabel(selectedOption?.name || "");
+  }, [value, initialOptions, setInputLabel]);
+
   const onSelectOption = useCallback(
     (value: string) => {
+      setFormValue(name, value);
       setValue(value);
       setQuery(value);
+
       setIsHoveringOptions(false);
       inputRef?.current?.blur();
       setSelectedIndex(0);
@@ -95,7 +130,7 @@ export default function useFilterableSelect(
           decrementSelectedIndex();
           break;
         case "Enter":
-          onSelectOption(hits[selectedIndex].item.name);
+          onSelectOption(hits[selectedIndex].item.value);
           break;
         default:
           break;
@@ -106,7 +141,7 @@ export default function useFilterableSelect(
 
   const onSearchInputChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
-      setValue(e.target.value);
+      setInputLabel(e.target.value);
       setQuery(e.target.value);
     },
     [setValue]
@@ -122,7 +157,7 @@ export default function useFilterableSelect(
 
   return {
     inputRef,
-    value,
+    value: inputLabel,
     isFocused,
     isHoveringOptions,
     selectedIndex,
@@ -134,6 +169,6 @@ export default function useFilterableSelect(
     onSearchInputChange,
     onOptionsMouseEnter,
     onOptionsMouseLeave,
-    options: hits.map(({ item }) => item),
+    options,
   };
 }
