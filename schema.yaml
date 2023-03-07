@@ -3521,39 +3521,7 @@ components:
           type: array
           title: work types
           items:
-            type: string
-            minLength: 1
-            enum:
-              - air_conditioning
-              - bathrooms
-              - battery_storage
-              - blinds_and_shutters
-              - carpentry
-              - cctv_and_security_installations
-              - conservatories
-              - decking
-              - driveways_and_patios
-              - electrician
-              - ev_charger_installer
-              - fencing
-              - fireplaces
-              - fitted_bedroom_furniture
-              - floor_layer
-              - garage_doors
-              - garden_rooms
-              - gas_engineer
-              - gates
-              - heat_pumps
-              - heating_systems
-              - kitchen_fitter
-              - landscaping
-              - plumbing
-              - resin_driveways
-              - roofing__excluding_flat_roofs
-              - security_systems
-              - tiler
-              - verandas
-              - windows_and_doors
+            $ref: "#/components/schemas/WorkType"
 
     FinanceType:
       type: string
