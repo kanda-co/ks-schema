@@ -12,6 +12,7 @@ export const DEFAULT_THEME = {
     "border-solid border-transparent focus-within:outline-none focus-within:border-turquoise-300 focus-within:bg-neutral-000",
   paddingClasses: "px-4 py-3.25",
   skeletonClasses: "w-2/6",
+  placeholderClasses: "px-4 pt-1",
   makeErrorClasses: (error?: string) =>
     error ? "border-solid border border-red-200" : "",
   wrapperClasses: {
@@ -62,8 +63,8 @@ const EMPHASIZED_THEME = {
   wrapperClasses: {
     baseContainer: "flex flex-col mb-6 text-left",
     error: "mt-2 text-style-h text-red-200",
-    label: "w-full text-style-f-em text-neutral-600 mb-6",
-    helperText: "whitespace-nowrap text-style-h text-neutral-500",
+    label: "text-style-f-em text-neutral-600 mb-6",
+    helperText: "whitespace-nowrap text-style-h text-neutral-500 ml-3 pt-0.5",
   },
 };
 

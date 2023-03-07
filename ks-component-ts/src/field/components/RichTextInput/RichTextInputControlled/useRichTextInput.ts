@@ -115,10 +115,11 @@ export default function useRichTextEditor(
     // Don't apply input classes if readOnly is true
     if (readOnly) return;
     if (editorRef?.current?.editor) {
-      const classList = editorRef.current.editor.classList;
+      const classList =
+        editorRef.current.editor.parentElement?.parentElement?.classList;
 
       inputClass.split(" ").forEach((className) => {
-        classList.add(className);
+        classList?.add(className);
       });
 
       if (!inputHasFocusedBorder) return;
@@ -140,7 +141,7 @@ export default function useRichTextEditor(
       const focusClassMethod = focused ? "add" : "remove";
 
       CLASS_NAMES.focusedInput.split(" ").forEach((className) => {
-        classList[focusClassMethod](className);
+        classList?.[focusClassMethod](className);
       });
     }
   }, [editorRef, editorState, inputClass, focused, inputHasFocusedBorder]);
@@ -149,11 +150,7 @@ export default function useRichTextEditor(
 
   const classNames = {
     ...CLASS_NAMES,
-    wrapper: clsx(
-      baseClasses,
-      CLASS_NAMES.wrapper,
-      inputHasFocusedBorder && "py-4"
-    ),
+    wrapper: clsx(baseClasses, CLASS_NAMES.wrapper),
   };
 
   return {
