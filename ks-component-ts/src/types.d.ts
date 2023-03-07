@@ -11,6 +11,7 @@ export interface Theme {
   skeletonClasses: string;
   chevronClasses?: string;
   themeIconVariant?: "default" | "search" | "dark" | "small";
+  placeholderClasses?: string;
   makeErrorClasses: (error?: string) => string;
   wrapperClasses?: {
     baseContainer: string;

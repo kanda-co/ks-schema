@@ -56,6 +56,7 @@ const EMPHASIZED_THEME = {
     "focus-within:outline-none border-solid border-transparent focus-within:border-turquoise-300 focus-within:bg-neutral-000",
   paddingClasses: "px-4 py-3.25",
   skeletonClasses: "w-2/6",
+  placeholderClasses: "px-4 pt-1",
   makeErrorClasses: (error?: string) =>
     error ? "border-solid border border-red-200" : "",
   wrapperClasses: {

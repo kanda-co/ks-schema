@@ -44,6 +44,7 @@ export default function useRichTextEditor(
   readOnly = false,
   inputHasFocusedBorder = true
 ): RichTextEditorHook {
+  const { placeholderClasses = "" } = useFormTheme();
   const [focused, setFocused] = useState(false);
   const [initialValueSet, setInitialValueSet] = useState(false);
   const [editorState, setEditorState] = useState(() =>
@@ -127,20 +128,20 @@ export default function useRichTextEditor(
           ".public-DraftEditorPlaceholder-inner"
         );
 
+      if (placeholder) {
+        placeholderClasses
+          .split(" ")
+          .filter(Boolean)
+          .forEach((className) => {
+            placeholder?.classList?.add(className);
+          });
+      }
+
       const focusClassMethod = focused ? "add" : "remove";
 
       CLASS_NAMES.focusedInput.split(" ").forEach((className) => {
         classList[focusClassMethod](className);
       });
-
-      if (placeholder) {
-        CLASS_NAMES.focusedPlaceHolder
-          .split(" ")
-          .filter(Boolean)
-          .forEach((className) => {
-            placeholder?.classList?.[focusClassMethod](className);
-          });
-      }
     }
   }, [editorRef, editorState, inputClass, focused, inputHasFocusedBorder]);
 
