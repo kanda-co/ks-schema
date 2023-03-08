@@ -102,6 +102,7 @@ export default function useFilterableSelect(
     if (value) {
       // Clear the active value when the user focuses the input
       setValue("");
+      setInputLabel("");
       setQuery("");
     }
 
