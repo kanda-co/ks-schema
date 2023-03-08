@@ -493,7 +493,7 @@ paths:
               $ref: "#/components/schemas/Cache"
       responses:
         200:
-          description: put me info
+          description: put cache info
           content:
             application/json:
               schema:
@@ -1163,6 +1163,7 @@ paths:
             minLength: 1
       requestBody:
         description: job apply options selected by customer
+        required: true
         content:
           application/json:
             schema:
@@ -1170,6 +1171,48 @@ paths:
       responses:
         200:
           description: got existing job with new payment
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/job/{id}/reapply:
+    post:
+      operationId: reapplyJob
+      summary: >
+        customer to reapply existing job with second line options,
+        only allowed when job is applied and primary finance not approved
+      tags:
+        - Job
+      parameters:
+        - name: id
+          in: path
+          description: job id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: >
+          when reapply job with empty object will populate secondary lender rates,
+          and reset status and finance_status ready for picking customer options;
+          when reapply job with customer options selected,
+          previous credit application details will be copied over to new credit record
+        content:
+          application/json:
+            schema:
+              anyOf:
+                - $ref: "#/components/schemas/CustomerOptions"
+                - {}
+      responses:
+        200:
+          description: got existing job with new secondary loan payment
           content:
             application/json:
               schema:
@@ -2208,6 +2251,143 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/rate:
+    get:
+      operationId: getRates
+      summary: kanda staff to get all rates
+      tags:
+        - Rate
+      responses:
+        200:
+          description: got all rates
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Rate"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    post:
+      operationId: postRate
+      summary: kanda staff to post new rate
+      tags:
+        - Rate
+      requestBody:
+        description: post new rate
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Rate"
+      responses:
+        200:
+          description: posted new rate
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Rate"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/rate/{id}:
+    get:
+      operationId: getRate
+      summary: kanda staff to get existing rate
+      tags:
+        - Rate
+      parameters:
+        - name: id
+          in: path
+          description: rate id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing rate
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Rate"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: putRate
+      summary: kanda staff to put existing rate
+      tags:
+        - Rate
+      parameters:
+        - name: id
+          in: path
+          description: rate id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: put existing rate
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Rate"
+      responses:
+        200:
+          description: put existing rate
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Rate"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      operationId: deleteRate
+      summary: kanda staff to delete existing rate
+      tags:
+        - Rate
+      parameters:
+        - name: id
+          in: path
+          description: rate id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: deleted existing rate
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Rate"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/webhook/{provider}:
     get:
       operationId: providerCheckWebhook
@@ -2325,6 +2505,7 @@ paths:
               - dbv3_user_company_setup_reminder
               - dbv3_user_verify_director_reminder
               - housekeeping_check_referral_expiry
+              - housekeeping_check_lender_rate
       responses:
         200:
           description: runner has been completed
@@ -2883,12 +3064,15 @@ components:
           type: string
           enum:
             - air_conditioning
+            - artificial_grass_specialists
             - bathrooms
             - battery_storage
             - blinds_and_shutters
             - carpentry
             - cctv_and_security_installations
+            - cladding_sofits_and_guttering
             - conservatories
+            - curtains
             - decking
             - driveways_and_patios
             - electrician
@@ -2903,12 +3087,21 @@ components:
             - gates
             - heat_pumps
             - heating_systems
+            - home_insulation_excl_spray_foam
+            - hot_tub_specialist
             - kitchen_fitter
+            - kitchen_supplier
             - landscaping
+            - loft_boarding
+            - painting_and_decorating
+            - plasterer
             - plumbing
+            - rendering
+            - resin_drive_specialist
             - resin_driveways
             - roofing__excluding_flat_roofs
             - security_systems
+            - stair_case_specialist
             - tiler
             - verandas
             - windows_and_doors
@@ -3268,6 +3461,11 @@ components:
           title: charge
           minimum: 0
           maximum: 2147483647
+        min_charge:
+          type: integer
+          title: minimum charge
+          minimum: 0
+          maximum: 2147483647
         enabled:
           type: boolean
           title: enabled?
@@ -3280,6 +3478,63 @@ components:
           type: string
           title: provider
           $ref: "#/components/schemas/FinanceProvider"
+        apr_type:
+          type: string
+          title: apr type
+          enum:
+            - "INTEREST_FREE"
+            - "INTEREST_BEARING"
+            - "BUYNOW_PAYLATER"
+        apr:
+          type: integer
+          title: apr in pence
+          minimum: 0
+          maximum: 2147483647
+        deferred_duration:
+          type: integer
+          title: deferred duration in months
+          minimum: 0
+          maximum: 2147483647
+        duration:
+          type: integer
+          title: duration in months
+          minimum: 0
+          maximum: 2147483647
+        min_deposit_pct:
+          type: integer
+          title: min deposit percentage in pence
+          minimum: 0
+          maximum: 2147483647
+        max_deposit_pct:
+          type: integer
+          title: max deposit percentage in pence
+          minimum: 0
+          maximum: 2147483647
+        min_deposit_value:
+          type: integer
+          title: min deposit value in pence
+          minimum: 0
+          maximum: 2147483647
+        max_deposit_value:
+          type: integer
+          title: max deposit value in pence
+          minimum: 0
+          maximum: 2147483647
+        min_job_value:
+          type: integer
+          title: min job value in pence
+          minimum: 0
+          maximum: 2147483647
+        max_job_value:
+          type: integer
+          title: max job value in pence
+          minimum: 0
+          maximum: 2147483647
+        work_types:
+          type: array
+          title: work types
+          items:
+            $ref: "#/components/schemas/WorkType"
 
     FinanceType:
       type: string
@@ -3445,6 +3700,9 @@ components:
         finance_status:
           title: finance status
           $ref: "#/components/schemas/FinanceStatus"
+        work_type:
+          title: work type
+          $ref: "#/components/schemas/WorkType"
         checkout_options:
           type: array
           title: checkout options
@@ -3705,6 +3963,56 @@ components:
         - finance_cancelled
       default: not_applied
       readOnly: true
+
+    WorkType:
+      type: string
+      title: work type
+      enum:
+        - air_conditioning
+        - alarm_systems
+        - artificial_grass
+        - bathrooms_supply_and_fitted
+        - bathrooms_supply_only
+        - boiler_swap
+        - cctv
+        - central_heating_system
+        - conservatory
+        - conservatory_roof
+        - decking
+        - door_canopy
+        - doors
+        - driveways
+        - electrical_installation
+        - ev_charger
+        - fencing
+        - fireplaces
+        - flooring_excluding_carpets
+        - garage_doors
+        - garden_buildings
+        - gates
+        - granite_worktops
+        - home_study
+        - hot_tubs_and_spas
+        - kitchens_fitted
+        - kitchens_supply_only
+        - landscaping
+        - loft_boarding
+        - painting_and_decorating
+        - patios
+        - plastering
+        - resin_driveways
+        - roofing_excl_flat_roofs
+        - roofline
+        - rendering
+        - security_lighting
+        - staircases
+        - tiling
+        - underfloor_heating
+        - verandas
+        - wall_insulation_and_cladding
+        - windows
+        - windows_and_doors
+        - other
 
     CheckoutOption:
       type: string
@@ -4476,6 +4784,7 @@ components:
 
     Cache:
       type: object
+      title: cache
       properties:
         id:
           type: string
@@ -4496,6 +4805,26 @@ components:
           readOnly: true
       additionalProperties:
         type: string
+
+    Rate:
+      type: object
+      title: rate details
+      required:
+        - finance_rates
+      properties:
+        id:
+          type: string
+          title: rate or comapny id
+        finance_rates:
+          type: array
+          title: finance rates
+          items:
+            $ref: "#/components/schemas/FinanceRate"
+        metadata:
+          type: object
+          $ref: "#/components/schemas/Metadata"
+          title: metadata
+          readOnly: true
 
     Analytics:
       type: object

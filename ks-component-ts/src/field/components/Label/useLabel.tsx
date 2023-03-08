@@ -25,7 +25,8 @@ export interface Hook {
 export default function useLabel(
   label: LabelContainerProps["label"],
   helperText: LabelContainerProps["helperText"],
-  autoWidth: LabelContainerProps["autoWidth"]
+  autoWidth: LabelContainerProps["autoWidth"],
+  inlineHelperText = false
 ): Hook | null {
   const { wrapperClasses } = useFormTheme();
 
@@ -36,6 +37,10 @@ export default function useLabel(
   const classNames = {
     ...baseClassess,
     skeletonWrapper: clsx(baseClassess?.baseSkeletonWrapper, width),
+    labelContainer: inlineHelperText
+      ? baseClassess?.labelContainerInlineStringHelper
+      : baseClassess?.labelContainer,
+    label: clsx(baseClassess?.label, inlineHelperText ? "" : "w-full mb-2"),
   };
 
   const skeletonProps = {

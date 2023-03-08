@@ -12,6 +12,7 @@ export const DEFAULT_THEME = {
     "border-solid border-transparent focus-within:outline-none focus-within:border-turquoise-300 focus-within:bg-neutral-000",
   paddingClasses: "px-4 py-3.25",
   skeletonClasses: "w-2/6",
+  placeholderClasses: "px-4 pt-1",
   makeErrorClasses: (error?: string) =>
     error ? "border-solid border border-red-200" : "",
   wrapperClasses: {
@@ -56,13 +57,14 @@ const EMPHASIZED_THEME = {
     "focus-within:outline-none border-solid border-transparent focus-within:border-turquoise-300 focus-within:bg-neutral-000",
   paddingClasses: "px-4 py-3.25",
   skeletonClasses: "w-2/6",
+  placeholderClasses: "px-4 pt-1",
   makeErrorClasses: (error?: string) =>
     error ? "border-solid border border-red-200" : "",
   wrapperClasses: {
     baseContainer: "flex flex-col mb-6 text-left",
     error: "mt-2 text-style-h text-red-200",
-    label: "w-full text-style-f-em text-neutral-900 mb-6",
-    helperText: "whitespace-nowrap text-style-h text-neutral-500",
+    label: "text-style-f-em text-neutral-600 mb-3",
+    helperText: "whitespace-nowrap text-style-h text-neutral-500 ml-3 pt-0.5",
   },
 };
 
@@ -267,10 +269,9 @@ const STREAMLINE_THEME = {
   baseClasses:
     "rounded flex w-full bg-neutral-000 border border-neutral-300 caret-turquoise-300",
   inputClasses: "text-13-14 text-neutral-900 placeholder-neutral-600",
-  focusClasses:
-    "border-solid border-transparent focus:outline-none focus:border-turquoise-300",
+  focusClasses: "border-solid focus:border-turquoise-300",
   focusWithinClasses:
-    "border-solid border-transparent focus-within:outline-none focus-within:border-turquoise-300",
+    "border-solid focus-within:outline-none focus-within:border-turquoise-300",
   paddingClasses: "px-2 py-2.25",
   skeletonClasses: "w-2/6",
   chevronClasses:
@@ -281,8 +282,8 @@ const STREAMLINE_THEME = {
   wrapperClasses: {
     baseContainer: "flex flex-col mb-5 text-left",
     error: "mt-2 text-12-18 text-red-200",
-    warning: "mt-2 text-12-18 text-neutral-600",
-    label: "w-full text-12-18-em text-neutral-600 mb-2",
+    warning: "mt-2 text-12-18 text-neutral-700",
+    label: "text-12-18-em text-neutral-700",
     helperText: "whitespace-nowrap text-12-18 text-neutral-500",
   },
 };
@@ -321,7 +322,7 @@ const PERCENTAGE_INCREMENT_THEME = {
   focusClasses: "border-solid focus:outline-none focus:border-turquoise-300",
   focusWithinClasses:
     "border-solid focus-within:outline-none focus-within:border-turquoise-300",
-  paddingClasses: "px-14 py-1.75",
+  paddingClasses: "px-10 py-1.75",
   skeletonClasses: "w-2/6",
   chevronClasses:
     "appearance-none bg-select-chevron focus:bg-select-chevron-active bg-no-repeat bg-right-2 invalid:text-neutral-400 overflow-hidden !pr-7",

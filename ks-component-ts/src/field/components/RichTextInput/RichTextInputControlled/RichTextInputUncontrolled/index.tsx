@@ -30,6 +30,7 @@ const RichTextInputUncontrolled: FunctionComponent<RichTextInputUncontrolledProp
       onFocus,
       onBlur,
       focused,
+      classNames,
     } = useRichTextInput(initialValue, readOnly, inputHasFocusedBorder);
 
     return (
@@ -40,7 +41,7 @@ const RichTextInputUncontrolled: FunctionComponent<RichTextInputUncontrolledProp
           editorRef,
         }}
       >
-        <div className={CLASS_NAMES.wrapper}>
+        <div className={classNames.wrapper}>
           {focused && !readOnly && <RichTextInputMenu />}
           <div
             className={inputHasMinHeight ? CLASS_NAMES.editorWrapper : ""}
