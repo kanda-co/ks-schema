@@ -1,7 +1,6 @@
 export const CLASS_NAMES = {
   labelContainer: "flex flex-row w-full justify-between",
-  labelContainerInlineStringHelper:
-    "flex flex-row justify-between items-center mb-2",
+  labelContainerInlineStringHelper: "flex flex-row justify-start items-start",
   baseSkeletonWrapper: "inline-block",
 };
 

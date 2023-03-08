@@ -13,10 +13,11 @@ import {
   type Editor,
   convertFromRaw,
 } from "draft-js";
+import clsx from "clsx";
 import { markdownToDraft, draftToMarkdown } from "markdown-draft-js";
+import useFormTheme from "~/hooks/useFormTheme";
 import { CLASS_NAMES, DISABLED_COMMANDS } from "./constants";
 import useInputBaseClass from "../../Input/useInputBaseClass";
-import clsx from "clsx";
 
 export interface RichTextEditorHook {
   editorState: EditorState;
@@ -35,6 +36,7 @@ export interface RichTextEditorHook {
   onFocus: () => void;
   onBlur: () => void;
   focused: boolean;
+  classNames: typeof CLASS_NAMES;
 }
 
 export default function useRichTextEditor(
@@ -42,6 +44,7 @@ export default function useRichTextEditor(
   readOnly = false,
   inputHasFocusedBorder = true
 ): RichTextEditorHook {
+  const { placeholderClasses = "" } = useFormTheme();
   const [focused, setFocused] = useState(false);
   const [initialValueSet, setInitialValueSet] = useState(false);
   const [editorState, setEditorState] = useState(() =>
@@ -112,10 +115,11 @@ export default function useRichTextEditor(
     // Don't apply input classes if readOnly is true
     if (readOnly) return;
     if (editorRef?.current?.editor) {
-      const classList = editorRef.current.editor.classList;
+      const classList =
+        editorRef.current.editor.parentElement?.parentElement?.classList;
 
       inputClass.split(" ").forEach((className) => {
-        classList.add(className);
+        classList?.add(className);
       });
 
       if (!inputHasFocusedBorder) return;
@@ -125,19 +129,29 @@ export default function useRichTextEditor(
           ".public-DraftEditorPlaceholder-inner"
         );
 
+      if (placeholder) {
+        placeholderClasses
+          .split(" ")
+          .filter(Boolean)
+          .forEach((className) => {
+            placeholder?.classList?.add(className);
+          });
+      }
+
       const focusClassMethod = focused ? "add" : "remove";
 
       CLASS_NAMES.focusedInput.split(" ").forEach((className) => {
-        classList[focusClassMethod](className);
+        classList?.[focusClassMethod](className);
       });
-
-      if (placeholder) {
-        CLASS_NAMES.focusedPlaceHolder.split(" ").forEach((className) => {
-          placeholder?.classList[focusClassMethod](className);
-        });
-      }
     }
   }, [editorRef, editorState, inputClass, focused, inputHasFocusedBorder]);
+
+  const { baseClasses } = useFormTheme();
+
+  const classNames = {
+    ...CLASS_NAMES,
+    wrapper: clsx(baseClasses, CLASS_NAMES.wrapper),
+  };
 
   return {
     editorState,
@@ -150,5 +164,6 @@ export default function useRichTextEditor(
     onFocus,
     onBlur,
     focused,
+    classNames,
   };
 }

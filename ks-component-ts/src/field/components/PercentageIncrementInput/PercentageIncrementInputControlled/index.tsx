@@ -42,14 +42,14 @@ const PercentageIncrementInputControlled: FunctionComponent<
 
   return (
     <>
-      <div className="flex flex-row w-36 min-w-36 max-w-36 relative">
+      <div className="relative flex flex-row w-36 min-w-36 max-w-36">
         <SkeletonLoader
           width={144}
           height={34}
           isLoading={isLoading}
           afterLoading={
             <FormTheme variant="percentage-increment">
-              <div className="w-9 h-9 absolute left-0 border-r border-neutral-300 mt-px ml-px rounded-l-lg flex">
+              <div className="absolute left-0 flex mt-px ml-px border-r rounded-l-lg w-9 h-9 border-neutral-300">
                 <Button.Icon
                   icon="minus"
                   id={`${name}-minus`}
@@ -67,7 +67,7 @@ const PercentageIncrementInputControlled: FunctionComponent<
                 formatForValue={(value: number) => Math.round(value)}
                 {...props}
               />
-              <div className="w-9 h-9 absolute right-0 border-l border-neutral-300 mt-px mr-px rounded-r-lg flex">
+              <div className="absolute right-0 flex mt-px mr-px border-l rounded-r-lg w-9 h-9 border-neutral-300">
                 <Button.Icon
                   icon="plus"
                   id={`${name}-plus`}
