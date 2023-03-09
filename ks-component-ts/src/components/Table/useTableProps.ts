@@ -45,15 +45,15 @@ export interface TablePropsHook {
 }
 
 export default function useTableProps({
-  data: dataInput,
-  columns,
+  data: dataInput = [],
+  columns = [],
   isLoading,
-  isValidating,
+  isValidating = false,
   defaultColumn: defaultColumnInput,
   pageIndex,
   totalPages,
   setPage,
-  hoverPopover,
+  hoverPopover = null,
   onAction,
 }: TablePropsHookArgs): TablePropsHook {
   const defaultColumn = useMemo(() => {

@@ -47,16 +47,16 @@ export interface TableHeaderColumn {
 
 export interface TableProps {
   onRowClicked: (row?: StringIndexedObject) => void;
-  onAction: () => void;
-  isValidating: boolean;
-  data: any[];
-  columns: TableHeaderColumn[];
-  defaultColumn: TableHeaderColumn;
+  onAction: (action?: { type?: string }) => void;
+  isValidating?: boolean;
+  data?: any[];
+  columns?: TableHeaderColumn[];
+  defaultColumn?: TableHeaderColumn;
   isLoading: boolean;
   pageIndex: number;
   totalPages: number;
   setPage: (page: number) => void;
-  hoverPopover: FunctionComponent<PopoverButtonHoverPopoverProps> | null;
+  hoverPopover?: FunctionComponent<PopoverButtonHoverPopoverProps> | null;
 }
 
 export interface TableRow {
