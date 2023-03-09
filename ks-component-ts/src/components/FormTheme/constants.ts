@@ -268,7 +268,8 @@ const STREAMLINE_THEME = {
   fieldWrapper: "Default" as FieldWrapperType,
   baseClasses:
     "rounded flex w-full bg-neutral-000 border border-neutral-300 caret-turquoise-300",
-  inputClasses: "text-13-14 text-neutral-900 placeholder-neutral-600",
+  inputClasses:
+    "text-16-18 md:text-13-14 text-neutral-900 placeholder-neutral-600",
   focusClasses: "border-solid focus:border-turquoise-300",
   focusWithinClasses:
     "border-solid focus-within:outline-none focus-within:border-turquoise-300",
@@ -292,7 +293,8 @@ const STREAMLINE_INLINE_THEME = {
   fieldWrapper: "Default" as FieldWrapperType,
   baseClasses:
     "rounded flex w-full bg-neutral-000 border border-neutral-300 caret-turquoise-300",
-  inputClasses: "text-13-14 text-neutral-900 placeholder-neutral-600",
+  inputClasses:
+    "text-16-18 md:text-13-14 text-neutral-900 placeholder-neutral-600",
   focusClasses:
     "border-solid border-transparent focus:outline-none focus:border-turquoise-300",
   focusWithinClasses:

@@ -805,10 +805,10 @@
   dependencies:
     "@amplitude/analytics-browser" "^1.6.4"
 
-"@kanda-libs/ks-design-library@0.2.45":
-  version "0.2.45"
-  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-design-library/-/ks-design-library-0.2.45.tgz#e312faf8b007a4949a6b4af9dd18aea0cfdc6a50"
-  integrity sha512-ZMiFoY0uIsg4OtNmskV/rI3rgW+jrcKoz/146CGuEAot4C0YCmEJT+tBAt+LSH8bnAYPgL29JVBeQxlS6s1bZQ==
+"@kanda-libs/ks-design-library@0.2.46":
+  version "0.2.46"
+  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-design-library/-/ks-design-library-0.2.46.tgz#97a6118e1bd45b71f95afdef9238827ec7f07d49"
+  integrity sha512-UyfqCX78u7R+/8ZceV1NkWVZvPM/AwUkAWHOZ89elfnmpmt2qP6iifHEpRqGdzanymG09titsbPXSws+SbZLMg==
   dependencies:
     "@kanda-libs/ks-amplitude-provider" "^0.0.7"
     file-saver "^2.0.5"
@@ -838,10 +838,10 @@
     remove "^0.1.5"
     swr "^1.3.0"
 
-"@kanda-libs/ks-tailwind-config@^0.2.6":
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-tailwind-config/-/ks-tailwind-config-0.2.6.tgz#987decaf02698c95220bee4ec3b41b54d5e1ffbf"
-  integrity sha512-O+HwlszvO7thCLWcXb1xyOY28GXw/VRiKaxhw5hR6F1fPv6UQPVsWRKt4sqypjAYSmVDnAZsRcGyywe8hYbDng==
+"@kanda-libs/ks-tailwind-config@^0.2.10":
+  version "0.2.10"
+  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-tailwind-config/-/ks-tailwind-config-0.2.10.tgz#9b6ee23c88c8843a55734fefdfaa13db3c1e493b"
+  integrity sha512-lmsF2MaRVaKNyUtcCQgdOCL93bAWLl2lr9/U4shbp/F9DGo4dH/tDWaru6ACEQvtWc5n1utP3h3izSvehxF8tQ==
   dependencies:
     esm "^3.2.25"
 

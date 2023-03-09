@@ -1,6 +1,6 @@
 {
   "name": "@kanda-libs/ks-component-ts",
-  "version": "0.2.124",
+  "version": "0.2.141",
   "description": "Kanda form components library",
   "main": "dist/index.esm.js",
   "module": "dist/index.esm.js",
@@ -98,7 +98,7 @@
     }
   ],
   "peerDependencies": {
-    "@kanda-libs/ks-design-library": "0.2.45",
+    "@kanda-libs/ks-design-library": "0.2.46",
     "@kanda-libs/ks-frontend-services": "0.2.0",
     "clsx": "^1.1.1",
     "lodash.get": "^4.4.2",
@@ -111,8 +111,8 @@
   },
   "dependencies": {
     "@kanda-libs/kanda-quotes": "0.0.6",
-    "@kanda-libs/ks-design-library": "0.2.45",
-    "@kanda-libs/ks-tailwind-config": "^0.2.6",
+    "@kanda-libs/ks-design-library": "0.2.46",
+    "@kanda-libs/ks-tailwind-config": "^0.2.10",
     "@types/lodash.get": "^4.4.7",
     "@types/lodash.trim": "^4.5.7",
     "@types/react-dropzone": "^5.1.0",
