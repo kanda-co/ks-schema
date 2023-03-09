@@ -2544,11 +2544,6 @@ input[type="number"]::-webkit-inner-spin-button,
   padding-right: 10px;
 }
 
-.py-1\.5 {
-  padding-top: 6px;
-  padding-bottom: 6px;
-}
-
 .px-6 {
   padding-left: 24px;
   padding-right: 24px;
@@ -4324,6 +4319,16 @@ input[type="checkbox"][disabled]:checked ~ .label-checked-disabled\:bg-neutral-3
 
   .md\:flex-row {
     flex-direction: row;
+  }
+
+  .md\:py-1\.5 {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+
+  .md\:py-1 {
+    padding-top: 4px;
+    padding-bottom: 4px;
   }
 
   .md\:pt-1 {

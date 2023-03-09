@@ -222,19 +222,19 @@ export const VARIANTS: StringIndexedObject<VariantProps> = {
     },
   },
   "streamline-radio": {
-    span: "select-none w-full text-13-14 whitespace-nowrap my-auto text-center",
+    span: "select-none w-full text-16-18 md:text-13-14 whitespace-nowrap my-auto text-center",
     skeleton: "w-full",
     skeletonWrapper: "w-10 -mt-0.5",
     handleContainer: "my-auto mr-1.5",
     selected: {
       option: "border border-turquoise-300 cursor-pointer bg-turquoise-100",
       container:
-        "rounded bg-turquoise-100 flex flex-full w-full px-2.5 py-1.5 text-neutral-900",
+        "rounded bg-turquoise-100 flex flex-full w-full px-2.5 py-2.25 md:py-1.5 text-neutral-900",
     },
     notSelected: {
       option: "border border-neutral-300 cursor-pointer",
       container:
-        "rounded bg-neutral-000 flex flex-full w-full px-2.5 py-1.5 text-neutral-900",
+        "rounded bg-neutral-000 flex flex-full w-full px-2.5 py-2.25 md:py-1.5 text-neutral-900",
     },
     multiline: {
       option: "",
