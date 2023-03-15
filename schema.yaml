@@ -384,6 +384,26 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/rate:
+    get:
+      operationId: infoRate
+      summary: request available finance rates for API company
+      tags:
+        - Rate
+      responses:
+        200:
+          description: got available finance rates for API company
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Rate"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/info/legacy-redirect:
     put:
       operationId: infoLegacyRedirect
@@ -409,7 +429,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/InfoLegacyRedirect"
+                $ref: "#/components/schemas/Error"
 
   /api/info/ip:
     get:
@@ -4620,10 +4640,10 @@ components:
         income_type:
           type: string
           enum:
-            - "benefits"
-            - "other_sources_of_income"
-            - "pensions"
             - "earning_after_tax"
+            - "benefits"
+            - "pensions"
+            - "other_sources_of_income"
         income_type_info:
           type: string
           title: income type info
