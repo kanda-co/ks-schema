@@ -4497,6 +4497,7 @@ components:
       title: not employed details
       required:
         - source_of_income
+        - months_not_employed
       properties:
         source_of_income:
           type: string
@@ -4511,6 +4512,25 @@ components:
             - permanent_dla
             - student
             - other
+        months_not_employed:
+          type: integer
+          title: months not employed
+          format: int32
+          minimum: 0
+          maximum: 2147483647
+
+    RetiredDetails:
+      type: object
+      title: retired details
+      required:
+        - months_retired
+      properties:
+        months_retired:
+          type: integer
+          title: months retired
+          format: int32
+          minimum: 0
+          maximum: 2147483647
 
     EmploymentDetails:
       type: object
@@ -4538,6 +4558,10 @@ components:
           type: object
           title: not employed details
           $ref: "#/components/schemas/NotEmployedDetails"
+        retired_details:
+          type: object
+          title: retired details
+          $ref: "#/components/schemas/RetiredDetails"
         gross_annual_income:
           type: object
           title: gross annual income
