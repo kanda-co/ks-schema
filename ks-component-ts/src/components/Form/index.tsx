@@ -22,6 +22,10 @@ export interface FormProps extends HTMLAttributes<HTMLFormElement> {
     data: StringIndexedObject,
     event?: React.BaseSyntheticEvent
   ) => void;
+  onError?: (
+    errorObject?: StringIndexedObject,
+    event?: React.BaseSyntheticEvent
+  ) => void;
 }
 
 const getNestedPaths = (
@@ -93,6 +97,7 @@ const Form: FunctionComponent<FormProps> = function ({
   id,
   isLoading = false,
   onSubmit,
+  onError,
   children,
   ...restProps
 }) {
@@ -100,7 +105,7 @@ const Form: FunctionComponent<FormProps> = function ({
   const { flush } = Amplitude;
   const { getValues } = form;
 
-  const onError: SubmitHandler<StringIndexedObject> = useCallback(
+  const interceptedError: SubmitHandler<StringIndexedObject> = useCallback(
     (errors: StringIndexedObject, event?: React.BaseSyntheticEvent): void => {
       const paths = getErrorObjectKeys(errors);
       const obj = createErrorObject(paths, errors, getValues);
@@ -121,6 +126,8 @@ const Form: FunctionComponent<FormProps> = function ({
         },
       });
       flush();
+      if (!onError) return;
+      onError(obj, event);
     },
     [id, getValues, logEvent, flush]
   );
@@ -145,7 +152,7 @@ const Form: FunctionComponent<FormProps> = function ({
     <FormProvider {...form}>
       <form
         noValidate
-        onSubmit={form.handleSubmit(interceptedSubmit, onError)}
+        onSubmit={form.handleSubmit(interceptedSubmit, interceptedError)}
         className="w-full"
         id={id}
         {...restProps}
