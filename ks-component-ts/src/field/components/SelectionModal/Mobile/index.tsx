@@ -12,15 +12,18 @@ const Mobile: FunctionComponent<SelectionModalProps> = function ({
   name,
   options = [],
   children,
+  onShowModal,
   ...restProps
 }) {
-  const { ids, handleShowModal, buttonText } = useMobileProps(name, options);
+  const { ids, buttonText } = useMobileProps(name, options);
 
   return (
     <>
       <SelectionModalButton
         id={ids.button}
-        onClick={handleShowModal}
+        onClick={() => {
+          onShowModal && onShowModal(ids.modal);
+        }}
         buttonText={children || buttonText}
         {...restProps}
       />
