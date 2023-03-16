@@ -1,6 +1,12 @@
-import { SelectOption } from "~/field/components/Select/types";
-import { DefaultFormFieldProps, ValidError } from "~/field/types";
-import { MutableRefObject } from "react";
+import type { SelectOption } from "~/field/components/Select/types";
+import type { DefaultFormFieldProps, ValidError } from "~/field/types";
+import type { FunctionComponent, MutableRefObject } from "react";
+import type { ModalContainerChildrenArgs } from "@kanda-libs/ks-design-library";
+
+export interface ModalWrapperProps {
+  id: string;
+  children: (args: ModalContainerChildrenArgs) => JSX.Element;
+}
 
 export type SelectionModalUncontrolledProps = DefaultFormFieldProps<{
   /**
@@ -44,4 +50,6 @@ export type SelectionModalUncontrolledProps = DefaultFormFieldProps<{
    */
   error?: ValidError;
   forwardRef?: MutableRefObject<HTMLElement>;
+  onShowModal: (id: string) => void;
+  ModalWrapper: FunctionComponent<ModalWrapperProps>;
 }>;

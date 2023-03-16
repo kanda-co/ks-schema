@@ -104,6 +104,7 @@ export default function useFilterableSelect(
       setValue("");
       setInputLabel("");
       setQuery("");
+      setFormValue(name, "");
     }
 
     setTimeout(() => {
