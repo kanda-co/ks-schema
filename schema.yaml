@@ -4813,6 +4813,8 @@ components:
           title: action
           enum:
             - "mark_job_as_pending"
+            - "mark_job_as_referred"
+            - "mark_job_as_action_customer"
             - "mark_job_as_accepted"
             - "mark_job_as_declined"
             - "mark_job_as_cancelled"
