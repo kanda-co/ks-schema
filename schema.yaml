@@ -2762,6 +2762,10 @@ components:
           description: specified the enabled rates for the loan
           items:
             type: string
+        work_type:
+          title: work type
+          description: optional work type for the job
+          $ref: "#/components/schemas/WorkType"
 
     InfoIP:
       type: object
