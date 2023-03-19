@@ -5,8 +5,10 @@ export interface OptionalHiddenFieldHook {
   onClick: () => void;
 }
 
-export default function useOptionalHiddenField(): OptionalHiddenFieldHook {
-  const [visible, setVisible] = useState(false);
+export default function useOptionalHiddenField(
+  hasValue = false
+): OptionalHiddenFieldHook {
+  const [visible, setVisible] = useState(hasValue);
 
   const onClick = useCallback(() => {
     setVisible(true);
