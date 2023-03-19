@@ -4,12 +4,13 @@ import useOptionalHiddenField from "./useOptionalHiddenField";
 
 export interface OptionalHiddenFieldProps {
   label: string;
+  hasValue?: boolean;
   children: JSX.Element | JSX.Element[];
 }
 
 const OptionalHiddenField: FunctionComponent<OptionalHiddenFieldProps> =
-  function ({ label, children }) {
-    const { visible, onClick } = useOptionalHiddenField();
+  function ({ label, hasValue, children }) {
+    const { visible, onClick } = useOptionalHiddenField(hasValue);
 
     return (
       <div>
