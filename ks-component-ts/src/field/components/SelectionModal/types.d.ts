@@ -50,6 +50,4 @@ export type SelectionModalUncontrolledProps = DefaultFormFieldProps<{
    */
   error?: ValidError;
   forwardRef?: MutableRefObject<HTMLElement>;
-  onShowModal: (id: string) => void;
-  ModalWrapper: FunctionComponent<ModalWrapperProps>;
 }>;
