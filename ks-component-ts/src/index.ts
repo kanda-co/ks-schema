@@ -27,6 +27,8 @@ export { Widget } from "./generated";
 
 export { default as FieldHandle } from "./components/Handle";
 
+export { CommonWrapper } from "@kanda-libs/ks-design-library";
+
 export {
   useForm,
   useFormContext,
