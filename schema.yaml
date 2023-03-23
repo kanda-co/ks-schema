@@ -3029,6 +3029,9 @@ components:
           type: object
           title: redirects
           $ref: "#/components/schemas/RedirectURLs"
+        fca_number:
+          type: string
+          title: FCA number
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
@@ -3982,6 +3985,7 @@ components:
         - sat_note_sent
         - sat_note_viewed
         - sat_note_signed
+        - sat_note_delayed
         - payout_pending
         - paid
         - finance_cancelled
@@ -4812,6 +4816,7 @@ components:
           type: string
           title: action
           enum:
+            - "mark_job_as_sat_note_delayed"
             - "mark_job_as_pending"
             - "mark_job_as_referred"
             - "mark_job_as_action_customer"
