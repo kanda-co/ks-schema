@@ -756,6 +756,41 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/company/{id}/training:
+    post:
+      operationId: postCompanyTraining
+      summary: post a staff training result to a company
+      tags:
+        - Company
+      parameters:
+        - name: id
+          in: path
+          description: company id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: post new staff training result
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Training"
+      responses:
+        200:
+          description: got company with updated staff training result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Company"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/company/{id}/director:
     post:
       operationId: directorCompany
@@ -3463,6 +3498,32 @@ components:
         comm_preferences:
           type: object
           $ref: "#/components/schemas/CommPreferences"
+        trainings:
+          type: array
+          title: trainings
+          items:
+            $ref: "#/components/schemas/Training"
+
+    Training:
+      type: object
+      title: training
+      description: training result
+      properties:
+        result:
+          type: string
+          title: pass or fail
+          enum:
+            - "not_set"
+            - "passed"
+            - "failed"
+        taken_at:
+          type: string
+          format: date-time
+          title: taken at
+        signature:
+          type: object
+          title: signature
+          $ref: "#/components/schemas/Signature"
 
     FinanceRate:
       type: object
