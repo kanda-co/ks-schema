@@ -2408,6 +2408,178 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/monitor:
+    get:
+      operationId: getMonitors
+      summary: get all monitors
+      tags:
+        - Monitor
+      responses:
+        200:
+          description: got all monitors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Monitor"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    post:
+      operationId: postMonitor
+      summary: post new monitor
+      tags:
+        - Monitor
+      requestBody:
+        description: post new monitor
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Monitor"
+      responses:
+        200:
+          description: posted new monitor
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Monitor"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/monitor/{id}:
+    get:
+      operationId: getMonitor
+      summary: get existing monitor
+      tags:
+        - Monitor
+      parameters:
+        - name: id
+          in: path
+          description: monitor id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing monitor
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Monitor"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: putMonitor
+      summary: put existing monitor
+      tags:
+        - Monitor
+      parameters:
+        - name: id
+          in: path
+          description: monitor id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: put existing monitor
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Monitor"
+      responses:
+        200:
+          description: put existing monitor
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Monitor"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      operationId: deleteMonitor
+      summary: delete existing monitor
+      tags:
+        - Monitor
+      parameters:
+        - name: id
+          in: path
+          description: monitor id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: deleted existing monitor
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Monitor"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/monitor/{id}/flag:
+    post:
+      operationId: postMonitorFlag
+      summary: post monitor with flag
+      tags:
+        - Monitor
+      parameters:
+        - name: id
+          in: path
+          description: monitor id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: post monitor with flag
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Flag"
+      responses:
+        200:
+          description: posted monitor with flag
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Monitor"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/webhook/{provider}:
     get:
       operationId: providerCheckWebhook
@@ -4912,6 +5084,57 @@ components:
         utm_content:
           type: string
           title: utm content
+
+    Monitor:
+      type: object
+      title: monitor
+      description: internal monitoring with flags
+      properties:
+        id:
+          type: string
+          title: flag or company id
+        flag:
+          type: object
+          $ref: "#/components/schemas/Flag"
+        flags:
+          type: array
+          title: flags
+          descriptions: flags
+          items:
+            $ref: "#/components/schemas/Flag"
+        metadata:
+          type: object
+          $ref: "#/components/schemas/Metadata"
+
+    Flag:
+      type: object
+      title: flag
+      description: flag
+      required:
+        - level
+      properties:
+        aid:
+          type: string
+          title: author id
+          description: kanda staff who authored this flag
+          readOnly: true
+        level:
+          type: string
+          title: level
+          description: flag level
+          enum:
+            - "green"
+            - "yellow"
+            - "red"
+        remark:
+          type: string
+          title: remark
+          description: internal remark for this flag
+        flagged_at:
+          type: string
+          format: date-time
+          title: flagged at
+          readOnly: true
 
     Event:
       type: object
