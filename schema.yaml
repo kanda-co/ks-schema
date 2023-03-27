@@ -2548,7 +2548,7 @@ paths:
   /api/monitor/{id}/flag:
     post:
       operationId: postMonitorFlag
-      summary: post monitor with flag
+      summary: post internal monitor with flag
       tags:
         - Monitor
       parameters:
@@ -2560,7 +2560,7 @@ paths:
             type: string
             minLength: 1
       requestBody:
-        description: post monitor with flag
+        description: post internal monitor with flag
         required: true
         content:
           application/json:
@@ -2568,7 +2568,7 @@ paths:
               $ref: "#/components/schemas/Flag"
       responses:
         200:
-          description: posted monitor with flag
+          description: posted internal monitor with flag
           content:
             application/json:
               schema:
