@@ -3,12 +3,16 @@ import { useFormContext } from "react-hook-form";
 import useFormTheme from "~/hooks/useFormTheme";
 import clsx from "clsx";
 import { DEFAULT_IP, CLASS_NAMES } from "./constants";
-import {
-  getCurrentTimeStamp,
-  getIp,
-} from "~/field/components/FingerprintBooleanInput/FingerprintBooleanInputUncontrolled/helpers";
+import { getCurrentTimeStamp } from "~/field/components/FingerprintBooleanInput/FingerprintBooleanInputUncontrolled/helpers";
 import { HandleComponent, HandleType } from "~/components/Handle/types";
 import { getHandle } from "~/field/components/BooleanInput/BooleanInputUncontrolled/helpers";
+import {
+  InfoIP,
+  Service,
+  services,
+  useSubmit,
+} from "@kanda-libs/ks-frontend-services";
+import { StringIndexedObject } from "~/types";
 
 export interface Hook {
   Handle: HandleComponent;
@@ -23,6 +27,14 @@ export default function useFingerprintBooleanInputUncontrolled(
   const { skeletonClasses } = useFormTheme();
 
   const { setValue } = useFormContext();
+
+  const { submit: getIp } = useSubmit(
+    services.infoIP.infoIP as unknown as Service<
+      InfoIP,
+      StringIndexedObject,
+      StringIndexedObject
+    >
+  );
 
   const skeletonClassName = clsx(skeletonClasses, CLASS_NAMES.skeleton);
 
@@ -44,8 +56,10 @@ export default function useFingerprintBooleanInputUncontrolled(
    * A useEffect hook for calling the API to get the IP address
    */
   useEffect(() => {
-    getIp()
-      .then((data) => setIp(data?.ip || DEFAULT_IP))
+    getIp({})
+      .then(({ data }: StringIndexedObject) => {
+        setIp(data?.ipv4 || DEFAULT_IP);
+      })
       .catch((err) => console.log(err));
     7;
   }, []);

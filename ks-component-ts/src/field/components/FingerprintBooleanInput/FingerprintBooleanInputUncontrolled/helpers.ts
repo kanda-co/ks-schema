@@ -15,6 +15,4 @@ const handleResponse = async (
   return null;
 };
 
-export const getIp = async () => fetch(IP_ENDPOINT_URL).then(handleResponse);
-
 export const getCurrentTimeStamp = (): number => new Date().getTime();
