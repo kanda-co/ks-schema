@@ -7,7 +7,7 @@ interface IpResponse {
 const handleResponse = async (
   response: Response
 ): Promise<IpResponse | null> => {
-  if (response.statusText === "OK") {
+  if (response.ok) {
     const json = await response.json();
     return json;
   }
