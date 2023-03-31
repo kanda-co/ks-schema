@@ -7,5 +7,6 @@ export { default as services } from './service';
 export { loadServerData } from './service/helpers';
 export { type OperationRequestFunctionMap } from './generated/operations';
 export * from './generated/components/schemas';
-export type { Service, ServiceParams, ServiceMethod, ServiceSubmit, ServiceMethodReturnParams, } from './types';
+export type { Service, ServiceParams, ServiceMethod, ServiceSubmit, ServiceMethodReturnParams, NewService, } from './types';
+export type { RequestFunction, RequestFunctionArgs, } from '@openapi-io-ts/runtime';
 export type { KeyedMutator } from 'swr';

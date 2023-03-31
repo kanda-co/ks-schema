@@ -18,6 +18,12 @@ export type {
   ServiceMethod,
   ServiceSubmit,
   ServiceMethodReturnParams,
+  NewService,
 } from './types';
+
+export type {
+  RequestFunction,
+  RequestFunctionArgs,
+} from '@openapi-io-ts/runtime';
 
 export type { KeyedMutator } from 'swr';
