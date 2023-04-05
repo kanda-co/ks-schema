@@ -4056,6 +4056,13 @@ components:
             - "They helped me work out my potential repayments"
             - "They completed the application for me"
           x-kanda-form-widget: Select
+        q_rate:
+          type: string
+          title: Were you advised to select a specific finance option by the tradesperson?
+          enum:
+            - "No - I was not told to choose a specific option"
+            - "Yes - I was told to choose a specific option"
+          x-kanda-form-widget: Select
         q_saving:
           type: string
           title: Were you told about any potential feed in tariffs, savings, returns or Renewable Heat incentive and do you understand that the actual amounts  you  receive, and your estimated returns/savings were based on varying factors including you own energy consumption and any returns/savings/payback periods are not linked to your repayments on this agreement.
