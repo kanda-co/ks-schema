@@ -100,7 +100,7 @@
   ],
   "peerDependencies": {
     "@kanda-libs/ks-design-library": "0.2.54",
-    "@kanda-libs/ks-frontend-services": "0.2.0",
+    "@kanda-libs/ks-frontend-services": "0.2.13",
     "clsx": "^1.1.1",
     "lodash.get": "^4.4.2",
     "react": "^16.8.0 || ^17",
