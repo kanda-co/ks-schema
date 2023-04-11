@@ -55,6 +55,10 @@ declare const company: {
     };
 };
 declare const credit: {
+    infoCredit: {
+        key: string;
+        method: import("../generated/operations/infoCredit").InfoCreditRequestFunction;
+    };
     getCredits: {
         key: string;
         method: import("../generated/operations/getCredits").GetCreditsRequestFunction;
@@ -186,6 +190,12 @@ declare const infoIP: {
         method: import("../generated/operations/infoIP").InfoIPRequestFunction;
     };
 };
+declare const infoQuery: {
+    infoQuery: {
+        key: string;
+        method: import("../generated/operations/infoQuery").InfoQueryRequestFunction;
+    };
+};
 declare const infoRedirect: {
     infoLegacyRedirect: {
         key: string;
@@ -247,6 +257,10 @@ declare const job: {
         key: string;
         method: import("../generated/operations/applyJob").ApplyJobRequestFunction;
     };
+    reapplyJob: {
+        key: string;
+        method: import("../generated/operations/reapplyJob").ReapplyJobRequestFunction;
+    };
     payJob: {
         key: string;
         method: import("../generated/operations/payJob").PayJobRequestFunction;
@@ -275,9 +289,39 @@ declare const job: {
         key: string;
         method: import("../generated/operations/overrideJob").OverrideJobRequestFunction;
     };
+    jobCheckoutLink: {
+        key: string;
+        method: import("../generated/operations/jobCheckoutLink").JobCheckoutLinkRequestFunction;
+    };
     jobCompanyInfo: {
         key: string;
         method: import("../generated/operations/jobCompanyInfo").JobCompanyInfoRequestFunction;
+    };
+};
+declare const monitor: {
+    getMonitors: {
+        key: string;
+        method: import("../generated/operations/getMonitors").GetMonitorsRequestFunction;
+    };
+    postMonitor: {
+        key: string;
+        method: import("../generated/operations/postMonitor").PostMonitorRequestFunction;
+    };
+    getMonitor: {
+        key: string;
+        method: import("../generated/operations/getMonitor").GetMonitorRequestFunction;
+    };
+    putMonitor: {
+        key: string;
+        method: import("../generated/operations/putMonitor").PutMonitorRequestFunction;
+    };
+    deleteMonitor: {
+        key: string;
+        method: import("../generated/operations/deleteMonitor").DeleteMonitorRequestFunction;
+    };
+    postMonitorFlag: {
+        key: string;
+        method: import("../generated/operations/postMonitorFlag").PostMonitorFlagRequestFunction;
     };
 };
 declare const payment: {
@@ -304,6 +348,32 @@ declare const payment: {
     markPayment: {
         key: string;
         method: import("../generated/operations/markPayment").MarkPaymentRequestFunction;
+    };
+};
+declare const rate: {
+    infoRate: {
+        key: string;
+        method: import("../generated/operations/infoRate").InfoRateRequestFunction;
+    };
+    getRates: {
+        key: string;
+        method: import("../generated/operations/getRates").GetRatesRequestFunction;
+    };
+    postRate: {
+        key: string;
+        method: import("../generated/operations/postRate").PostRateRequestFunction;
+    };
+    getRate: {
+        key: string;
+        method: import("../generated/operations/getRate").GetRateRequestFunction;
+    };
+    putRate: {
+        key: string;
+        method: import("../generated/operations/putRate").PutRateRequestFunction;
+    };
+    deleteRate: {
+        key: string;
+        method: import("../generated/operations/deleteRate").DeleteRateRequestFunction;
     };
 };
 declare const subscription: {
@@ -431,6 +501,10 @@ declare const services: {
         };
     };
     credit: {
+        infoCredit: {
+            key: string;
+            method: import("../generated/operations/infoCredit").InfoCreditRequestFunction;
+        };
         getCredits: {
             key: string;
             method: import("../generated/operations/getCredits").GetCreditsRequestFunction;
@@ -562,6 +636,12 @@ declare const services: {
             method: import("../generated/operations/infoIP").InfoIPRequestFunction;
         };
     };
+    infoQuery: {
+        infoQuery: {
+            key: string;
+            method: import("../generated/operations/infoQuery").InfoQueryRequestFunction;
+        };
+    };
     infoRedirect: {
         infoLegacyRedirect: {
             key: string;
@@ -623,6 +703,10 @@ declare const services: {
             key: string;
             method: import("../generated/operations/applyJob").ApplyJobRequestFunction;
         };
+        reapplyJob: {
+            key: string;
+            method: import("../generated/operations/reapplyJob").ReapplyJobRequestFunction;
+        };
         payJob: {
             key: string;
             method: import("../generated/operations/payJob").PayJobRequestFunction;
@@ -651,9 +735,39 @@ declare const services: {
             key: string;
             method: import("../generated/operations/overrideJob").OverrideJobRequestFunction;
         };
+        jobCheckoutLink: {
+            key: string;
+            method: import("../generated/operations/jobCheckoutLink").JobCheckoutLinkRequestFunction;
+        };
         jobCompanyInfo: {
             key: string;
             method: import("../generated/operations/jobCompanyInfo").JobCompanyInfoRequestFunction;
+        };
+    };
+    monitor: {
+        getMonitors: {
+            key: string;
+            method: import("../generated/operations/getMonitors").GetMonitorsRequestFunction;
+        };
+        postMonitor: {
+            key: string;
+            method: import("../generated/operations/postMonitor").PostMonitorRequestFunction;
+        };
+        getMonitor: {
+            key: string;
+            method: import("../generated/operations/getMonitor").GetMonitorRequestFunction;
+        };
+        putMonitor: {
+            key: string;
+            method: import("../generated/operations/putMonitor").PutMonitorRequestFunction;
+        };
+        deleteMonitor: {
+            key: string;
+            method: import("../generated/operations/deleteMonitor").DeleteMonitorRequestFunction;
+        };
+        postMonitorFlag: {
+            key: string;
+            method: import("../generated/operations/postMonitorFlag").PostMonitorFlagRequestFunction;
         };
     };
     payment: {
@@ -680,6 +794,32 @@ declare const services: {
         markPayment: {
             key: string;
             method: import("../generated/operations/markPayment").MarkPaymentRequestFunction;
+        };
+    };
+    rate: {
+        infoRate: {
+            key: string;
+            method: import("../generated/operations/infoRate").InfoRateRequestFunction;
+        };
+        getRates: {
+            key: string;
+            method: import("../generated/operations/getRates").GetRatesRequestFunction;
+        };
+        postRate: {
+            key: string;
+            method: import("../generated/operations/postRate").PostRateRequestFunction;
+        };
+        getRate: {
+            key: string;
+            method: import("../generated/operations/getRate").GetRateRequestFunction;
+        };
+        putRate: {
+            key: string;
+            method: import("../generated/operations/putRate").PutRateRequestFunction;
+        };
+        deleteRate: {
+            key: string;
+            method: import("../generated/operations/deleteRate").DeleteRateRequestFunction;
         };
     };
     subscription: {
@@ -747,5 +887,5 @@ declare const services: {
         };
     };
 };
-export { authUser, company, credit, document, event, infoAuth, infoCache, infoCompany, infoCustomer, infoGhost, infoHealth, infoIP, infoRedirect, infoValidation, job, payment, subscription, task, webhook, address, pdf, };
+export { authUser, company, credit, document, event, infoAuth, infoCache, infoCompany, infoCustomer, infoGhost, infoHealth, infoIP, infoQuery, infoRedirect, infoValidation, job, monitor, payment, rate, subscription, task, webhook, address, pdf, };
 export default services;
