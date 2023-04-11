@@ -29,6 +29,15 @@ export interface CreateRequest {
   };
 }
 
+export interface SatNoteRequest {
+  body: {
+    job: StringIndexedObject;
+    credit: StringIndexedObject;
+    satNote: StringIndexedObject;
+    acceptedTerms: StringIndexedObject;
+  };
+}
+
 export interface FindResponse {
   addresses: Array<string[]>;
 }
@@ -55,6 +64,18 @@ export default {
       pdfPoster(`/kspdf-create`, {
         job,
         company,
+      }),
+  },
+  satnote: {
+    key: '/satnote',
+    method: ({
+      body: { job, credit, satNote, acceptedTerms },
+    }: SatNoteRequest): RequestFunction<{ body: FindResponse }, FindResponse> =>
+      pdfPoster(`/kspdf-satnote`, {
+        job,
+        credit,
+        satNote,
+        acceptedTerms,
       }),
   },
 };
