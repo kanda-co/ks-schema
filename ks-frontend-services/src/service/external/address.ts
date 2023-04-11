@@ -13,7 +13,14 @@ const addressGetter = <T>(url: string): RequestFunction<{ body: T }, T> =>
     { body: T },
     T
   >;
+
 export interface FindRequest {
+  params: {
+    postCode: string;
+  };
+}
+
+export interface AutoCompleteRequest {
   params: {
     postCode: string;
   };
@@ -23,6 +30,14 @@ export interface FindResponse {
   addresses: Array<string[]>;
 }
 
+export interface AutoCompleteResponse {
+  suggestions: {
+    address: string;
+    url: string;
+    id: string;
+  }[];
+}
+
 export default {
   find: {
     key: '/find',
@@ -30,5 +45,12 @@ export default {
       request: FindRequest,
     ): RequestFunction<{ body: FindResponse }, FindResponse> =>
       addressGetter(`/find/${request.params.postCode}/`),
+  },
+  autoComplete: {
+    key: '/autocomplete',
+    method: (
+      request: AutoCompleteRequest,
+    ): RequestFunction<{ body: AutoCompleteResponse }, AutoCompleteResponse> =>
+      addressGetter(`/autocomplete/${request.params.postCode}/`),
   },
 };
