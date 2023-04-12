@@ -9,7 +9,7 @@
     "clean": "rimraf dist",
     "remove:nodemodules": "rimraf yarn.lock && rimraf node_modules",
     "build:types": "tsc src/index.ts --declaration --emitDeclarationOnly --jsx react-jsx --esModuleInterop",
-    "build": "yarn && yarn clean && yarn generate-service-module && yarn build:types && ts-node ./build.ts",
+    "build": "yarn && yarn clean && yarn generate-service-module && yarn generate-store && yarn build:types && ts-node ./build.ts",
     "watch": "yarn && yarn clean && DEV_WATCH=true yarn build",
     "app:dev": "yarn --cwd ./app && yarn --cwd ./app yalc:link && yarn --cwd ./app dev --force --host",
     "test:app": "yarn clean && yarn && yarn build && yalc publish && yarn --cwd ./app yalc:update && yarn --cwd ./app && yarn --cwd ./app dev --force"
