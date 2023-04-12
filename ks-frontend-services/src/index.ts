@@ -12,6 +12,8 @@ export { type OperationRequestFunctionMap } from './generated/operations';
 
 export * from './generated/components/schemas';
 
+export * as slices from './store/slices/';
+
 export type {
   Service,
   ServiceParams,
