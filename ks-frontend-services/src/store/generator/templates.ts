@@ -26,6 +26,9 @@ export function sliceIndex(entityName: string) {
   return `export { default as ${entityName} } from './${entityName}'`;
 }
 
+export const actions = (entityName: string, actionNames: string[]) =>
+  `export { ${actionNames.join(', ')} } from './${entityName}';`;
+
 export const slice = (
   entityName: string,
   camelCaseEntityName: string,

@@ -10,3 +10,15 @@ export declare const fetchRequestAdapter: (baseURL: string, requireAuth?: boolea
  * @param baseURL
  */
 export declare const requestFunctions: (baseURL: string) => operations.OperationRequestFunctionMap;
+/**
+ * Returns a string array of operation keys that we want to define services for.
+ * This excludes some generic operations that have no corresponding services
+ * @param currentOperations
+ */
+export declare function getOperationKeys(currentOperations: StringIndexedObject): string[];
+/**
+ * Gets the operation name from the key. For example: 'jobServiceBuilder'
+ * becomes 'job'
+ * @param operationKey
+ */
+export declare function getOperationName(operationKey: string, capitalise?: boolean): string;

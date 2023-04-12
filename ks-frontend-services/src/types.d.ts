@@ -36,7 +36,7 @@ export interface Service<
 }
 
 export interface NewService<
-  Value extends StringIndexedObject | undefined,
+  Value extends StringIndexedObject | undefined | void,
   Args extends StringIndexedObject | undefined = undefined,
 > {
   key: string;

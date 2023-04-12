@@ -13,6 +13,17 @@ export { type OperationRequestFunctionMap } from './generated/operations';
 export * from './generated/components/schemas';
 
 export * as slices from './store/slices/';
+export * as actions from './store/slices/actions';
+
+export type {
+  Payload,
+  PathKey,
+  NormalizedEntities,
+  AsyncThunkReturnType,
+  ThunkAPI,
+  SharedAsyncThunkActionArgs,
+  AsyncThunkActionArgs,
+} from './store/types';
 
 export type {
   Service,

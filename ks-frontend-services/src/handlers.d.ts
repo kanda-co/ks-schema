@@ -4,10 +4,10 @@ interface Error {
         json: () => Promise<unknown>;
     };
 }
-interface ResponseBody {
-    data: unknown;
-    json: () => Promise<unknown>;
+interface ResponseBody<T = unknown> {
+    data: T;
+    json: () => Promise<T>;
 }
-export type Response = Either<Error, ResponseBody>;
+export type Response<T = unknown> = Either<Error, ResponseBody<T>>;
 export declare const handleResponse: (response: Response) => Promise<unknown>;
 export {};

@@ -56,7 +56,8 @@ export const isArrayOfValue = <Entity>(
 
 const getReducerName = (
   key: string,
-): keyof Pick<RootState, 'company' | 'monitor'> => {
+  // TODO
+): string => {
   const [reducerName] = key.split('.');
   if (!reducerName) {
     throw new Error('Invalid reducer provided');
@@ -69,11 +70,13 @@ const getReducerName = (
     throw new Error('Invalid reducer provided');
   }
 
-  return reducerName as keyof Pick<RootState, 'company' | 'monitor'>;
+  return reducerName;
+  // TODO
+  //as keyof Pick<RootState, 'company' | 'monitor'>;
 };
 
 export const createAsyncThunkAction = <
-  V extends StringIndexedObject | undefined,
+  V extends StringIndexedObject | undefined | void,
   Args extends StringIndexedObject<any> | undefined = undefined,
 >(
   service: NewService<V, Args>,

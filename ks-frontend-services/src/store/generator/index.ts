@@ -4,7 +4,8 @@ import { fileURLToPath } from 'url';
 import * as operations from '../../generated/operations';
 import services from '../../service';
 import { getOperationKeys, getOperationName } from '../../helpers';
-import { slice, sliceIndex } from './templates';
+import { actions, slice, sliceIndex } from './templates';
+import { StringIndexedObject } from '../../types';
 
 const getCamelCaseEntityName = (entityName: string) =>
   entityName.charAt(0).toLowerCase() + entityName.slice(1);
@@ -31,7 +32,7 @@ function generateSlices(entityName: string) {
   console.log(`Success: ${fileName} generated`);
 }
 
-function slicesIndex(entityNames: string[]) {
+function generateSlicesIndex(entityNames: string[]) {
   const exports = entityNames
     .map(getCamelCaseEntityName)
     .map(sliceIndex)
@@ -48,9 +49,51 @@ function slicesIndex(entityNames: string[]) {
   console.log(`Success: index.ts generated`);
 }
 
-const entityNames = getOperationKeys(operations).map((key) =>
-  getOperationName(key, true),
-) as unknown as string[];
+function generateActions(entityNames: string[]) {
+  const camelCaseEntityNames = entityNames.map(getCamelCaseEntityName);
+
+  const serviceActionNames = camelCaseEntityNames.reduce(
+    (final, entityName) => ({
+      ...final,
+      [entityName]: Object.keys(services[entityName]),
+    }),
+    {} as StringIndexedObject<string[]>,
+  );
+
+  const exports = Object.keys(serviceActionNames)
+    .map((entityName) => {
+      const actionNames = serviceActionNames[entityName];
+      return actions(entityName, actionNames);
+    })
+    .join('');
+
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
+  const outputPath = join(__dirname, `../slices/actions.ts`);
+
+  writeFileSync(outputPath, exports, {
+    flag: 'w',
+  });
+
+  console.log(`Success: actions.ts generated`);
+}
+
+const entityNames = getOperationKeys(operations)
+  .map((key) => getOperationName(key, true))
+  // TODO: Figure out void type
+  .filter(
+    (name) =>
+      [
+        'Webhook',
+        'Task',
+        'InfoCache',
+        'InfoCustomer',
+        'InfoHealth',
+        'InfoRedirect',
+        'InfoValidation',
+      ].indexOf(name) === -1,
+  );
 
 entityNames.forEach(generateSlices);
-slicesIndex(entityNames);
+generateSlicesIndex(entityNames);
+generateActions(entityNames);
