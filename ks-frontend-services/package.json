@@ -5,6 +5,7 @@
   "scripts": {
     "clean-incorrect-imports": "grep -rlw \"./src\" -e \"DateFromISOString\" | xargs -I@ sed -i.bak \"s/\\/DateFromISOString//g\" @ && rm -rf **/*.bak",
     "generate-service-module": "yarn clean-incorrect-imports && ts-node --experimental-specifier-resolution=node ./src/service/generator/",
+    "generate-store": "ts-node --experimental-specifier-resolution=node ./src/store/generator/ && prettier --write ./src/store/slices/",
     "clean": "rimraf dist",
     "remove:nodemodules": "rimraf yarn.lock && rimraf node_modules",
     "build:types": "tsc src/index.ts --declaration --emitDeclarationOnly --jsx react-jsx --esModuleInterop",
@@ -24,6 +25,7 @@
   "dependencies": {
     "@kanda-libs/ks-amplitude-provider": "^0.0.15",
     "@openapi-io-ts/runtime": "^0.3.1",
+    "@reduxjs/toolkit": "^1.9.3",
     "@stripe/stripe-js": "^1.35.0",
     "append-query": "^2.1.1",
     "firebase": "9.18.0",
