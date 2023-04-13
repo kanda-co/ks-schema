@@ -1,8 +1,4 @@
-import {
-  AsyncThunk,
-  createAsyncThunk,
-  type PayloadAction,
-} from '@reduxjs/toolkit';
+import * as toolkit from '@reduxjs/toolkit';
 import * as T from 'io-ts';
 import { pipe } from 'fp-ts/lib/function';
 import { fold } from 'fp-ts/lib/Either';
@@ -14,8 +10,9 @@ import type {
   NormalizedEntities,
   Payload,
   ThunkAPI,
-  RootState,
+  Selectors,
 } from './types';
+import { getPathKey } from './selectors/app';
 
 export const handlePayload = <T>(payload: Payload<T>): Promise<T> =>
   payload().then(handleApiResponse) as Promise<T>;
@@ -80,12 +77,12 @@ export const createAsyncThunkAction = <
   Args extends StringIndexedObject<any> | undefined = undefined,
 >(
   service: NewService<V, Args>,
-): AsyncThunk<V, AsyncThunkActionArgs<Args>, {}> => {
+): toolkit.AsyncThunk<V, AsyncThunkActionArgs<Args>, {}> => {
   const { key, method } = service;
-  return createAsyncThunk<V, AsyncThunkActionArgs<Args>, { state: RootState }>(
+  return toolkit.createAsyncThunk<V, AsyncThunkActionArgs<Args>>(
     key,
     async <T>(args: AsyncThunkActionArgs<Args> | void, thunkAPI: ThunkAPI) => {
-      const state = thunkAPI.getState() as RootState;
+      const state = thunkAPI.getState() as StringIndexedObject;
       const { byId, fetchedList } = state[getReducerName(key)];
       const { preventLoadingState, ...methodArgs } = args || {
         args: undefined,
@@ -124,7 +121,7 @@ export const createAsyncThunkAction = <
 
 export const handleResponse = <State extends GeneratedState<Entity>, Entity>(
   state: State,
-  action: PayloadAction<Entity>,
+  action: toolkit.PayloadAction<Entity>,
 ) => {
   const { payload } = action;
   const isArray = isArrayOfValue<Entity>(payload);
@@ -143,4 +140,64 @@ export const createResponseHandler = <
   Entity,
 >() => {
   return handleResponse<State, Entity>;
+};
+
+export const getCamelCaseEntityName = (entityName: string) =>
+  entityName.charAt(0).toLowerCase() + entityName.slice(1);
+
+export const generateSelectors = <
+  Entity,
+  State extends StringIndexedObject<GeneratedState<Entity>>,
+>(
+  reducer: keyof State,
+): Selectors<Entity, State> => {
+  const getReducer = (state: State) => state[reducer];
+
+  const getById = toolkit.createSelector(getReducer, (reducer) => reducer.byId);
+
+  const getAllIds = toolkit.createSelector(
+    getReducer,
+    (reducer) => reducer.allIds,
+  );
+
+  const getId = toolkit.createSelector(getPathKey, (pathKey) => {
+    if (pathKey?.page !== reducer) return undefined;
+    return pathKey.id;
+  });
+
+  const getItem = toolkit.createSelector(
+    getId,
+    getById,
+    getPathKey,
+    (id, byId, pathKey) => {
+      if (pathKey?.page !== reducer) return undefined;
+      return byId[id];
+    },
+  );
+
+  const getIsSubmitting = toolkit.createSelector(
+    getReducer,
+    (reducer) => reducer.isSubmitting,
+  );
+
+  const getFetchedList = toolkit.createSelector(
+    getReducer,
+    (reducer) => reducer.fetchedList,
+  );
+
+  const getItems = toolkit.createSelector(
+    getById,
+    (byId) => Object.values(byId) as Entity[],
+  );
+
+  return {
+    getReducer,
+    getById,
+    getAllIds,
+    getId,
+    getItem,
+    getIsSubmitting,
+    getFetchedList,
+    getItems,
+  };
 };

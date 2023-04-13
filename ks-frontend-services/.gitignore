@@ -4,5 +4,4 @@ node_modules/
 yarn-error.log
 src/service/index.ts
 src/generated
-src/store/slices/*
 .DS_Store

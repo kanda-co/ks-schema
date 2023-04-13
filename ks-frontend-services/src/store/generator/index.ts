@@ -1,14 +1,12 @@
 import { writeFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import type { StringIndexedObject } from '../../types';
 import * as operations from '../../generated/operations';
 import services from '../../service';
 import { getOperationKeys, getOperationName } from '../../helpers';
-import { actions, slice, sliceIndex } from './templates';
-import { StringIndexedObject } from '../../types';
-
-const getCamelCaseEntityName = (entityName: string) =>
-  entityName.charAt(0).toLowerCase() + entityName.slice(1);
+import { actions, selectors, slice, sliceIndex } from './templates';
+import { getCamelCaseEntityName } from '../helpers';
 
 function generateSlices(entityName: string) {
   const camelCaseEntityName = getCamelCaseEntityName(entityName);
@@ -23,7 +21,7 @@ function generateSlices(entityName: string) {
   const __filename = fileURLToPath(import.meta.url);
 
   const __dirname = dirname(__filename);
-  const outputPath = join(__dirname, `../slices/${fileName}`);
+  const outputPath = join(__dirname, `../slices/generated/${fileName}`);
 
   writeFileSync(outputPath, template, {
     flag: 'w',
@@ -40,7 +38,7 @@ function generateSlicesIndex(entityNames: string[]) {
 
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = dirname(__filename);
-  const outputPath = join(__dirname, `../slices/index.ts`);
+  const outputPath = join(__dirname, `../slices/generated/index.ts`);
 
   writeFileSync(outputPath, exports, {
     flag: 'w',
@@ -69,13 +67,27 @@ function generateActions(entityNames: string[]) {
 
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = dirname(__filename);
-  const outputPath = join(__dirname, `../slices/actions.ts`);
+  const outputPath = join(__dirname, `../slices/generated/actions.ts`);
 
   writeFileSync(outputPath, exports, {
     flag: 'w',
   });
 
   console.log(`Success: actions.ts generated`);
+}
+
+function generateSelectorsIndex(entityNames: string[]) {
+  const exports = selectors(entityNames);
+
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
+  const outputPath = join(__dirname, `../selectors/index.ts`);
+
+  writeFileSync(outputPath, exports, {
+    flag: 'w',
+  });
+
+  console.log(`Success: selectors generated`);
 }
 
 const entityNames = getOperationKeys(operations)
@@ -97,3 +109,4 @@ const entityNames = getOperationKeys(operations)
 entityNames.forEach(generateSlices);
 generateSlicesIndex(entityNames);
 generateActions(entityNames);
+generateSelectorsIndex(entityNames);
