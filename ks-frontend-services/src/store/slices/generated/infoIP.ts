@@ -1,5 +1,6 @@
 // Imports
-import * as toolkit from '@reduxjs/toolkit';
+import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { createSlice } from '../../toolkit';
 import { type InfoIP, services } from '../../../';
 import { GENERATED_INITIAL_STATE } from '../../constants';
 import { createAsyncThunkAction, createResponseHandler } from '../../helpers';
@@ -13,7 +14,7 @@ export type InfoIPEntity = InfoIPReturn[0];
 export type InfoIPParams = InfoIPReturn[1];
 export type InfoIPConfig = InfoIPReturn[2];
 
-export type InfoIPAsyncThunkAction = toolkit.AsyncThunkAction<
+export type InfoIPAsyncThunkAction = AsyncThunkAction<
   InfoIPEntity,
   InfoIPParams,
   InfoIPConfig
@@ -28,7 +29,7 @@ export const handleInfoIPResponse = createResponseHandler<
   InfoIP
 >();
 
-export const infoIPSlice = toolkit.createSlice({
+export const infoIPSlice = createSlice({
   name: 'infoIP',
   initialState,
   reducers: {},

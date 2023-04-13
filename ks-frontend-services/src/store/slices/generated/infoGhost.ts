@@ -1,5 +1,6 @@
 // Imports
-import * as toolkit from '@reduxjs/toolkit';
+import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { createSlice } from '../../toolkit';
 import { type InfoGhost, services } from '../../../';
 import { GENERATED_INITIAL_STATE } from '../../constants';
 import { createAsyncThunkAction, createResponseHandler } from '../../helpers';
@@ -13,7 +14,7 @@ export type InfoGhostEntity = InfoGhostReturn[0];
 export type InfoGhostParams = InfoGhostReturn[1];
 export type InfoGhostConfig = InfoGhostReturn[2];
 
-export type InfoGhostAsyncThunkAction = toolkit.AsyncThunkAction<
+export type InfoGhostAsyncThunkAction = AsyncThunkAction<
   InfoGhostEntity,
   InfoGhostParams,
   InfoGhostConfig
@@ -28,7 +29,7 @@ export const handleInfoGhostResponse = createResponseHandler<
   InfoGhost
 >();
 
-export const infoGhostSlice = toolkit.createSlice({
+export const infoGhostSlice = createSlice({
   name: 'infoGhost',
   initialState,
   reducers: {},

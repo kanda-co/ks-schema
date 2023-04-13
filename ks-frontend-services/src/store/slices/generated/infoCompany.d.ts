@@ -1,14 +1,14 @@
-import * as toolkit from '@reduxjs/toolkit';
+import { type AsyncThunkAction } from '@reduxjs/toolkit';
 import { type InfoCompany } from '../../../';
 import type { AsyncThunkReturnType, GeneratedState } from '../../types';
-export declare const infoCompany: toolkit.AsyncThunk<InfoCompany[], {
+export declare const infoCompany: import("@reduxjs/toolkit").AsyncThunk<InfoCompany[], {
     params: import("../../../generated/operations/infoCompany").InfoCompanyRequestParameters;
 } & import("../../types").SharedAsyncThunkActionArgs, {}>;
 export type InfoCompanyReturn = AsyncThunkReturnType<typeof infoCompany>;
 export type InfoCompanyEntity = InfoCompanyReturn[0];
 export type InfoCompanyParams = InfoCompanyReturn[1];
 export type InfoCompanyConfig = InfoCompanyReturn[2];
-export type InfoCompanyAsyncThunkAction = toolkit.AsyncThunkAction<InfoCompanyEntity, InfoCompanyParams, InfoCompanyConfig>;
+export type InfoCompanyAsyncThunkAction = AsyncThunkAction<InfoCompanyEntity, InfoCompanyParams, InfoCompanyConfig>;
 export type InfoCompanyState = GeneratedState<InfoCompany>;
 export declare const handleInfoCompanyResponse: (state: InfoCompanyState, action: {
     payload: InfoCompany;
@@ -20,6 +20,6 @@ export declare const handleInfoCompanyResponse: (state: InfoCompanyState, action
     byId: import("../../../types").StringIndexedObject<InfoCompany>;
     allIds: string[];
 };
-export declare const infoCompanySlice: toolkit.Slice<InfoCompanyState, {}, "infoCompany">;
-declare const _default: toolkit.Reducer<InfoCompanyState, toolkit.AnyAction>;
+export declare const infoCompanySlice: import("@reduxjs/toolkit").Slice<InfoCompanyState, {}, "infoCompany">;
+declare const _default: import("redux").Reducer<InfoCompanyState, import("redux").AnyAction>;
 export default _default;

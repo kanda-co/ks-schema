@@ -1,5 +1,6 @@
 // Imports
-import * as toolkit from '@reduxjs/toolkit';
+import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { createSlice } from '../../toolkit';
 import { type InfoAuth, services } from '../../../';
 import { GENERATED_INITIAL_STATE } from '../../constants';
 import { createAsyncThunkAction, createResponseHandler } from '../../helpers';
@@ -29,7 +30,7 @@ export type InfoAuthEntity = InfoAuthReturn[0];
 export type InfoAuthParams = InfoAuthReturn[1];
 export type InfoAuthConfig = InfoAuthReturn[2];
 
-export type InfoAuthAsyncThunkAction = toolkit.AsyncThunkAction<
+export type InfoAuthAsyncThunkAction = AsyncThunkAction<
   InfoAuthEntity,
   InfoAuthParams,
   InfoAuthConfig
@@ -44,7 +45,7 @@ export const handleInfoAuthResponse = createResponseHandler<
   InfoAuth
 >();
 
-export const infoAuthSlice = toolkit.createSlice({
+export const infoAuthSlice = createSlice({
   name: 'infoAuth',
   initialState,
   reducers: {},

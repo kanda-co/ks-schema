@@ -1,6 +1,4 @@
-import pkg from '@reduxjs/toolkit';
-
-const { createSelector } = pkg;
+import { createSelector } from '../toolkit';
 
 export const getApp = (state) => state.app;
 

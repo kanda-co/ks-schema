@@ -9,6 +9,7 @@ export { type OperationRequestFunctionMap } from './generated/operations';
 export * from './generated/components/schemas';
 export * as slices from './store/slices/generated/';
 export * as actions from './store/slices/generated/actions';
+export * from './store/toolkit';
 export { createAppSlice } from './store/slices/app';
 export { getSelectors } from './store/selectors';
 export type { Payload, PathKey, NormalizedEntities, AsyncThunkReturnType, ThunkAPI, SharedAsyncThunkActionArgs, AsyncThunkActionArgs, } from './store/types';

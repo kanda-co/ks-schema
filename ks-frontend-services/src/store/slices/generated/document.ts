@@ -1,5 +1,6 @@
 // Imports
-import * as toolkit from '@reduxjs/toolkit';
+import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { createSlice } from '../../toolkit';
 import { type Document, services } from '../../../';
 import { GENERATED_INITIAL_STATE } from '../../constants';
 import { createAsyncThunkAction, createResponseHandler } from '../../helpers';
@@ -33,7 +34,7 @@ export type DocumentEntity = DocumentReturn[0];
 export type DocumentParams = DocumentReturn[1];
 export type DocumentConfig = DocumentReturn[2];
 
-export type DocumentAsyncThunkAction = toolkit.AsyncThunkAction<
+export type DocumentAsyncThunkAction = AsyncThunkAction<
   DocumentEntity,
   DocumentParams,
   DocumentConfig
@@ -48,7 +49,7 @@ export const handleDocumentResponse = createResponseHandler<
   Document
 >();
 
-export const documentSlice = toolkit.createSlice({
+export const documentSlice = createSlice({
   name: 'document',
   initialState,
   reducers: {},

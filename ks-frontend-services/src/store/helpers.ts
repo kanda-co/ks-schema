@@ -1,4 +1,5 @@
-import * as toolkit from '@reduxjs/toolkit';
+import type { AsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSelector } from './toolkit';
 import * as T from 'io-ts';
 import { pipe } from 'fp-ts/lib/function';
 import { fold } from 'fp-ts/lib/Either';
@@ -77,9 +78,9 @@ export const createAsyncThunkAction = <
   Args extends StringIndexedObject<any> | undefined = undefined,
 >(
   service: NewService<V, Args>,
-): toolkit.AsyncThunk<V, AsyncThunkActionArgs<Args>, {}> => {
+): AsyncThunk<V, AsyncThunkActionArgs<Args>, {}> => {
   const { key, method } = service;
-  return toolkit.createAsyncThunk<V, AsyncThunkActionArgs<Args>>(
+  return createAsyncThunk<V, AsyncThunkActionArgs<Args>>(
     key,
     async <T>(args: AsyncThunkActionArgs<Args> | void, thunkAPI: ThunkAPI) => {
       const state = thunkAPI.getState() as StringIndexedObject;
@@ -121,7 +122,7 @@ export const createAsyncThunkAction = <
 
 export const handleResponse = <State extends GeneratedState<Entity>, Entity>(
   state: State,
-  action: toolkit.PayloadAction<Entity>,
+  action: PayloadAction<Entity>,
 ) => {
   const { payload } = action;
   const isArray = isArrayOfValue<Entity>(payload);
@@ -142,9 +143,6 @@ export const createResponseHandler = <
   return handleResponse<State, Entity>;
 };
 
-export const getCamelCaseEntityName = (entityName: string) =>
-  entityName.charAt(0).toLowerCase() + entityName.slice(1);
-
 export const generateSelectors = <
   Entity,
   State extends StringIndexedObject<GeneratedState<Entity>>,
@@ -153,19 +151,16 @@ export const generateSelectors = <
 ): Selectors<Entity, State> => {
   const getReducer = (state: State) => state[reducer];
 
-  const getById = toolkit.createSelector(getReducer, (reducer) => reducer.byId);
+  const getById = createSelector(getReducer, (reducer) => reducer.byId);
 
-  const getAllIds = toolkit.createSelector(
-    getReducer,
-    (reducer) => reducer.allIds,
-  );
+  const getAllIds = createSelector(getReducer, (reducer) => reducer.allIds);
 
-  const getId = toolkit.createSelector(getPathKey, (pathKey) => {
+  const getId = createSelector(getPathKey, (pathKey) => {
     if (pathKey?.page !== reducer) return undefined;
     return pathKey.id;
   });
 
-  const getItem = toolkit.createSelector(
+  const getItem = createSelector(
     getId,
     getById,
     getPathKey,
@@ -175,17 +170,17 @@ export const generateSelectors = <
     },
   );
 
-  const getIsSubmitting = toolkit.createSelector(
+  const getIsSubmitting = createSelector(
     getReducer,
     (reducer) => reducer.isSubmitting,
   );
 
-  const getFetchedList = toolkit.createSelector(
+  const getFetchedList = createSelector(
     getReducer,
     (reducer) => reducer.fetchedList,
   );
 
-  const getItems = toolkit.createSelector(
+  const getItems = createSelector(
     getById,
     (byId) => Object.values(byId) as Entity[],
   );

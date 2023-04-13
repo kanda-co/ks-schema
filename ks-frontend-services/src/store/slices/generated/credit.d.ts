@@ -1,33 +1,33 @@
-import * as toolkit from '@reduxjs/toolkit';
+import { type AsyncThunkAction } from '@reduxjs/toolkit';
 import { type Credit } from '../../../';
 import type { AsyncThunkReturnType, GeneratedState } from '../../types';
-export declare const infoCredit: toolkit.AsyncThunk<Credit, {
+export declare const infoCredit: import("@reduxjs/toolkit").AsyncThunk<Credit, {
     body: Credit;
 } & import("../../types").SharedAsyncThunkActionArgs, {}>;
-export declare const getCredits: toolkit.AsyncThunk<Credit[], import("../../types").SharedAsyncThunkActionArgs, {}>;
-export declare const postCredit: toolkit.AsyncThunk<Credit, {
+export declare const getCredits: import("@reduxjs/toolkit").AsyncThunk<Credit[], import("../../types").SharedAsyncThunkActionArgs, {}>;
+export declare const postCredit: import("@reduxjs/toolkit").AsyncThunk<Credit, {
     body: Credit;
 } & import("../../types").SharedAsyncThunkActionArgs, {}>;
-export declare const getCredit: toolkit.AsyncThunk<Credit, {
+export declare const getCredit: import("@reduxjs/toolkit").AsyncThunk<Credit, {
     params: import("../../../generated/operations/getCredit").GetCreditRequestParameters;
 } & import("../../types").SharedAsyncThunkActionArgs, {}>;
-export declare const putCredit: toolkit.AsyncThunk<Credit, {
+export declare const putCredit: import("@reduxjs/toolkit").AsyncThunk<Credit, {
     params: import("../../../generated/operations/putCredit").PutCreditRequestParameters;
     body: Credit;
 } & import("../../types").SharedAsyncThunkActionArgs, {}>;
-export declare const deleteCredit: toolkit.AsyncThunk<Credit, {
+export declare const deleteCredit: import("@reduxjs/toolkit").AsyncThunk<Credit, {
     params: import("../../../generated/operations/deleteCredit").DeleteCreditRequestParameters;
 } & import("../../types").SharedAsyncThunkActionArgs, {}>;
-export declare const quoteCredit: toolkit.AsyncThunk<Credit, {
+export declare const quoteCredit: import("@reduxjs/toolkit").AsyncThunk<Credit, {
     params: import("../../../generated/operations/quoteCredit").QuoteCreditRequestParameters;
 } & import("../../types").SharedAsyncThunkActionArgs, {}>;
-export declare const applyCredit: toolkit.AsyncThunk<Credit, {
+export declare const applyCredit: import("@reduxjs/toolkit").AsyncThunk<Credit, {
     params: import("../../../generated/operations/applyCredit").ApplyCreditRequestParameters;
 } & import("../../types").SharedAsyncThunkActionArgs, {}>;
-export declare const checkCredit: toolkit.AsyncThunk<Credit, {
+export declare const checkCredit: import("@reduxjs/toolkit").AsyncThunk<Credit, {
     params: import("../../../generated/operations/checkCredit").CheckCreditRequestParameters;
 } & import("../../types").SharedAsyncThunkActionArgs, {}>;
-export declare const signCredit: toolkit.AsyncThunk<Credit, {
+export declare const signCredit: import("@reduxjs/toolkit").AsyncThunk<Credit, {
     params: import("../../../generated/operations/signCredit").SignCreditRequestParameters;
     body: import("../../../").SignDocument;
 } & import("../../types").SharedAsyncThunkActionArgs, {}>;
@@ -35,7 +35,7 @@ export type CreditReturn = AsyncThunkReturnType<typeof infoCredit | typeof getCr
 export type CreditEntity = CreditReturn[0];
 export type CreditParams = CreditReturn[1];
 export type CreditConfig = CreditReturn[2];
-export type CreditAsyncThunkAction = toolkit.AsyncThunkAction<CreditEntity, CreditParams, CreditConfig>;
+export type CreditAsyncThunkAction = AsyncThunkAction<CreditEntity, CreditParams, CreditConfig>;
 export type CreditState = GeneratedState<Credit>;
 export declare const handleCreditResponse: (state: CreditState, action: {
     payload: Credit;
@@ -47,6 +47,6 @@ export declare const handleCreditResponse: (state: CreditState, action: {
     byId: import("../../../types").StringIndexedObject<Credit>;
     allIds: string[];
 };
-export declare const creditSlice: toolkit.Slice<CreditState, {}, "credit">;
-declare const _default: toolkit.Reducer<CreditState, toolkit.AnyAction>;
+export declare const creditSlice: import("@reduxjs/toolkit").Slice<CreditState, {}, "credit">;
+declare const _default: import("redux").Reducer<CreditState, import("redux").AnyAction>;
 export default _default;

@@ -1,5 +1,6 @@
 // Imports
-import * as toolkit from '@reduxjs/toolkit';
+import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { createSlice } from '../../toolkit';
 import { type Subscription, services } from '../../../';
 import { GENERATED_INITIAL_STATE } from '../../constants';
 import { createAsyncThunkAction, createResponseHandler } from '../../helpers';
@@ -37,7 +38,7 @@ export type SubscriptionEntity = SubscriptionReturn[0];
 export type SubscriptionParams = SubscriptionReturn[1];
 export type SubscriptionConfig = SubscriptionReturn[2];
 
-export type SubscriptionAsyncThunkAction = toolkit.AsyncThunkAction<
+export type SubscriptionAsyncThunkAction = AsyncThunkAction<
   SubscriptionEntity,
   SubscriptionParams,
   SubscriptionConfig
@@ -52,7 +53,7 @@ export const handleSubscriptionResponse = createResponseHandler<
   Subscription
 >();
 
-export const subscriptionSlice = toolkit.createSlice({
+export const subscriptionSlice = createSlice({
   name: 'subscription',
   initialState,
   reducers: {},

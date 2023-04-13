@@ -1,5 +1,6 @@
 // Imports
-import * as toolkit from '@reduxjs/toolkit';
+import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { createSlice } from '../../toolkit';
 import { type Credit, services } from '../../../';
 import { GENERATED_INITIAL_STATE } from '../../constants';
 import { createAsyncThunkAction, createResponseHandler } from '../../helpers';
@@ -35,7 +36,7 @@ export type CreditEntity = CreditReturn[0];
 export type CreditParams = CreditReturn[1];
 export type CreditConfig = CreditReturn[2];
 
-export type CreditAsyncThunkAction = toolkit.AsyncThunkAction<
+export type CreditAsyncThunkAction = AsyncThunkAction<
   CreditEntity,
   CreditParams,
   CreditConfig
@@ -50,7 +51,7 @@ export const handleCreditResponse = createResponseHandler<
   Credit
 >();
 
-export const creditSlice = toolkit.createSlice({
+export const creditSlice = createSlice({
   name: 'credit',
   initialState,
   reducers: {},

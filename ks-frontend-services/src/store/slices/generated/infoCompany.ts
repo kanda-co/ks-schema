@@ -1,5 +1,6 @@
 // Imports
-import * as toolkit from '@reduxjs/toolkit';
+import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { createSlice } from '../../toolkit';
 import { type InfoCompany, services } from '../../../';
 import { GENERATED_INITIAL_STATE } from '../../constants';
 import { createAsyncThunkAction, createResponseHandler } from '../../helpers';
@@ -15,7 +16,7 @@ export type InfoCompanyEntity = InfoCompanyReturn[0];
 export type InfoCompanyParams = InfoCompanyReturn[1];
 export type InfoCompanyConfig = InfoCompanyReturn[2];
 
-export type InfoCompanyAsyncThunkAction = toolkit.AsyncThunkAction<
+export type InfoCompanyAsyncThunkAction = AsyncThunkAction<
   InfoCompanyEntity,
   InfoCompanyParams,
   InfoCompanyConfig
@@ -30,7 +31,7 @@ export const handleInfoCompanyResponse = createResponseHandler<
   InfoCompany
 >();
 
-export const infoCompanySlice = toolkit.createSlice({
+export const infoCompanySlice = createSlice({
   name: 'infoCompany',
   initialState,
   reducers: {},

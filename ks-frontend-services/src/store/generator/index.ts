@@ -6,7 +6,9 @@ import * as operations from '../../generated/operations';
 import services from '../../service';
 import { getOperationKeys, getOperationName } from '../../helpers';
 import { actions, selectors, slice, sliceIndex } from './templates';
-import { getCamelCaseEntityName } from '../helpers';
+
+const getCamelCaseEntityName = (entityName: string) =>
+  entityName.charAt(0).toLowerCase() + entityName.slice(1);
 
 function generateSlices(entityName: string) {
   const camelCaseEntityName = getCamelCaseEntityName(entityName);

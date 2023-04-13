@@ -1,5 +1,6 @@
 // Imports
-import * as toolkit from '@reduxjs/toolkit';
+import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { createSlice } from '../../toolkit';
 import { type InfoQuery, services } from '../../../';
 import { GENERATED_INITIAL_STATE } from '../../constants';
 import { createAsyncThunkAction, createResponseHandler } from '../../helpers';
@@ -13,7 +14,7 @@ export type InfoQueryEntity = InfoQueryReturn[0];
 export type InfoQueryParams = InfoQueryReturn[1];
 export type InfoQueryConfig = InfoQueryReturn[2];
 
-export type InfoQueryAsyncThunkAction = toolkit.AsyncThunkAction<
+export type InfoQueryAsyncThunkAction = AsyncThunkAction<
   InfoQueryEntity,
   InfoQueryParams,
   InfoQueryConfig
@@ -28,7 +29,7 @@ export const handleInfoQueryResponse = createResponseHandler<
   InfoQuery
 >();
 
-export const infoQuerySlice = toolkit.createSlice({
+export const infoQuerySlice = createSlice({
   name: 'infoQuery',
   initialState,
   reducers: {},

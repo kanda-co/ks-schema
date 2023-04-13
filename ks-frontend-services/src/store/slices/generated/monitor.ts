@@ -1,5 +1,6 @@
 // Imports
-import * as toolkit from '@reduxjs/toolkit';
+import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { createSlice } from '../../toolkit';
 import { type Monitor, services } from '../../../';
 import { GENERATED_INITIAL_STATE } from '../../constants';
 import { createAsyncThunkAction, createResponseHandler } from '../../helpers';
@@ -29,7 +30,7 @@ export type MonitorEntity = MonitorReturn[0];
 export type MonitorParams = MonitorReturn[1];
 export type MonitorConfig = MonitorReturn[2];
 
-export type MonitorAsyncThunkAction = toolkit.AsyncThunkAction<
+export type MonitorAsyncThunkAction = AsyncThunkAction<
   MonitorEntity,
   MonitorParams,
   MonitorConfig
@@ -44,7 +45,7 @@ export const handleMonitorResponse = createResponseHandler<
   Monitor
 >();
 
-export const monitorSlice = toolkit.createSlice({
+export const monitorSlice = createSlice({
   name: 'monitor',
   initialState,
   reducers: {},

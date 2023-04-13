@@ -1,5 +1,6 @@
 // Imports
-import * as toolkit from '@reduxjs/toolkit';
+import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { createSlice } from '../../toolkit';
 import { type Event, services } from '../../../';
 import { GENERATED_INITIAL_STATE } from '../../constants';
 import { createAsyncThunkAction, createResponseHandler } from '../../helpers';
@@ -13,7 +14,7 @@ export type EventEntity = EventReturn[0];
 export type EventParams = EventReturn[1];
 export type EventConfig = EventReturn[2];
 
-export type EventAsyncThunkAction = toolkit.AsyncThunkAction<
+export type EventAsyncThunkAction = AsyncThunkAction<
   EventEntity,
   EventParams,
   EventConfig
@@ -25,7 +26,7 @@ const initialState: EventState = GENERATED_INITIAL_STATE;
 
 export const handleEventResponse = createResponseHandler<EventState, Event>();
 
-export const eventSlice = toolkit.createSlice({
+export const eventSlice = createSlice({
   name: 'event',
   initialState,
   reducers: {},

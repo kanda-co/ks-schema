@@ -1,5 +1,6 @@
 // Imports
-import * as toolkit from '@reduxjs/toolkit';
+import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { createSlice } from '../../toolkit';
 import { type Company, services } from '../../../';
 import { GENERATED_INITIAL_STATE } from '../../constants';
 import { createAsyncThunkAction, createResponseHandler } from '../../helpers';
@@ -47,7 +48,7 @@ export type CompanyEntity = CompanyReturn[0];
 export type CompanyParams = CompanyReturn[1];
 export type CompanyConfig = CompanyReturn[2];
 
-export type CompanyAsyncThunkAction = toolkit.AsyncThunkAction<
+export type CompanyAsyncThunkAction = AsyncThunkAction<
   CompanyEntity,
   CompanyParams,
   CompanyConfig
@@ -62,7 +63,7 @@ export const handleCompanyResponse = createResponseHandler<
   Company
 >();
 
-export const companySlice = toolkit.createSlice({
+export const companySlice = createSlice({
   name: 'company',
   initialState,
   reducers: {},

@@ -5,7 +5,7 @@
   "scripts": {
     "clean-incorrect-imports": "grep -rlw \"./src\" -e \"DateFromISOString\" | xargs -I@ sed -i.bak \"s/\\/DateFromISOString//g\" @ && rm -rf **/*.bak",
     "generate-service-module": "yarn clean-incorrect-imports && ts-node --experimental-specifier-resolution=node ./src/service/generator/",
-    "generate-store": "ts-node --experimental-specifier-resolution=node ./src/store/generator/ && prettier --write ./src/store/",
+    "generate-store": "ts-node --require ts-node/register --experimental-specifier-resolution=node ./src/store/generator/ && prettier --write ./src/store/",
     "clean": "rimraf dist",
     "remove:nodemodules": "rimraf yarn.lock && rimraf node_modules",
     "build:types": "tsc src/index.ts --declaration --emitDeclarationOnly --jsx react-jsx --esModuleInterop",
@@ -25,7 +25,6 @@
   "dependencies": {
     "@kanda-libs/ks-amplitude-provider": "^0.0.15",
     "@openapi-io-ts/runtime": "^0.3.1",
-    "@reduxjs/toolkit": "^1.9.3",
     "@stripe/stripe-js": "^1.35.0",
     "append-query": "^2.1.1",
     "firebase": "9.18.0",
@@ -45,6 +44,7 @@
     "@types/node": "^18.11.9",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
+    "@reduxjs/toolkit": "^1.9.3",
     "esbuild": "^0.15.16",
     "esbuild-copy-static-files": "^0.1.0",
     "esbuild-node-externals": "^1.5.0",
@@ -61,6 +61,7 @@
     "@react-pdf/font": "2.2.0"
   },
   "peerDependencies": {
+    "@reduxjs/toolkit": "^1.9.3",
     "react": "^17.0.2"
   }
 }

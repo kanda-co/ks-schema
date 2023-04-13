@@ -1,4 +1,5 @@
-import { type AsyncThunk, createAsyncThunk } from '@reduxjs/toolkit';
+import type { AsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk } from './toolkit';
 import type { Response } from '../handlers';
 import type { StringIndexedObject } from '../types';
 

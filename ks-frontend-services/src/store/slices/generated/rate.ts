@@ -1,5 +1,6 @@
 // Imports
-import * as toolkit from '@reduxjs/toolkit';
+import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { createSlice } from '../../toolkit';
 import { type Rate, services } from '../../../';
 import { GENERATED_INITIAL_STATE } from '../../constants';
 import { createAsyncThunkAction, createResponseHandler } from '../../helpers';
@@ -25,7 +26,7 @@ export type RateEntity = RateReturn[0];
 export type RateParams = RateReturn[1];
 export type RateConfig = RateReturn[2];
 
-export type RateAsyncThunkAction = toolkit.AsyncThunkAction<
+export type RateAsyncThunkAction = AsyncThunkAction<
   RateEntity,
   RateParams,
   RateConfig
@@ -37,7 +38,7 @@ const initialState: RateState = GENERATED_INITIAL_STATE;
 
 export const handleRateResponse = createResponseHandler<RateState, Rate>();
 
-export const rateSlice = toolkit.createSlice({
+export const rateSlice = createSlice({
   name: 'rate',
   initialState,
   reducers: {},

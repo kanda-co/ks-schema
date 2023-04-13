@@ -1,4 +1,5 @@
-import { getCamelCaseEntityName } from '../helpers';
+const getCamelCaseEntityName = (entityName: string) =>
+  entityName.charAt(0).toLowerCase() + entityName.slice(1);
 
 const handleResponseName = (entityName: string) =>
   `handle${entityName}Response`;
@@ -60,7 +61,8 @@ export const slice = (
   camelCaseEntityName: string,
   actionNames: string[],
 ) => `// Imports
-import * as toolkit from "@reduxjs/toolkit";
+import { type AsyncThunkAction } from "@reduxjs/toolkit";
+import { createSlice } from "../../toolkit";
 import { type ${entityName}, services } from "../../../";
 import { GENERATED_INITIAL_STATE } from "../../constants";
 import { createAsyncThunkAction, createResponseHandler } from "../../helpers";
@@ -78,7 +80,7 @@ export type ${entityName}Entity = ${entityName}Return[0];
 export type ${entityName}Params = ${entityName}Return[1];
 export type ${entityName}Config = ${entityName}Return[2];
 
-export type ${entityName}AsyncThunkAction = toolkit.AsyncThunkAction<${entityName}Entity, ${entityName}Params, ${entityName}Config>;
+export type ${entityName}AsyncThunkAction = AsyncThunkAction<${entityName}Entity, ${entityName}Params, ${entityName}Config>;
 
 // Reducer
 export type ${entityName}State = GeneratedState<${entityName}>;
@@ -88,7 +90,7 @@ export const ${handleResponseName(
   entityName,
 )} = createResponseHandler<${entityName}State, ${entityName}>();
 
-export const ${camelCaseEntityName}Slice = toolkit.createSlice({
+export const ${camelCaseEntityName}Slice = createSlice({
   name: "${camelCaseEntityName}",
   initialState,
   reducers: {},

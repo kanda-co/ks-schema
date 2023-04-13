@@ -1,5 +1,6 @@
 import type { StringIndexedObject } from '../../types';
-import * as toolkit from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '../toolkit';
 import { PathKey } from '../types';
 
 export type StringIndexedObjectOrUndefined =
@@ -28,11 +29,11 @@ export const createAppSlice = <T>() => {
     id: undefined,
   };
 
-  const appSlice = toolkit.createSlice({
+  const appSlice = createSlice({
     name: 'app',
     initialState,
     reducers: {
-      runNonBlockingAction: (state, action: toolkit.PayloadAction<string>) => {
+      runNonBlockingAction: (state, action: PayloadAction<string>) => {
         return {
           ...state,
           requiredNonBlockingActions: state.requiredNonBlockingActions.filter(
@@ -41,16 +42,13 @@ export const createAppSlice = <T>() => {
           pendingNonBlockingAction: action.payload,
         };
       },
-      queueNonBlockingActions: (
-        state,
-        action: toolkit.PayloadAction<string[]>,
-      ) => {
+      queueNonBlockingActions: (state, action: PayloadAction<string[]>) => {
         return {
           ...state,
           requiredNonBlockingActions: action.payload,
         };
       },
-      routeChange: (state, action: toolkit.PayloadAction<PathKey<T>>) => {
+      routeChange: (state, action: PayloadAction<PathKey<T>>) => {
         return {
           ...state,
           pathKey: action.payload,

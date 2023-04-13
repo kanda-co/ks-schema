@@ -1,5 +1,6 @@
 // Imports
-import * as toolkit from '@reduxjs/toolkit';
+import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { createSlice } from '../../toolkit';
 import { type Job, services } from '../../../';
 import { GENERATED_INITIAL_STATE } from '../../constants';
 import { createAsyncThunkAction, createResponseHandler } from '../../helpers';
@@ -67,7 +68,7 @@ export type JobEntity = JobReturn[0];
 export type JobParams = JobReturn[1];
 export type JobConfig = JobReturn[2];
 
-export type JobAsyncThunkAction = toolkit.AsyncThunkAction<
+export type JobAsyncThunkAction = AsyncThunkAction<
   JobEntity,
   JobParams,
   JobConfig
@@ -79,7 +80,7 @@ const initialState: JobState = GENERATED_INITIAL_STATE;
 
 export const handleJobResponse = createResponseHandler<JobState, Job>();
 
-export const jobSlice = toolkit.createSlice({
+export const jobSlice = createSlice({
   name: 'job',
   initialState,
   reducers: {},

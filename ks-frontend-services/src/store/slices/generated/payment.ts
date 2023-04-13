@@ -1,5 +1,6 @@
 // Imports
-import * as toolkit from '@reduxjs/toolkit';
+import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { createSlice } from '../../toolkit';
 import { type Payment, services } from '../../../';
 import { GENERATED_INITIAL_STATE } from '../../constants';
 import { createAsyncThunkAction, createResponseHandler } from '../../helpers';
@@ -27,7 +28,7 @@ export type PaymentEntity = PaymentReturn[0];
 export type PaymentParams = PaymentReturn[1];
 export type PaymentConfig = PaymentReturn[2];
 
-export type PaymentAsyncThunkAction = toolkit.AsyncThunkAction<
+export type PaymentAsyncThunkAction = AsyncThunkAction<
   PaymentEntity,
   PaymentParams,
   PaymentConfig
@@ -42,7 +43,7 @@ export const handlePaymentResponse = createResponseHandler<
   Payment
 >();
 
-export const paymentSlice = toolkit.createSlice({
+export const paymentSlice = createSlice({
   name: 'payment',
   initialState,
   reducers: {},
