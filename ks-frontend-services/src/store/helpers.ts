@@ -111,10 +111,6 @@ export const createAsyncThunkAction = <
 
       const data = await handlePayload(payload as unknown as Payload<V>);
 
-      console.log({
-        data,
-      });
-
       return data;
     },
   );
