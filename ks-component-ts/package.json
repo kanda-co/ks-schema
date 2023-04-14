@@ -40,7 +40,7 @@
   "devDependencies": {
     "@kanda-libs/ks-amplitude-provider": "^0.0.15",
     "@kanda-libs/ks-design-library": "0.2.54",
-    "@kanda-libs/ks-frontend-services": "0.2.13",
+    "@kanda-libs/ks-frontend-services": "0.2.140",
     "@types/browser-image-compression": "^1.0.9",
     "@types/draft-js": "^0.11.10",
     "@types/markdown-draft-js": "^2.2.4",
@@ -99,8 +99,8 @@
     }
   ],
   "peerDependencies": {
-    "@kanda-libs/ks-design-library": "0.2.53",
-    "@kanda-libs/ks-frontend-services": "0.2.0",
+    "@kanda-libs/ks-design-library": "0.2.54",
+    "@kanda-libs/ks-frontend-services": "0.2.140",
     "clsx": "^1.1.1",
     "lodash.get": "^4.4.2",
     "react": "^16.8.0 || ^17",
