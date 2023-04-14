@@ -544,6 +544,46 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/entity:
+    get:
+      operationId: infoEntity
+      summary: kanda staff only to get entity with relevant resources
+      tags:
+        - InfoEntity
+      parameters:
+        - name: id
+          in: query
+          description: resource id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - name: kind
+          in: query
+          description: resource kind
+          required: true
+          schema:
+            type: string
+            minLength: 1
+            enum:
+              - company
+              - credit
+              - job
+              - payment
+      responses:
+        200:
+          description: got credit with relevant resources
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Entity"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/company:
     get:
       operationId: getCompanies
@@ -5142,6 +5182,48 @@ components:
           format: date-time
           title: flagged at
           readOnly: true
+
+    Entity:
+      type: object
+      title: entity of resources
+      description: entity of all relevant resources
+      required:
+        - companies
+        - credits
+        - jobs
+        - monitors
+        - payments
+      properties:
+        companies:
+          type: array
+          title: relevant companies
+          descriptions: relevant companies
+          items:
+            $ref: "#/components/schemas/Company"
+        credits:
+          type: array
+          title: relevant credits
+          descriptions: relevant credits
+          items:
+            $ref: "#/components/schemas/Credit"
+        jobs:
+          type: array
+          title: relevant jobs
+          descriptions: relevant jobs
+          items:
+            $ref: "#/components/schemas/Job"
+        monitors:
+          type: array
+          title: relevant monitors
+          descriptions: relevant monitors
+          items:
+            $ref: "#/components/schemas/Monitor"
+        payments:
+          type: array
+          title: relevant payments
+          descriptions: relevant payments
+          items:
+            $ref: "#/components/schemas/Payment"
 
     Event:
       type: object

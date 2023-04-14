@@ -97,10 +97,10 @@
   resolved "https://registry.yarnpkg.com/@jsdevtools/ono/-/ono-7.1.3.tgz#9df03bbd7c696a5c58885c34aa06da41c8543796"
   integrity sha512-4JQNk+3mVzK3xh2rqd6RB4J46qUR19azEHBneZyTZM+c456qOrbbM/5xcR8huNCCcbVt7+UmizG6GuUvPvKUYg==
 
-"@openapi-io-ts/cli@^0.4.1":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@openapi-io-ts/cli/-/cli-0.4.1.tgz#b56795ade8b69354b8d755c1b0f2d077f1033312"
-  integrity sha512-rHyjNIQeDHFP4GN7XMwTO+Kl+NrY8+wBnjX/Id6TMa5ORnXz03YV5kM0TawPoOJw0y+DsObAv+Pf9qkKN95iZA==
+"@openapi-io-ts/cli@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@openapi-io-ts/cli/-/cli-0.5.0.tgz#664c641ae3cf046e8953ae731761d0749810177f"
+  integrity sha512-QrntplYGn2Q7LFA4hOVsV7n3uK1ns3oF3M36pz967h0qUJkUg8P7sU4okuK4xSRXXs/NL285ypi2h2WKdXNKRA==
   dependencies:
     "@apidevtools/swagger-parser" "^10.0.2"
     "@openapi-io-ts/core" "0.1.0"
