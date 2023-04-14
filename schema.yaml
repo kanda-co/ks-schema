@@ -546,7 +546,7 @@ paths:
 
   /api/info/entity:
     get:
-      operationId: infoEntity
+      operationId: getInfoEntity
       summary: kanda staff only to get entity with relevant resources
       tags:
         - InfoEntity
@@ -576,7 +576,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Entity"
+                $ref: "#/components/schemas/InfoEntity"
         default:
           description: unexpected error
           content:
@@ -5183,42 +5183,42 @@ components:
           title: flagged at
           readOnly: true
 
-    Entity:
+    InfoEntity:
       type: object
-      title: entity of resources
-      description: entity of all relevant resources
+      title: info entity of resources
+      description: info entity of all relevant resources
       required:
-        - companies
-        - credits
-        - jobs
-        - monitors
-        - payments
+        - company
+        - credit
+        - job
+        - monitor
+        - payment
       properties:
-        companies:
+        company:
           type: array
           title: relevant companies
           descriptions: relevant companies
           items:
             $ref: "#/components/schemas/Company"
-        credits:
+        credit:
           type: array
           title: relevant credits
           descriptions: relevant credits
           items:
             $ref: "#/components/schemas/Credit"
-        jobs:
+        job:
           type: array
           title: relevant jobs
           descriptions: relevant jobs
           items:
             $ref: "#/components/schemas/Job"
-        monitors:
+        monitor:
           type: array
           title: relevant monitors
           descriptions: relevant monitors
           items:
             $ref: "#/components/schemas/Monitor"
-        payments:
+        payment:
           type: array
           title: relevant payments
           descriptions: relevant payments
