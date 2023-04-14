@@ -40,6 +40,8 @@ export type ThunkAPI = CreateAsyncThunkCallbackArguments[1];
 
 export type SharedAsyncThunkActionArgs = {
   preventLoadingState?: boolean;
+  onSuccess?: () => void;
+  onError?: () => void;
 };
 
 export type AsyncThunkActionArgs<Args> = Args extends undefined

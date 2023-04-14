@@ -29,10 +29,10 @@ export declare const createAppSlice: <T>() => import("@reduxjs/toolkit").Slice<A
         payload: PathKey<T>;
         type: string;
     }) => {
+        requiredNonBlockingActions: any[];
+        finishedNonBlockingActions: any[];
         pathKey: PathKey<T>;
         isLoading: boolean;
-        requiredNonBlockingActions: string[];
-        finishedNonBlockingActions: string[];
         id?: string;
     };
 }, "app">;

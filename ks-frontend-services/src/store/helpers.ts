@@ -85,9 +85,10 @@ export const createAsyncThunkAction = <
     async <T>(args: AsyncThunkActionArgs<Args> | void, thunkAPI: ThunkAPI) => {
       const state = thunkAPI.getState() as StringIndexedObject;
       const { byId, fetchedList } = state[getReducerName(key)];
-      const { preventLoadingState, ...methodArgs } = args || {
-        args: undefined,
-      };
+      const { preventLoadingState, onSuccess, onError, ...methodArgs } =
+        args || {
+          args: undefined,
+        };
 
       const finalMethodArgs = methodArgs as unknown as Args;
 
@@ -109,9 +110,19 @@ export const createAsyncThunkAction = <
 
       const payload = method(finalMethodArgs);
 
-      const data = await handlePayload(payload as unknown as Payload<V>);
+      try {
+        const data = await handlePayload(payload as unknown as Payload<V>);
 
-      return data;
+        if (onSuccess) {
+          onSuccess();
+        }
+
+        return data;
+      } catch (error) {
+        if (onError) {
+          onError();
+        }
+      }
     },
   );
 };

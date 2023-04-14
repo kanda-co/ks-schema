@@ -51,6 +51,8 @@ export const createAppSlice = <T>() => {
       routeChange: (state, action: PayloadAction<PathKey<T>>) => {
         return {
           ...state,
+          requiredNonBlockingActions: [],
+          finishedNonBlockingActions: [],
           pathKey: action.payload,
         };
       },
