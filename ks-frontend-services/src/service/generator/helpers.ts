@@ -1,28 +1,6 @@
 import { StringIndexedObject } from '../../types';
-import { EXCLUDED_OPERATION_KEYS, SERVICE_BUILDER_TAG } from './constants';
 import * as operations from '../../generated/operations';
-
-/**
- * Returns a string array of operation keys that we want to define services for.
- * This excludes some generic operations that have no corresponding services
- * @param currentOperations
- */
-export function getOperationKeys(
-  currentOperations: StringIndexedObject,
-): string[] {
-  const keys = Object.keys(currentOperations);
-
-  return keys.filter((key) => EXCLUDED_OPERATION_KEYS.indexOf(key) === -1);
-}
-
-/**
- * Gets the operation name from the key. For example: 'jobServiceBuilder'
- * becomes 'job'
- * @param operationKey
- */
-export function getOperationName(operationKey: string): string {
-  return operationKey.replace(SERVICE_BUILDER_TAG, '');
-}
+import { getOperationName } from '../../helpers';
 
 /**
  * Creates an object containing the method key alongside its method.

@@ -1,4 +1,4 @@
-import { fold, Either } from 'fp-ts/Either';
+import * as fp from 'fp-ts';
 import { APP_ENV } from './config';
 
 interface Error {
@@ -7,16 +7,16 @@ interface Error {
   };
 }
 
-interface ResponseBody {
-  data: unknown;
-  json: () => Promise<unknown>;
+interface ResponseBody<T = unknown> {
+  data: T;
+  json: () => Promise<T>;
 }
 
-export type Response = Either<Error, ResponseBody>;
+export type Response<T = unknown> = fp.either.Either<Error, ResponseBody<T>>;
 
 export const handleResponse = (response: Response) =>
   new Promise((resolve, reject) =>
-    fold(
+    fp.either.fold(
       async (error: Error) => {
         if (APP_ENV === 'qa') console.log('Error:', error);
         if (error.response) {

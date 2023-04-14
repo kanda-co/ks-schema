@@ -35,6 +35,14 @@ export interface Service<
   method: ServiceMethod<Value, Params, Body>;
 }
 
+export interface NewService<
+  Value extends StringIndexedObject | undefined | void,
+  Args extends StringIndexedObject | undefined = undefined,
+> {
+  key: string;
+  method: RequestFunction<Args, Value>;
+}
+
 export interface ServiceMethodReturnParams<T> {
   data?: T;
   error?: StringIndexedObject | string;

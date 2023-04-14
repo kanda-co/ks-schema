@@ -2,6 +2,7 @@ import { readFileSync, writeFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import * as operations from '../../generated/operations';
+import { getOperationKeys } from '../../helpers';
 import * as externalServices from '../external/index';
 import {
   SERVICE_FILE_NAME,
@@ -13,7 +14,6 @@ import {
   formatExternalServicesDeclarations,
   formatExternalServicesExport,
   formatServiceDefinitionLine,
-  getOperationKeys,
 } from './helpers';
 
 /**
