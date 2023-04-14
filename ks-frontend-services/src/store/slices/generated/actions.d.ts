@@ -5,6 +5,7 @@ export { getDocuments, postDocument, getDocument, putDocument, deleteDocument, }
 export { postEvent } from './event';
 export { infoAuth, infoVerify, infoPassword, infoSession, infoClaimAccount, } from './infoAuth';
 export { infoCompany } from './infoCompany';
+export { getInfoEntity } from './infoEntity';
 export { infoGhost } from './infoGhost';
 export { infoIP } from './infoIP';
 export { infoQuery } from './infoQuery';

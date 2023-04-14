@@ -5,6 +5,7 @@ export { default as document } from './document';
 export { default as event } from './event';
 export { default as infoAuth } from './infoAuth';
 export { default as infoCompany } from './infoCompany';
+export { default as infoEntity } from './infoEntity';
 export { default as infoGhost } from './infoGhost';
 export { default as infoIP } from './infoIP';
 export { default as infoQuery } from './infoQuery';

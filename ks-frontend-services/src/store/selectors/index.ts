@@ -10,6 +10,7 @@ import type {
   Event,
   InfoAuth,
   InfoCompany,
+  InfoEntity,
   InfoGhost,
   InfoIP,
   InfoQuery,
@@ -49,6 +50,10 @@ export const getSelectors = () => {
     InfoCompany,
     StringIndexedObject<GeneratedState<InfoCompany>>
   >('infoCompany');
+  const infoEntity = generateSelectors<
+    InfoEntity,
+    StringIndexedObject<GeneratedState<InfoEntity>>
+  >('infoEntity');
   const infoGhost = generateSelectors<
     InfoGhost,
     StringIndexedObject<GeneratedState<InfoGhost>>
@@ -89,6 +94,7 @@ export const getSelectors = () => {
     event,
     infoAuth,
     infoCompany,
+    infoEntity,
     infoGhost,
     infoIP,
     infoQuery,

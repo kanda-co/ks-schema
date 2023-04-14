@@ -39,6 +39,7 @@ export {
   infoClaimAccount,
 } from './infoAuth';
 export { infoCompany } from './infoCompany';
+export { getInfoEntity } from './infoEntity';
 export { infoGhost } from './infoGhost';
 export { infoIP } from './infoIP';
 export { infoQuery } from './infoQuery';

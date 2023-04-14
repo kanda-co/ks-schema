@@ -101,10 +101,10 @@ export const createAsyncThunkAction = <
 
           // If the data is already in the store, don't fetch it again
           if (item) {
-            return item;
+            return [] as any;
           }
         } else if (fetchedList) {
-          return Object.values(byId);
+          return [] as any;
         }
       }
 
