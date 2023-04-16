@@ -39,9 +39,7 @@ export const normalizeData = <T, S extends NormalizedEntities<T>>(
   state: S,
 ): NormalizedEntities<T> => {
   const formattedData = [...state.data, ...data];
-  const allIds = Object.keys(
-    formattedData.map((item) => (item as { id: string }).id),
-  );
+  const allIds = formattedData.map((item) => (item as { id: string }).id);
 
   return {
     data: formattedData,
