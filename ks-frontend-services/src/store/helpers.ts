@@ -128,7 +128,7 @@ export const createAsyncThunkAction = <
         return [] as any;
       }
 
-      const { byId, fetchedList } = state[getReducerName(key)];
+      const { byId, fetchedList } = state[getReducerName(key) as string];
       const { preventLoadingState, onSuccess, onError, ...methodArgs } =
         args || {
           args: undefined,
@@ -209,7 +209,7 @@ export const generateSelectors = <
     getPathKey,
     (id, data, pathKey) => {
       if (pathKey?.page !== reducer) return undefined;
-      return data.find((item) => (item as { id: string }).id);
+      return data.find((item) => (item as { id: string }).id === id);
     },
   );
 

@@ -91,8 +91,6 @@ function generateSelectorsIndex(entityNames: string[]) {
 
 const entityNames = getOperationKeys(operations)
   .map((key) => getOperationName(key, true))
-  // .map((key) => (key === 'InfoEntity' ? 'Entity' : key))
-  // TODO: Figure out void type
   .filter(
     (name) =>
       [
