@@ -20,8 +20,8 @@ export declare const handleInfoIPResponse: (state: InfoIPState, action: {
 };
 export declare const infoIPSlice: import("@reduxjs/toolkit").Slice<InfoIPState, {
     fetched: (state: InfoIPState, action: PayloadAction<InfoIP[]>) => {
-        id?: string;
         fetchedList: boolean;
+        id?: string;
         isLoading: boolean;
         isSubmitting: boolean;
         data: InfoIP[];

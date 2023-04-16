@@ -36,8 +36,8 @@ export declare const slices: {
             payload: import("../../..").AuthUser[];
             type: string;
         }) => {
-            id?: string;
             fetchedList: boolean;
+            id?: string;
             isLoading: boolean;
             isSubmitting: boolean;
             data: import("../../..").AuthUser[];
@@ -49,8 +49,8 @@ export declare const slices: {
             payload: import("../../..").Company[];
             type: string;
         }) => {
-            id?: string;
             fetchedList: boolean;
+            id?: string;
             isLoading: boolean;
             isSubmitting: boolean;
             data: import("../../..").Company[];
@@ -62,8 +62,8 @@ export declare const slices: {
             payload: import("../../..").Credit[];
             type: string;
         }) => {
-            id?: string;
             fetchedList: boolean;
+            id?: string;
             isLoading: boolean;
             isSubmitting: boolean;
             data: import("../../..").Credit[];
@@ -75,8 +75,8 @@ export declare const slices: {
             payload: import("../../..").Document[];
             type: string;
         }) => {
-            id?: string;
             fetchedList: boolean;
+            id?: string;
             isLoading: boolean;
             isSubmitting: boolean;
             data: import("../../..").Document[];
@@ -88,8 +88,8 @@ export declare const slices: {
             payload: import("../../..").Event[];
             type: string;
         }) => {
-            id?: string;
             fetchedList: boolean;
+            id?: string;
             isLoading: boolean;
             isSubmitting: boolean;
             data: import("../../..").Event[];
@@ -101,8 +101,8 @@ export declare const slices: {
             payload: import("../../..").InfoAuth[];
             type: string;
         }) => {
-            id?: string;
             fetchedList: boolean;
+            id?: string;
             isLoading: boolean;
             isSubmitting: boolean;
             data: import("../../..").InfoAuth[];
@@ -114,8 +114,8 @@ export declare const slices: {
             payload: import("../../..").InfoCompany[];
             type: string;
         }) => {
-            id?: string;
             fetchedList: boolean;
+            id?: string;
             isLoading: boolean;
             isSubmitting: boolean;
             data: import("../../..").InfoCompany[];
@@ -127,8 +127,8 @@ export declare const slices: {
             payload: import("../../..").InfoEntity[];
             type: string;
         }) => {
-            id?: string;
             fetchedList: boolean;
+            id?: string;
             isLoading: boolean;
             isSubmitting: boolean;
             data: import("../../..").InfoEntity[];
@@ -140,8 +140,8 @@ export declare const slices: {
             payload: import("../../..").InfoGhost[];
             type: string;
         }) => {
-            id?: string;
             fetchedList: boolean;
+            id?: string;
             isLoading: boolean;
             isSubmitting: boolean;
             data: import("../../..").InfoGhost[];
@@ -153,8 +153,8 @@ export declare const slices: {
             payload: import("../../..").InfoIP[];
             type: string;
         }) => {
-            id?: string;
             fetchedList: boolean;
+            id?: string;
             isLoading: boolean;
             isSubmitting: boolean;
             data: import("../../..").InfoIP[];
@@ -166,8 +166,8 @@ export declare const slices: {
             payload: import("../../..").InfoQuery[];
             type: string;
         }) => {
-            id?: string;
             fetchedList: boolean;
+            id?: string;
             isLoading: boolean;
             isSubmitting: boolean;
             data: import("../../..").InfoQuery[];
@@ -179,8 +179,8 @@ export declare const slices: {
             payload: import("../../..").Job[];
             type: string;
         }) => {
-            id?: string;
             fetchedList: boolean;
+            id?: string;
             isLoading: boolean;
             isSubmitting: boolean;
             data: import("../../..").Job[];
@@ -192,8 +192,8 @@ export declare const slices: {
             payload: import("../../..").Monitor[];
             type: string;
         }) => {
-            id?: string;
             fetchedList: boolean;
+            id?: string;
             isLoading: boolean;
             isSubmitting: boolean;
             data: import("../../..").Monitor[];
@@ -205,8 +205,8 @@ export declare const slices: {
             payload: import("../../..").Payment[];
             type: string;
         }) => {
-            id?: string;
             fetchedList: boolean;
+            id?: string;
             isLoading: boolean;
             isSubmitting: boolean;
             data: import("../../..").Payment[];
@@ -218,8 +218,8 @@ export declare const slices: {
             payload: import("../../..").Rate[];
             type: string;
         }) => {
-            id?: string;
             fetchedList: boolean;
+            id?: string;
             isLoading: boolean;
             isSubmitting: boolean;
             data: import("../../..").Rate[];
@@ -231,8 +231,8 @@ export declare const slices: {
             payload: import("../../..").Subscription[];
             type: string;
         }) => {
-            id?: string;
             fetchedList: boolean;
+            id?: string;
             isLoading: boolean;
             isSubmitting: boolean;
             data: import("../../..").Subscription[];

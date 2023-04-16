@@ -36,8 +36,8 @@ export declare const handleSubscriptionResponse: (state: SubscriptionState, acti
 };
 export declare const subscriptionSlice: import("@reduxjs/toolkit").Slice<SubscriptionState, {
     fetched: (state: SubscriptionState, action: PayloadAction<Subscription[]>) => {
-        id?: string;
         fetchedList: boolean;
+        id?: string;
         isLoading: boolean;
         isSubmitting: boolean;
         data: Subscription[];

@@ -34,8 +34,8 @@ export declare const handleInfoAuthResponse: (state: InfoAuthState, action: {
 };
 export declare const infoAuthSlice: import("@reduxjs/toolkit").Slice<InfoAuthState, {
     fetched: (state: InfoAuthState, action: PayloadAction<InfoAuth[]>) => {
-        id?: string;
         fetchedList: boolean;
+        id?: string;
         isLoading: boolean;
         isSubmitting: boolean;
         data: InfoAuth[];

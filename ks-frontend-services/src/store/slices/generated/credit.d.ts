@@ -49,8 +49,8 @@ export declare const handleCreditResponse: (state: CreditState, action: {
 };
 export declare const creditSlice: import("@reduxjs/toolkit").Slice<CreditState, {
     fetched: (state: CreditState, action: PayloadAction<Credit[]>) => {
-        id?: string;
         fetchedList: boolean;
+        id?: string;
         isLoading: boolean;
         isSubmitting: boolean;
         data: Credit[];

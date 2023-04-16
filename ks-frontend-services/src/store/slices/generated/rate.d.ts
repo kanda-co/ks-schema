@@ -34,8 +34,8 @@ export declare const handleRateResponse: (state: RateState, action: {
 };
 export declare const rateSlice: import("@reduxjs/toolkit").Slice<RateState, {
     fetched: (state: RateState, action: PayloadAction<Rate[]>) => {
-        id?: string;
         fetchedList: boolean;
+        id?: string;
         isLoading: boolean;
         isSubmitting: boolean;
         data: Rate[];

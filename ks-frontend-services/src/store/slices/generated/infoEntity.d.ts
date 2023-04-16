@@ -22,8 +22,8 @@ export declare const handleInfoEntityResponse: (state: InfoEntityState, action: 
 };
 export declare const infoEntitySlice: import("@reduxjs/toolkit").Slice<InfoEntityState, {
     fetched: (state: InfoEntityState, action: PayloadAction<InfoEntity[]>) => {
-        id?: string;
         fetchedList: boolean;
+        id?: string;
         isLoading: boolean;
         isSubmitting: boolean;
         data: InfoEntity[];

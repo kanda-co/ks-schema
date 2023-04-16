@@ -55,6 +55,9 @@ export const creditSlice = createSlice({
     fetched: (state: CreditState, action: PayloadAction<Credit[]>) => ({
       ...state,
       ...handleResponse(state, action),
+      // Don't set fetchedList when using this action, as it's used
+      // by InfoEntity
+      fetchedList: state.fetchedList,
     }),
   },
   extraReducers: {

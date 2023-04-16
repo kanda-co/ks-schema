@@ -22,8 +22,8 @@ export declare const handleEventResponse: (state: EventState, action: {
 };
 export declare const eventSlice: import("@reduxjs/toolkit").Slice<EventState, {
     fetched: (state: EventState, action: PayloadAction<Event[]>) => {
-        id?: string;
         fetchedList: boolean;
+        id?: string;
         isLoading: boolean;
         isSubmitting: boolean;
         data: Event[];

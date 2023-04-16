@@ -49,6 +49,9 @@ export const infoAuthSlice = createSlice({
     fetched: (state: InfoAuthState, action: PayloadAction<InfoAuth[]>) => ({
       ...state,
       ...handleResponse(state, action),
+      // Don't set fetchedList when using this action, as it's used
+      // by InfoEntity
+      fetchedList: state.fetchedList,
     }),
   },
   extraReducers: {

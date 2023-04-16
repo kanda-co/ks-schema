@@ -22,8 +22,8 @@ export declare const handleInfoCompanyResponse: (state: InfoCompanyState, action
 };
 export declare const infoCompanySlice: import("@reduxjs/toolkit").Slice<InfoCompanyState, {
     fetched: (state: InfoCompanyState, action: PayloadAction<InfoCompany[]>) => {
-        id?: string;
         fetchedList: boolean;
+        id?: string;
         isLoading: boolean;
         isSubmitting: boolean;
         data: InfoCompany[];

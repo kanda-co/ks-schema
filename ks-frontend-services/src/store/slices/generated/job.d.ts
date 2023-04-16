@@ -89,8 +89,8 @@ export declare const handleJobResponse: (state: JobState, action: {
 };
 export declare const jobSlice: import("@reduxjs/toolkit").Slice<JobState, {
     fetched: (state: JobState, action: PayloadAction<Job[]>) => {
-        id?: string;
         fetchedList: boolean;
+        id?: string;
         isLoading: boolean;
         isSubmitting: boolean;
         data: Job[];

@@ -33,6 +33,9 @@ export const infoIPSlice = createSlice({
     fetched: (state: InfoIPState, action: PayloadAction<InfoIP[]>) => ({
       ...state,
       ...handleResponse(state, action),
+      // Don't set fetchedList when using this action, as it's used
+      // by InfoEntity
+      fetchedList: state.fetchedList,
     }),
   },
   extraReducers: {

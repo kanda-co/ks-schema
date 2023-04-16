@@ -47,6 +47,9 @@ export const paymentSlice = createSlice({
     fetched: (state: PaymentState, action: PayloadAction<Payment[]>) => ({
       ...state,
       ...handleResponse(state, action),
+      // Don't set fetchedList when using this action, as it's used
+      // by InfoEntity
+      fetchedList: state.fetchedList,
     }),
   },
   extraReducers: {

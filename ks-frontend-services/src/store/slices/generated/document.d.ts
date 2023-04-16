@@ -33,8 +33,8 @@ export declare const handleDocumentResponse: (state: DocumentState, action: {
 };
 export declare const documentSlice: import("@reduxjs/toolkit").Slice<DocumentState, {
     fetched: (state: DocumentState, action: PayloadAction<Document[]>) => {
-        id?: string;
         fetchedList: boolean;
+        id?: string;
         isLoading: boolean;
         isSubmitting: boolean;
         data: Document[];

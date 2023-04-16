@@ -49,8 +49,8 @@ export declare const handleCompanyResponse: (state: CompanyState, action: {
 };
 export declare const companySlice: import("@reduxjs/toolkit").Slice<CompanyState, {
     fetched: (state: CompanyState, action: PayloadAction<Company[]>) => {
-        id?: string;
         fetchedList: boolean;
+        id?: string;
         isLoading: boolean;
         isSubmitting: boolean;
         data: Company[];

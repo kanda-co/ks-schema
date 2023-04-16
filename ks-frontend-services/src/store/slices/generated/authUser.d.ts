@@ -26,8 +26,8 @@ export declare const handleAuthUserResponse: (state: AuthUserState, action: {
 };
 export declare const authUserSlice: import("@reduxjs/toolkit").Slice<AuthUserState, {
     fetched: (state: AuthUserState, action: PayloadAction<AuthUser[]>) => {
-        id?: string;
         fetchedList: boolean;
+        id?: string;
         isLoading: boolean;
         isSubmitting: boolean;
         data: AuthUser[];

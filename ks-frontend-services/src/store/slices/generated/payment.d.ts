@@ -36,8 +36,8 @@ export declare const handlePaymentResponse: (state: PaymentState, action: {
 };
 export declare const paymentSlice: import("@reduxjs/toolkit").Slice<PaymentState, {
     fetched: (state: PaymentState, action: PayloadAction<Payment[]>) => {
-        id?: string;
         fetchedList: boolean;
+        id?: string;
         isLoading: boolean;
         isSubmitting: boolean;
         data: Payment[];

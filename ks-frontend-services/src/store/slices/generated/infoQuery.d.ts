@@ -22,8 +22,8 @@ export declare const handleInfoQueryResponse: (state: InfoQueryState, action: {
 };
 export declare const infoQuerySlice: import("@reduxjs/toolkit").Slice<InfoQueryState, {
     fetched: (state: InfoQueryState, action: PayloadAction<InfoQuery[]>) => {
-        id?: string;
         fetchedList: boolean;
+        id?: string;
         isLoading: boolean;
         isSubmitting: boolean;
         data: InfoQuery[];

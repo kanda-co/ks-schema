@@ -37,8 +37,8 @@ export declare const handleMonitorResponse: (state: MonitorState, action: {
 };
 export declare const monitorSlice: import("@reduxjs/toolkit").Slice<MonitorState, {
     fetched: (state: MonitorState, action: PayloadAction<Monitor[]>) => {
-        id?: string;
         fetchedList: boolean;
+        id?: string;
         isLoading: boolean;
         isSubmitting: boolean;
         data: Monitor[];

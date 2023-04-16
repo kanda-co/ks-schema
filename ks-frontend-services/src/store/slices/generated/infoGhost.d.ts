@@ -22,8 +22,8 @@ export declare const handleInfoGhostResponse: (state: InfoGhostState, action: {
 };
 export declare const infoGhostSlice: import("@reduxjs/toolkit").Slice<InfoGhostState, {
     fetched: (state: InfoGhostState, action: PayloadAction<InfoGhost[]>) => {
-        id?: string;
         fetchedList: boolean;
+        id?: string;
         isLoading: boolean;
         isSubmitting: boolean;
         data: InfoGhost[];

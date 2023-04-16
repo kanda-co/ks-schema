@@ -67,6 +67,9 @@ export const companySlice = createSlice({
     fetched: (state: CompanyState, action: PayloadAction<Company[]>) => ({
       ...state,
       ...handleResponse(state, action),
+      // Don't set fetchedList when using this action, as it's used
+      // by InfoEntity
+      fetchedList: state.fetchedList,
     }),
   },
   extraReducers: {
