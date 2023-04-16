@@ -3,5 +3,7 @@ dist/
 node_modules/
 yarn-error.log
 src/service/index.ts
+src/store/slices/generated/*
+src/store/selectors/index.*
 src/generated
 .DS_Store
