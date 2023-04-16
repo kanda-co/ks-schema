@@ -1,4 +1,4 @@
-export const NORMALIZED_INITIAL_STATE: = {
+export const NORMALIZED_INITIAL_STATE = {
   data: [],
   allIds: [],
 };

@@ -60,25 +60,19 @@ export const isArrayOfValue = <Entity>(
     ),
   );
 
-const getReducerName = (
-  key: string,
-  // TODO
-): string => {
+const getReducerName = (key: string): keyof typeof slices => {
   const [reducerName] = key.split('.');
+
+  const name = reducerName as keyof typeof slices;
+
   if (!reducerName) {
     throw new Error('Invalid reducer provided');
   }
-  if (
-    ['app', 'company', 'monitor', 'job', 'payment', 'credit'].indexOf(
-      reducerName,
-    ) === -1
-  ) {
+  if ((Object.keys(slices) as (keyof typeof slices)[]).indexOf(name) === -1) {
     throw new Error('Invalid reducer provided');
   }
 
-  return reducerName;
-  // TODO
-  //as keyof Pick<RootState, 'company' | 'monitor'>;
+  return name;
 };
 
 // Creates an asyncThunkAction for a given service
