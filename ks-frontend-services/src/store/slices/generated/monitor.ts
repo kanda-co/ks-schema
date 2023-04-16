@@ -1,9 +1,9 @@
 // Imports
-import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { type PayloadAction, type AsyncThunkAction } from '@reduxjs/toolkit';
 import { createSlice } from '../../toolkit';
 import { type Monitor, services } from '../../../';
 import { GENERATED_INITIAL_STATE } from '../../constants';
-import { createAsyncThunkAction, createResponseHandler } from '../../helpers';
+import { createAsyncThunkAction, handleResponse } from '../../helpers';
 import type { AsyncThunkReturnType, GeneratedState } from '../../types';
 
 // Service methods
@@ -40,15 +40,17 @@ export type MonitorAsyncThunkAction = AsyncThunkAction<
 export type MonitorState = GeneratedState<Monitor>;
 const initialState: MonitorState = GENERATED_INITIAL_STATE;
 
-export const handleMonitorResponse = createResponseHandler<
-  MonitorState,
-  Monitor
->();
+export const handleMonitorResponse = handleResponse<MonitorState, Monitor>;
 
 export const monitorSlice = createSlice({
   name: 'monitor',
   initialState,
-  reducers: {},
+  reducers: {
+    fetched: (state: MonitorState, action: PayloadAction<Monitor[]>) => ({
+      ...state,
+      ...handleResponse(state, action),
+    }),
+  },
   extraReducers: {
     [getMonitors.pending.type]: (state) => ({
       ...state,

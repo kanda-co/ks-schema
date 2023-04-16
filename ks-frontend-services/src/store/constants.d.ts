@@ -1,5 +1,5 @@
 export declare const NORMALIZED_INITIAL_STATE: {
-    byId: {};
+    data: any[];
     allIds: any[];
 };
 export declare const GENERATED_INITIAL_STATE: {
@@ -7,6 +7,6 @@ export declare const GENERATED_INITIAL_STATE: {
     fetchedList: boolean;
     isLoading: boolean;
     isSubmitting: boolean;
-    byId: {};
+    data: any[];
     allIds: any[];
 };

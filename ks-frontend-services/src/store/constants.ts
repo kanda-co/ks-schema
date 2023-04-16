@@ -1,5 +1,5 @@
-export const NORMALIZED_INITIAL_STATE = {
-  byId: {},
+export const NORMALIZED_INITIAL_STATE: = {
+  data: [],
   allIds: [],
 };
 

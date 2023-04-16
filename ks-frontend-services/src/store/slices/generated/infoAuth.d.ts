@@ -1,4 +1,4 @@
-import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { type PayloadAction, type AsyncThunkAction } from '@reduxjs/toolkit';
 import { type InfoAuth } from '../../../';
 import type { AsyncThunkReturnType, GeneratedState } from '../../types';
 export declare const infoAuth: import("@reduxjs/toolkit").AsyncThunk<InfoAuth, {
@@ -23,15 +23,24 @@ export type InfoAuthConfig = InfoAuthReturn[2];
 export type InfoAuthAsyncThunkAction = AsyncThunkAction<InfoAuthEntity, InfoAuthParams, InfoAuthConfig>;
 export type InfoAuthState = GeneratedState<InfoAuth>;
 export declare const handleInfoAuthResponse: (state: InfoAuthState, action: {
-    payload: InfoAuth;
+    payload: InfoAuth | InfoAuth[];
     type: string;
 }) => InfoAuthState & {
     isLoading: boolean;
     isSubmitting: boolean;
     fetchedList: boolean;
-    byId: import("../../../types").StringIndexedObject<InfoAuth>;
+    data: InfoAuth[];
     allIds: string[];
 };
-export declare const infoAuthSlice: import("@reduxjs/toolkit").Slice<InfoAuthState, {}, "infoAuth">;
+export declare const infoAuthSlice: import("@reduxjs/toolkit").Slice<InfoAuthState, {
+    fetched: (state: InfoAuthState, action: PayloadAction<InfoAuth[]>) => {
+        id?: string;
+        fetchedList: boolean;
+        isLoading: boolean;
+        isSubmitting: boolean;
+        data: InfoAuth[];
+        allIds: string[];
+    };
+}, "infoAuth">;
 declare const _default: import("redux").Reducer<InfoAuthState, import("redux").AnyAction>;
 export default _default;

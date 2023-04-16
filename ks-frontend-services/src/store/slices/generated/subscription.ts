@@ -1,9 +1,9 @@
 // Imports
-import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { type PayloadAction, type AsyncThunkAction } from '@reduxjs/toolkit';
 import { createSlice } from '../../toolkit';
 import { type Subscription, services } from '../../../';
 import { GENERATED_INITIAL_STATE } from '../../constants';
-import { createAsyncThunkAction, createResponseHandler } from '../../helpers';
+import { createAsyncThunkAction, handleResponse } from '../../helpers';
 import type { AsyncThunkReturnType, GeneratedState } from '../../types';
 
 // Service methods
@@ -48,15 +48,23 @@ export type SubscriptionAsyncThunkAction = AsyncThunkAction<
 export type SubscriptionState = GeneratedState<Subscription>;
 const initialState: SubscriptionState = GENERATED_INITIAL_STATE;
 
-export const handleSubscriptionResponse = createResponseHandler<
+export const handleSubscriptionResponse = handleResponse<
   SubscriptionState,
   Subscription
->();
+>;
 
 export const subscriptionSlice = createSlice({
   name: 'subscription',
   initialState,
-  reducers: {},
+  reducers: {
+    fetched: (
+      state: SubscriptionState,
+      action: PayloadAction<Subscription[]>,
+    ) => ({
+      ...state,
+      ...handleResponse(state, action),
+    }),
+  },
   extraReducers: {
     [getSubscriptions.pending.type]: (state) => ({
       ...state,

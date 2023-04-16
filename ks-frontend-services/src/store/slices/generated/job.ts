@@ -1,9 +1,9 @@
 // Imports
-import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { type PayloadAction, type AsyncThunkAction } from '@reduxjs/toolkit';
 import { createSlice } from '../../toolkit';
 import { type Job, services } from '../../../';
 import { GENERATED_INITIAL_STATE } from '../../constants';
-import { createAsyncThunkAction, createResponseHandler } from '../../helpers';
+import { createAsyncThunkAction, handleResponse } from '../../helpers';
 import type { AsyncThunkReturnType, GeneratedState } from '../../types';
 
 // Service methods
@@ -78,12 +78,17 @@ export type JobAsyncThunkAction = AsyncThunkAction<
 export type JobState = GeneratedState<Job>;
 const initialState: JobState = GENERATED_INITIAL_STATE;
 
-export const handleJobResponse = createResponseHandler<JobState, Job>();
+export const handleJobResponse = handleResponse<JobState, Job>;
 
 export const jobSlice = createSlice({
   name: 'job',
   initialState,
-  reducers: {},
+  reducers: {
+    fetched: (state: JobState, action: PayloadAction<Job[]>) => ({
+      ...state,
+      ...handleResponse(state, action),
+    }),
+  },
   extraReducers: {
     [getJobs.pending.type]: (state) => ({
       ...state,

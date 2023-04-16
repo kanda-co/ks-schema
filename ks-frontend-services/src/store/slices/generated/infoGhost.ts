@@ -1,9 +1,9 @@
 // Imports
-import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { type PayloadAction, type AsyncThunkAction } from '@reduxjs/toolkit';
 import { createSlice } from '../../toolkit';
 import { type InfoGhost, services } from '../../../';
 import { GENERATED_INITIAL_STATE } from '../../constants';
-import { createAsyncThunkAction, createResponseHandler } from '../../helpers';
+import { createAsyncThunkAction, handleResponse } from '../../helpers';
 import type { AsyncThunkReturnType, GeneratedState } from '../../types';
 
 // Service methods
@@ -24,15 +24,20 @@ export type InfoGhostAsyncThunkAction = AsyncThunkAction<
 export type InfoGhostState = GeneratedState<InfoGhost>;
 const initialState: InfoGhostState = GENERATED_INITIAL_STATE;
 
-export const handleInfoGhostResponse = createResponseHandler<
+export const handleInfoGhostResponse = handleResponse<
   InfoGhostState,
   InfoGhost
->();
+>;
 
 export const infoGhostSlice = createSlice({
   name: 'infoGhost',
   initialState,
-  reducers: {},
+  reducers: {
+    fetched: (state: InfoGhostState, action: PayloadAction<InfoGhost[]>) => ({
+      ...state,
+      ...handleResponse(state, action),
+    }),
+  },
   extraReducers: {
     [infoGhost.pending.type]: (state) => ({
       ...state,

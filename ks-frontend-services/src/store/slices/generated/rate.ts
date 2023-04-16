@@ -1,9 +1,9 @@
 // Imports
-import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { type PayloadAction, type AsyncThunkAction } from '@reduxjs/toolkit';
 import { createSlice } from '../../toolkit';
 import { type Rate, services } from '../../../';
 import { GENERATED_INITIAL_STATE } from '../../constants';
-import { createAsyncThunkAction, createResponseHandler } from '../../helpers';
+import { createAsyncThunkAction, handleResponse } from '../../helpers';
 import type { AsyncThunkReturnType, GeneratedState } from '../../types';
 
 // Service methods
@@ -36,12 +36,17 @@ export type RateAsyncThunkAction = AsyncThunkAction<
 export type RateState = GeneratedState<Rate>;
 const initialState: RateState = GENERATED_INITIAL_STATE;
 
-export const handleRateResponse = createResponseHandler<RateState, Rate>();
+export const handleRateResponse = handleResponse<RateState, Rate>;
 
 export const rateSlice = createSlice({
   name: 'rate',
   initialState,
-  reducers: {},
+  reducers: {
+    fetched: (state: RateState, action: PayloadAction<Rate[]>) => ({
+      ...state,
+      ...handleResponse(state, action),
+    }),
+  },
   extraReducers: {
     [infoRate.pending.type]: (state) => ({
       ...state,

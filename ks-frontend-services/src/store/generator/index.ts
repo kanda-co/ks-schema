@@ -33,10 +33,7 @@ function generateSlices(entityName: string) {
 }
 
 function generateSlicesIndex(entityNames: string[]) {
-  const exports = entityNames
-    .map(getCamelCaseEntityName)
-    .map(sliceIndex)
-    .join('\n');
+  const exports = sliceIndex(entityNames);
 
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = dirname(__filename);
@@ -94,6 +91,7 @@ function generateSelectorsIndex(entityNames: string[]) {
 
 const entityNames = getOperationKeys(operations)
   .map((key) => getOperationName(key, true))
+  // .map((key) => (key === 'InfoEntity' ? 'Entity' : key))
   // TODO: Figure out void type
   .filter(
     (name) =>

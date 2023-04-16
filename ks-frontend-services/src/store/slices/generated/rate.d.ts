@@ -1,4 +1,4 @@
-import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { type PayloadAction, type AsyncThunkAction } from '@reduxjs/toolkit';
 import { type Rate } from '../../../';
 import type { AsyncThunkReturnType, GeneratedState } from '../../types';
 export declare const infoRate: import("@reduxjs/toolkit").AsyncThunk<Rate, import("../../types").SharedAsyncThunkActionArgs, {}>;
@@ -23,15 +23,24 @@ export type RateConfig = RateReturn[2];
 export type RateAsyncThunkAction = AsyncThunkAction<RateEntity, RateParams, RateConfig>;
 export type RateState = GeneratedState<Rate>;
 export declare const handleRateResponse: (state: RateState, action: {
-    payload: Rate;
+    payload: Rate | Rate[];
     type: string;
 }) => RateState & {
     isLoading: boolean;
     isSubmitting: boolean;
     fetchedList: boolean;
-    byId: import("../../../types").StringIndexedObject<Rate>;
+    data: Rate[];
     allIds: string[];
 };
-export declare const rateSlice: import("@reduxjs/toolkit").Slice<RateState, {}, "rate">;
+export declare const rateSlice: import("@reduxjs/toolkit").Slice<RateState, {
+    fetched: (state: RateState, action: PayloadAction<Rate[]>) => {
+        id?: string;
+        fetchedList: boolean;
+        isLoading: boolean;
+        isSubmitting: boolean;
+        data: Rate[];
+        allIds: string[];
+    };
+}, "rate">;
 declare const _default: import("redux").Reducer<RateState, import("redux").AnyAction>;
 export default _default;

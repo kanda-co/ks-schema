@@ -1,4 +1,4 @@
-import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { type PayloadAction, type AsyncThunkAction } from '@reduxjs/toolkit';
 import { type Monitor } from '../../../';
 import type { AsyncThunkReturnType, GeneratedState } from '../../types';
 export declare const getMonitors: import("@reduxjs/toolkit").AsyncThunk<Monitor[], import("../../types").SharedAsyncThunkActionArgs, {}>;
@@ -26,15 +26,24 @@ export type MonitorConfig = MonitorReturn[2];
 export type MonitorAsyncThunkAction = AsyncThunkAction<MonitorEntity, MonitorParams, MonitorConfig>;
 export type MonitorState = GeneratedState<Monitor>;
 export declare const handleMonitorResponse: (state: MonitorState, action: {
-    payload: Monitor;
+    payload: Monitor | Monitor[];
     type: string;
 }) => MonitorState & {
     isLoading: boolean;
     isSubmitting: boolean;
     fetchedList: boolean;
-    byId: import("../../../types").StringIndexedObject<Monitor>;
+    data: Monitor[];
     allIds: string[];
 };
-export declare const monitorSlice: import("@reduxjs/toolkit").Slice<MonitorState, {}, "monitor">;
+export declare const monitorSlice: import("@reduxjs/toolkit").Slice<MonitorState, {
+    fetched: (state: MonitorState, action: PayloadAction<Monitor[]>) => {
+        id?: string;
+        fetchedList: boolean;
+        isLoading: boolean;
+        isSubmitting: boolean;
+        data: Monitor[];
+        allIds: string[];
+    };
+}, "monitor">;
 declare const _default: import("redux").Reducer<MonitorState, import("redux").AnyAction>;
 export default _default;

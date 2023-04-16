@@ -1,9 +1,9 @@
 // Imports
-import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { type PayloadAction, type AsyncThunkAction } from '@reduxjs/toolkit';
 import { createSlice } from '../../toolkit';
 import { type AuthUser, services } from '../../../';
 import { GENERATED_INITIAL_STATE } from '../../constants';
-import { createAsyncThunkAction, createResponseHandler } from '../../helpers';
+import { createAsyncThunkAction, handleResponse } from '../../helpers';
 import type { AsyncThunkReturnType, GeneratedState } from '../../types';
 
 // Service methods
@@ -28,15 +28,17 @@ export type AuthUserAsyncThunkAction = AsyncThunkAction<
 export type AuthUserState = GeneratedState<AuthUser>;
 const initialState: AuthUserState = GENERATED_INITIAL_STATE;
 
-export const handleAuthUserResponse = createResponseHandler<
-  AuthUserState,
-  AuthUser
->();
+export const handleAuthUserResponse = handleResponse<AuthUserState, AuthUser>;
 
 export const authUserSlice = createSlice({
   name: 'authUser',
   initialState,
-  reducers: {},
+  reducers: {
+    fetched: (state: AuthUserState, action: PayloadAction<AuthUser[]>) => ({
+      ...state,
+      ...handleResponse(state, action),
+    }),
+  },
   extraReducers: {
     [me.pending.type]: (state) => ({
       ...state,

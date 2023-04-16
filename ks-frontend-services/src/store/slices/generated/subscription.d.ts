@@ -1,4 +1,4 @@
-import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { type PayloadAction, type AsyncThunkAction } from '@reduxjs/toolkit';
 import { type Subscription } from '../../../';
 import type { AsyncThunkReturnType, GeneratedState } from '../../types';
 export declare const getSubscriptions: import("@reduxjs/toolkit").AsyncThunk<Subscription[], import("../../types").SharedAsyncThunkActionArgs, {}>;
@@ -25,15 +25,24 @@ export type SubscriptionConfig = SubscriptionReturn[2];
 export type SubscriptionAsyncThunkAction = AsyncThunkAction<SubscriptionEntity, SubscriptionParams, SubscriptionConfig>;
 export type SubscriptionState = GeneratedState<Subscription>;
 export declare const handleSubscriptionResponse: (state: SubscriptionState, action: {
-    payload: Subscription;
+    payload: Subscription | Subscription[];
     type: string;
 }) => SubscriptionState & {
     isLoading: boolean;
     isSubmitting: boolean;
     fetchedList: boolean;
-    byId: import("../../../types").StringIndexedObject<Subscription>;
+    data: Subscription[];
     allIds: string[];
 };
-export declare const subscriptionSlice: import("@reduxjs/toolkit").Slice<SubscriptionState, {}, "subscription">;
+export declare const subscriptionSlice: import("@reduxjs/toolkit").Slice<SubscriptionState, {
+    fetched: (state: SubscriptionState, action: PayloadAction<Subscription[]>) => {
+        id?: string;
+        fetchedList: boolean;
+        isLoading: boolean;
+        isSubmitting: boolean;
+        data: Subscription[];
+        allIds: string[];
+    };
+}, "subscription">;
 declare const _default: import("redux").Reducer<SubscriptionState, import("redux").AnyAction>;
 export default _default;

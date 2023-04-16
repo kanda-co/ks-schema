@@ -1,9 +1,9 @@
 // Imports
-import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { type PayloadAction, type AsyncThunkAction } from '@reduxjs/toolkit';
 import { createSlice } from '../../toolkit';
 import { type Payment, services } from '../../../';
 import { GENERATED_INITIAL_STATE } from '../../constants';
-import { createAsyncThunkAction, createResponseHandler } from '../../helpers';
+import { createAsyncThunkAction, handleResponse } from '../../helpers';
 import type { AsyncThunkReturnType, GeneratedState } from '../../types';
 
 // Service methods
@@ -38,15 +38,17 @@ export type PaymentAsyncThunkAction = AsyncThunkAction<
 export type PaymentState = GeneratedState<Payment>;
 const initialState: PaymentState = GENERATED_INITIAL_STATE;
 
-export const handlePaymentResponse = createResponseHandler<
-  PaymentState,
-  Payment
->();
+export const handlePaymentResponse = handleResponse<PaymentState, Payment>;
 
 export const paymentSlice = createSlice({
   name: 'payment',
   initialState,
-  reducers: {},
+  reducers: {
+    fetched: (state: PaymentState, action: PayloadAction<Payment[]>) => ({
+      ...state,
+      ...handleResponse(state, action),
+    }),
+  },
   extraReducers: {
     [getPayments.pending.type]: (state) => ({
       ...state,

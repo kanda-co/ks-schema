@@ -1,9 +1,9 @@
 // Imports
-import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { type PayloadAction, type AsyncThunkAction } from '@reduxjs/toolkit';
 import { createSlice } from '../../toolkit';
 import { type Credit, services } from '../../../';
 import { GENERATED_INITIAL_STATE } from '../../constants';
-import { createAsyncThunkAction, createResponseHandler } from '../../helpers';
+import { createAsyncThunkAction, handleResponse } from '../../helpers';
 import type { AsyncThunkReturnType, GeneratedState } from '../../types';
 
 // Service methods
@@ -46,15 +46,17 @@ export type CreditAsyncThunkAction = AsyncThunkAction<
 export type CreditState = GeneratedState<Credit>;
 const initialState: CreditState = GENERATED_INITIAL_STATE;
 
-export const handleCreditResponse = createResponseHandler<
-  CreditState,
-  Credit
->();
+export const handleCreditResponse = handleResponse<CreditState, Credit>;
 
 export const creditSlice = createSlice({
   name: 'credit',
   initialState,
-  reducers: {},
+  reducers: {
+    fetched: (state: CreditState, action: PayloadAction<Credit[]>) => ({
+      ...state,
+      ...handleResponse(state, action),
+    }),
+  },
   extraReducers: {
     [infoCredit.pending.type]: (state) => ({
       ...state,

@@ -1,9 +1,9 @@
 // Imports
-import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { type PayloadAction, type AsyncThunkAction } from '@reduxjs/toolkit';
 import { createSlice } from '../../toolkit';
 import { type InfoIP, services } from '../../../';
 import { GENERATED_INITIAL_STATE } from '../../constants';
-import { createAsyncThunkAction, createResponseHandler } from '../../helpers';
+import { createAsyncThunkAction, handleResponse } from '../../helpers';
 import type { AsyncThunkReturnType, GeneratedState } from '../../types';
 
 // Service methods
@@ -24,15 +24,17 @@ export type InfoIPAsyncThunkAction = AsyncThunkAction<
 export type InfoIPState = GeneratedState<InfoIP>;
 const initialState: InfoIPState = GENERATED_INITIAL_STATE;
 
-export const handleInfoIPResponse = createResponseHandler<
-  InfoIPState,
-  InfoIP
->();
+export const handleInfoIPResponse = handleResponse<InfoIPState, InfoIP>;
 
 export const infoIPSlice = createSlice({
   name: 'infoIP',
   initialState,
-  reducers: {},
+  reducers: {
+    fetched: (state: InfoIPState, action: PayloadAction<InfoIP[]>) => ({
+      ...state,
+      ...handleResponse(state, action),
+    }),
+  },
   extraReducers: {
     [infoIP.pending.type]: (state) => ({
       ...state,

@@ -1,4 +1,4 @@
-import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { type PayloadAction, type AsyncThunkAction } from '@reduxjs/toolkit';
 import { type InfoQuery } from '../../../';
 import type { AsyncThunkReturnType, GeneratedState } from '../../types';
 export declare const infoQuery: import("@reduxjs/toolkit").AsyncThunk<InfoQuery, {
@@ -11,15 +11,24 @@ export type InfoQueryConfig = InfoQueryReturn[2];
 export type InfoQueryAsyncThunkAction = AsyncThunkAction<InfoQueryEntity, InfoQueryParams, InfoQueryConfig>;
 export type InfoQueryState = GeneratedState<InfoQuery>;
 export declare const handleInfoQueryResponse: (state: InfoQueryState, action: {
-    payload: InfoQuery;
+    payload: InfoQuery | InfoQuery[];
     type: string;
 }) => InfoQueryState & {
     isLoading: boolean;
     isSubmitting: boolean;
     fetchedList: boolean;
-    byId: import("../../../types").StringIndexedObject<InfoQuery>;
+    data: InfoQuery[];
     allIds: string[];
 };
-export declare const infoQuerySlice: import("@reduxjs/toolkit").Slice<InfoQueryState, {}, "infoQuery">;
+export declare const infoQuerySlice: import("@reduxjs/toolkit").Slice<InfoQueryState, {
+    fetched: (state: InfoQueryState, action: PayloadAction<InfoQuery[]>) => {
+        id?: string;
+        fetchedList: boolean;
+        isLoading: boolean;
+        isSubmitting: boolean;
+        data: InfoQuery[];
+        allIds: string[];
+    };
+}, "infoQuery">;
 declare const _default: import("redux").Reducer<InfoQueryState, import("redux").AnyAction>;
 export default _default;

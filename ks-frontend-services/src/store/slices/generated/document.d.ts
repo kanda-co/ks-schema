@@ -1,4 +1,4 @@
-import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { type PayloadAction, type AsyncThunkAction } from '@reduxjs/toolkit';
 import { type Document } from '../../../';
 import type { AsyncThunkReturnType, GeneratedState } from '../../types';
 export declare const getDocuments: import("@reduxjs/toolkit").AsyncThunk<Document[], import("../../types").SharedAsyncThunkActionArgs, {}>;
@@ -22,15 +22,24 @@ export type DocumentConfig = DocumentReturn[2];
 export type DocumentAsyncThunkAction = AsyncThunkAction<DocumentEntity, DocumentParams, DocumentConfig>;
 export type DocumentState = GeneratedState<Document>;
 export declare const handleDocumentResponse: (state: DocumentState, action: {
-    payload: Document;
+    payload: Document | Document[];
     type: string;
 }) => DocumentState & {
     isLoading: boolean;
     isSubmitting: boolean;
     fetchedList: boolean;
-    byId: import("../../../types").StringIndexedObject<Document>;
+    data: Document[];
     allIds: string[];
 };
-export declare const documentSlice: import("@reduxjs/toolkit").Slice<DocumentState, {}, "document">;
+export declare const documentSlice: import("@reduxjs/toolkit").Slice<DocumentState, {
+    fetched: (state: DocumentState, action: PayloadAction<Document[]>) => {
+        id?: string;
+        fetchedList: boolean;
+        isLoading: boolean;
+        isSubmitting: boolean;
+        data: Document[];
+        allIds: string[];
+    };
+}, "document">;
 declare const _default: import("redux").Reducer<DocumentState, import("redux").AnyAction>;
 export default _default;

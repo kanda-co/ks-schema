@@ -49,8 +49,34 @@ ${entityNames.map(selector).join('\n')}
 return {${entityNames.map(getCamelCaseEntityName).join(', ')}}
 }`;
 
-export function sliceIndex(entityName: string) {
-  return `export { default as ${entityName} } from './${entityName}'`;
+function sliceName(entityName: string) {
+  return `${entityName}Slice`;
+}
+
+function sliceExport(entityName: string) {
+  return `${entityName}: ${sliceName(entityName)}`;
+}
+
+export function sliceIndex(entityNames: string[]) {
+  const camelCaseEntityNames = entityNames.map(getCamelCaseEntityName);
+
+  const exports = camelCaseEntityNames
+    .map(
+      (entityName) =>
+        `
+      	import { default as ${entityName}, ${sliceName(
+          entityName,
+        )} } from './${entityName}'
+        export { ${entityName} }
+        `,
+    )
+    .join('\n');
+
+  const defaultExport = `export const slices = { ${camelCaseEntityNames
+    .map(sliceExport)
+    .join(', ')} }`;
+
+  return [exports, defaultExport].join('\n');
 }
 
 export const actions = (entityName: string, actionNames: string[]) =>
@@ -61,11 +87,14 @@ export const slice = (
   camelCaseEntityName: string,
   actionNames: string[],
 ) => `// Imports
-import { type AsyncThunkAction } from "@reduxjs/toolkit";
+import { type PayloadAction, type AsyncThunkAction } from "@reduxjs/toolkit";
 import { createSlice } from "../../toolkit";
 import { type ${entityName}, services } from "../../../";
 import { GENERATED_INITIAL_STATE } from "../../constants";
-import { createAsyncThunkAction, createResponseHandler } from "../../helpers";
+import {
+  createAsyncThunkAction,
+  handleResponse,
+} from '../../helpers';
 import type { AsyncThunkReturnType, GeneratedState } from "../../types";
 
 // Service methods
@@ -88,12 +117,17 @@ const initialState: ${entityName}State = GENERATED_INITIAL_STATE;
 
 export const ${handleResponseName(
   entityName,
-)} = createResponseHandler<${entityName}State, ${entityName}>();
+)} = handleResponse<${entityName}State, ${entityName}>;
 
 export const ${camelCaseEntityName}Slice = createSlice({
   name: "${camelCaseEntityName}",
   initialState,
-  reducers: {},
+  reducers: {
+    fetched: (state: ${entityName}State, action: PayloadAction<${entityName}[]>) => ({
+      ...state,
+      ...handleResponse(state, action),
+    }),
+  },
   extraReducers: {${actionNames
     .map((actionName) => reducerForAction(entityName, actionName))
     .join('')}},

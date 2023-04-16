@@ -1,4 +1,4 @@
-import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { type PayloadAction, type AsyncThunkAction } from '@reduxjs/toolkit';
 import { type Credit } from '../../../';
 import type { AsyncThunkReturnType, GeneratedState } from '../../types';
 export declare const infoCredit: import("@reduxjs/toolkit").AsyncThunk<Credit, {
@@ -38,15 +38,24 @@ export type CreditConfig = CreditReturn[2];
 export type CreditAsyncThunkAction = AsyncThunkAction<CreditEntity, CreditParams, CreditConfig>;
 export type CreditState = GeneratedState<Credit>;
 export declare const handleCreditResponse: (state: CreditState, action: {
-    payload: Credit;
+    payload: Credit | Credit[];
     type: string;
 }) => CreditState & {
     isLoading: boolean;
     isSubmitting: boolean;
     fetchedList: boolean;
-    byId: import("../../../types").StringIndexedObject<Credit>;
+    data: Credit[];
     allIds: string[];
 };
-export declare const creditSlice: import("@reduxjs/toolkit").Slice<CreditState, {}, "credit">;
+export declare const creditSlice: import("@reduxjs/toolkit").Slice<CreditState, {
+    fetched: (state: CreditState, action: PayloadAction<Credit[]>) => {
+        id?: string;
+        fetchedList: boolean;
+        isLoading: boolean;
+        isSubmitting: boolean;
+        data: Credit[];
+        allIds: string[];
+    };
+}, "credit">;
 declare const _default: import("redux").Reducer<CreditState, import("redux").AnyAction>;
 export default _default;

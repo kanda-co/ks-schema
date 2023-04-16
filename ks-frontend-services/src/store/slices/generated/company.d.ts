@@ -1,4 +1,4 @@
-import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { type PayloadAction, type AsyncThunkAction } from '@reduxjs/toolkit';
 import { type Company } from '../../../';
 import type { AsyncThunkReturnType, GeneratedState } from '../../types';
 export declare const getCompanies: import("@reduxjs/toolkit").AsyncThunk<Company[], import("../../types").SharedAsyncThunkActionArgs, {}>;
@@ -38,15 +38,24 @@ export type CompanyConfig = CompanyReturn[2];
 export type CompanyAsyncThunkAction = AsyncThunkAction<CompanyEntity, CompanyParams, CompanyConfig>;
 export type CompanyState = GeneratedState<Company>;
 export declare const handleCompanyResponse: (state: CompanyState, action: {
-    payload: Company;
+    payload: Company | Company[];
     type: string;
 }) => CompanyState & {
     isLoading: boolean;
     isSubmitting: boolean;
     fetchedList: boolean;
-    byId: import("../../../types").StringIndexedObject<Company>;
+    data: Company[];
     allIds: string[];
 };
-export declare const companySlice: import("@reduxjs/toolkit").Slice<CompanyState, {}, "company">;
+export declare const companySlice: import("@reduxjs/toolkit").Slice<CompanyState, {
+    fetched: (state: CompanyState, action: PayloadAction<Company[]>) => {
+        id?: string;
+        fetchedList: boolean;
+        isLoading: boolean;
+        isSubmitting: boolean;
+        data: Company[];
+        allIds: string[];
+    };
+}, "company">;
 declare const _default: import("redux").Reducer<CompanyState, import("redux").AnyAction>;
 export default _default;

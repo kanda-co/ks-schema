@@ -1,4 +1,4 @@
-import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { type PayloadAction, type AsyncThunkAction } from '@reduxjs/toolkit';
 import { type AuthUser } from '../../../';
 import type { AsyncThunkReturnType, GeneratedState } from '../../types';
 export declare const me: import("@reduxjs/toolkit").AsyncThunk<AuthUser, import("../../types").SharedAsyncThunkActionArgs, {}>;
@@ -15,15 +15,24 @@ export type AuthUserConfig = AuthUserReturn[2];
 export type AuthUserAsyncThunkAction = AsyncThunkAction<AuthUserEntity, AuthUserParams, AuthUserConfig>;
 export type AuthUserState = GeneratedState<AuthUser>;
 export declare const handleAuthUserResponse: (state: AuthUserState, action: {
-    payload: AuthUser;
+    payload: AuthUser | AuthUser[];
     type: string;
 }) => AuthUserState & {
     isLoading: boolean;
     isSubmitting: boolean;
     fetchedList: boolean;
-    byId: import("../../../types").StringIndexedObject<AuthUser>;
+    data: AuthUser[];
     allIds: string[];
 };
-export declare const authUserSlice: import("@reduxjs/toolkit").Slice<AuthUserState, {}, "authUser">;
+export declare const authUserSlice: import("@reduxjs/toolkit").Slice<AuthUserState, {
+    fetched: (state: AuthUserState, action: PayloadAction<AuthUser[]>) => {
+        id?: string;
+        fetchedList: boolean;
+        isLoading: boolean;
+        isSubmitting: boolean;
+        data: AuthUser[];
+        allIds: string[];
+    };
+}, "authUser">;
 declare const _default: import("redux").Reducer<AuthUserState, import("redux").AnyAction>;
 export default _default;

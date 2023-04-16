@@ -1,8 +1,13 @@
-import type { AsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import type {
+  ActionCreatorWithOptionalPayload,
+  AsyncThunk,
+  PayloadAction,
+} from '@reduxjs/toolkit';
 import { createAsyncThunk, createSelector } from './toolkit';
 import * as T from 'io-ts';
 import { pipe } from 'fp-ts/lib/function';
 import { fold } from 'fp-ts/lib/Either';
+import { slices } from './slices/generated';
 import type { StringIndexedObject, NewService } from '../types';
 import { handleResponse as handleApiResponse } from '../handlers';
 import type {
@@ -14,6 +19,7 @@ import type {
   Selectors,
 } from './types';
 import { getPathKey } from './selectors/app';
+import type { InfoEntity } from '../generated/components/schemas';
 
 export const handlePayload = <T>(payload: Payload<T>): Promise<T> =>
   payload().then(handleApiResponse) as Promise<T>;
@@ -32,11 +38,13 @@ export const normalizeData = <T, S extends NormalizedEntities<T>>(
   data: T[],
   state: S,
 ): NormalizedEntities<T> => {
-  const byId = { ...state.byId, ...formatById(data) };
-  const allIds = Object.keys(byId);
+  const formattedData = [...state.data, ...data];
+  const allIds = Object.keys(
+    formattedData.map((item) => (item as { id: string }).id),
+  );
 
   return {
-    byId,
+    data: formattedData,
     allIds,
   };
 };
@@ -73,6 +81,12 @@ const getReducerName = (
   //as keyof Pick<RootState, 'company' | 'monitor'>;
 };
 
+// Creates an asyncThunkAction for a given service
+// This will do the following when the action is called:
+// 1. If InfoEntity, place the data in the relevant stores based on the Response
+// 2. If not Info Entity, first check the relevant store to see if the data is already fetched
+// 2a. If it is, return the data from the store
+// 2b. If it is not, fetch the data and place it in the relevant store
 export const createAsyncThunkAction = <
   V extends StringIndexedObject | undefined | void,
   Args extends StringIndexedObject<any> | undefined = undefined,
@@ -84,6 +98,34 @@ export const createAsyncThunkAction = <
     key,
     async <T>(args: AsyncThunkActionArgs<Args> | void, thunkAPI: ThunkAPI) => {
       const state = thunkAPI.getState() as StringIndexedObject;
+
+      // Special case here because InfoEntity returns an object, with
+      // keys corresponding to each entity with arrays in each. So we
+      // take all the keys and then call the fetched action for the reducer
+      // corresponding to each key
+      // TODO: Const
+      if (key === 'infoEntity.getInfoEntity') {
+        const payload = method(args as unknown as Args);
+
+        const data = await handlePayload(
+          payload as unknown as Payload<InfoEntity>,
+        );
+
+        const keys = Object.keys(data) as (keyof InfoEntity)[];
+
+        keys.forEach((key) => {
+          const fetchedData = data[key];
+          // We have to cast here because it calling it without doing so, results in a type error
+          // because typescript infers the type as Company[] & Job[] & Monitor[] etc
+          const fetchedAction = slices[key].actions
+            .fetched as ActionCreatorWithOptionalPayload<typeof fetchedData>;
+
+          thunkAPI.dispatch(fetchedAction(data[key]));
+        });
+
+        return [] as any;
+      }
+
       const { byId, fetchedList } = state[getReducerName(key)];
       const { preventLoadingState, onSuccess, onError, ...methodArgs } =
         args || {
@@ -107,7 +149,6 @@ export const createAsyncThunkAction = <
           return [] as any;
         }
       }
-
       const payload = method(finalMethodArgs);
 
       try {
@@ -129,7 +170,7 @@ export const createAsyncThunkAction = <
 
 export const handleResponse = <State extends GeneratedState<Entity>, Entity>(
   state: State,
-  action: PayloadAction<Entity>,
+  action: PayloadAction<Entity | Entity[]>,
 ) => {
   const { payload } = action;
   const isArray = isArrayOfValue<Entity>(payload);
@@ -143,13 +184,6 @@ export const handleResponse = <State extends GeneratedState<Entity>, Entity>(
   };
 };
 
-export const createResponseHandler = <
-  State extends GeneratedState<Entity>,
-  Entity,
->() => {
-  return handleResponse<State, Entity>;
-};
-
 export const generateSelectors = <
   Entity,
   State extends StringIndexedObject<GeneratedState<Entity>>,
@@ -158,7 +192,7 @@ export const generateSelectors = <
 ): Selectors<Entity, State> => {
   const getReducer = (state: State) => state[reducer];
 
-  const getById = createSelector(getReducer, (reducer) => reducer.byId);
+  const getData = createSelector(getReducer, (reducer) => reducer.data);
 
   const getAllIds = createSelector(getReducer, (reducer) => reducer.allIds);
 
@@ -169,11 +203,11 @@ export const generateSelectors = <
 
   const getItem = createSelector(
     getId,
-    getById,
+    getData,
     getPathKey,
-    (id, byId, pathKey) => {
+    (id, data, pathKey) => {
       if (pathKey?.page !== reducer) return undefined;
-      return byId[id];
+      return data.find((item) => (item as { id: string }).id);
     },
   );
 
@@ -187,19 +221,13 @@ export const generateSelectors = <
     (reducer) => reducer.fetchedList,
   );
 
-  const getItems = createSelector(
-    getById,
-    (byId) => Object.values(byId) as Entity[],
-  );
-
   return {
     getReducer,
-    getById,
+    getData,
     getAllIds,
     getId,
     getItem,
     getIsSubmitting,
     getFetchedList,
-    getItems,
   };
 };

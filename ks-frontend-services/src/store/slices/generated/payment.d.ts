@@ -1,4 +1,4 @@
-import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { type PayloadAction, type AsyncThunkAction } from '@reduxjs/toolkit';
 import { type Payment } from '../../../';
 import type { AsyncThunkReturnType, GeneratedState } from '../../types';
 export declare const getPayments: import("@reduxjs/toolkit").AsyncThunk<Payment[], import("../../types").SharedAsyncThunkActionArgs, {}>;
@@ -25,15 +25,24 @@ export type PaymentConfig = PaymentReturn[2];
 export type PaymentAsyncThunkAction = AsyncThunkAction<PaymentEntity, PaymentParams, PaymentConfig>;
 export type PaymentState = GeneratedState<Payment>;
 export declare const handlePaymentResponse: (state: PaymentState, action: {
-    payload: Payment;
+    payload: Payment | Payment[];
     type: string;
 }) => PaymentState & {
     isLoading: boolean;
     isSubmitting: boolean;
     fetchedList: boolean;
-    byId: import("../../../types").StringIndexedObject<Payment>;
+    data: Payment[];
     allIds: string[];
 };
-export declare const paymentSlice: import("@reduxjs/toolkit").Slice<PaymentState, {}, "payment">;
+export declare const paymentSlice: import("@reduxjs/toolkit").Slice<PaymentState, {
+    fetched: (state: PaymentState, action: PayloadAction<Payment[]>) => {
+        id?: string;
+        fetchedList: boolean;
+        isLoading: boolean;
+        isSubmitting: boolean;
+        data: Payment[];
+        allIds: string[];
+    };
+}, "payment">;
 declare const _default: import("redux").Reducer<PaymentState, import("redux").AnyAction>;
 export default _default;

@@ -1,4 +1,4 @@
-import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { type PayloadAction, type AsyncThunkAction } from '@reduxjs/toolkit';
 import { type Job } from '../../../';
 import type { AsyncThunkReturnType, GeneratedState } from '../../types';
 export declare const getJobs: import("@reduxjs/toolkit").AsyncThunk<Job[], import("../../types").SharedAsyncThunkActionArgs, {}>;
@@ -78,15 +78,24 @@ export type JobConfig = JobReturn[2];
 export type JobAsyncThunkAction = AsyncThunkAction<JobEntity, JobParams, JobConfig>;
 export type JobState = GeneratedState<Job>;
 export declare const handleJobResponse: (state: JobState, action: {
-    payload: Job;
+    payload: Job | Job[];
     type: string;
 }) => JobState & {
     isLoading: boolean;
     isSubmitting: boolean;
     fetchedList: boolean;
-    byId: import("../../../types").StringIndexedObject<Job>;
+    data: Job[];
     allIds: string[];
 };
-export declare const jobSlice: import("@reduxjs/toolkit").Slice<JobState, {}, "job">;
+export declare const jobSlice: import("@reduxjs/toolkit").Slice<JobState, {
+    fetched: (state: JobState, action: PayloadAction<Job[]>) => {
+        id?: string;
+        fetchedList: boolean;
+        isLoading: boolean;
+        isSubmitting: boolean;
+        data: Job[];
+        allIds: string[];
+    };
+}, "job">;
 declare const _default: import("redux").Reducer<JobState, import("redux").AnyAction>;
 export default _default;
