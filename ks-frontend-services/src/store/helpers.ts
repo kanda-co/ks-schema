@@ -39,10 +39,18 @@ export const normalizeData = <T, S extends NormalizedEntities<T>>(
   state: S,
 ): NormalizedEntities<T> => {
   const formattedData = [...state.data, ...data];
-  const allIds = formattedData.map((item) => (item as { id: string }).id);
+
+  // Unique the array based on ID
+  const uniqueData = Array.from(
+    new Set(formattedData.map((item) => (item as DataWithId).id)),
+  ).map((id) => {
+    return formattedData.find((item) => (item as DataWithId).id === id);
+  });
+
+  const allIds = uniqueData.map((item) => (item as DataWithId).id);
 
   return {
-    data: formattedData,
+    data: uniqueData,
     allIds,
   };
 };
