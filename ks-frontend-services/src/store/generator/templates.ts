@@ -10,19 +10,17 @@ const serviceAction = (actionName: string, camelCaseEntityName: string) =>
 const typeOfActions = (actionNames: string[]) =>
   actionNames.map((actionName) => `typeof ${actionName}`).join(' | ');
 
-const reducerForAction = (
-  entityName: string,
-  actionName: string,
-) => `[${actionName}.pending.type]: (state) => ({
-      ...state,
-      isLoading: true,
-      isSubmitting: true,
-    }),
-    [${actionName}.fulfilled.type]: ${handleResponseName(entityName)},
-    [${actionName}.rejected.type]: (args) => {
-      // TODO
-      console.log(args);
-    },
+const reducerForAction = (entityName: string, actionName: string) => `
+builder.addCase(${actionName}.pending, (state) => ({
+	...state,
+	isLoading: true,
+	isSubmitting: true,
+}));
+builder.addCase(${actionName}.fulfilled, ${handleResponseName(entityName)});
+builder.addCase(${actionName}.rejected, (state) => {
+	// TODO
+	console.log(state)
+});
 `;
 
 const selector = (entityName: string) => {
@@ -131,7 +129,7 @@ export const ${camelCaseEntityName}Slice = createSlice({
       fetchedList: state.fetchedList,
     }),
   },
-  extraReducers: {${actionNames
+  extraReducers: (builder) => {${actionNames
     .map((actionName) => reducerForAction(entityName, actionName))
     .join('')}},
 });
