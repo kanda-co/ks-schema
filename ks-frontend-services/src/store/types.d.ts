@@ -7,7 +7,6 @@ export type Payload<T> = () => Promise<Response<T>>;
 
 export interface NormalizedEntities<T> {
   byId: StringIndexedObject<T>;
-  allIds: string[];
 }
 
 export type AsyncThunkReturnType<T> = T extends AsyncThunk<
@@ -50,11 +49,10 @@ export type AsyncThunkActionArgs<Args> = Args extends undefined
 
 export interface Selectors<T, S> {
   getReducer: (state: S) => S[keyof S];
+  getData: (state: S) => T[];
   getById: (state: S) => NormalizedEntities<T>['byId'];
-  getAllIds: (state: S) => NormalizedEntities<T>['allIds'];
   getId: (state: S) => string | undefined;
   getItem: (state: S) => T | undefined;
   getIsSubmitting: (state: S) => boolean;
   getFetchedList: (state: S) => boolean;
-  getItems: (state: S) => T[];
 }

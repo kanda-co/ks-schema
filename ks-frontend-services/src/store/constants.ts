@@ -1,6 +1,5 @@
 export const NORMALIZED_INITIAL_STATE = {
   byId: {},
-  allIds: [],
 };
 
 export const GENERATED_INITIAL_STATE = {
@@ -10,3 +9,16 @@ export const GENERATED_INITIAL_STATE = {
   isLoading: true,
   isSubmitting: false,
 };
+
+export const INFO_ENTITY_KEY = 'infoEntity.getInfoEntity';
+
+export const IGNORED_ACTIONS = [
+  'resendJob',
+  'checkJob',
+  'payoutsJob',
+  'jobCheckoutLink',
+  'jobCompanyInfo',
+  'infoSession',
+  'postCompanyDirectorVerification',
+  'getCompanyDirectorVerification',
+];

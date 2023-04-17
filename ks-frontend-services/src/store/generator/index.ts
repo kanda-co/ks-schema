@@ -6,6 +6,7 @@ import * as operations from '../../generated/operations';
 import services from '../../service';
 import { getOperationKeys, getOperationName } from '../../helpers';
 import { actions, selectors, slice, sliceIndex } from './templates';
+import { filterActions } from './helpers';
 
 const getCamelCaseEntityName = (entityName: string) =>
   entityName.charAt(0).toLowerCase() + entityName.slice(1);
@@ -13,7 +14,7 @@ const getCamelCaseEntityName = (entityName: string) =>
 function generateSlices(entityName: string) {
   const camelCaseEntityName = getCamelCaseEntityName(entityName);
 
-  const actionNames = Object.keys(services[camelCaseEntityName]);
+  const actionNames = filterActions(Object.keys(services[camelCaseEntityName]));
 
   const template = slice(entityName, camelCaseEntityName, actionNames);
 
@@ -33,10 +34,7 @@ function generateSlices(entityName: string) {
 }
 
 function generateSlicesIndex(entityNames: string[]) {
-  const exports = entityNames
-    .map(getCamelCaseEntityName)
-    .map(sliceIndex)
-    .join('\n');
+  const exports = sliceIndex(entityNames);
 
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = dirname(__filename);
@@ -62,7 +60,7 @@ function generateActions(entityNames: string[]) {
 
   const exports = Object.keys(serviceActionNames)
     .map((entityName) => {
-      const actionNames = serviceActionNames[entityName];
+      const actionNames = filterActions(serviceActionNames[entityName]);
       return actions(entityName, actionNames);
     })
     .join('');
@@ -94,7 +92,6 @@ function generateSelectorsIndex(entityNames: string[]) {
 
 const entityNames = getOperationKeys(operations)
   .map((key) => getOperationName(key, true))
-  // TODO: Figure out void type
   .filter(
     (name) =>
       [

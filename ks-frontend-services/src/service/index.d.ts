@@ -172,6 +172,12 @@ declare const infoCustomer: {
         method: import("../generated/operations/infoCustomer").InfoCustomerRequestFunction;
     };
 };
+declare const infoEntity: {
+    getInfoEntity: {
+        key: string;
+        method: import("../generated/operations/getInfoEntity").GetInfoEntityRequestFunction;
+    };
+};
 declare const infoGhost: {
     infoGhost: {
         key: string;
@@ -439,6 +445,12 @@ declare const pdf: {
             body: import("./external/pdf").FindResponse;
         }, import("./external/pdf").FindResponse>;
     };
+    satnote: {
+        key: string;
+        method: ({ body: { job, credit, satNote, acceptedTerms }, }: import("./external/pdf").SatNoteRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+            body: import("./external/pdf").FindResponse;
+        }, import("./external/pdf").FindResponse>;
+    };
 };
 /**
  * A list of all possible services the frontend can use.
@@ -616,6 +628,12 @@ declare const services: {
         infoCustomer: {
             key: string;
             method: import("../generated/operations/infoCustomer").InfoCustomerRequestFunction;
+        };
+    };
+    infoEntity: {
+        getInfoEntity: {
+            key: string;
+            method: import("../generated/operations/getInfoEntity").GetInfoEntityRequestFunction;
         };
     };
     infoGhost: {
@@ -885,7 +903,13 @@ declare const services: {
                 body: import("./external/pdf").FindResponse;
             }, import("./external/pdf").FindResponse>;
         };
+        satnote: {
+            key: string;
+            method: ({ body: { job, credit, satNote, acceptedTerms }, }: import("./external/pdf").SatNoteRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+                body: import("./external/pdf").FindResponse;
+            }, import("./external/pdf").FindResponse>;
+        };
     };
 };
-export { authUser, company, credit, document, event, infoAuth, infoCache, infoCompany, infoCustomer, infoGhost, infoHealth, infoIP, infoQuery, infoRedirect, infoValidation, job, monitor, payment, rate, subscription, task, webhook, address, pdf, };
+export { authUser, company, credit, document, event, infoAuth, infoCache, infoCompany, infoCustomer, infoEntity, infoGhost, infoHealth, infoIP, infoQuery, infoRedirect, infoValidation, job, monitor, payment, rate, subscription, task, webhook, address, pdf, };
 export default services;

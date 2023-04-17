@@ -13,6 +13,14 @@ export interface CreateRequest {
         company: StringIndexedObject;
     };
 }
+export interface SatNoteRequest {
+    body: {
+        job: StringIndexedObject;
+        credit: StringIndexedObject;
+        satNote: StringIndexedObject;
+        acceptedTerms: StringIndexedObject;
+    };
+}
 export interface FindResponse {
     addresses: Array<string[]>;
 }
@@ -26,6 +34,12 @@ declare const _default: {
     create: {
         key: string;
         method: ({ body: { job, company }, }: CreateRequest) => RequestFunction<{
+            body: FindResponse;
+        }, FindResponse>;
+    };
+    satnote: {
+        key: string;
+        method: ({ body: { job, credit, satNote, acceptedTerms }, }: SatNoteRequest) => RequestFunction<{
             body: FindResponse;
         }, FindResponse>;
     };

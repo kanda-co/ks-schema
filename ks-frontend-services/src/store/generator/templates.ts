@@ -10,19 +10,16 @@ const serviceAction = (actionName: string, camelCaseEntityName: string) =>
 const typeOfActions = (actionNames: string[]) =>
   actionNames.map((actionName) => `typeof ${actionName}`).join(' | ');
 
-const reducerForAction = (
-  entityName: string,
-  actionName: string,
-) => `[${actionName}.pending.type]: (state) => ({
-      ...state,
-      isLoading: true,
-      isSubmitting: true,
-    }),
-    [${actionName}.fulfilled.type]: ${handleResponseName(entityName)},
-    [${actionName}.rejected.type]: (args) => {
-      // TODO
-      console.log(args);
-    },
+const reducerForAction = (entityName: string, actionName: string) => `
+builder.addCase(${actionName}.pending, (state) => ({
+	...state,
+	isLoading: true,
+	isSubmitting: true,
+}));
+builder.addCase(${actionName}.fulfilled, ${handleResponseName(entityName)});
+builder.addCase(${actionName}.rejected, (...args) => {
+	console.log('Unknown error', args)
+});
 `;
 
 const selector = (entityName: string) => {
@@ -49,8 +46,34 @@ ${entityNames.map(selector).join('\n')}
 return {${entityNames.map(getCamelCaseEntityName).join(', ')}}
 }`;
 
-export function sliceIndex(entityName: string) {
-  return `export { default as ${entityName} } from './${entityName}'`;
+function sliceName(entityName: string) {
+  return `${entityName}Slice`;
+}
+
+function sliceExport(entityName: string) {
+  return `${entityName}: ${sliceName(entityName)}`;
+}
+
+export function sliceIndex(entityNames: string[]) {
+  const camelCaseEntityNames = entityNames.map(getCamelCaseEntityName);
+
+  const exports = camelCaseEntityNames
+    .map(
+      (entityName) =>
+        `
+      	import { default as ${entityName}, ${sliceName(
+          entityName,
+        )} } from './${entityName}'
+        export { ${entityName} }
+        `,
+    )
+    .join('\n');
+
+  const defaultExport = `export const slices = { ${camelCaseEntityNames
+    .map(sliceExport)
+    .join(', ')} }`;
+
+  return [exports, defaultExport].join('\n');
 }
 
 export const actions = (entityName: string, actionNames: string[]) =>
@@ -61,11 +84,14 @@ export const slice = (
   camelCaseEntityName: string,
   actionNames: string[],
 ) => `// Imports
-import { type AsyncThunkAction } from "@reduxjs/toolkit";
+import { type PayloadAction, type AsyncThunkAction } from "@reduxjs/toolkit";
 import { createSlice } from "../../toolkit";
 import { type ${entityName}, services } from "../../../";
 import { GENERATED_INITIAL_STATE } from "../../constants";
-import { createAsyncThunkAction, createResponseHandler } from "../../helpers";
+import {
+  createAsyncThunkAction,
+  handleResponse,
+} from '../../helpers';
 import type { AsyncThunkReturnType, GeneratedState } from "../../types";
 
 // Service methods
@@ -88,13 +114,21 @@ const initialState: ${entityName}State = GENERATED_INITIAL_STATE;
 
 export const ${handleResponseName(
   entityName,
-)} = createResponseHandler<${entityName}State, ${entityName}>();
+)} = handleResponse<${entityName}State, ${entityName}>;
 
 export const ${camelCaseEntityName}Slice = createSlice({
   name: "${camelCaseEntityName}",
   initialState,
-  reducers: {},
-  extraReducers: {${actionNames
+  reducers: {
+    fetched: (state: ${entityName}State, action: PayloadAction<${entityName}[]>) => ({
+      ...state,
+      ...handleResponse(state, action),
+      // Don't set fetchedList when using this action, as it's used
+      // by InfoEntity
+      fetchedList: state.fetchedList,
+    }),
+  },
+  extraReducers: (builder) => {${actionNames
     .map((actionName) => reducerForAction(entityName, actionName))
     .join('')}},
 });
