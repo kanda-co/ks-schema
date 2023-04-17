@@ -11,7 +11,10 @@ export declare const createAsyncThunkAction: <V extends void | StringIndexedObje
 export declare const handleResponse: <State extends GeneratedState<Entity>, Entity>(state: State, action: {
     payload: Entity | Entity[];
     type: string;
-}) => {
+}) => (State & {
+    isLoading: boolean;
+    isSubmitting: boolean;
+}) | {
     id: string;
     fetchedList: boolean;
     byId: {

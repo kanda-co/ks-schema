@@ -156,7 +156,11 @@ export const handleResponse = <State extends GeneratedState<Entity>, Entity>(
   const items = isArray ? payload : [payload];
 
   if (!items.length) {
-    return state;
+    return {
+      ...state,
+      isLoading: false,
+      isSubmitting: false,
+    };
   }
 
   const normalizedItems = items.reduce((acc, item) => {
