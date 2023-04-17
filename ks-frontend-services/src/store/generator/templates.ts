@@ -17,8 +17,13 @@ builder.addCase(${actionName}.pending, (state) => ({
 	isSubmitting: true,
 }));
 builder.addCase(${actionName}.fulfilled, ${handleResponseName(entityName)});
-builder.addCase(${actionName}.rejected, (...args) => {
-	console.log('Unknown error', args)
+builder.addCase(${actionName}.rejected, (state, action) => {
+	console.log('Unknown error', action)
+	return {
+		...state,
+		isLoading: false,
+		isSubmitting: false,
+	}
 });
 `;
 
