@@ -13,13 +13,13 @@ import { handleResponse as handleApiResponse } from '../handlers';
 import type {
   AsyncThunkActionArgs,
   GeneratedState,
-  NormalizedEntities,
   Payload,
   ThunkAPI,
   Selectors,
 } from './types';
 import { getPathKey } from './selectors/app';
 import type { InfoEntity } from '../generated/components/schemas';
+import { INFO_ENTITY_KEY } from './constants';
 
 export const handlePayload = <T>(payload: Payload<T>): Promise<T> =>
   payload().then(handleApiResponse) as Promise<T>;
@@ -33,29 +33,6 @@ export const formatById = <T>(data: T[]): StringIndexedObject<T> =>
     acc[(item as DataWithId).id] = item;
     return acc;
   }, {} as StringIndexedObject<T>);
-
-export const normalizeData = <T, S extends NormalizedEntities<T>>(
-  data: T[],
-  state: S,
-): NormalizedEntities<T> => {
-  if (data.length === 0) {
-    return state;
-  }
-
-  // Unique the array based on ID
-  const formattedData = [...state.data, ...data];
-  const uniqueData = Array.from(
-    new Set(formattedData.map((item) => (item as DataWithId).id)),
-  ).map((id) => {
-    return formattedData.find((item) => (item as DataWithId).id === id);
-  });
-  const allIds = uniqueData.map((item) => (item as DataWithId).id);
-
-  return {
-    data: uniqueData,
-    allIds,
-  };
-};
 
 export const isArrayOfValue = <Entity>(
   data: Entity | Entity[],
@@ -105,8 +82,7 @@ export const createAsyncThunkAction = <
       // keys corresponding to each entity with arrays in each. So we
       // take all the keys and then call the fetched action for the reducer
       // corresponding to each key
-      // TODO: Const
-      if (key === 'infoEntity.getInfoEntity') {
+      if (key === INFO_ENTITY_KEY) {
         const payload = method(args as unknown as Args);
 
         const data = await handlePayload(
@@ -136,7 +112,6 @@ export const createAsyncThunkAction = <
 
       const finalMethodArgs = methodArgs as unknown as Args;
 
-      // TODO: Find a better way of doing this
       const isGet = key.includes('get');
 
       if (isGet) {
@@ -162,6 +137,7 @@ export const createAsyncThunkAction = <
 
         return data;
       } catch (error) {
+        console.log(error);
         if (onError) {
           onError();
         }
@@ -177,12 +153,25 @@ export const handleResponse = <State extends GeneratedState<Entity>, Entity>(
   const { payload } = action;
   const isArray = isArrayOfValue<Entity>(payload);
 
+  const items = isArray ? payload : [payload];
+
+  if (!items.length) {
+    return state;
+  }
+
+  const normalizedItems = items.reduce((acc, item) => {
+    acc[(item as DataWithId).id] = item;
+    return acc;
+  }, {} as StringIndexedObject<Entity>);
+
+  const { id, isLoading, isSubmitting } = state;
+
   return {
-    ...state,
-    ...normalizeData(isArray ? payload : [payload], state),
+    id,
+    fetchedList: !state.fetchedList ? isArray : true,
+    byId: { ...state.byId, ...normalizedItems },
     isLoading: false,
     isSubmitting: false,
-    fetchedList: !state.fetchedList ? isArray : true,
   };
 };
 
@@ -194,9 +183,13 @@ export const generateSelectors = <
 ): Selectors<Entity, State> => {
   const getReducer = (state: State) => state[reducer];
 
-  const getData = createSelector(getReducer, (reducer) => reducer.data);
+  const getData = createSelector(getReducer, (reducer) =>
+    Object.values(reducer.byId).sort((a, b) =>
+      (a as DataWithId).id.localeCompare((b as DataWithId).id),
+    ),
+  );
 
-  const getAllIds = createSelector(getReducer, (reducer) => reducer.allIds);
+  const getById = createSelector(getReducer, (reducer) => reducer.byId);
 
   const getId = createSelector(getPathKey, (pathKey) => {
     if (pathKey?.page !== reducer) return undefined;
@@ -205,11 +198,11 @@ export const generateSelectors = <
 
   const getItem = createSelector(
     getId,
-    getData,
+    getById,
     getPathKey,
-    (id, data, pathKey) => {
+    (id, byId, pathKey) => {
       if (pathKey?.page !== reducer) return undefined;
-      return data.find((item) => (item as { id: string }).id === id);
+      return byId[id];
     },
   );
 
@@ -226,7 +219,7 @@ export const generateSelectors = <
   return {
     getReducer,
     getData,
-    getAllIds,
+    getById,
     getId,
     getItem,
     getIsSubmitting,

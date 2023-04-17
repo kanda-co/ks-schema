@@ -1,12 +1,12 @@
 import type { AsyncThunk } from '@reduxjs/toolkit';
 import { createAsyncThunk } from './toolkit';
 import type { Response } from '../handlers';
+import type { StringIndexedObject } from '../types';
 
 export type Payload<T> = () => Promise<Response<T>>;
 
 export interface NormalizedEntities<T> {
-  data: T[];
-  allIds: string[];
+  byId: StringIndexedObject<T>;
 }
 
 export type AsyncThunkReturnType<T> = T extends AsyncThunk<
@@ -49,8 +49,8 @@ export type AsyncThunkActionArgs<Args> = Args extends undefined
 
 export interface Selectors<T, S> {
   getReducer: (state: S) => S[keyof S];
-  getData: (state: S) => NormalizedEntities<T>['data'];
-  getAllIds: (state: S) => NormalizedEntities<T>['allIds'];
+  getData: (state: S) => T[];
+  getById: (state: S) => NormalizedEntities<T>['byId'];
   getId: (state: S) => string | undefined;
   getItem: (state: S) => T | undefined;
   getIsSubmitting: (state: S) => boolean;

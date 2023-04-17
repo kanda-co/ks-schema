@@ -3,7 +3,6 @@ import { APP_ENV } from '../config';
 
 export interface MutateHook {
   mutate: (
-    // TODO: Argument generic
     ...arg: any[]
   ) => Promise<
     | { data: Record<string, unknown>; error?: any }

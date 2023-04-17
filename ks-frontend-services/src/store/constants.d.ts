@@ -1,13 +1,11 @@
 export declare const NORMALIZED_INITIAL_STATE: {
-  data: any[];
-  allIds: any[];
+    byId: {};
 };
 export declare const GENERATED_INITIAL_STATE: {
-  id: any;
-  fetchedList: boolean;
-  isLoading: boolean;
-  isSubmitting: boolean;
-  data: any[];
-  allIds: any[];
+    id: any;
+    fetchedList: boolean;
+    isLoading: boolean;
+    isSubmitting: boolean;
+    byId: {};
 };
 export declare const IGNORED_ACTIONS: string[];
