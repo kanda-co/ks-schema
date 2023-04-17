@@ -8,7 +8,7 @@ import * as T from 'io-ts';
 import { pipe } from 'fp-ts/lib/function';
 import { fold } from 'fp-ts/lib/Either';
 import { slices } from './slices/generated';
-import type { StringIndexedObject, NewService } from '../types';
+import type { StringIndexedObject, NewService, ServiceMethod } from '../types';
 import { handleResponse as handleApiResponse } from '../handlers';
 import type {
   AsyncThunkActionArgs,
@@ -16,10 +16,13 @@ import type {
   Payload,
   ThunkAPI,
   Selectors,
+  NormalizedEntities,
 } from './types';
 import { getPathKey } from './selectors/app';
 import type { InfoEntity } from '../generated/components/schemas';
 import { INFO_ENTITY_KEY } from './constants';
+import { RequestFunction } from '@openapi-io-ts/runtime';
+import { GetInfoEntityRequestParameters } from 'generated/operations/getInfoEntity';
 
 export const handlePayload = <T>(payload: Payload<T>): Promise<T> =>
   payload().then(handleApiResponse) as Promise<T>;
@@ -60,6 +63,42 @@ const getReducerName = (key: string): keyof typeof slices => {
   return name;
 };
 
+const handleInfoEntity = async <
+  Entity extends StringIndexedObject | undefined | void,
+  Args extends StringIndexedObject<any> | undefined = undefined,
+>(
+  args: { params: GetInfoEntityRequestParameters },
+  method: RequestFunction<Args, Entity>,
+  thunkAPI: ThunkAPI,
+) => {
+  const state = thunkAPI.getState();
+  const reducer = state[args.params.kind] as NormalizedEntities<Entity>;
+
+  const item = reducer.byId[args.params.id];
+
+  if (item) {
+    return;
+  }
+
+  const payload = method(args as unknown as Args);
+
+  const data = await handlePayload(payload as unknown as Payload<InfoEntity>);
+
+  const keys = Object.keys(data) as (keyof InfoEntity)[];
+
+  keys.forEach((key) => {
+    const fetchedData = data[key];
+    // We have to cast here because it calling it without doing so, results in a type error
+    // because typescript infers the type as Company[] & Job[] & Monitor[] etc
+    const fetchedAction = slices[key].actions
+      .fetched as ActionCreatorWithOptionalPayload<typeof fetchedData>;
+
+    thunkAPI.dispatch(fetchedAction(data[key]));
+  });
+
+  return;
+};
+
 // Creates an asyncThunkAction for a given service
 // This will do the following when the action is called:
 // 1. If InfoEntity, place the data in the relevant stores based on the Response
@@ -67,13 +106,13 @@ const getReducerName = (key: string): keyof typeof slices => {
 // 2a. If it is, return the data from the store
 // 2b. If it is not, fetch the data and place it in the relevant store
 export const createAsyncThunkAction = <
-  V extends StringIndexedObject | undefined | void,
+  Entity extends StringIndexedObject | undefined | void,
   Args extends StringIndexedObject<any> | undefined = undefined,
 >(
-  service: NewService<V, Args>,
-): AsyncThunk<V, AsyncThunkActionArgs<Args>, {}> => {
+  service: NewService<Entity, Args>,
+): AsyncThunk<Entity, AsyncThunkActionArgs<Args>, {}> => {
   const { key, method } = service;
-  return createAsyncThunk<V, AsyncThunkActionArgs<Args>>(
+  return createAsyncThunk<Entity, AsyncThunkActionArgs<Args>>(
     key,
     async <T>(args: AsyncThunkActionArgs<Args> | void, thunkAPI: ThunkAPI) => {
       const state = thunkAPI.getState() as StringIndexedObject;
@@ -83,24 +122,11 @@ export const createAsyncThunkAction = <
       // take all the keys and then call the fetched action for the reducer
       // corresponding to each key
       if (key === INFO_ENTITY_KEY) {
-        const payload = method(args as unknown as Args);
-
-        const data = await handlePayload(
-          payload as unknown as Payload<InfoEntity>,
+        handleInfoEntity(
+          args as unknown as { params: GetInfoEntityRequestParameters },
+          method,
+          thunkAPI,
         );
-
-        const keys = Object.keys(data) as (keyof InfoEntity)[];
-
-        keys.forEach((key) => {
-          const fetchedData = data[key];
-          // We have to cast here because it calling it without doing so, results in a type error
-          // because typescript infers the type as Company[] & Job[] & Monitor[] etc
-          const fetchedAction = slices[key].actions
-            .fetched as ActionCreatorWithOptionalPayload<typeof fetchedData>;
-
-          thunkAPI.dispatch(fetchedAction(data[key]));
-        });
-
         return [] as any;
       }
 
@@ -129,7 +155,7 @@ export const createAsyncThunkAction = <
       const payload = method(finalMethodArgs);
 
       try {
-        const data = await handlePayload(payload as unknown as Payload<V>);
+        const data = await handlePayload(payload as unknown as Payload<Entity>);
 
         if (onSuccess) {
           onSuccess();
@@ -151,7 +177,7 @@ export const handleResponse = <State extends GeneratedState<Entity>, Entity>(
   action: PayloadAction<Entity | Entity[]>,
 ) => {
   const { payload } = action;
-  const isArray = isArrayOfValue<Entity>(payload);
+  const isArray = isArrayOfEntityalue<Entity>(payload);
 
   const items = isArray ? payload : [payload];
 
@@ -168,7 +194,7 @@ export const handleResponse = <State extends GeneratedState<Entity>, Entity>(
     return acc;
   }, {} as StringIndexedObject<Entity>);
 
-  const { id, isLoading, isSubmitting } = state;
+  const { id } = state;
 
   return {
     id,
