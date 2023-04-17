@@ -10,3 +10,4 @@ export declare const GENERATED_INITIAL_STATE: {
     data: any[];
     allIds: any[];
 };
+export declare const IGNORED_ACTIONS: string[];

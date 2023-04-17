@@ -6,6 +6,7 @@ import * as operations from '../../generated/operations';
 import services from '../../service';
 import { getOperationKeys, getOperationName } from '../../helpers';
 import { actions, selectors, slice, sliceIndex } from './templates';
+import { filterActions } from './helpers';
 
 const getCamelCaseEntityName = (entityName: string) =>
   entityName.charAt(0).toLowerCase() + entityName.slice(1);
@@ -13,7 +14,7 @@ const getCamelCaseEntityName = (entityName: string) =>
 function generateSlices(entityName: string) {
   const camelCaseEntityName = getCamelCaseEntityName(entityName);
 
-  const actionNames = Object.keys(services[camelCaseEntityName]);
+  const actionNames = filterActions(Object.keys(services[camelCaseEntityName]));
 
   const template = slice(entityName, camelCaseEntityName, actionNames);
 
@@ -59,7 +60,7 @@ function generateActions(entityNames: string[]) {
 
   const exports = Object.keys(serviceActionNames)
     .map((entityName) => {
-      const actionNames = serviceActionNames[entityName];
+      const actionNames = filterActions(serviceActionNames[entityName]);
       return actions(entityName, actionNames);
     })
     .join('');
