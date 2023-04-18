@@ -9,7 +9,7 @@ import * as T from 'io-ts';
 import { pipe } from 'fp-ts/lib/function';
 import { fold } from 'fp-ts/lib/Either';
 import { slices } from './slices/generated';
-import type { StringIndexedObject, NewService, ServiceMethod } from '../types';
+import type { StringIndexedObject, NewService } from '../types';
 import { handleResponse as handleApiResponse } from '../handlers';
 import type {
   AsyncThunkActionArgs,
@@ -249,6 +249,11 @@ export const generateSelectors = <
     },
   );
 
+  const getIsLoading = createSelector(
+    getReducer,
+    (reducer) => reducer.isLoading,
+  );
+
   const getIsSubmitting = createSelector(
     getReducer,
     (reducer) => reducer.isSubmitting,
@@ -265,6 +270,7 @@ export const generateSelectors = <
     getById,
     getId,
     getItem,
+    getIsLoading,
     getIsSubmitting,
     getFetchedList,
   };

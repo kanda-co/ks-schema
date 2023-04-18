@@ -54,6 +54,7 @@ export interface Selectors<T, S> {
   getById: (state: S) => NormalizedEntities<T>['byId'];
   getId: (state: S) => string | undefined;
   getItem: (state: S) => T | undefined;
+  getIsLoading: (state: S) => boolean;
   getIsSubmitting: (state: S) => boolean;
   getFetchedList: (state: S) => boolean;
 }
