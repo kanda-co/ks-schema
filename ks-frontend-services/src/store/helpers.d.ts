@@ -16,8 +16,10 @@ export declare const handleResponse: <State extends GeneratedState<Entity>, Enti
     isSubmitting: boolean;
 }) | {
     id: string;
-    fetchedList: any;
-    byId: any;
+    fetchedList: boolean;
+    byId: {
+        [x: string]: Entity;
+    };
     isLoading: boolean;
     isSubmitting: boolean;
 };

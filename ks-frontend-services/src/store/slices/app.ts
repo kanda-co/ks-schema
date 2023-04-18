@@ -10,6 +10,7 @@ export type StringIndexedObjectOrUndefined =
 
 export interface AppState<T> {
   pathKey: PathKey<T>;
+  visitedPathKeys: PathKey<T>[];
   isLoading: boolean;
   requiredNonBlockingActions: string[];
   finishedNonBlockingActions: string[];
@@ -17,12 +18,15 @@ export interface AppState<T> {
 }
 
 export const createAppSlice = <T>() => {
+  const initialPathKey: PathKey<T> = {
+    page: 'login' as T,
+    id: undefined,
+    path: '/login',
+  };
+
   const initialState: AppState<T> = {
-    pathKey: {
-      page: 'login' as T,
-      id: undefined,
-      path: '/login',
-    },
+    pathKey: initialPathKey,
+    visitedPathKeys: [initialPathKey],
     isLoading: false,
     requiredNonBlockingActions: [],
     finishedNonBlockingActions: [],
@@ -53,6 +57,10 @@ export const createAppSlice = <T>() => {
           ...state,
           requiredNonBlockingActions: [],
           finishedNonBlockingActions: [],
+          visitedPathKeys: [
+            ...state.visitedPathKeys,
+            state.pathKey,
+          ] as PathKey<T>[],
           pathKey: action.payload,
         };
       },

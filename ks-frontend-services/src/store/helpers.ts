@@ -19,7 +19,10 @@ import type {
   Selectors,
   NormalizedEntities,
 } from './types';
-import { getPathKey } from './selectors/app';
+import {
+  getHasVisitedCurrentPagePreviously,
+  getPathKey,
+} from './selectors/app';
 import type { InfoEntity } from '../generated/components/schemas';
 import { INFO_ENTITY_KEY } from './constants';
 import { GetInfoEntityRequestParameters } from '../generated/operations/getInfoEntity';
@@ -72,11 +75,14 @@ const handleInfoEntity = async <
   thunkAPI: ThunkAPI,
 ) => {
   const state = thunkAPI.getState();
+  const hasVisitedEntityPagePreviously =
+    getHasVisitedCurrentPagePreviously(state);
+
   const reducer = state[args.params.kind] as NormalizedEntities<Entity>;
 
   const item = reducer.byId[args.params.id];
 
-  if (item) {
+  if (hasVisitedEntityPagePreviously && item) {
     return;
   }
 
