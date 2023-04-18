@@ -70,7 +70,7 @@ const handleInfoEntity = async <
   Entity extends StringIndexedObject | undefined | void,
   Args extends StringIndexedObject<any> | undefined = undefined,
 >(
-  args: { params: GetInfoEntityRequestParameters },
+  args: { params: GetInfoEntityRequestParameters; forceReload?: boolean },
   method: RequestFunction<Args, Entity>,
   thunkAPI: ThunkAPI,
 ) => {
@@ -80,9 +80,11 @@ const handleInfoEntity = async <
 
   const reducer = state[args.params.kind] as NormalizedEntities<Entity>;
 
+  const { forceReload } = args;
+
   const item = reducer.byId[args.params.id];
 
-  if (hasVisitedEntityPagePreviously && item) {
+  if (!forceReload && hasVisitedEntityPagePreviously && item) {
     return;
   }
 
@@ -137,16 +139,21 @@ export const createAsyncThunkAction = <
       }
 
       const { byId, fetchedList } = state[getReducerName(key) as string];
-      const { preventLoadingState, onSuccess, onError, ...methodArgs } =
-        args || {
-          args: undefined,
-        };
+      const {
+        preventLoadingState,
+        forceReload,
+        onSuccess,
+        onError,
+        ...methodArgs
+      } = args || {
+        args: undefined,
+      };
 
       const finalMethodArgs = methodArgs as unknown as Args;
 
       const isGet = key.includes('get');
 
-      if (isGet) {
+      if (isGet && !forceReload) {
         if (finalMethodArgs?.params?.id) {
           const item = byId[finalMethodArgs.params.id];
 
