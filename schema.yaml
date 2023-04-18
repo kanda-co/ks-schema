@@ -3141,21 +3141,12 @@ components:
     InfoDirector:
       type: object
       required:
-        - title
         - first_name
         - last_name
+        - gender
         - home_address
         - date_of_birth
       properties:
-        title:
-          type: string
-          title: person title
-          description: person title
-          enum:
-            - "Mr"
-            - "Ms"
-            - "Mrs"
-            - "Miss"
         first_name:
           type: string
           title: first name
@@ -3168,6 +3159,8 @@ components:
           type: string
           title: last name
           minLength: 1
+        gender:
+          $ref: "#/components/schemas/Gender"
         home_address:
           type: object
           $ref: "#/components/schemas/Address"
@@ -4661,6 +4654,25 @@ components:
           minimum: 0
           maximum: 2147483647
 
+    Gender:
+      type: string
+      title: gender
+      description: gender
+      enum:
+        - male
+        - female
+
+    Title:
+      type: string
+      title: title
+      description: title
+      enum:
+        - mrs
+        - mr
+        - miss
+        - ms
+        - dr
+
     CustomerDetails:
       type: object
       title: customer details
@@ -4681,20 +4693,9 @@ components:
           title: email
           format: email
         gender:
-          type: string
-          title: gender
-          enum:
-            - male
-            - female
+          $ref: "#/components/schemas/Gender"
         title:
-          type: string
-          title: title
-          enum:
-            - mrs
-            - mr
-            - miss
-            - ms
-            - dr
+          $ref: "#/components/schemas/Title"
         first_name:
           type: string
           title: first name
