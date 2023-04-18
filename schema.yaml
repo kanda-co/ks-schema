@@ -195,7 +195,7 @@ paths:
                 $ref: "#/components/schemas/Error"
 
   /api/info/director:
-    get:
+    put:
       operationId: infoDirector
       summary: run director checks
       tags:
