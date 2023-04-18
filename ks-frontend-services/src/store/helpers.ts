@@ -4,6 +4,7 @@ import type {
   PayloadAction,
 } from '@reduxjs/toolkit';
 import { createAsyncThunk, createSelector } from './toolkit';
+import type { RequestFunction } from '@openapi-io-ts/runtime';
 import * as T from 'io-ts';
 import { pipe } from 'fp-ts/lib/function';
 import { fold } from 'fp-ts/lib/Either';
@@ -21,8 +22,7 @@ import type {
 import { getPathKey } from './selectors/app';
 import type { InfoEntity } from '../generated/components/schemas';
 import { INFO_ENTITY_KEY } from './constants';
-import { RequestFunction } from '@openapi-io-ts/runtime';
-import { GetInfoEntityRequestParameters } from 'generated/operations/getInfoEntity';
+import { GetInfoEntityRequestParameters } from '../generated/operations/getInfoEntity';
 
 export const handlePayload = <T>(payload: Payload<T>): Promise<T> =>
   payload().then(handleApiResponse) as Promise<T>;
@@ -54,7 +54,7 @@ const getReducerName = (key: string): keyof typeof slices => {
   const name = reducerName as keyof typeof slices;
 
   if (!reducerName) {
-    throw new Error('Invalid reducer provided');
+    throw new Error('Invald reducer provided');
   }
   if ((Object.keys(slices) as (keyof typeof slices)[]).indexOf(name) === -1) {
     throw new Error('Invalid reducer provided');
@@ -177,7 +177,7 @@ export const handleResponse = <State extends GeneratedState<Entity>, Entity>(
   action: PayloadAction<Entity | Entity[]>,
 ) => {
   const { payload } = action;
-  const isArray = isArrayOfEntityalue<Entity>(payload);
+  const isArray = isArrayOfValue<Entity>(payload);
 
   const items = isArray ? payload : [payload];
 
