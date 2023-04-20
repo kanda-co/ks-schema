@@ -89,7 +89,7 @@ export const slice = (
   camelCaseEntityName: string,
   actionNames: string[],
 ) => `// Imports
-import { type PayloadAction, type AsyncThunkAction } from "@reduxjs/toolkit";
+import { type PayloadAction, type AsyncThunkAction, createEntityAdapter } from "@reduxjs/toolkit";
 import { createSlice } from "../../toolkit";
 import { type ${entityName}, services } from "../../../";
 import { GENERATED_INITIAL_STATE } from "../../constants";
@@ -103,6 +103,9 @@ import type { AsyncThunkReturnType, GeneratedState } from "../../types";
 ${actionNames
   .map((actionName) => serviceAction(actionName, camelCaseEntityName))
   .join('\n')}
+
+// Entity Adapter
+const ${camelCaseEntityName}Adapter = createEntityAdapter<${entityName}>()
 
 export type ${entityName}Return = AsyncThunkReturnType<${
   typeOfActions(actionNames) || 'never'
