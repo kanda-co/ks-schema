@@ -8,7 +8,7 @@ import { handleResponse } from '../../handlers';
 
 const useLoadData = <Value, Params = undefined, Body = undefined>(
   service?: Service<Value, Params, Body> | false,
-  options: LoadDataHookOptions = {},
+  options: Partial<LoadDataHookOptions> = {},
   ...arg
 ) => {
   const method = (

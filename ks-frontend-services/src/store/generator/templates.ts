@@ -125,6 +125,10 @@ export const ${camelCaseEntityName}Slice = createSlice({
   name: "${camelCaseEntityName}",
   initialState,
   reducers: {
+    fetching: (state: ${entityName}State, action: PayloadAction<undefined>) => ({
+      ...state,
+      isLoading: true,
+    }),
     fetched: (state: ${entityName}State, action: PayloadAction<${entityName}[]>) => ({
       ...state,
       ...handleResponse(state, action),
