@@ -40,23 +40,3 @@ export default {
       }),
   },
 };
-
-// fetch("https://europe-west1-basic-garden-241310.cloudfunctions.net/kssheets-read", {
-//   "headers": {
-//     "accept": "application/json",
-//     "accept-language": "en-GB,en-US;q=0.9,en;q=0.8",
-//     "content-type": "application/json",
-//     "sec-ch-ua": "\"Chromium\";v=\"112\", \"Google Chrome\";v=\"112\", \"Not:A-Brand\";v=\"99\"",
-//     "sec-ch-ua-mobile": "?0",
-//     "sec-ch-ua-platform": "\"macOS\"",
-//     "sec-fetch-dest": "empty",
-//     "sec-fetch-mode": "cors",
-//     "sec-fetch-site": "cross-site"
-//   },
-//   "referrer": "http://localhost:8001/",
-//   "referrerPolicy": "strict-origin-when-cross-origin",
-//   "body": "{}",
-//   "method": "POST",
-//   "mode": "cors",
-//   "credentials": "omit"
-// });
