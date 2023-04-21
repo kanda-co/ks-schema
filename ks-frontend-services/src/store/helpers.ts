@@ -1,7 +1,10 @@
 import type {
   ActionCreatorWithOptionalPayload,
   AsyncThunk,
+  EntityAdapter,
+  EntityState,
   PayloadAction,
+  Slice,
 } from '@reduxjs/toolkit';
 import { createAsyncThunk, createSelector } from './toolkit';
 import type { RequestFunction } from '@openapi-io-ts/runtime';
@@ -184,6 +187,19 @@ export const createAsyncThunkAction = <
     },
   );
 };
+
+export const createEntityResponseHandler =
+  <State, Entity>(entityAdapter: EntityAdapter<Entity>) =>
+  (state, action: PayloadAction<Entity | Entity[]>) => {
+    const { payload } = action;
+    const isArray = isArrayOfValue<Entity>(payload);
+
+    if (isArray) {
+      entityAdapter.addMany(state, payload as Entity[]);
+    } else {
+      entityAdapter.addOne(state, payload as Entity);
+    }
+  };
 
 export const handleResponse = <State extends GeneratedState<Entity>, Entity>(
   state: State,
