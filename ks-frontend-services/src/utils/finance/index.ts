@@ -87,13 +87,15 @@ export const getFinanceRateLabel = (rate: FinanceRate): string =>
   pipe(
     rate,
     (currentRate) =>
-      [currentRate, rateIsBuyNowPayLater(rate)] as [FinanceRate, boolean],
-    ([currentRate, isBuyNowPayLater]) => {
+      [
+        currentRate,
+        getFinanceOptionDetails(currentRate),
+        rateIsBuyNowPayLater(rate),
+      ] as [FinanceRate, FinanceOptionDetails, boolean],
+    ([currentRate, { duration }, isBuyNowPayLater]) => {
       if (isBuyNowPayLater) {
         return getBuyNowPayLaterRateLabel(currentRate);
       }
-
-      const { duration } = getFinanceOptionDetails(currentRate);
 
       return getLabel([duration, null]);
     },
