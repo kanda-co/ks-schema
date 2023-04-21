@@ -9,4 +9,5 @@ export interface RowProps {
   row: Row;
   prepareRow: (row: Row) => void;
   hoverPopover: FunctionComponent<PopoverButtonHoverPopoverProps>;
+  compact?: boolean;
 }

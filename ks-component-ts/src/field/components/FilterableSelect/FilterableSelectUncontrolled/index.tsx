@@ -43,6 +43,7 @@ const FilterableSelectUncontrolled: FunctionComponent<
         onFocus={onSearchInputFocus}
         onBlur={onSearchInputBlur}
         error={isFocused && options.length === 0 ? "Enter a valid value" : ""}
+        autoComplete="off"
       />
       {isFocused && options.length === 0 && (
         <Error error="No matching results" />
