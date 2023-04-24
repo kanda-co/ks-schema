@@ -196,8 +196,8 @@ paths:
 
   /api/info/director:
     put:
-      operationId: infoDirector
-      summary: run director report
+      operationId: putInfoDirector
+      summary: put + run director report
       tags:
         - InfoDirector
       parameters:
