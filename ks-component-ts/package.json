@@ -1,7 +1,7 @@
 {
   "name": "@kanda-libs/ks-component-ts",
   "version": "0.2.141",
-  "description": "Kanda form components library",
+  "description": "Kanda form component library",
   "main": "dist/index.esm.js",
   "module": "dist/index.esm.js",
   "source": "src/index.ts",
