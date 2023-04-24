@@ -207,8 +207,9 @@ paths:
             type: string
             title: info director report to run
             enum:
-              - "aml"
-              - "adverse_media"
+              - "report_aml"
+              - "report_adverse_media"
+              - "report_all"
           description: info director report to run, default to run all
       requestBody:
         description: director info to run checks against
