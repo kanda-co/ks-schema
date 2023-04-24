@@ -194,6 +194,45 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/director:
+    put:
+      operationId: infoDirector
+      summary: put + run director report
+      tags:
+        - InfoDirector
+      parameters:
+        - in: query
+          name: report
+          schema:
+            type: string
+            title: info director report to run
+            enum:
+              - "report_aml"
+              - "report_adverse_media"
+              - "report_all"
+          description: info director report to run, default to run all
+      requestBody:
+        description: director info to run checks against
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserType"
+      responses:
+        200:
+          description: got director checks
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: "#/components/schemas/DirectorReport"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/info/customer:
     get:
       operationId: infoCustomer
@@ -3110,6 +3149,44 @@ components:
           $ref: "#/components/schemas/Metadata"
           readOnly: true
 
+    DirectorReport:
+      type: object
+      title: director report
+      description: director report with checks for AML + AdverseMedia
+      properties:
+        uk_credit_aml_warnings:
+          type: string
+          title: UK Credit AML Warnings
+          description: UK Credit AML Warnings
+        international_sanctions_warnings:
+          type: string
+          title: International Sanctions Warnings
+          description: International Sanctions Warnings
+        enhanced_international_saction_warnings:
+          type: string
+          title: Enhanced International Saction Warnings
+          description: Enhanced International Saction Warnings
+        edited_electoral_roll:
+          type: string
+          title: Edited Electoral Roll
+          description: Edited Electoral Roll
+        national_id_register:
+          type: string
+          title: National ID Register
+          description: National ID Register
+        uk_credit_header:
+          type: string
+          title: UK Credit Header
+          description: UK Credit Header
+        overall_pass:
+          type: string
+          title: Overall Pass
+          description: Overall Pass
+        adverse_media:
+          type: string
+          title: Adverse Media
+          description: Adverse Media
+
     Company:
       type: object
       required:
@@ -4543,6 +4620,25 @@ components:
           minimum: 0
           maximum: 2147483647
 
+    Gender:
+      type: string
+      title: gender
+      description: gender
+      enum:
+        - male
+        - female
+
+    Title:
+      type: string
+      title: title
+      description: title
+      enum:
+        - mrs
+        - mr
+        - miss
+        - ms
+        - dr
+
     CustomerDetails:
       type: object
       title: customer details
@@ -4563,20 +4659,9 @@ components:
           title: email
           format: email
         gender:
-          type: string
-          title: gender
-          enum:
-            - male
-            - female
+          $ref: "#/components/schemas/Gender"
         title:
-          type: string
-          title: title
-          enum:
-            - mrs
-            - mr
-            - miss
-            - ms
-            - dr
+          $ref: "#/components/schemas/Title"
         first_name:
           type: string
           title: first name

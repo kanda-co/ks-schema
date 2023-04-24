@@ -99,6 +99,7 @@ const entityNames = getOperationKeys(operations)
         'Task',
         'InfoCache',
         'InfoCustomer',
+        'InfoDirector',
         'InfoHealth',
         'InfoRedirect',
         'InfoValidation',
