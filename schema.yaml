@@ -584,6 +584,143 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/partner:
+    get:
+      operationId: getPartners
+      summary: get all partners
+      tags:
+        - Partner
+      responses:
+        200:
+          description: got all partners
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Partner"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    post:
+      operationId: postPartner
+      summary: kanda staff only to post new partner
+      tags:
+        - Partner
+      requestBody:
+        description: post new partner
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Partner"
+      responses:
+        200:
+          description: posted new partner
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Partner"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/partner/{id}:
+    get:
+      operationId: getPartner
+      summary: get existing partner
+      tags:
+        - Partner
+      parameters:
+        - name: id
+          in: path
+          description: partner id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing partner
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Partner"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: putPartner
+      summary: put existing partner
+      tags:
+        - Partner
+      parameters:
+        - name: id
+          in: path
+          description: partner id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: put existing partner
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Partner"
+      responses:
+        200:
+          description: put existing partner
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Partner"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      operationId: deletePartner
+      summary: kanda staff to delete existing partner
+      tags:
+        - Partner
+      parameters:
+        - name: id
+          in: path
+          description: partner id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: deleted existing partner
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Partner"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/company:
     get:
       operationId: getCompanies
@@ -3110,6 +3247,102 @@ components:
           $ref: "#/components/schemas/Metadata"
           readOnly: true
 
+    Partner:
+      type: object
+      title: partner
+      description: partner
+      required:
+        - contact_info
+      properties:
+        id:
+          type: string
+          title: partner id
+          description: partner id
+          readOnly: true
+        aid:
+          type: string
+          title: author id
+          readOnly: true
+        oid:
+          type: string
+          title: owner id
+          readOnly: true
+        emails:
+          type: array
+          items:
+            type: string
+            format: email
+          title: emails for user who has api access
+          readOnly: true
+        contact_info:
+          type: object
+          title: partner contact info
+          $ref: "#/components/schemas/ContactInfo"
+        logo:
+          type: object
+          title: partner logo
+          $ref: "#/components/schemas/Document"
+        branding:
+          type: string
+          title: branding
+          description: branding style override
+        cids:
+          type: array
+          title: cids
+          description: referral signed up company ids
+          items:
+            type: string
+          readOnly: true
+        referrals:
+          type: array
+          items:
+            type: object
+            $ref: "#/components/schemas/Referral"
+          title: referrals
+          description: referrals with their lifecycle + status
+        metadata:
+          type: object
+          title: metadata
+          $ref: "#/components/schemas/Metadata"
+          readOnly: true
+
+    Referral:
+      type: object
+      title: referral
+      description: referral summary
+      required:
+        - email
+        - name
+        - lifecycle
+      properties:
+        email:
+          type: string
+          title: referral email
+          format: email
+        name:
+          type: string
+          title: referral name
+        mobile:
+          type: string
+          title: referral mobile
+        cid:
+          type: string
+          title: referral cid
+          description: referral signed up company id
+        lifecycle:
+          type: string
+          title: referral lifecycle
+          description: referral company lifecycle
+        billing:
+          type: string
+          title: referral billing
+          description: referral company billing status
+        metadata:
+          type: object
+          title: metadata
+          $ref: "#/components/schemas/Metadata"
+          readOnly: true
+
     Company:
       type: object
       required:
@@ -5146,7 +5379,7 @@ components:
         flags:
           type: array
           title: flags
-          descriptions: flags
+          description: flags
           items:
             $ref: "#/components/schemas/Flag"
         metadata:
@@ -5197,31 +5430,31 @@ components:
         company:
           type: array
           title: relevant companies
-          descriptions: relevant companies
+          description: relevant companies
           items:
             $ref: "#/components/schemas/Company"
         credit:
           type: array
           title: relevant credits
-          descriptions: relevant credits
+          description: relevant credits
           items:
             $ref: "#/components/schemas/Credit"
         job:
           type: array
           title: relevant jobs
-          descriptions: relevant jobs
+          description: relevant jobs
           items:
             $ref: "#/components/schemas/Job"
         monitor:
           type: array
           title: relevant monitors
-          descriptions: relevant monitors
+          description: relevant monitors
           items:
             $ref: "#/components/schemas/Monitor"
         payment:
           type: array
           title: relevant payments
-          descriptions: relevant payments
+          description: relevant payments
           items:
             $ref: "#/components/schemas/Payment"
 
