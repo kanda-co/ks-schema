@@ -23,6 +23,7 @@ export default function useCellProps({
   cell,
   index,
   isLoading,
+  compact = false,
 }: CellPropsHookArgs): CellPropsHook {
   const {
     getCellProps,
@@ -52,7 +53,7 @@ export default function useCellProps({
 
   const classNames = {
     cell: clsx(
-      CLASS_NAMES.cell.base,
+      compact ? CLASS_NAMES.cell.compact : CLASS_NAMES.cell.base,
       index === 0 ? "" : CLASS_NAMES.cell.padding
     ),
     container: CLASS_NAMES.container,

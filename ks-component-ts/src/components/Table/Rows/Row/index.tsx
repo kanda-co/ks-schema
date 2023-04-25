@@ -10,6 +10,7 @@ const Row: FunctionComponent<RowProps> = function ({
   row,
   hoverPopover,
   isLoading,
+  compact = false,
   ...props
 }) {
   const {
@@ -30,7 +31,7 @@ const Row: FunctionComponent<RowProps> = function ({
       {...rowProps}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      className={classNames.base}
+      className={compact ? classNames.compact : classNames.base}
     >
       {cells.map((cell, index) => (
         <Cell
@@ -38,6 +39,7 @@ const Row: FunctionComponent<RowProps> = function ({
           cell={cell}
           index={index}
           isLoading={(row.original as TableRow)?.isValidating || isLoading}
+          compact={compact}
         />
       ))}
 

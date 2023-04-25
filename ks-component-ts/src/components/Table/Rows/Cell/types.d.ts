@@ -16,6 +16,7 @@ export interface TableCellProps {
   cell: Cell;
   index?: number;
   isLoading?: boolean;
+  compact?: boolean;
 }
 
 export type CellPropsHookArgs = TableCellProps;

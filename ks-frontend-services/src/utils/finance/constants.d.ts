@@ -1,0 +1,1 @@
+export declare const BUY_NOW_PAY_LATER_APR_TYPE = "BUYNOW_PAYLATER";
