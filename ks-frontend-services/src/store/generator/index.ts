@@ -100,6 +100,7 @@ const entityNames = getOperationKeys(operations)
         'InfoCache',
         'InfoCustomer',
         'InfoHealth',
+        'InfoPartner',
         'InfoRedirect',
         'InfoValidation',
       ].indexOf(name) === -1,

@@ -584,6 +584,33 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/partner-branding:
+    get:
+      operationId: infoPartnerBranding
+      summary: get info partner branding
+      tags:
+        - InfoPartner
+      parameters:
+        - in: query
+          name: id
+          required: true
+          schema:
+            type: string
+          description: partner id
+      responses:
+        200:
+          description: got info partner branding
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoPartnerBranding"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/partner:
     get:
       operationId: getPartners
@@ -3253,6 +3280,7 @@ components:
       description: partner
       required:
         - contact_info
+        - rewards
       properties:
         id:
           type: string
@@ -3278,14 +3306,11 @@ components:
           type: object
           title: partner contact info
           $ref: "#/components/schemas/ContactInfo"
-        logo:
-          type: object
-          title: partner logo
-          $ref: "#/components/schemas/Document"
         branding:
-          type: string
+          type: object
           title: branding
           description: branding style override
+          $ref: "#/components/schemas/Branding"
         cids:
           type: array
           title: cids
@@ -3300,11 +3325,88 @@ components:
             $ref: "#/components/schemas/Referral"
           title: referrals
           description: referrals with their lifecycle + status
+        rewards:
+          type: array
+          items:
+            type: object
+            $ref: "#/components/schemas/Reward"
+          readOnly: true
+        current_reward:
+          type: object
+          title: current reward
+          description: current reward
+          $ref: "#/components/schemas/Reward"
+          readOnly: true
         metadata:
           type: object
           title: metadata
           $ref: "#/components/schemas/Metadata"
           readOnly: true
+
+    Branding:
+      type: object
+      title: branding override
+      description: branding override object
+      required:
+        - logo
+      properties:
+        logo:
+          type: object
+          title: partner logo
+          $ref: "#/components/schemas/Document"
+      additionalProperties: true
+
+    Reward:
+      type: object
+      title: reward
+      description: reward in tiered system
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          title: reward name
+          description: reward name
+        signups:
+          type: integer
+          title: number of tradesperson signups
+          description: number of tradesperson signups to unlock
+          format: int32
+        subscribers:
+          type: integer
+          title: number of referral company subscribers
+          description: number of referral company subscribers to unlock
+          format: int32
+        verifications:
+          type: integer
+          title: number of referral company verifications
+          description: number of referral company verifications to unlock
+          format: int32
+        activations:
+          type: integer
+          title: number of referral company activations
+          description: number of referral company activations to unlock
+          format: int32
+        rates_reduction_pct:
+          type: integer
+          title: rates reduction percentage in pence
+          minimum: 0
+          maximum: 2147483647
+        rates_reduction_value:
+          type: integer
+          title: rates reduction value in pence
+          minimum: 0
+          maximum: 2147483647
+        referral_commission_pct:
+          type: integer
+          title: referral commission percentage value in pence
+          minimum: 0
+          maximum: 2147483647
+        referral_commission_value:
+          type: integer
+          title: referral commission value in pence
+          minimum: 0
+          maximum: 2147483647
 
     Referral:
       type: object
@@ -3313,7 +3415,6 @@ components:
       required:
         - email
         - name
-        - lifecycle
       properties:
         email:
           type: string
@@ -3329,14 +3430,17 @@ components:
           type: string
           title: referral cid
           description: referral signed up company id
+          readOnly: true
         lifecycle:
           type: string
           title: referral lifecycle
           description: referral company lifecycle
+          readOnly: true
         billing:
           type: string
           title: referral billing
           description: referral company billing status
+          readOnly: true
         metadata:
           type: object
           title: metadata
@@ -3458,6 +3562,9 @@ components:
         referral_code:
           type: string
           title: optional referral code used for the sign up
+        referred_by:
+          type: string
+          title: referred by partner id
         company_logo:
           type: object
           title: company logo document
@@ -5457,6 +5564,21 @@ components:
           description: relevant payments
           items:
             $ref: "#/components/schemas/Payment"
+
+    InfoPartnerBranding:
+      type: object
+      title: info partner branding
+      description: info partner branding
+      properties:
+        contact_info:
+          type: object
+          title: partner contact info
+          $ref: "#/components/schemas/ContactInfo"
+        branding:
+          type: object
+          title: branding
+          description: branding style override
+          $ref: "#/components/schemas/Branding"
 
     Event:
       type: object
