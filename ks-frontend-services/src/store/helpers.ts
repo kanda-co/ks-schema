@@ -23,7 +23,7 @@ import {
   getHasVisitedCurrentPagePreviously,
   getPathKey,
 } from './selectors/app';
-import type { InfoEntity } from '../generated/components/schemas';
+import { InfoEntity } from '../generated/components/schemas';
 import { INFO_ENTITY_KEY } from './constants';
 import { GetInfoEntityRequestParameters } from '../generated/operations/getInfoEntity';
 
@@ -87,6 +87,15 @@ const handleInfoEntity = async <
   if (!forceReload && hasVisitedEntityPagePreviously && item) {
     return;
   }
+
+  // For each key in InfoEntity, dispatch a fetching action
+  const infoEntityKeys = Object.keys(InfoEntity.props) as (keyof InfoEntity)[];
+
+  infoEntityKeys.forEach((key) => {
+    const fetchingAction = slices[key].actions.fetching();
+
+    thunkAPI.dispatch(fetchingAction);
+  });
 
   const payload = method(args as unknown as Args);
 

@@ -8,6 +8,7 @@ import { Pagination } from "@kanda-libs/ks-design-library";
 
 const Table: FunctionComponent<TableProps> = function ({
   onRowClicked,
+  compact = false,
   ...props
 }) {
   const {
@@ -46,6 +47,7 @@ const Table: FunctionComponent<TableProps> = function ({
               isLoading={isLoading}
               hoverPopover={hoverPopover}
               onRowClicked={onRowClicked}
+              compact={compact}
             />
           </div>
         </div>

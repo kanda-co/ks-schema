@@ -3,6 +3,7 @@ export * from './hooks';
 export * from './service';
 export * from './auth';
 export * from './lib';
+export * from './utils';
 
 export { default as services } from './service';
 

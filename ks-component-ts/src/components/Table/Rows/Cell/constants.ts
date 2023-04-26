@@ -5,6 +5,7 @@ export const CLASS_NAMES = {
   renderLoading: "w-full my-auto mr-8 text-style-g",
   cell: {
     base: "h-16 flex",
+    compact: "h-8 flex",
     padding: "pl-4",
   },
 };

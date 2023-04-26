@@ -35,8 +35,8 @@ export const createGetter = (baseUrl: string) => {
     pipe(safeResponse(url, requestAdapter), chain(processResponse));
 };
 
-export const createPoster = (baseUrl: string) => {
-  const requestAdapter = fetchRequestAdapter(baseUrl, false);
+export const createPoster = (baseUrl: string, auth = false) => {
+  const requestAdapter = fetchRequestAdapter(baseUrl, auth);
 
   return (
     url: string,

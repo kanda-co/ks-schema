@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@kanda-libs/ks-amplitude-provider": "^0.0.15",
-    "@kanda-libs/ks-component-ts": "file:.yalc/@kanda-libs/ks-component-ts",
+    "@kanda-libs/ks-component-ts": "^0.2.176",
     "@kanda-libs/ks-design-library": "0.2.32",
     "@kanda-libs/ks-frontend-services": "link:.yalc/@kanda-libs/ks-frontend-services",
     "@kanda-libs/ks-tailwind-config": "0.2.0",

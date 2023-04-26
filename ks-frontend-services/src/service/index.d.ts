@@ -452,6 +452,14 @@ declare const pdf: {
         }, import("./external/pdf").FindResponse>;
     };
 };
+declare const sheets: {
+    read: {
+        key: string;
+        method: ({ body: { spreadsheet_id, range }, }: import("./external/sheets").ReadRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+            body: import("./external/sheets").ReadResponse;
+        }, import("./external/sheets").ReadResponse>;
+    };
+};
 /**
  * A list of all possible services the frontend can use.
  */
@@ -910,6 +918,14 @@ declare const services: {
             }, import("./external/pdf").FindResponse>;
         };
     };
+    sheets: {
+        read: {
+            key: string;
+            method: ({ body: { spreadsheet_id, range }, }: import("./external/sheets").ReadRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+                body: import("./external/sheets").ReadResponse;
+            }, import("./external/sheets").ReadResponse>;
+        };
+    };
 };
-export { authUser, company, credit, document, event, infoAuth, infoCache, infoCompany, infoCustomer, infoEntity, infoGhost, infoHealth, infoIP, infoQuery, infoRedirect, infoValidation, job, monitor, payment, rate, subscription, task, webhook, address, pdf, };
+export { authUser, company, credit, document, event, infoAuth, infoCache, infoCompany, infoCustomer, infoEntity, infoGhost, infoHealth, infoIP, infoQuery, infoRedirect, infoValidation, job, monitor, payment, rate, subscription, task, webhook, address, pdf, sheets, };
 export default services;
