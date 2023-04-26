@@ -5654,6 +5654,9 @@ components:
       type: object
       title: info partner branding
       description: info partner branding
+      required:
+        - id
+        - contact_info
       properties:
         id:
           type: string
