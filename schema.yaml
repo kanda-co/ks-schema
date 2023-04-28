@@ -3538,6 +3538,10 @@ components:
           title: referral cid
           description: referral signed up company id
           readOnly: true
+        trading_name:
+          type: string
+          title: trading name
+          readOnly: true
         lifecycle:
           type: string
           title: referral lifecycle
