@@ -3536,6 +3536,7 @@ components:
         mobile:
           type: string
           title: referral mobile
+          x-kanda-form-widget: PhoneNumberInput
         cid:
           type: string
           title: referral cid
