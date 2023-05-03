@@ -1231,16 +1231,16 @@ input[type="number"]::-webkit-inner-spin-button,
   margin-left: -4px;
 }
 
+.mr-2 {
+  margin-right: 8px;
+}
+
 .mb-auto {
   margin-bottom: auto;
 }
 
 .-mt-1 {
   margin-top: -4px;
-}
-
-.mr-2 {
-  margin-right: 8px;
 }
 
 .ml-4 {
@@ -1797,10 +1797,6 @@ input[type="number"]::-webkit-inner-spin-button,
 
 .flex-1 {
   flex: 1 1 0%;
-}
-
-.flex-none {
-  flex: none;
 }
 
 .flex-initial {
@@ -4287,14 +4283,6 @@ input[type="checkbox"][disabled]:checked ~ .label-checked-disabled\:bg-neutral-3
   .md\:mx-20 {
     margin-left: 80px;
     margin-right: 80px;
-  }
-
-  .md\:ml-1\.5 {
-    margin-left: 6px;
-  }
-
-  .md\:ml-1 {
-    margin-left: 4px;
   }
 
   .md\:-mt-8 {

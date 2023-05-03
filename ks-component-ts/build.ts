@@ -7,6 +7,7 @@ const { exec } = require("child_process");
 
 const handleYalcPublish = () => {
   // @ts-ignore
+  exec("yalc publish", (e, stdout) => {});
   exec("yarn build:types", (e, stdout) => {});
   exec("yalc publish", (e, stdout) => {
     console.log("New version of package published to yalc");

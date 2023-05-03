@@ -1,52 +1,78 @@
 import React, { type FunctionComponent } from "react";
-import { BreakPoints, Button, Tag } from "@kanda-libs/ks-design-library";
+import { BreakPoints, Button, Icon, Tag } from "@kanda-libs/ks-design-library";
 import FormTheme from "~/components/FormTheme";
 import Field from "~/field";
 import useSearchInputProps from "./useSearchInputProps";
-import { BUTTON, FIELD } from "./constants";
+import { FIELD, BUTTON, CLASS_NAMES } from "./constants";
 
 export interface SearchInputProps {
-  placeholder: string;
   query?: string;
+  placeholder?: string;
   onSearch: (query: string) => void;
 }
 
 const SearchInput: FunctionComponent<SearchInputProps> = function ({
-  placeholder,
   query = "",
+  placeholder = "",
   onSearch,
 }) {
-  const { onChange, autoFocus } = useSearchInputProps(query, onSearch);
+  const { onChange, onSubmit, searchVisible, onToggleSearch, autoFocus } =
+    useSearchInputProps(onSearch);
 
   return (
-    <div className="flex flex-row flex-1">
+    <div className={CLASS_NAMES.wrapper}>
       <FormTheme variant="inline">
-        <div className="h-10 flex w-full flex-col justify-center -ml-1.5">
+        <div className={CLASS_NAMES.innerWrapper}>
           {query && (
-            <Tag className="mr-2" variant="solid" color="lavender">
-              <>{query}</>
-            </Tag>
+            <div
+              onClick={() => {
+                onSearch("");
+              }}
+            >
+              <Tag className={CLASS_NAMES.tag} variant="solid" color="lavender">
+                <>
+                  {query}
+                  <Icon icon="close" size={12} />
+                </>
+              </Tag>
+            </div>
           )}
           {!query && (
-            <BreakPoints
-              mobile={
-                <Field.UncontrolledInput
-                  {...FIELD}
-                  placeholder={placeholder}
-                  defaultValue={query}
-                  autoFocus={autoFocus}
-                  onChange={onChange as (...args: unknown[]) => void}
+            <form onSubmit={onSubmit}>
+              {searchVisible ? (
+                <div className={CLASS_NAMES.input}>
+                  <BreakPoints
+                    mobile={
+                      <Field.UncontrolledInput
+                        {...FIELD}
+                        placeholder={placeholder}
+                        defaultValue={query}
+                        autoFocus={autoFocus}
+                        onChange={onChange as (...args: unknown[]) => void}
+                        onBlur={onToggleSearch}
+                      />
+                    }
+                    desktop={
+                      <Field.UncontrolledInput
+                        {...FIELD}
+                        defaultValue={query}
+                        autoFocus={autoFocus}
+                        onChange={onChange as (...args: unknown[]) => void}
+                        onBlur={onToggleSearch}
+                      />
+                    }
+                  />
+                </div>
+              ) : (
+                <Button.Icon
+                  id="staff-search-button"
+                  onClick={() => {
+                    onToggleSearch();
+                  }}
+                  {...BUTTON}
                 />
-              }
-              desktop={
-                <Field.UncontrolledInput
-                  {...FIELD}
-                  defaultValue={query}
-                  autoFocus={autoFocus}
-                  onChange={onChange as (...args: unknown[]) => void}
-                />
-              }
-            />
+              )}
+            </form>
           )}
         </div>
       </FormTheme>
