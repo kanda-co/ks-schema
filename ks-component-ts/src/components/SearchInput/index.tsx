@@ -1,8 +1,9 @@
-import type { FunctionComponent } from 'react';
-import { Field, FormTheme } from '@kanda-libs/ks-component-ts';
-import { BreakPoints, Button } from '@kanda-libs/ks-design-library';
-import useSearchInputProps from './useSearchInputProps';
-import { BUTTON, FIELD } from './constants';
+import React, { type FunctionComponent } from "react";
+import { BreakPoints, Button, Tag } from "@kanda-libs/ks-design-library";
+import FormTheme from "~/components/FormTheme";
+import Field from "~/field";
+import useSearchInputProps from "./useSearchInputProps";
+import { BUTTON, FIELD } from "./constants";
 
 export interface SearchInputProps {
   placeholder: string;
@@ -12,26 +13,27 @@ export interface SearchInputProps {
 
 const SearchInput: FunctionComponent<SearchInputProps> = function ({
   placeholder,
-  query = '',
+  query = "",
   onSearch,
 }) {
-  const { onChange, searchVisible, onToggleSearch, autoFocus } =
-    useSearchInputProps(query, onSearch);
+  const { onChange, autoFocus } = useSearchInputProps(query, onSearch);
 
   return (
     <div className="flex flex-row flex-1">
       <FormTheme variant="inline">
         <div className="h-10 flex w-full flex-col justify-center -ml-1.5">
-          {searchVisible ? (
+          {query && (
+            <Tag className="mr-2" variant="solid" color="lavender">
+              <>{query}</>
+            </Tag>
+          )}
+          {!query && (
             <BreakPoints
               mobile={
                 <Field.UncontrolledInput
                   {...FIELD}
                   placeholder={placeholder}
                   defaultValue={query}
-                  onBlur={() => {
-                    onToggleSearch();
-                  }}
                   autoFocus={autoFocus}
                   onChange={onChange as (...args: unknown[]) => void}
                 />
@@ -40,21 +42,10 @@ const SearchInput: FunctionComponent<SearchInputProps> = function ({
                 <Field.UncontrolledInput
                   {...FIELD}
                   defaultValue={query}
-                  onBlur={() => {
-                    onToggleSearch();
-                  }}
                   autoFocus={autoFocus}
                   onChange={onChange as (...args: unknown[]) => void}
                 />
               }
-            />
-          ) : (
-            <Button.Icon
-              id="staff-search-button"
-              onClick={() => {
-                onToggleSearch();
-              }}
-              {...BUTTON}
             />
           )}
         </div>
