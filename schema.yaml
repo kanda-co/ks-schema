@@ -503,6 +503,7 @@ paths:
           schema:
             type: string
             format: email
+            x-go-type: Email
           description: validate this given email
       responses:
         200:
@@ -3030,6 +3031,7 @@ components:
           type: string
           title: email
           format: email
+          x-go-type: Email
         role:
           type: string
           title: role
@@ -3074,6 +3076,7 @@ components:
           type: string
           title: email
           format: email
+          x-go-type: Email
         name:
           type: string
           title: name
@@ -3101,6 +3104,7 @@ components:
           type: string
           title: email for ghosted user
           format: email
+          x-go-type: Email
         custom_role:
           type: string
           title: custom role set for ghosted user
@@ -3135,6 +3139,7 @@ components:
           type: string
           title: email
           format: email
+          x-go-type: Email
         continue_url:
           type: string
           title: continue url
@@ -3181,6 +3186,7 @@ components:
           type: string
           title: email
           format: email
+          x-go-type: Email
           description: The email of the customer applying for the loan
         description_of_goods:
           type: string
@@ -3379,6 +3385,7 @@ components:
           items:
             type: string
             format: email
+            x-go-type: Email
           title: emails for user who has api access
           readOnly: true
         contact_info:
@@ -3530,6 +3537,7 @@ components:
           type: string
           title: referral email
           format: email
+          x-go-type: Email
         name:
           type: string
           title: referral name
@@ -3631,6 +3639,7 @@ components:
           items:
             type: string
             format: email
+            x-go-type: Email
           title: emails for user who has api access
           readOnly: true
         users:
@@ -3944,6 +3953,7 @@ components:
           type: string
           title: contact email
           format: email
+          x-go-type: Email
         contact_phone:
           type: string
           title: contact phone number
@@ -4066,6 +4076,7 @@ components:
         email:
           type: string
           format: email
+          x-go-type: Email
           title: email
         mobile:
           type: string
@@ -4160,6 +4171,7 @@ components:
         email:
           type: string
           format: email
+          x-go-type: Email
           title: email
         mobile:
           type: string
@@ -4294,6 +4306,7 @@ components:
         email:
           type: string
           format: email
+          x-go-type: Email
           title: email
         phone:
           type: string
@@ -5074,6 +5087,7 @@ components:
           type: string
           title: email
           format: email
+          x-go-type: Email
         gender:
           $ref: "#/components/schemas/Gender"
         title:
@@ -5508,6 +5522,7 @@ components:
           title: email
           readOnly: true
           format: email
+          x-go-type: Email
         verdict:
           type: string
           title: verdict
@@ -5905,6 +5920,7 @@ components:
           type: string
           title: event user email
           format: email
+          x-go-type: Email
         mobile:
           type: string
           title: event user mobile
