@@ -1223,16 +1223,24 @@ input[type="number"]::-webkit-inner-spin-button,
   margin-right: 16px;
 }
 
+.-ml-1\.5 {
+  margin-left: -6px;
+}
+
+.-ml-1 {
+  margin-left: -4px;
+}
+
+.mr-2 {
+  margin-right: 8px;
+}
+
 .mb-auto {
   margin-bottom: auto;
 }
 
 .-mt-1 {
   margin-top: -4px;
-}
-
-.mr-2 {
-  margin-right: 8px;
 }
 
 .ml-4 {
@@ -1462,6 +1470,10 @@ input[type="number"]::-webkit-inner-spin-button,
   height: 20px;
 }
 
+.h-10 {
+  height: 40px;
+}
+
 .h-full {
   height: 100%;
 }
@@ -1512,10 +1524,6 @@ input[type="number"]::-webkit-inner-spin-button,
 
 .h-5\/6 {
   height: 83.333333%;
-}
-
-.h-10 {
-  height: 40px;
 }
 
 .h-80 {
@@ -2763,6 +2771,11 @@ input[type="number"]::-webkit-inner-spin-button,
   color: rgb(31 204 175 / var(--tw-text-opacity));
 }
 
+.text-turquoise-500 {
+  --tw-text-opacity: 1;
+  color: rgb(28 182 156 / var(--tw-text-opacity));
+}
+
 .text-neutral-000 {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -2786,11 +2799,6 @@ input[type="number"]::-webkit-inner-spin-button,
 .text-lavender-200 {
   --tw-text-opacity: 1;
   color: rgb(127 131 255 / var(--tw-text-opacity));
-}
-
-.text-turquoise-500 {
-  --tw-text-opacity: 1;
-  color: rgb(28 182 156 / var(--tw-text-opacity));
 }
 
 .text-violet-200 {
