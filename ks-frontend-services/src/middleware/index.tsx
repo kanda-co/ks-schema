@@ -11,16 +11,16 @@ import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import { GuardProvider, type GuardProviderProps } from 'react-router-guards';
 import type { PathKey } from '../store/types';
 import type { PageList, Router as RouterType, Page as PageType } from './types';
-import type { Role, RoutedApp } from './types';
 import { NON_BLOCKING_ACTIONS } from './constants';
 import Page from './Page';
 import { FirebaseAuthService } from '../auth';
 import { CreatePageArgs, createPages, handleIO } from './helpers';
 import type { StringIndexedObject } from '../types';
+import type { Role, RoutedApp, ValidAction } from './types';
 
 export function getInitialDataPathKeyLayout<P extends StringIndexedObject>(
   pages: PageList<P>,
-  pathKey: PathKey<keyof P>,
+  pathKey: PathKey<P>,
 ): FunctionComponent {
   const page = pages[pathKey.page as keyof P];
 
@@ -31,9 +31,10 @@ export function getInitialDataPathKeyLayout<P extends StringIndexedObject>(
   return page.PageComponent;
 }
 
-export function pathKeyToLoadingDependencies<P extends StringIndexedObject>(
-  pathKey: PathKey<keyof P>,
-): (keyof RootState)[] {
+export function pathKeyToLoadingDependencies<
+  State,
+  P extends StringIndexedObject,
+>(pathKey: PathKey<P>): Readonly<(keyof State)[]> {
   const { pages, page } = pathKey;
   if (!page) {
     throw new Error('Page does not exist');
@@ -45,12 +46,12 @@ export function pathKeyToLoadingDependencies<P extends StringIndexedObject>(
 
   const loadingDependencies = pages[page as keyof P].loadingDependencies;
 
-  return loadingDependencies;
+  return loadingDependencies as Readonly<(keyof State)[]>;
 }
 
 function getInitialDataPathKeyPath<P extends StringIndexedObject>(
-  pages: P,
-  pathKey: Readonly<Pick<PathKey<keyof P>, 'page' | 'id'>>,
+  pages: PageList<P>,
+  pathKey: Readonly<Pick<PathKey<P>, 'page' | 'id'>>,
 ): string {
   const { page } = pathKey;
 
@@ -61,10 +62,10 @@ function getInitialDataPathKeyPath<P extends StringIndexedObject>(
   return pages[page].path;
 }
 
-function getInitialDataPathKey<P extends StringIndexedObject, T>(
+function getInitialDataPathKey<P extends StringIndexedObject>(
   pages: PageList<P>,
   to: GuardToRoute,
-): PathKey<keyof typeof pages> {
+): PathKey<P> {
   const url = to.match.url.split('/');
   const page = (url[1] || 'invite') as keyof typeof pages;
 
@@ -84,7 +85,7 @@ function getInitialDataPathKey<P extends StringIndexedObject, T>(
   };
 }
 
-export const runActions = (actions: ValidAsyncThunkAction[]) => {
+export const runActions = (actions: ValidAction[]) => {
   actions.forEach((action) => {
     store.dispatch(action as unknown as AnyAction);
   });
@@ -92,7 +93,7 @@ export const runActions = (actions: ValidAsyncThunkAction[]) => {
 
 export function fetchPageInitialData<P extends StringIndexedObject>(
   pages: PageList<P>,
-  { page, id }: PathKey<keyof P>,
+  { page, id }: PathKey<P>,
   forceReload = false,
 ): void {
   store.dispatch(
@@ -101,7 +102,7 @@ export function fetchPageInitialData<P extends StringIndexedObject>(
 
   const sharedArgs = { forceReload };
 
-  const currentPage = pages[page as keyof P] as PageType<P>;
+  const currentPage = pages[page as keyof P] as PageType;
 
   if (!currentPage) {
     throw new Error('Page does not exist');
@@ -114,14 +115,16 @@ export function fetchPageInitialData<P extends StringIndexedObject>(
   }
 
   const initialDataActions = currentPage.initialDataActions;
-  const actionsToRun: ValidAsyncThunkAction[] = [];
+  const actionsToRun: ValidAction[] = [];
 
   // Iterate through each of the initial data actions, whilst appending
   // both the shared args (whether or not to forceReload) and the ID
   // from the pathKey
   initialDataActions.forEach(({ args, action, idRequired }) => {
     let formattedArgs = args as StringIndexedObject;
-    const formattedAction = action as ValidAsyncThunkAction;
+    const formattedAction = action as (
+      args: StringIndexedObject,
+    ) => ValidAction;
 
     if (idRequired) {
       if (!id) {
@@ -140,7 +143,7 @@ export function fetchPageInitialData<P extends StringIndexedObject>(
       formattedAction({
         ...formattedArgs,
         ...sharedArgs,
-      }),
+      }) as unknown as ValidAction,
     );
   });
 
@@ -149,7 +152,7 @@ export function fetchPageInitialData<P extends StringIndexedObject>(
 
 export function initialDataProvider<P extends StringIndexedObject>(
   pages: PageList<P>,
-  pathKey: PathKey<keyof P>,
+  pathKey: PathKey<P>,
 ) {
   if (!pathKey) {
     throw new Error('Missing path key');
@@ -161,7 +164,7 @@ export function initialDataProvider<P extends StringIndexedObject>(
 }
 
 export function routeChangeProvider<P extends StringIndexedObject>(
-  pathKey: PathKey<keyof P>,
+  pathKey: PathKey<P>,
 ) {
   if (!pathKey) {
     throw new Error('Missing path key');
@@ -169,7 +172,7 @@ export function routeChangeProvider<P extends StringIndexedObject>(
 
   // TODO
   store.dispatch(
-    appSlice.actions.routeChange(pathKey as unknown as PathKey<ValidPage>),
+    appSlice.actions.routeChange(pathKey as unknown as PathKey<P>),
   );
 
   return pathKey;
@@ -224,9 +227,9 @@ async function userIsLoggedInAndStaffOrPartner(role: Role): Promise<boolean> {
 }
 
 export function isAuthed<P extends StringIndexedObject>(
-  pathKey: PathKey<keyof P>,
+  pathKey: PathKey<P>,
   authRequired: boolean,
-): () => Promise<TE.TaskEither<Error, PathKey<keyof P>>> {
+): () => Promise<TE.TaskEither<Error, PathKey<P>>> {
   return async () => {
     if (!authRequired) {
       return Promise.resolve(TE.right(pathKey));
@@ -241,7 +244,7 @@ export function isAuthed<P extends StringIndexedObject>(
 }
 
 export function pathKeyRequiresAuth<P extends StringIndexedObject>(
-  pathKey: PathKey<keyof P>,
+  pathKey: PathKey<P>,
 ): boolean {
   const authRequired = ![
     'login',
