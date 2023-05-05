@@ -8,15 +8,20 @@ import type {
   Next,
 } from 'react-router-guards/dist/types';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
-import { GuardProvider, type GuardProviderProps } from 'react-router-guards';
+import {
+  GuardedRoute,
+  GuardProvider,
+  type GuardProviderProps,
+} from 'react-router-guards';
 import type { PathKey } from '../store/types';
 import type { PageList, Router as RouterType, Page as PageType } from './types';
-import { NON_BLOCKING_ACTIONS } from './constants';
 import Page from './Page';
 import { FirebaseAuthService } from '../auth';
 import { CreatePageArgs, createPages, handleIO } from './helpers';
 import type { StringIndexedObject } from '../types';
 import type { Role, RoutedApp, ValidAction } from './types';
+import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
+import { createAppSlice } from '../store/slices/app';
 
 export function getInitialDataPathKeyLayout<P extends StringIndexedObject>(
   pages: PageList<P>,
@@ -85,21 +90,18 @@ function getInitialDataPathKey<P extends StringIndexedObject>(
   };
 }
 
-export const runActions = (actions: ValidAction[]) => {
+function runActions<State>(store: ToolkitStore<State>, actions: ValidAction[]) {
   actions.forEach((action) => {
     store.dispatch(action as unknown as AnyAction);
   });
-};
+}
 
-export function fetchPageInitialData<P extends StringIndexedObject>(
+export function fetchPageInitialData<State, P extends StringIndexedObject>(
+  store: ToolkitStore<State>,
   pages: PageList<P>,
   { page, id }: PathKey<P>,
   forceReload = false,
 ): void {
-  store.dispatch(
-    appSlice.actions.queueNonBlockingActions(Object.keys(NON_BLOCKING_ACTIONS)),
-  );
-
   const sharedArgs = { forceReload };
 
   const currentPage = pages[page as keyof P] as PageType;
@@ -122,7 +124,7 @@ export function fetchPageInitialData<P extends StringIndexedObject>(
   // from the pathKey
   initialDataActions.forEach(({ args, action, idRequired }) => {
     let formattedArgs = args as StringIndexedObject;
-    const formattedAction = action as (
+    const formattedAction = action as unknown as (
       args: StringIndexedObject,
     ) => ValidAction;
 
@@ -147,10 +149,11 @@ export function fetchPageInitialData<P extends StringIndexedObject>(
     );
   });
 
-  runActions(actionsToRun);
+  runActions<State>(store, actionsToRun);
 }
 
-export function initialDataProvider<P extends StringIndexedObject>(
+export function initialDataProvider<State, P extends StringIndexedObject>(
+  store: ToolkitStore<State>,
   pages: PageList<P>,
   pathKey: PathKey<P>,
 ) {
@@ -158,24 +161,26 @@ export function initialDataProvider<P extends StringIndexedObject>(
     throw new Error('Missing path key');
   }
 
-  fetchPageInitialData<P>(pages, pathKey);
+  fetchPageInitialData<State, P>(store, pages, pathKey);
 
   return pathKey;
 }
 
-export function routeChangeProvider<P extends StringIndexedObject>(
-  pathKey: PathKey<P>,
+function routeChangeProvider<State, P extends StringIndexedObject>(
+  store: ToolkitStore<State>,
 ) {
-  if (!pathKey) {
-    throw new Error('Missing path key');
-  }
+  return (pathKey: PathKey<P>) => {
+    if (!pathKey) {
+      throw new Error('Missing path key');
+    }
 
-  // TODO
-  store.dispatch(
-    appSlice.actions.routeChange(pathKey as unknown as PathKey<P>),
-  );
+    store.dispatch(
+      // TODO: Figure out a better way of doing this
+      createAppSlice<P>().actions.routeChange(pathKey as unknown as PathKey<P>),
+    );
 
-  return pathKey;
+    return pathKey;
+  };
 }
 
 function checkUserIsStaff(role: Role): boolean {
@@ -259,7 +264,8 @@ export function pathKeyRequiresAuth<P extends StringIndexedObject>(
 }
 
 // Creates the middleware used by react router guards
-export function createMiddleware<P extends StringIndexedObject>(
+export function createMiddleware<State, P extends StringIndexedObject>(
+  store: ToolkitStore<State>,
   pages: PageList<P>,
 ) {
   return (
@@ -277,9 +283,11 @@ export function createMiddleware<P extends StringIndexedObject>(
       (authRequired) => TE.fromTask(isAuthed(pathKey, authRequired)),
       TE.flatten,
       // If the user is authenticated, then we can proceed to the next page
-      TE.map(routeChangeProvider),
+      TE.map(routeChangeProvider(store)),
       // Fetch the initial data required for page rendering
-      TE.map((currentPathKey) => initialDataProvider(pages, currentPathKey)),
+      TE.map((currentPathKey) =>
+        initialDataProvider(store, pages, currentPathKey),
+      ),
       // Pass through the pathKey and pages object to the end component for rendering
       // if the authentication and data fetching was successful
       TE.chain((currentPathKey) =>
@@ -292,7 +300,8 @@ export function createMiddleware<P extends StringIndexedObject>(
 }
 
 // Creates the Router function component for use in rendering the application
-function createRouterComponent<P extends StringIndexedObject>(
+function createRouterComponent<State, P extends StringIndexedObject>(
+  store: ToolkitStore<State>,
   pages: PageList<P>,
 ): FunctionComponent {
   return (): JSX.Element => {
@@ -305,7 +314,7 @@ function createRouterComponent<P extends StringIndexedObject>(
     return (
       <Router>
         <Provider
-          guards={[createMiddleware(pages)]}
+          guards={[createMiddleware<State, P>(store, pages)]}
           error={(args) => <div>{JSON.stringify(args)}</div>}
         >
           <Switch>
@@ -331,10 +340,11 @@ export function createRouterUrls<T extends string | number>(
 
 // A function to create the routing needed for a given application. This will
 // return both the Router component and the URLs for the application in a StringIndexedObject
-export function createRouter<Keys extends string | number>(
+export function createRouter<State, Keys extends string | number>(
+  store: ToolkitStore<State>,
   pages: PageList,
 ): RouterType<Keys> {
-  const RouterComponent = createRouterComponent(pages);
+  const RouterComponent = createRouterComponent(store, pages);
 
   return {
     Router: RouterComponent,
@@ -343,10 +353,11 @@ export function createRouter<Keys extends string | number>(
 }
 
 export function createRoutedApp<State, Keys extends string | number>(
+  store: ToolkitStore<State>,
   args: Record<Keys, CreatePageArgs<State>>,
 ): RoutedApp<Keys> {
   const pages = createPages<State, Keys>(args);
-  const router = createRouter<Keys>(pages);
+  const router = createRouter<State, Keys>(store, pages);
 
   return { router, pages };
 }
