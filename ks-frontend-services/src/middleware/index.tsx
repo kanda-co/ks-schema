@@ -24,10 +24,11 @@ import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 import { createAppSlice } from '../store/slices/app';
 
 export function getInitialDataPathKeyLayout<P extends StringIndexedObject>(
-  pages: PageList<P>,
   pathKey: PathKey<P>,
 ): FunctionComponent {
-  const page = pages[pathKey.page as keyof P];
+  if (!pathKey) return () => <></>;
+
+  const page = pathKey.pages[pathKey.page as keyof P];
 
   if (!page) {
     throw new Error('Page not exist');
@@ -202,7 +203,7 @@ async function userIsLoggedInAndStaffOrPartner<P extends StringIndexedObject>(
   }
 
   if (page.requiredRole && role !== page.requiredRole) {
-    return Promise.reject(true);
+    return Promise.reject(false);
   }
 
   return Promise.resolve(true);
@@ -245,11 +246,13 @@ export function createMiddleware<State, P extends StringIndexedObject>(
       ),
       // Pass through the pathKey and pages object to the end component for rendering
       // if the authentication and data fetching was successful
-      TE.chain((currentPathKey) =>
-        handleIO(() => next.props({ pathKey: currentPathKey, pages })),
-      ),
+      TE.chain(() => handleIO(() => next.props({ pathKey, pages }))),
       // If not, log the user out
-      TE.orElse(() => handleIO(() => next.redirect('/logout'))),
+      TE.orElse(() =>
+        handleIO(() => {
+          window.location.href = '/login';
+        }),
+      ),
     )();
   };
 }
