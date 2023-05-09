@@ -75,7 +75,11 @@ function getInitialDataPathKey<P extends StringIndexedObject>(
   const url = to.match.url.split('/');
   const page = (url[1] || 'invite') as keyof typeof pages;
 
-  if (Object.keys(pages).indexOf(page as string) === -1) {
+  if (
+    Object.keys(pages)
+      .map((pageKey) => pages[pageKey].path)
+      .indexOf(`/${page as string}`) === -1
+  ) {
     throw new Error('Invalid page');
   }
 
