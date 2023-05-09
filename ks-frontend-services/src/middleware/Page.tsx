@@ -5,19 +5,17 @@ import type { PageList } from './types';
 import { getInitialDataPathKeyLayout } from './';
 
 export interface PageProps<P extends StringIndexedObject> {
-  pathKey?: PathKey<keyof P>;
+  pathKey?: PathKey<P>;
   pages: PageList<P>;
 }
 
 function Page<P extends StringIndexedObject>({
-  pathKey,
   pages,
+  pathKey,
 }: PropsWithChildren<PageProps<P>>) {
   // Call Page component instead
-  const Layout = getInitialDataPathKeyLayout<P>(
-    pages,
-    pathKey as PathKey<keyof P>,
-  );
+
+  const Layout = getInitialDataPathKeyLayout(pages, pathKey);
 
   return <Layout />;
 }

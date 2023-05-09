@@ -172,6 +172,12 @@ declare const infoCustomer: {
         method: import("../generated/operations/infoCustomer").InfoCustomerRequestFunction;
     };
 };
+declare const infoDirector: {
+    infoDirector: {
+        key: string;
+        method: import("../generated/operations/infoDirector").InfoDirectorRequestFunction;
+    };
+};
 declare const infoEntity: {
     getInfoEntity: {
         key: string;
@@ -194,6 +200,12 @@ declare const infoIP: {
     infoIP: {
         key: string;
         method: import("../generated/operations/infoIP").InfoIPRequestFunction;
+    };
+};
+declare const infoPartner: {
+    infoPartnerBranding: {
+        key: string;
+        method: import("../generated/operations/infoPartnerBranding").InfoPartnerBrandingRequestFunction;
     };
 };
 declare const infoQuery: {
@@ -328,6 +340,32 @@ declare const monitor: {
     postMonitorFlag: {
         key: string;
         method: import("../generated/operations/postMonitorFlag").PostMonitorFlagRequestFunction;
+    };
+};
+declare const partner: {
+    getPartners: {
+        key: string;
+        method: import("../generated/operations/getPartners").GetPartnersRequestFunction;
+    };
+    postPartner: {
+        key: string;
+        method: import("../generated/operations/postPartner").PostPartnerRequestFunction;
+    };
+    getPartner: {
+        key: string;
+        method: import("../generated/operations/getPartner").GetPartnerRequestFunction;
+    };
+    putPartner: {
+        key: string;
+        method: import("../generated/operations/putPartner").PutPartnerRequestFunction;
+    };
+    deletePartner: {
+        key: string;
+        method: import("../generated/operations/deletePartner").DeletePartnerRequestFunction;
+    };
+    postPartnerReferrals: {
+        key: string;
+        method: import("../generated/operations/postPartnerReferrals").PostPartnerReferralsRequestFunction;
     };
 };
 declare const payment: {
@@ -638,6 +676,12 @@ declare const services: {
             method: import("../generated/operations/infoCustomer").InfoCustomerRequestFunction;
         };
     };
+    infoDirector: {
+        infoDirector: {
+            key: string;
+            method: import("../generated/operations/infoDirector").InfoDirectorRequestFunction;
+        };
+    };
     infoEntity: {
         getInfoEntity: {
             key: string;
@@ -660,6 +704,12 @@ declare const services: {
         infoIP: {
             key: string;
             method: import("../generated/operations/infoIP").InfoIPRequestFunction;
+        };
+    };
+    infoPartner: {
+        infoPartnerBranding: {
+            key: string;
+            method: import("../generated/operations/infoPartnerBranding").InfoPartnerBrandingRequestFunction;
         };
     };
     infoQuery: {
@@ -796,6 +846,32 @@ declare const services: {
             method: import("../generated/operations/postMonitorFlag").PostMonitorFlagRequestFunction;
         };
     };
+    partner: {
+        getPartners: {
+            key: string;
+            method: import("../generated/operations/getPartners").GetPartnersRequestFunction;
+        };
+        postPartner: {
+            key: string;
+            method: import("../generated/operations/postPartner").PostPartnerRequestFunction;
+        };
+        getPartner: {
+            key: string;
+            method: import("../generated/operations/getPartner").GetPartnerRequestFunction;
+        };
+        putPartner: {
+            key: string;
+            method: import("../generated/operations/putPartner").PutPartnerRequestFunction;
+        };
+        deletePartner: {
+            key: string;
+            method: import("../generated/operations/deletePartner").DeletePartnerRequestFunction;
+        };
+        postPartnerReferrals: {
+            key: string;
+            method: import("../generated/operations/postPartnerReferrals").PostPartnerReferralsRequestFunction;
+        };
+    };
     payment: {
         getPayments: {
             key: string;
@@ -927,5 +1003,5 @@ declare const services: {
         };
     };
 };
-export { authUser, company, credit, document, event, infoAuth, infoCache, infoCompany, infoCustomer, infoEntity, infoGhost, infoHealth, infoIP, infoQuery, infoRedirect, infoValidation, job, monitor, payment, rate, subscription, task, webhook, address, pdf, sheets, };
+export { authUser, company, credit, document, event, infoAuth, infoCache, infoCompany, infoCustomer, infoDirector, infoEntity, infoGhost, infoHealth, infoIP, infoPartner, infoQuery, infoRedirect, infoValidation, job, monitor, partner, payment, rate, subscription, task, webhook, address, pdf, sheets, };
 export default services;

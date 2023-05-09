@@ -1,0 +1,17 @@
+import { type FunctionComponent } from 'react';
+import * as TE from 'fp-ts/lib/TaskEither';
+import type { GuardFunctionRouteProps, GuardToRoute, Next } from 'react-router-guards/dist/types';
+import type { PathKey } from '../store/types';
+import type { PageList } from './types';
+import { CreatePageArgs } from './helpers';
+import type { StringIndexedObject } from '../types';
+import type { RoutedApp } from './types';
+import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
+export declare function getInitialDataPathKeyLayout<P extends StringIndexedObject>(pages: PageList<P>, pathKey: PathKey<P>): FunctionComponent;
+export declare function pathKeyToLoadingDependencies<State, P extends StringIndexedObject>(pathKey: PathKey<P>): Readonly<(keyof State)[]>;
+export declare function fetchPageInitialData<State, P extends StringIndexedObject>(store: ToolkitStore<State>, pages: PageList<P>, { page, id }: PathKey<P>, forceReload?: boolean): void;
+export declare function initialDataProvider<State, P extends StringIndexedObject>(store: ToolkitStore<State>, pages: PageList<P>, pathKey: PathKey<P>): PathKey<P>;
+export declare function isAuthed<P extends StringIndexedObject>(pathKey: PathKey<P>, authRequired: boolean): () => Promise<TE.TaskEither<Error, PathKey<P>>>;
+export declare function pathKeyRequiresAuth<P extends StringIndexedObject>(pathKey: PathKey<P>): boolean;
+export declare function createMiddleware<State, P extends StringIndexedObject>(store: ToolkitStore<State>, pages: PageList<P>): (to: GuardToRoute, from: GuardFunctionRouteProps | null, next: Next) => void;
+export declare function createRoutedApp<State, Keys extends string | number>(store: ToolkitStore<State>, args: Record<Keys, CreatePageArgs<State>>): RoutedApp<Keys>;

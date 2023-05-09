@@ -163,32 +163,32 @@ export function initialDataProvider<State, P extends StringIndexedObject>(
 
   fetchPageInitialData<State, P>(store, pages, pathKey);
 
+  console.log('Hello', {
+    store,
+    pages,
+    pathKey,
+  });
+
   return pathKey;
 }
 
 function routeChangeProvider<State, P extends StringIndexedObject>(
   store: ToolkitStore<State>,
+  pathKey: PathKey<P>,
 ) {
-  return (pathKey: PathKey<P>) => {
-    if (!pathKey) {
-      throw new Error('Missing path key');
-    }
+  console.log('helloooooo?', {
+    pathKey,
+  });
+  if (!pathKey) {
+    throw new Error('Missing path key');
+  }
 
-    store.dispatch(
-      // TODO: Figure out a better way of doing this
-      createAppSlice<P>().actions.routeChange(pathKey as unknown as PathKey<P>),
-    );
+  store.dispatch(
+    // TODO: Figure out a better way of doing this
+    createAppSlice<P>().actions.routeChange(pathKey as unknown as PathKey<P>),
+  );
 
-    return pathKey;
-  };
-}
-
-function checkUserIsStaff(role: Role): boolean {
-  return Boolean(role && role === 'staff');
-}
-
-function checkUserIsPartner(role: Role): boolean {
-  return Boolean(role && role === 'partner');
+  return pathKey;
 }
 
 async function getRole(): Promise<Role> {
@@ -198,37 +198,23 @@ async function getRole(): Promise<Role> {
   return Promise.resolve(role);
 }
 
-async function userIsLoggedInAndStaffOrPartner(role: Role): Promise<boolean> {
+async function userIsLoggedInAndStaffOrPartner<P extends StringIndexedObject>(
+  role: Role,
+  pathKey: PathKey<P>,
+): Promise<boolean> {
   await FirebaseAuthService.isUserLoggedIn();
 
-  const isStaff = checkUserIsStaff(role);
+  const page = pathKey.pages[pathKey.page as keyof P];
 
-  if (isStaff) {
-    return Promise.resolve(true);
+  if (!page) {
+    throw new Error('Page does not exist');
   }
 
-  const isPartner = checkUserIsPartner(role);
-
-  if (isPartner) {
-    return Promise.resolve(true);
+  if (page.requiredRole && role !== page.requiredRole) {
+    return Promise.reject(true);
   }
 
-  // Check if expiry is close to expiry, then refresh ahead of time
-  const token = await FirebaseAuthService.token();
-  const refreshRole = await getRole();
-
-  if (token) {
-    const isStaffAndHasToken = checkUserIsStaff(refreshRole);
-    if (isStaffAndHasToken) {
-      return Promise.resolve(true);
-    }
-    const isPartnerAndHasToken = checkUserIsStaff(refreshRole);
-    if (isPartnerAndHasToken) {
-      return Promise.resolve(true);
-    }
-  }
-
-  return Promise.reject(false);
+  return Promise.resolve(true);
 }
 
 export function isAuthed<P extends StringIndexedObject>(
@@ -242,7 +228,7 @@ export function isAuthed<P extends StringIndexedObject>(
 
     const role = await getRole();
 
-    return userIsLoggedInAndStaffOrPartner(role)
+    return userIsLoggedInAndStaffOrPartner(role, pathKey)
       .then(() => TE.right(pathKey))
       .catch(TE.left);
   };
@@ -283,7 +269,7 @@ export function createMiddleware<State, P extends StringIndexedObject>(
       (authRequired) => TE.fromTask(isAuthed(pathKey, authRequired)),
       TE.flatten,
       // If the user is authenticated, then we can proceed to the next page
-      TE.map(routeChangeProvider(store)),
+      TE.map((currentPathKey) => routeChangeProvider(store, currentPathKey)),
       // Fetch the initial data required for page rendering
       TE.map((currentPathKey) =>
         initialDataProvider(store, pages, currentPathKey),
@@ -328,7 +314,7 @@ function createRouterComponent<State, P extends StringIndexedObject>(
 
 // Creates a string indexed object matching the pages object, but with the
 // values being the URL for that page
-export function createRouterUrls<T extends string | number>(
+function createRouterUrls<T extends string | number>(
   pages: PageList,
 ): RouterType<T>['URLS'] {
   const URLS = Object.keys(pages).map(
@@ -340,7 +326,7 @@ export function createRouterUrls<T extends string | number>(
 
 // A function to create the routing needed for a given application. This will
 // return both the Router component and the URLs for the application in a StringIndexedObject
-export function createRouter<State, Keys extends string | number>(
+function createRouter<State, Keys extends string | number>(
   store: ToolkitStore<State>,
   pages: PageList,
 ): RouterType<Keys> {
