@@ -2,6 +2,7 @@ import type { AsyncThunk } from '@reduxjs/toolkit';
 import { createAsyncThunk } from './toolkit';
 import type { Response } from '../handlers';
 import type { StringIndexedObject } from '../types';
+import type { PageList } from '../middleware/types';
 
 export type Payload<T> = () => Promise<Response<T>>;
 
@@ -17,10 +18,11 @@ export type AsyncThunkReturnType<T> = T extends AsyncThunk<
   ? [Entity, Params, Config]
   : never;
 
-export interface PathKey<ValidPage> {
-  page?: ValidPage;
+export interface PathKey<P extends StringIndexedObject> {
+  page?: keyof P;
   id?: string;
   path: string;
+  pages: PageList<P>;
 }
 
 export interface GeneratedState<T> extends NormalizedEntities<T> {
