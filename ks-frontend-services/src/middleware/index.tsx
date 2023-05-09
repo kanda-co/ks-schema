@@ -163,12 +163,6 @@ export function initialDataProvider<State, P extends StringIndexedObject>(
 
   fetchPageInitialData<State, P>(store, pages, pathKey);
 
-  console.log('Hello', {
-    store,
-    pages,
-    pathKey,
-  });
-
   return pathKey;
 }
 
@@ -176,9 +170,6 @@ function routeChangeProvider<State, P extends StringIndexedObject>(
   store: ToolkitStore<State>,
   pathKey: PathKey<P>,
 ) {
-  console.log('helloooooo?', {
-    pathKey,
-  });
   if (!pathKey) {
     throw new Error('Missing path key');
   }
@@ -219,34 +210,14 @@ async function userIsLoggedInAndStaffOrPartner<P extends StringIndexedObject>(
 
 export function isAuthed<P extends StringIndexedObject>(
   pathKey: PathKey<P>,
-  authRequired: boolean,
 ): () => Promise<TE.TaskEither<Error, PathKey<P>>> {
   return async () => {
-    if (!authRequired) {
-      return Promise.resolve(TE.right(pathKey));
-    }
-
     const role = await getRole();
 
     return userIsLoggedInAndStaffOrPartner(role, pathKey)
       .then(() => TE.right(pathKey))
       .catch(TE.left);
   };
-}
-
-export function pathKeyRequiresAuth<P extends StringIndexedObject>(
-  pathKey: PathKey<P>,
-): boolean {
-  const authRequired = ![
-    'login',
-    'logout',
-    'staff-login',
-    'forgot-password',
-    'claim-account',
-    'auth-link',
-  ].includes((pathKey?.page || 'login') as string);
-
-  return authRequired;
 }
 
 // Creates the middleware used by react router guards
@@ -263,10 +234,8 @@ export function createMiddleware<State, P extends StringIndexedObject>(
     const pathKey = getInitialDataPathKey(pages, to);
 
     pipe(
-      // Check whether the page requires authentication
-      pathKeyRequiresAuth(pathKey),
       // Check whether the user is logged in and correctly authenticated
-      (authRequired) => TE.fromTask(isAuthed(pathKey, authRequired)),
+      TE.fromTask(isAuthed(pathKey)),
       TE.flatten,
       // If the user is authenticated, then we can proceed to the next page
       TE.map((currentPathKey) => routeChangeProvider(store, currentPathKey)),
