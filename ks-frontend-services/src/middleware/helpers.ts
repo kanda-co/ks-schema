@@ -28,7 +28,7 @@ export interface CreatePageArgs<State> {
   path: string;
   PageComponent: FunctionComponent;
   loadingDependencies: (keyof State)[];
-  requiredRoles?: string;
+  requiredRoles?: string[];
   idRequired?: boolean;
   initialDataActions: Readonly<InitialDataAction<ValidAction>[]>;
 }
