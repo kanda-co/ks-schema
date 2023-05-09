@@ -31,7 +31,7 @@ export type InitialDataAction<P extends ValidAction> = {
 
 export interface Page {
   path: string;
-  requiredRole?: string;
+  requiredRoles?: string[];
   idRequired?: boolean;
   loadingDependencies: Readonly<string[]>;
   PageComponent: FunctionComponent;

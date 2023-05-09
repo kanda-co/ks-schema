@@ -73,15 +73,7 @@ function getInitialDataPathKey<P extends StringIndexedObject>(
   to: GuardToRoute,
 ): PathKey<P> {
   const url = to.match.url.split('/');
-  const page = (url[1] || 'invite') as keyof typeof pages;
-
-  if (
-    Object.keys(pages)
-      .map((pageKey) => pages[pageKey].path)
-      .indexOf(`/${page as string}`) === -1
-  ) {
-    throw new Error('Invalid page');
-  }
+  const page = (url[1] || 'home') as keyof typeof pages;
 
   const pathKey = {
     page,
@@ -206,7 +198,7 @@ async function userIsLoggedInAndStaffOrPartner<P extends StringIndexedObject>(
     throw new Error('Page does not exist');
   }
 
-  if (page.requiredRole && role !== page.requiredRole) {
+  if (page.requiredRoles && page.requiredRoles.indexOf(role) === -1) {
     return Promise.reject(false);
   }
 
