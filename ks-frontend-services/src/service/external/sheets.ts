@@ -17,9 +17,9 @@ const sheetsPoster = <T>(
 
 export interface ReadRequest {
   params?: {
-    id?: string;
+    id: string;
+    type?: 'batch' | 'sheet';
     range?: string;
-    type?: string;
     options?: StringIndexedObject;
   };
 }
