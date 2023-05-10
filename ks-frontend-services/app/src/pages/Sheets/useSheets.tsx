@@ -2,6 +2,8 @@ import { useState, useCallback } from 'react';
 import {
   services,
   useSubmit,
+  useLoadData,
+  useCurrentUser,
   type Service,
 } from '@kanda-libs/ks-frontend-services';
 import { type StringIndexedObject, useForm } from '@kanda-libs/ks-component-ts';
@@ -18,6 +20,8 @@ export default function useSheets() {
   const form = useForm();
   const { showError } = useToast();
 
+  const { isUserLoggedIn } = useCurrentUser();
+
   const { submit: readSheet, isSubmitting: readSheetIsSubmitting } = useSubmit(
     services.sheets.read as unknown as Service<
       StringIndexedObject,
@@ -26,18 +30,47 @@ export default function useSheets() {
     >,
   );
 
+  const { data: test } = useLoadData(
+    (isUserLoggedIn && services.sheets.read) as unknown as Service<
+      StringIndexedObject,
+      StringIndexedObject,
+      StringIndexedObject
+    >,
+    {
+      useParamsAsKey: true,
+    },
+    {
+      params: {
+        id: '1hYHhv4wVfdBUoZDl6_mNINMKz9OtZ8dI-g_vKV4eyBY',
+        type: 'batch',
+      },
+    },
+  );
+
+  console.log({ test });
+
+  const { data: test2 } = useLoadData(
+    (isUserLoggedIn && services.sheets.read) as unknown as Service<
+      StringIndexedObject,
+      StringIndexedObject,
+      StringIndexedObject
+    >,
+    {},
+    {},
+  );
+
+  console.log({ test2 });
+
   const onSubmit = useCallback(
     (formValues: StringIndexedObject) => {
       const { spreadsheet_id, range } = formValues;
       readSheet({
-        body: {
-          ...(spreadsheet_id || {}),
-          ...(range || {}),
-        },
+        ...({ id: spreadsheet_id } || {}),
+        ...(range || {}),
       }).then(({ data: sheetData, error: sheetError }) => {
         if (sheetError) {
           const message = getApiError(sheetError);
-          showError(`Error with PDF: ${message}`);
+          showError(`Error with sheet read: ${message}`);
           return;
         }
         setResponse(sheetData);

@@ -15,7 +15,7 @@ const Sheets = () => {
         </div>
         <Form id="pdf-create-form" form={form} onSubmit={onSubmit}>
           <div className="px-4 py-5 bg-neutral-700 rounded-b-lg">
-            <Field.Input name="spreadsheet_id" label="Job ID" />
+            <Field.Input name="spreadsheet_id" label="Spreadsheet ID" />
             <Field.Input name="range" label="Sheet range" />
             <div className="flex flex-row">
               <Button.Text

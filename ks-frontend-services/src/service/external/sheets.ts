@@ -16,9 +16,11 @@ const sheetsPoster = <T>(
   >;
 
 export interface ReadRequest {
-  body: {
-    spreadsheet_id?: string;
+  params?: {
+    id: string;
+    type?: 'batch' | 'sheet';
     range?: string;
+    options?: StringIndexedObject;
   };
 }
 
@@ -32,11 +34,8 @@ export default {
   read: {
     key: '/read',
     method: ({
-      body: { spreadsheet_id, range },
+      params,
     }: ReadRequest): RequestFunction<{ body: ReadResponse }, ReadResponse> =>
-      sheetsPoster(`/kssheets-read`, {
-        spreadsheet_id,
-        range,
-      }),
+      sheetsPoster(`/kssheets-read`, params ? { ...params } : {}),
   },
 };
