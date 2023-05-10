@@ -189,6 +189,8 @@ export const createAsyncThunkAction = <
         if (onError) {
           onError();
         }
+
+        throw error;
       }
     },
   );

@@ -1,6 +1,6 @@
 import type { StringIndexedObject } from '../../types';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { PathKey } from '../types';
+import type { PathKey } from '../types';
 export type StringIndexedObjectOrUndefined = StringIndexedObject | undefined | void;
 export interface AppState<T> {
     pathKey: PathKey<T>;

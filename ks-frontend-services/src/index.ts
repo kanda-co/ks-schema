@@ -19,6 +19,13 @@ export * from './store/toolkit';
 export { createAppSlice } from './store/slices/app';
 export { getSelectors } from './store/selectors';
 
+export {
+  createRoutedApp,
+  pathKeyToLoadingDependencies,
+  fetchPageInitialData,
+} from './middleware';
+export { createAction } from './middleware/helpers';
+
 export type {
   Payload,
   PathKey,

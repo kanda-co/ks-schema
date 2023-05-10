@@ -503,6 +503,7 @@ paths:
           schema:
             type: string
             format: email
+            x-go-type: Email
           description: validate this given email
       responses:
         200:
@@ -616,6 +617,209 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InfoEntity"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/info/partner-branding:
+    get:
+      operationId: infoPartnerBranding
+      summary: get info partner branding
+      tags:
+        - InfoPartner
+      parameters:
+        - in: query
+          name: id
+          required: true
+          schema:
+            type: string
+          description: partner id
+      responses:
+        200:
+          description: got info partner branding
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoPartnerBranding"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/partner:
+    get:
+      operationId: getPartners
+      summary: get all partners
+      tags:
+        - Partner
+      responses:
+        200:
+          description: got all partners
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Partner"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    post:
+      operationId: postPartner
+      summary: kanda staff only to post new partner
+      tags:
+        - Partner
+      requestBody:
+        description: post new partner
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Partner"
+      responses:
+        200:
+          description: posted new partner
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Partner"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/partner/{id}:
+    get:
+      operationId: getPartner
+      summary: get existing partner
+      tags:
+        - Partner
+      parameters:
+        - name: id
+          in: path
+          description: partner id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing partner
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Partner"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: putPartner
+      summary: put existing partner
+      tags:
+        - Partner
+      parameters:
+        - name: id
+          in: path
+          description: partner id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: put existing partner
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Partner"
+      responses:
+        200:
+          description: put existing partner
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Partner"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      operationId: deletePartner
+      summary: kanda staff to delete existing partner
+      tags:
+        - Partner
+      parameters:
+        - name: id
+          in: path
+          description: partner id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: deleted existing partner
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Partner"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/partner/{id}/referrals:
+    post:
+      operationId: postPartnerReferrals
+      summary: post existing partner referrals
+      tags:
+        - Partner
+      parameters:
+        - name: id
+          in: path
+          description: partner id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: post existing partner referrals
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              title: referrals
+              description: referrals to be added
+              items:
+                $ref: "#/components/schemas/Referral"
+      responses:
+        200:
+          description: posted existing partner referrals
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Partner"
         default:
           description: unexpected error
           content:
@@ -2827,6 +3031,7 @@ components:
           type: string
           title: email
           format: email
+          x-go-type: Email
         role:
           type: string
           title: role
@@ -2871,6 +3076,7 @@ components:
           type: string
           title: email
           format: email
+          x-go-type: Email
         name:
           type: string
           title: name
@@ -2898,6 +3104,7 @@ components:
           type: string
           title: email for ghosted user
           format: email
+          x-go-type: Email
         custom_role:
           type: string
           title: custom role set for ghosted user
@@ -2932,6 +3139,7 @@ components:
           type: string
           title: email
           format: email
+          x-go-type: Email
         continue_url:
           type: string
           title: continue url
@@ -2978,6 +3186,7 @@ components:
           type: string
           title: email
           format: email
+          x-go-type: Email
           description: The email of the customer applying for the loan
         description_of_goods:
           type: string
@@ -3150,6 +3359,217 @@ components:
           $ref: "#/components/schemas/Metadata"
           readOnly: true
 
+    Partner:
+      type: object
+      title: partner
+      description: partner
+      required:
+        - contact_info
+        - rewards
+      properties:
+        id:
+          type: string
+          title: partner id
+          description: partner id
+          readOnly: true
+        aid:
+          type: string
+          title: author id
+          readOnly: true
+        oid:
+          type: string
+          title: owner id
+          readOnly: true
+        emails:
+          type: array
+          items:
+            type: string
+            format: email
+            x-go-type: Email
+          title: emails for user who has api access
+          readOnly: true
+        contact_info:
+          type: object
+          title: partner contact info
+          $ref: "#/components/schemas/ContactInfo"
+        branding:
+          type: object
+          title: branding
+          description: branding style override
+          $ref: "#/components/schemas/Branding"
+        cids:
+          type: array
+          title: cids
+          description: referral signed up company ids
+          items:
+            type: string
+          readOnly: true
+        referrals:
+          type: array
+          items:
+            type: object
+            $ref: "#/components/schemas/Referral"
+          title: referrals
+          description: referrals with their lifecycle + status
+        rewards:
+          type: array
+          items:
+            type: object
+            $ref: "#/components/schemas/Reward"
+          readOnly: true
+        current_reward:
+          type: object
+          title: current reward
+          description: current reward
+          $ref: "#/components/schemas/Reward"
+          readOnly: true
+        stats:
+          type: object
+          title: stats
+          description: current referral stats
+          readOnly: true
+          properties:
+            total_referrals:
+              type: integer
+              title: number of referrals made
+              description: number of referrals made
+              format: int32
+            signups:
+              type: integer
+              title: number of tradesperson signups
+              description: number of tradesperson signups to unlock
+              format: int32
+            subscribers:
+              type: integer
+              title: number of referral company subscribers
+              description: number of referral company subscribers
+              format: int32
+            verifications:
+              type: integer
+              title: number of referral company verifications
+              description: number of referral company verifications
+              format: int32
+            activations:
+              type: integer
+              title: number of referral company activations
+              description: number of referral company activations
+              format: int32
+        metadata:
+          type: object
+          title: metadata
+          $ref: "#/components/schemas/Metadata"
+          readOnly: true
+
+    Branding:
+      type: object
+      title: branding override
+      description: branding override object
+      required:
+        - logo
+      properties:
+        logo:
+          type: object
+          title: partner logo
+          $ref: "#/components/schemas/Document"
+      additionalProperties: true
+
+    Reward:
+      type: object
+      title: reward
+      description: reward in tiered system
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          title: reward name
+          description: reward name
+        signups:
+          type: integer
+          title: number of tradesperson signups
+          description: number of tradesperson signups to unlock
+          format: int32
+        subscribers:
+          type: integer
+          title: number of referral company subscribers
+          description: number of referral company subscribers to unlock
+          format: int32
+        verifications:
+          type: integer
+          title: number of referral company verifications
+          description: number of referral company verifications to unlock
+          format: int32
+        activations:
+          type: integer
+          title: number of referral company activations
+          description: number of referral company activations to unlock
+          format: int32
+        rates_reduction_pct:
+          type: integer
+          title: rates reduction percentage in pence
+          minimum: 0
+          maximum: 2147483647
+        rates_reduction_value:
+          type: integer
+          title: rates reduction value in pence
+          minimum: 0
+          maximum: 2147483647
+        referral_commission_pct:
+          type: integer
+          title: referral commission percentage value in pence
+          minimum: 0
+          maximum: 2147483647
+        referral_commission_value:
+          type: integer
+          title: referral commission value in pence
+          minimum: 0
+          maximum: 2147483647
+
+    Referral:
+      type: object
+      title: referral
+      description: referral summary
+      required:
+        - email
+        - name
+      properties:
+        email:
+          type: string
+          title: referral email
+          format: email
+          x-go-type: Email
+        name:
+          type: string
+          title: referral name
+        mobile:
+          type: string
+          title: referral mobile
+          x-kanda-form-widget: PhoneNumberInput
+        cid:
+          type: string
+          title: referral cid
+          description: referral signed up company id
+          readOnly: true
+        trading_name:
+          type: string
+          title: trading name
+          readOnly: true
+        lifecycle:
+          type: string
+          title: referral lifecycle
+          description: referral company lifecycle
+          readOnly: true
+        billing:
+          type: string
+          title: referral billing
+          description: referral company billing status
+          readOnly: true
+        metadata:
+          type: object
+          title: metadata
+          $ref: "#/components/schemas/Metadata"
+          readOnly: true
+
     DirectorReport:
       type: object
       title: director report
@@ -3219,6 +3639,7 @@ components:
           items:
             type: string
             format: email
+            x-go-type: Email
           title: emails for user who has api access
           readOnly: true
         users:
@@ -3303,6 +3724,9 @@ components:
         referral_code:
           type: string
           title: optional referral code used for the sign up
+        referred_by:
+          type: string
+          title: referred by partner id
         company_logo:
           type: object
           title: company logo document
@@ -3529,6 +3953,7 @@ components:
           type: string
           title: contact email
           format: email
+          x-go-type: Email
         contact_phone:
           type: string
           title: contact phone number
@@ -3651,6 +4076,7 @@ components:
         email:
           type: string
           format: email
+          x-go-type: Email
           title: email
         mobile:
           type: string
@@ -3745,6 +4171,7 @@ components:
         email:
           type: string
           format: email
+          x-go-type: Email
           title: email
         mobile:
           type: string
@@ -3879,6 +4306,7 @@ components:
         email:
           type: string
           format: email
+          x-go-type: Email
           title: email
         phone:
           type: string
@@ -4659,6 +5087,7 @@ components:
           type: string
           title: email
           format: email
+          x-go-type: Email
         gender:
           $ref: "#/components/schemas/Gender"
         title:
@@ -5093,6 +5522,7 @@ components:
           title: email
           readOnly: true
           format: email
+          x-go-type: Email
         verdict:
           type: string
           title: verdict
@@ -5232,7 +5662,7 @@ components:
         flags:
           type: array
           title: flags
-          descriptions: flags
+          description: flags
           items:
             $ref: "#/components/schemas/Flag"
         metadata:
@@ -5283,33 +5713,55 @@ components:
         company:
           type: array
           title: relevant companies
-          descriptions: relevant companies
+          description: relevant companies
           items:
             $ref: "#/components/schemas/Company"
         credit:
           type: array
           title: relevant credits
-          descriptions: relevant credits
+          description: relevant credits
           items:
             $ref: "#/components/schemas/Credit"
         job:
           type: array
           title: relevant jobs
-          descriptions: relevant jobs
+          description: relevant jobs
           items:
             $ref: "#/components/schemas/Job"
         monitor:
           type: array
           title: relevant monitors
-          descriptions: relevant monitors
+          description: relevant monitors
           items:
             $ref: "#/components/schemas/Monitor"
         payment:
           type: array
           title: relevant payments
-          descriptions: relevant payments
+          description: relevant payments
           items:
             $ref: "#/components/schemas/Payment"
+
+    InfoPartnerBranding:
+      type: object
+      title: info partner branding
+      description: info partner branding
+      required:
+        - id
+        - contact_info
+      properties:
+        id:
+          type: string
+          title: partner id
+          description: partner id
+        contact_info:
+          type: object
+          title: partner contact info
+          $ref: "#/components/schemas/ContactInfo"
+        branding:
+          type: object
+          title: branding
+          description: branding style override
+          $ref: "#/components/schemas/Branding"
 
     Event:
       type: object
@@ -5468,6 +5920,7 @@ components:
           type: string
           title: event user email
           format: email
+          x-go-type: Email
         mobile:
           type: string
           title: event user mobile

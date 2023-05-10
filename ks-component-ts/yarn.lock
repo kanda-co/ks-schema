@@ -805,10 +805,10 @@
   dependencies:
     "@amplitude/analytics-browser" "^1.6.4"
 
-"@kanda-libs/ks-design-library@0.2.58":
-  version "0.2.58"
-  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-design-library/-/ks-design-library-0.2.58.tgz#95497f23c958d1fbec5387a9a8d803850a07ea95"
-  integrity sha512-JKyuHulpoWOOfSZyCPl1Ca0AvUMNxFpOTW8iDLGgIbgCmX+902c4vNAX3qu4rhPRYIesCKHe9OyS3N4AHYVW9w==
+"@kanda-libs/ks-design-library@0.2.62":
+  version "0.2.62"
+  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-design-library/-/ks-design-library-0.2.62.tgz#cfd0dbf51383bdcc714a28524bd7870a13667771"
+  integrity sha512-FDRQ+vSXC0wIINbO8BYuvEnMDAnd/IaM2RR6ZGx1WyPaJ9achElDYim5MZc1X7eVFuCOnufG42hnsLx96ao6SA==
   dependencies:
     "@kanda-libs/ks-amplitude-provider" "^0.0.7"
     file-saver "^2.0.5"
@@ -3319,9 +3319,9 @@ for-in@^1.0.2:
   integrity sha512-7EwmXrOjyL+ChxMhmG5lnW9MPt1aIeZEwKhQzoBUdTV0N3zuwWDZYVJatDvZ2OyzPUvdIAZDsCetk3coyMfcnQ==
 
 fp-ts@^2.13.1:
-  version "2.13.1"
-  resolved "https://registry.yarnpkg.com/fp-ts/-/fp-ts-2.13.1.tgz#1bf2b24136cca154846af16752dc29e8fa506f2a"
-  integrity sha512-0eu5ULPS2c/jsa1lGFneEFFEdTbembJv8e4QKXeVJ3lm/5hyve06dlKZrpxmMwJt6rYen7sxmHHK2CLaXvWuWQ==
+  version "2.14.0"
+  resolved "https://registry.yarnpkg.com/fp-ts/-/fp-ts-2.14.0.tgz#97ac3d9f002dcd02f93ca1269ae14a7fcb805582"
+  integrity sha512-QLagLSYAgMA00pZzUzeksH/78Sd14y7+Gc2A8Yaja3/IpGOFMdm/gYBuDMxYqLsJ58iT5lz+bJb953RAeFfp1A==
 
 fraction.js@^4.2.0:
   version "4.2.0"

@@ -1,7 +1,8 @@
 import type { StringIndexedObject } from '../../types';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import type { PathKey } from '../types';
+import type { PageList } from '../../middleware/types';
 import { createSlice } from '../toolkit';
-import { PathKey } from '../types';
 
 export type StringIndexedObjectOrUndefined =
   | StringIndexedObject
@@ -19,9 +20,10 @@ export interface AppState<T> {
 
 export const createAppSlice = <T>() => {
   const initialPathKey: PathKey<T> = {
-    page: 'login' as T,
+    page: 'login' as keyof T,
     id: undefined,
     path: '/login',
+    pages: {} as PageList<T>,
   };
 
   const initialState: AppState<T> = {
