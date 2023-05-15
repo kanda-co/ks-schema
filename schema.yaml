@@ -3608,6 +3608,100 @@ components:
           title: Adverse Media
           description: Adverse Media
 
+    Onboarding:
+      type: object
+      title: company onboarding
+      description: company onboarding
+      properties:
+        id:
+          type: string
+          title: company unique id
+          readOnly: true
+        cid:
+          type: string
+          title: company id
+          readOnly: true
+        oid:
+          type: string
+          title: owner id
+          readOnly: true
+        aid:
+          type: string
+          title: author id
+          readOnly: true
+        stage:
+          type: string
+          title: onboarding stage
+          enum:
+            - "ongoing"
+            - "report_review"
+            - "insurance_review"
+            - "trade_review"
+            - "online_review"
+            - "fca_upload_review"
+            - "fca_awaiting_approval"
+            - "fca_approved"
+        company_report_approval:
+          type: object
+          title: company report approvals
+          $ref: "#/components/schemas/Approval"
+        director_report_approval:
+          type: object
+          title: company director report approvals
+          $ref: "#/components/schemas/Approval"
+        consumer_report_approval:
+          type: object
+          title: company consumer report approvals
+          $ref: "#/components/schemas/Approval"
+        insurance_approval:
+          type: object
+          title: insurance approvals
+          $ref: "#/components/schemas/Approval"
+        trade_review_approval:
+          type: object
+          title: trade review approvals
+          $ref: "#/components/schemas/Approval"
+        online_review_approval:
+          type: object
+          title: online review approvals
+          $ref: "#/components/schemas/Approval"
+        fca_approval:
+          type: object
+          title: fca upload and review approvals
+          $ref: "#/components/schemas/Approval"
+
+    Approval:
+      type: object
+      title: approval
+      description: approval
+      required:
+        - outcome
+        - reason
+      properties:
+        outcome:
+          type: string
+          title: approval outcome
+          enum:
+            - "PASS"
+            - "FAIL"
+            - "REVIEW"
+        reason:
+          type: string
+          title: approval outcome reason
+          enum:
+            - "approved"
+            - "insufficient_details"
+            - "invalid_details"
+            - "mismatched_details"
+            - "investigation_required"
+            - "not_approved"
+        reason_note:
+          type: string
+          title: approval outcome reason note
+        report_raw:
+          type: string
+          title: associated report in raw string
+
     Company:
       type: object
       required:
