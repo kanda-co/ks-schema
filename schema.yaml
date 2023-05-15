@@ -3645,14 +3645,25 @@ components:
           type: object
           title: company report approvals
           $ref: "#/components/schemas/Approval"
-        director_report_approval:
-          type: object
+        director_report_approvals:
+          type: array
           title: company director report approvals
-          $ref: "#/components/schemas/Approval"
+          items:
+            $ref: "#/components/schemas/Approval"
         consumer_report_approval:
           type: object
           title: company consumer report approvals
           $ref: "#/components/schemas/Approval"
+        owner_reports:
+          type: array
+          title: company owner/director credit report approvals
+          items:
+            $ref: "#/components/schemas/Approval"
+        owner_report_approvals:
+          type: array
+          title: company owner/director credit report
+          items:
+            $ref: "#/components/schemas/DirectorReport"
         insurance_approval:
           type: object
           title: insurance approvals
