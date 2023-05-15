@@ -7,7 +7,7 @@ import type {
   GuardToRoute,
   Next,
 } from 'react-router-guards/dist/types';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, matchPath } from 'react-router-dom';
 import {
   GuardedRoute,
   GuardProvider,
@@ -68,16 +68,65 @@ function getInitialDataPathKeyPath<P extends StringIndexedObject>(
   return pages[page].path;
 }
 
+// Provides an object of page keys mapped to their URLs
+function getPageUrls<P extends StringIndexedObject>(
+  pages: PageList<P>,
+): Record<keyof P, string> {
+  return (Object.keys(pages) as (keyof P)[]).reduce((acc, pageKey) => {
+    acc[pageKey] = pages[pageKey].path;
+    return acc;
+  }, {} as Record<keyof P, string>);
+}
+
+type PageKeyAndId<P extends StringIndexedObject> = {
+  key: keyof P;
+  id?: string;
+} | null;
+
+interface MatchPathParams {
+  id?: string;
+}
+
+function getPageKeyAndId<P extends StringIndexedObject>(
+  url: string,
+  urls: Record<keyof P, string>,
+): PageKeyAndId<P> {
+  // Loop through each key-value pair in the urls object
+  for (let [key, value] of Object.entries(urls)) {
+    // Get a match object for the given URL and the current route path
+    let match = matchPath<MatchPathParams>(url, {
+      path: value,
+      exact: true,
+      strict: true,
+    });
+    // If there is an exact match, return the key
+    if (match && match.isExact) {
+      return {
+        key: key as keyof P,
+        id: match.params.id,
+      };
+    }
+  }
+  // If there is no exact match, return null
+  return null;
+}
+
 function getInitialDataPathKey<P extends StringIndexedObject>(
   pages: PageList<P>,
   to: GuardToRoute,
 ): PathKey<P> {
-  const url = to.match.url.split('/');
-  const page = (url[1] || 'home') as keyof typeof pages;
+  const urls = getPageUrls<P>(pages);
+  const url = to.match.url;
+
+  const { key: page, id } = getPageKeyAndId<P>(url, urls);
+
+  if (page === null) {
+    throw new Error('Invalid page');
+  }
 
   const pathKey = {
     page,
-    id: url[2],
+    id,
   };
 
   return {
