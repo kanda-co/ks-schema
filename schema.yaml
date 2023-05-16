@@ -3818,6 +3818,11 @@ components:
           type: object
           title: fca upload and review approvals
           $ref: "#/components/schemas/Approval"
+        metadata:
+          type: object
+          $ref: "#/components/schemas/Metadata"
+          title: metadata
+          readOnly: true
 
     OnboardingStage:
       type: string
