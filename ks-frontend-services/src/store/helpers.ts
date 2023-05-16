@@ -247,21 +247,12 @@ export const generateSelectors = <
   const getById = createSelector(getReducer, (reducer) => reducer.byId);
 
   const getId = createSelector(getPathKey, (pathKey) => {
-    const key = getPageKeyAndId(pathKey.path, getPageUrls(pathKey.pages));
+    const { key } = getPageKeyAndId(pathKey.path, getPageUrls(pathKey.pages));
     if (pathKey?.page !== key) return undefined;
     return pathKey.id;
   });
 
-  const getItem = createSelector(
-    getId,
-    getById,
-    getPathKey,
-    (id, byId, pathKey) => {
-      const key = getPageKeyAndId(pathKey.path, getPageUrls(pathKey.pages));
-      if (pathKey?.page !== key) return undefined;
-      return byId[id];
-    },
-  );
+  const getItem = createSelector(getId, getById, (id, byId) => byId[id]);
 
   const getIsLoading = createSelector(
     getReducer,
