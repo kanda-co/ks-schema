@@ -827,6 +827,143 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/onboarding:
+    get:
+      operationId: getOnboardings
+      summary: kanda staff to get all onboardings
+      tags:
+        - Onboarding
+      responses:
+        200:
+          description: got all onboardings
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Onboarding"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    post:
+      operationId: postOnboarding
+      summary: kanda staff only to post new onboarding
+      tags:
+        - Onboarding
+      requestBody:
+        description: post new onboarding
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Onboarding"
+      responses:
+        200:
+          description: posted new onboarding
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Onboarding"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/onboarding/{id}:
+    get:
+      operationId: getOnboarding
+      summary: kanda staff to get existing onboarding
+      tags:
+        - Onboarding
+      parameters:
+        - name: id
+          in: path
+          description: onboarding id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing onboarding
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Onboarding"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: putOnboarding
+      summary: kanda staff to put existing onboarding
+      tags:
+        - Onboarding
+      parameters:
+        - name: id
+          in: path
+          description: onboarding id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: put existing onboarding
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Onboarding"
+      responses:
+        200:
+          description: put existing onboarding
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Onboarding"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      operationId: deleteOnboarding
+      summary: kanda staff to delete existing onboarding
+      tags:
+        - Onboarding
+      parameters:
+        - name: id
+          in: path
+          description: onboarding id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: deleted existing onboarding
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Onboarding"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/company:
     get:
       operationId: getCompanies
@@ -3629,41 +3766,42 @@ components:
           type: string
           title: author id
           readOnly: true
-        stage:
+        current_stage:
           type: string
-          title: onboarding stage
-          enum:
-            - "ongoing"
-            - "report_review"
-            - "insurance_review"
-            - "trade_review"
-            - "online_review"
-            - "fca_upload_review"
-            - "fca_awaiting_approval"
-            - "fca_approved"
+          title: onboarding current stage
+          $ref: "#/components/schemas/OnboardingStage"
+        stages:
+          type: array
+          title: onboarding stages
+          items:
+            $ref: "#/components/schemas/OnboardingStage"
+          readOnly: true
         company_report_approval:
           type: object
           title: company report approvals
           $ref: "#/components/schemas/Approval"
         director_report_approvals:
-          type: array
+          type: object
           title: company director report approvals
-          items:
+          additionalProperties:
+            type: object
             $ref: "#/components/schemas/Approval"
         consumer_report_approval:
           type: object
           title: company consumer report approvals
           $ref: "#/components/schemas/Approval"
         owner_reports:
-          type: array
-          title: company owner/director credit report approvals
-          items:
-            $ref: "#/components/schemas/Approval"
-        owner_report_approvals:
-          type: array
+          type: object
           title: company owner/director credit report
-          items:
+          additionalProperties:
+            type: object
             $ref: "#/components/schemas/DirectorReport"
+        owner_report_approvals:
+          type: object
+          title: company owner/director credit report approvals
+          additionalProperties:
+            type: object
+            $ref: "#/components/schemas/Approval"
         insurance_approval:
           type: object
           title: insurance approvals
@@ -3680,6 +3818,24 @@ components:
           type: object
           title: fca upload and review approvals
           $ref: "#/components/schemas/Approval"
+
+    OnboardingStage:
+      type: string
+      title: onboarding stage
+      enum:
+        - "ongoing"
+        - "report_review"
+        - "report_reviewed"
+        - "insurance_review"
+        - "insurance_reviewed"
+        - "trade_review"
+        - "trade_reviewed"
+        - "online_review"
+        - "online_reviewed"
+        - "fca_upload_review"
+        - "fca_upload_reviewed"
+        - "fca_awaiting_approval"
+        - "fca_approved"
 
     Approval:
       type: object
@@ -3712,6 +3868,10 @@ components:
         report_raw:
           type: string
           title: associated report in raw string
+        report_pdf:
+          type: object
+          title: associated report in pdf
+          $ref: "#/components/schemas/Document"
 
     Company:
       type: object
