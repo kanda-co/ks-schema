@@ -69,7 +69,7 @@ function getInitialDataPathKeyPath<P extends StringIndexedObject>(
 }
 
 // Provides an object of page keys mapped to their URLs
-function getPageUrls<P extends StringIndexedObject>(
+export function getPageUrls<P extends StringIndexedObject>(
   pages: PageList<P>,
 ): Record<keyof P, string> {
   return (Object.keys(pages) as (keyof P)[]).reduce((acc, pageKey) => {
@@ -87,7 +87,7 @@ interface MatchPathParams {
   id?: string;
 }
 
-function getPageKeyAndId<P extends StringIndexedObject>(
+export function getPageKeyAndId<P extends StringIndexedObject>(
   url: string,
   urls: Record<keyof P, string>,
 ): PageKeyAndId<P> {

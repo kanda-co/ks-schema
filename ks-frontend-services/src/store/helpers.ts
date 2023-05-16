@@ -26,6 +26,7 @@ import {
 import { InfoEntity } from '../generated/components/schemas';
 import { INFO_ENTITY_KEY } from './constants';
 import { GetInfoEntityRequestParameters } from '../generated/operations/getInfoEntity';
+import { getPageKeyAndId, getPageUrls } from '../middleware';
 
 export const handlePayload = <T>(payload: Payload<T>): Promise<T> =>
   payload().then(handleApiResponse) as Promise<T>;
@@ -246,7 +247,8 @@ export const generateSelectors = <
   const getById = createSelector(getReducer, (reducer) => reducer.byId);
 
   const getId = createSelector(getPathKey, (pathKey) => {
-    if (pathKey?.page !== reducer) return undefined;
+    const key = getPageKeyAndId(pathKey.path, getPageUrls(pathKey.pages));
+    if (pathKey?.page !== key) return undefined;
     return pathKey.id;
   });
 
@@ -255,7 +257,8 @@ export const generateSelectors = <
     getById,
     getPathKey,
     (id, byId, pathKey) => {
-      if (pathKey?.page !== reducer) return undefined;
+      const key = getPageKeyAndId(pathKey.path, getPageUrls(pathKey.pages));
+      if (pathKey?.page !== key) return undefined;
       return byId[id];
     },
   );
