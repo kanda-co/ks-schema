@@ -3862,8 +3862,14 @@ components:
       title: onboarding stage
       enum:
         - "ongoing"
-        - "report_review"
-        - "report_reviewed"
+        - "company_report_review"
+        - "company_report_reviewed"
+        - "director_report_review"
+        - "director_report_reviewed"
+        - "consumer_report_review"
+        - "consumer_report_reviewed"
+        - "owner_report_review"
+        - "owner_report_reviewed"
         - "insurance_review"
         - "insurance_reviewed"
         - "trade_review"
