@@ -964,6 +964,41 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/onboarding/{id}/decision:
+    post:
+      operationId: postOnboardingDecision
+      summary: >
+        kanda staff to post an onboarding decision and trigger comms (if applicable)
+      tags:
+        - Onboarding
+      parameters:
+        - name: id
+          in: path
+          description: onboarding id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: onboarding decision to be applied to current stage
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Approval"
+      responses:
+        200:
+          description: got existing onboarding with current stage re-calculated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Onboarding"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/company:
     get:
       operationId: getCompanies
