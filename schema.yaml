@@ -3753,11 +3753,9 @@ components:
         id:
           type: string
           title: company unique id
-          readOnly: true
         cid:
           type: string
           title: company id
-          readOnly: true
         oid:
           type: string
           title: owner id
