@@ -3839,6 +3839,7 @@ components:
         - "fca_upload_reviewed"
         - "fca_awaiting_approval"
         - "fca_approved"
+        - "onboarding_not_approved"
 
     Approval:
       type: object
