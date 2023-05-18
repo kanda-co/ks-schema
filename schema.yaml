@@ -827,6 +827,178 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/onboarding:
+    get:
+      operationId: getOnboardings
+      summary: kanda staff to get all onboardings
+      tags:
+        - Onboarding
+      responses:
+        200:
+          description: got all onboardings
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Onboarding"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    post:
+      operationId: postOnboarding
+      summary: kanda staff only to post new onboarding
+      tags:
+        - Onboarding
+      requestBody:
+        description: post new onboarding
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Onboarding"
+      responses:
+        200:
+          description: posted new onboarding
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Onboarding"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/onboarding/{id}:
+    get:
+      operationId: getOnboarding
+      summary: kanda staff to get existing onboarding
+      tags:
+        - Onboarding
+      parameters:
+        - name: id
+          in: path
+          description: onboarding id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing onboarding
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Onboarding"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: putOnboarding
+      summary: kanda staff to put existing onboarding
+      tags:
+        - Onboarding
+      parameters:
+        - name: id
+          in: path
+          description: onboarding id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: put existing onboarding
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Onboarding"
+      responses:
+        200:
+          description: put existing onboarding
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Onboarding"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      operationId: deleteOnboarding
+      summary: kanda staff to delete existing onboarding
+      tags:
+        - Onboarding
+      parameters:
+        - name: id
+          in: path
+          description: onboarding id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: deleted existing onboarding
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Onboarding"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/onboarding/{id}/decision:
+    post:
+      operationId: postOnboardingDecision
+      summary: >
+        kanda staff to post an onboarding decision and trigger comms (if applicable)
+      tags:
+        - Onboarding
+      parameters:
+        - name: id
+          in: path
+          description: onboarding id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: onboarding decision to be applied to current stage
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Approval"
+      responses:
+        200:
+          description: got existing onboarding with current stage re-calculated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Onboarding"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/company:
     get:
       operationId: getCompanies
@@ -3608,6 +3780,144 @@ components:
           title: Adverse Media
           description: Adverse Media
 
+    Onboarding:
+      type: object
+      title: company onboarding
+      description: company onboarding
+      properties:
+        id:
+          type: string
+          title: company unique id
+        cid:
+          type: string
+          title: company id
+        oid:
+          type: string
+          title: owner id
+          readOnly: true
+        aid:
+          type: string
+          title: author id
+          readOnly: true
+        current_stage:
+          type: string
+          title: onboarding current stage
+          $ref: "#/components/schemas/OnboardingStage"
+        stages:
+          type: array
+          title: onboarding stages
+          items:
+            $ref: "#/components/schemas/OnboardingStage"
+          readOnly: true
+        company_report_approval:
+          type: object
+          title: company report approvals
+          $ref: "#/components/schemas/Approval"
+        director_report_approvals:
+          type: object
+          title: company director report approvals
+          additionalProperties:
+            type: object
+            $ref: "#/components/schemas/Approval"
+        consumer_report_approval:
+          type: object
+          title: company consumer report approvals
+          $ref: "#/components/schemas/Approval"
+        owner_reports:
+          type: object
+          title: company owner/director credit report
+          additionalProperties:
+            type: object
+            $ref: "#/components/schemas/DirectorReport"
+        owner_report_approvals:
+          type: object
+          title: company owner/director credit report approvals
+          additionalProperties:
+            type: object
+            $ref: "#/components/schemas/Approval"
+        insurance_approval:
+          type: object
+          title: insurance approvals
+          $ref: "#/components/schemas/Approval"
+        trade_review_approval:
+          type: object
+          title: trade review approvals
+          $ref: "#/components/schemas/Approval"
+        online_review_approval:
+          type: object
+          title: online review approvals
+          $ref: "#/components/schemas/Approval"
+        fca_approval:
+          type: object
+          title: fca upload and review approvals
+          $ref: "#/components/schemas/Approval"
+        metadata:
+          type: object
+          $ref: "#/components/schemas/Metadata"
+          title: metadata
+          readOnly: true
+
+    OnboardingStage:
+      type: string
+      title: onboarding stage
+      enum:
+        - "ongoing"
+        - "company_report_review"
+        - "company_report_reviewed"
+        - "director_report_review"
+        - "director_report_reviewed"
+        - "consumer_report_review"
+        - "consumer_report_reviewed"
+        - "owner_report_review"
+        - "owner_report_reviewed"
+        - "insurance_review"
+        - "insurance_reviewed"
+        - "trade_review"
+        - "trade_reviewed"
+        - "online_review"
+        - "online_reviewed"
+        - "fca_upload_review"
+        - "fca_upload_reviewed"
+        - "fca_awaiting_approval"
+        - "fca_approved"
+        - "onboarding_not_approved"
+
+    Approval:
+      type: object
+      title: approval
+      description: approval
+      required:
+        - outcome
+        - reason
+      properties:
+        outcome:
+          type: string
+          title: approval outcome
+          enum:
+            - "PASS"
+            - "FAIL"
+            - "REVIEW"
+        reason:
+          type: string
+          title: approval outcome reason
+          enum:
+            - "approved"
+            - "insufficient_details"
+            - "invalid_details"
+            - "mismatched_details"
+            - "investigation_required"
+            - "not_approved"
+        reason_note:
+          type: string
+          title: approval outcome reason note
+        report_raw:
+          type: string
+          title: associated report in raw string
+        report_pdf:
+          type: object
+          title: associated report in pdf
+          $ref: "#/components/schemas/Document"
+
     Company:
       type: object
       required:
@@ -3901,6 +4211,10 @@ components:
             - "yes"
             - "no"
           x-kanda-form-widget: Select
+        online_presence:
+          type: object
+          title: company online presence
+          $ref: "#/components/schemas/OnlinePresence"
         insurance_document:
           type: object
           title: insurance document
@@ -3909,6 +4223,30 @@ components:
           type: object
           title: contract agreement
           $ref: "#/components/schemas/ContractAgreement"
+
+    OnlinePresence:
+      type: object
+      title: online presence
+      required:
+        - q_online
+      properties:
+        q_online:
+          type: string
+          title: Can you provide your business online details?
+          enum:
+            - "Yes, I can provide the details"
+            - "No, I don't have this"
+          x-kanda-form-widget: Select
+        website:
+          type: string
+          title: website URL
+          format: uri
+        facebook:
+          type: string
+          title: facebook business name or link
+        google:
+          type: string
+          title: google business name or link
 
     ContractAgreement:
       type: object
@@ -3991,6 +4329,11 @@ components:
           type: string
           title: document name
           minLength: 1
+        expiry:
+          type: string
+          title: document expiry
+          pattern: "^[0-9]{4}-(0[0-9]|10|11|12)-([0-2][0-9]|30|31)(T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?(Z|(\\+|-)[0-9]{2}:[0-9]{2})?)?$"
+          x-kanda-form-widget: DatePickerInput
         content:
           type: string
           format: base64
