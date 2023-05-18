@@ -1514,51 +1514,6 @@
     lodash.get "^4.4.2"
     lodash.set "^4.3.2"
 
-"@kanda-libs/ks-amplitude-provider@^0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-amplitude-provider/-/ks-amplitude-provider-0.0.7.tgz#08f166736b229c44402e3f64debd98321af88842"
-  integrity sha512-gzkZzFcBwh4MQz/VJ8M0TGcuWQzLv0V2bYHOrr8Bc6ErlV/cIE+1NtocsfI7uv+0QRAbmO6YctU4/KztTtui/A==
-  dependencies:
-    "@amplitude/analytics-browser" "^1.6.4"
-
-"@kanda-libs/ks-design-library-new@^0.0.21":
-  version "0.0.21"
-  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-design-library-new/-/ks-design-library-new-0.0.21.tgz#987d10fe9ffda23901ed0889196a5a20f47ea5ec"
-  integrity sha512-ttDhBDdJJnvePnlv7s5ovEYtNozByQacEfCgxEKgNY7FL6KIHpNRfudaHX78nimgK4xrFTUyENZ94+e1p0cvjA==
-  dependencies:
-    "@kanda-libs/ks-amplitude-provider" "^0.0.7"
-    "@kanda-libs/ks-design-library" "^0.2.60"
-    "@types/react-table" "^7.7.14"
-    file-saver "^2.0.5"
-    fuse.js "^6.6.2"
-    lodash.get "^4.4.2"
-    lodash.set "^4.3.2"
-    react-image "^4.0.3"
-    react-loading-skeleton "^3.1.0"
-    react-number-format "^4.6.4"
-    react-table "^7.7.14"
-    react-teleporter "^3.0.2"
-    react-toastify "^9.0.8"
-    use-debounce "^8.0.4"
-
-"@kanda-libs/ks-design-library@^0.2.60":
-  version "0.2.64"
-  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-design-library/-/ks-design-library-0.2.64.tgz#1972fa4301a5181269135c887de8d4a621ea9eaa"
-  integrity sha512-WAbbx4E3KgkhjR3ZpabdUBeMiipCMMqgdEQqY00DiH4IbpkQ2Lgun9K6iQ0ZV2/v1KZW9VqPw890vcHr+Ys0Xw==
-  dependencies:
-    "@kanda-libs/ks-amplitude-provider" "^0.0.7"
-    crypto-js "^4.1.1"
-    file-saver "^2.0.5"
-    fuse.js "^6.6.2"
-    lodash.get "^4.4.2"
-    lodash.set "^4.3.2"
-    react-image "^4.0.3"
-    react-loading-skeleton "^3.1.0"
-    react-number-format "^4.6.4"
-    react-teleporter "^3.0.2"
-    react-toastify "^9.0.8"
-    use-debounce "^8.0.4"
-
 "@openapi-io-ts/core@0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@openapi-io-ts/core/-/core-0.1.0.tgz#7e1ea2e9f149da227d58d043e3b1e62f62253cda"
@@ -1732,13 +1687,6 @@
   integrity sha512-jGjmu/ZqS7FjSH6owMcD5qpq19+1RS9DeVRqfl1FeBMxTDQAGwlMWOcs52NDoXaNKyG3d1cYQFMs9rCrb88o9Q==
   dependencies:
     "@types/history" "^4.7.11"
-    "@types/react" "*"
-
-"@types/react-table@^7.7.14":
-  version "7.7.14"
-  resolved "https://registry.yarnpkg.com/@types/react-table/-/react-table-7.7.14.tgz#b880f1ae140ed065bca2e21b3008ca1ebe71595a"
-  integrity sha512-TYrv7onCiakaG1uAu/UpQ9FojNEt/4/ht87EgJQaEGFoWV606ZLWUZAcUHzMxgc3v1mywP1cDyz3qB4ho3hWOw==
-  dependencies:
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^18.0.15":
@@ -1941,11 +1889,6 @@ clone@^1.0.4:
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
   integrity sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==
 
-clsx@^1.1.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.2.1.tgz#0ddc4a20a549b59c93a4116bb26f5294ca17dc12"
-  integrity sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==
-
 color-convert@^1.9.0:
   version "1.9.3"
   resolved "https://registry.yarnpkg.com/color-convert/-/color-convert-1.9.3.tgz#bb71850690e1f136567de629d2d5471deda4c1e8"
@@ -1998,11 +1941,6 @@ cross-fetch@^3.1.5:
   integrity sha512-lvb1SBsI0Z7GDwmuid+mU3kWVBwTVUbe7S0H52yaaAdQOXq2YktTCZdlAcNKFzE6QtRz0snpw9bNiPeOIkkQvw==
   dependencies:
     node-fetch "2.6.7"
-
-crypto-js@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-4.1.1.tgz#9e485bcf03521041bd85844786b83fb7619736cf"
-  integrity sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==
 
 csstype@^3.0.2:
   version "3.1.1"
@@ -2255,11 +2193,6 @@ faye-websocket@0.11.4:
   dependencies:
     websocket-driver ">=0.5.1"
 
-file-saver@^2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/file-saver/-/file-saver-2.0.5.tgz#d61cfe2ce059f414d899e9dd6d4107ee25670c38"
-  integrity sha512-P9bmyZ3h/PRG+Nzga+rbdI4OEpNDzAVyy74uVO9ATgzLK6VtAsYybF/+TOCvrc0MO793d6+42lLyZTw7/ArVzA==
-
 find-up@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/find-up/-/find-up-5.0.0.tgz#4c92819ecb7083561e4f4a240a86be5198f536fc"
@@ -2328,11 +2261,6 @@ functions-have-names@^1.2.2:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/functions-have-names/-/functions-have-names-1.2.3.tgz#0404fe4ee2ba2f607f0e0ec3c80bae994133b834"
   integrity sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==
-
-fuse.js@^6.6.2:
-  version "6.6.2"
-  resolved "https://registry.yarnpkg.com/fuse.js/-/fuse.js-6.6.2.tgz#fe463fed4b98c0226ac3da2856a415576dc9a111"
-  integrity sha512-cJaJkxCCxC8qIIcPBF9yGxY0W/tVZS3uEISDxhYIdtk8OL93pe+6Zj7LjCqVV4dzbqcriOZ+kQ/NE4RXZHsIGA==
 
 gensync@^1.0.0-beta.2:
   version "1.0.0-beta.2"
@@ -2750,7 +2678,7 @@ prettier@^2.7.1:
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.1.tgz#4e1fd11c34e2421bc1da9aea9bd8127cd0a35efc"
   integrity sha512-lqGoSJBQNJidqCHE80vqZJHWHRFoNYsSpP9AjFhlhi9ODCJA541svILes/+/1GM3VaL/abZi7cpFzOpdR9UPKg==
 
-prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.6.2:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -2796,27 +2724,10 @@ protobufjs@^7.0.0:
     "@types/node" ">=13.7.0"
     long "^5.0.0"
 
-react-image@^4.0.3:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/react-image/-/react-image-4.1.0.tgz#92f2d4a809a178b3bf69acd7bad7da7aa5e7364c"
-  integrity sha512-qwPNlelQe9Zy14K2pGWSwoL+vHsAwmJKS6gkotekDgRpcnRuzXNap00GfibD3eEPYu3WCPlyIUUNzcyHOrLHjw==
-
 react-is@^16.13.1, react-is@^16.6.0, react-is@^16.7.0:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
-
-react-loading-skeleton@^3.1.0:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/react-loading-skeleton/-/react-loading-skeleton-3.3.1.tgz#cd6e3a626ee86c76a46c14e2379243f2f8834e1b"
-  integrity sha512-NilqqwMh2v9omN7LteiDloEVpFyMIa0VGqF+ukqp0ncVlYu1sKYbYGX9JEl+GtOT9TKsh04zCHAbavnQ2USldA==
-
-react-number-format@^4.6.4:
-  version "4.9.4"
-  resolved "https://registry.yarnpkg.com/react-number-format/-/react-number-format-4.9.4.tgz#013ae526000e676e491763ce14da66fb330a9bd8"
-  integrity sha512-Gq20Z3ugqPLFgeaidnx5on9cNpbQZntPN3QgNAL/WJrNNlQnNznY0LCx7g8xtssmRBw0/hw+SCqw6zAcajooiA==
-  dependencies:
-    prop-types "^15.7.2"
 
 react-router-dom@^5.2.0:
   version "5.3.4"
@@ -2852,23 +2763,6 @@ react-router@5.3.4:
     react-is "^16.6.0"
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
-
-react-table@^7.7.14:
-  version "7.8.0"
-  resolved "https://registry.yarnpkg.com/react-table/-/react-table-7.8.0.tgz#07858c01c1718c09f7f1aed7034fcfd7bda907d2"
-  integrity sha512-hNaz4ygkZO4bESeFfnfOft73iBUj8K5oKi1EcSHPAibEydfsX2MyU6Z8KCr3mv3C9Kqqh71U+DhZkFvibbnPbA==
-
-react-teleporter@^3.0.2:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/react-teleporter/-/react-teleporter-3.1.0.tgz#1e4db4fd5625ff6469952efc5e0ff048b98825a0"
-  integrity sha512-GqHwE3vNiTK/0OA1+GdE1EUW7bzS+fOkfBKI/mgbXuR3w650tDycFqZvmRceJuF3asOfglBx5TUdBWCBXB4spA==
-
-react-toastify@^9.0.8:
-  version "9.1.3"
-  resolved "https://registry.yarnpkg.com/react-toastify/-/react-toastify-9.1.3.tgz#1e798d260d606f50e0fab5ee31daaae1d628c5ff"
-  integrity sha512-fPfb8ghtn/XMxw3LkxQBk3IyagNpF/LIKjOBflbexr2AWxAH1MJgvnESwEwBn9liLFXgTKWgBSdZpw9m4OTHTg==
-  dependencies:
-    clsx "^1.1.1"
 
 react@^17.0.2:
   version "17.0.2"
@@ -3190,11 +3084,6 @@ update-browserslist-db@^1.0.9:
   dependencies:
     escalade "^3.1.1"
     picocolors "^1.0.0"
-
-use-debounce@^8.0.4:
-  version "8.0.4"
-  resolved "https://registry.yarnpkg.com/use-debounce/-/use-debounce-8.0.4.tgz#27e93b2f010bd0b8ad06e9fc7de891d9ee5d6b8e"
-  integrity sha512-fGqsYQzl8kLHF2QpQSgIwgOgJmnh6j5L6SIzQiHdLfwp3q1egUL3btq5Bg2SJysH6A0ILLgT2IqXZKoNJr0nFw==
 
 v8-compile-cache-lib@^3.0.1:
   version "3.0.1"

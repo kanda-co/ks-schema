@@ -22,7 +22,6 @@ import type { StringIndexedObject } from '../types';
 import type { Role, RoutedApp, ValidAction } from './types';
 import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 import { createAppSlice } from '../store/slices/app';
-import { NotFoundPage } from '@kanda-libs/ks-design-library-new';
 
 export function getInitialDataPathKeyLayout<P extends StringIndexedObject>(
   pathKey: PathKey<P>,
@@ -307,6 +306,7 @@ export function createMiddleware<State, P extends StringIndexedObject>(
 function createRouterComponent<State, P extends StringIndexedObject>(
   store: ToolkitStore<State>,
   pages: PageList<P>,
+  notFoundPage: FunctionComponent,
 ): FunctionComponent {
   return (): JSX.Element => {
     // This package doesn't include correct typings for children,
@@ -319,7 +319,7 @@ function createRouterComponent<State, P extends StringIndexedObject>(
       <Router>
         <Provider
           guards={[createMiddleware<State, P>(store, pages)]}
-          error={() => <NotFoundPage />}
+          error={notFoundPage}
         >
           <Switch>
             <GuardedRoute path="/*" component={Page} />
@@ -347,8 +347,9 @@ function createRouterUrls<T extends string | number>(
 function createRouter<State, Keys extends string | number>(
   store: ToolkitStore<State>,
   pages: PageList,
+  notFoundPage: FunctionComponent,
 ): RouterType<Keys> {
-  const RouterComponent = createRouterComponent(store, pages);
+  const RouterComponent = createRouterComponent(store, pages, notFoundPage);
 
   return {
     Router: RouterComponent,
@@ -359,9 +360,10 @@ function createRouter<State, Keys extends string | number>(
 export function createRoutedApp<State, Keys extends string | number>(
   store: ToolkitStore<State>,
   args: Record<Keys, CreatePageArgs<State>>,
+  notFoundPage: FunctionComponent = () => <>404</>,
 ): RoutedApp<Keys> {
   const pages = createPages<State, Keys>(args);
-  const router = createRouter<State, Keys>(store, pages);
+  const router = createRouter<State, Keys>(store, pages, notFoundPage);
 
   return { router, pages };
 }
