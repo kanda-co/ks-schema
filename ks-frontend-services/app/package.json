@@ -14,7 +14,7 @@
     "@kanda-libs/ks-amplitude-provider": "^0.0.15",
     "@kanda-libs/ks-component-ts": "^0.2.176",
     "@kanda-libs/ks-design-library": "0.2.32",
-    "@kanda-libs/ks-frontend-services": "link:.yalc/@kanda-libs/ks-frontend-services",
+    "@kanda-libs/ks-frontend-services": "file:.yalc/@kanda-libs/ks-frontend-services",
     "@kanda-libs/ks-tailwind-config": "0.2.0",
     "lodash.get": "^4.4.2",
     "react": "^18.2.0",

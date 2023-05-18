@@ -23,7 +23,14 @@ export const createAppSlice = <T>() => {
     page: 'login' as keyof T,
     id: undefined,
     path: '/login',
-    pages: {} as PageList<T>,
+    pages: {
+      login: {
+        path: '/login',
+        PageComponent: null,
+        loadingDependencies: [],
+        initialDataActions: [],
+      },
+    } as PageList<T>,
   };
 
   const initialState: AppState<T> = {

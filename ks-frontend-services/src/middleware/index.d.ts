@@ -17,7 +17,7 @@ type PageKeyAndId<P extends StringIndexedObject> = {
 export declare function getPageKeyAndId<P extends StringIndexedObject>(url: string, urls: Record<keyof P, string>): PageKeyAndId<P>;
 export declare function fetchPageInitialData<State, P extends StringIndexedObject>(store: ToolkitStore<State>, pages: PageList<P>, { page, id }: PathKey<P>, forceReload?: boolean): void;
 export declare function initialDataProvider<State, P extends StringIndexedObject>(store: ToolkitStore<State>, pages: PageList<P>, pathKey: PathKey<P>): PathKey<P>;
-export declare function isAuthed<P extends StringIndexedObject>(pathKey: PathKey<P>): () => Promise<TE.TaskEither<Error, PathKey<P>>>;
+export declare function isAuthed<P extends StringIndexedObject>(pathKey: PathKey<P>, store: ToolkitStore): () => Promise<TE.TaskEither<Error, PathKey<P>>>;
 export declare function createMiddleware<State, P extends StringIndexedObject>(store: ToolkitStore<State>, pages: PageList<P>): (to: GuardToRoute, from: GuardFunctionRouteProps | null, next: Next) => void;
-export declare function createRoutedApp<State, Keys extends string | number>(store: ToolkitStore<State>, args: Record<Keys, CreatePageArgs<State>>): RoutedApp<Keys>;
+export declare function createRoutedApp<State, Keys extends string | number>(store: ToolkitStore<State>, args: Record<Keys, CreatePageArgs<State>>, notFoundPage?: FunctionComponent): RoutedApp<Keys>;
 export {};
