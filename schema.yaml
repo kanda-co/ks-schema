@@ -194,6 +194,27 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/onboarding:
+    get:
+      operationId: infoOnboarding
+      summary: info for current company onboarding stage + notes
+      tags:
+        - InfoOnboarding
+      responses:
+        200:
+          description: got info for current company onboarding stage + notes
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: "#/components/schemas/InfoOnboarding"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/info/director:
     put:
       operationId: infoDirector
@@ -3906,6 +3927,7 @@ components:
             - "invalid_details"
             - "mismatched_details"
             - "investigation_required"
+            - "manual_review_required"
             - "not_approved"
         reason_note:
           type: string
@@ -3917,6 +3939,31 @@ components:
           type: object
           title: associated report in pdf
           $ref: "#/components/schemas/Document"
+
+    InfoOnboarding:
+      type: object
+      title: info for current company onboarding
+      description: company onboarding
+      properties:
+        id:
+          type: string
+          title: company unique id
+        cid:
+          type: string
+          title: company id
+        current_stage:
+          type: string
+          title: onboarding current stage
+          $ref: "#/components/schemas/OnboardingStage"
+        current_approval:
+          type: object
+          title: onboarding current approval status and notes, without reports
+          $ref: "#/components/schemas/Approval"
+        metadata:
+          type: object
+          $ref: "#/components/schemas/Metadata"
+          title: metadata
+          readOnly: true
 
     Company:
       type: object
