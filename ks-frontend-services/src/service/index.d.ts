@@ -342,6 +342,32 @@ declare const monitor: {
         method: import("../generated/operations/postMonitorFlag").PostMonitorFlagRequestFunction;
     };
 };
+declare const onboarding: {
+    getOnboardings: {
+        key: string;
+        method: import("../generated/operations/getOnboardings").GetOnboardingsRequestFunction;
+    };
+    postOnboarding: {
+        key: string;
+        method: import("../generated/operations/postOnboarding").PostOnboardingRequestFunction;
+    };
+    getOnboarding: {
+        key: string;
+        method: import("../generated/operations/getOnboarding").GetOnboardingRequestFunction;
+    };
+    putOnboarding: {
+        key: string;
+        method: import("../generated/operations/putOnboarding").PutOnboardingRequestFunction;
+    };
+    deleteOnboarding: {
+        key: string;
+        method: import("../generated/operations/deleteOnboarding").DeleteOnboardingRequestFunction;
+    };
+    postOnboardingDecision: {
+        key: string;
+        method: import("../generated/operations/postOnboardingDecision").PostOnboardingDecisionRequestFunction;
+    };
+};
 declare const partner: {
     getPartners: {
         key: string;
@@ -493,7 +519,7 @@ declare const pdf: {
 declare const sheets: {
     read: {
         key: string;
-        method: ({ body: { spreadsheet_id, range }, }: import("./external/sheets").ReadRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+        method: ({ params, }: import("./external/sheets").ReadRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
             body: import("./external/sheets").ReadResponse;
         }, import("./external/sheets").ReadResponse>;
     };
@@ -846,6 +872,32 @@ declare const services: {
             method: import("../generated/operations/postMonitorFlag").PostMonitorFlagRequestFunction;
         };
     };
+    onboarding: {
+        getOnboardings: {
+            key: string;
+            method: import("../generated/operations/getOnboardings").GetOnboardingsRequestFunction;
+        };
+        postOnboarding: {
+            key: string;
+            method: import("../generated/operations/postOnboarding").PostOnboardingRequestFunction;
+        };
+        getOnboarding: {
+            key: string;
+            method: import("../generated/operations/getOnboarding").GetOnboardingRequestFunction;
+        };
+        putOnboarding: {
+            key: string;
+            method: import("../generated/operations/putOnboarding").PutOnboardingRequestFunction;
+        };
+        deleteOnboarding: {
+            key: string;
+            method: import("../generated/operations/deleteOnboarding").DeleteOnboardingRequestFunction;
+        };
+        postOnboardingDecision: {
+            key: string;
+            method: import("../generated/operations/postOnboardingDecision").PostOnboardingDecisionRequestFunction;
+        };
+    };
     partner: {
         getPartners: {
             key: string;
@@ -997,11 +1049,11 @@ declare const services: {
     sheets: {
         read: {
             key: string;
-            method: ({ body: { spreadsheet_id, range }, }: import("./external/sheets").ReadRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+            method: ({ params, }: import("./external/sheets").ReadRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
                 body: import("./external/sheets").ReadResponse;
             }, import("./external/sheets").ReadResponse>;
         };
     };
 };
-export { authUser, company, credit, document, event, infoAuth, infoCache, infoCompany, infoCustomer, infoDirector, infoEntity, infoGhost, infoHealth, infoIP, infoPartner, infoQuery, infoRedirect, infoValidation, job, monitor, partner, payment, rate, subscription, task, webhook, address, pdf, sheets, };
+export { authUser, company, credit, document, event, infoAuth, infoCache, infoCompany, infoCustomer, infoDirector, infoEntity, infoGhost, infoHealth, infoIP, infoPartner, infoQuery, infoRedirect, infoValidation, job, monitor, onboarding, partner, payment, rate, subscription, task, webhook, address, pdf, sheets, };
 export default services;

@@ -1,9 +1,12 @@
 import { RequestFunction } from '@openapi-io-ts/runtime';
+import { StringIndexedObject } from '../../types';
 export declare const BASE_URL: string;
 export interface ReadRequest {
-    body: {
-        spreadsheet_id?: string;
+    params?: {
+        id: string;
+        type?: 'batch' | 'sheet';
         range?: string;
+        options?: StringIndexedObject;
     };
 }
 export interface ReadResponse {
@@ -14,7 +17,7 @@ export interface ReadResponse {
 declare const _default: {
     read: {
         key: string;
-        method: ({ body: { spreadsheet_id, range }, }: ReadRequest) => RequestFunction<{
+        method: ({ params, }: ReadRequest) => RequestFunction<{
             body: ReadResponse;
         }, ReadResponse>;
     };

@@ -22,6 +22,7 @@ import type { StringIndexedObject } from '../types';
 import type { Role, RoutedApp, ValidAction } from './types';
 import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 import { createAppSlice } from '../store/slices/app';
+import { userLoggedIn } from '../store/slices/auth';
 
 export function getInitialDataPathKeyLayout<P extends StringIndexedObject>(
   pathKey: PathKey<P>,
@@ -236,31 +237,54 @@ async function getRole(): Promise<Role> {
 }
 
 async function userIsLoggedInAndStaffOrPartner<P extends StringIndexedObject>(
-  role: Role,
   pathKey: PathKey<P>,
+  store: ToolkitStore,
 ): Promise<boolean> {
-  await FirebaseAuthService.isUserLoggedIn();
+  // await FirebaseAuthService.isUserLoggedIn();
 
-  const page = pathKey.pages[pathKey.page as keyof P];
+  try {
+    const user = await FirebaseAuthService.user();
+    const idTokenResult = await user?.getIdTokenResult(true);
+    const role = idTokenResult?.claims?.role || undefined;
 
-  if (!page) {
-    throw new Error('Page does not exist');
+    console.log('!!', {
+      user,
+      role,
+      pathkeyPages: pathKey.pages,
+      pathKeyPage: pathKey.page,
+      what: pathKey.pages[pathKey.page as keyof P],
+    });
+
+    store.dispatch(
+      userLoggedIn({
+        user,
+        role,
+      }),
+    );
+
+    const page = pathKey.pages[pathKey.page as keyof P];
+
+    if (!page) {
+      throw new Error('2222Page does not exist');
+    }
+  } catch (error) {
+    console.log('error', error);
+    return Promise.resolve(true);
   }
 
-  if (page.requiredRoles && page.requiredRoles.indexOf(role) === -1) {
-    return Promise.reject(false);
-  }
+  // if (page.requiredRoles && page.requiredRoles.indexOf(role) === -1) {
+  // return Promise.reject(false);
+  // }
 
   return Promise.resolve(true);
 }
 
 export function isAuthed<P extends StringIndexedObject>(
   pathKey: PathKey<P>,
+  store: ToolkitStore,
 ): () => Promise<TE.TaskEither<Error, PathKey<P>>> {
   return async () => {
-    const role = await getRole();
-
-    return userIsLoggedInAndStaffOrPartner(role, pathKey)
+    return userIsLoggedInAndStaffOrPartner(pathKey, store)
       .then(() => TE.right(pathKey))
       .catch(TE.left);
   };
@@ -281,7 +305,7 @@ export function createMiddleware<State, P extends StringIndexedObject>(
 
     pipe(
       // Check whether the user is logged in and correctly authenticated
-      TE.fromTask(isAuthed(pathKey)),
+      TE.fromTask(isAuthed(pathKey, store)),
       TE.flatten,
       // If the user is authenticated, then we can proceed to the next page
       TE.map((currentPathKey) => routeChangeProvider(store, currentPathKey)),
