@@ -4,6 +4,8 @@ import { AuthenticationHeaders, StringIndexedObject } from './types';
 import {
   Amplitude,
   getEventWindowProperties,
+  replaceKeyWordValues,
+  replacePasswordValues,
 } from '@kanda-libs/ks-amplitude-provider';
 import { APP_ENV } from './config';
 
@@ -111,8 +113,7 @@ const formatTrackingBody = (
 
   const resourceData = body
     ? JSON.stringify(
-        {},
-        //replaceKeyWordValues(replacePasswordValues(JSON.parse(body))),
+        replaceKeyWordValues(replacePasswordValues(JSON.parse(body))),
       )
     : null;
 
