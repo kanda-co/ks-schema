@@ -229,31 +229,22 @@ function routeChangeProvider<State, P extends StringIndexedObject>(
   return pathKey;
 }
 
-async function getRole(): Promise<Role> {
-  const user = await FirebaseAuthService.user();
-  const idTokenResult = await user?.getIdTokenResult(true);
-  const role = idTokenResult?.claims?.role || undefined;
-  return Promise.resolve(role);
-}
-
 async function userIsLoggedInAndStaffOrPartner<P extends StringIndexedObject>(
   pathKey: PathKey<P>,
   store: ToolkitStore,
 ): Promise<boolean> {
-  // await FirebaseAuthService.isUserLoggedIn();
+  let { role } = store.getState().auth;
 
-  try {
+  const page = pathKey.pages[pathKey.page as keyof P];
+
+  if (!page) {
+    throw new Error('Page does not exist');
+  }
+
+  if (!role) {
     const user = await FirebaseAuthService.user();
     const idTokenResult = await user?.getIdTokenResult(true);
-    const role = idTokenResult?.claims?.role || undefined;
-
-    console.log('!!', {
-      user,
-      role,
-      pathkeyPages: pathKey.pages,
-      pathKeyPage: pathKey.page,
-      what: pathKey.pages[pathKey.page as keyof P],
-    });
+    role = idTokenResult?.claims?.role || undefined;
 
     store.dispatch(
       userLoggedIn({
@@ -261,20 +252,11 @@ async function userIsLoggedInAndStaffOrPartner<P extends StringIndexedObject>(
         role,
       }),
     );
-
-    const page = pathKey.pages[pathKey.page as keyof P];
-
-    if (!page) {
-      throw new Error('2222Page does not exist');
-    }
-  } catch (error) {
-    console.log('error', error);
-    return Promise.resolve(true);
   }
 
-  // if (page.requiredRoles && page.requiredRoles.indexOf(role) === -1) {
-  // return Promise.reject(false);
-  // }
+  if (page.requiredRoles && page.requiredRoles.indexOf(role) === -1) {
+    return Promise.reject(false);
+  }
 
   return Promise.resolve(true);
 }
