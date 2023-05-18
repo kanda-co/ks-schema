@@ -22,6 +22,7 @@ import type { StringIndexedObject } from '../types';
 import type { Role, RoutedApp, ValidAction } from './types';
 import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 import { createAppSlice } from '../store/slices/app';
+import { NotFoundPage } from '@kanda-libs/ks-design-library-new';
 
 export function getInitialDataPathKeyLayout<P extends StringIndexedObject>(
   pathKey: PathKey<P>,
@@ -318,7 +319,7 @@ function createRouterComponent<State, P extends StringIndexedObject>(
       <Router>
         <Provider
           guards={[createMiddleware<State, P>(store, pages)]}
-          error={(args) => <div>{JSON.stringify(args)}</div>}
+          error={() => <NotFoundPage />}
         >
           <Switch>
             <GuardedRoute path="/*" component={Page} />
