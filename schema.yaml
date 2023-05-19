@@ -678,6 +678,9 @@ paths:
       summary: get all partners
       tags:
         - Partner
+      parameters:
+        - $ref: "#/components/parameters/QueryFormat"
+        - $ref: "#/components/parameters/QueryFilter"
       responses:
         200:
           description: got all partners
