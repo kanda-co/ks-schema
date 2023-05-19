@@ -854,6 +854,9 @@ paths:
       summary: kanda staff to get all onboardings
       tags:
         - Onboarding
+      parameters:
+        - $ref: "#/components/parameters/QueryFormat"
+        - $ref: "#/components/parameters/QueryFilter"
       responses:
         200:
           description: got all onboardings
@@ -1026,6 +1029,9 @@ paths:
       summary: get all companies
       tags:
         - Company
+      parameters:
+        - $ref: "#/components/parameters/QueryFormat"
+        - $ref: "#/components/parameters/QueryFilter"
       responses:
         200:
           description: got all companies
@@ -1346,6 +1352,9 @@ paths:
       summary: get all jobs
       tags:
         - Job
+      parameters:
+        - $ref: "#/components/parameters/QueryFormat"
+        - $ref: "#/components/parameters/QueryFilter"
       responses:
         200:
           description: got all jobs
@@ -2014,6 +2023,9 @@ paths:
       summary: get all payments
       tags:
         - Payment
+      parameters:
+        - $ref: "#/components/parameters/QueryFormat"
+        - $ref: "#/components/parameters/QueryFilter"
       responses:
         200:
           description: got all payments
@@ -2191,6 +2203,9 @@ paths:
       summary: get all credits
       tags:
         - Credit
+      parameters:
+        - $ref: "#/components/parameters/QueryFormat"
+        - $ref: "#/components/parameters/QueryFilter"
       responses:
         200:
           description: got all credits
@@ -2451,6 +2466,9 @@ paths:
       summary: get all documents
       tags:
         - Document
+      parameters:
+        - $ref: "#/components/parameters/QueryFormat"
+        - $ref: "#/components/parameters/QueryFilter"
       responses:
         200:
           description: got all documents
@@ -2588,6 +2606,9 @@ paths:
       summary: get all subscriptions
       tags:
         - Subscription
+      parameters:
+        - $ref: "#/components/parameters/QueryFormat"
+        - $ref: "#/components/parameters/QueryFilter"
       responses:
         200:
           description: got all subscriptions
@@ -2753,6 +2774,9 @@ paths:
       summary: kanda staff to get all rates
       tags:
         - Rate
+      parameters:
+        - $ref: "#/components/parameters/QueryFormat"
+        - $ref: "#/components/parameters/QueryFilter"
       responses:
         200:
           description: got all rates
@@ -2890,6 +2914,9 @@ paths:
       summary: get all monitors
       tags:
         - Monitor
+      parameters:
+        - $ref: "#/components/parameters/QueryFormat"
+        - $ref: "#/components/parameters/QueryFilter"
       responses:
         200:
           description: got all monitors
@@ -3193,6 +3220,28 @@ components:
     BearerAuth:
       type: http
       scheme: bearer
+
+  parameters:
+    QueryFormat:
+      name: format
+      in: query
+      schema:
+        type: string
+        title: query format
+        description: query format to indicate response format
+        enum:
+          - "reduced"
+          - "full"
+        default: "reduced"
+
+    QueryFilter:
+      name: q
+      in: query
+      schema:
+        type: string
+        title: query filter
+        description: query filter in colon separated path+value pairs
+        minLength: 1
 
   schemas:
     AuthUser:
