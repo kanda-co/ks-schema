@@ -3235,7 +3235,7 @@ components:
         enum:
           - "reduced"
           - "full"
-        default: "reduced"
+        default: "full"
 
     QueryFilter:
       name: q
@@ -3243,7 +3243,7 @@ components:
       schema:
         type: string
         title: query filter
-        description: query filter in colon separated path+value pairs
+        description: query filter in colon path+value pairs, with comma separated filters
         minLength: 1
 
   schemas:
