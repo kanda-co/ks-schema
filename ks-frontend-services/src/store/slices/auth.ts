@@ -1,6 +1,5 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '../toolkit';
-import { User } from 'firebase/auth';
 
 export interface AuthState {
   isLoading: boolean;

@@ -229,7 +229,7 @@ function routeChangeProvider<State, P extends StringIndexedObject>(
   return pathKey;
 }
 
-async function userIsLoggedInAndStaffOrPartner<P extends StringIndexedObject>(
+async function userIsLoggedIn<P extends StringIndexedObject>(
   pathKey: PathKey<P>,
   store: ToolkitStore,
 ): Promise<boolean> {
@@ -246,14 +246,19 @@ async function userIsLoggedInAndStaffOrPartner<P extends StringIndexedObject>(
     const idTokenResult = await user?.getIdTokenResult(true);
     role = idTokenResult?.claims?.role || undefined;
 
+    // Call API me
+    // Take response and put into store
+
     store.dispatch(
       userLoggedIn({
-        user,
-        role,
+        user: user, // API me user
+        // user,
+        // role,
       }),
     );
   }
 
+  // TODO: Read user.role
   if (page.requiredRoles && page.requiredRoles.indexOf(role) === -1) {
     return Promise.reject(false);
   }
@@ -266,7 +271,7 @@ export function isAuthed<P extends StringIndexedObject>(
   store: ToolkitStore,
 ): () => Promise<TE.TaskEither<Error, PathKey<P>>> {
   return async () => {
-    return userIsLoggedInAndStaffOrPartner(pathKey, store)
+    return userIsLoggedIn(pathKey, store)
       .then(() => TE.right(pathKey))
       .catch(TE.left);
   };
