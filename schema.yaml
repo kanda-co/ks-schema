@@ -630,6 +630,7 @@ paths:
               - company
               - credit
               - job
+              - onboarding
               - payment
       responses:
         200:
@@ -6177,6 +6178,12 @@ components:
           description: relevant monitors
           items:
             $ref: "#/components/schemas/Monitor"
+        onboarding:
+          type: array
+          title: relevant onboardings
+          description: relevant onboardings
+          items:
+            $ref: "#/components/schemas/Onboarding"
         payment:
           type: array
           title: relevant payments
