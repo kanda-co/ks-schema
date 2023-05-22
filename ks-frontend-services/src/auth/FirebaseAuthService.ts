@@ -46,9 +46,15 @@ class FirebaseAuthService {
 
   constructor() {
     this.auth = getAuth();
+
+    const google = new GoogleAuthProvider();
+    const facebook = new FacebookAuthProvider();
+
+    facebook.addScope('email');
+
     this.providers = {
-      google: new GoogleAuthProvider(),
-      facebook: new FacebookAuthProvider(),
+      google,
+      facebook,
     };
   }
 
