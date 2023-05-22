@@ -254,7 +254,9 @@ async function userIsLoggedInAndStaffOrPartner<P extends StringIndexedObject>(
     );
   }
 
-  if (page.requiredRoles && page.requiredRoles.indexOf(role) === -1) {
+  const requiredRoles = page.requiredRoles || [];
+
+  if (requiredRoles.length > 0 && requiredRoles.indexOf(role) === -1) {
     return Promise.reject(false);
   }
 

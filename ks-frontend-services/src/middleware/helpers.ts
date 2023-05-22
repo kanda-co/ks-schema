@@ -5,7 +5,6 @@ import type {
   ValidAction,
   Page,
   PageList,
-  RoutedApp,
 } from './types';
 import * as TE from 'fp-ts/lib/TaskEither';
 import { pipe } from 'fp-ts/lib/function';
