@@ -6150,6 +6150,7 @@ components:
         - credit
         - job
         - monitor
+        - onboarding
         - payment
       properties:
         company:
