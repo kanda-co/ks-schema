@@ -22,6 +22,7 @@ import type { StringIndexedObject } from '../types';
 import type { Role, RoutedApp, ValidAction } from './types';
 import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 import { createAppSlice } from '../store/slices/app';
+import { userLoggedIn } from '../store/slices/auth';
 
 export function getInitialDataPathKeyLayout<P extends StringIndexedObject>(
   pathKey: PathKey<P>,
@@ -228,23 +229,29 @@ function routeChangeProvider<State, P extends StringIndexedObject>(
   return pathKey;
 }
 
-async function getRole(): Promise<Role> {
-  const user = await FirebaseAuthService.user();
-  const idTokenResult = await user?.getIdTokenResult(true);
-  const role = idTokenResult?.claims?.role || undefined;
-  return Promise.resolve(role);
-}
-
 async function userIsLoggedInAndStaffOrPartner<P extends StringIndexedObject>(
-  role: Role,
   pathKey: PathKey<P>,
+  store: ToolkitStore,
 ): Promise<boolean> {
-  await FirebaseAuthService.isUserLoggedIn();
+  let { role } = store.getState().auth;
 
   const page = pathKey.pages[pathKey.page as keyof P];
 
   if (!page) {
     throw new Error('Page does not exist');
+  }
+
+  if (!role) {
+    const user = await FirebaseAuthService.user();
+    const idTokenResult = await user?.getIdTokenResult(true);
+    role = idTokenResult?.claims?.role || undefined;
+
+    store.dispatch(
+      userLoggedIn({
+        user,
+        role,
+      }),
+    );
   }
 
   if (page.requiredRoles && page.requiredRoles.indexOf(role) === -1) {
@@ -256,11 +263,10 @@ async function userIsLoggedInAndStaffOrPartner<P extends StringIndexedObject>(
 
 export function isAuthed<P extends StringIndexedObject>(
   pathKey: PathKey<P>,
+  store: ToolkitStore,
 ): () => Promise<TE.TaskEither<Error, PathKey<P>>> {
   return async () => {
-    const role = await getRole();
-
-    return userIsLoggedInAndStaffOrPartner(role, pathKey)
+    return userIsLoggedInAndStaffOrPartner(pathKey, store)
       .then(() => TE.right(pathKey))
       .catch(TE.left);
   };
@@ -281,7 +287,7 @@ export function createMiddleware<State, P extends StringIndexedObject>(
 
     pipe(
       // Check whether the user is logged in and correctly authenticated
-      TE.fromTask(isAuthed(pathKey)),
+      TE.fromTask(isAuthed(pathKey, store)),
       TE.flatten,
       // If the user is authenticated, then we can proceed to the next page
       TE.map((currentPathKey) => routeChangeProvider(store, currentPathKey)),
