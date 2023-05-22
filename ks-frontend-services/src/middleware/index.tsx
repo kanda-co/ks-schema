@@ -1,4 +1,4 @@
-import React, { type FunctionComponent } from 'react';
+import { type FunctionComponent } from 'react';
 import { AnyAction } from '@reduxjs/toolkit';
 import * as TE from 'fp-ts/lib/TaskEither';
 import { pipe } from 'fp-ts/lib/function';
@@ -251,15 +251,15 @@ async function userIsLoggedIn<P extends StringIndexedObject>(
 
     store.dispatch(
       userLoggedIn({
-        user: user, // API me user
-        // user,
-        // role,
+        user,
+        role,
       }),
     );
   }
 
-  // TODO: Read user.role
-  if (page.requiredRoles && page.requiredRoles.indexOf(role) === -1) {
+  const requiredRoles = page.requiredRoles || [];
+
+  if (requiredRoles.length > 0 && requiredRoles.indexOf(role) === -1) {
     return Promise.reject(false);
   }
 
