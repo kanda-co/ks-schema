@@ -168,7 +168,12 @@ const interceptedFetch = (
           console.log('Unauthorised request, refreshing token');
 
         if (!token) {
-          const newToken = await FirebaseAuthService.token();
+          let newToken = await FirebaseAuthService.token();
+
+          if (!newToken) {
+            newToken = await FirebaseAuthService.refreshToken();
+          }
+
           if (APP_ENV === 'qa') console.log('Token refreshed');
           return originalFetch().apply(currentWindow, [
             url,

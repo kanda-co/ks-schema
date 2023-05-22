@@ -233,6 +233,23 @@ class FirebaseAuthService {
   };
 
   /**
+   * Refreshes the access token
+   */
+  refreshToken = async (forceRefresh = true) => {
+    if (forceRefresh) {
+      const { token } = await this.auth.currentUser?.getIdTokenResult(true);
+
+      return token;
+    }
+
+    const user = await this.user();
+
+    const { token } = await user?.getIdTokenResult();
+
+    return token;
+  };
+
+  /**
    * Log a user out
    */
   logout = async (redirect = true) => {
