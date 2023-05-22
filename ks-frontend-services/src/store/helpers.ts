@@ -215,6 +215,7 @@ export const handleResponse = <State extends GeneratedState<Entity>, Entity>(
   }
 
   const normalizedItems = items.reduce((acc, item) => {
+    if (!item) return acc;
     acc[(item as DataWithId).id] = item;
     return acc;
   }, {} as StringIndexedObject<Entity>);
