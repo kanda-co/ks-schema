@@ -26,6 +26,7 @@ import { userLoggedIn } from '../store/slices/auth';
 import services from '../service';
 import { handleResponse, type Response } from '../handlers';
 import { AuthUser } from '../generated/components/schemas';
+import { LOGIN_URL } from 'auth/constants';
 
 export function getInitialDataPathKeyLayout<P extends StringIndexedObject>(
   pathKey: PathKey<P>,
@@ -310,7 +311,7 @@ export function createMiddleware<State, P extends StringIndexedObject>(
       // If not, log the user out
       TE.orElse(() =>
         handleIO(() => {
-          window.location.href = '/login';
+          window.location.href = LOGIN_URL;
         }),
       ),
     )();
