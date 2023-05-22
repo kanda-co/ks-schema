@@ -14,8 +14,8 @@ interface ResponseBody<T = unknown> {
 
 export type Response<T = unknown> = fp.either.Either<Error, ResponseBody<T>>;
 
-export const handleResponse = (response: Response) =>
-  new Promise((resolve, reject) =>
+export function handleResponse<T = unknown>(response: Response<T>) {
+  return new Promise((resolve, reject) =>
     fp.either.fold(
       async (error: Error) => {
         if (APP_ENV === 'qa') console.log('Error:', error);
@@ -36,3 +36,4 @@ export const handleResponse = (response: Response) =>
       },
     )(response),
   );
+}

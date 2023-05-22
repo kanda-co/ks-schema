@@ -9,5 +9,5 @@ interface ResponseBody<T = unknown> {
     json: () => Promise<T>;
 }
 export type Response<T = unknown> = fp.either.Either<Error, ResponseBody<T>>;
-export declare const handleResponse: (response: Response) => Promise<unknown>;
+export declare function handleResponse<T = unknown>(response: Response<T>): Promise<unknown>;
 export {};
