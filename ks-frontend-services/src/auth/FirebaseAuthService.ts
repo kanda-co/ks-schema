@@ -98,12 +98,6 @@ class FirebaseAuthService {
     return await user.getIdToken(true);
   };
 
-  refreshToken = async (token: string, forceRefresh = true) => {
-    // If forceRefresh is true, exchange token + resolve the token
-    // Refreshes the token
-    // If forceRefresh is false, await.this.user() + resolve the token
-  };
-
   /**
    * Sets the firebase persistence to browser local storage
    */

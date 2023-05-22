@@ -169,9 +169,6 @@ const interceptedFetch = (
 
         if (!token) {
           const newToken = await FirebaseAuthService.token();
-          if (!newToken) {
-            // redirect to login
-          }
           if (APP_ENV === 'qa') console.log('Token refreshed');
           return originalFetch().apply(currentWindow, [
             url,
