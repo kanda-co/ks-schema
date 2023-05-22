@@ -1,12 +1,12 @@
 import { type FunctionComponent } from 'react';
 import * as TE from 'fp-ts/lib/TaskEither';
 import type { GuardFunctionRouteProps, GuardToRoute, Next } from 'react-router-guards/dist/types';
+import type { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 import type { PathKey } from '../store/types';
 import type { PageList } from './types';
 import { CreatePageArgs } from './helpers';
 import type { StringIndexedObject } from '../types';
 import type { RoutedApp } from './types';
-import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 export declare function getInitialDataPathKeyLayout<P extends StringIndexedObject>(pathKey: PathKey<P>): FunctionComponent;
 export declare function pathKeyToLoadingDependencies<State, P extends StringIndexedObject>(pathKey: PathKey<P>): Readonly<(keyof State)[]>;
 export declare function getPageUrls<P extends StringIndexedObject>(pages: PageList<P>): Record<keyof P, string>;

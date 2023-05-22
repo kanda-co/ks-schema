@@ -202,6 +202,12 @@ declare const infoIP: {
         method: import("../generated/operations/infoIP").InfoIPRequestFunction;
     };
 };
+declare const infoOnboarding: {
+    infoOnboarding: {
+        key: string;
+        method: import("../generated/operations/infoOnboarding").InfoOnboardingRequestFunction;
+    };
+};
 declare const infoPartner: {
     infoPartnerBranding: {
         key: string;
@@ -732,6 +738,12 @@ declare const services: {
             method: import("../generated/operations/infoIP").InfoIPRequestFunction;
         };
     };
+    infoOnboarding: {
+        infoOnboarding: {
+            key: string;
+            method: import("../generated/operations/infoOnboarding").InfoOnboardingRequestFunction;
+        };
+    };
     infoPartner: {
         infoPartnerBranding: {
             key: string;
@@ -1055,5 +1067,5 @@ declare const services: {
         };
     };
 };
-export { authUser, company, credit, document, event, infoAuth, infoCache, infoCompany, infoCustomer, infoDirector, infoEntity, infoGhost, infoHealth, infoIP, infoPartner, infoQuery, infoRedirect, infoValidation, job, monitor, onboarding, partner, payment, rate, subscription, task, webhook, address, pdf, sheets, };
+export { authUser, company, credit, document, event, infoAuth, infoCache, infoCompany, infoCustomer, infoDirector, infoEntity, infoGhost, infoHealth, infoIP, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoValidation, job, monitor, onboarding, partner, payment, rate, subscription, task, webhook, address, pdf, sheets, };
 export default services;

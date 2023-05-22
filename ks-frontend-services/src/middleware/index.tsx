@@ -13,16 +13,19 @@ import {
   GuardProvider,
   type GuardProviderProps,
 } from 'react-router-guards';
+import type { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 import type { PathKey } from '../store/types';
 import type { PageList, Router as RouterType, Page as PageType } from './types';
 import Page from './Page';
 import { FirebaseAuthService } from '../auth';
 import { CreatePageArgs, createPages, handleIO } from './helpers';
 import type { StringIndexedObject } from '../types';
-import type { Role, RoutedApp, ValidAction } from './types';
-import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
+import type { RoutedApp, ValidAction } from './types';
 import { createAppSlice } from '../store/slices/app';
 import { userLoggedIn } from '../store/slices/auth';
+import services from '../service';
+import { handleResponse, type Response } from '../handlers';
+import { AuthUser } from '../generated/components/schemas';
 
 export function getInitialDataPathKeyLayout<P extends StringIndexedObject>(
   pathKey: PathKey<P>,
@@ -229,11 +232,19 @@ function routeChangeProvider<State, P extends StringIndexedObject>(
   return pathKey;
 }
 
+async function getUser(): Promise<AuthUser> {
+  const response = await services.authUser.me.method()();
+  const user = await handleResponse<AuthUser>(response as Response<AuthUser>);
+
+  return user as AuthUser;
+}
+
 async function userIsLoggedIn<P extends StringIndexedObject>(
   pathKey: PathKey<P>,
   store: ToolkitStore,
 ): Promise<boolean> {
-  let { role } = store.getState().auth;
+  const { user: currentUser } = store.getState().auth;
+  let role = currentUser?.role;
 
   const page = pathKey.pages[pathKey.page as keyof P];
 
@@ -241,20 +252,13 @@ async function userIsLoggedIn<P extends StringIndexedObject>(
     throw new Error('Page does not exist');
   }
 
-  if (!role) {
-    const user = await FirebaseAuthService.user();
-    const idTokenResult = await user?.getIdTokenResult(true);
-    role = idTokenResult?.claims?.role || undefined;
+  const isUserLoggedIn = await FirebaseAuthService.isUserLoggedIn();
 
-    // Call API me
-    // Take response and put into store
+  if (isUserLoggedIn && !role) {
+    const user = await getUser();
+    role = user.role;
 
-    store.dispatch(
-      userLoggedIn({
-        user,
-        role,
-      }),
-    );
+    store.dispatch(userLoggedIn(user));
   }
 
   const requiredRoles = page.requiredRoles || [];
