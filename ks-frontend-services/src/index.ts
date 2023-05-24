@@ -30,7 +30,6 @@ export { createAction } from './middleware/helpers';
 export type {
   Payload,
   PathKey,
-  NormalizedEntities,
   AsyncThunkReturnType,
   ThunkAPI,
   SharedAsyncThunkActionArgs,

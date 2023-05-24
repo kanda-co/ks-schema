@@ -16,7 +16,7 @@ export { default as auth } from './store/slices/auth';
 export { getSelectors } from './store/selectors';
 export { createRoutedApp, pathKeyToLoadingDependencies, fetchPageInitialData, } from './middleware';
 export { createAction } from './middleware/helpers';
-export type { Payload, PathKey, NormalizedEntities, AsyncThunkReturnType, ThunkAPI, SharedAsyncThunkActionArgs, AsyncThunkActionArgs, } from './store/types';
+export type { Payload, PathKey, AsyncThunkReturnType, ThunkAPI, SharedAsyncThunkActionArgs, AsyncThunkActionArgs, } from './store/types';
 export type { Service, ServiceParams, ServiceMethod, ServiceSubmit, ServiceMethodReturnParams, NewService, } from './types';
 export type { RequestFunction, RequestFunctionArgs, } from '@openapi-io-ts/runtime';
 export type { KeyedMutator } from 'swr';

@@ -15,11 +15,10 @@ import type { StringIndexedObject, NewService } from '../types';
 import { handleResponse as handleApiResponse } from '../handlers';
 import type {
   AsyncThunkActionArgs,
-  GeneratedState,
   Payload,
   ThunkAPI,
   Selectors,
-  NormalizedEntities,
+  GeneratedState,
 } from './types';
 import {
   getHasVisitedCurrentPagePreviously,
@@ -81,11 +80,11 @@ const handleInfoEntity = async <
   const hasVisitedEntityPagePreviously =
     getHasVisitedCurrentPagePreviously(state);
 
-  const reducer = state[args.params.kind] as NormalizedEntities<Entity>;
+  const reducer = state[args.params.kind] as GeneratedState<Entity>;
 
   const { forceReload } = args;
 
-  const item = reducer.byId[args.params.id];
+  const item = reducer.entities[args.params.id];
 
   if (!forceReload && hasVisitedEntityPagePreviously && item) {
     return;
@@ -199,8 +198,13 @@ export const createAsyncThunkAction = <
   );
 };
 
+/**
+ * This function is passed to the reducers that are defined for the async thunk actions
+ * in the generated slices. It takes an entityAdapter and returns a function that
+ * takes the state and action and returns the new state.
+ */
 export const createResponseHandler =
-  <State extends EntityState<Entity>, Entity>(
+  <State extends GeneratedState<Entity>, Entity>(
     entityAdapter: EntityAdapter<Entity>,
   ) =>
   (state: State, action: PayloadAction<Entity | Entity[]>) => {
@@ -210,31 +214,42 @@ export const createResponseHandler =
     const items = isArray ? payload : [payload];
 
     if (!items.length) {
-      return state;
+      return {
+        ...state,
+        isLoading: false,
+        isSubmitting: false,
+      };
     }
 
-    // TODO
-    const id = '';
+    const { id } = state;
 
-    return entityAdapter.addMany(state, items);
+    return {
+      ...entityAdapter.addMany({ ...state }, items),
+      id,
+      fetchedList: !state.fetchedList ? isArray : true,
+      isLoading: false,
+      isSubmitting: false,
+    };
   };
 
-export const generateSelectors = <Entity, State extends EntityState<Entity>>(
+export const generateSelectors = <
+  Entity,
+  State extends StringIndexedObject<GeneratedState<Entity>>,
+>(
   reducer: keyof State,
+  entityAdapter: EntityAdapter<Entity>,
 ): Selectors<Entity, State> => {
+  const selectors = entityAdapter.getSelectors();
+
   const getReducer = (state: State) => state[reducer];
 
-  // TODO
-  const getData = createSelector(
-    getReducer,
-    (reducer) => [],
-    // Object.values(reducer.byId).sort((a, b) =>
-    // (a as DataWithId).id.localeCompare((b as DataWithId).id),
-    // ),
+  const getData = createSelector(getReducer, (reducer) =>
+    selectors.selectAll(reducer),
   );
 
-  // TODO
-  const getById = createSelector(getReducer, (reducer) => {});
+  const getById = createSelector(getReducer, (reducer) =>
+    selectors.selectEntities(reducer),
+  );
 
   const getId = createSelector(getPathKey, (pathKey) => {
     const { key } = getPageKeyAndId(pathKey.path, getPageUrls(pathKey.pages));
@@ -242,17 +257,22 @@ export const generateSelectors = <Entity, State extends EntityState<Entity>>(
     return pathKey.id;
   });
 
-  // TODO
-  const getItem = createSelector(getId, getById, (id, byId) => null);
+  const getItem = createSelector(getId, getById, (id, byId) => byId[id]);
 
-  // TODO
-  const getIsLoading = createSelector(getReducer, (reducer) => false);
+  const getIsLoading = createSelector(
+    getReducer,
+    (reducer) => reducer.isLoading,
+  );
 
-  // TODO
-  const getIsSubmitting = createSelector(getReducer, (reducer) => false);
+  const getIsSubmitting = createSelector(
+    getReducer,
+    (reducer) => reducer.isSubmitting,
+  );
 
-  // TODO
-  const getFetchedList = createSelector(getReducer, (reducer) => false);
+  const getFetchedList = createSelector(
+    getReducer,
+    (reducer) => reducer.fetchedList,
+  );
 
   return {
     getReducer,

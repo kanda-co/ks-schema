@@ -1,14 +1,10 @@
-import type { AsyncThunk } from '@reduxjs/toolkit';
+import type { AsyncThunk, EntityState } from '@reduxjs/toolkit';
 import { createAsyncThunk } from './toolkit';
 import type { Response } from '../handlers';
 import type { StringIndexedObject } from '../types';
 import type { PageList } from '../middleware/types';
 
 export type Payload<T> = () => Promise<Response<T>>;
-
-export interface NormalizedEntities<T> {
-  byId: StringIndexedObject<T>;
-}
 
 export type AsyncThunkReturnType<T> = T extends AsyncThunk<
   infer Entity,
@@ -25,7 +21,7 @@ export interface PathKey<P extends StringIndexedObject> {
   pages: PageList<P>;
 }
 
-export interface GeneratedState<T> extends NormalizedEntities<T> {
+export interface GeneratedState<T> extends EntityState<T> {
   id?: string;
   fetchedList: boolean;
   isLoading: boolean;
@@ -53,7 +49,7 @@ export type AsyncThunkActionArgs<Args> = Args extends undefined
 export interface Selectors<T, S> {
   getReducer: (state: S) => S[keyof S];
   getData: (state: S) => T[];
-  getById: (state: S) => NormalizedEntities<T>['byId'];
+  getById: (state: S) => EntityState<T>['entities'];
   getId: (state: S) => string | undefined;
   getItem: (state: S) => T | undefined;
   getIsLoading: (state: S) => boolean;
