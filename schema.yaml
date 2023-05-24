@@ -3983,6 +3983,7 @@ components:
         - risk_score
         - credit_limit
         - report_pdf
+        - people_ids
       properties:
         status:
           type: string
@@ -4020,6 +4021,12 @@ components:
           type: object
           title: associated report in pdf
           $ref: "#/components/schemas/Document"
+        people_ids:
+          type: array
+          title: people ids
+          description: company director people ids
+          items:
+            type: string
 
     CompanyDirectorReport:
       type: object
