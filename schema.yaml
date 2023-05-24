@@ -3861,9 +3861,12 @@ components:
           title: director review
           description: company director review stage
           properties:
-            report:
+            reports:
               type: object
-              $ref: "#/components/schemas/CompanyDirectorReport"
+              title: director report
+              additionalProperties:
+                type: object
+                $ref: "#/components/schemas/CompanyDirectorReport"
             approval:
               type: object
               $ref: "#/components/schemas/Approval"
