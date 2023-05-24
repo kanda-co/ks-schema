@@ -1,6 +1,6 @@
-import type { AsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import type { AsyncThunk, PayloadAction, EntityAdapter, EntityState } from '@reduxjs/toolkit';
 import type { StringIndexedObject, NewService } from '../types';
-import type { AsyncThunkActionArgs, GeneratedState, Payload, Selectors } from './types';
+import type { AsyncThunkActionArgs, Payload, Selectors } from './types';
 export declare const handlePayload: <T>(payload: Payload<T>) => Promise<T>;
 export type DataWithId = {
     id: string;
@@ -8,19 +8,8 @@ export type DataWithId = {
 export declare const formatById: <T>(data: T[]) => StringIndexedObject<T>;
 export declare const isArrayOfValue: <Entity>(data: Entity | Entity[]) => data is Entity[];
 export declare const createAsyncThunkAction: <Entity extends void | StringIndexedObject<any>, Args extends StringIndexedObject<any> = undefined>(service: NewService<Entity, Args>) => AsyncThunk<Entity, AsyncThunkActionArgs<Args>, {}>;
-export declare const handleResponse: <State extends GeneratedState<Entity>, Entity>(state: State, action: {
+export declare const createResponseHandler: <State extends EntityState<Entity>, Entity>(entityAdapter: EntityAdapter<Entity>) => (state: State, action: {
     payload: Entity | Entity[];
     type: string;
-}) => (State & {
-    isLoading: boolean;
-    isSubmitting: boolean;
-}) | {
-    id: string;
-    fetchedList: boolean;
-    byId: {
-        [x: string]: Entity;
-    };
-    isLoading: boolean;
-    isSubmitting: boolean;
-};
-export declare const generateSelectors: <Entity, State extends StringIndexedObject<GeneratedState<Entity>>>(reducer: keyof State) => Selectors<Entity, State>;
+}) => State;
+export declare const generateSelectors: <Entity, State extends EntityState<Entity>>(reducer: keyof State) => Selectors<Entity, State>;

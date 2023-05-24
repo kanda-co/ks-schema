@@ -29,7 +29,7 @@ builder.addCase(${actionName}.rejected, (state, action) => {
 
 const selector = (entityName: string) => {
   const camelCaseEntityName = getCamelCaseEntityName(entityName);
-  return `const ${camelCaseEntityName} = generateSelectors<${entityName}, StringIndexedObject<GeneratedState<${entityName}>>>("${camelCaseEntityName}");`;
+  return `const ${camelCaseEntityName} = generateSelectors<${entityName}, EntityState<${entityName}>>("${camelCaseEntityName}");`;
 };
 
 const selectorTypeImports = (entityNames: string[]) =>
@@ -41,7 +41,6 @@ export const selectors = (
   entityNames: string[],
 ) => `import {generateSelectors} from '../helpers';
 import type { StringIndexedObject } from '../../types';
-import type { GeneratedState } from '../types';
 export * as app from './app';
 ${selectorTypeImports(entityNames)}
 
@@ -89,15 +88,21 @@ export const slice = (
   camelCaseEntityName: string,
   actionNames: string[],
 ) => `// Imports
-import { type PayloadAction, type AsyncThunkAction } from "@reduxjs/toolkit";
+import {
+  type PayloadAction,
+  type AsyncThunkAction,
+  type EntityState,
+  createEntityAdapter,
+} from "@reduxjs/toolkit";
 import { createSlice } from "../../toolkit";
 import { type ${entityName}, services } from "../../../";
-import { GENERATED_INITIAL_STATE } from "../../constants";
 import {
   createAsyncThunkAction,
-  handleResponse,
+  createResponseHandler,
 } from '../../helpers';
-import type { AsyncThunkReturnType, GeneratedState } from "../../types";
+import type { AsyncThunkReturnType } from "../../types";
+
+export const ${camelCaseEntityName}Adapter = createEntityAdapter<${entityName}>({});
 
 // Service methods
 ${actionNames
@@ -114,33 +119,28 @@ export type ${entityName}Config = ${entityName}Return[2];
 export type ${entityName}AsyncThunkAction = AsyncThunkAction<${entityName}Entity, ${entityName}Params, ${entityName}Config>;
 
 // Reducer
-export type ${entityName}State = GeneratedState<${entityName}>;
-const initialState: ${entityName}State = GENERATED_INITIAL_STATE;
+export type ${entityName}State = EntityState<${entityName}>;
 
 export const ${handleResponseName(
   entityName,
-)} = handleResponse<${entityName}State, ${entityName}>;
+)} = createResponseHandler<${entityName}State, ${entityName}>(${camelCaseEntityName}Adapter);
 
 export const ${camelCaseEntityName}Slice = createSlice({
   name: "${camelCaseEntityName}",
-  initialState,
+  initialState: ${camelCaseEntityName}Adapter.getInitialState(),
   reducers: {
     fetching: (state: ${entityName}State, action: PayloadAction<undefined>) => ({
       ...state,
       isLoading: true,
     }),
-    fetched: (state: ${entityName}State, action: PayloadAction<${entityName}[]>) => ({
-      ...state,
-      ...handleResponse(state, action),
-      // Don't set fetchedList when using this action, as it's used
-      // by InfoEntity
-      fetchedList: state.fetchedList,
-    }),
+    fetched: ${camelCaseEntityName}Adapter.addMany
   },
-  extraReducers: (builder) => {${actionNames
-    .map((actionName) => reducerForAction(entityName, actionName))
-    .join('')}},
 });
 
 export default ${camelCaseEntityName}Slice.reducer;
 `;
+
+// TODO under fetched
+// extraReducers: (builder) => {${actionNames
+// .map((actionName) => reducerForAction(entityName, actionName))
+// .join('')}},

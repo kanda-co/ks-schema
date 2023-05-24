@@ -2,6 +2,8 @@ import type {
   ActionCreatorWithOptionalPayload,
   AsyncThunk,
   PayloadAction,
+  EntityAdapter,
+  EntityState,
 } from '@reduxjs/toolkit';
 import { createAsyncThunk, createSelector } from './toolkit';
 import type { RequestFunction } from '@openapi-io-ts/runtime';
@@ -197,55 +199,42 @@ export const createAsyncThunkAction = <
   );
 };
 
-export const handleResponse = <State extends GeneratedState<Entity>, Entity>(
-  state: State,
-  action: PayloadAction<Entity | Entity[]>,
-) => {
-  const { payload } = action;
-  const isArray = isArrayOfValue<Entity>(payload);
+export const createResponseHandler =
+  <State extends EntityState<Entity>, Entity>(
+    entityAdapter: EntityAdapter<Entity>,
+  ) =>
+  (state: State, action: PayloadAction<Entity | Entity[]>) => {
+    const { payload } = action;
+    const isArray = isArrayOfValue<Entity>(payload);
 
-  const items = isArray ? payload : [payload];
+    const items = isArray ? payload : [payload];
 
-  if (!items.length) {
-    return {
-      ...state,
-      isLoading: false,
-      isSubmitting: false,
-    };
-  }
+    if (!items.length) {
+      return state;
+    }
 
-  const normalizedItems = items.reduce((acc, item) => {
-    if (!item) return acc;
-    acc[(item as DataWithId).id] = item;
-    return acc;
-  }, {} as StringIndexedObject<Entity>);
+    // TODO
+    const id = '';
 
-  const { id } = state;
-
-  return {
-    id,
-    fetchedList: !state.fetchedList ? isArray : true,
-    byId: { ...state.byId, ...normalizedItems },
-    isLoading: false,
-    isSubmitting: false,
+    return entityAdapter.addMany(state, items);
   };
-};
 
-export const generateSelectors = <
-  Entity,
-  State extends StringIndexedObject<GeneratedState<Entity>>,
->(
+export const generateSelectors = <Entity, State extends EntityState<Entity>>(
   reducer: keyof State,
 ): Selectors<Entity, State> => {
   const getReducer = (state: State) => state[reducer];
 
-  const getData = createSelector(getReducer, (reducer) =>
-    Object.values(reducer.byId).sort((a, b) =>
-      (a as DataWithId).id.localeCompare((b as DataWithId).id),
-    ),
+  // TODO
+  const getData = createSelector(
+    getReducer,
+    (reducer) => [],
+    // Object.values(reducer.byId).sort((a, b) =>
+    // (a as DataWithId).id.localeCompare((b as DataWithId).id),
+    // ),
   );
 
-  const getById = createSelector(getReducer, (reducer) => reducer.byId);
+  // TODO
+  const getById = createSelector(getReducer, (reducer) => {});
 
   const getId = createSelector(getPathKey, (pathKey) => {
     const { key } = getPageKeyAndId(pathKey.path, getPageUrls(pathKey.pages));
@@ -253,22 +242,17 @@ export const generateSelectors = <
     return pathKey.id;
   });
 
-  const getItem = createSelector(getId, getById, (id, byId) => byId[id]);
+  // TODO
+  const getItem = createSelector(getId, getById, (id, byId) => null);
 
-  const getIsLoading = createSelector(
-    getReducer,
-    (reducer) => reducer.isLoading,
-  );
+  // TODO
+  const getIsLoading = createSelector(getReducer, (reducer) => false);
 
-  const getIsSubmitting = createSelector(
-    getReducer,
-    (reducer) => reducer.isSubmitting,
-  );
+  // TODO
+  const getIsSubmitting = createSelector(getReducer, (reducer) => false);
 
-  const getFetchedList = createSelector(
-    getReducer,
-    (reducer) => reducer.fetchedList,
-  );
+  // TODO
+  const getFetchedList = createSelector(getReducer, (reducer) => false);
 
   return {
     getReducer,
