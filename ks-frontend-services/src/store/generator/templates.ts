@@ -40,6 +40,7 @@ const selectorTypeImports = (entityNames: string[]) =>
 export const selectors = (
   entityNames: string[],
 ) => `import {generateSelectors} from '../helpers';
+import type { EntityState } from "@reduxjs/toolkit";
 import type { StringIndexedObject } from '../../types';
 export * as app from './app';
 ${selectorTypeImports(entityNames)}
