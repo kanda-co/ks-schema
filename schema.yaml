@@ -3845,10 +3845,10 @@ components:
           items:
             $ref: "#/components/schemas/OnboardingStage"
           readOnly: true
-        company_check:
+        company_review:
           type: object
-          title: company check
-          description: company check stage
+          title: company review
+          description: company review stage
           properties:
             report:
               type: object
@@ -3856,10 +3856,10 @@ components:
             approval:
               type: object
               $ref: "#/components/schemas/Approval"
-        director_check:
+        director_review:
           type: object
-          title: director check
-          description: company director check stage
+          title: director review
+          description: company director review stage
           properties:
             report:
               type: object
@@ -3867,10 +3867,10 @@ components:
             approval:
               type: object
               $ref: "#/components/schemas/Approval"
-        consumer_check:
+        consumer_review:
           type: object
-          title: consumer check
-          description: consumer check stage
+          title: consumer review
+          description: consumer review stage
           properties:
             reports:
               type: object
@@ -3881,10 +3881,10 @@ components:
             approval:
               type: object
               $ref: "#/components/schemas/Approval"
-        owner_check:
+        owner_review:
           type: object
-          title: owner check
-          description: owner check stage
+          title: owner review
+          description: owner review stage
           properties:
             reports:
               type: object
@@ -4096,15 +4096,6 @@ components:
       type: object
       title: owner report
       description: owner report with checks for AML + AdverseMedia
-      required:
-        - uk_credit_aml_warnings
-        - international_sanctions_warnings
-        - enhanced_international_saction_warnings
-        - edited_electoral_roll
-        - national_id_register
-        - uk_credit_header
-        - overall_pass
-        - adverse_media
       properties:
         uk_credit_aml_warnings:
           type: string
