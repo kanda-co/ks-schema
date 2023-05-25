@@ -35,25 +35,10 @@ Actions also accept shared options for `onSuccess`, `onError`, `forceReload`. Th
 ## Example usage
 1. Defining a new store:
 ```
-import {
-  slices as allSlices,
-  createAppSlice,
-  configureStore,
-} from "@kanda-libs/ks-frontend-services";
+import { createStore } from "@kanda-libs/ks-frontend-services";
+import { PageKeys } from "components/shared/App";
 
-export const appSlice = createAppSlice();
-
-export const app = appSlice.reducer;
-
-const { slices, ...reducers } = allSlices;
-
-export const store = configureStore({
-  reducer: { app, ...reducers },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }),
-});
+export const store = createStore<PageKeys>();
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
