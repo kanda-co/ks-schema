@@ -221,8 +221,6 @@ export const createResponseHandler =
       };
     }
 
-    const { id } = state;
-
     const nextState = { ...state };
 
     const result = isArray
@@ -231,7 +229,6 @@ export const createResponseHandler =
 
     return {
       ...result,
-      id,
       fetchedList: !state.fetchedList ? isArray : true,
       isLoading: false,
       isSubmitting: false,
@@ -249,11 +246,11 @@ export const generateSelectors = <
 
   const getReducer = (state: State) => state[reducer];
 
-  const getData = createSelector(getReducer, (reducer) =>
+  const getEntitiesAsArray = createSelector(getReducer, (reducer) =>
     selectors.selectAll(reducer),
   );
 
-  const getById = createSelector(getReducer, (reducer) =>
+  const getEntities = createSelector(getReducer, (reducer) =>
     selectors.selectEntities(reducer),
   );
 
@@ -263,7 +260,7 @@ export const generateSelectors = <
     return pathKey.id;
   });
 
-  const getItem = createSelector(getId, getById, (id, byId) => byId[id]);
+  const getEntity = createSelector(getId, getEntities, (id, byId) => byId[id]);
 
   const getIsLoading = createSelector(
     getReducer,
@@ -282,10 +279,10 @@ export const generateSelectors = <
 
   return {
     getReducer,
-    getData,
-    getById,
+    getEntitiesAsArray,
+    getEntities,
     getId,
-    getItem,
+    getEntity,
     getIsLoading,
     getIsSubmitting,
     getFetchedList,

@@ -22,7 +22,6 @@ export interface PathKey<P extends StringIndexedObject> {
 }
 
 export interface GeneratedState<T> extends EntityState<T> {
-  id?: string;
   fetchedList: boolean;
   isLoading: boolean;
   isSubmitting: boolean;
@@ -48,10 +47,10 @@ export type AsyncThunkActionArgs<Args> = Args extends undefined
 
 export interface Selectors<T, S> {
   getReducer: (state: S) => S[keyof S];
-  getData: (state: S) => T[];
-  getById: (state: S) => EntityState<T>['entities'];
+  getEntities: (state: S) => EntityState<T>['entities'];
+  getEntitiesAsArray: (state: S) => T[];
   getId: (state: S) => string | undefined;
-  getItem: (state: S) => T | undefined;
+  getEntity: (state: S) => T | undefined;
   getIsLoading: (state: S) => boolean;
   getIsSubmitting: (state: S) => boolean;
   getFetchedList: (state: S) => boolean;

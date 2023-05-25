@@ -1,7 +1,6 @@
 import { GeneratedState } from './types';
 
 export const GENERATED_STATE: Omit<GeneratedState<{}>, 'entities' | 'ids'> = {
-  id: '',
   isLoading: false,
   isSubmitting: false,
   fetchedList: false,
