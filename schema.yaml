@@ -246,7 +246,7 @@ paths:
             application/json:
               schema:
                 type: object
-                $ref: "#/components/schemas/DirectorReport"
+                $ref: "#/components/schemas/OwnerReport"
         default:
           description: unexpected error
           content:
@@ -630,6 +630,7 @@ paths:
               - company
               - credit
               - job
+              - onboarding
               - payment
       responses:
         200:
@@ -3815,10 +3816,296 @@ components:
           $ref: "#/components/schemas/Metadata"
           readOnly: true
 
-    DirectorReport:
+    Onboarding:
       type: object
-      title: director report
-      description: director report with checks for AML + AdverseMedia
+      title: company onboarding
+      description: company onboarding
+      properties:
+        id:
+          type: string
+          title: company unique id
+        cid:
+          type: string
+          title: company id
+        oid:
+          type: string
+          title: owner id
+          readOnly: true
+        aid:
+          type: string
+          title: author id
+          readOnly: true
+        current_stage:
+          type: string
+          title: onboarding current stage
+          $ref: "#/components/schemas/OnboardingStage"
+        stages:
+          type: array
+          title: onboarding stages
+          items:
+            $ref: "#/components/schemas/OnboardingStage"
+          readOnly: true
+        company_review:
+          type: object
+          title: company review
+          description: company review stage
+          properties:
+            report:
+              type: object
+              $ref: "#/components/schemas/CompanyReport"
+            approval:
+              type: object
+              $ref: "#/components/schemas/Approval"
+        director_review:
+          type: object
+          title: director review
+          description: company director review stage
+          properties:
+            reports:
+              type: object
+              title: director report
+              additionalProperties:
+                type: object
+                $ref: "#/components/schemas/CompanyDirectorReport"
+            approval:
+              type: object
+              $ref: "#/components/schemas/Approval"
+        consumer_review:
+          type: object
+          title: consumer review
+          description: consumer review stage
+          properties:
+            reports:
+              type: object
+              title: consumer report
+              additionalProperties:
+                type: object
+                $ref: "#/components/schemas/ConsumerReport"
+            approval:
+              type: object
+              $ref: "#/components/schemas/Approval"
+        owner_review:
+          type: object
+          title: owner review
+          description: owner review stage
+          properties:
+            reports:
+              type: object
+              title: owner AML/AdverseMedia report
+              additionalProperties:
+                type: object
+                $ref: "#/components/schemas/OwnerReport"
+            approval:
+              type: object
+              $ref: "#/components/schemas/Approval"
+        insurance_review:
+          type: object
+          title: insurance review
+          description: insurance document and expiry check and review
+          properties:
+            approval:
+              type: object
+              $ref: "#/components/schemas/Approval"
+        trade_review:
+          type: object
+          title: trade review
+          description: trade info check and review
+          properties:
+            approval:
+              type: object
+              $ref: "#/components/schemas/Approval"
+        online_review:
+          type: object
+          title: online review
+          description: online presence check and review
+          properties:
+            approval:
+              type: object
+              $ref: "#/components/schemas/Approval"
+        fca_upload:
+          type: object
+          title: fca upload
+          description: fca upload check and review
+          properties:
+            approval:
+              type: object
+              $ref: "#/components/schemas/Approval"
+        fca_awaiting_approval:
+          type: object
+          title: fca awaiting approval check and review
+          description: fca awaiting approval check and review
+          properties:
+            approval:
+              type: object
+              $ref: "#/components/schemas/Approval"
+        metadata:
+          type: object
+          $ref: "#/components/schemas/Metadata"
+          title: metadata
+          readOnly: true
+
+    OnboardingStage:
+      type: string
+      title: onboarding stage
+      enum:
+        - "ongoing"
+        - "company_report_review"
+        - "company_report_reviewed"
+        - "director_report_review"
+        - "director_report_reviewed"
+        - "consumer_report_review"
+        - "consumer_report_reviewed"
+        - "owner_report_review"
+        - "owner_report_reviewed"
+        - "insurance_review"
+        - "insurance_reviewed"
+        - "trade_review"
+        - "trade_reviewed"
+        - "online_review"
+        - "online_reviewed"
+        - "fca_upload_review"
+        - "fca_upload_reviewed"
+        - "fca_awaiting_approval"
+        - "fca_approved"
+        - "onboarding_not_approved"
+
+    CompanyReport:
+      type: object
+      title: company report
+      description: company onboarding report
+      required:
+        - status
+        - incorporation_date
+        - number_of_writs
+        - active_ccj_exact
+        - active_ccj_possible
+        - satisfied_ccj
+        - risk_score
+        - credit_limit
+        - report_pdf
+        - people_ids
+      properties:
+        status:
+          type: string
+          title: status
+          description: company status
+        incorporation_date:
+          type: string
+          title: incorporation date
+          description: company incorporation date
+        number_of_writs:
+          type: integer
+          title: number of writs
+          description: company number of writs (previous or negactive information)
+        active_ccj_exact:
+          type: integer
+          title: active ccj exact
+          description: company active ccj exact registered
+        active_ccj_possible:
+          type: integer
+          title: active ccj possible
+          description: company active ccj possible registered
+        satisfied_ccj:
+          type: integer
+          title: satisfied ccj
+          description: company satisfied ccj
+        risk_score:
+          type: string
+          title: risk score
+          description: company credit rating risk score
+        credit_limit:
+          type: string
+          title: credit limit
+          description: company credit rating credit limit
+        report_pdf:
+          type: object
+          title: associated report in pdf
+          $ref: "#/components/schemas/Document"
+        people_ids:
+          type: array
+          title: people ids
+          description: company director people ids
+          items:
+            type: string
+
+    CompanyDirectorReport:
+      type: object
+      title: company director report
+      description: company director report
+      required:
+        - number_of_current_appointments
+        - current_appointment_ccj
+        - number_of_inactive_appointments
+        - inactive_appointment_ccj
+        - number_of_previous_appointments
+        - previous_appointment_ccj
+        - disqualified
+      properties:
+        number_of_current_appointments:
+          type: integer
+          title: number of current appointments
+          description: company director number of current appointments
+        current_appointment_ccj:
+          type: integer
+          title: current appointment ccj
+          description: company director current appointment ccj
+        number_of_inactive_appointments:
+          type: integer
+          title: number of inactive appointments
+          description: company director number of inactive appointments
+        inactive_appointment_ccj:
+          type: integer
+          title: inactive appointment ccj
+          description: company director inactive appointment ccj
+        number_of_previous_appointments:
+          type: integer
+          title: number of previous appointments
+          description: company director number of previous appointments
+        previous_appointment_ccj:
+          type: integer
+          title: previous appointment ccj
+          description: company director previous appointment ccj
+        disqualified:
+          type: boolean
+          title: disqualified
+          description: company director disqualified
+
+    ConsumerReport:
+      type: object
+      title: consumer report
+      description: consumer report
+      required:
+        - active_ccj
+        - satisfied_ccj
+        - insolvencies
+        - credit_score_band
+        - credit_score
+      properties:
+        active_ccj:
+          type: integer
+          title: active ccj
+          description: consumer active ccj
+        satisfied_ccj:
+          type: integer
+          title: satisfied ccj
+          description: consumer satisfied ccj
+        insolvencies:
+          type: boolean
+          title: insolvencies
+          description: consumer insolvencies at address currently insolvent
+        credit_score_band:
+          type: string
+          title: credit score band
+          description: consumer credit score band
+        credit_score:
+          type: string
+          title: credit score
+          description: consumer credit score
+
+    OwnerReport:
+      type: object
+      title: owner report
+      description: owner report with checks for AML + AdverseMedia
       properties:
         uk_credit_aml_warnings:
           type: string
@@ -3853,108 +4140,6 @@ components:
           title: Adverse Media
           description: Adverse Media
 
-    Onboarding:
-      type: object
-      title: company onboarding
-      description: company onboarding
-      properties:
-        id:
-          type: string
-          title: company unique id
-        cid:
-          type: string
-          title: company id
-        oid:
-          type: string
-          title: owner id
-          readOnly: true
-        aid:
-          type: string
-          title: author id
-          readOnly: true
-        current_stage:
-          type: string
-          title: onboarding current stage
-          $ref: "#/components/schemas/OnboardingStage"
-        stages:
-          type: array
-          title: onboarding stages
-          items:
-            $ref: "#/components/schemas/OnboardingStage"
-          readOnly: true
-        company_report_approval:
-          type: object
-          title: company report approvals
-          $ref: "#/components/schemas/Approval"
-        director_report_approvals:
-          type: object
-          title: company director report approvals
-          additionalProperties:
-            type: object
-            $ref: "#/components/schemas/Approval"
-        consumer_report_approval:
-          type: object
-          title: company consumer report approvals
-          $ref: "#/components/schemas/Approval"
-        owner_reports:
-          type: object
-          title: company owner/director credit report
-          additionalProperties:
-            type: object
-            $ref: "#/components/schemas/DirectorReport"
-        owner_report_approvals:
-          type: object
-          title: company owner/director credit report approvals
-          additionalProperties:
-            type: object
-            $ref: "#/components/schemas/Approval"
-        insurance_approval:
-          type: object
-          title: insurance approvals
-          $ref: "#/components/schemas/Approval"
-        trade_review_approval:
-          type: object
-          title: trade review approvals
-          $ref: "#/components/schemas/Approval"
-        online_review_approval:
-          type: object
-          title: online review approvals
-          $ref: "#/components/schemas/Approval"
-        fca_approval:
-          type: object
-          title: fca upload and review approvals
-          $ref: "#/components/schemas/Approval"
-        metadata:
-          type: object
-          $ref: "#/components/schemas/Metadata"
-          title: metadata
-          readOnly: true
-
-    OnboardingStage:
-      type: string
-      title: onboarding stage
-      enum:
-        - "ongoing"
-        - "company_report_review"
-        - "company_report_reviewed"
-        - "director_report_review"
-        - "director_report_reviewed"
-        - "consumer_report_review"
-        - "consumer_report_reviewed"
-        - "owner_report_review"
-        - "owner_report_reviewed"
-        - "insurance_review"
-        - "insurance_reviewed"
-        - "trade_review"
-        - "trade_reviewed"
-        - "online_review"
-        - "online_reviewed"
-        - "fca_upload_review"
-        - "fca_upload_reviewed"
-        - "fca_awaiting_approval"
-        - "fca_approved"
-        - "onboarding_not_approved"
-
     Approval:
       type: object
       title: approval
@@ -3968,8 +4153,8 @@ components:
           title: approval outcome
           enum:
             - "PASS"
-            - "FAIL"
             - "REVIEW"
+            - "FAIL"
         reason:
           type: string
           title: approval outcome reason
@@ -3984,13 +4169,6 @@ components:
         reason_note:
           type: string
           title: approval outcome reason note
-        report_raw:
-          type: string
-          title: associated report in raw string
-        report_pdf:
-          type: object
-          title: associated report in pdf
-          $ref: "#/components/schemas/Document"
 
     InfoOnboarding:
       type: object
@@ -6150,6 +6328,7 @@ components:
         - credit
         - job
         - monitor
+        - onboarding
         - payment
       properties:
         company:
@@ -6176,6 +6355,12 @@ components:
           description: relevant monitors
           items:
             $ref: "#/components/schemas/Monitor"
+        onboarding:
+          type: array
+          title: relevant onboardings
+          description: relevant onboardings
+          items:
+            $ref: "#/components/schemas/Onboarding"
         payment:
           type: array
           title: relevant payments
