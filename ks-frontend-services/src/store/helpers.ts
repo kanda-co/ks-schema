@@ -223,8 +223,14 @@ export const createResponseHandler =
 
     const { id } = state;
 
+    const nextState = { ...state };
+
+    const result = isArray
+      ? entityAdapter.addMany(nextState, payload)
+      : entityAdapter.addOne(nextState, payload);
+
     return {
-      ...entityAdapter.addMany({ ...state }, items),
+      ...result,
       id,
       fetchedList: !state.fetchedList ? isArray : true,
       isLoading: false,
