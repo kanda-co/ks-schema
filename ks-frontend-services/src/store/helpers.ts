@@ -224,8 +224,8 @@ export const createResponseHandler =
     const nextState = { ...state };
 
     const result = isArray
-      ? entityAdapter.addMany(nextState, payload)
-      : entityAdapter.addOne(nextState, payload);
+      ? entityAdapter.upsertMany(nextState, payload)
+      : entityAdapter.upsertOne(nextState, payload);
 
     return {
       ...result,
