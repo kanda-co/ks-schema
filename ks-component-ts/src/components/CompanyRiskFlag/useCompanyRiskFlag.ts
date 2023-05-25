@@ -1,17 +1,17 @@
-import type { Flag, Monitor } from '@kanda-libs/ks-frontend-services';
-import type { Dictionary } from '@reduxjs/toolkit';
+import type { Flag, Monitor } from "@kanda-libs/ks-frontend-services";
+import type { StringIndexedObject } from "~/types";
 
 export interface CompanyRiskFlagHook {
-  level?: Flag['level'];
+  level?: Flag["level"];
 }
 
 export default function useCompanyRiskFlag(
-  id: string = '',
-  monitors: Dictionary<Monitor>,
+  id: string = "",
+  monitors: StringIndexedObject<Monitor>
 ): CompanyRiskFlagHook {
   const monitor = monitors[id];
 
   return {
-    level: monitor?.flag?.level || 'green',
+    level: monitor?.flag?.level || "green",
   };
 }
