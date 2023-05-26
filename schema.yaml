@@ -680,8 +680,8 @@ paths:
       tags:
         - Partner
       parameters:
-        - $ref: "#/components/parameters/QueryFormat"
-        - $ref: "#/components/parameters/QueryFilter"
+        - $ref: "#/components/parameters/Format"
+        - $ref: "#/components/parameters/Q"
       responses:
         200:
           description: got all partners
@@ -859,8 +859,8 @@ paths:
       tags:
         - Onboarding
       parameters:
-        - $ref: "#/components/parameters/QueryFormat"
-        - $ref: "#/components/parameters/QueryFilter"
+        - $ref: "#/components/parameters/Format"
+        - $ref: "#/components/parameters/Q"
       responses:
         200:
           description: got all onboardings
@@ -1034,8 +1034,8 @@ paths:
       tags:
         - Company
       parameters:
-        - $ref: "#/components/parameters/QueryFormat"
-        - $ref: "#/components/parameters/QueryFilter"
+        - $ref: "#/components/parameters/Format"
+        - $ref: "#/components/parameters/Q"
       responses:
         200:
           description: got all companies
@@ -1357,8 +1357,8 @@ paths:
       tags:
         - Job
       parameters:
-        - $ref: "#/components/parameters/QueryFormat"
-        - $ref: "#/components/parameters/QueryFilter"
+        - $ref: "#/components/parameters/Format"
+        - $ref: "#/components/parameters/Q"
       responses:
         200:
           description: got all jobs
@@ -2028,8 +2028,8 @@ paths:
       tags:
         - Payment
       parameters:
-        - $ref: "#/components/parameters/QueryFormat"
-        - $ref: "#/components/parameters/QueryFilter"
+        - $ref: "#/components/parameters/Format"
+        - $ref: "#/components/parameters/Q"
       responses:
         200:
           description: got all payments
@@ -2208,8 +2208,8 @@ paths:
       tags:
         - Credit
       parameters:
-        - $ref: "#/components/parameters/QueryFormat"
-        - $ref: "#/components/parameters/QueryFilter"
+        - $ref: "#/components/parameters/Format"
+        - $ref: "#/components/parameters/Q"
       responses:
         200:
           description: got all credits
@@ -2471,8 +2471,8 @@ paths:
       tags:
         - Document
       parameters:
-        - $ref: "#/components/parameters/QueryFormat"
-        - $ref: "#/components/parameters/QueryFilter"
+        - $ref: "#/components/parameters/Format"
+        - $ref: "#/components/parameters/Q"
       responses:
         200:
           description: got all documents
@@ -2611,8 +2611,8 @@ paths:
       tags:
         - Subscription
       parameters:
-        - $ref: "#/components/parameters/QueryFormat"
-        - $ref: "#/components/parameters/QueryFilter"
+        - $ref: "#/components/parameters/Format"
+        - $ref: "#/components/parameters/Q"
       responses:
         200:
           description: got all subscriptions
@@ -2779,8 +2779,8 @@ paths:
       tags:
         - Rate
       parameters:
-        - $ref: "#/components/parameters/QueryFormat"
-        - $ref: "#/components/parameters/QueryFilter"
+        - $ref: "#/components/parameters/Format"
+        - $ref: "#/components/parameters/Q"
       responses:
         200:
           description: got all rates
@@ -2919,8 +2919,8 @@ paths:
       tags:
         - Monitor
       parameters:
-        - $ref: "#/components/parameters/QueryFormat"
-        - $ref: "#/components/parameters/QueryFilter"
+        - $ref: "#/components/parameters/Format"
+        - $ref: "#/components/parameters/Q"
       responses:
         200:
           description: got all monitors
@@ -3226,7 +3226,7 @@ components:
       scheme: bearer
 
   parameters:
-    QueryFormat:
+    Format:
       name: format
       in: query
       schema:
@@ -3238,7 +3238,7 @@ components:
           - "full"
         default: "full"
 
-    QueryFilter:
+    Q:
       name: q
       in: query
       schema:
