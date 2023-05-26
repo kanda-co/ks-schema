@@ -4033,6 +4033,7 @@ components:
       title: company director report
       description: company director report
       required:
+        - people_id
         - number_of_current_appointments
         - current_appointment_ccj
         - number_of_inactive_appointments
@@ -4041,6 +4042,10 @@ components:
         - previous_appointment_ccj
         - disqualified
       properties:
+        people_id:
+          type: string
+          title: people id
+          description: company director people id
         number_of_current_appointments:
           type: integer
           title: number of current appointments
