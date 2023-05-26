@@ -4034,6 +4034,7 @@ components:
       description: company director report
       required:
         - people_id
+        - director_name
         - number_of_current_appointments
         - current_appointment_ccj
         - number_of_inactive_appointments
@@ -4046,6 +4047,10 @@ components:
           type: string
           title: people id
           description: company director people id
+        director_name:
+          type: string
+          title: director name
+          description: company director name
         number_of_current_appointments:
           type: integer
           title: number of current appointments
