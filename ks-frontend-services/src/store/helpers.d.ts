@@ -1,6 +1,6 @@
 import type { AsyncThunk, PayloadAction, EntityAdapter } from '@reduxjs/toolkit';
 import type { StringIndexedObject, NewService } from '../types';
-import type { AsyncThunkActionArgs, Payload, Selectors, GeneratedState, PathKey } from './types';
+import type { AsyncThunkActionArgs, Payload, Selectors, GeneratedState } from './types';
 export declare const handlePayload: <T>(payload: Payload<T>) => Promise<T>;
 export type DataWithId = {
     id: string;
@@ -25,10 +25,3 @@ export declare const createResponseHandler: <State extends GeneratedState<Entity
     isSubmitting: boolean;
 });
 export declare const generateSelectors: <Entity, State extends StringIndexedObject<GeneratedState<Entity>>>(reducer: keyof State, entityAdapter: EntityAdapter<Entity>) => Selectors<Entity, State>;
-export interface AppSelectors<State extends StringIndexedObject, Pages> {
-    getRoot: (state: State) => State;
-    getApp: (state: State) => State['app'];
-    getPathKey: (state: State) => PathKey<Pages>;
-    getIsLoading: (state: State) => boolean;
-}
-export declare const getAppSelectors: <State extends StringIndexedObject<any>, Pages>() => AppSelectors<State, Pages>;
