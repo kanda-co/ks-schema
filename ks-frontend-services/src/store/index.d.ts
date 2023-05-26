@@ -273,17 +273,9 @@ export declare function createStore<PageKeys extends string>(): import("@reduxjs
 }, import("redux").AnyAction, undefined>]>>;
 export declare function createSelectors<State, Pages>(): {
     getRoot: (state: State) => State;
-    getApp: (state: State) => any;
-    getPathKey: ((state: State) => import("./types").PathKey<Pages>) & import("reselect").OutputSelectorFields<(args_0: any) => import("./types").PathKey<Pages> & {
-        clearCache: () => void;
-    }> & {
-        clearCache: () => void;
-    };
-    getIsLoading: ((state: State) => boolean) & import("reselect").OutputSelectorFields<(args_0: State, args_1: import("./types").PathKey<Pages>) => boolean & {
-        clearCache: () => void;
-    }> & {
-        clearCache: () => void;
-    };
+    getApp: (state: State) => State["app"];
+    getPathKey: (state: State) => import("./types").PathKey<Pages>;
+    getIsLoading: (state: State) => boolean;
     authUser: import("./types").Selectors<import("..").AuthUser, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").AuthUser>>>;
     company: import("./types").Selectors<import("..").Company, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Company>>>;
     credit: import("./types").Selectors<import("..").Credit, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Credit>>>;

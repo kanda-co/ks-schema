@@ -25,17 +25,10 @@ export declare const createResponseHandler: <State extends GeneratedState<Entity
     isSubmitting: boolean;
 });
 export declare const generateSelectors: <Entity, State extends StringIndexedObject<GeneratedState<Entity>>>(reducer: keyof State, entityAdapter: EntityAdapter<Entity>) => Selectors<Entity, State>;
-export declare const getAppSelectors: <State extends StringIndexedObject<any>, Pages>() => {
+export interface AppSelectors<State extends StringIndexedObject, Pages> {
     getRoot: (state: State) => State;
-    getApp: (state: State) => any;
-    getPathKey: ((state: State) => PathKey<Pages>) & import("reselect").OutputSelectorFields<(args_0: any) => PathKey<Pages> & {
-        clearCache: () => void;
-    }> & {
-        clearCache: () => void;
-    };
-    getIsLoading: ((state: State) => boolean) & import("reselect").OutputSelectorFields<(args_0: State, args_1: PathKey<Pages>) => boolean & {
-        clearCache: () => void;
-    }> & {
-        clearCache: () => void;
-    };
-};
+    getApp: (state: State) => State['app'];
+    getPathKey: (state: State) => PathKey<Pages>;
+    getIsLoading: (state: State) => boolean;
+}
+export declare const getAppSelectors: <State extends StringIndexedObject<any>, Pages>() => AppSelectors<State, Pages>;

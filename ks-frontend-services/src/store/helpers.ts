@@ -294,7 +294,17 @@ export const generateSelectors = <
   };
 };
 
-export const getAppSelectors = <State extends StringIndexedObject, Pages>() => {
+export interface AppSelectors<State extends StringIndexedObject, Pages> {
+  getRoot: (state: State) => State;
+  getApp: (state: State) => State['app'];
+  getPathKey: (state: State) => PathKey<Pages>;
+  getIsLoading: (state: State) => boolean;
+}
+
+export const getAppSelectors = <
+  State extends StringIndexedObject,
+  Pages,
+>(): AppSelectors<State, Pages> => {
   const getRoot = (state: State) => state;
 
   const getApp = (state: State) => state.app;
