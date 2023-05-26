@@ -4,8 +4,6 @@ The middleware layer from `ks-frontend-services` handles authentication, routing
 
 At its core, the middleware revolves around the `PathKey` type, that stores all possible pages, the current page key, any ID that was supplied as part of the URL and the current path.
 
-Each middleware request is made up of the following steps:
-
 
 How it works
 ---
