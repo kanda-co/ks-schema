@@ -13,7 +13,7 @@ export { type OperationRequestFunctionMap } from './generated/operations';
 
 export * from './generated/components/schemas';
 
-export { createStore } from './store';
+export { createStore, createSelectors } from './store';
 export * as slices from './store/slices/generated/';
 export * as actions from './store/slices/generated/actions';
 export * from './store/toolkit';

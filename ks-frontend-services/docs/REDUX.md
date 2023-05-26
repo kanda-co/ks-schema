@@ -35,13 +35,15 @@ Actions also accept shared options for `onSuccess`, `onError`, `forceReload`. Th
 ## Example usage
 1. Defining a new store:
 ```
-import { createStore } from "@kanda-libs/ks-frontend-services";
-import { PageKeys } from "components/shared/App";
+import { createStore, createSelectors } from "@kanda-libs/ks-frontend-services";
+import { PageKeys, pages } from "components/shared/App";
 
 export const store = createStore<PageKeys>();
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+
+export const selectors = createSelectors<RootState, typeof pages>();
 ```
 2. Fetching the current selected company using selectors
 ```

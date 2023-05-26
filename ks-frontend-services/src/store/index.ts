@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { slices as allSlices, auth } from '..';
+import { slices as allSlices, auth, getSelectors } from '..';
+import { getAppSelectors } from './helpers';
 import { createAppSlice } from './slices/app';
 
 export function createStore<PageKeys extends string>() {
@@ -17,4 +18,11 @@ export function createStore<PageKeys extends string>() {
   });
 
   return store;
+}
+
+export function createSelectors<State, Pages>() {
+  return {
+    ...getSelectors(),
+    ...getAppSelectors<State, Pages>(),
+  };
 }

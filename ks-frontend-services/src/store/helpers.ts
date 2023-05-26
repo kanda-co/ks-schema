@@ -19,6 +19,7 @@ import type {
   ThunkAPI,
   Selectors,
   GeneratedState,
+  PathKey,
 } from './types';
 import {
   getHasVisitedCurrentPagePreviously,
@@ -27,7 +28,11 @@ import {
 import { InfoEntity } from '../generated/components/schemas';
 import { INFO_ENTITY_KEY } from './constants';
 import { GetInfoEntityRequestParameters } from '../generated/operations/getInfoEntity';
-import { getPageKeyAndId, getPageUrls } from '../middleware';
+import {
+  getPageKeyAndId,
+  getPageUrls,
+  pathKeyToLoadingDependencies,
+} from '../middleware';
 
 export const handlePayload = <T>(payload: Payload<T>): Promise<T> =>
   payload().then(handleApiResponse) as Promise<T>;
@@ -286,5 +291,36 @@ export const generateSelectors = <
     getIsLoading,
     getIsSubmitting,
     getFetchedList,
+  };
+};
+
+export const getAppSelectors = <State extends StringIndexedObject, Pages>() => {
+  const getRoot = (state: State) => state;
+
+  const getApp = (state: State) => state.app;
+
+  const getPathKey = createSelector(
+    getApp,
+    (state) =>
+      (state as StringIndexedObject).pathKey as unknown as PathKey<Pages>,
+  );
+
+  const getIsLoading = createSelector(getRoot, getPathKey, (root, pathKey) => {
+    const dependencies = pathKeyToLoadingDependencies<State, Pages>(pathKey);
+
+    return (
+      dependencies.length === 0 ||
+      dependencies.some(
+        (dependency) =>
+          (root[dependency] as GeneratedState<unknown>)?.isLoading || false,
+      )
+    );
+  });
+
+  return {
+    getRoot,
+    getApp,
+    getPathKey,
+    getIsLoading,
   };
 };

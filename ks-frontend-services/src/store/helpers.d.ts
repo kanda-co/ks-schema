@@ -1,6 +1,6 @@
 import type { AsyncThunk, PayloadAction, EntityAdapter } from '@reduxjs/toolkit';
 import type { StringIndexedObject, NewService } from '../types';
-import type { AsyncThunkActionArgs, Payload, Selectors, GeneratedState } from './types';
+import type { AsyncThunkActionArgs, Payload, Selectors, GeneratedState, PathKey } from './types';
 export declare const handlePayload: <T>(payload: Payload<T>) => Promise<T>;
 export type DataWithId = {
     id: string;
@@ -25,3 +25,17 @@ export declare const createResponseHandler: <State extends GeneratedState<Entity
     isSubmitting: boolean;
 });
 export declare const generateSelectors: <Entity, State extends StringIndexedObject<GeneratedState<Entity>>>(reducer: keyof State, entityAdapter: EntityAdapter<Entity>) => Selectors<Entity, State>;
+export declare const getAppSelectors: <State extends StringIndexedObject<any>, Pages>() => {
+    getRoot: (state: State) => State;
+    getApp: (state: State) => any;
+    getPathKey: ((state: State) => PathKey<Pages>) & import("reselect").OutputSelectorFields<(args_0: any) => PathKey<Pages> & {
+        clearCache: () => void;
+    }> & {
+        clearCache: () => void;
+    };
+    getIsLoading: ((state: State) => boolean) & import("reselect").OutputSelectorFields<(args_0: State, args_1: PathKey<Pages>) => boolean & {
+        clearCache: () => void;
+    }> & {
+        clearCache: () => void;
+    };
+};
