@@ -5,7 +5,7 @@ import type { StringIndexedObject } from '../../types';
 import * as operations from '../../generated/operations';
 import services from '../../service';
 import { getOperationKeys, getOperationName } from '../../helpers';
-import { actions, selectors, slice, sliceIndex } from './templates';
+import { actions, adapters, selectors, slice, sliceIndex } from './templates';
 import { filterActions } from './helpers';
 
 const getCamelCaseEntityName = (entityName: string) =>
@@ -90,6 +90,20 @@ function generateSelectorsIndex(entityNames: string[]) {
   console.log(`Success: selectors generated`);
 }
 
+function generateAdaptersIndex(entityNames: string[]) {
+  const exports = adapters(entityNames);
+
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
+  const outputPath = join(__dirname, `../adapters/index.ts`);
+
+  writeFileSync(outputPath, exports, {
+    flag: 'w',
+  });
+
+  console.log(`Success: adapters generated`);
+}
+
 const entityNames = getOperationKeys(operations)
   .map((key) => getOperationName(key, true))
   .filter(
@@ -108,6 +122,7 @@ const entityNames = getOperationKeys(operations)
   );
 
 entityNames.forEach(generateSlices);
+generateAdaptersIndex(entityNames);
 generateSlicesIndex(entityNames);
 generateActions(entityNames);
 generateSelectorsIndex(entityNames);

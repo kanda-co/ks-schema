@@ -29,27 +29,48 @@ builder.addCase(${actionName}.rejected, (state, action) => {
 
 const selector = (entityName: string) => {
   const camelCaseEntityName = getCamelCaseEntityName(entityName);
-  return `const ${camelCaseEntityName} = generateSelectors<${entityName}, StringIndexedObject<GeneratedState<${entityName}>>>("${camelCaseEntityName}");`;
+  return `const ${camelCaseEntityName} = generateSelectors<${entityName}, StringIndexedObject<GeneratedState<${entityName}>>>("${camelCaseEntityName}", ${camelCaseEntityName}Adapter);`;
 };
 
-const selectorTypeImports = (entityNames: string[]) =>
+const typeImports = (entityNames: string[]) =>
   `import type {${entityNames.join(
     ', ',
   )}} from '../../generated/components/schemas';`;
 
-export const selectors = (
-  entityNames: string[],
-) => `import {generateSelectors} from '../helpers';
+const selectorAdapterImports = (camelCaseEntityNames: string[]): string =>
+  `import { ${camelCaseEntityNames
+    .map((entityName) => `${entityName}Adapter`)
+    .join(',\n')} } from '../adapters';`;
+
+const adapter = (camelCaseEntityName: string, entityName: string) =>
+  `export const ${camelCaseEntityName}Adapter = createEntityAdapter<${entityName}>();`;
+
+export const adapters = (entityNames: string[]) => {
+  const camelCaseEntityNames = entityNames.map(getCamelCaseEntityName);
+
+  return `import { createEntityAdapter } from '@reduxjs/toolkit';
+        ${typeImports(entityNames)}
+	${camelCaseEntityNames
+    .map((entityName, key) => adapter(entityName, entityNames[key]))
+    .join('\n')}
+`;
+};
+
+export const selectors = (entityNames: string[]) => {
+  const camelCaseEntityNames = entityNames.map(getCamelCaseEntityName);
+  return `import {generateSelectors} from '../helpers';
 import type { StringIndexedObject } from '../../types';
 import type { GeneratedState } from '../types';
 export * as app from './app';
-${selectorTypeImports(entityNames)}
+${typeImports(entityNames)}
+${selectorAdapterImports(camelCaseEntityNames)}
 
 export const getSelectors = () => {
 ${entityNames.map(selector).join('\n')}
 
-return {${entityNames.map(getCamelCaseEntityName).join(', ')}}
+return {${camelCaseEntityNames.join(', ')}}
 }`;
+};
 
 function sliceName(entityName: string) {
   return `${entityName}Slice`;
@@ -89,15 +110,19 @@ export const slice = (
   camelCaseEntityName: string,
   actionNames: string[],
 ) => `// Imports
-import { type PayloadAction, type AsyncThunkAction } from "@reduxjs/toolkit";
+import {
+  type PayloadAction,
+  type AsyncThunkAction,
+} from "@reduxjs/toolkit";
 import { createSlice } from "../../toolkit";
 import { type ${entityName}, services } from "../../../";
-import { GENERATED_INITIAL_STATE } from "../../constants";
 import {
   createAsyncThunkAction,
-  handleResponse,
+  createResponseHandler,
 } from '../../helpers';
+import { GENERATED_STATE } from '../../constants'
 import type { AsyncThunkReturnType, GeneratedState } from "../../types";
+import { ${camelCaseEntityName}Adapter } from '../../adapters';
 
 // Service methods
 ${actionNames
@@ -115,26 +140,28 @@ export type ${entityName}AsyncThunkAction = AsyncThunkAction<${entityName}Entity
 
 // Reducer
 export type ${entityName}State = GeneratedState<${entityName}>;
-const initialState: ${entityName}State = GENERATED_INITIAL_STATE;
 
 export const ${handleResponseName(
   entityName,
-)} = handleResponse<${entityName}State, ${entityName}>;
+)} = createResponseHandler<${entityName}State, ${entityName}>(${camelCaseEntityName}Adapter);
 
 export const ${camelCaseEntityName}Slice = createSlice({
   name: "${camelCaseEntityName}",
-  initialState,
+  initialState: {
+	  ...GENERATED_STATE,
+	  ...${camelCaseEntityName}Adapter.getInitialState()
+  },
   reducers: {
     fetching: (state: ${entityName}State, action: PayloadAction<undefined>) => ({
       ...state,
       isLoading: true,
     }),
     fetched: (state: ${entityName}State, action: PayloadAction<${entityName}[]>) => ({
-      ...state,
-      ...handleResponse(state, action),
-      // Don't set fetchedList when using this action, as it's used
-      // by InfoEntity
-      fetchedList: state.fetchedList,
+	    ...state,
+	    ...${handleResponseName(entityName)}(state, action),
+            // Don't set fetchedList when using this action, as it's used
+            // by InfoEntity
+            fetchedList: state.fetchedList,
     }),
   },
   extraReducers: (builder) => {${actionNames

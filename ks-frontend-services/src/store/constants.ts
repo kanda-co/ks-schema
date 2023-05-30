@@ -1,15 +1,10 @@
-export const NORMALIZED_INITIAL_STATE = {
-  byId: {},
-};
+import { GeneratedState } from './types';
 
-export const GENERATED_INITIAL_STATE = {
-  ...NORMALIZED_INITIAL_STATE,
-  id: undefined,
-  fetchedList: false,
-  isLoading: true,
+export const GENERATED_STATE: Omit<GeneratedState<{}>, 'entities' | 'ids'> = {
+  isLoading: false,
   isSubmitting: false,
+  fetchedList: false,
 };
-
 export const INFO_ENTITY_KEY = 'infoEntity.getInfoEntity';
 
 export const IGNORED_ACTIONS = [

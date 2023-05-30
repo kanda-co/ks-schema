@@ -2,6 +2,8 @@ import type {
   ActionCreatorWithOptionalPayload,
   AsyncThunk,
   PayloadAction,
+  EntityAdapter,
+  EntityState,
 } from '@reduxjs/toolkit';
 import { createAsyncThunk, createSelector } from './toolkit';
 import type { RequestFunction } from '@openapi-io-ts/runtime';
@@ -13,11 +15,11 @@ import type { StringIndexedObject, NewService } from '../types';
 import { handleResponse as handleApiResponse } from '../handlers';
 import type {
   AsyncThunkActionArgs,
-  GeneratedState,
   Payload,
   ThunkAPI,
   Selectors,
-  NormalizedEntities,
+  GeneratedState,
+  PathKey,
 } from './types';
 import {
   getHasVisitedCurrentPagePreviously,
@@ -26,7 +28,11 @@ import {
 import { InfoEntity } from '../generated/components/schemas';
 import { INFO_ENTITY_KEY } from './constants';
 import { GetInfoEntityRequestParameters } from '../generated/operations/getInfoEntity';
-import { getPageKeyAndId, getPageUrls } from '../middleware';
+import {
+  getPageKeyAndId,
+  getPageUrls,
+  pathKeyToLoadingDependencies,
+} from '../middleware';
 
 export const handlePayload = <T>(payload: Payload<T>): Promise<T> =>
   payload().then(handleApiResponse) as Promise<T>;
@@ -79,11 +85,11 @@ const handleInfoEntity = async <
   const hasVisitedEntityPagePreviously =
     getHasVisitedCurrentPagePreviously(state);
 
-  const reducer = state[args.params.kind] as NormalizedEntities<Entity>;
+  const reducer = state[args.params.kind] as GeneratedState<Entity>;
 
   const { forceReload } = args;
 
-  const item = reducer.byId[args.params.id];
+  const item = reducer.entities[args.params.id];
 
   if (!forceReload && hasVisitedEntityPagePreviously && item) {
     return;
@@ -197,55 +203,61 @@ export const createAsyncThunkAction = <
   );
 };
 
-export const handleResponse = <State extends GeneratedState<Entity>, Entity>(
-  state: State,
-  action: PayloadAction<Entity | Entity[]>,
-) => {
-  const { payload } = action;
-  const isArray = isArrayOfValue<Entity>(payload);
+/**
+ * This function is passed to the reducers that are defined for the async thunk actions
+ * in the generated slices. It takes an entityAdapter and returns a function that
+ * takes the state and action and returns the new state.
+ */
+export const createResponseHandler =
+  <State extends GeneratedState<Entity>, Entity>(
+    entityAdapter: EntityAdapter<Entity>,
+  ) =>
+  (state: State, action: PayloadAction<Entity | Entity[]>) => {
+    const { payload } = action;
+    const isArray = isArrayOfValue<Entity>(payload);
 
-  const items = isArray ? payload : [payload];
+    const items = isArray ? payload : [payload];
 
-  if (!items.length) {
+    if (!items.length) {
+      return {
+        ...state,
+        isLoading: false,
+        isSubmitting: false,
+      };
+    }
+
+    const nextState = { ...state };
+
+    const result = isArray
+      ? entityAdapter.upsertMany(nextState, payload)
+      : entityAdapter.upsertOne(nextState, payload);
+
     return {
-      ...state,
+      ...result,
+      fetchedList: !state.fetchedList ? isArray : true,
       isLoading: false,
       isSubmitting: false,
     };
-  }
-
-  const normalizedItems = items.reduce((acc, item) => {
-    if (!item) return acc;
-    acc[(item as DataWithId).id] = item;
-    return acc;
-  }, {} as StringIndexedObject<Entity>);
-
-  const { id } = state;
-
-  return {
-    id,
-    fetchedList: !state.fetchedList ? isArray : true,
-    byId: { ...state.byId, ...normalizedItems },
-    isLoading: false,
-    isSubmitting: false,
   };
-};
 
 export const generateSelectors = <
   Entity,
   State extends StringIndexedObject<GeneratedState<Entity>>,
 >(
   reducer: keyof State,
+  entityAdapter: EntityAdapter<Entity>,
 ): Selectors<Entity, State> => {
+  const selectors = entityAdapter.getSelectors();
+
   const getReducer = (state: State) => state[reducer];
 
-  const getData = createSelector(getReducer, (reducer) =>
-    Object.values(reducer.byId).sort((a, b) =>
-      (a as DataWithId).id.localeCompare((b as DataWithId).id),
-    ),
+  const getEntitiesAsArray = createSelector(getReducer, (reducer) =>
+    selectors.selectAll(reducer),
   );
 
-  const getById = createSelector(getReducer, (reducer) => reducer.byId);
+  const getEntities = createSelector(getReducer, (reducer) =>
+    selectors.selectEntities(reducer),
+  );
 
   const getId = createSelector(getPathKey, (pathKey) => {
     const { key } = getPageKeyAndId(pathKey.path, getPageUrls(pathKey.pages));
@@ -253,7 +265,7 @@ export const generateSelectors = <
     return pathKey.id;
   });
 
-  const getItem = createSelector(getId, getById, (id, byId) => byId[id]);
+  const getEntity = createSelector(getId, getEntities, (id, byId) => byId[id]);
 
   const getIsLoading = createSelector(
     getReducer,
@@ -272,10 +284,10 @@ export const generateSelectors = <
 
   return {
     getReducer,
-    getData,
-    getById,
+    getEntitiesAsArray,
+    getEntities,
     getId,
-    getItem,
+    getEntity,
     getIsLoading,
     getIsSubmitting,
     getFetchedList,
