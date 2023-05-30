@@ -3,6 +3,7 @@ import { slices as allSlices, auth, getSelectors } from '..';
 import { createAppSlice } from './slices/app';
 import query from './slices/query';
 import { getAppSelectors } from './selectors/helpers';
+import querySelectors from './selectors/query';
 
 export function createStore<PageKeys extends string>() {
   const appSlice = createAppSlice<PageKeys>();
@@ -25,5 +26,6 @@ export function createSelectors<State, Pages>() {
   return {
     ...getSelectors(),
     ...getAppSelectors<State, Pages>(),
+    ...querySelectors,
   };
 }

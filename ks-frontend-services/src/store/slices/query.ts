@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type QueryType = 'home' | 'jobs' | 'payments' | 'loans';
 
-type QueryTerms = {
+export type QueryTerms = {
   [key in QueryType]?: string;
 };
 
