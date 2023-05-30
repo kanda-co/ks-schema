@@ -1,16 +1,26 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { slices as allSlices, auth, getSelectors } from '..';
+import { configureStore, type Reducer } from '@reduxjs/toolkit';
+import { slices as allSlices, getSelectors } from '..';
 import { createAppSlice } from './slices/app';
 import { getAppSelectors } from './selectors/helpers';
 
-export function createStore<PageKeys extends string>() {
+// Helpers types, so we can correctly infer the state of the store
+// even when passing in extra reducers
+type ReducerState<R> = R extends Reducer<infer State> ? State : never;
+
+type ReducerMap<M> = {
+  [K in keyof M]: Reducer<M[K]>;
+};
+
+export function createStore<PageKeys extends string, M>(
+  extraReducers: ReducerMap<M>,
+) {
   const appSlice = createAppSlice<PageKeys>();
   const app = appSlice.reducer;
 
   const { slices, ...reducers } = allSlices;
 
   const store = configureStore({
-    reducer: { app, auth, ...reducers },
+    reducer: { app, ...reducers, ...extraReducers },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         serializableCheck: false,
