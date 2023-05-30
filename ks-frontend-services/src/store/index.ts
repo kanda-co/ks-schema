@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { slices as allSlices, auth, getSelectors } from '..';
 import { createAppSlice } from './slices/app';
+import query from './slices/query';
 import { getAppSelectors } from './selectors/helpers';
 
 export function createStore<PageKeys extends string>() {
@@ -10,7 +11,7 @@ export function createStore<PageKeys extends string>() {
   const { slices, ...reducers } = allSlices;
 
   const store = configureStore({
-    reducer: { app, auth, ...reducers },
+    reducer: { app, query, auth, ...reducers },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         serializableCheck: false,
