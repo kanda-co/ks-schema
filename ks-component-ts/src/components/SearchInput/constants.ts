@@ -11,7 +11,7 @@ export const BUTTON = {
 };
 
 export const CLASS_NAMES = {
-  wrapper: "flex flex-row flex-1 ml-2",
+  wrapper: "ml-2",
   innerWrapper: "h-10 flex w-full flex-row justify-center",
   tag: "flex flex-row justify-between mr-2 cursor-pointer gap-x-2 whitespace-nowrap mt-[5px]",
   input: "-ml-[14px] mt-[5px]",
