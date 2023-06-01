@@ -1,3 +1,4 @@
+import type { AuthState } from './slices/auth';
 export declare function createStore<PageKeys extends string>(): import("@reduxjs/toolkit/dist/configureStore").ToolkitStore<{
     authUser: {
         ids: import("@reduxjs/toolkit").EntityId[];
@@ -134,7 +135,7 @@ export declare function createStore<PageKeys extends string>(): import("@reduxjs
     };
     app: import("./slices/app").AppState<PageKeys>;
     query: import("./slices/query").QueryState;
-    auth: import("./slices/auth").AuthState;
+    auth: AuthState;
 }, import("redux").AnyAction, import("@reduxjs/toolkit").MiddlewareArray<[import("@reduxjs/toolkit").ThunkMiddleware<{
     authUser: {
         ids: import("@reduxjs/toolkit").EntityId[];
@@ -271,9 +272,11 @@ export declare function createStore<PageKeys extends string>(): import("@reduxjs
     };
     app: import("./slices/app").AppState<PageKeys>;
     query: import("./slices/query").QueryState;
-    auth: import("./slices/auth").AuthState;
+    auth: AuthState;
 }, import("redux").AnyAction, undefined>]>>;
-export declare function createSelectors<State, Pages>(): {
+export declare function createSelectors<State extends {
+    auth: AuthState;
+}, Pages>(): {
     getQuery: (state: import("../types").StringIndexedObject<any> & {
         query: import("./slices/query").QueryState;
     }) => import("./slices/query").QueryState;
@@ -283,6 +286,22 @@ export declare function createSelectors<State, Pages>(): {
     getQueryFlags: (state: import("../types").StringIndexedObject<any> & {
         query: import("./slices/query").QueryState;
     }) => import("./slices/query").QueryFlags;
+    getAuth: (state: State) => AuthState;
+    getUser: ((state: State) => import("..").AuthUser) & import("reselect").OutputSelectorFields<(args_0: AuthState) => import("..").AuthUser & {
+        clearCache: () => void;
+    }> & {
+        clearCache: () => void;
+    };
+    getAuthIsLoading: ((state: State) => boolean) & import("reselect").OutputSelectorFields<(args_0: AuthState) => boolean & {
+        clearCache: () => void;
+    }> & {
+        clearCache: () => void;
+    };
+    getIsUserLoggedIn: ((state: State) => boolean) & import("reselect").OutputSelectorFields<(args_0: import("..").AuthUser, args_1: boolean) => boolean & {
+        clearCache: () => void;
+    }> & {
+        clearCache: () => void;
+    };
     getRoot: (state: State) => State;
     getApp: (state: State) => State["app"];
     getPathKey: (state: State) => import("./types").PathKey<Pages>;
