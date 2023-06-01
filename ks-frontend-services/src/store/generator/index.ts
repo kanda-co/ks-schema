@@ -7,10 +7,13 @@ import services from '../../service';
 import { getOperationKeys, getOperationName } from '../../helpers';
 import { actions, adapters, selectors, slice, sliceIndex } from './templates';
 import { filterActions } from './helpers';
+import { ACTION_SPECIFIC_REDUCERS } from '../constants';
 
 const getCamelCaseEntityName = (entityName: string) =>
   entityName.charAt(0).toLowerCase() + entityName.slice(1);
 
+// Generate a slice file for a given entity
+// that contains all the actions for that entity and the reducer
 function generateSlices(entityName: string) {
   const camelCaseEntityName = getCamelCaseEntityName(entityName);
 
@@ -31,6 +34,34 @@ function generateSlices(entityName: string) {
   });
 
   console.log(`Success: ${fileName} generated`);
+}
+
+// Generate slices for action specific reducers, such as jobCompanyInfo
+// These reducers are created solely for the purpose of storing the result
+// of these API calls where the entity does not match up to an entity that
+// we generate slices for
+function generateActionSpecificSlices() {
+  ACTION_SPECIFIC_REDUCERS.forEach(({ entity, action }) => {
+    console.log('????', entity, action);
+    const camelCaseEntityName = getCamelCaseEntityName(entity);
+    const camelCaseActionName = getCamelCaseEntityName(action);
+
+    const template = slice(entity, camelCaseEntityName, [action]);
+
+    // Determine the output file name
+    const fileName = `${camelCaseActionName}.ts`;
+
+    const __filename = fileURLToPath(import.meta.url);
+
+    const __dirname = dirname(__filename);
+    const outputPath = join(__dirname, `../slices/generated/${fileName}`);
+
+    writeFileSync(outputPath, template, {
+      flag: 'w',
+    });
+
+    console.log(`Success: ${fileName} generated`);
+  });
 }
 
 function generateSlicesIndex(entityNames: string[]) {
@@ -122,6 +153,7 @@ const entityNames = getOperationKeys(operations)
   );
 
 entityNames.forEach(generateSlices);
+generateActionSpecificSlices();
 generateAdaptersIndex(entityNames);
 generateSlicesIndex(entityNames);
 generateActions(entityNames);

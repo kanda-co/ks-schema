@@ -17,3 +17,12 @@ export const IGNORED_ACTIONS = [
   'postCompanyDirectorVerification',
   'getCompanyDirectorVerification',
 ];
+
+export interface ActionSpecificReducer {
+  entity: string;
+  action: string;
+}
+
+export const ACTION_SPECIFIC_REDUCERS: ActionSpecificReducer[] = [
+  { entity: 'Job', action: 'jobCompanyInfo' },
+];

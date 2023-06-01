@@ -113,7 +113,8 @@ const formatTrackingBody = (
 
   const resourceData = body
     ? JSON.stringify(
-        replaceKeyWordValues(replacePasswordValues(JSON.parse(body))),
+        {},
+        // replaceKeyWordValues(replacePasswordValues(JSON.parse(body))),
       )
     : null;
 
