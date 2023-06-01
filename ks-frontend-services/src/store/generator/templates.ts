@@ -109,6 +109,9 @@ export const slice = (
   entityName: string,
   camelCaseEntityName: string,
   actionNames: string[],
+  // This is used by action specific reducers
+  // to override the service name
+  serviceNameOverride?: string,
 ) => `// Imports
 import {
   type PayloadAction,
@@ -126,7 +129,9 @@ import { ${camelCaseEntityName}Adapter } from '../../adapters';
 
 // Service methods
 ${actionNames
-  .map((actionName) => serviceAction(actionName, camelCaseEntityName))
+  .map((actionName) =>
+    serviceAction(actionName, serviceNameOverride || camelCaseEntityName),
+  )
   .join('\n')}
 
 export type ${entityName}Return = AsyncThunkReturnType<${

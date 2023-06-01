@@ -265,7 +265,11 @@ export const generateSelectors = <
     return pathKey.id;
   });
 
-  const getEntity = createSelector(getId, getEntities, (id, byId) => byId[id]);
+  const getEntity = createSelector(
+    getId,
+    getEntities,
+    (id, entities) => entities[id],
+  );
 
   const getIsLoading = createSelector(
     getReducer,
