@@ -111,7 +111,11 @@ function generateActions(entityNames: string[]) {
 }
 
 function generateSelectorsIndex(entityNames: string[]) {
-  const exports = selectors(entityNames);
+  const exports = selectors([
+    ...entityNames,
+    // Create selectors for the single action reducers
+    ...SINGLE_ACTION_REDUCERS.map(({ action }) => action),
+  ]);
 
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = dirname(__filename);
