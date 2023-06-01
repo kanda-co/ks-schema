@@ -50,7 +50,7 @@ export declare const querySlice: import("@reduxjs/toolkit").Slice<QueryState, {
         isLoading: boolean;
     };
 }, "query">;
-export declare const setFlags: import("@reduxjs/toolkit").ActionCreatorWithOptionalPayload<[QueryType, {} | {
+export declare const setFlags: import("@reduxjs/toolkit").ActionCreatorWithOptionalPayload<[QueryType, {
     completedSetup: boolean;
 } | {
     pendingPayout: boolean;
