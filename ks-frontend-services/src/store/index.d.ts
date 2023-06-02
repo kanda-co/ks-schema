@@ -1,6 +1,8 @@
 import { type Reducer } from '@reduxjs/toolkit';
-import type { StringIndexedObject } from '../types';
-export declare function createStore<PageKeys extends string, T>(extraReducers?: StringIndexedObject<Reducer<T>>): import("@reduxjs/toolkit/dist/configureStore").ToolkitStore<{
+type ReducerMap<M> = {
+    [K in keyof M]: Reducer<M[K]>;
+};
+export declare function createStore<PageKeys extends string, M>(extraReducers: ReducerMap<M>): import("@reduxjs/toolkit/dist/configureStore").ToolkitStore<{
     authUser: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").AuthUser>;
@@ -135,7 +137,6 @@ export declare function createStore<PageKeys extends string, T>(extraReducers?: 
         isLoading: boolean;
     };
     app: import("./slices/app").AppState<PageKeys>;
-    query: import("./slices/query").QueryState;
     auth: import("./slices/auth").AuthState;
 }, import("redux").AnyAction, import("@reduxjs/toolkit").MiddlewareArray<[import("@reduxjs/toolkit").ThunkMiddleware<{
     authUser: {
@@ -272,40 +273,31 @@ export declare function createStore<PageKeys extends string, T>(extraReducers?: 
         isLoading: boolean;
     };
     app: import("./slices/app").AppState<PageKeys>;
-    query: import("./slices/query").QueryState;
     auth: import("./slices/auth").AuthState;
 }, import("redux").AnyAction, undefined>]>>;
 export declare function createSelectors<State, Pages>(): {
-    getQuery: (state: import("../types").StringIndexedObject<any> & {
-        query: import("./slices/query").QueryState;
-    }) => import("./slices/query").QueryState;
-    getQueryTerms: (state: import("../types").StringIndexedObject<any> & {
-        query: import("./slices/query").QueryState;
-    }) => import("./slices/query").QueryTerms;
-    getQueryFlags: (state: import("../types").StringIndexedObject<any> & {
-        query: import("./slices/query").QueryState;
-    }) => import("./slices/query").QueryFlags;
     getRoot: (state: State) => State;
     getApp: (state: State) => State["app"];
     getPathKey: (state: State) => import("./types").PathKey<Pages>;
     getIsLoading: (state: State) => boolean;
-    authUser: import("./types").Selectors<import("..").AuthUser, StringIndexedObject<import("./types").GeneratedState<import("..").AuthUser>>>;
-    company: import("./types").Selectors<import("..").Company, StringIndexedObject<import("./types").GeneratedState<import("..").Company>>>;
-    credit: import("./types").Selectors<import("..").Credit, StringIndexedObject<import("./types").GeneratedState<import("..").Credit>>>;
-    document: import("./types").Selectors<import("..").Document, StringIndexedObject<import("./types").GeneratedState<import("..").Document>>>;
-    event: import("./types").Selectors<import("..").Event, StringIndexedObject<import("./types").GeneratedState<import("..").Event>>>;
-    infoAuth: import("./types").Selectors<import("..").InfoAuth, StringIndexedObject<import("./types").GeneratedState<import("..").InfoAuth>>>;
-    infoCompany: import("./types").Selectors<import("..").InfoCompany, StringIndexedObject<import("./types").GeneratedState<import("..").InfoCompany>>>;
-    infoEntity: import("./types").Selectors<import("..").InfoEntity, StringIndexedObject<import("./types").GeneratedState<import("..").InfoEntity>>>;
-    infoGhost: import("./types").Selectors<import("..").InfoGhost, StringIndexedObject<import("./types").GeneratedState<import("..").InfoGhost>>>;
-    infoIP: import("./types").Selectors<import("..").InfoIP, StringIndexedObject<import("./types").GeneratedState<import("..").InfoIP>>>;
-    infoOnboarding: import("./types").Selectors<import("..").InfoOnboarding, StringIndexedObject<import("./types").GeneratedState<import("..").InfoOnboarding>>>;
-    infoQuery: import("./types").Selectors<import("..").InfoQuery, StringIndexedObject<import("./types").GeneratedState<import("..").InfoQuery>>>;
-    job: import("./types").Selectors<import("..").Job, StringIndexedObject<import("./types").GeneratedState<import("..").Job>>>;
-    monitor: import("./types").Selectors<import("..").Monitor, StringIndexedObject<import("./types").GeneratedState<import("..").Monitor>>>;
-    onboarding: import("./types").Selectors<import("..").Onboarding, StringIndexedObject<import("./types").GeneratedState<import("..").Onboarding>>>;
-    partner: import("./types").Selectors<import("..").Partner, StringIndexedObject<import("./types").GeneratedState<import("..").Partner>>>;
-    payment: import("./types").Selectors<import("..").Payment, StringIndexedObject<import("./types").GeneratedState<import("..").Payment>>>;
-    rate: import("./types").Selectors<import("..").Rate, StringIndexedObject<import("./types").GeneratedState<import("..").Rate>>>;
-    subscription: import("./types").Selectors<import("..").Subscription, StringIndexedObject<import("./types").GeneratedState<import("..").Subscription>>>;
+    authUser: import("./types").Selectors<import("..").AuthUser, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").AuthUser>>>;
+    company: import("./types").Selectors<import("..").Company, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Company>>>;
+    credit: import("./types").Selectors<import("..").Credit, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Credit>>>;
+    document: import("./types").Selectors<import("..").Document, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Document>>>;
+    event: import("./types").Selectors<import("..").Event, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Event>>>;
+    infoAuth: import("./types").Selectors<import("..").InfoAuth, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoAuth>>>;
+    infoCompany: import("./types").Selectors<import("..").InfoCompany, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoCompany>>>;
+    infoEntity: import("./types").Selectors<import("..").InfoEntity, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoEntity>>>;
+    infoGhost: import("./types").Selectors<import("..").InfoGhost, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoGhost>>>;
+    infoIP: import("./types").Selectors<import("..").InfoIP, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoIP>>>;
+    infoOnboarding: import("./types").Selectors<import("..").InfoOnboarding, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoOnboarding>>>;
+    infoQuery: import("./types").Selectors<import("..").InfoQuery, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoQuery>>>;
+    job: import("./types").Selectors<import("..").Job, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Job>>>;
+    monitor: import("./types").Selectors<import("..").Monitor, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Monitor>>>;
+    onboarding: import("./types").Selectors<import("..").Onboarding, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Onboarding>>>;
+    partner: import("./types").Selectors<import("..").Partner, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Partner>>>;
+    payment: import("./types").Selectors<import("..").Payment, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Payment>>>;
+    rate: import("./types").Selectors<import("..").Rate, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Rate>>>;
+    subscription: import("./types").Selectors<import("..").Subscription, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Subscription>>>;
 };
+export {};
