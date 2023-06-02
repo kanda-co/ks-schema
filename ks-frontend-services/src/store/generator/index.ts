@@ -126,11 +126,14 @@ function generateActions(entityNames: string[]) {
 }
 
 function generateSelectorsIndex(entityNames: string[]) {
-  const exports = selectors([
-    ...entityNames,
-    // Create selectors for the single action reducers
-    ...SINGLE_ACTION_REDUCERS.map(({ action }) => action),
-  ]);
+  const exports = selectors(
+    [
+      ...entityNames,
+      // Create selectors for the single action reducers
+      ...SINGLE_ACTION_REDUCERS.map(({ action }) => action),
+    ],
+    getEntityNameOverrides(),
+  );
 
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = dirname(__filename);
@@ -143,12 +146,23 @@ function generateSelectorsIndex(entityNames: string[]) {
   console.log(`Success: selectors generated`);
 }
 
+// Used to map the action name, to its override. For instance,
+// checkJob is mapped to JobCreditState
+const getEntityNameOverrides = (): StringIndexedObject<string> =>
+  SINGLE_ACTION_REDUCERS.reduce((final, { action, actionEntity }) => {
+    final[action] = actionEntity || action;
+    return final;
+  }, {} as StringIndexedObject<string>);
+
 function generateAdaptersIndex(entityNames: string[]) {
-  const exports = adapters([
-    ...entityNames,
-    // Create adapters for the single action reducers
-    ...SINGLE_ACTION_REDUCERS.map(({ action }) => action),
-  ]);
+  const exports = adapters(
+    [
+      ...entityNames,
+      // Create adapters for the single action reducers
+      ...SINGLE_ACTION_REDUCERS.map(({ action }) => action),
+    ],
+    getEntityNameOverrides(),
+  );
 
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = dirname(__filename);

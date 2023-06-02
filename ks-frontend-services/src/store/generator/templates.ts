@@ -1,3 +1,5 @@
+import { StringIndexedObject } from '../../types';
+
 const getCamelCaseEntityName = (entityName: string) =>
   entityName.charAt(0).toLowerCase() + entityName.slice(1);
 
@@ -27,9 +29,13 @@ builder.addCase(${actionName}.rejected, (state, action) => {
 });
 `;
 
-const selector = (entityName: string) => {
+const selector = (entityName: string, entityNameOverride?: string) => {
   const camelCaseEntityName = getCamelCaseEntityName(entityName);
-  return `const ${camelCaseEntityName} = generateSelectors<${entityName}, StringIndexedObject<GeneratedState<${entityName}>>>("${camelCaseEntityName}", ${camelCaseEntityName}Adapter);`;
+  return `const ${camelCaseEntityName} = generateSelectors<${
+    entityNameOverride || entityName
+  }, StringIndexedObject<GeneratedState<${
+    entityNameOverride || entityName
+  }>>>("${camelCaseEntityName}", ${camelCaseEntityName}Adapter);`;
 };
 
 const typeImports = (entityNames: string[]) =>
@@ -45,28 +51,49 @@ const selectorAdapterImports = (camelCaseEntityNames: string[]): string =>
 const adapter = (camelCaseEntityName: string, entityName: string) =>
   `export const ${camelCaseEntityName}Adapter = createEntityAdapter<${entityName}>();`;
 
-export const adapters = (entityNames: string[]) => {
+export const adapters = (
+  entityNames: string[],
+  entityNameOverrides: StringIndexedObject<string> = {},
+) => {
   const camelCaseEntityNames = entityNames.map(getCamelCaseEntityName);
 
   return `import { createEntityAdapter } from '@reduxjs/toolkit';
-        ${typeImports(entityNames)}
+        ${typeImports(
+          entityNames.map(
+            (entityName) => entityNameOverrides[entityName] || entityName,
+          ),
+        )}
 	${camelCaseEntityNames
-    .map((entityName, key) => adapter(entityName, entityNames[key]))
+    .map((entityName, key) =>
+      adapter(
+        entityName,
+        entityNameOverrides[entityNames[key]] || entityNames[key],
+      ),
+    )
     .join('\n')}
 `;
 };
 
-export const selectors = (entityNames: string[]) => {
+export const selectors = (
+  entityNames: string[],
+  entityNameOverrides: StringIndexedObject<string> = {},
+) => {
   const camelCaseEntityNames = entityNames.map(getCamelCaseEntityName);
   return `import {generateSelectors} from '../helpers';
 import type { StringIndexedObject } from '../../types';
 import type { GeneratedState } from '../types';
 export * as app from './app';
-${typeImports(entityNames)}
+${typeImports(
+  entityNames.map(
+    (entityName) => entityNameOverrides[entityName] || entityName,
+  ),
+)}
 ${selectorAdapterImports(camelCaseEntityNames)}
 
 export const getSelectors = () => {
-${entityNames.map(selector).join('\n')}
+${entityNames
+  .map((entityName) => selector(entityName, entityNameOverrides[entityName]))
+  .join('\n')}
 
 return {${camelCaseEntityNames.join(', ')}}
 }`;

@@ -142,7 +142,7 @@ export declare function createStore<PageKeys extends string>(): import("@reduxjs
     };
     checkJob: {
         ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<CheckJob>;
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").JobCreditState>;
         isSubmitting: boolean;
         fetchedList: boolean;
         isLoading: boolean;
@@ -293,7 +293,7 @@ export declare function createStore<PageKeys extends string>(): import("@reduxjs
     };
     checkJob: {
         ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<CheckJob>;
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").JobCreditState>;
         isSubmitting: boolean;
         fetchedList: boolean;
         isLoading: boolean;
@@ -342,5 +342,5 @@ export declare function createSelectors<State extends {
     rate: import("./types").Selectors<import("..").Rate, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Rate>>>;
     subscription: import("./types").Selectors<import("..").Subscription, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Subscription>>>;
     jobCompanyInfo: import("./types").Selectors<import("..").JobCompanyInfo, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").JobCompanyInfo>>>;
-    checkJob: import("./types").Selectors<CheckJob, import("../types").StringIndexedObject<import("./types").GeneratedState<CheckJob>>>;
+    checkJob: import("./types").Selectors<import("..").JobCreditState, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").JobCreditState>>>;
 };
