@@ -13,7 +13,7 @@ type ReducerMap<M> = {
   [K in keyof M]: Reducer<M[K]>;
 };
 
-export function createStore<PageKeys extends string, ExtraState>(
+export function createStore<PageKeys extends string, ExtraState = {}>(
   extraReducers: ReducerMap<ExtraState>,
 ) {
   const appSlice = createAppSlice<PageKeys>();
