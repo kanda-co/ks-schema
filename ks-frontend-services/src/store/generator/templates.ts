@@ -112,7 +112,12 @@ export const slice = (
   // This is used by action specific reducers
   // to override the service name
   serviceNameOverride?: string,
-) => `// Imports
+  // Used for when the entity name is different
+  // from the action name. For instance, checkJob, returns JobCreditState
+  entityNameOverride?: string,
+) => {
+  const formattedEntityName = entityNameOverride || entityName;
+  return `// Imports
 import {
   type PayloadAction,
   type AsyncThunkAction,
@@ -134,21 +139,21 @@ ${actionNames
   )
   .join('\n')}
 
-export type ${entityName}Return = AsyncThunkReturnType<${
-  typeOfActions(actionNames) || 'never'
-}>;
-export type ${entityName}Entity = ${entityName}Return[0];
-export type ${entityName}Params = ${entityName}Return[1];
-export type ${entityName}Config = ${entityName}Return[2];
+export type ${formattedEntityName}Return = AsyncThunkReturnType<${
+    typeOfActions(actionNames) || 'never'
+  }>;
+export type ${formattedEntityName}Entity = ${formattedEntityName}Return[0];
+export type ${formattedEntityName}Params = ${formattedEntityName}Return[1];
+export type ${formattedEntityName}Config = ${formattedEntityName}Return[2];
 
-export type ${entityName}AsyncThunkAction = AsyncThunkAction<${entityName}Entity, ${entityName}Params, ${entityName}Config>;
+export type ${formattedEntityName}AsyncThunkAction = AsyncThunkAction<${formattedEntityName}Entity, ${formattedEntityName}Params, ${formattedEntityName}Config>;
 
 // Reducer
-export type ${entityName}State = GeneratedState<${entityName}>;
+export type ${formattedEntityName}State = GeneratedState<${formattedEntityName}>;
 
 export const ${handleResponseName(
-  entityName,
-)} = createResponseHandler<${entityName}State, ${entityName}>(${camelCaseEntityName}Adapter);
+    entityName,
+  )} = createResponseHandler<${formattedEntityName}State, ${entityName}>(${camelCaseEntityName}Adapter);
 
 export const ${camelCaseEntityName}Slice = createSlice({
   name: "${camelCaseEntityName}",
@@ -176,3 +181,4 @@ export const ${camelCaseEntityName}Slice = createSlice({
 
 export default ${camelCaseEntityName}Slice.reducer;
 `;
+};

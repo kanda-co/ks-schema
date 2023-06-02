@@ -140,6 +140,13 @@ export declare function createStore<PageKeys extends string>(): import("@reduxjs
         fetchedList: boolean;
         isLoading: boolean;
     };
+    checkJob: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<CheckJob>;
+        isSubmitting: boolean;
+        fetchedList: boolean;
+        isLoading: boolean;
+    };
     app: import("./slices/app").AppState<PageKeys>;
     query: import("./slices/query").QueryState;
     auth: AuthState;
@@ -284,6 +291,13 @@ export declare function createStore<PageKeys extends string>(): import("@reduxjs
         fetchedList: boolean;
         isLoading: boolean;
     };
+    checkJob: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<CheckJob>;
+        isSubmitting: boolean;
+        fetchedList: boolean;
+        isLoading: boolean;
+    };
     app: import("./slices/app").AppState<PageKeys>;
     query: import("./slices/query").QueryState;
     auth: AuthState;
@@ -328,4 +342,5 @@ export declare function createSelectors<State extends {
     rate: import("./types").Selectors<import("..").Rate, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Rate>>>;
     subscription: import("./types").Selectors<import("..").Subscription, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Subscription>>>;
     jobCompanyInfo: import("./types").Selectors<import("..").JobCompanyInfo, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").JobCompanyInfo>>>;
+    checkJob: import("./types").Selectors<CheckJob, import("../types").StringIndexedObject<import("./types").GeneratedState<CheckJob>>>;
 };

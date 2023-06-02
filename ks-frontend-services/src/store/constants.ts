@@ -21,8 +21,10 @@ export const IGNORED_ACTIONS = [
 export interface SingleActionReducers {
   entity: string;
   action: string;
+  actionEntity?: string;
 }
 
 export const SINGLE_ACTION_REDUCERS: SingleActionReducers[] = [
   { entity: 'job', action: 'JobCompanyInfo' },
+  { entity: 'job', action: 'CheckJob', actionEntity: 'JobCreditState' },
 ];

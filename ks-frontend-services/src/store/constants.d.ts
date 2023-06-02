@@ -5,5 +5,6 @@ export declare const IGNORED_ACTIONS: string[];
 export interface SingleActionReducers {
     entity: string;
     action: string;
+    actionEntity?: string;
 }
 export declare const SINGLE_ACTION_REDUCERS: SingleActionReducers[];

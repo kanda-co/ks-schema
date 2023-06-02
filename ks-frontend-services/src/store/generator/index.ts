@@ -41,11 +41,14 @@ function generateSlices(entityName: string) {
 // of these API calls where the entity does not match up to an entity that
 // we generate slices for
 function generateActionSpecificSlices() {
-  SINGLE_ACTION_REDUCERS.forEach(({ entity, action }) => {
+  SINGLE_ACTION_REDUCERS.forEach(({ entity, action, actionEntity }) => {
     const camelCaseActionName = getCamelCaseEntityName(action);
+    const camelCaseActionEntityName = getCamelCaseEntityName(
+      actionEntity || '',
+    );
 
     const template = slice(
-      action,
+      actionEntity || action,
       camelCaseActionName,
       [camelCaseActionName],
       entity,
@@ -96,12 +99,20 @@ function generateActions(entityNames: string[]) {
     {} as StringIndexedObject<string[]>,
   );
 
-  const exports = Object.keys(serviceActionNames)
+  const standardActionExports = Object.keys(serviceActionNames)
     .map((entityName) => {
       const actionNames = filterActions(serviceActionNames[entityName]);
       return actions(entityName, actionNames);
     })
     .join('');
+
+  const exports = [
+    ...standardActionExports,
+    ...SINGLE_ACTION_REDUCERS.map(({ action }) => {
+      const camelCaseActionName = getCamelCaseEntityName(action);
+      return actions(camelCaseActionName, [camelCaseActionName]);
+    }),
+  ].join('');
 
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = dirname(__filename);
