@@ -1,7 +1,10 @@
 import { configureStore, type Reducer } from '@reduxjs/toolkit';
 import { slices as allSlices, getSelectors } from '..';
 import { createAppSlice } from './slices/app';
+import query from './slices/query';
+import auth from './slices/auth';
 import { getAppSelectors } from './selectors/helpers';
+import querySelectors from './selectors/query';
 
 // Helpers types, so we can correctly infer the state of the store
 // even when passing in extra reducers
@@ -20,7 +23,7 @@ export function createStore<PageKeys extends string, M>(
   const { slices, ...reducers } = allSlices;
 
   const store = configureStore({
-    reducer: { app, ...reducers, ...extraReducers },
+    reducer: { app, query, auth, ...reducers, ...extraReducers },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         serializableCheck: false,
@@ -34,5 +37,6 @@ export function createSelectors<State, Pages>() {
   return {
     ...getSelectors(),
     ...getAppSelectors<State, Pages>(),
+    ...querySelectors,
   };
 }
