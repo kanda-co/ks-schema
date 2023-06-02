@@ -68,7 +68,11 @@ function generateActionSpecificSlices() {
 }
 
 function generateSlicesIndex(entityNames: string[]) {
-  const exports = sliceIndex(entityNames);
+  const exports = sliceIndex([
+    ...entityNames,
+    // Create adapters for the single action reducers
+    ...SINGLE_ACTION_REDUCERS.map(({ action }) => action),
+  ]);
 
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = dirname(__filename);

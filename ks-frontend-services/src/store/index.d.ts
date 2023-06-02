@@ -133,6 +133,13 @@ export declare function createStore<PageKeys extends string>(): import("@reduxjs
         fetchedList: boolean;
         isLoading: boolean;
     };
+    jobCompanyInfo: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").JobCompanyInfo>;
+        isSubmitting: boolean;
+        fetchedList: boolean;
+        isLoading: boolean;
+    };
     app: import("./slices/app").AppState<PageKeys>;
     query: import("./slices/query").QueryState;
     auth: AuthState;
@@ -266,6 +273,13 @@ export declare function createStore<PageKeys extends string>(): import("@reduxjs
     subscription: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Subscription>;
+        isSubmitting: boolean;
+        fetchedList: boolean;
+        isLoading: boolean;
+    };
+    jobCompanyInfo: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").JobCompanyInfo>;
         isSubmitting: boolean;
         fetchedList: boolean;
         isLoading: boolean;
