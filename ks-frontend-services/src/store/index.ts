@@ -3,8 +3,6 @@ import { slices as allSlices, getSelectors } from '..';
 import { createAppSlice } from './slices/app';
 import auth from './slices/auth';
 import { getAppSelectors } from './selectors/helpers';
-import { getAuthSelectors } from './selectors/auth';
-import type { AuthState } from './slices/auth';
 import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 
 // Helpers types, so we can correctly infer the state of the store
@@ -39,10 +37,9 @@ export function createStore<PageKeys extends string, ExtraState = {}>(
   return store as unknown as ToolkitStore<RootState>;
 }
 
-export function createSelectors<State extends { auth: AuthState }, Pages>() {
+export function createSelectors<State, Pages>() {
   return {
     ...getSelectors(),
     ...getAppSelectors<State, Pages>(),
-    ...getAuthSelectors<State>(),
   };
 }
