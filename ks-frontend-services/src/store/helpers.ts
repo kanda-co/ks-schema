@@ -154,7 +154,7 @@ export const createAsyncThunkAction = <
         return [] as any;
       }
 
-      const { byId, fetchedList } = state[getReducerName(key) as string];
+      const { entities, fetchedList } = state[getReducerName(key) as string];
       const {
         preventLoadingState,
         forceReload,
@@ -171,7 +171,7 @@ export const createAsyncThunkAction = <
 
       if (isGet && !forceReload) {
         if (finalMethodArgs?.params?.id) {
-          const item = byId[finalMethodArgs.params.id];
+          const item = entities[finalMethodArgs.params.id];
 
           // If the data is already in the store, don't fetch it again
           if (item) {
