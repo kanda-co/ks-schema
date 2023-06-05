@@ -1,4 +1,8 @@
-export declare function createStore<PageKeys extends string>(): import("@reduxjs/toolkit/dist/configureStore").ToolkitStore<{
+import { type Reducer } from '@reduxjs/toolkit';
+type ReducerMap<M> = {
+    [K in keyof M]: Reducer<M[K]>;
+};
+export declare function createStore<PageKeys extends string, M>(extraReducers: ReducerMap<M>): import("@reduxjs/toolkit/dist/configureStore").ToolkitStore<{
     authUser: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").AuthUser>;
@@ -133,7 +137,6 @@ export declare function createStore<PageKeys extends string>(): import("@reduxjs
         isLoading: boolean;
     };
     app: import("./slices/app").AppState<PageKeys>;
-    query: import("./slices/query").QueryState;
     auth: import("./slices/auth").AuthState;
 }, import("redux").AnyAction, import("@reduxjs/toolkit").MiddlewareArray<[import("@reduxjs/toolkit").ThunkMiddleware<{
     authUser: {
@@ -270,19 +273,9 @@ export declare function createStore<PageKeys extends string>(): import("@reduxjs
         isLoading: boolean;
     };
     app: import("./slices/app").AppState<PageKeys>;
-    query: import("./slices/query").QueryState;
     auth: import("./slices/auth").AuthState;
 }, import("redux").AnyAction, undefined>]>>;
 export declare function createSelectors<State, Pages>(): {
-    getQuery: (state: import("../types").StringIndexedObject<any> & {
-        query: import("./slices/query").QueryState;
-    }) => import("./slices/query").QueryState;
-    getQueryTerms: (state: import("../types").StringIndexedObject<any> & {
-        query: import("./slices/query").QueryState;
-    }) => import("./slices/query").QueryTerms;
-    getQueryFlags: (state: import("../types").StringIndexedObject<any> & {
-        query: import("./slices/query").QueryState;
-    }) => import("./slices/query").QueryFlags;
     getRoot: (state: State) => State;
     getApp: (state: State) => State["app"];
     getPathKey: (state: State) => import("./types").PathKey<Pages>;
@@ -307,3 +300,4 @@ export declare function createSelectors<State, Pages>(): {
     rate: import("./types").Selectors<import("..").Rate, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Rate>>>;
     subscription: import("./types").Selectors<import("..").Subscription, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Subscription>>>;
 };
+export {};

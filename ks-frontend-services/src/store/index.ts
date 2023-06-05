@@ -1,31 +1,45 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { slices as allSlices, auth, getSelectors } from '..';
+import { configureStore, type Reducer } from '@reduxjs/toolkit';
+import { slices as allSlices, getSelectors } from '..';
 import { createAppSlice } from './slices/app';
-import query from './slices/query';
+import auth from './slices/auth';
 import { getAppSelectors } from './selectors/helpers';
-import querySelectors from './selectors/query';
+import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 
-export function createStore<PageKeys extends string>() {
+// Helpers types, so we can correctly infer the state of the store
+// even when passing in extra reducers
+type ReducerState<R> = R extends Reducer<infer State> ? State : never;
+
+type ReducerMap<M> = {
+  [K in keyof M]: Reducer<M[K]>;
+};
+
+export function createStore<PageKeys extends string, ExtraState = {}>(
+  extraReducers: ReducerMap<ExtraState>,
+) {
   const appSlice = createAppSlice<PageKeys>();
   const app = appSlice.reducer;
 
   const { slices, ...reducers } = allSlices;
 
   const store = configureStore({
-    reducer: { app, query, auth, ...reducers },
+    reducer: { app, auth, ...reducers, ...extraReducers },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         serializableCheck: false,
       }),
   });
 
-  return store;
+  type RootState = ReturnType<typeof store.getState> & ExtraState;
+
+  // It's not nice having to cast like this, but the types do not infer
+  // correctly otherwise because the types for this repo are bundled as
+  // part of the library
+  return store as unknown as ToolkitStore<RootState>;
 }
 
 export function createSelectors<State, Pages>() {
   return {
     ...getSelectors(),
     ...getAppSelectors<State, Pages>(),
-    ...querySelectors,
   };
 }
