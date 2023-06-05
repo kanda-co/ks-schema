@@ -1,31 +1,41 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { slices as allSlices, auth, getSelectors } from '..';
+import { configureStore, type Reducer } from '@reduxjs/toolkit';
+import { slices as allSlices, getSelectors } from '..';
 import { createAppSlice } from './slices/app';
-import query from './slices/query';
+import auth from './slices/auth';
 import { getAppSelectors } from './selectors/helpers';
-import querySelectors from './selectors/query';
+import { getAuthSelectors } from './selectors/auth';
+import type { AuthState } from './slices/auth';
 
-export function createStore<PageKeys extends string>() {
+type ReducerMap<M> = {
+  [K in keyof M]: Reducer<M[K]>;
+};
+
+export function createStore<PageKeys extends string, ExtraState = {}>(
+  extraReducers: ReducerMap<ExtraState>,
+) {
   const appSlice = createAppSlice<PageKeys>();
   const app = appSlice.reducer;
 
   const { slices, ...reducers } = allSlices;
 
   const store = configureStore({
-    reducer: { app, query, auth, ...reducers },
+    reducer: { app, auth, ...reducers, ...extraReducers },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         serializableCheck: false,
       }),
   });
 
+  // It's not nice having to cast like this, but the types do not infer
+  // correctly otherwise because the types for this repo are bundled as
+  // part of the library
   return store;
 }
 
-export function createSelectors<State, Pages>() {
+export function createSelectors<State extends { auth: AuthState }, Pages>() {
   return {
     ...getSelectors(),
     ...getAppSelectors<State, Pages>(),
-    ...querySelectors,
+    ...getAuthSelectors<State>(),
   };
 }

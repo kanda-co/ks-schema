@@ -1,4 +1,10 @@
-export declare function createStore<PageKeys extends string>(): import("@reduxjs/toolkit/dist/configureStore").ToolkitStore<{
+import { type Reducer } from '@reduxjs/toolkit';
+import type { AuthState } from './slices/auth';
+import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
+type ReducerMap<M> = {
+    [K in keyof M]: Reducer<M[K]>;
+};
+export declare function createStore<PageKeys extends string, ExtraState = {}>(extraReducers: ReducerMap<ExtraState>): ToolkitStore<{
     authUser: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").AuthUser>;
@@ -132,9 +138,22 @@ export declare function createStore<PageKeys extends string>(): import("@reduxjs
         fetchedList: boolean;
         isLoading: boolean;
     };
+    jobCompanyInfo: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").JobCompanyInfo>;
+        isSubmitting: boolean;
+        fetchedList: boolean;
+        isLoading: boolean;
+    };
+    checkJob: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").JobCreditState>;
+        isSubmitting: boolean;
+        fetchedList: boolean;
+        isLoading: boolean;
+    };
     app: import("./slices/app").AppState<PageKeys>;
-    query: import("./slices/query").QueryState;
-    auth: import("./slices/auth").AuthState;
+    auth: AuthState;
 }, import("redux").AnyAction, import("@reduxjs/toolkit").MiddlewareArray<[import("@reduxjs/toolkit").ThunkMiddleware<{
     authUser: {
         ids: import("@reduxjs/toolkit").EntityId[];
@@ -269,20 +288,30 @@ export declare function createStore<PageKeys extends string>(): import("@reduxjs
         fetchedList: boolean;
         isLoading: boolean;
     };
+    jobCompanyInfo: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").JobCompanyInfo>;
+        isSubmitting: boolean;
+        fetchedList: boolean;
+        isLoading: boolean;
+    };
+    checkJob: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").JobCreditState>;
+        isSubmitting: boolean;
+        fetchedList: boolean;
+        isLoading: boolean;
+    };
     app: import("./slices/app").AppState<PageKeys>;
-    query: import("./slices/query").QueryState;
-    auth: import("./slices/auth").AuthState;
+    auth: AuthState;
 }, import("redux").AnyAction, undefined>]>>;
-export declare function createSelectors<State, Pages>(): {
-    getQuery: (state: import("../types").StringIndexedObject<any> & {
-        query: import("./slices/query").QueryState;
-    }) => import("./slices/query").QueryState;
-    getQueryTerms: (state: import("../types").StringIndexedObject<any> & {
-        query: import("./slices/query").QueryState;
-    }) => import("./slices/query").QueryTerms;
-    getQueryFlags: (state: import("../types").StringIndexedObject<any> & {
-        query: import("./slices/query").QueryState;
-    }) => import("./slices/query").QueryFlags;
+export declare function createSelectors<State extends {
+    auth: AuthState;
+}, Pages>(): {
+    getAuth: (state: State) => AuthState;
+    getUser: (state: State) => import("..").AuthUser;
+    getAuthIsLoading: (state: State) => boolean;
+    getIsUserLoggedIn: (state: State) => boolean;
     getRoot: (state: State) => State;
     getApp: (state: State) => State["app"];
     getPathKey: (state: State) => import("./types").PathKey<Pages>;
@@ -306,4 +335,7 @@ export declare function createSelectors<State, Pages>(): {
     payment: import("./types").Selectors<import("..").Payment, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Payment>>>;
     rate: import("./types").Selectors<import("..").Rate, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Rate>>>;
     subscription: import("./types").Selectors<import("..").Subscription, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Subscription>>>;
+    jobCompanyInfo: import("./types").Selectors<import("..").JobCompanyInfo, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").JobCompanyInfo>>>;
+    checkJob: import("./types").Selectors<import("..").JobCreditState, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").JobCreditState>>>;
 };
+export {};
