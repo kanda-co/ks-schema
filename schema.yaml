@@ -4176,6 +4176,10 @@ components:
             - "investigation_required"
             - "manual_review_required"
             - "not_approved"
+            - "not_approved_ccj_against_business_or_director"
+            - "not_approved_ccj_against_previous_association"
+            - "not_approved_listed_trade_type_not_covered"
+            - "not_approved_several_negatives_against_company"
         reason_note:
           type: string
           title: approval outcome reason note
@@ -4969,6 +4973,10 @@ components:
       required:
         - company_name
       properties:
+        id:
+          type: string
+          title: job id
+          readOnly: true
         company_name:
           type: string
           title: company name
