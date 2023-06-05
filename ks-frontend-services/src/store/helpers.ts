@@ -259,13 +259,13 @@ export const generateSelectors = <
     selectors.selectEntities(reducer),
   );
 
-  const getId = createSelector(getPathKey, (pathKey) => pathKey.id);
+  const getId = createSelector(getPathKey, (pathKey) => {
+    const { key } = getPageKeyAndId(pathKey.path, getPageUrls(pathKey.pages));
+    if (pathKey?.page !== key) return undefined;
+    return pathKey.id;
+  });
 
-  const getEntity = createSelector(
-    getId,
-    getEntities,
-    (id, entities) => entities[id],
-  );
+  const getEntity = createSelector(getId, getEntities, (id, byId) => byId[id]);
 
   const getIsLoading = createSelector(
     getReducer,
