@@ -373,12 +373,8 @@ function createRouter<State, Keys extends string | number>(
   };
 }
 
-export function createRoutedApp<
-  State,
-  Keys extends string | number,
-  ExtraState = {},
->(
-  store: ToolkitStore<State & ExtraState>,
+export function createRoutedApp<State, Keys extends string | number>(
+  store: ToolkitStore<State>,
   args: Record<Keys, CreatePageArgs<State>>,
   notFoundPage: FunctionComponent = () => <>404</>,
 ): RoutedApp<Keys> {
