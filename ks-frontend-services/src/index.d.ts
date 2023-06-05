@@ -14,7 +14,6 @@ export * as actions from './store/slices/generated/actions';
 export * from './store/toolkit';
 export { createAppSlice } from './store/slices/app';
 export { default as auth } from './store/slices/auth';
-export { setFlags, setQuery } from './store/slices/query';
 export { getSelectors } from './store/selectors';
 export { createRoutedApp, pathKeyToLoadingDependencies, fetchPageInitialData, } from './middleware';
 export { createAction } from './middleware/helpers';

@@ -1,5 +1,10 @@
+import { type Reducer } from '@reduxjs/toolkit';
 import type { AuthState } from './slices/auth';
-export declare function createStore<PageKeys extends string>(): import("@reduxjs/toolkit/dist/configureStore").ToolkitStore<{
+import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
+type ReducerMap<M> = {
+    [K in keyof M]: Reducer<M[K]>;
+};
+export declare function createStore<PageKeys extends string, ExtraState = {}>(extraReducers: ReducerMap<ExtraState>): ToolkitStore<{
     authUser: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").AuthUser>;
@@ -148,9 +153,8 @@ export declare function createStore<PageKeys extends string>(): import("@reduxjs
         isLoading: boolean;
     };
     app: import("./slices/app").AppState<PageKeys>;
-    query: import("./slices/query").QueryState;
     auth: AuthState;
-}, import("redux").AnyAction, import("@reduxjs/toolkit").MiddlewareArray<[import("@reduxjs/toolkit").ThunkMiddleware<{
+} & ExtraState, import("redux").AnyAction, readonly import("redux").Middleware<{}, {
     authUser: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").AuthUser>;
@@ -299,21 +303,11 @@ export declare function createStore<PageKeys extends string>(): import("@reduxjs
         isLoading: boolean;
     };
     app: import("./slices/app").AppState<PageKeys>;
-    query: import("./slices/query").QueryState;
     auth: AuthState;
-}, import("redux").AnyAction, undefined>]>>;
+} & ExtraState, import("redux").Dispatch<import("redux").AnyAction>>[]>;
 export declare function createSelectors<State extends {
     auth: AuthState;
 }, Pages>(): {
-    getQuery: (state: import("../types").StringIndexedObject<any> & {
-        query: import("./slices/query").QueryState;
-    }) => import("./slices/query").QueryState;
-    getQueryTerms: (state: import("../types").StringIndexedObject<any> & {
-        query: import("./slices/query").QueryState;
-    }) => import("./slices/query").QueryTerms;
-    getQueryFlags: (state: import("../types").StringIndexedObject<any> & {
-        query: import("./slices/query").QueryState;
-    }) => import("./slices/query").QueryFlags;
     getAuth: (state: State) => AuthState;
     getUser: (state: State) => import("..").AuthUser;
     getAuthIsLoading: (state: State) => boolean;
@@ -344,3 +338,4 @@ export declare function createSelectors<State extends {
     jobCompanyInfo: import("./types").Selectors<import("..").JobCompanyInfo, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").JobCompanyInfo>>>;
     checkJob: import("./types").Selectors<import("..").JobCreditState, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").JobCreditState>>>;
 };
+export {};
