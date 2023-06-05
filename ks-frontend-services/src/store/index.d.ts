@@ -154,7 +154,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
     };
     app: import("./slices/app").AppState<PageKeys>;
     auth: AuthState;
-} & ExtraState, import("redux").AnyAction, readonly import("redux").Middleware<{}, {
+}, import("redux").AnyAction, import("@reduxjs/toolkit").MiddlewareArray<[import("@reduxjs/toolkit").ThunkMiddleware<{
     authUser: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").AuthUser>;
@@ -304,7 +304,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
     };
     app: import("./slices/app").AppState<PageKeys>;
     auth: AuthState;
-} & ExtraState, import("redux").Dispatch<import("redux").AnyAction>>[]>;
+}, import("redux").AnyAction, undefined>]>>;
 export declare function createSelectors<State extends {
     auth: AuthState;
 }, Pages>(): {

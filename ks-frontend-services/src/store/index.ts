@@ -5,11 +5,6 @@ import auth from './slices/auth';
 import { getAppSelectors } from './selectors/helpers';
 import { getAuthSelectors } from './selectors/auth';
 import type { AuthState } from './slices/auth';
-import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
-
-// Helpers types, so we can correctly infer the state of the store
-// even when passing in extra reducers
-type ReducerState<R> = R extends Reducer<infer State> ? State : never;
 
 type ReducerMap<M> = {
   [K in keyof M]: Reducer<M[K]>;
@@ -31,12 +26,10 @@ export function createStore<PageKeys extends string, ExtraState = {}>(
       }),
   });
 
-  type RootState = ReturnType<typeof store.getState> & ExtraState;
-
   // It's not nice having to cast like this, but the types do not infer
   // correctly otherwise because the types for this repo are bundled as
   // part of the library
-  return store as unknown as ToolkitStore<RootState>;
+  return store;
 }
 
 export function createSelectors<State extends { auth: AuthState }, Pages>() {
