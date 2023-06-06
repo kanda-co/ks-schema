@@ -1,6 +1,25 @@
 import * as operations from './generated/operations';
 import type { StringIndexedObject } from './types';
 import fetch, { originalFetch } from './fetch';
+import { G_RECAPTCHA } from 'config';
+
+const handleProtectedRequest = async (
+  init: StringIndexedObject,
+): Promise<StringIndexedObject> => {
+  const token = await (
+    window as StringIndexedObject
+  ).grecaptcha.enterprise.execute(G_RECAPTCHA, {
+    action: 'login',
+  });
+
+  return {
+    ...init,
+    headers: {
+      ...(init.headers || {}),
+      'x-kanda-rc': token,
+    },
+  };
+};
 
 /**
  * Call fetch, including the baseUrl and attaching headers including authentication
@@ -14,13 +33,7 @@ export const fetchRequestAdapter = (baseURL: string, requireAuth = true) => {
     const protectedRequest = decodedBody.protectedRequest || false;
 
     if (protectedRequest) {
-      const token = await (
-        window as StringIndexedObject
-      ).grecaptcha.enterprise.execute(process.env.REACT_APP_G_RECAPTCHA, {
-        action: 'login',
-      });
-
-      console.log('TOKEN FOUND!', token);
+      return fetchToUse(`${baseURL}${url}`, await handleProtectedRequest(init));
     }
 
     return fetchToUse(`${baseURL}${url}`, init);
