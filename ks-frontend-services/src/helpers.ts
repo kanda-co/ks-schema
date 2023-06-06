@@ -11,16 +11,21 @@ const handleProtectedRequest = async (
   });
 
   const { body } = init;
-  const { protectedRequest, ...formattedBody } = body || {};
+  const { protectedRequest, ...formattedBody } = JSON.parse(body || '{}');
 
-  return {
+  const formattedInit: StringIndexedObject = {
     ...init,
-    body: formattedBody,
     headers: {
       ...(init.headers || {}),
       'x-kanda-rctoken': token,
     },
   };
+
+  if (formattedBody) {
+    formattedInit.body = JSON.stringify(formattedBody);
+  }
+
+  return formattedInit;
 };
 
 /**
