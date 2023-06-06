@@ -6,14 +6,16 @@ import { RECAPTCHA_SITE_KEY } from './config';
 const handleProtectedRequest = async (
   init: StringIndexedObject,
 ): Promise<StringIndexedObject> => {
-  const token = await (
-    window as StringIndexedObject
-  ).grecaptcha.enterprise.execute(RECAPTCHA_SITE_KEY, {
+  const token = await window.grecaptcha.enterprise.execute(RECAPTCHA_SITE_KEY, {
     action: 'signup',
   });
 
+  const { body } = init;
+  const { protectedRequest, ...formattedBody } = body || {};
+
   return {
     ...init,
+    body: formattedBody,
     headers: {
       ...(init.headers || {}),
       'x-kanda-rctoken': token,

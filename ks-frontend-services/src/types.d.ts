@@ -58,3 +58,25 @@ export type ServiceSubmit<
 ) => Promise<ServiceMethodReturnParams<Value>>;
 
 export type ServiceMethodReturn<T> = Promise<ServiceMethodReturnParams<T>>;
+
+interface ReCaptchaInstance {
+  ready: (cb: () => any) => void;
+  execute: (token: string, { action: string }) => Promise<string>;
+  render: (id: string, options: ReCaptchaRenderOptions) => any;
+}
+
+interface ReCaptchaExecuteOptions {
+  action: string;
+}
+
+interface ReCaptchaRenderOptions {
+  sitekey: string;
+  size: 'invisible';
+}
+
+declare global {
+  interface Window {
+    grecaptcha: { enterprise: ReCaptchaInstance };
+    captchaOnLoad: () => void;
+  }
+}
