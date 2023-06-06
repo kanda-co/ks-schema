@@ -38,6 +38,7 @@ export default function useSubmit<Value, Params, Body>(
     async ({
       body = {} as Body,
       params = {} as Params,
+      protectedRequest = false,
     }: Partial<ServiceParams<Params, Body>>): Promise<
       ServiceMethodReturnParams<Value>
     > => {
@@ -58,7 +59,10 @@ export default function useSubmit<Value, Params, Body>(
        * have no params, body or both.
        */
       const args = {
-        body,
+        body: {
+          ...body,
+          protectedRequest,
+        },
         params,
       };
 

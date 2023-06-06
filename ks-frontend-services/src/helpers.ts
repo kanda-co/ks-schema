@@ -10,6 +10,19 @@ export const fetchRequestAdapter = (baseURL: string, requireAuth = true) => {
   const fetchToUse = requireAuth ? fetch : originalFetch();
 
   return async (url: string, init: StringIndexedObject): Promise<Response> => {
+    const decodedBody = JSON.parse(init.body || '{}');
+    const protectedRequest = decodedBody.protectedRequest || false;
+
+    if (protectedRequest) {
+      const token = await (
+        window as StringIndexedObject
+      ).grecaptcha.enterprise.execute(process.env.REACT_APP_G_RECAPTCHA, {
+        action: 'login',
+      });
+
+      console.log('TOKEN FOUND!', token);
+    }
+
     return fetchToUse(`${baseURL}${url}`, init);
   };
 };

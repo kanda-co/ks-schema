@@ -63,7 +63,7 @@ export const buildAuth = (token: string): AuthenticationHeaders => ({
  * @param init
  * @param token
  */
-export const buildRequestHeaders = (
+const buildRequestHeaders = (
   init: StringIndexedObject,
   token?: string,
   ids?: Ids,

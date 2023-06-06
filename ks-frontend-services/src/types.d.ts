@@ -18,6 +18,7 @@ export interface ServiceParams<
 > {
   params: Params;
   body: Body;
+  protectedRequest?: boolean;
 }
 
 export type ServiceMethod<

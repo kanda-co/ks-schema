@@ -805,12 +805,13 @@
   dependencies:
     "@amplitude/analytics-browser" "^1.6.4"
 
-"@kanda-libs/ks-design-library@0.2.62":
-  version "0.2.62"
-  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-design-library/-/ks-design-library-0.2.62.tgz#cfd0dbf51383bdcc714a28524bd7870a13667771"
-  integrity sha512-FDRQ+vSXC0wIINbO8BYuvEnMDAnd/IaM2RR6ZGx1WyPaJ9achElDYim5MZc1X7eVFuCOnufG42hnsLx96ao6SA==
+"@kanda-libs/ks-design-library@0.2.69":
+  version "0.2.69"
+  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-design-library/-/ks-design-library-0.2.69.tgz#0eda78a1b0e47095fb0fb9462d2366b10a3d84d5"
+  integrity sha512-6+uYG1MuAekSr7d8CpGqmRylcn3UvesHE1VdesEtg56egz0veYFg+zzrB3ETjLa2FS4QvkyfKNksN7kfN2f+wA==
   dependencies:
     "@kanda-libs/ks-amplitude-provider" "^0.0.7"
+    crypto-js "^4.1.1"
     file-saver "^2.0.5"
     fuse.js "^6.6.2"
     lodash.get "^4.4.2"
@@ -2328,7 +2329,7 @@ cross-spawn@^7.0.2, cross-spawn@^7.0.3:
     shebang-command "^2.0.0"
     which "^2.0.1"
 
-crypto-js@^4.0.0:
+crypto-js@^4.0.0, crypto-js@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-4.1.1.tgz#9e485bcf03521041bd85844786b83fb7619736cf"
   integrity sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==

@@ -3,7 +3,6 @@ import type {
   AsyncThunk,
   PayloadAction,
   EntityAdapter,
-  EntityState,
 } from '@reduxjs/toolkit';
 import { createAsyncThunk, createSelector } from './toolkit';
 import type { RequestFunction } from '@openapi-io-ts/runtime';
@@ -19,7 +18,6 @@ import type {
   ThunkAPI,
   Selectors,
   GeneratedState,
-  PathKey,
 } from './types';
 import {
   getHasVisitedCurrentPagePreviously,
@@ -28,11 +26,6 @@ import {
 import { InfoEntity } from '../generated/components/schemas';
 import { INFO_ENTITY_KEY } from './constants';
 import { GetInfoEntityRequestParameters } from '../generated/operations/getInfoEntity';
-import {
-  getPageKeyAndId,
-  getPageUrls,
-  pathKeyToLoadingDependencies,
-} from '../middleware';
 
 export const handlePayload = <T>(payload: Payload<T>): Promise<T> =>
   payload().then(handleApiResponse) as Promise<T>;
