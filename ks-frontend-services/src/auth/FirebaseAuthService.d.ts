@@ -28,7 +28,6 @@ declare class FirebaseAuthService {
      * Returns the currently logged in user's access token
      */
     token: () => Promise<string>;
-    refreshToken: (token: string, forceRefresh?: boolean) => Promise<void>;
     /**
      * Sets the firebase persistence to browser local storage
      */
