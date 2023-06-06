@@ -1,6 +1,25 @@
 import * as operations from './generated/operations';
 import type { StringIndexedObject } from './types';
 import fetch, { originalFetch } from './fetch';
+import { G_RECAPTCHA } from './config';
+
+const handleProtectedRequest = async (
+  init: StringIndexedObject,
+): Promise<StringIndexedObject> => {
+  const token = await (
+    window as StringIndexedObject
+  ).grecaptcha.enterprise.execute(G_RECAPTCHA, {
+    action: 'signup',
+  });
+
+  return {
+    ...init,
+    headers: {
+      ...(init.headers || {}),
+      'x-kanda-rctoken': token,
+    },
+  };
+};
 
 /**
  * Call fetch, including the baseUrl and attaching headers including authentication
@@ -10,6 +29,13 @@ export const fetchRequestAdapter = (baseURL: string, requireAuth = true) => {
   const fetchToUse = requireAuth ? fetch : originalFetch();
 
   return async (url: string, init: StringIndexedObject): Promise<Response> => {
+    const decodedBody = JSON.parse(init.body || '{}');
+    const protectedRequest = decodedBody.protectedRequest || false;
+
+    if (protectedRequest) {
+      return fetchToUse(`${baseURL}${url}`, await handleProtectedRequest(init));
+    }
+
     return fetchToUse(`${baseURL}${url}`, init);
   };
 };

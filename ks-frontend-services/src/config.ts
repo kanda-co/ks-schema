@@ -18,3 +18,7 @@ export const AMPLITUDE_STORAGE_KEY =
   process.env.REACT_APP_AMPLITUDE_STORAGE_KEY || 'amplitude-kanda-ids';
 
 export const APP_ENV = process.env.REACT_APP_ENV || 'qa';
+
+export const G_RECAPTCHA =
+  process.env.REACT_APP_G_RECAPTCHA ||
+  '6Lcrc3ImAAAAAPPx3ppenG9jWLk3O5XuFRZi5Abj';

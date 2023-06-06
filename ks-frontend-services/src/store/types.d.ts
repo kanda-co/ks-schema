@@ -35,6 +35,7 @@ type CreateAsyncThunkCallbackArguments = Parameters<CreateAsyncThunkCallback>;
 export type ThunkAPI = CreateAsyncThunkCallbackArguments[1];
 
 export type SharedAsyncThunkActionArgs = {
+  protectedRequest?: boolean;
   preventLoadingState?: boolean;
   forceReload?: boolean;
   onSuccess?: () => void;

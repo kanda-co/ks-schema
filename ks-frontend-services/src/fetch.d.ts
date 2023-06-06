@@ -1,7 +1,4 @@
 import { AuthenticationHeaders, StringIndexedObject } from './types';
-interface Request extends StringIndexedObject {
-    headers: StringIndexedObject & AuthenticationHeaders;
-}
 interface IdHeaders {
     'kanda-device-id'?: string;
     'kanda-session-id'?: string;
@@ -18,12 +15,6 @@ export declare const buildIds: (ids: Ids) => IdHeaders;
  * @param token
  */
 export declare const buildAuth: (token: string) => AuthenticationHeaders;
-/**
- * Build the needed headers for API requests, including any needed auth
- * @param init
- * @param token
- */
-export declare const buildRequestHeaders: (init: StringIndexedObject, token?: string, ids?: Ids) => Request;
 export declare const originalFetch: () => any;
 /**
  * Alter the fetch method so that it will automatically retry the request
