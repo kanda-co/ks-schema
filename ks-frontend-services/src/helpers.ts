@@ -16,7 +16,7 @@ const handleProtectedRequest = async (
     ...init,
     headers: {
       ...(init.headers || {}),
-      'x-kanda-rc': token,
+      'x-kanda-rctoken': token,
     },
   };
 };
