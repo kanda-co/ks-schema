@@ -19,6 +19,6 @@ export const AMPLITUDE_STORAGE_KEY =
 
 export const APP_ENV = process.env.REACT_APP_ENV || 'qa';
 
-export const G_RECAPTCHA =
-  process.env.REACT_APP_G_RECAPTCHA ||
+export const RECAPTCHA_SITE_KEY =
+  process.env.REACT_APP_RECAPTCHA_SITE_KEY ||
   '6Lcrc3ImAAAAAPPx3ppenG9jWLk3O5XuFRZi5Abj';

@@ -1,14 +1,14 @@
 import * as operations from './generated/operations';
 import type { StringIndexedObject } from './types';
 import fetch, { originalFetch } from './fetch';
-import { G_RECAPTCHA } from './config';
+import { RECAPTCHA_SITE_KEY } from './config';
 
 const handleProtectedRequest = async (
   init: StringIndexedObject,
 ): Promise<StringIndexedObject> => {
   const token = await (
     window as StringIndexedObject
-  ).grecaptcha.enterprise.execute(G_RECAPTCHA, {
+  ).grecaptcha.enterprise.execute(RECAPTCHA_SITE_KEY, {
     action: 'signup',
   });
 
