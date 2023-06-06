@@ -1,7 +1,7 @@
 import * as operations from './generated/operations';
 import type { StringIndexedObject } from './types';
 import fetch, { originalFetch } from './fetch';
-import { G_RECAPTCHA } from 'config';
+import { G_RECAPTCHA } from './config';
 
 const handleProtectedRequest = async (
   init: StringIndexedObject,
@@ -9,7 +9,7 @@ const handleProtectedRequest = async (
   const token = await (
     window as StringIndexedObject
   ).grecaptcha.enterprise.execute(G_RECAPTCHA, {
-    action: 'login',
+    action: 'signup',
   });
 
   return {
