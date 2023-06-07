@@ -6,6 +6,7 @@ import Row from "~/components/Table/Rows/Row";
 export interface RowsProps extends Omit<RowProps, "row"> {
   rows: RowType[];
   compact?: boolean;
+  rowClassName?: string;
 }
 
 const Rows: FunctionComponent<RowsProps> = function ({ rows, ...rowProps }) {

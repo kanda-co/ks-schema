@@ -5,12 +5,14 @@ import Cell from "~/components/Table/Rows/Cell";
 import { StringIndexedObject } from "~/types";
 import PopoverButton from "~/components/Table/Rows/PopoverButton";
 import { TableRow } from "~/components/Table/types";
+import clsx from "clsx";
 
 const Row: FunctionComponent<RowProps> = function ({
   row,
   hoverPopover,
   isLoading,
   compact = false,
+  rowClassName = "",
   ...props
 }) {
   const {
@@ -31,7 +33,10 @@ const Row: FunctionComponent<RowProps> = function ({
       {...rowProps}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      className={compact ? classNames.compact : classNames.base}
+      className={clsx(
+        compact ? classNames.compact : classNames.base,
+        rowClassName
+      )}
     >
       {cells.map((cell, index) => (
         <Cell
