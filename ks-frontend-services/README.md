@@ -1,6 +1,5 @@
 ks-frontend-services
 ---
-
 This repo takes the schema.yaml defined in ks-schema (one directory up) and transforms it into a number of different functions & variables that are used on the frontend in kanda for fetching and manipulating from the API. It exposes:
 
 1. A services object -> This `services` object is a map of possible entities (`company`, `job`, `payment` etc) to each entities respective API calls such as `services.company.getCompany`. These API functions use `fp-ts` to handle any potential errors and need to be run through `handleResponse` in order to correctly handle a given API call
