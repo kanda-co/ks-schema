@@ -34,12 +34,12 @@ gen-frontend:
 	echo "\nexport interface Operations {\n" >> frontend/generated/operations/index.ts
 	grep ": .*Operation," frontend/generated/operations/index.ts | sed -E 's/(.*): (.*),/\1: typeof \2,/' >> frontend/generated/operations/index.ts 
 	echo "\n}" >> frontend/generated/operations/index.ts
-ifeq ($(shell uname), Linux)
-	@echo Running sed under Linux...
-	sed -i "s/export const operations =/export const operations: Operations =/g" frontend/generated/operations/index.ts
-else
-	@echo Running sed under non-Linux...
+ifeq ($(shell uname), Darwin)
+	@echo Running sed under MacOS...
 	sed -i '' "s/export const operations =/export const operations: Operations =/g" frontend/generated/operations/index.ts
+else
+	@echo Running sed under non-Darwin...
+	sed -i "s/export const operations =/export const operations: Operations =/g" frontend/generated/operations/index.ts
 endif
 	npx prettier --write frontend/generated
 
