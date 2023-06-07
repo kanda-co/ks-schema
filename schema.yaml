@@ -282,6 +282,29 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/example-job:
+    put:
+      operationId: infoExampleJob
+      summary: >
+        info example job to return an example job in draft which can be tested for example flow
+        customer details will be pre-filled with tradesperson info, and
+        other details are pre-filled with example data
+      tags:
+        - Job
+      responses:
+        200:
+          description: put example job info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/info/credit:
     put:
       operationId: infoCredit
@@ -5125,6 +5148,9 @@ components:
           enum:
             - standard
             - solar
+        flow_type:
+          title: flow type
+          $ref: "#/components/schemas/FlowType"
         job_documents:
           type: array
           title: job documents
@@ -5147,6 +5173,14 @@ components:
           $ref: "#/components/schemas/Metadata"
           title: metadata
           readOnly: true
+
+    FlowType:
+      type: string
+      title: flow type
+      enum:
+        - "example"
+        - "live"
+      readOnly: true
 
     CustomerOptions:
       type: object
@@ -5469,6 +5503,9 @@ components:
             - cancelled
             - refunded
           readOnly: true
+        flow_type:
+          title: flow_type
+          $ref: "#/components/schemas/FlowType"
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
@@ -5642,6 +5679,9 @@ components:
           type: object
           title: elecontronic signature
           $ref: "#/components/schemas/Signature"
+        flow_type:
+          title: flow_type
+          $ref: "#/components/schemas/FlowType"
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"

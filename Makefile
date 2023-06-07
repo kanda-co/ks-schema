@@ -31,6 +31,17 @@ gen-frontend:
 	# npx openapi-typescript-codegen --input schema.yaml --output frontend/generated --client axios
 	npx openapi-io-ts -i schema.yaml -o frontend/generated
 	npx prettier --write frontend/generated
+	echo "\nexport interface Operations {\n" >> frontend/generated/operations/index.ts
+	grep ": .*Operation," frontend/generated/operations/index.ts | sed -E 's/(.*): (.*),/\1: typeof \2,/' >> frontend/generated/operations/index.ts 
+	echo "\n}" >> frontend/generated/operations/index.ts
+ifeq ($(shell uname), Darwin)
+	@echo Running sed under MacOS...
+	sed -i '' "s/export const operations =/export const operations: Operations =/g" frontend/generated/operations/index.ts
+else
+	@echo Running sed under non-Darwin...
+	sed -i "s/export const operations =/export const operations: Operations =/g" frontend/generated/operations/index.ts
+endif
+	npx prettier --write frontend/generated
 
 gen-backend:
 	@echo Code generation for backend from OpenAPI...
@@ -67,6 +78,17 @@ ts-widget:
 	mkdir -p ks-component-ts/src/generated/widget
 	npx openapi-io-ts -i schema.yaml -o ks-component-ts/src/generated
 	npx prettier --write ks-component-ts/src/generated
+	echo "\nexport interface Operations {\n" >> ks-component-ts/src/generated/operations/index.ts
+	grep ": .*Operation," ks-component-ts/src/generated/operations/index.ts | sed -E 's/(.*): (.*),/\1: typeof \2,/' >> ks-component-ts/src/generated/operations/index.ts
+	echo "\n}" >> ks-component-ts/src/generated/operations/index.ts
+ifeq ($(shell uname), Darwin)
+	@echo Running sed under MacOS...
+	sed -i '' "s/export const operations =/export const operations: Operations =/g" ks-component-ts/src/generated/operations/index.ts
+else
+	@echo Running sed under non-Darwin...
+	sed -i "s/export const operations =/export const operations: Operations =/g" ks-component-ts/src/generated/operations/index.ts
+endif
+	npx prettier --write ks-component-ts/src/generated/operations/index.ts
 	cp -r ks-component-ts/src/generated ks-frontend-services/src/generated
 	go run ./cmd/ts-form/main.go -in schema.yaml > ks-component-ts/src/generated/widget/index.tsx
 	echo "import Widget from './widget';" >> ks-component-ts/src/generated/index.ts
