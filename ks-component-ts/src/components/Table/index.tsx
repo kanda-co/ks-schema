@@ -9,6 +9,7 @@ import { Pagination } from "@kanda-libs/ks-design-library";
 const Table: FunctionComponent<TableProps> = function ({
   onRowClicked,
   compact = false,
+  rowClassName,
   ...props
 }) {
   const {
@@ -48,6 +49,7 @@ const Table: FunctionComponent<TableProps> = function ({
               hoverPopover={hoverPopover}
               onRowClicked={onRowClicked}
               compact={compact}
+              rowClassName={rowClassName}
             />
           </div>
         </div>

@@ -23,6 +23,7 @@ export default function useRowProps({
   prepareRow,
   hoverPopover,
   onRowClicked,
+  rowClassName,
 }: RowPropsHookArgs): RowPropsHook {
   /**
    * handles row click
@@ -40,10 +41,16 @@ export default function useRowProps({
   const [showButton, setShowButton] = useState(false);
   const [delayHandler, setDelayHandler] = useState<NodeJS.Timeout | null>(null);
 
-  const classNames = useClasses(CLASS_NAMES, {
-    base: [".base", index === 9 ? "" : ".border", ".hover"],
-    button: [".button"],
-  });
+  const classNames = useClasses(
+    {
+      ...CLASS_NAMES,
+      base: [CLASS_NAMES.base, rowClassName].filter(Boolean).join(" "),
+    },
+    {
+      base: [".base", index === 9 ? "" : ".border", ".hover"],
+      button: [".button"],
+    }
+  );
 
   const outputCells = cells.map((cell) => ({
     ...cell,
