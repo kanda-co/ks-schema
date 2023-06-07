@@ -31,6 +31,11 @@ gen-frontend:
 	# npx openapi-typescript-codegen --input schema.yaml --output frontend/generated --client axios
 	npx openapi-io-ts -i schema.yaml -o frontend/generated
 	npx prettier --write frontend/generated
+	echo "\nexport interface Operations {\n" >> frontend/generated/operations/index.ts
+	grep ": .*Operation," frontend/generated/operations/index.ts | sed -E 's/(.*): (.*),/\1: typeof \2,/' >> frontend/generated/operations/index.ts 
+	echo "\n}" >> frontend/generated/operations/index.ts
+	sed -i '' "s/export const operations =/export const operations: Operations =/g" frontend/generated/operations/index.ts
+	npx prettier --write frontend/generated
 
 gen-backend:
 	@echo Code generation for backend from OpenAPI...
