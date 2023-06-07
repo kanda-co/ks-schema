@@ -58,6 +58,7 @@ export interface TableProps {
   setPage: (page: number) => void;
   hoverPopover?: FunctionComponent<PopoverButtonHoverPopoverProps> | null;
   compact?: boolean;
+  rowClassName?: string;
 }
 
 export interface TableRow {
