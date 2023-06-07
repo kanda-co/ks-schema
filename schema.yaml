@@ -282,6 +282,29 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/example-job:
+    put:
+      operationId: infoExampleJob
+      summary: >
+        info example job to return an example job in draft which can be tested for example flow
+        customer details will be pre-filled with tradesperson info, and
+        other details are pre-filled with example data
+      tags:
+        - Job
+      responses:
+        200:
+          description: put example job info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/info/credit:
     put:
       operationId: infoCredit
