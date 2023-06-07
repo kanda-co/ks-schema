@@ -233,6 +233,10 @@ declare const infoValidation: {
     };
 };
 declare const job: {
+    infoExampleJob: {
+        key: string;
+        method: import("../generated/operations/infoExampleJob").InfoExampleJobRequestFunction;
+    };
     getJobs: {
         key: string;
         method: import("../generated/operations/getJobs").GetJobsRequestFunction;
@@ -769,6 +773,10 @@ declare const services: {
         };
     };
     job: {
+        infoExampleJob: {
+            key: string;
+            method: import("../generated/operations/infoExampleJob").InfoExampleJobRequestFunction;
+        };
         getJobs: {
             key: string;
             method: import("../generated/operations/getJobs").GetJobsRequestFunction;
