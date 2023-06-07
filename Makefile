@@ -81,7 +81,13 @@ ts-widget:
 	echo "\nexport interface Operations {\n" >> ks-component-ts/src/generated/operations/index.ts
 	grep ": .*Operation," ks-component-ts/src/generated/operations/index.ts | sed -E 's/(.*): (.*),/\1: typeof \2,/' >> ks-component-ts/src/generated/operations/index.ts
 	echo "\n}" >> ks-component-ts/src/generated/operations/index.ts
+ifeq ($(shell uname), Darwin)
+	@echo Running sed under MacOS...
 	sed -i '' "s/export const operations =/export const operations: Operations =/g" ks-component-ts/src/generated/operations/index.ts
+else
+	@echo Running sed under non-Darwin...
+	sed -i "s/export const operations =/export const operations: Operations =/g" ks-component-ts/src/generated/operations/index.ts
+endif
 	npx prettier --write ks-component-ts/src/generated/operations/index.ts
 	cp -r ks-component-ts/src/generated ks-frontend-services/src/generated
 	go run ./cmd/ts-form/main.go -in schema.yaml > ks-component-ts/src/generated/widget/index.tsx
