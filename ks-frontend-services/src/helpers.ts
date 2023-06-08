@@ -36,14 +36,21 @@ export const fetchRequestAdapter = (baseURL: string, requireAuth = true) => {
   const fetchToUse = requireAuth ? fetch : originalFetch();
 
   return async (url: string, init: StringIndexedObject): Promise<Response> => {
-    const decodedBody = JSON.parse(init.body || '{}');
-    const protectedRequest = decodedBody.protectedRequest || false;
+    const { protectedRequest = false, ...formattedBody } = JSON.parse(
+      init.body || '{}',
+    );
 
     if (protectedRequest) {
       return fetchToUse(`${baseURL}${url}`, await handleProtectedRequest(init));
     }
 
-    return fetchToUse(`${baseURL}${url}`, init);
+    const formattedInit = init;
+
+    if (formattedBody) {
+      formattedInit.body = JSON.stringify(formattedBody);
+    }
+
+    return fetchToUse(`${baseURL}${url}`, formattedInit);
   };
 };
 
