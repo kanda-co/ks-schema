@@ -46,7 +46,7 @@ export const fetchRequestAdapter = (baseURL: string, requireAuth = true) => {
 
     const formattedInit = init;
 
-    if (formattedBody) {
+    if (init.body) {
       formattedInit.body = JSON.stringify(formattedBody);
     }
 
