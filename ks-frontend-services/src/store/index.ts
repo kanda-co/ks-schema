@@ -11,7 +11,7 @@ type ReducerMap<M> = {
 };
 
 export function createStore<PageKeys extends string, ExtraState = {}>(
-  extraReducers: ReducerMap<ExtraState>,
+  extraReducers: ReducerMap<ExtraState> = {} as ReducerMap<ExtraState>,
 ) {
   const appSlice = createAppSlice<PageKeys>();
   const app = appSlice.reducer;
