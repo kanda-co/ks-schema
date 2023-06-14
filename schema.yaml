@@ -5774,6 +5774,13 @@ components:
     LeadQuote:
       type: object
       title: lead quote details
+      required:
+        - work_type
+        - cash_amount
+        - credit_amount
+        - budget
+        - work_finished_by
+        - description
       properties:
         work_type:
           title: work type
@@ -5844,6 +5851,10 @@ components:
           items:
             type: object
             $ref: "#/components/schemas/FinanceRate"
+        max_credit_amount:
+          type: object
+          $ref: "#/components/schemas/Money"
+          title: lead maximum credit amount
         xid:
           type: string
           title: external reference id
