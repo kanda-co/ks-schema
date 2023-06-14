@@ -332,6 +332,33 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/lead:
+    put:
+      operationId: infoLead
+      summary: info lead return an eligibility result from an applicant as a trade lead
+      tags:
+        - Lead
+      requestBody:
+        description: info lead return an eligibility result from an applicant
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LeadApplicant"
+      responses:
+        200:
+          description: put info lead
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/info/auth:
     put:
       operationId: infoAuth
@@ -4852,6 +4879,11 @@ components:
           type: string
           title: name
           minLength: 1
+        credit_line:
+          type: integer
+          title: credit line
+          minimum: 0
+          maximum: 2147483647
         fee:
           type: integer
           title: fee
@@ -5567,6 +5599,113 @@ components:
             - finished
             - paid_out
             - cancelled
+          readOnly: true
+
+    LeadApplicant:
+      type: object
+      title: lead applicant details
+      required:
+        - customer_details
+        - employment_details
+        - finance_details
+      properties:
+        customer_details:
+          type: object
+          title: customer details
+          $ref: "#/components/schemas/CustomerDetails"
+        employment_details:
+          type: array
+          title: employment details
+          items:
+            $ref: "#/components/schemas/EmploymentDetails"
+        finance_details:
+          type: object
+          title: finance details
+          $ref: "#/components/schemas/FinanceDetails"
+
+    Lead:
+      type: object
+      title: consumer quote
+      description: consumer quote
+      required:
+        - consumer_applicant
+      properties:
+        id:
+          type: string
+          title: payment id
+          readOnly: true
+        cid:
+          type: string
+          title: company id
+          readOnly: true
+        oid:
+          type: string
+          title: owner id
+          readOnly: true
+        aid:
+          type: string
+          title: author id
+          readOnly: true
+        lead_applicant:
+          type: object
+          title: lead applicant
+          $ref: "#/components/schemas/LeadApplicant"
+        finance_options:
+          type: array
+          title: finance options
+          items:
+            type: object
+            $ref: "#/components/schemas/FinanceRate"
+        xid:
+          type: string
+          title: external reference id
+          readOnly: true
+        xref:
+          type: string
+          title: external reference
+          readOnly: true
+        finance_option:
+          type: object
+          $ref: "#/components/schemas/FinanceRate"
+          title: finance option for this credit
+        work_type:
+          title: work type
+          description: work type for the job
+          $ref: "#/components/schemas/WorkType"
+        cash_amount:
+          type: object
+          $ref: "#/components/schemas/Money"
+          title: consumer quote cash amount
+        credit_amount:
+          type: object
+          $ref: "#/components/schemas/Money"
+          title: consumer quote credit amount
+        budget:
+          type: object
+          $ref: "#/components/schemas/Money"
+          title: consumer quote budget
+        work_finished_by:
+          type: string
+          title: consumer quote work finished by
+          description: when do you need the work finished by?
+          enum:
+            - "within 1 to 2 weeks"
+            - "within a month"
+            - "within 1 to 3 months"
+            - "within 3 months"
+            - "within 3 to 6 months"
+            - "over 6 months"
+        description:
+          type: string
+          title: consumer quote description
+          minLength: 1
+        flow_type:
+          title: flow_type
+          $ref: "#/components/schemas/FlowType"
+        metadata:
+          type: object
+          $ref: "#/components/schemas/Metadata"
+          title: metadata
           readOnly: true
 
     Credit:
