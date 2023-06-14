@@ -60,7 +60,7 @@ build-frontend: gen-frontend widget ts-widget
 build: gen-backend build-frontend
 	@echo Build both frontend and backend...
 
-ui: build
+ui:
 	@echo Loading Swagger UI on port 8000...
 	npx swagger-ui-cli -p 8000 schema.yaml
 

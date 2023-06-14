@@ -332,33 +332,6 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-  /api/info/lead:
-    put:
-      operationId: infoLead
-      summary: info lead return an eligibility result from an applicant as a trade lead
-      tags:
-        - Lead
-      requestBody:
-        description: info lead return an eligibility result from an applicant
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/LeadApplicant"
-      responses:
-        200:
-          description: put info lead
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Lead"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
   /api/info/auth:
     put:
       operationId: infoAuth
@@ -2647,6 +2620,181 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Document"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/lead:
+    get:
+      operationId: getLeads
+      summary: kanda staff only to get all leads
+      tags:
+        - Lead
+      parameters:
+        - $ref: "#/components/parameters/Format"
+        - $ref: "#/components/parameters/Q"
+      responses:
+        200:
+          description: got all leads
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Lead"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    post:
+      operationId: postLead
+      summary: post new lead from applicant
+      tags:
+        - Lead
+      requestBody:
+        description: post new lead
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LeadApplicant"
+      responses:
+        200:
+          description: posted new lead
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/lead/{id}:
+    get:
+      operationId: getLead
+      summary: get existing lead
+      tags:
+        - Lead
+      parameters:
+        - name: id
+          in: path
+          description: lead id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing lead
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: putLead
+      summary: kanda staff only to put existing lead
+      tags:
+        - Lead
+      parameters:
+        - name: id
+          in: path
+          description: lead id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: put existing lead
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Lead"
+      responses:
+        200:
+          description: put existing lead
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      operationId: deleteLead
+      summary: kanda staff only to delete existing lead
+      tags:
+        - Lead
+      parameters:
+        - name: id
+          in: path
+          description: lead id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: deleted existing lead
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/lead/{id}/quote:
+    post:
+      operationId: quoteLead
+      summary: post existing lead quote
+      tags:
+        - Lead
+      parameters:
+        - name: id
+          in: path
+          description: lead id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: posted existing lead quote
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LeadQuote"
+      responses:
+        200:
+          description: posted existing lead quote
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
         default:
           description: unexpected error
           content:
@@ -5623,51 +5771,10 @@ components:
           title: finance details
           $ref: "#/components/schemas/FinanceDetails"
 
-    Lead:
+    LeadQuote:
       type: object
-      title: consumer quote
-      description: consumer quote
-      required:
-        - consumer_applicant
+      title: lead quote details
       properties:
-        id:
-          type: string
-          title: payment id
-          readOnly: true
-        cid:
-          type: string
-          title: company id
-          readOnly: true
-        oid:
-          type: string
-          title: owner id
-          readOnly: true
-        aid:
-          type: string
-          title: author id
-          readOnly: true
-        lead_applicant:
-          type: object
-          title: lead applicant
-          $ref: "#/components/schemas/LeadApplicant"
-        finance_options:
-          type: array
-          title: finance options
-          items:
-            type: object
-            $ref: "#/components/schemas/FinanceRate"
-        xid:
-          type: string
-          title: external reference id
-          readOnly: true
-        xref:
-          type: string
-          title: external reference
-          readOnly: true
-        finance_option:
-          type: object
-          $ref: "#/components/schemas/FinanceRate"
-          title: finance option for this credit
         work_type:
           title: work type
           description: work type for the job
@@ -5699,6 +5806,52 @@ components:
           type: string
           title: consumer quote description
           minLength: 1
+
+    Lead:
+      type: object
+      title: consumer quote
+      description: consumer quote
+      required:
+        - lead_applicant
+      properties:
+        id:
+          type: string
+          title: payment id
+          readOnly: true
+        cid:
+          type: string
+          title: company id
+          readOnly: true
+        oid:
+          type: string
+          title: owner id
+          readOnly: true
+        aid:
+          type: string
+          title: author id
+          readOnly: true
+        lead_applicant:
+          type: object
+          title: lead applicant
+          $ref: "#/components/schemas/LeadApplicant"
+        lead_quote:
+          type: object
+          title: lead quote
+          $ref: "#/components/schemas/LeadQuote"
+        finance_options:
+          type: array
+          title: finance options
+          items:
+            type: object
+            $ref: "#/components/schemas/FinanceRate"
+        xid:
+          type: string
+          title: external reference id
+          readOnly: true
+        xref:
+          type: string
+          title: external reference
+          readOnly: true
         flow_type:
           title: flow_type
           $ref: "#/components/schemas/FlowType"
