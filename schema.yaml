@@ -5824,6 +5824,7 @@ components:
       description: consumer quote
       required:
         - status
+        - expired_at
       properties:
         id:
           type: string
@@ -5863,7 +5864,6 @@ components:
           type: string
           format: date-time
           title: expired at
-          readOnly: true
         xid:
           type: string
           title: external reference id
