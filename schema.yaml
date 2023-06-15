@@ -5777,9 +5777,6 @@ components:
       required:
         - finance_option
         - work_type
-        - cash_amount
-        - credit_amount
-        - budget
         - work_finished_by
         - description
       properties:
