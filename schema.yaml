@@ -5775,6 +5775,7 @@ components:
       type: object
       title: lead quote details
       required:
+        - finance_option
         - work_type
         - cash_amount
         - credit_amount
@@ -5782,6 +5783,10 @@ components:
         - work_finished_by
         - description
       properties:
+        finance_option:
+          type: object
+          $ref: "#/components/schemas/FinanceRate"
+          title: consumer quote selected finance option
         work_type:
           title: work type
           description: work type for the job
@@ -5803,11 +5808,10 @@ components:
           title: consumer quote work finished by
           description: when do you need the work finished by?
           enum:
-            - "within 1 to 2 weeks"
-            - "within a month"
-            - "within 1 to 3 months"
+            - "as soon as possible"
+            - "within 1 month"
             - "within 3 months"
-            - "within 3 to 6 months"
+            - "within 6 months"
             - "over 6 months"
         description:
           type: string
@@ -5819,7 +5823,7 @@ components:
       title: consumer quote
       description: consumer quote
       required:
-        - lead_applicant
+        - status
       properties:
         id:
           type: string
@@ -5855,6 +5859,11 @@ components:
           type: object
           $ref: "#/components/schemas/Money"
           title: lead maximum credit amount
+        expired_at:
+          type: string
+          format: date-time
+          title: expired at
+          readOnly: true
         xid:
           type: string
           title: external reference id
@@ -5863,6 +5872,17 @@ components:
           type: string
           title: external reference
           readOnly: true
+        status:
+          type: string
+          title: status
+          enum:
+            - "open"
+            - "credit_declined"
+            - "quote_declined"
+            - "trade_accepted"
+            - "trade_declined"
+            - "expired"
+            - "closed"
         flow_type:
           title: flow_type
           $ref: "#/components/schemas/FlowType"
