@@ -5762,10 +5762,9 @@ components:
           title: customer details
           $ref: "#/components/schemas/CustomerDetails"
         employment_details:
-          type: array
-          title: employment details
-          items:
-            $ref: "#/components/schemas/EmploymentDetails"
+          type: object
+          title: primary employment details
+          $ref: "#/components/schemas/EmploymentDetails"
         finance_details:
           type: object
           title: finance details
@@ -5777,9 +5776,6 @@ components:
       required:
         - finance_option
         - work_type
-        - cash_amount
-        - credit_amount
-        - budget
         - work_finished_by
         - description
       properties:
