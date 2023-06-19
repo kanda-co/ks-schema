@@ -114,9 +114,9 @@ export type ValidationValue =
   | string
   | number
   | RegExp
-  | ((value?: boolean) => boolean)
+  | ((value?: boolean | string | number) => boolean)
   | {
-      valid: (value: boolean) => boolean;
+      [key: string]: (value: boolean | string | number) => boolean;
     };
 
 export type ValidationError = string | StringIndexedObject<string>;
