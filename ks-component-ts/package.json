@@ -1,6 +1,6 @@
 {
   "name": "@kanda-libs/ks-component-ts",
-  "version": "0.2.231",
+  "version": "0.2.240-qa",
   "description": "Kanda form component library",
   "main": "dist/index.esm.js",
   "module": "dist/index.esm.js",
@@ -38,7 +38,7 @@
   "author": "rob@kanda.co.uk",
   "license": "MIT",
   "devDependencies": {
-    "@kanda-libs/ks-amplitude-provider": "^0.0.15",
+    "@kanda-libs/ks-amplitude-provider": "0.0.17",
     "@kanda-libs/ks-design-library": "0.2.70",
     "@kanda-libs/ks-frontend-services": "0.2.140",
     "@types/browser-image-compression": "^1.0.9",
@@ -104,7 +104,7 @@
     "clsx": "^1.1.1",
     "lodash.get": "^4.4.2",
     "react": "^16.8.0 || ^17",
-    "react-hook-form": "^7.35.0"
+    "react-hook-form": "7.35.0"
   },
   "repository": {
     "type": "git",
@@ -130,7 +130,7 @@
     "react-cropper": "^2.1.8",
     "react-dropzone": "^11.3.4",
     "react-highlight-words": "^0.18.0",
-    "react-hook-form": "^7.35.0",
+    "react-hook-form": "7.35.0",
     "react-input-autosize": "^3.0.0",
     "react-loading-skeleton": "^3.1.0",
     "react-number-format": "^4.6.4",

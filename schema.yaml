@@ -2627,6 +2627,225 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/lead:
+    get:
+      operationId: getLeads
+      summary: kanda staff only to get all leads
+      tags:
+        - Lead
+      parameters:
+        - $ref: "#/components/parameters/Format"
+        - $ref: "#/components/parameters/Q"
+      responses:
+        200:
+          description: got all leads
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Lead"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    post:
+      operationId: postLead
+      summary: post new lead from applicant
+      tags:
+        - Lead
+      requestBody:
+        description: post new lead
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LeadApplicant"
+      responses:
+        200:
+          description: posted new lead
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/lead/{id}:
+    get:
+      operationId: getLead
+      summary: get existing lead
+      tags:
+        - Lead
+      parameters:
+        - name: id
+          in: path
+          description: lead id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing lead
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: putLead
+      summary: kanda staff only to put existing lead
+      tags:
+        - Lead
+      parameters:
+        - name: id
+          in: path
+          description: lead id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: put existing lead
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Lead"
+      responses:
+        200:
+          description: put existing lead
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      operationId: deleteLead
+      summary: kanda staff only to delete existing lead
+      tags:
+        - Lead
+      parameters:
+        - name: id
+          in: path
+          description: lead id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: deleted existing lead
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/lead/{id}/quote:
+    post:
+      operationId: quoteLead
+      summary: post existing lead quote
+      tags:
+        - Lead
+      parameters:
+        - name: id
+          in: path
+          description: lead id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: posted existing lead quote
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LeadQuote"
+      responses:
+        200:
+          description: posted existing lead quote
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/lead/{id}/refer:
+    post:
+      operationId: referLead
+      summary: post existing referred lead
+      tags:
+        - Lead
+      parameters:
+        - name: id
+          in: path
+          description: lead id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: posted existing lead quote
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              title: lead referral to trade
+              required:
+                - cid
+              properties:
+                cid:
+                  type: string
+                  title: lead referral cid
+                  description: lead referral company id
+                  minLength: 1
+      responses:
+        200:
+          description: posted existing referred lead
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/subscription:
     get:
       operationId: getSubscriptions
@@ -4852,6 +5071,11 @@ components:
           type: string
           title: name
           minLength: 1
+        credit_line:
+          type: integer
+          title: credit line
+          minimum: 0
+          maximum: 2147483647
         fee:
           type: integer
           title: fee
@@ -5151,6 +5375,10 @@ components:
         flow_type:
           title: flow type
           $ref: "#/components/schemas/FlowType"
+        quoted_to:
+          type: string
+          title: quoted to
+          readOnly: true
         job_documents:
           type: array
           title: job documents
@@ -5506,6 +5734,10 @@ components:
         flow_type:
           title: flow_type
           $ref: "#/components/schemas/FlowType"
+        quoted_to:
+          type: string
+          title: quoted to
+          readOnly: true
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
@@ -5567,6 +5799,145 @@ components:
             - finished
             - paid_out
             - cancelled
+          readOnly: true
+
+    LeadApplicant:
+      type: object
+      title: lead applicant details
+      required:
+        - customer_details
+        - employment_details
+        - finance_details
+      properties:
+        customer_details:
+          type: object
+          title: customer details
+          $ref: "#/components/schemas/CustomerDetails"
+        employment_details:
+          type: object
+          title: primary employment details
+          $ref: "#/components/schemas/EmploymentDetails"
+        finance_details:
+          type: object
+          title: finance details
+          $ref: "#/components/schemas/FinanceDetails"
+
+    LeadQuote:
+      type: object
+      title: lead quote details
+      required:
+        - finance_option
+        - work_type
+        - work_finished_by
+        - description
+      properties:
+        finance_option:
+          type: object
+          $ref: "#/components/schemas/FinanceRate"
+          title: consumer quote selected finance option
+        work_type:
+          title: work type
+          description: work type for the job
+          $ref: "#/components/schemas/WorkType"
+        cash_amount:
+          type: object
+          $ref: "#/components/schemas/Money"
+          title: consumer quote cash amount
+        credit_amount:
+          type: object
+          $ref: "#/components/schemas/Money"
+          title: consumer quote credit amount
+        budget:
+          type: object
+          $ref: "#/components/schemas/Money"
+          title: consumer quote budget
+        work_finished_by:
+          type: string
+          title: consumer quote work finished by
+          description: when do you need the work finished by?
+          enum:
+            - "as soon as possible"
+            - "within 1 month"
+            - "within 3 months"
+            - "within 6 months"
+            - "over 6 months"
+        description:
+          type: string
+          title: consumer quote description
+          minLength: 1
+
+    Lead:
+      type: object
+      title: consumer quote
+      description: consumer quote
+      required:
+        - status
+        - expired_at
+      properties:
+        id:
+          type: string
+          title: payment id
+          readOnly: true
+        cid:
+          type: string
+          title: company id
+          readOnly: true
+        oid:
+          type: string
+          title: owner id
+          readOnly: true
+        aid:
+          type: string
+          title: author id
+          readOnly: true
+        lead_applicant:
+          type: object
+          title: lead applicant
+          $ref: "#/components/schemas/LeadApplicant"
+        lead_quote:
+          type: object
+          title: lead quote
+          $ref: "#/components/schemas/LeadQuote"
+        finance_options:
+          type: array
+          title: finance options
+          items:
+            type: object
+            $ref: "#/components/schemas/FinanceRate"
+        max_credit_amount:
+          type: object
+          $ref: "#/components/schemas/Money"
+          title: lead maximum credit amount
+        expired_at:
+          type: string
+          format: date-time
+          title: expired at
+        xid:
+          type: string
+          title: external reference id
+          readOnly: true
+        xref:
+          type: string
+          title: external reference
+          readOnly: true
+        status:
+          type: string
+          title: status
+          enum:
+            - "open"
+            - "credit_declined"
+            - "quote_declined"
+            - "trade_accepted"
+            - "trade_declined"
+            - "expired"
+            - "closed"
+        flow_type:
+          title: flow_type
+          $ref: "#/components/schemas/FlowType"
+        metadata:
+          type: object
+          $ref: "#/components/schemas/Metadata"
+          title: metadata
           readOnly: true
 
     Credit:
@@ -5682,6 +6053,10 @@ components:
         flow_type:
           title: flow_type
           $ref: "#/components/schemas/FlowType"
+        quoted_to:
+          type: string
+          title: quoted to
+          readOnly: true
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
