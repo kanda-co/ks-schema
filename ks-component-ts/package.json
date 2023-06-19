@@ -1,6 +1,6 @@
 {
   "name": "@kanda-libs/ks-component-ts",
-  "version": "0.2.240-qa",
+  "version": "0.2.240-qa2",
   "description": "Kanda form component library",
   "main": "dist/index.esm.js",
   "module": "dist/index.esm.js",
@@ -38,7 +38,7 @@
   "author": "rob@kanda.co.uk",
   "license": "MIT",
   "devDependencies": {
-    "@kanda-libs/ks-amplitude-provider": "0.0.17",
+    "@kanda-libs/ks-amplitude-provider": "0.0.17-qa2",
     "@kanda-libs/ks-design-library": "0.2.70",
     "@kanda-libs/ks-frontend-services": "0.2.140",
     "@types/browser-image-compression": "^1.0.9",
