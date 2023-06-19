@@ -326,6 +326,32 @@ declare const job: {
         method: import("../generated/operations/jobCompanyInfo").JobCompanyInfoRequestFunction;
     };
 };
+declare const lead: {
+    getLeads: {
+        key: string;
+        method: import("../generated/operations/getLeads").GetLeadsRequestFunction;
+    };
+    postLead: {
+        key: string;
+        method: import("../generated/operations/postLead").PostLeadRequestFunction;
+    };
+    getLead: {
+        key: string;
+        method: import("../generated/operations/getLead").GetLeadRequestFunction;
+    };
+    putLead: {
+        key: string;
+        method: import("../generated/operations/putLead").PutLeadRequestFunction;
+    };
+    deleteLead: {
+        key: string;
+        method: import("../generated/operations/deleteLead").DeleteLeadRequestFunction;
+    };
+    quoteLead: {
+        key: string;
+        method: import("../generated/operations/quoteLead").QuoteLeadRequestFunction;
+    };
+};
 declare const monitor: {
     getMonitors: {
         key: string;
@@ -866,6 +892,32 @@ declare const services: {
             method: import("../generated/operations/jobCompanyInfo").JobCompanyInfoRequestFunction;
         };
     };
+    lead: {
+        getLeads: {
+            key: string;
+            method: import("../generated/operations/getLeads").GetLeadsRequestFunction;
+        };
+        postLead: {
+            key: string;
+            method: import("../generated/operations/postLead").PostLeadRequestFunction;
+        };
+        getLead: {
+            key: string;
+            method: import("../generated/operations/getLead").GetLeadRequestFunction;
+        };
+        putLead: {
+            key: string;
+            method: import("../generated/operations/putLead").PutLeadRequestFunction;
+        };
+        deleteLead: {
+            key: string;
+            method: import("../generated/operations/deleteLead").DeleteLeadRequestFunction;
+        };
+        quoteLead: {
+            key: string;
+            method: import("../generated/operations/quoteLead").QuoteLeadRequestFunction;
+        };
+    };
     monitor: {
         getMonitors: {
             key: string;
@@ -1075,5 +1127,5 @@ declare const services: {
         };
     };
 };
-export { authUser, company, credit, document, event, infoAuth, infoCache, infoCompany, infoCustomer, infoDirector, infoEntity, infoGhost, infoHealth, infoIP, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoValidation, job, monitor, onboarding, partner, payment, rate, subscription, task, webhook, address, pdf, sheets, };
+export { authUser, company, credit, document, event, infoAuth, infoCache, infoCompany, infoCustomer, infoDirector, infoEntity, infoGhost, infoHealth, infoIP, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoValidation, job, lead, monitor, onboarding, partner, payment, rate, subscription, task, webhook, address, pdf, sheets, };
 export default services;

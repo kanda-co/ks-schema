@@ -3,7 +3,7 @@ import type { AuthState } from './slices/auth';
 type ReducerMap<M> = {
     [K in keyof M]: Reducer<M[K]>;
 };
-export declare function createStore<PageKeys extends string, ExtraState = {}>(extraReducers: ReducerMap<ExtraState>): import("@reduxjs/toolkit/dist/configureStore").ToolkitStore<{
+export declare function createStore<PageKeys extends string, ExtraState = {}>(extraReducers?: ReducerMap<ExtraState>): import("@reduxjs/toolkit/dist/configureStore").ToolkitStore<{
     authUser: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").AuthUser>;
@@ -91,6 +91,13 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
     job: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Job>;
+        isSubmitting: boolean;
+        fetchedList: boolean;
+        isLoading: boolean;
+    };
+    lead: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").Lead>;
         isSubmitting: boolean;
         fetchedList: boolean;
         isLoading: boolean;
@@ -245,6 +252,13 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         fetchedList: boolean;
         isLoading: boolean;
     };
+    lead: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").Lead>;
+        isSubmitting: boolean;
+        fetchedList: boolean;
+        isLoading: boolean;
+    };
     monitor: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Monitor>;
@@ -328,6 +342,7 @@ export declare function createSelectors<State extends {
     infoOnboarding: import("./types").Selectors<import("..").InfoOnboarding, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoOnboarding>>>;
     infoQuery: import("./types").Selectors<import("..").InfoQuery, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoQuery>>>;
     job: import("./types").Selectors<import("..").Job, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Job>>>;
+    lead: import("./types").Selectors<import("..").Lead, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Lead>>>;
     monitor: import("./types").Selectors<import("..").Monitor, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Monitor>>>;
     onboarding: import("./types").Selectors<import("..").Onboarding, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Onboarding>>>;
     partner: import("./types").Selectors<import("..").Partner, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Partner>>>;
