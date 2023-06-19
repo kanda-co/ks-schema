@@ -5826,7 +5826,6 @@ components:
       type: object
       title: lead quote details
       required:
-        - finance_option
         - work_type
         - work_finished_by
         - description
