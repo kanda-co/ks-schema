@@ -2802,6 +2802,50 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/lead/{id}/refer:
+    post:
+      operationId: referLead
+      summary: post existing referred lead
+      tags:
+        - Lead
+      parameters:
+        - name: id
+          in: path
+          description: lead id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: posted existing lead quote
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              title: lead referral to trade
+              required:
+                - cid
+              properties:
+                cid:
+                  type: string
+                  title: lead referral cid
+                  description: lead referral company id
+                  minLength: 1
+      responses:
+        200:
+          description: posted existing referred lead
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/subscription:
     get:
       operationId: getSubscriptions
@@ -5331,6 +5375,10 @@ components:
         flow_type:
           title: flow type
           $ref: "#/components/schemas/FlowType"
+        quoted_to:
+          type: string
+          title: quoted to
+          readOnly: true
         job_documents:
           type: array
           title: job documents
@@ -5686,6 +5734,10 @@ components:
         flow_type:
           title: flow_type
           $ref: "#/components/schemas/FlowType"
+        quoted_to:
+          type: string
+          title: quoted to
+          readOnly: true
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
@@ -6001,6 +6053,10 @@ components:
         flow_type:
           title: flow_type
           $ref: "#/components/schemas/FlowType"
+        quoted_to:
+          type: string
+          title: quoted to
+          readOnly: true
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
