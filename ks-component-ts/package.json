@@ -104,7 +104,7 @@
     "clsx": "^1.1.1",
     "lodash.get": "^4.4.2",
     "react": "^16.8.0 || ^17",
-    "react-hook-form": "7.35.0"
+    "react-hook-form": "7.43.9"
   },
   "repository": {
     "type": "git",
@@ -130,7 +130,7 @@
     "react-cropper": "^2.1.8",
     "react-dropzone": "^11.3.4",
     "react-highlight-words": "^0.18.0",
-    "react-hook-form": "7.35.0",
+    "react-hook-form": "7.43.9",
     "react-input-autosize": "^3.0.0",
     "react-loading-skeleton": "^3.1.0",
     "react-number-format": "^4.6.4",
