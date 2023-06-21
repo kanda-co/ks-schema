@@ -220,15 +220,19 @@ export function initialDataProvider<State, P extends StringIndexedObject>(
 function routeChangeProvider<State, P extends StringIndexedObject>(
   store: ToolkitStore<State>,
   pathKey: PathKey<P>,
+  onRouteChange?: (url: string) => void,
 ) {
   if (!pathKey) {
     throw new Error('Missing path key');
   }
 
   store.dispatch(
-    // TODO: Figure out a better way of doing this
     createAppSlice<P>().actions.routeChange(pathKey as unknown as PathKey<P>),
   );
+
+  if (onRouteChange) {
+    onRouteChange(pathKey.path);
+  }
 
   return pathKey;
 }
@@ -286,6 +290,7 @@ export function isAuthed<P extends StringIndexedObject>(
 export function createMiddleware<State, P extends StringIndexedObject>(
   store: ToolkitStore<State>,
   pages: PageList<P>,
+  onRouteChange?: (url: string) => void,
 ) {
   return (
     to: GuardToRoute,
@@ -300,7 +305,9 @@ export function createMiddleware<State, P extends StringIndexedObject>(
       TE.fromTask(isAuthed(pathKey, store)),
       TE.flatten,
       // If the user is authenticated, then we can proceed to the next page
-      TE.map((currentPathKey) => routeChangeProvider(store, currentPathKey)),
+      TE.map((currentPathKey) =>
+        routeChangeProvider(store, currentPathKey, onRouteChange),
+      ),
       // Fetch the initial data required for page rendering
       TE.map((currentPathKey) =>
         initialDataProvider(store, pages, currentPathKey),
@@ -323,6 +330,7 @@ function createRouterComponent<State, P extends StringIndexedObject>(
   store: ToolkitStore<State>,
   pages: PageList<P>,
   notFoundPage: FunctionComponent,
+  onRouteChange?: (url: string) => void,
 ): FunctionComponent {
   return (): JSX.Element => {
     // This package doesn't include correct typings for children,
@@ -334,7 +342,7 @@ function createRouterComponent<State, P extends StringIndexedObject>(
     return (
       <Router>
         <Provider
-          guards={[createMiddleware<State, P>(store, pages)]}
+          guards={[createMiddleware<State, P>(store, pages, onRouteChange)]}
           error={notFoundPage}
         >
           <Switch>
@@ -364,8 +372,14 @@ function createRouter<State, Keys extends string | number>(
   store: ToolkitStore<State>,
   pages: PageList,
   notFoundPage: FunctionComponent,
+  onRouteChange?: (url: string) => void,
 ): RouterType<Keys> {
-  const RouterComponent = createRouterComponent(store, pages, notFoundPage);
+  const RouterComponent = createRouterComponent(
+    store,
+    pages,
+    notFoundPage,
+    onRouteChange,
+  );
 
   return {
     Router: RouterComponent,
@@ -381,9 +395,15 @@ export function createRoutedApp<
   store: ToolkitStore<State & ExtraState>,
   args: Record<Keys, CreatePageArgs<State>>,
   notFoundPage: FunctionComponent = () => <>404</>,
+  onRouteChange?: (url: string) => void,
 ): RoutedApp<Keys> {
   const pages = createPages<State, Keys>(args);
-  const router = createRouter<State, Keys>(store, pages, notFoundPage);
+  const router = createRouter<State, Keys>(
+    store,
+    pages,
+    notFoundPage,
+    onRouteChange,
+  );
 
   return { router, pages };
 }
