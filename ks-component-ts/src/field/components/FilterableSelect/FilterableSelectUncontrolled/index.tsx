@@ -9,11 +9,17 @@ import useFilterableSelect from "./useFilterableSelect";
 
 export interface FilterableSelectUncontrolledProps {
   options: SelectOption[];
+  disabled?: boolean;
 }
 
 const FilterableSelectUncontrolled: FunctionComponent<
   DefaultFormFieldProps<FilterableSelectUncontrolledProps>
-> = function ({ name = "", placeholder, options: initialOptions }) {
+> = function ({
+  name = "",
+  placeholder,
+  options: initialOptions,
+  disabled = false,
+}) {
   const {
     inputRef,
     value,
@@ -44,6 +50,7 @@ const FilterableSelectUncontrolled: FunctionComponent<
         onBlur={onSearchInputBlur}
         error={isFocused && options.length === 0 ? "Enter a valid value" : ""}
         autoComplete="off"
+        disabled={disabled}
       />
       {isFocused && options.length === 0 && (
         <Error error="No matching results" />
