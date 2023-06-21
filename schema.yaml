@@ -5923,6 +5923,7 @@ components:
           type: string
           title: status
           enum:
+            - "issued"
             - "open"
             - "credit_declined"
             - "quote_declined"
