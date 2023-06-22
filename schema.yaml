@@ -5864,6 +5864,7 @@ components:
           type: string
           title: consumer quote description
           minLength: 1
+          x-kanda-form-widget: AutoSizeTextArea
 
     Lead:
       type: object
