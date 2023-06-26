@@ -2802,10 +2802,73 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/lead/{id}/trade:
+    post:
+      operationId: tradeLead
+      summary: post existing lead trade
+      tags:
+        - Lead
+      parameters:
+        - name: id
+          in: path
+          description: lead id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: posted existing lead trade
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LeadTrade"
+      responses:
+        200:
+          description: posted existing lead quote
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/lead/{id}/trade-quote-approval:
+    post:
+      operationId: tradeQuoteApprovalLead
+      summary: external trade to post existing lead quote approval by trade
+      tags:
+        - Lead
+      parameters:
+        - name: id
+          in: path
+          description: lead id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: posted existing lead quote approval by trade
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/lead/{id}/refer:
     post:
       operationId: referLead
-      summary: post existing referred lead
+      summary: kanda staff only to post existing referred lead
       tags:
         - Lead
       parameters:
@@ -6012,6 +6075,7 @@ components:
             - "open"
             - "credit_declined"
             - "quote_declined"
+            - "trade_notified"
             - "trade_accepted"
             - "trade_declined"
             - "expired"
