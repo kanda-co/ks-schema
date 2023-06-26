@@ -3507,6 +3507,18 @@ components:
           type: string
           title: id
           readOnly: true
+        cid:
+          type: string
+          title: company id
+          readOnly: true
+        eid:
+          type: string
+          title: enterprise id
+          readOnly: true
+        bid:
+          type: string
+          title: branch id
+          readOnly: true
         token:
           type: string
           title: token
@@ -4858,6 +4870,18 @@ components:
           type: string
           title: author id
           readOnly: true
+        eid:
+          type: string
+          title: enterprise id
+          readOnly: true
+        bid:
+          type: string
+          title: branch id
+          readOnly: true
+        tid:
+          type: string
+          title: external trade id
+          readOnly: true
         name:
           type: string
           title: document name
@@ -5269,6 +5293,18 @@ components:
         aid:
           type: string
           title: author id
+          readOnly: true
+        eid:
+          type: string
+          title: enterprise id
+          readOnly: true
+        bid:
+          type: string
+          title: branch id
+          readOnly: true
+        tid:
+          type: string
+          title: external trade id
           readOnly: true
         title:
           type: string
@@ -5838,18 +5874,6 @@ components:
           title: work type
           description: work type for the job
           $ref: "#/components/schemas/WorkType"
-        cash_amount:
-          type: object
-          $ref: "#/components/schemas/Money"
-          title: consumer quote cash amount
-        credit_amount:
-          type: object
-          $ref: "#/components/schemas/Money"
-          title: consumer quote credit amount
-        budget:
-          type: object
-          $ref: "#/components/schemas/Money"
-          title: consumer quote budget
         work_finished_by:
           type: string
           title: consumer quote work finished by
@@ -5865,6 +5889,50 @@ components:
           title: consumer quote description
           minLength: 1
           x-kanda-form-widget: AutoSizeTextArea
+        job_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/JobItem"
+          title: job items
+        total:
+          type: object
+          title: job total
+          $ref: "#/components/schemas/MoneyTotal"
+          readOnly: true
+
+    LeadTrade:
+      type: object
+      title: lead trade
+      required:
+        - first_name
+        - last_name
+        - email
+        - mobile
+      properties:
+        first_name:
+          type: string
+          title: first name
+          minLength: 1
+        last_name:
+          type: string
+          title: last name
+          minLength: 1
+        email:
+          type: string
+          format: email
+          x-go-type: Email
+          title: email
+        mobile:
+          type: string
+          title: mobile phone number
+          minLength: 1
+        trading_name:
+          type: string
+          title: trading name
+          minLength: 1
+        address:
+          type: object
+          $ref: "#/components/schemas/Address"
 
     Lead:
       type: object
@@ -5890,6 +5958,18 @@ components:
           type: string
           title: author id
           readOnly: true
+        eid:
+          type: string
+          title: enterprise id
+          readOnly: true
+        bid:
+          type: string
+          title: branch id
+          readOnly: true
+        tid:
+          type: string
+          title: external trade id
+          readOnly: true
         lead_applicant:
           type: object
           title: lead applicant
@@ -5898,6 +5978,10 @@ components:
           type: object
           title: lead quote
           $ref: "#/components/schemas/LeadQuote"
+        lead_trade:
+          type: object
+          title: lead trade
+          $ref: "#/components/schemas/LeadTrade"
         finance_options:
           type: array
           title: finance options
@@ -5964,6 +6048,18 @@ components:
         aid:
           type: string
           title: author id
+          readOnly: true
+        eid:
+          type: string
+          title: enterprise id
+          readOnly: true
+        bid:
+          type: string
+          title: branch id
+          readOnly: true
+        tid:
+          type: string
+          title: external trade id
           readOnly: true
         kid:
           type: string
