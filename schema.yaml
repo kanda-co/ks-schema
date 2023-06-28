@@ -1050,6 +1050,220 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/enterprise:
+    get:
+      operationId: getEnterprises
+      summary: get all enterprises
+      tags:
+        - Enterprise
+      parameters:
+        - $ref: "#/components/parameters/Format"
+        - $ref: "#/components/parameters/Q"
+      responses:
+        200:
+          description: got all enterprises
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Enterprise"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    post:
+      operationId: postEnterprise
+      summary: kanda staff only to post new enterprise
+      tags:
+        - Enterprise
+      requestBody:
+        description: post new enterprise
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Enterprise"
+      responses:
+        200:
+          description: posted new enterprise
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enterprise"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/enterprise/{id}:
+    get:
+      operationId: getEnterprise
+      summary: get existing enterprise
+      tags:
+        - Enterprise
+      parameters:
+        - name: id
+          in: path
+          description: enterprise id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing enterprise
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enterprise"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: putEnterprise
+      summary: put existing enterprise
+      tags:
+        - Enterprise
+      parameters:
+        - name: id
+          in: path
+          description: enterprise id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: put existing enterprise
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Enterprise"
+      responses:
+        200:
+          description: put existing enterprise
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enterprise"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      operationId: deleteEnterprise
+      summary: kanda staff to delete existing enterprise
+      tags:
+        - Enterprise
+      parameters:
+        - name: id
+          in: path
+          description: enterprise id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: deleted existing enterprise
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enterprise"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/enterprise/{id}/branch:
+    get:
+      operationId: getEnterpriseBranches
+      summary: get existing enterprise branches
+      tags:
+        - Enterprise
+      parameters:
+        - name: id
+          in: path
+          description: enterprise id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing enterprise branches
+          content:
+            application/json:
+              schema:
+                type: array
+                title: enterprise branches
+                description: enterprise branches
+                items:
+                  $ref: "#/components/schemas/Enterprise"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    post:
+      operationId: postEnterpriseBranches
+      summary: post existing enterprise branches
+      tags:
+        - Enterprise
+      parameters:
+        - name: id
+          in: path
+          description: enterprise id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: post existing enterprise branches
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              title: enterprise branches
+              description: enterprise branches to be added
+              items:
+                $ref: "#/components/schemas/Enterprise"
+      responses:
+        200:
+          description: posted existing enterprise branches
+          content:
+            application/json:
+              schema:
+                type: array
+                title: enterprise branches
+                description: enterprise branches to be added
+                items:
+                  $ref: "#/components/schemas/Enterprise"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/company:
     get:
       operationId: getCompanies
@@ -4524,6 +4738,72 @@ components:
           type: object
           $ref: "#/components/schemas/Metadata"
           title: metadata
+          readOnly: true
+
+    Enterprise:
+      type: object
+      title: enterprise
+      description: enterprise
+      required:
+        - enterprise_type
+        - contact_info
+      properties:
+        id:
+          type: string
+          title: enterprise id
+          description: enterprise id
+          readOnly: true
+        cid:
+          type: string
+          title: company id
+          readOnly: true
+        aid:
+          type: string
+          title: author id
+          readOnly: true
+        oid:
+          type: string
+          title: owner id
+          readOnly: true
+        eid:
+          type: string
+          title: enterprise id
+          readOnly: true
+        bid:
+          type: string
+          title: branch id
+          readOnly: true
+        enterprise_type:
+          type: string
+          title: enterprise type
+          enum:
+            - "main_office"
+            - "branch_office"
+        branch_code:
+          type: string
+          title: branch code
+          description: branch code
+        emails:
+          type: array
+          items:
+            type: string
+            format: email
+            x-go-type: Email
+          title: emails for user who has api access
+          readOnly: true
+        contact_info:
+          type: object
+          title: enterprise contact info
+          $ref: "#/components/schemas/ContactInfo"
+        branding:
+          type: object
+          title: branding
+          description: branding style override
+          $ref: "#/components/schemas/Branding"
+        metadata:
+          type: object
+          title: metadata
+          $ref: "#/components/schemas/Metadata"
           readOnly: true
 
     Company:
