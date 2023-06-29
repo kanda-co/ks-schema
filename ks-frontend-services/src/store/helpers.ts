@@ -189,7 +189,6 @@ export const createAsyncThunkAction = <
 
         return data;
       } catch (error) {
-        console.log(error);
         if (onError) {
           onError({
             code: error?.code,
