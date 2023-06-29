@@ -193,7 +193,7 @@ export const createAsyncThunkAction = <
         if (onError) {
           onError({
             code: error?.code,
-            message: extractErrorMessage(error?.message),
+            message: extractErrorMessage(error),
           });
         }
 
