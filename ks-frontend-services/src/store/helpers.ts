@@ -26,6 +26,7 @@ import {
 import { InfoEntity } from '../generated/components/schemas';
 import { INFO_ENTITY_KEY } from './constants';
 import { GetInfoEntityRequestParameters } from '../generated/operations/getInfoEntity';
+import { extractErrorMessage } from 'helpers';
 
 export const handlePayload = <T>(payload: Payload<T>): Promise<T> =>
   payload().then(handleApiResponse) as Promise<T>;
@@ -191,8 +192,8 @@ export const createAsyncThunkAction = <
         console.log(error);
         if (onError) {
           onError({
-            code: 100,
-            message: 'todo',
+            code: error?.code,
+            message: extractErrorMessage(error?.message),
           });
         }
 
