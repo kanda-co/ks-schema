@@ -118,6 +118,36 @@ declare const document: {
         method: import("../generated/operations/deleteDocument").DeleteDocumentRequestFunction;
     };
 };
+declare const enterprise: {
+    getEnterprises: {
+        key: string;
+        method: import("../generated/operations/getEnterprises").GetEnterprisesRequestFunction;
+    };
+    postEnterprise: {
+        key: string;
+        method: import("../generated/operations/postEnterprise").PostEnterpriseRequestFunction;
+    };
+    getEnterprise: {
+        key: string;
+        method: import("../generated/operations/getEnterprise").GetEnterpriseRequestFunction;
+    };
+    putEnterprise: {
+        key: string;
+        method: import("../generated/operations/putEnterprise").PutEnterpriseRequestFunction;
+    };
+    deleteEnterprise: {
+        key: string;
+        method: import("../generated/operations/deleteEnterprise").DeleteEnterpriseRequestFunction;
+    };
+    getEnterpriseBranches: {
+        key: string;
+        method: import("../generated/operations/getEnterpriseBranches").GetEnterpriseBranchesRequestFunction;
+    };
+    postEnterpriseBranches: {
+        key: string;
+        method: import("../generated/operations/postEnterpriseBranches").PostEnterpriseBranchesRequestFunction;
+    };
+};
 declare const event: {
     postEvent: {
         key: string;
@@ -176,6 +206,12 @@ declare const infoDirector: {
     infoDirector: {
         key: string;
         method: import("../generated/operations/infoDirector").InfoDirectorRequestFunction;
+    };
+};
+declare const infoEnterprise: {
+    infoEnterprise: {
+        key: string;
+        method: import("../generated/operations/infoEnterprise").InfoEnterpriseRequestFunction;
     };
 };
 declare const infoEntity: {
@@ -350,6 +386,18 @@ declare const lead: {
     quoteLead: {
         key: string;
         method: import("../generated/operations/quoteLead").QuoteLeadRequestFunction;
+    };
+    tradeLead: {
+        key: string;
+        method: import("../generated/operations/tradeLead").TradeLeadRequestFunction;
+    };
+    tradeQuoteApprovalLead: {
+        key: string;
+        method: import("../generated/operations/tradeQuoteApprovalLead").TradeQuoteApprovalLeadRequestFunction;
+    };
+    referLead: {
+        key: string;
+        method: import("../generated/operations/referLead").ReferLeadRequestFunction;
     };
 };
 declare const monitor: {
@@ -684,6 +732,36 @@ declare const services: {
             method: import("../generated/operations/deleteDocument").DeleteDocumentRequestFunction;
         };
     };
+    enterprise: {
+        getEnterprises: {
+            key: string;
+            method: import("../generated/operations/getEnterprises").GetEnterprisesRequestFunction;
+        };
+        postEnterprise: {
+            key: string;
+            method: import("../generated/operations/postEnterprise").PostEnterpriseRequestFunction;
+        };
+        getEnterprise: {
+            key: string;
+            method: import("../generated/operations/getEnterprise").GetEnterpriseRequestFunction;
+        };
+        putEnterprise: {
+            key: string;
+            method: import("../generated/operations/putEnterprise").PutEnterpriseRequestFunction;
+        };
+        deleteEnterprise: {
+            key: string;
+            method: import("../generated/operations/deleteEnterprise").DeleteEnterpriseRequestFunction;
+        };
+        getEnterpriseBranches: {
+            key: string;
+            method: import("../generated/operations/getEnterpriseBranches").GetEnterpriseBranchesRequestFunction;
+        };
+        postEnterpriseBranches: {
+            key: string;
+            method: import("../generated/operations/postEnterpriseBranches").PostEnterpriseBranchesRequestFunction;
+        };
+    };
     event: {
         postEvent: {
             key: string;
@@ -742,6 +820,12 @@ declare const services: {
         infoDirector: {
             key: string;
             method: import("../generated/operations/infoDirector").InfoDirectorRequestFunction;
+        };
+    };
+    infoEnterprise: {
+        infoEnterprise: {
+            key: string;
+            method: import("../generated/operations/infoEnterprise").InfoEnterpriseRequestFunction;
         };
     };
     infoEntity: {
@@ -916,6 +1000,18 @@ declare const services: {
         quoteLead: {
             key: string;
             method: import("../generated/operations/quoteLead").QuoteLeadRequestFunction;
+        };
+        tradeLead: {
+            key: string;
+            method: import("../generated/operations/tradeLead").TradeLeadRequestFunction;
+        };
+        tradeQuoteApprovalLead: {
+            key: string;
+            method: import("../generated/operations/tradeQuoteApprovalLead").TradeQuoteApprovalLeadRequestFunction;
+        };
+        referLead: {
+            key: string;
+            method: import("../generated/operations/referLead").ReferLeadRequestFunction;
         };
     };
     monitor: {
@@ -1127,5 +1223,5 @@ declare const services: {
         };
     };
 };
-export { authUser, company, credit, document, event, infoAuth, infoCache, infoCompany, infoCustomer, infoDirector, infoEntity, infoGhost, infoHealth, infoIP, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoValidation, job, lead, monitor, onboarding, partner, payment, rate, subscription, task, webhook, address, pdf, sheets, };
+export { authUser, company, credit, document, enterprise, event, infoAuth, infoCache, infoCompany, infoCustomer, infoDirector, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoValidation, job, lead, monitor, onboarding, partner, payment, rate, subscription, task, webhook, address, pdf, sheets, };
 export default services;

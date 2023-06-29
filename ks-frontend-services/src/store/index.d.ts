@@ -32,6 +32,13 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         fetchedList: boolean;
         isLoading: boolean;
     };
+    enterprise: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").Enterprise>;
+        isSubmitting: boolean;
+        fetchedList: boolean;
+        isLoading: boolean;
+    };
     event: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Event>;
@@ -189,6 +196,13 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         fetchedList: boolean;
         isLoading: boolean;
     };
+    enterprise: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").Enterprise>;
+        isSubmitting: boolean;
+        fetchedList: boolean;
+        isLoading: boolean;
+    };
     event: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Event>;
@@ -333,6 +347,7 @@ export declare function createSelectors<State extends {
     company: import("./types").Selectors<import("..").Company, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Company>>>;
     credit: import("./types").Selectors<import("..").Credit, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Credit>>>;
     document: import("./types").Selectors<import("..").Document, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Document>>>;
+    enterprise: import("./types").Selectors<import("..").Enterprise, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Enterprise>>>;
     event: import("./types").Selectors<import("..").Event, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Event>>>;
     infoAuth: import("./types").Selectors<import("..").InfoAuth, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoAuth>>>;
     infoCompany: import("./types").Selectors<import("..").InfoCompany, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoCompany>>>;
