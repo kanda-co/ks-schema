@@ -6247,19 +6247,10 @@ components:
       type: object
       title: lead trade
       required:
-        - first_name
-        - last_name
+        - trading_name
         - email
         - mobile
       properties:
-        first_name:
-          type: string
-          title: first name
-          minLength: 1
-        last_name:
-          type: string
-          title: last name
-          minLength: 1
         email:
           type: string
           format: email
