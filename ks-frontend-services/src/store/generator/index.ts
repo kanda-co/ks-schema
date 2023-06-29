@@ -43,9 +43,6 @@ function generateSlices(entityName: string) {
 function generateActionSpecificSlices() {
   SINGLE_ACTION_REDUCERS.forEach(({ entity, action, actionEntity }) => {
     const camelCaseActionName = getCamelCaseEntityName(action);
-    const camelCaseActionEntityName = getCamelCaseEntityName(
-      actionEntity || '',
-    );
 
     const template = slice(
       actionEntity || action,
@@ -189,6 +186,7 @@ const entityNames = getOperationKeys(operations)
         'InfoPartner',
         'InfoRedirect',
         'InfoValidation',
+        'InfoEnterprise',
       ].indexOf(name) === -1,
   );
 
