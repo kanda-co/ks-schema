@@ -696,6 +696,42 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/enterprise:
+    get:
+      operationId: infoEnterprise
+      summary: get info enterprise
+      tags:
+        - InfoEnterprise
+      parameters:
+        - in: query
+          name: eid
+          schema:
+            type: string
+          description: enterprise id
+        - in: query
+          name: bid
+          schema:
+            type: string
+          description: enterprise branch id
+        - in: query
+          name: branch_code
+          schema:
+            type: string
+          description: enterprise branch code
+      responses:
+        200:
+          description: got info enterprise
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enterprise"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/partner:
     get:
       operationId: getPartners
@@ -4779,6 +4815,10 @@ components:
           enum:
             - "main_office"
             - "branch_office"
+        subdomain:
+          type: string
+          title: subdomain address
+          description: subdomain hosted on kanda
         branch_code:
           type: string
           title: branch code
