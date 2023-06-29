@@ -34,6 +34,11 @@ type CreateAsyncThunkCallbackArguments = Parameters<CreateAsyncThunkCallback>;
 
 export type ThunkAPI = CreateAsyncThunkCallbackArguments[1];
 
+export interface AsyncThunkActionError {
+  code?: number;
+  message?: string;
+}
+
 export type SharedAsyncThunkActionArgs<
   Entity extends StringIndexedObject | undefined | void,
 > = {
@@ -41,7 +46,7 @@ export type SharedAsyncThunkActionArgs<
   preventLoadingState?: boolean;
   forceReload?: boolean;
   onSuccess?: (data: Entity) => void;
-  onError?: () => void;
+  onError?: (error: AsyncThunkActionError) => void;
 };
 
 export type AsyncThunkActionArgs<

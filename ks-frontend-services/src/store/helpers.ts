@@ -190,7 +190,10 @@ export const createAsyncThunkAction = <
       } catch (error) {
         console.log(error);
         if (onError) {
-          onError();
+          onError({
+            code: 100,
+            message: 'todo',
+          });
         }
 
         throw error;
