@@ -34,12 +34,11 @@ export const getAppSelectors = <
   const getIsLoading = createSelector(getRoot, getPathKey, (root, pathKey) => {
     const dependencies = pathKeyToLoadingDependencies<State, Pages>(pathKey);
 
-    return (
-      dependencies.length === 0 ||
-      dependencies.some(
-        (dependency) =>
-          (root[dependency] as GeneratedState<unknown>)?.isLoading || false,
-      )
+    if (dependencies.length === 0) return false;
+
+    return dependencies.some(
+      (dependency) =>
+        (root[dependency] as GeneratedState<unknown>)?.isLoading || false,
     );
   });
 
