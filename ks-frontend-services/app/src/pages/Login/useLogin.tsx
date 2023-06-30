@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import {
   useSignIn,
   useCurrentUser,
@@ -27,7 +27,7 @@ export default function useApplyForFinance() {
 
   const { showError } = useToast();
 
-  const navigate = useNavigate();
+  const { push } = useHistory();
 
   const form = useForm();
 
@@ -44,8 +44,8 @@ export default function useApplyForFinance() {
   const afterSignIn = useCallback(async () => {
     await revalidate();
     await me({});
-    navigate(URLS.HOME);
-  }, [me, revalidate, navigate, showError]);
+    push(URLS.HOME);
+  }, [me, revalidate, push, showError]);
 
   const signInWithGoogle = useCallback(() => {
     googleSignIn(false).then(({ error: signInGoogleError }) => {
