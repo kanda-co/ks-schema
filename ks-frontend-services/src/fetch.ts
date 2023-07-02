@@ -67,12 +67,14 @@ const buildRequestHeaders = (
   init: StringIndexedObject,
   token?: string,
   ids?: Ids,
+  additionalHeaders?: StringIndexedObject,
 ): Request => ({
   ...init,
   headers: {
     ...init.headers,
     ...(token ? buildAuth(token) : {}),
     ...(ids ? buildIds(ids) : {}),
+    ...(additionalHeaders || {}),
   },
 });
 
@@ -150,16 +152,24 @@ const interceptedFetch = (
   const token =
     global?.token || FirebaseAuthService?.auth?.currentUser?.accessToken;
 
+  console.log({ url, options, args });
+  const { additionalHeaders, ...rest } = JSON.parse(options?.body || '{}');
+  console.log({ rest });
+  console.log({ additionalHeaders });
+  options.body = options.method === 'get' ? null : JSON.stringify(rest);
+
   const trackingBody = formatTrackingBody(url, options);
   const ids = getIds(Amplitude);
 
   Amplitude?.track('api-attempted', trackingBody);
   Amplitude?.flush();
 
+  console.log({ options });
+
   return originalFetch()
     .apply(currentWindow, [
       url,
-      buildRequestHeaders(options, token, ids),
+      buildRequestHeaders(options, token, ids, additionalHeaders),
       ...args,
     ])
     .then(async (data) => {
@@ -172,7 +182,7 @@ const interceptedFetch = (
           if (APP_ENV === 'qa') console.log('Token refreshed');
           return originalFetch().apply(currentWindow, [
             url,
-            buildRequestHeaders(options, newToken),
+            buildRequestHeaders(options, newToken, ids, additionalHeaders),
             ...args,
           ]);
         }

@@ -19,6 +19,7 @@ export interface ServiceParams<
   params: Params;
   body: Body;
   protectedRequest?: boolean;
+  additionalHeaders?: StringIndexedObject;
 }
 
 export type ServiceMethod<

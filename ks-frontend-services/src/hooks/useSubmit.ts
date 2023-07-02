@@ -39,6 +39,7 @@ export default function useSubmit<Value, Params, Body>(
       body = {} as Body,
       params = {} as Params,
       protectedRequest = false,
+      additionalHeaders = {} as StringIndexedObject,
     }: Partial<ServiceParams<Params, Body>>): Promise<
       ServiceMethodReturnParams<Value>
     > => {
@@ -62,6 +63,7 @@ export default function useSubmit<Value, Params, Body>(
         body: {
           ...body,
           protectedRequest,
+          additionalHeaders,
         },
         params,
       };

@@ -11,15 +11,21 @@ const handleProtectedRequest = async (
   });
 
   const { body } = init;
-  const { protectedRequest, ...formattedBody } = JSON.parse(body || '{}');
+  const { protectedRequest, additionalHeaders, ...formattedBody } = JSON.parse(
+    body || '{}',
+  );
 
   const formattedInit: StringIndexedObject = {
     ...init,
     headers: {
       ...(init.headers || {}),
+      ...(additionalHeaders || {}),
       'x-kanda-rctoken': token,
     },
   };
+
+  console.log({ formattedInit });
+  if (additionalHeaders) return;
 
   if (formattedBody) {
     formattedInit.body = JSON.stringify(formattedBody);
@@ -43,6 +49,8 @@ export const fetchRequestAdapter = (baseURL: string, requireAuth = true) => {
     if (protectedRequest) {
       return fetchToUse(`${baseURL}${url}`, await handleProtectedRequest(init));
     }
+
+    console.log({ init });
 
     const formattedInit = init;
 

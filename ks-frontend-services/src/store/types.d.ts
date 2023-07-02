@@ -43,6 +43,7 @@ export type SharedAsyncThunkActionArgs<
   Entity extends StringIndexedObject | undefined | void,
 > = {
   protectedRequest?: boolean;
+  additionalHeaders?: StringIndexedObject;
   preventLoadingState?: boolean;
   forceReload?: boolean;
   onSuccess?: (data: Entity) => void;
