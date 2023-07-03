@@ -6039,6 +6039,7 @@ components:
     WorkType:
       type: string
       title: work type
+      x-kanda-form-widget: FilterableSelect
       enum:
         - air_conditioning
         - alarm_systems
