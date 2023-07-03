@@ -746,8 +746,8 @@ paths:
       tags:
         - Partner
       parameters:
-        - $ref: "#/components/parameters/Format"
-        - $ref: "#/components/parameters/Q"
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
       responses:
         200:
           description: got all partners
@@ -925,8 +925,8 @@ paths:
       tags:
         - Onboarding
       parameters:
-        - $ref: "#/components/parameters/Format"
-        - $ref: "#/components/parameters/Q"
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
       responses:
         200:
           description: got all onboardings
@@ -1100,8 +1100,8 @@ paths:
       tags:
         - Enterprise
       parameters:
-        - $ref: "#/components/parameters/Format"
-        - $ref: "#/components/parameters/Q"
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
       responses:
         200:
           description: got all enterprises
@@ -1314,8 +1314,8 @@ paths:
       tags:
         - Company
       parameters:
-        - $ref: "#/components/parameters/Format"
-        - $ref: "#/components/parameters/Q"
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
       responses:
         200:
           description: got all companies
@@ -1637,8 +1637,8 @@ paths:
       tags:
         - Job
       parameters:
-        - $ref: "#/components/parameters/Format"
-        - $ref: "#/components/parameters/Q"
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
       responses:
         200:
           description: got all jobs
@@ -2308,8 +2308,8 @@ paths:
       tags:
         - Payment
       parameters:
-        - $ref: "#/components/parameters/Format"
-        - $ref: "#/components/parameters/Q"
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
       responses:
         200:
           description: got all payments
@@ -2488,8 +2488,8 @@ paths:
       tags:
         - Credit
       parameters:
-        - $ref: "#/components/parameters/Format"
-        - $ref: "#/components/parameters/Q"
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
       responses:
         200:
           description: got all credits
@@ -2751,8 +2751,8 @@ paths:
       tags:
         - Document
       parameters:
-        - $ref: "#/components/parameters/Format"
-        - $ref: "#/components/parameters/Q"
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
       responses:
         200:
           description: got all documents
@@ -2891,12 +2891,12 @@ paths:
       tags:
         - Lead
       parameters:
-        - $ref: "#/components/parameters/Format"
-        - $ref: "#/components/parameters/Q"
-        - $ref: "#/components/parameters/XKandaBid"
-        - $ref: "#/components/parameters/XKandaCid"
-        - $ref: "#/components/parameters/XKandaEid"
-        - $ref: "#/components/parameters/XKandaTid"
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
+        - $ref: "#/components/parameters/x_kanda_bid"
+        - $ref: "#/components/parameters/x_kanda_cid"
+        - $ref: "#/components/parameters/x_kanda_eid"
+        - $ref: "#/components/parameters/x_kanda_tid"
       responses:
         200:
           description: got all leads
@@ -2919,10 +2919,34 @@ paths:
       tags:
         - Lead
       parameters:
-        - $ref: "#/components/parameters/XKandaBid"
-        - $ref: "#/components/parameters/XKandaCid"
-        - $ref: "#/components/parameters/XKandaEid"
-        - $ref: "#/components/parameters/XKandaTid"
+        - name: x_kanda_bid
+          in: header
+          schema:
+            type: string
+            title: kanda tid
+            description: kanda bid
+            minLength: 1
+        - name: x_kanda_cid
+          in: header
+          schema:
+            type: string
+            title: kanda tid
+            description: kanda cid
+            minLength: 1
+        - name: x_kanda_eid
+          in: header
+          schema:
+            type: string
+            title: kanda tid
+            description: kanda eid
+            minLength: 1
+        - name: x_kanda_tid
+          in: header
+          schema:
+            type: string
+            title: kanda tid
+            description: kanda tid
+            minLength: 1
       requestBody:
         description: post new lead
         required: true
@@ -2958,10 +2982,10 @@ paths:
           schema:
             type: string
             minLength: 1
-        - $ref: "#/components/parameters/XKandaBid"
-        - $ref: "#/components/parameters/XKandaCid"
-        - $ref: "#/components/parameters/XKandaEid"
-        - $ref: "#/components/parameters/XKandaTid"
+        - $ref: "#/components/parameters/x_kanda_bid"
+        - $ref: "#/components/parameters/x_kanda_cid"
+        - $ref: "#/components/parameters/x_kanda_eid"
+        - $ref: "#/components/parameters/x_kanda_tid"
       responses:
         200:
           description: got existing lead
@@ -2989,10 +3013,10 @@ paths:
           schema:
             type: string
             minLength: 1
-        - $ref: "#/components/parameters/XKandaBid"
-        - $ref: "#/components/parameters/XKandaCid"
-        - $ref: "#/components/parameters/XKandaEid"
-        - $ref: "#/components/parameters/XKandaTid"
+        - $ref: "#/components/parameters/x_kanda_bid"
+        - $ref: "#/components/parameters/x_kanda_cid"
+        - $ref: "#/components/parameters/x_kanda_eid"
+        - $ref: "#/components/parameters/x_kanda_tid"
       requestBody:
         description: put existing lead
         required: true
@@ -3027,10 +3051,10 @@ paths:
           schema:
             type: string
             minLength: 1
-        - $ref: "#/components/parameters/XKandaBid"
-        - $ref: "#/components/parameters/XKandaCid"
-        - $ref: "#/components/parameters/XKandaEid"
-        - $ref: "#/components/parameters/XKandaTid"
+        - $ref: "#/components/parameters/x_kanda_bid"
+        - $ref: "#/components/parameters/x_kanda_cid"
+        - $ref: "#/components/parameters/x_kanda_eid"
+        - $ref: "#/components/parameters/x_kanda_tid"
       responses:
         200:
           description: deleted existing lead
@@ -3059,10 +3083,10 @@ paths:
           schema:
             type: string
             minLength: 1
-        - $ref: "#/components/parameters/XKandaBid"
-        - $ref: "#/components/parameters/XKandaCid"
-        - $ref: "#/components/parameters/XKandaEid"
-        - $ref: "#/components/parameters/XKandaTid"
+        - $ref: "#/components/parameters/x_kanda_bid"
+        - $ref: "#/components/parameters/x_kanda_cid"
+        - $ref: "#/components/parameters/x_kanda_eid"
+        - $ref: "#/components/parameters/x_kanda_tid"
       requestBody:
         description: posted existing lead quote
         required: true
@@ -3098,10 +3122,10 @@ paths:
           schema:
             type: string
             minLength: 1
-        - $ref: "#/components/parameters/XKandaBid"
-        - $ref: "#/components/parameters/XKandaCid"
-        - $ref: "#/components/parameters/XKandaEid"
-        - $ref: "#/components/parameters/XKandaTid"
+        - $ref: "#/components/parameters/x_kanda_bid"
+        - $ref: "#/components/parameters/x_kanda_cid"
+        - $ref: "#/components/parameters/x_kanda_eid"
+        - $ref: "#/components/parameters/x_kanda_tid"
       requestBody:
         description: posted existing lead trade
         required: true
@@ -3137,10 +3161,10 @@ paths:
           schema:
             type: string
             minLength: 1
-        - $ref: "#/components/parameters/XKandaBid"
-        - $ref: "#/components/parameters/XKandaCid"
-        - $ref: "#/components/parameters/XKandaEid"
-        - $ref: "#/components/parameters/XKandaTid"
+        - $ref: "#/components/parameters/x_kanda_bid"
+        - $ref: "#/components/parameters/x_kanda_cid"
+        - $ref: "#/components/parameters/x_kanda_eid"
+        - $ref: "#/components/parameters/x_kanda_tid"
       responses:
         200:
           description: posted existing lead quote approval by trade
@@ -3169,10 +3193,10 @@ paths:
           schema:
             type: string
             minLength: 1
-        - $ref: "#/components/parameters/XKandaBid"
-        - $ref: "#/components/parameters/XKandaCid"
-        - $ref: "#/components/parameters/XKandaEid"
-        - $ref: "#/components/parameters/XKandaTid"
+        - $ref: "#/components/parameters/x_kanda_bid"
+        - $ref: "#/components/parameters/x_kanda_cid"
+        - $ref: "#/components/parameters/x_kanda_eid"
+        - $ref: "#/components/parameters/x_kanda_tid"
       requestBody:
         description: posted existing lead quote
         required: true
@@ -3210,8 +3234,8 @@ paths:
       tags:
         - Subscription
       parameters:
-        - $ref: "#/components/parameters/Format"
-        - $ref: "#/components/parameters/Q"
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
       responses:
         200:
           description: got all subscriptions
@@ -3378,8 +3402,8 @@ paths:
       tags:
         - Rate
       parameters:
-        - $ref: "#/components/parameters/Format"
-        - $ref: "#/components/parameters/Q"
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
       responses:
         200:
           description: got all rates
@@ -3518,8 +3542,8 @@ paths:
       tags:
         - Monitor
       parameters:
-        - $ref: "#/components/parameters/Format"
-        - $ref: "#/components/parameters/Q"
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
       responses:
         200:
           description: got all monitors
@@ -3825,7 +3849,7 @@ components:
       scheme: bearer
 
   parameters:
-    Format:
+    format:
       name: format
       in: query
       schema:
@@ -3837,7 +3861,7 @@ components:
           - "full"
         default: "full"
 
-    Q:
+    q:
       name: q
       in: query
       schema:
@@ -3846,7 +3870,7 @@ components:
         description: query filter in colon path+value pairs, with comma separated filters
         minLength: 1
 
-    XKandaBid:
+    x_kanda_bid:
       name: x_kanda_bid
       in: header
       schema:
@@ -3855,7 +3879,7 @@ components:
         description: kanda bid
         minLength: 1
 
-    XKandaCid:
+    x_kanda_cid:
       name: x_kanda_cid
       in: header
       schema:
@@ -3864,7 +3888,7 @@ components:
         description: kanda cid
         minLength: 1
 
-    XKandaEid:
+    x_kanda_eid:
       name: x_kanda_eid
       in: header
       schema:
@@ -3873,7 +3897,7 @@ components:
         description: kanda eid
         minLength: 1
 
-    XKandaTid:
+    x_kanda_tid:
       name: x_kanda_tid
       in: header
       schema:
