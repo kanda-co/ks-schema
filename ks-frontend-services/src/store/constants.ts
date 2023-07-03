@@ -28,3 +28,7 @@ export const SINGLE_ACTION_REDUCERS: SingleActionReducers[] = [
   { entity: 'job', action: 'JobCompanyInfo' },
   { entity: 'job', action: 'CheckJob', actionEntity: 'JobCreditState' },
 ];
+
+export const ENTITY_NAME_OVERRIDES = {
+  InfoEnterprise: 'Enterprise',
+};
