@@ -714,6 +714,11 @@ paths:
             type: string
           description: enterprise branch id
         - in: query
+          name: subdomain
+          schema:
+            type: string
+          description: enterprise / branch subdomain
+        - in: query
           name: branch_code
           schema:
             type: string
@@ -724,7 +729,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Enterprise"
+                type: array
+                items:
+                  $ref: "#/components/schemas/Enterprise"
         default:
           description: unexpected error
           content:
