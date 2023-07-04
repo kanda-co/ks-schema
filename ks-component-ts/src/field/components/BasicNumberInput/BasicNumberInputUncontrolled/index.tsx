@@ -50,7 +50,8 @@ const BasicNumberInputUncontrolled: FunctionComponent<BasicNumberInputUncontroll
         isAllowed,
       });
 
-    const focusedValue = currentValue ? formatForDisplay(currentValue) : "";
+    const focusedValue =
+      typeof currentValue !== "undefined" ? formatForDisplay(currentValue) : "";
     const readOnlyProps = stripUnneededProps(props);
 
     // DEV_NOTE: removed register here as need to register name and
