@@ -172,7 +172,7 @@ const interceptedFetch = (
           if (APP_ENV === 'qa') console.log('Token refreshed');
           return originalFetch().apply(currentWindow, [
             url,
-            buildRequestHeaders(options, newToken),
+            buildRequestHeaders(options, newToken, ids),
             ...args,
           ]);
         }
