@@ -35,7 +35,7 @@ const handleProtectedRequest = async (
 export const fetchRequestAdapter = (baseURL: string, requireAuth = true) => {
   const fetchToUse = requireAuth ? fetch : originalFetch();
   return async (url: string, init: StringIndexedObject): Promise<Response> => {
-    const protectedRequest = Object.keys(init.headers).includes(
+    const protectedRequest = Object.keys(init.headers || {}).includes(
       'x_kanda_protected',
     );
     if (protectedRequest)

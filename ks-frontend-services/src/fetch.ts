@@ -81,7 +81,7 @@ const buildRequestHeaders = (
 ): Request => ({
   ...init,
   headers: {
-    ...cleanHeaders(init.headers),
+    ...cleanHeaders(init.headers || {}),
     ...(token ? buildAuth(token) : {}),
     ...(ids ? buildIds(ids) : {}),
   },

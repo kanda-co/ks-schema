@@ -15,6 +15,7 @@ export declare const buildIds: (ids: Ids) => IdHeaders;
  * @param token
  */
 export declare const buildAuth: (token: string) => AuthenticationHeaders;
+export declare const cleanHeaders: (headers: StringIndexedObject) => StringIndexedObject;
 export declare const originalFetch: () => any;
 /**
  * Alter the fetch method so that it will automatically retry the request
