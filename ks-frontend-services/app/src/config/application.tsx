@@ -9,6 +9,7 @@ export const URLS = {
   SIGNUP: '/signup',
   PDF_CREATE: '/pdf-create',
   SHEETS: '/sheets',
+  ENTERPRISE: '/enterprise',
 };
 
 export const APP_ENV = process.env.REACT_APP_ENV || 'qa';

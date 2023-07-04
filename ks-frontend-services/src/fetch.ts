@@ -147,6 +147,10 @@ const interceptedFetch = (
   options: StringIndexedObject,
   ...args
 ) => {
+  console.log({ url });
+  console.log({ options });
+  console.log({ args });
+
   const token =
     global?.token || FirebaseAuthService?.auth?.currentUser?.accessToken;
 

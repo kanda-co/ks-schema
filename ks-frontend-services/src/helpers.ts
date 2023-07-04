@@ -36,6 +36,8 @@ export const fetchRequestAdapter = (baseURL: string, requireAuth = true) => {
   const fetchToUse = requireAuth ? fetch : originalFetch();
 
   return async (url: string, init: StringIndexedObject): Promise<Response> => {
+    console.log({ init });
+
     const { protectedRequest = false, ...formattedBody } = JSON.parse(
       init.body || '{}',
     );

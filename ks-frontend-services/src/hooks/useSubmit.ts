@@ -58,17 +58,25 @@ export default function useSubmit<Value, Params, Body>(
        * the service level for each individual request interface. But some may
        * have no params, body or both.
        */
+      // const args = {
+      //   body: {
+      //     ...body,
+      //     protectedRequest,
+      //   },
+      //   params,
+      // };
       const args = {
-        body: {
-          ...body,
-          protectedRequest,
-        },
+        body,
         params,
       };
+
+      console.log({ argsInOnSubmit: args });
 
       const method = service.method as unknown as (
         args: Partial<ServiceParams<Params, Body>>,
       ) => ServiceMethodReturn<Value>;
+
+      console.log({ method });
 
       const response = formatResponse
         ? await (method(args) as unknown as Function)()
