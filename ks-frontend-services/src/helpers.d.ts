@@ -22,3 +22,10 @@ export declare function getOperationKeys(currentOperations: StringIndexedObject)
  * @param operationKey
  */
 export declare function getOperationName(operationKey: string, capitalise?: boolean): string;
+/**
+ * Gets the error message based on the encoded message passed back from the API.
+ * For example:
+ * 	error: "code=400, message=Hello world"
+ * will return "Hello world"
+ */
+export declare const extractErrorMessage: (error: StringIndexedObject | string) => string;

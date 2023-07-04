@@ -38,12 +38,9 @@ export default function useSubmit<Value, Params, Body>(
     async ({
       body = {} as Body,
       params = {} as Params,
-      protectedRequest = false,
     }: Partial<ServiceParams<Params, Body>>): Promise<
       ServiceMethodReturnParams<Value>
     > => {
-      // console.log(user);
-
       if (!service || !service.method) {
         const errorLabel = 'No such method exists';
         setError(errorLabel);
@@ -59,10 +56,7 @@ export default function useSubmit<Value, Params, Body>(
        * have no params, body or both.
        */
       const args = {
-        body: {
-          ...body,
-          protectedRequest,
-        },
+        body,
         params,
       };
 

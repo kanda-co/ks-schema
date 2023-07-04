@@ -26,6 +26,7 @@ import {
 import { InfoEntity } from '../generated/components/schemas';
 import { INFO_ENTITY_KEY } from './constants';
 import { GetInfoEntityRequestParameters } from '../generated/operations/getInfoEntity';
+import { extractErrorMessage } from '../helpers';
 
 export const handlePayload = <T>(payload: Payload<T>): Promise<T> =>
   payload().then(handleApiResponse) as Promise<T>;
@@ -127,11 +128,14 @@ export const createAsyncThunkAction = <
   Args extends StringIndexedObject<any> | undefined = undefined,
 >(
   service: NewService<Entity, Args>,
-): AsyncThunk<Entity, AsyncThunkActionArgs<Args>, {}> => {
+): AsyncThunk<Entity, AsyncThunkActionArgs<Args, Entity>, {}> => {
   const { key, method } = service;
-  return createAsyncThunk<Entity, AsyncThunkActionArgs<Args>>(
+  return createAsyncThunk<Entity, AsyncThunkActionArgs<Args, Entity>>(
     key,
-    async <T>(args: AsyncThunkActionArgs<Args> | void, thunkAPI: ThunkAPI) => {
+    async <T>(
+      args: AsyncThunkActionArgs<Args, Entity> | void,
+      thunkAPI: ThunkAPI,
+    ) => {
       const state = thunkAPI.getState() as StringIndexedObject;
 
       // Special case here because InfoEntity returns an object, with
@@ -180,14 +184,16 @@ export const createAsyncThunkAction = <
         const data = await handlePayload(payload as unknown as Payload<Entity>);
 
         if (onSuccess) {
-          onSuccess();
+          onSuccess(data);
         }
 
         return data;
       } catch (error) {
-        console.log(error);
         if (onError) {
-          onError();
+          onError({
+            code: error?.code,
+            message: extractErrorMessage(error),
+          });
         }
 
         throw error;

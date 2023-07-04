@@ -1,4 +1,5 @@
 import { StringIndexedObject } from '../../types';
+import { ENTITY_NAME_OVERRIDES } from '../constants';
 
 const getCamelCaseEntityName = (entityName: string) =>
   entityName.charAt(0).toLowerCase() + entityName.slice(1);
@@ -31,17 +32,19 @@ builder.addCase(${actionName}.rejected, (state, action) => {
 
 const selector = (entityName: string, entityNameOverride?: string) => {
   const camelCaseEntityName = getCamelCaseEntityName(entityName);
-  return `const ${camelCaseEntityName} = generateSelectors<${
-    entityNameOverride || entityName
-  }, StringIndexedObject<GeneratedState<${
-    entityNameOverride || entityName
-  }>>>("${camelCaseEntityName}", ${camelCaseEntityName}Adapter);`;
+  const entityNameToUse =
+    ENTITY_NAME_OVERRIDES[entityName] || entityNameOverride || entityName;
+
+  return `const ${camelCaseEntityName} = generateSelectors<${entityNameToUse}, StringIndexedObject<GeneratedState<${entityNameToUse}>>>("${camelCaseEntityName}", ${camelCaseEntityName}Adapter);`;
 };
 
+// Take the entityNames, apply any needed overrides and then make sure the array
+// only contains unique values
 const typeImports = (entityNames: string[]) =>
-  `import type {${entityNames.join(
-    ', ',
-  )}} from '../../generated/components/schemas';`;
+  `import type {${entityNames
+    .map((entityName) => ENTITY_NAME_OVERRIDES[entityName] || entityName)
+    .filter((value, index, array) => array.indexOf(value) === index)
+    .join(', ')}} from '../../generated/components/schemas';`;
 
 const selectorAdapterImports = (camelCaseEntityNames: string[]): string =>
   `import { ${camelCaseEntityNames
@@ -49,7 +52,9 @@ const selectorAdapterImports = (camelCaseEntityNames: string[]): string =>
     .join(',\n')} } from '../adapters';`;
 
 const adapter = (camelCaseEntityName: string, entityName: string) =>
-  `export const ${camelCaseEntityName}Adapter = createEntityAdapter<${entityName}>();`;
+  `export const ${camelCaseEntityName}Adapter = createEntityAdapter<${
+    ENTITY_NAME_OVERRIDES[entityName] || entityName
+  }>();`;
 
 export const adapters = (
   entityNames: string[],
@@ -150,7 +155,9 @@ import {
   type AsyncThunkAction,
 } from "@reduxjs/toolkit";
 import { createSlice } from "../../toolkit";
-import { type ${entityName}, services } from "../../../";
+import { type ${
+    ENTITY_NAME_OVERRIDES[entityName] || entityName
+  }, services } from "../../../";
 import {
   createAsyncThunkAction,
   createResponseHandler,
@@ -176,11 +183,15 @@ export type ${formattedEntityName}Config = ${formattedEntityName}Return[2];
 export type ${formattedEntityName}AsyncThunkAction = AsyncThunkAction<${formattedEntityName}Entity, ${formattedEntityName}Params, ${formattedEntityName}Config>;
 
 // Reducer
-export type ${formattedEntityName}State = GeneratedState<${formattedEntityName}>;
+export type ${formattedEntityName}State = GeneratedState<${
+    ENTITY_NAME_OVERRIDES[entityName] || formattedEntityName
+  }>;
 
 export const ${handleResponseName(
     entityName,
-  )} = createResponseHandler<${formattedEntityName}State, ${entityName}>(${camelCaseEntityName}Adapter);
+  )} = createResponseHandler<${formattedEntityName}State, ${
+    ENTITY_NAME_OVERRIDES[entityName] || entityName
+  }>(${camelCaseEntityName}Adapter);
 
 export const ${camelCaseEntityName}Slice = createSlice({
   name: "${camelCaseEntityName}",
@@ -193,7 +204,9 @@ export const ${camelCaseEntityName}Slice = createSlice({
       ...state,
       isLoading: true,
     }),
-    fetched: (state: ${entityName}State, action: PayloadAction<${entityName}[]>) => ({
+    fetched: (state: ${entityName}State, action: PayloadAction<${
+    ENTITY_NAME_OVERRIDES[entityName] || entityName
+  }[]>) => ({
 	    ...state,
 	    ...${handleResponseName(entityName)}(state, action),
             // Don't set fetchedList when using this action, as it's used

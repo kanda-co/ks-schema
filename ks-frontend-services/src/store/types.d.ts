@@ -34,17 +34,27 @@ type CreateAsyncThunkCallbackArguments = Parameters<CreateAsyncThunkCallback>;
 
 export type ThunkAPI = CreateAsyncThunkCallbackArguments[1];
 
-export type SharedAsyncThunkActionArgs = {
+export interface AsyncThunkActionError {
+  code?: number;
+  message?: string;
+}
+
+export type SharedAsyncThunkActionArgs<
+  Entity extends StringIndexedObject | undefined | void,
+> = {
   protectedRequest?: boolean;
   preventLoadingState?: boolean;
   forceReload?: boolean;
-  onSuccess?: () => void;
-  onError?: () => void;
+  onSuccess?: (data: Entity) => void;
+  onError?: (error: AsyncThunkActionError) => void;
 };
 
-export type AsyncThunkActionArgs<Args> = Args extends undefined
-  ? SharedAsyncThunkActionArgs
-  : Args & SharedAsyncThunkActionArgs;
+export type AsyncThunkActionArgs<
+  Args,
+  Entity extends StringIndexedObject | undefined | void,
+> = Args extends undefined
+  ? SharedAsyncThunkActionArgs<Entity>
+  : Args & SharedAsyncThunkActionArgs<Entity>;
 
 export interface Selectors<T, S> {
   getReducer: (state: S) => S[keyof S];

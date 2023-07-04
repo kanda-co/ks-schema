@@ -7,7 +7,7 @@ import services from '../../service';
 import { getOperationKeys, getOperationName } from '../../helpers';
 import { actions, adapters, selectors, slice, sliceIndex } from './templates';
 import { filterActions } from './helpers';
-import { SINGLE_ACTION_REDUCERS } from '../constants';
+import { ENTITY_NAME_OVERRIDES, SINGLE_ACTION_REDUCERS } from '../constants';
 
 const getCamelCaseEntityName = (entityName: string) =>
   entityName.charAt(0).toLowerCase() + entityName.slice(1);
@@ -15,6 +15,8 @@ const getCamelCaseEntityName = (entityName: string) =>
 // Generate a slice file for a given entity
 // that contains all the actions for that entity and the reducer
 function generateSlices(entityName: string) {
+  const entityNameOverride = ENTITY_NAME_OVERRIDES[entityName] || '';
+
   const camelCaseEntityName = getCamelCaseEntityName(entityName);
 
   const actionNames = filterActions(Object.keys(services[camelCaseEntityName]));
@@ -43,9 +45,6 @@ function generateSlices(entityName: string) {
 function generateActionSpecificSlices() {
   SINGLE_ACTION_REDUCERS.forEach(({ entity, action, actionEntity }) => {
     const camelCaseActionName = getCamelCaseEntityName(action);
-    const camelCaseActionEntityName = getCamelCaseEntityName(
-      actionEntity || '',
-    );
 
     const template = slice(
       actionEntity || action,

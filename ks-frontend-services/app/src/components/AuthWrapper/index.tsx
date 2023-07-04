@@ -1,5 +1,5 @@
 import { type FunctionComponent, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useCurrentUser } from '@kanda-libs/ks-frontend-services';
 
 export interface Props {
@@ -9,17 +9,17 @@ export interface Props {
 const AuthWrapper: FunctionComponent<Props> = function ({ children }) {
   const { isUserLoggedIn, isValidating } = useCurrentUser();
 
-  const navigate = useNavigate();
+  const { push } = useHistory();
 
   /**
    * If the token in storage is invalid, logout the user
    */
   useEffect(() => {
     if (!isValidating && !isUserLoggedIn) {
-      navigate('/login');
+      push('/login');
       return;
     }
-  }, [isValidating, isUserLoggedIn, navigate]);
+  }, [isValidating, isUserLoggedIn, push]);
 
   return isUserLoggedIn ? children : null;
 };

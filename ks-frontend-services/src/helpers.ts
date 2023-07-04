@@ -34,23 +34,14 @@ const handleProtectedRequest = async (
  */
 export const fetchRequestAdapter = (baseURL: string, requireAuth = true) => {
   const fetchToUse = requireAuth ? fetch : originalFetch();
-
   return async (url: string, init: StringIndexedObject): Promise<Response> => {
-    const { protectedRequest = false, ...formattedBody } = JSON.parse(
-      init.body || '{}',
+    const protectedRequest = Object.keys(init.headers).includes(
+      'x_kanda_protected',
     );
-
-    if (protectedRequest) {
+    if (protectedRequest)
       return fetchToUse(`${baseURL}${url}`, await handleProtectedRequest(init));
-    }
 
-    const formattedInit = init;
-
-    if (init.body) {
-      formattedInit.body = JSON.stringify(formattedBody);
-    }
-
-    return fetchToUse(`${baseURL}${url}`, formattedInit);
+    return fetchToUse(`${baseURL}${url}`, init);
   };
 };
 
@@ -89,3 +80,29 @@ export function getOperationName(
 
   return capitalise ? key.charAt(0).toUpperCase() + key.slice(1) : key;
 }
+
+/**
+ * Gets the error message based on the encoded message passed back from the API.
+ * For example:
+ * 	error: "code=400, message=Hello world"
+ * will return "Hello world"
+ */
+export const extractErrorMessage = (
+  error: StringIndexedObject | string,
+): string => {
+  if (typeof error === 'string') return error;
+  if (!error.message) return 'Unknown error';
+  const mapping = error.message
+    .split(', ')
+    .reduce((errorObj: StringIndexedObject, part: string) => {
+      const parts = part.split('=');
+      if (parts.length !== 2) return errorObj;
+      return {
+        ...errorObj,
+        [parts[0]]: parts[1],
+      };
+    }, {});
+  if (Object.keys(mapping).length === 0) return 'Unknown error';
+  if (!mapping.message) return 'Unknown error';
+  return mapping.message;
+};

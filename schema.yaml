@@ -16,6 +16,8 @@ paths:
       summary: post me info
       tags:
         - AuthUser
+      parameters:
+        - $ref: "#/components/parameters/x_kanda_protected"
       requestBody:
         description: post me info details
         required: true
@@ -696,6 +698,49 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/enterprise:
+    get:
+      operationId: infoEnterprise
+      summary: get info enterprise
+      tags:
+        - InfoEnterprise
+      parameters:
+        - in: query
+          name: eid
+          schema:
+            type: string
+          description: enterprise id
+        - in: query
+          name: bid
+          schema:
+            type: string
+          description: enterprise branch id
+        - in: query
+          name: subdomain
+          schema:
+            type: string
+          description: enterprise / branch subdomain
+        - in: query
+          name: branch_code
+          schema:
+            type: string
+          description: enterprise branch code
+      responses:
+        200:
+          description: got info enterprise
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Enterprise"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/partner:
     get:
       operationId: getPartners
@@ -703,8 +748,8 @@ paths:
       tags:
         - Partner
       parameters:
-        - $ref: "#/components/parameters/Format"
-        - $ref: "#/components/parameters/Q"
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
       responses:
         200:
           description: got all partners
@@ -882,8 +927,8 @@ paths:
       tags:
         - Onboarding
       parameters:
-        - $ref: "#/components/parameters/Format"
-        - $ref: "#/components/parameters/Q"
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
       responses:
         200:
           description: got all onboardings
@@ -1050,6 +1095,220 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/enterprise:
+    get:
+      operationId: getEnterprises
+      summary: get all enterprises
+      tags:
+        - Enterprise
+      parameters:
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
+      responses:
+        200:
+          description: got all enterprises
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Enterprise"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    post:
+      operationId: postEnterprise
+      summary: kanda staff only to post new enterprise
+      tags:
+        - Enterprise
+      requestBody:
+        description: post new enterprise
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Enterprise"
+      responses:
+        200:
+          description: posted new enterprise
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enterprise"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/enterprise/{id}:
+    get:
+      operationId: getEnterprise
+      summary: get existing enterprise
+      tags:
+        - Enterprise
+      parameters:
+        - name: id
+          in: path
+          description: enterprise id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing enterprise
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enterprise"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: putEnterprise
+      summary: put existing enterprise
+      tags:
+        - Enterprise
+      parameters:
+        - name: id
+          in: path
+          description: enterprise id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: put existing enterprise
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Enterprise"
+      responses:
+        200:
+          description: put existing enterprise
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enterprise"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      operationId: deleteEnterprise
+      summary: kanda staff to delete existing enterprise
+      tags:
+        - Enterprise
+      parameters:
+        - name: id
+          in: path
+          description: enterprise id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: deleted existing enterprise
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enterprise"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/enterprise/{id}/branch:
+    get:
+      operationId: getEnterpriseBranches
+      summary: get existing enterprise branches
+      tags:
+        - Enterprise
+      parameters:
+        - name: id
+          in: path
+          description: enterprise id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing enterprise branches
+          content:
+            application/json:
+              schema:
+                type: array
+                title: enterprise branches
+                description: enterprise branches
+                items:
+                  $ref: "#/components/schemas/Enterprise"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    post:
+      operationId: postEnterpriseBranches
+      summary: post existing enterprise branches
+      tags:
+        - Enterprise
+      parameters:
+        - name: id
+          in: path
+          description: enterprise id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: post existing enterprise branches
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              title: enterprise branches
+              description: enterprise branches to be added
+              items:
+                $ref: "#/components/schemas/Enterprise"
+      responses:
+        200:
+          description: posted existing enterprise branches
+          content:
+            application/json:
+              schema:
+                type: array
+                title: enterprise branches
+                description: enterprise branches to be added
+                items:
+                  $ref: "#/components/schemas/Enterprise"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/company:
     get:
       operationId: getCompanies
@@ -1057,8 +1316,8 @@ paths:
       tags:
         - Company
       parameters:
-        - $ref: "#/components/parameters/Format"
-        - $ref: "#/components/parameters/Q"
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
       responses:
         200:
           description: got all companies
@@ -1380,8 +1639,8 @@ paths:
       tags:
         - Job
       parameters:
-        - $ref: "#/components/parameters/Format"
-        - $ref: "#/components/parameters/Q"
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
       responses:
         200:
           description: got all jobs
@@ -2051,8 +2310,8 @@ paths:
       tags:
         - Payment
       parameters:
-        - $ref: "#/components/parameters/Format"
-        - $ref: "#/components/parameters/Q"
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
       responses:
         200:
           description: got all payments
@@ -2231,8 +2490,8 @@ paths:
       tags:
         - Credit
       parameters:
-        - $ref: "#/components/parameters/Format"
-        - $ref: "#/components/parameters/Q"
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
       responses:
         200:
           description: got all credits
@@ -2494,8 +2753,8 @@ paths:
       tags:
         - Document
       parameters:
-        - $ref: "#/components/parameters/Format"
-        - $ref: "#/components/parameters/Q"
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
       responses:
         200:
           description: got all documents
@@ -2634,8 +2893,12 @@ paths:
       tags:
         - Lead
       parameters:
-        - $ref: "#/components/parameters/Format"
-        - $ref: "#/components/parameters/Q"
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
+        - $ref: "#/components/parameters/x_kanda_bid"
+        - $ref: "#/components/parameters/x_kanda_cid"
+        - $ref: "#/components/parameters/x_kanda_eid"
+        - $ref: "#/components/parameters/x_kanda_tid"
       responses:
         200:
           description: got all leads
@@ -2657,6 +2920,35 @@ paths:
       summary: post new lead from applicant
       tags:
         - Lead
+      parameters:
+        - name: x_kanda_bid
+          in: header
+          schema:
+            type: string
+            title: kanda tid
+            description: kanda bid
+            minLength: 1
+        - name: x_kanda_cid
+          in: header
+          schema:
+            type: string
+            title: kanda tid
+            description: kanda cid
+            minLength: 1
+        - name: x_kanda_eid
+          in: header
+          schema:
+            type: string
+            title: kanda tid
+            description: kanda eid
+            minLength: 1
+        - name: x_kanda_tid
+          in: header
+          schema:
+            type: string
+            title: kanda tid
+            description: kanda tid
+            minLength: 1
       requestBody:
         description: post new lead
         required: true
@@ -2692,6 +2984,10 @@ paths:
           schema:
             type: string
             minLength: 1
+        - $ref: "#/components/parameters/x_kanda_bid"
+        - $ref: "#/components/parameters/x_kanda_cid"
+        - $ref: "#/components/parameters/x_kanda_eid"
+        - $ref: "#/components/parameters/x_kanda_tid"
       responses:
         200:
           description: got existing lead
@@ -2719,6 +3015,10 @@ paths:
           schema:
             type: string
             minLength: 1
+        - $ref: "#/components/parameters/x_kanda_bid"
+        - $ref: "#/components/parameters/x_kanda_cid"
+        - $ref: "#/components/parameters/x_kanda_eid"
+        - $ref: "#/components/parameters/x_kanda_tid"
       requestBody:
         description: put existing lead
         required: true
@@ -2753,6 +3053,10 @@ paths:
           schema:
             type: string
             minLength: 1
+        - $ref: "#/components/parameters/x_kanda_bid"
+        - $ref: "#/components/parameters/x_kanda_cid"
+        - $ref: "#/components/parameters/x_kanda_eid"
+        - $ref: "#/components/parameters/x_kanda_tid"
       responses:
         200:
           description: deleted existing lead
@@ -2781,6 +3085,10 @@ paths:
           schema:
             type: string
             minLength: 1
+        - $ref: "#/components/parameters/x_kanda_bid"
+        - $ref: "#/components/parameters/x_kanda_cid"
+        - $ref: "#/components/parameters/x_kanda_eid"
+        - $ref: "#/components/parameters/x_kanda_tid"
       requestBody:
         description: posted existing lead quote
         required: true
@@ -2802,10 +3110,10 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-  /api/lead/{id}/refer:
+  /api/lead/{id}/trade:
     post:
-      operationId: referLead
-      summary: post existing referred lead
+      operationId: tradeLead
+      summary: post existing lead trade
       tags:
         - Lead
       parameters:
@@ -2816,6 +3124,81 @@ paths:
           schema:
             type: string
             minLength: 1
+        - $ref: "#/components/parameters/x_kanda_bid"
+        - $ref: "#/components/parameters/x_kanda_cid"
+        - $ref: "#/components/parameters/x_kanda_eid"
+        - $ref: "#/components/parameters/x_kanda_tid"
+      requestBody:
+        description: posted existing lead trade
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LeadTrade"
+      responses:
+        200:
+          description: posted existing lead quote
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/lead/{id}/trade-quote-approval:
+    post:
+      operationId: tradeQuoteApprovalLead
+      summary: external trade to post existing lead quote approval by trade
+      tags:
+        - Lead
+      parameters:
+        - name: id
+          in: path
+          description: lead id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - $ref: "#/components/parameters/x_kanda_bid"
+        - $ref: "#/components/parameters/x_kanda_cid"
+        - $ref: "#/components/parameters/x_kanda_eid"
+        - $ref: "#/components/parameters/x_kanda_tid"
+      responses:
+        200:
+          description: posted existing lead quote approval by trade
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/lead/{id}/refer:
+    post:
+      operationId: referLead
+      summary: kanda staff only to post existing referred lead
+      tags:
+        - Lead
+      parameters:
+        - name: id
+          in: path
+          description: lead id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - $ref: "#/components/parameters/x_kanda_bid"
+        - $ref: "#/components/parameters/x_kanda_cid"
+        - $ref: "#/components/parameters/x_kanda_eid"
+        - $ref: "#/components/parameters/x_kanda_tid"
       requestBody:
         description: posted existing lead quote
         required: true
@@ -2853,8 +3236,8 @@ paths:
       tags:
         - Subscription
       parameters:
-        - $ref: "#/components/parameters/Format"
-        - $ref: "#/components/parameters/Q"
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
       responses:
         200:
           description: got all subscriptions
@@ -3021,8 +3404,8 @@ paths:
       tags:
         - Rate
       parameters:
-        - $ref: "#/components/parameters/Format"
-        - $ref: "#/components/parameters/Q"
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
       responses:
         200:
           description: got all rates
@@ -3161,8 +3544,8 @@ paths:
       tags:
         - Monitor
       parameters:
-        - $ref: "#/components/parameters/Format"
-        - $ref: "#/components/parameters/Q"
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
       responses:
         200:
           description: got all monitors
@@ -3468,7 +3851,7 @@ components:
       scheme: bearer
 
   parameters:
-    Format:
+    format:
       name: format
       in: query
       schema:
@@ -3480,13 +3863,62 @@ components:
           - "full"
         default: "full"
 
-    Q:
+    q:
       name: q
       in: query
       schema:
         type: string
         title: query filter
         description: query filter in colon path+value pairs, with comma separated filters
+        minLength: 1
+    
+    x_kanda_protected:
+      name: x_kanda_protected
+      in: header
+      required: true
+      schema:
+        type: string
+        title: kanda protected
+        description: kanda protected request indicator
+        enum:
+          - "yes"
+          - "no"
+        default: "yes"
+
+    x_kanda_bid:
+      name: x_kanda_bid
+      in: header
+      schema:
+        type: string
+        title: kanda bid
+        description: kanda bid
+        minLength: 1
+
+    x_kanda_cid:
+      name: x_kanda_cid
+      in: header
+      schema:
+        type: string
+        title: kanda cid
+        description: kanda cid
+        minLength: 1
+
+    x_kanda_eid:
+      name: x_kanda_eid
+      in: header
+      schema:
+        type: string
+        title: kanda eid
+        description: kanda eid
+        minLength: 1
+
+    x_kanda_tid:
+      name: x_kanda_tid
+      in: header
+      schema:
+        type: string
+        title: kanda tid
+        description: kanda tid
         minLength: 1
 
   schemas:
@@ -3506,6 +3938,18 @@ components:
         id:
           type: string
           title: id
+          readOnly: true
+        cid:
+          type: string
+          title: company id
+          readOnly: true
+        eid:
+          type: string
+          title: enterprise id
+          readOnly: true
+        bid:
+          type: string
+          title: branch id
           readOnly: true
         token:
           type: string
@@ -4451,6 +4895,76 @@ components:
           title: metadata
           readOnly: true
 
+    Enterprise:
+      type: object
+      title: enterprise
+      description: enterprise
+      required:
+        - enterprise_type
+        - contact_info
+      properties:
+        id:
+          type: string
+          title: enterprise id
+          description: enterprise id
+          readOnly: true
+        cid:
+          type: string
+          title: company id
+          readOnly: true
+        aid:
+          type: string
+          title: author id
+          readOnly: true
+        oid:
+          type: string
+          title: owner id
+          readOnly: true
+        eid:
+          type: string
+          title: enterprise id
+          readOnly: true
+        bid:
+          type: string
+          title: branch id
+          readOnly: true
+        enterprise_type:
+          type: string
+          title: enterprise type
+          enum:
+            - "main_office"
+            - "branch_office"
+        subdomain:
+          type: string
+          title: subdomain address
+          description: subdomain hosted on kanda
+        branch_code:
+          type: string
+          title: branch code
+          description: branch code
+        emails:
+          type: array
+          items:
+            type: string
+            format: email
+            x-go-type: Email
+          title: emails for user who has api access
+          readOnly: true
+        contact_info:
+          type: object
+          title: enterprise contact info
+          $ref: "#/components/schemas/ContactInfo"
+        branding:
+          type: object
+          title: branding
+          description: branding style override
+          $ref: "#/components/schemas/Branding"
+        metadata:
+          type: object
+          title: metadata
+          $ref: "#/components/schemas/Metadata"
+          readOnly: true
+
     Company:
       type: object
       required:
@@ -4857,6 +5371,18 @@ components:
         aid:
           type: string
           title: author id
+          readOnly: true
+        eid:
+          type: string
+          title: enterprise id
+          readOnly: true
+        bid:
+          type: string
+          title: branch id
+          readOnly: true
+        tid:
+          type: string
+          title: external trade id
           readOnly: true
         name:
           type: string
@@ -5270,6 +5796,18 @@ components:
           type: string
           title: author id
           readOnly: true
+        eid:
+          type: string
+          title: enterprise id
+          readOnly: true
+        bid:
+          type: string
+          title: branch id
+          readOnly: true
+        tid:
+          type: string
+          title: external trade id
+          readOnly: true
         title:
           type: string
           title: job title
@@ -5620,6 +6158,7 @@ components:
     WorkType:
       type: string
       title: work type
+      x-kanda-form-widget: FilterableSelect
       enum:
         - air_conditioning
         - alarm_systems
@@ -5838,18 +6377,6 @@ components:
           title: work type
           description: work type for the job
           $ref: "#/components/schemas/WorkType"
-        cash_amount:
-          type: object
-          $ref: "#/components/schemas/Money"
-          title: consumer quote cash amount
-        credit_amount:
-          type: object
-          $ref: "#/components/schemas/Money"
-          title: consumer quote credit amount
-        budget:
-          type: object
-          $ref: "#/components/schemas/Money"
-          title: consumer quote budget
         work_finished_by:
           type: string
           title: consumer quote work finished by
@@ -5865,6 +6392,41 @@ components:
           title: consumer quote description
           minLength: 1
           x-kanda-form-widget: AutoSizeTextArea
+        job_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/JobItem"
+          title: job items
+        total:
+          type: object
+          title: job total
+          $ref: "#/components/schemas/MoneyTotal"
+          readOnly: true
+
+    LeadTrade:
+      type: object
+      title: lead trade
+      required:
+        - trading_name
+        - email
+        - mobile
+      properties:
+        email:
+          type: string
+          format: email
+          x-go-type: Email
+          title: email
+        mobile:
+          type: string
+          title: mobile phone number
+          minLength: 1
+        trading_name:
+          type: string
+          title: trading name
+          minLength: 1
+        address:
+          type: object
+          $ref: "#/components/schemas/Address"
 
     Lead:
       type: object
@@ -5890,6 +6452,18 @@ components:
           type: string
           title: author id
           readOnly: true
+        eid:
+          type: string
+          title: enterprise id
+          readOnly: true
+        bid:
+          type: string
+          title: branch id
+          readOnly: true
+        tid:
+          type: string
+          title: external trade id
+          readOnly: true
         lead_applicant:
           type: object
           title: lead applicant
@@ -5898,6 +6472,10 @@ components:
           type: object
           title: lead quote
           $ref: "#/components/schemas/LeadQuote"
+        lead_trade:
+          type: object
+          title: lead trade
+          $ref: "#/components/schemas/LeadTrade"
         finance_options:
           type: array
           title: finance options
@@ -5928,6 +6506,7 @@ components:
             - "open"
             - "credit_declined"
             - "quote_declined"
+            - "trade_notified"
             - "trade_accepted"
             - "trade_declined"
             - "expired"
@@ -5964,6 +6543,18 @@ components:
         aid:
           type: string
           title: author id
+          readOnly: true
+        eid:
+          type: string
+          title: enterprise id
+          readOnly: true
+        bid:
+          type: string
+          title: branch id
+          readOnly: true
+        tid:
+          type: string
+          title: external trade id
           readOnly: true
         kid:
           type: string
