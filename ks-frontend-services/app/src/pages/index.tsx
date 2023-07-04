@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import Services from './Services';
 import Login from './Login';
@@ -9,24 +9,35 @@ import Sheets from './Sheets';
 
 import { AuthWrapper } from '../components';
 import config from '../config';
+import Enterprise from './Enterprise';
 
 function Pages() {
   return (
-    <Routes>
-      <Route
-        path={config.URLS.HOME}
-        element={
-          <AuthWrapper>
-            <Services />
-          </AuthWrapper>
-        }
-      />
-      <Route path={config.URLS.SIGNUP} element={<SignUp />} />
-      <Route path={config.URLS.LOGIN} element={<Login />} />
-      <Route path={config.URLS.LOGOUT} element={<Logout />} />
-      <Route path={config.URLS.PDF_CREATE} element={<PdfCreate />} />
-      <Route path={config.URLS.SHEETS} element={<Sheets />} />
-    </Routes>
+    <Switch>
+      <Route path={config.URLS.SIGNUP}>
+        <SignUp />
+      </Route>
+      <Route path={config.URLS.LOGIN}>
+        <Login />
+      </Route>
+      <Route path={config.URLS.LOGOUT}>
+        <Logout />
+      </Route>
+      <Route path={config.URLS.PDF_CREATE}>
+        <PdfCreate />
+      </Route>
+      <Route path={config.URLS.SHEETS}>
+        <Sheets />
+      </Route>
+      <Route path={config.URLS.ENTERPRISE}>
+        <Enterprise />
+      </Route>
+      <Route path={config.URLS.HOME}>
+        <AuthWrapper>
+          <Services />
+        </AuthWrapper>
+      </Route>
+    </Switch>
   );
 }
 

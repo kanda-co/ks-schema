@@ -16,6 +16,8 @@ paths:
       summary: post me info
       tags:
         - AuthUser
+      parameters:
+        - $ref: "#/components/parameters/x_kanda_protected"
       requestBody:
         description: post me info details
         required: true
@@ -3869,6 +3871,19 @@ components:
         title: query filter
         description: query filter in colon path+value pairs, with comma separated filters
         minLength: 1
+    
+    x_kanda_protected:
+      name: x_kanda_protected
+      in: header
+      required: true
+      schema:
+        type: string
+        title: kanda protected
+        description: kanda protected request indicator
+        enum:
+          - "yes"
+          - "no"
+        default: "yes"
 
     x_kanda_bid:
       name: x_kanda_bid

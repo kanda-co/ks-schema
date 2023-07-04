@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import {
   useMutate,
   FirebaseAuthService,
@@ -10,11 +10,11 @@ const Logout = () => {
     FirebaseAuthService.logout.bind(FirebaseAuthService),
   );
 
-  const navigate = useNavigate();
+  const { push } = useHistory();
 
   useEffect(() => {
-    logout(false).then(() => navigate('/login'));
-  }, [logout, navigate]);
+    logout(false).then(() => push('/login'));
+  }, [logout, push]);
 
   return null;
 };

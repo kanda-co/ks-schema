@@ -34,23 +34,14 @@ const handleProtectedRequest = async (
  */
 export const fetchRequestAdapter = (baseURL: string, requireAuth = true) => {
   const fetchToUse = requireAuth ? fetch : originalFetch();
-
   return async (url: string, init: StringIndexedObject): Promise<Response> => {
-    const { protectedRequest = false, ...formattedBody } = JSON.parse(
-      init.body || '{}',
+    const protectedRequest = Object.keys(init.headers).includes(
+      'x_kanda_protected',
     );
-
-    if (protectedRequest) {
+    if (protectedRequest)
       return fetchToUse(`${baseURL}${url}`, await handleProtectedRequest(init));
-    }
 
-    const formattedInit = init;
-
-    if (init.body) {
-      formattedInit.body = JSON.stringify(formattedBody);
-    }
-
-    return fetchToUse(`${baseURL}${url}`, formattedInit);
+    return fetchToUse(`${baseURL}${url}`, init);
   };
 };
 

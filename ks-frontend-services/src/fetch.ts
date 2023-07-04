@@ -58,6 +58,17 @@ export const buildAuth = (token: string): AuthenticationHeaders => ({
   Authorization: token ? `Bearer ${token}` : '',
 });
 
+export const cleanHeaders = (
+  headers: StringIndexedObject,
+): StringIndexedObject =>
+  Object.keys(headers).reduce((final: StringIndexedObject, current: string) => {
+    if (!headers?.[current] || headers?.[current] === 'undefined') return final;
+    return {
+      ...final,
+      [current]: headers[current],
+    };
+  }, {});
+
 /**
  * Build the needed headers for API requests, including any needed auth
  * @param init
@@ -70,7 +81,7 @@ const buildRequestHeaders = (
 ): Request => ({
   ...init,
   headers: {
-    ...init.headers,
+    ...cleanHeaders(init.headers),
     ...(token ? buildAuth(token) : {}),
     ...(ids ? buildIds(ids) : {}),
   },
