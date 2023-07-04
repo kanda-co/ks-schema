@@ -10,6 +10,7 @@ export const URLS = {
   PDF_CREATE: '/pdf-create',
   SHEETS: '/sheets',
   ENTERPRISE: '/enterprise',
+  ADDRESS: '/address',
 };
 
 export const APP_ENV = process.env.REACT_APP_ENV || 'qa';

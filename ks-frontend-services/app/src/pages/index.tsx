@@ -6,10 +6,11 @@ import SignUp from './SignUp';
 import Logout from './Logout';
 import PdfCreate from './PdfCreate';
 import Sheets from './Sheets';
+import Enterprise from './Enterprise';
+import Address from './Address';
 
 import { AuthWrapper } from '../components';
 import config from '../config';
-import Enterprise from './Enterprise';
 
 function Pages() {
   return (
@@ -31,6 +32,9 @@ function Pages() {
       </Route>
       <Route path={config.URLS.ENTERPRISE}>
         <Enterprise />
+      </Route>
+      <Route path={config.URLS.ADDRESS}>
+        <Address />
       </Route>
       <Route path={config.URLS.HOME}>
         <AuthWrapper>
