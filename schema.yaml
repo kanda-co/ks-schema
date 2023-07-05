@@ -3871,7 +3871,7 @@ components:
         title: query filter
         description: query filter in colon path+value pairs, with comma separated filters
         minLength: 1
-    
+
     x_kanda_protected:
       name: x_kanda_protected
       in: header
@@ -6397,6 +6397,10 @@ components:
           items:
             $ref: "#/components/schemas/JobItem"
           title: job items
+        deposit:
+          type: object
+          $ref: "#/components/schemas/Money"
+          title: deposit value in pence
         total:
           type: object
           title: job total
