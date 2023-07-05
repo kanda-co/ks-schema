@@ -1,5 +1,6 @@
 import { lookup } from "mime-types";
 import { FileCardFile } from "~/field/components/FileInput/FileCard/types";
+import { StringIndexedObject } from "~/types";
 
 /**
  * Normalizes initial value
@@ -8,7 +9,7 @@ import { FileCardFile } from "~/field/components/FileInput/FileCard/types";
  * @returns  initial value
  */
 export const normalizeFilesValue = (value: File, maxFiles: number): File[] => {
-  if (!value) {
+  if (!value || !(value as StringIndexedObject).content) {
     return [];
   }
 
