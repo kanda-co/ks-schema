@@ -1,6 +1,6 @@
 export { default as AddFieldButton } from "./AddFieldButton";
 export { default as CompanyRiskFlag } from "./CompanyRiskFlag";
-export { default as CreditLine } from "./CreditLine";
+export { default as CreditLines } from "./CreditLines";
 export { default as Dropzone } from "./Dropzone";
 export { default as DropzoneContext } from "./Dropzone/DropzoneContext";
 export { default as FieldHandle } from "./Handle";
