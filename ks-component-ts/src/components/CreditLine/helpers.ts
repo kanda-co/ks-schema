@@ -1,8 +1,5 @@
 import type { FinanceRate } from "~/generated/components/schemas";
 
-export const formatValue = (value?: number): string =>
-  `£${((value || 0) / 100).toLocaleString()}`;
-
 /**
  * Calculates Loan from total and payment method
  */
