@@ -1,7 +1,7 @@
 import React, { type FunctionComponent } from "react";
 import { useForm } from "react-hook-form";
-import { StringIndexedObject } from "@kanda-libs/ks-design-library";
 import { Form } from "~/components";
+import type { StringIndexedObject } from "~/types";
 
 export interface MultiStepFormWrapperProps {
   name: string;

@@ -1,6 +1,6 @@
-import type { StringIndexedObject } from "@kanda-libs/ks-design-library";
 import type { MultiStepRouterState } from "./types";
 import { LOCAL_STORAGE_KEY_PREFIX } from "./constants";
+import type { StringIndexedObject } from "~/types";
 
 export const getLocalStorageKey = (name: string) =>
   [LOCAL_STORAGE_KEY_PREFIX, name].join("-");

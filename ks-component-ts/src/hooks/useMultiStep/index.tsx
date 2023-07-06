@@ -1,7 +1,7 @@
-import { StringIndexedObject } from "@kanda-libs/ks-design-library";
 import { useCallback, useEffect, useState } from "react";
 import { DeepPartial, useForm, useWatch } from "react-hook-form";
 import { useHistory, useLocation } from "react-router-dom";
+import type { StringIndexedObject } from "~/types";
 import { getInitalData, getLocalStorageKey } from "./helpers";
 import type { MultiStepRouterState } from "./types";
 
