@@ -1,5 +1,6 @@
 export { default as AddFieldButton } from "./AddFieldButton";
 export { default as CompanyRiskFlag } from "./CompanyRiskFlag";
+export { default as CreditLine } from "./CreditLine";
 export { default as Dropzone } from "./Dropzone";
 export { default as DropzoneContext } from "./Dropzone/DropzoneContext";
 export { default as FieldHandle } from "./Handle";
@@ -8,6 +9,7 @@ export { default as FormState } from "./FormState";
 export { default as FormTheme } from "./FormTheme";
 export { default as HeaderSearch } from "./HeaderSearch";
 export { default as MultiStepForm } from "./MultiStepForm";
+export { default as MultiStepFormWrapper } from "./MultiStepFormWrapper";
 export { default as PasswordStrengthIndicator } from "./PasswordStrengthIndicator";
 export { default as RangeSlider } from "./RangeSlider";
 export { default as RowFields } from "./RowFields";
