@@ -319,7 +319,7 @@ export function createMiddleware<State, P extends StringIndexedObject>(
 }
 
 interface RouterChildren {
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 // Creates the Router function component for use in rendering the application
