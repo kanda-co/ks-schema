@@ -1,4 +1,4 @@
-import { type FunctionComponent } from 'react';
+import type { FunctionComponent } from 'react';
 import * as TE from 'fp-ts/lib/TaskEither';
 import type { GuardFunctionRouteProps, GuardToRoute, Next } from 'react-router-guards/dist/types';
 import type { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
