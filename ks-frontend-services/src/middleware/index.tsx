@@ -1,4 +1,4 @@
-import { type FunctionComponent } from 'react';
+import type { FunctionComponent, ReactNode } from 'react';
 import { AnyAction } from '@reduxjs/toolkit';
 import * as TE from 'fp-ts/lib/TaskEither';
 import { pipe } from 'fp-ts/lib/function';
@@ -318,13 +318,17 @@ export function createMiddleware<State, P extends StringIndexedObject>(
   };
 }
 
+interface RouterChildren {
+  children: ReactNode;
+}
+
 // Creates the Router function component for use in rendering the application
 function createRouterComponent<State, P extends StringIndexedObject>(
   store: ToolkitStore<State>,
   pages: PageList<P>,
   notFoundPage: FunctionComponent,
-): FunctionComponent {
-  return (): JSX.Element => {
+): FunctionComponent<RouterChildren> {
+  return ({ children: additionaChildren }): JSX.Element => {
     // This package doesn't include correct typings for children,
     // probably due to it using an older version of react
     const Provider = GuardProvider as FunctionComponent<
@@ -341,6 +345,7 @@ function createRouterComponent<State, P extends StringIndexedObject>(
             <GuardedRoute path="/*" component={Page} />
           </Switch>
         </Provider>
+        {additionaChildren}
       </Router>
     );
   };
