@@ -1,4 +1,4 @@
-import type { FunctionComponent, ReactNode } from 'react';
+import type { FunctionComponent } from 'react';
 import { AnyAction } from '@reduxjs/toolkit';
 import * as TE from 'fp-ts/lib/TaskEither';
 import { pipe } from 'fp-ts/lib/function';
@@ -15,7 +15,12 @@ import {
 } from 'react-router-guards';
 import type { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 import type { PathKey } from '../store/types';
-import type { PageList, Router as RouterType, Page as PageType } from './types';
+import type {
+  PageList,
+  Router as RouterType,
+  Page as PageType,
+  RouterChildren,
+} from './types';
 import Page from './Page';
 import { FirebaseAuthService } from '../auth';
 import { CreatePageArgs, createPages, handleIO } from './helpers';
@@ -316,10 +321,6 @@ export function createMiddleware<State, P extends StringIndexedObject>(
       ),
     )();
   };
-}
-
-interface RouterChildren {
-  children?: ReactNode;
 }
 
 // Creates the Router function component for use in rendering the application

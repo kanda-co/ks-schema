@@ -1,4 +1,4 @@
-import type { FunctionComponent } from 'react';
+import type { FunctionComponent, ReactNode } from 'react';
 import type { StringIndexedObject } from '../types';
 import * as actions from '../store/slices/generated/actions';
 
@@ -38,8 +38,12 @@ export interface Page {
   initialDataActions: Readonly<InitialDataAction<ValidAction>[]>;
 }
 
+export interface RouterChildren {
+  children?: ReactNode;
+}
+
 export interface Router<Keys extends string | number> {
-  Router: FunctionComponent;
+  Router: FunctionComponent<RouterChildren>;
   URLS: {
     [key in Keys]: string;
   };
