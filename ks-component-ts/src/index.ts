@@ -17,6 +17,7 @@ export { makeIsAllowed } from "./field/helpers";
 export { default as Label } from "./field/components/Label";
 export { default as Error } from "./field/components/Error";
 
+export { default as useMultiStep } from "./hooks/useMultiStep";
 export { default as useDownloadPdf } from "./hooks/useDownloadPdf";
 export { default as useDownloadDocument } from "./hooks/useDownloadDocument";
 

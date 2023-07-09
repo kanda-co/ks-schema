@@ -1,6 +1,6 @@
 {
   "name": "@kanda-libs/ks-component-ts",
-  "version": "0.2.249-qa",
+  "version": "0.2.256-qa",
   "description": "Kanda form component library",
   "main": "dist/index.esm.js",
   "module": "dist/index.esm.js",
@@ -52,6 +52,7 @@
     "@types/react-dom": "^17.0.11",
     "@types/react-highlight-words": "^0.16.4",
     "@types/react-input-autosize": "^2.2.1",
+    "@types/react-router-dom": "^5.3.3",
     "@types/react-slick": "^0.23.10",
     "@types/react-table": "^7.7.0",
     "@typescript-eslint/eslint-plugin": "^5.14.0",
@@ -135,6 +136,7 @@
     "react-loading-skeleton": "^3.1.0",
     "react-number-format": "^4.6.4",
     "react-range": "^1.8.14",
+    "react-router-dom": "^5.2.0",
     "react-slick": "^0.29.0",
     "react-table": "^7.7.0",
     "react-textarea-autosize": "^8.4.0",

@@ -1,4 +1,4 @@
-import { type FunctionComponent } from 'react';
+import type { FunctionComponent } from 'react';
 import { AnyAction } from '@reduxjs/toolkit';
 import * as TE from 'fp-ts/lib/TaskEither';
 import { pipe } from 'fp-ts/lib/function';
@@ -15,7 +15,12 @@ import {
 } from 'react-router-guards';
 import type { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 import type { PathKey } from '../store/types';
-import type { PageList, Router as RouterType, Page as PageType } from './types';
+import type {
+  PageList,
+  Router as RouterType,
+  Page as PageType,
+  RouterChildren,
+} from './types';
 import Page from './Page';
 import { FirebaseAuthService } from '../auth';
 import { CreatePageArgs, createPages, handleIO } from './helpers';
@@ -323,8 +328,8 @@ function createRouterComponent<State, P extends StringIndexedObject>(
   store: ToolkitStore<State>,
   pages: PageList<P>,
   notFoundPage: FunctionComponent,
-): FunctionComponent {
-  return (): JSX.Element => {
+): FunctionComponent<RouterChildren> {
+  return ({ children: additionaChildren }): JSX.Element => {
     // This package doesn't include correct typings for children,
     // probably due to it using an older version of react
     const Provider = GuardProvider as FunctionComponent<
@@ -341,6 +346,7 @@ function createRouterComponent<State, P extends StringIndexedObject>(
             <GuardedRoute path="/*" component={Page} />
           </Switch>
         </Provider>
+        {additionaChildren}
       </Router>
     );
   };
