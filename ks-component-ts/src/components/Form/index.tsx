@@ -109,21 +109,14 @@ const Form: FunctionComponent<FormProps> = function ({
     (errors: StringIndexedObject, event?: React.BaseSyntheticEvent): void => {
       const paths = getErrorObjectKeys(errors);
       const obj = createErrorObject(paths, errors, getValues);
-      console.log("Form Error", {
-        element_id: id,
-        info: {
-          form: {
-            [id]: obj,
-          },
-        },
-      });
       logEvent("form-error", {
         element_id: id,
-        info: {
-          form: {
-            [id]: obj,
-          },
-        },
+        // DEV_NOTE: removed info - discussion needed for handling in future
+        // info: {
+        //   form: {
+        //     [id]: obj,
+        //   },
+        // },
       });
       flush();
       if (!onError) return;
@@ -136,11 +129,12 @@ const Form: FunctionComponent<FormProps> = function ({
     (values: StringIndexedObject, event?: React.BaseSyntheticEvent): void => {
       logEvent("form-submitted", {
         element_id: id,
-        info: {
-          form: {
-            [id]: values,
-          },
-        },
+        // DEV_NOTE: removed info - discussion needed for handling in future
+        // info: {
+        //   form: {
+        //     [id]: values,
+        //   },
+        // },
       });
       flush();
       onSubmit(values, event);
