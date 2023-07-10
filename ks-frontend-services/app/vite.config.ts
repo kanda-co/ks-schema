@@ -31,7 +31,7 @@ export default defineConfig({
       REACT_APP_ENV: 'qa',
       REACT_APP_HOME_URL: 'http://localhost:8001/',
       REACT_APP_LOGIN_URL: 'http://localhost:8001/login',
-      REACT_APP_AMPLITUDE_SERVER_URL: 'https://story.kanda.co.uk/chapter',
+      // REACT_APP_AMPLITUDE_SERVER_URL: 'https://story.kanda.co.uk/chapter',
     },
     exports: '{}',
     global: '{}',

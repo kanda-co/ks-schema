@@ -1,4 +1,4 @@
-import type { FunctionComponent } from 'react';
+import { FunctionComponent, useMemo } from 'react';
 import { AnyAction } from '@reduxjs/toolkit';
 import * as TE from 'fp-ts/lib/TaskEither';
 import { pipe } from 'fp-ts/lib/function';
@@ -21,7 +21,7 @@ import type {
   Page as PageType,
   RouterChildren,
 } from './types';
-import Page from './Page';
+import { createPage, WrapperProps } from './Page';
 import { FirebaseAuthService } from '../auth';
 import { CreatePageArgs, createPages, handleIO } from './helpers';
 import type { StringIndexedObject } from '../types';
@@ -328,6 +328,7 @@ function createRouterComponent<State, P extends StringIndexedObject>(
   store: ToolkitStore<State>,
   pages: PageList<P>,
   notFoundPage: FunctionComponent,
+  Wrapper: FunctionComponent<WrapperProps> = ({ children }) => <>{children}</>,
 ): FunctionComponent<RouterChildren> {
   return ({ children: additionaChildren }): JSX.Element => {
     // This package doesn't include correct typings for children,
@@ -336,6 +337,8 @@ function createRouterComponent<State, P extends StringIndexedObject>(
       { children: JSX.Element } & GuardProviderProps
     >;
 
+    const Page = useMemo(() => createPage(Wrapper), [Wrapper]);
+
     return (
       <Router>
         <Provider
@@ -343,7 +346,7 @@ function createRouterComponent<State, P extends StringIndexedObject>(
           error={notFoundPage}
         >
           <Switch>
-            <GuardedRoute path="/*" component={Page} />
+            <GuardedRoute path="/*" component={Page} meta={{ Wrapper }} />
           </Switch>
         </Provider>
         {additionaChildren}
@@ -370,8 +373,14 @@ function createRouter<State, Keys extends string | number>(
   store: ToolkitStore<State>,
   pages: PageList,
   notFoundPage: FunctionComponent,
+  Wrapper: FunctionComponent<WrapperProps> = ({ children }) => <>{children}</>,
 ): RouterType<Keys> {
-  const RouterComponent = createRouterComponent(store, pages, notFoundPage);
+  const RouterComponent = createRouterComponent(
+    store,
+    pages,
+    notFoundPage,
+    Wrapper,
+  );
 
   return {
     Router: RouterComponent,
@@ -387,9 +396,10 @@ export function createRoutedApp<
   store: ToolkitStore<State & ExtraState>,
   args: Record<Keys, CreatePageArgs<State>>,
   notFoundPage: FunctionComponent = () => <>404</>,
+  Wrapper: FunctionComponent<WrapperProps> = ({ children }) => <>{children}</>,
 ): RoutedApp<Keys> {
   const pages = createPages<State, Keys>(args);
-  const router = createRouter<State, Keys>(store, pages, notFoundPage);
+  const router = createRouter<State, Keys>(store, pages, notFoundPage, Wrapper);
 
   return { router, pages };
 }

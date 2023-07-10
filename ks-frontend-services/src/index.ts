@@ -23,6 +23,7 @@ export { getSelectors } from './store/selectors';
 
 export {
   createRoutedApp,
+  createMiddleware,
   pathKeyToLoadingDependencies,
   fetchPageInitialData,
 } from './middleware';
