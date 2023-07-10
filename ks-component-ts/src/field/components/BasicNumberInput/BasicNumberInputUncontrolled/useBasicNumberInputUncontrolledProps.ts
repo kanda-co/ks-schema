@@ -66,11 +66,6 @@ export default function useBasicInputUncontrolledProps({
 
       initialOnChange(e);
 
-      if (value.length === 0) {
-        setValue(name as string, undefined);
-        return;
-      }
-
       const nextValue = formatForValue(parseFloat(value)) || 0;
       const formattedNextValue = nextValue >= 0 ? nextValue : nextValue * -1;
 

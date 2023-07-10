@@ -1,7 +1,14 @@
 window.global ||= window;
 import "@kanda-libs/ks-component-ts/dist/library.css";
 import "@kanda-libs/ks-design-library/dist/library.css";
-import { useForm, Field, Form } from "@kanda-libs/ks-component-ts";
+import {
+  useForm,
+  Field,
+  Form,
+  OptionalHiddenField,
+  Label,
+  SearchInput,
+} from "@kanda-libs/ks-component-ts";
 import { StringIndexedObject } from "~/types";
 import { useState } from "react";
 
@@ -16,25 +23,15 @@ const capitalise = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 function App() {
   const form = useForm({
     defaultValues: {
-      pct: undefined,
+      pct: 10,
     },
   });
   const [query, setQuery] = useState("");
 
   return (
-    <Form form={form} onSubmit={() => {}}>
-      <Field.NumberInput
-        label="Rent or mortgage"
-        name="pct"
-        {...{
-          type: "price",
-          placeholder: "£0.00",
-          icon: "pound",
-          iconVariant: "dark",
-          symbol: "",
-        }}
-      />
-    </Form>
+    <div style={{ maxWidth: 500 }}>
+      <SearchInput query={query} onSearch={setQuery} />
+    </div>
   );
 }
 
