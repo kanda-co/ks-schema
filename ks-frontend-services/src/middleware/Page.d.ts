@@ -1,8 +1,10 @@
-import { type PropsWithChildren } from 'react';
+import { FunctionComponent, type PropsWithChildren } from 'react';
 import type { PathKey } from '../store/types';
 import type { StringIndexedObject } from '../types';
 export interface PageProps<P extends StringIndexedObject> {
     pathKey?: PathKey<P>;
 }
-declare function Page<P extends StringIndexedObject>({ pathKey, }: PropsWithChildren<PageProps<P>>): JSX.Element;
-export default Page;
+export interface WrapperProps {
+    children: JSX.Element;
+}
+export declare function createPage(Wrapper?: FunctionComponent<WrapperProps>): <P extends StringIndexedObject<any>>({ pathKey, }: PropsWithChildren<PageProps<P>>) => JSX.Element;

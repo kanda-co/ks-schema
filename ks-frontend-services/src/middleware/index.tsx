@@ -21,7 +21,7 @@ import type {
   Page as PageType,
   RouterChildren,
 } from './types';
-import { createPage } from './Page';
+import { createPage, WrapperProps } from './Page';
 import { FirebaseAuthService } from '../auth';
 import { CreatePageArgs, createPages, handleIO } from './helpers';
 import type { StringIndexedObject } from '../types';
@@ -328,9 +328,7 @@ function createRouterComponent<State, P extends StringIndexedObject>(
   store: ToolkitStore<State>,
   pages: PageList<P>,
   notFoundPage: FunctionComponent,
-  Wrapper: FunctionComponent = ({ children }: { children: JSX.Element }) => (
-    <>{children}</>
-  ),
+  Wrapper: FunctionComponent<WrapperProps> = ({ children }) => <>{children}</>,
 ): FunctionComponent<RouterChildren> {
   return ({ children: additionaChildren }): JSX.Element => {
     // This package doesn't include correct typings for children,
@@ -375,9 +373,7 @@ function createRouter<State, Keys extends string | number>(
   store: ToolkitStore<State>,
   pages: PageList,
   notFoundPage: FunctionComponent,
-  Wrapper: FunctionComponent = ({ children }: { children: JSX.Element }) => (
-    <>{children}</>
-  ),
+  Wrapper: FunctionComponent<WrapperProps> = ({ children }) => <>{children}</>,
 ): RouterType<Keys> {
   const RouterComponent = createRouterComponent(
     store,
@@ -400,9 +396,7 @@ export function createRoutedApp<
   store: ToolkitStore<State & ExtraState>,
   args: Record<Keys, CreatePageArgs<State>>,
   notFoundPage: FunctionComponent = () => <>404</>,
-  Wrapper: FunctionComponent = ({ children }: { children: JSX.Element }) => (
-    <>{children}</>
-  ),
+  Wrapper: FunctionComponent<WrapperProps> = ({ children }) => <>{children}</>,
 ): RoutedApp<Keys> {
   const pages = createPages<State, Keys>(args);
   const router = createRouter<State, Keys>(store, pages, notFoundPage, Wrapper);
