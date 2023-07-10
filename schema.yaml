@@ -2976,7 +2976,6 @@ paths:
             title: kanda tid
             description: kanda tid
             minLength: 1
-        - $ref: "#/components/parameters/x_kanda_protected"
       requestBody:
         description: post new lead
         required: true
