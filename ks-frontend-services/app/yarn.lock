@@ -815,10 +815,10 @@
   dependencies:
     "@amplitude/analytics-browser" "^1.6.4"
 
-"@kanda-libs/ks-component-ts@^0.2.248-qa":
-  version "0.2.248-qa"
-  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-component-ts/-/ks-component-ts-0.2.248-qa.tgz#fbf1280c72959ea7e36bed491168fc27fc4968e0"
-  integrity sha512-+Vpu1UHi2MOS9CoDt9N06AKVfy+KxWoO8tWnCfcIFgtnU6dcxgFZ2DMRUDoaPBQBrapnNCnUy7B/0iL42VD4NQ==
+"@kanda-libs/ks-component-ts@^0.2.257":
+  version "0.2.257"
+  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-component-ts/-/ks-component-ts-0.2.257.tgz#b9906e0f9974c3126cb01d0f369d0c470d875d90"
+  integrity sha512-89PQ1ogEhWbj+NHrRUQjWzovhTag1OqENrISB1vh7Z0EdsLoKQUhGFcn8X6lJFpQYPatldmgCpnESalqqwXlMw==
   dependencies:
     "@kanda-libs/kanda-quotes" "0.0.6"
     "@kanda-libs/ks-tailwind-config" "^0.2.10"
@@ -844,6 +844,7 @@
     react-loading-skeleton "^3.1.0"
     react-number-format "^4.6.4"
     react-range "^1.8.14"
+    react-router-dom "^5.2.0"
     react-slick "^0.29.0"
     react-table "^7.7.0"
     react-textarea-autosize "^8.4.0"
