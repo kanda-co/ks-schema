@@ -39,22 +39,27 @@ export function handleResponse<T = unknown>(response: Response<T>) {
         }
       },
       async (r: ResponseBody) => {
+        console.log('success', r.response?.url);
         if (r.data) {
           resolve(r.data);
 
-          const trackingBody = formatTrackingBody(r.response.url, r.data);
+          if (r.response?.url) {
+            const trackingBody = formatTrackingBody(r.response.url, r.data);
 
-          amplitude?.track('api-succeeded', trackingBody);
-          amplitude?.flush();
+            amplitude?.track('api-succeeded', trackingBody);
+            amplitude?.flush();
+          }
           return;
         }
 
         const data = await r.json();
 
-        const trackingBody = formatTrackingBody(r.response.url, data);
+        if (r.response?.url) {
+          const trackingBody = formatTrackingBody(r.response.url, data);
 
-        amplitude?.track('api-succeeded', trackingBody);
-        amplitude?.flush();
+          amplitude?.track('api-succeeded', trackingBody);
+          amplitude?.flush();
+        }
 
         resolve(data);
       },
