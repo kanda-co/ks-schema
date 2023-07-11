@@ -2,10 +2,10 @@ import FirebaseAuthService from './auth/FirebaseAuthService';
 import type { BrowserClient } from '@amplitude/analytics-types';
 import { AuthenticationHeaders, StringIndexedObject } from './types';
 import {
-  Amplitude,
   getEventWindowProperties,
   replaceKeyWordValues,
   replacePasswordValues,
+  amplitude,
 } from '@kanda-libs/ks-amplitude-provider';
 import { APP_ENV } from './config';
 
@@ -158,14 +158,15 @@ const interceptedFetch = (
   options: StringIndexedObject,
   ...args
 ) => {
+  const id = FirebaseAuthService?.auth?.currentUser?.uid;
   const token =
     global?.token || FirebaseAuthService?.auth?.currentUser?.accessToken;
 
   const trackingBody = formatTrackingBody(url, options);
-  const ids = getIds(Amplitude);
+  const ids = getIds(amplitude);
 
-  Amplitude?.track('api-attempted', trackingBody);
-  Amplitude?.flush();
+  amplitude?.track('api-attempted', trackingBody);
+  amplitude?.flush();
 
   return originalFetch()
     .apply(currentWindow, [
