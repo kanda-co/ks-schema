@@ -87,7 +87,7 @@ const buildRequestHeaders = (
   },
 });
 
-const getIds = (amplitude?: BrowserClient): Ids => {
+export const getIds = (amplitude?: BrowserClient): Ids => {
   if (!amplitude)
     return {
       deviceId: undefined,
@@ -106,7 +106,7 @@ const UUID_REGEX =
 
 const HUB_URL_REGEX = /https:\/\/hub(-qa)?\.kanda\.co\.uk\//gm;
 
-const formatTrackingBody = (
+export const formatTrackingBody = (
   inputUrl: string,
   options: StringIndexedObject,
 ): StringIndexedObject => {
