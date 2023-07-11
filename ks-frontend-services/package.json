@@ -23,7 +23,6 @@
     "src/**/*.d.ts"
   ],
   "dependencies": {
-    "@kanda-libs/ks-amplitude-provider": "0.0.18",
     "@openapi-io-ts/runtime": "^0.3.1",
     "@stripe/stripe-js": "^1.35.0",
     "append-query": "^2.1.1",
@@ -41,6 +40,7 @@
     "@babel/core": "^7.18.6",
     "@babel/plugin-proposal-class-properties": "^7.18.6",
     "@babel/plugin-proposal-object-rest-spread": "^7.18.6",
+    "@kanda-libs/ks-amplitude-provider": "0.2.21-qa.3",
     "@babel/preset-env": "^7.18.6",
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.18.6",
@@ -67,6 +67,7 @@
   },
   "peerDependencies": {
     "@reduxjs/toolkit": "^1.9.3",
-    "react": "^17.0.2"
+    "react": "^17.0.2",
+    "@kanda-libs/ks-amplitude-provider": "0.2.21-qa.3"
   }
 }
