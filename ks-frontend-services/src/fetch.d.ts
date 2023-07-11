@@ -1,3 +1,4 @@
+import type { BrowserClient } from '@amplitude/analytics-types';
 import { AuthenticationHeaders, StringIndexedObject } from './types';
 interface IdHeaders {
     'kanda-device-id'?: string;
@@ -16,6 +17,8 @@ export declare const buildIds: (ids: Ids) => IdHeaders;
  */
 export declare const buildAuth: (token: string) => AuthenticationHeaders;
 export declare const cleanHeaders: (headers: StringIndexedObject) => StringIndexedObject;
+export declare const getIds: (amplitude?: BrowserClient) => Ids;
+export declare const formatTrackingBody: (inputUrl: string, options: StringIndexedObject) => StringIndexedObject;
 export declare const originalFetch: () => any;
 /**
  * Alter the fetch method so that it will automatically retry the request
