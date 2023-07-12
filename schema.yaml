@@ -2982,7 +2982,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/LeadApplicant"
+              oneOf:
+                - $ref: "#/components/schemas/LeadApplicant"
+                - $ref: "#/components/schemas/LeadCustomer"
       responses:
         200:
           description: posted new lead
@@ -6388,6 +6390,21 @@ components:
           title: finance details
           $ref: "#/components/schemas/FinanceDetails"
 
+    LeadCustomer:
+      type: object
+      title: lead customer details
+      required:
+        - contact_info
+      properties:
+        contact_info:
+          type: object
+          title: customer contact info
+          $ref: "#/components/schemas/ContactInfo"
+        lead_quote:
+          type: object
+          title: lead quote
+          $ref: "#/components/schemas/LeadQuote"
+
     LeadQuote:
       type: object
       title: lead quote details
@@ -6469,7 +6486,7 @@ components:
       properties:
         id:
           type: string
-          title: payment id
+          title: lead id
           readOnly: true
         cid:
           type: string
