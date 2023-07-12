@@ -756,7 +756,7 @@ paths:
               $ref: "#/components/schemas/ContactInfo"
       responses:
         200:
-          description: info ghosted mode to return custom token
+          description: info lead for enterprise user AIP form link sent out
           content:
             application/json:
               schema:
@@ -1963,6 +1963,43 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/job/{id}/quote:
+    post:
+      operationId: quoteJob
+      summary: >
+        quote job in finance for homeowner to get eligibility,
+        only allowed when job status is sent
+      tags:
+        - Job
+      parameters:
+        - name: id
+          in: path
+          description: job id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: job quote applicant details for eligibility
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LeadApplicant"
+      responses:
+        200:
+          description: got existing job with new payment
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/job/{id}/apply:
     post:
       operationId: applyJob
@@ -2982,9 +3019,7 @@ paths:
         content:
           application/json:
             schema:
-              oneOf:
-                - $ref: "#/components/schemas/LeadApplicant"
-                - $ref: "#/components/schemas/LeadCustomer"
+              $ref: "#/components/schemas/LeadApplicant"
       responses:
         200:
           description: posted new lead
@@ -6389,21 +6424,6 @@ components:
           type: object
           title: finance details
           $ref: "#/components/schemas/FinanceDetails"
-
-    LeadCustomer:
-      type: object
-      title: lead customer details
-      required:
-        - contact_info
-      properties:
-        contact_info:
-          type: object
-          title: customer contact info
-          $ref: "#/components/schemas/ContactInfo"
-        lead_quote:
-          type: object
-          title: lead quote
-          $ref: "#/components/schemas/LeadQuote"
 
     LeadQuote:
       type: object
