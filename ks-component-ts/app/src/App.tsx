@@ -26,7 +26,7 @@ function App() {
   const form = useForm({
     mode: "onBlur",
     defaultValues: {
-      range: 2000,
+      range: "100000",
     },
   });
   const onSubmit = (data: StringIndexedObject) => console.log({ data });
@@ -37,8 +37,7 @@ function App() {
   ): boolean => {
     const v = `${value}`;
     const test = parseInt(v, 10);
-    if (test < 1000) return false;
-    if (test > 8000) return false;
+    if (test < 50000) return false;
     return true;
   };
 
@@ -46,8 +45,16 @@ function App() {
     validate: {
       value: (value: string | number | boolean | undefined) =>
         validateRange(value),
-      message: "Must be between 1000 and 8000",
+      message: "Must be between over £500",
     },
+  };
+
+  const formatter = (value: string) => {
+    const pounds = new Intl.NumberFormat("en-BG", {
+      style: "currency",
+      currency: "GBP",
+    }).format(parseInt(value) / 100);
+    return pounds;
   };
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -75,8 +82,9 @@ function App() {
             <Field.RangeInput
               name="range"
               isLoading={isLoading}
-              min="500"
-              max="10000"
+              min="0"
+              max="1000000"
+              formatter={formatter}
             />
           </Field.Validator>
           <Button.Text submit label="submit" id="ksts-test-form-submit" />
