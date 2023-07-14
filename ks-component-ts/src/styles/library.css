@@ -1004,6 +1004,10 @@ input[type="number"]::-webkit-inner-spin-button,
   right: 0;
 }
 
+.top-\[5px\] {
+  top: 5px;
+}
+
 .-right-2 {
   right: -8px;
 }
@@ -1072,16 +1076,16 @@ input[type="number"]::-webkit-inner-spin-button,
   z-index: 30;
 }
 
+.z-0 {
+  z-index: 0;
+}
+
 .z-20 {
   z-index: 20;
 }
 
 .z-10 {
   z-index: 10;
-}
-
-.z-0 {
-  z-index: 0;
 }
 
 .z-40 {
@@ -1527,6 +1531,10 @@ input[type="number"]::-webkit-inner-spin-button,
   height: 56px;
 }
 
+.h-2\.5 {
+  height: 10px;
+}
+
 .h-16 {
   height: 64px;
 }
@@ -1683,6 +1691,14 @@ input[type="number"]::-webkit-inner-spin-button,
   width: 16.666667%;
 }
 
+.w-20 {
+  width: 80px;
+}
+
+.w-2\.5 {
+  width: 10px;
+}
+
 .w-48 {
   width: 192px;
 }
@@ -1762,6 +1778,10 @@ input[type="number"]::-webkit-inner-spin-button,
 
 .min-w-16 {
   min-width: 64px;
+}
+
+.min-w-20 {
+  min-width: 80px;
 }
 
 .min-w-54 {
@@ -2321,6 +2341,11 @@ input[type="number"]::-webkit-inner-spin-button,
   background-color: transparent !important;
 }
 
+.bg-green-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(28 182 156 / var(--tw-bg-opacity));
+}
+
 .bg-turquoise-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(233 252 248 / var(--tw-bg-opacity));
@@ -2566,6 +2591,11 @@ input[type="number"]::-webkit-inner-spin-button,
 .px-8 {
   padding-left: 32px;
   padding-right: 32px;
+}
+
+.px-5 {
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .py-2\.5 {
@@ -2835,6 +2865,11 @@ input[type="number"]::-webkit-inner-spin-button,
 .\!text-neutral-600 {
   --tw-text-opacity: 1 !important;
   color: rgb(108 129 157 / var(--tw-text-opacity)) !important;
+}
+
+.text-green-600 {
+  --tw-text-opacity: 1;
+  color: rgb(28 182 156 / var(--tw-text-opacity));
 }
 
 .text-green-400 {
@@ -4011,12 +4046,51 @@ Modified version of toast CSS to match designs
   animation-iteration-count: infinite;
 }
 
+input[type="range"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  background: linear-gradient(
+    to right,
+    transparent 10px,
+    #1cb69c 10px,
+    #1cb69c 50%,
+    #e0e7f0 50%,
+    #e0e7f0 calc(100% - 10px),
+    transparent calc(100% - 10px)
+  );
+  cursor: pointer;
+  width: 100%;
+  height: 4px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  z-index: 10;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  border: 2px solid #fff;
+  background-color: #1cb69c;
+}
+
+.first\:left-0:first-child {
+  left: 0;
+}
+
 .first\:mt-2:first-child {
   margin-top: 8px;
 }
 
 .first\:ml-0:first-child {
   margin-left: 0;
+}
+
+.first\:mb-1:first-child {
+  margin-bottom: 4px;
 }
 
 .first\:rounded-t-lg:first-child {
@@ -4033,12 +4107,29 @@ Modified version of toast CSS to match designs
   border-left-width: 1px;
 }
 
+.first\:text-left:first-child {
+  text-align: left;
+}
+
+.first\:text-neutral-500:first-child {
+  --tw-text-opacity: 1;
+  color: rgb(156 173 196 / var(--tw-text-opacity));
+}
+
+.last\:right-0:last-child {
+  right: 0;
+}
+
 .last\:mr-0:last-child {
   margin-right: 0;
 }
 
 .last\:mb-2:last-child {
   margin-bottom: 8px;
+}
+
+.last\:mt-1:last-child {
+  margin-top: 4px;
 }
 
 .last\:rounded-b-lg:last-child {
@@ -4057,6 +4148,15 @@ Modified version of toast CSS to match designs
 
 .last\:border-b:last-child {
   border-bottom-width: 1px;
+}
+
+.last\:text-right:last-child {
+  text-align: right;
+}
+
+.last\:text-neutral-500:last-child {
+  --tw-text-opacity: 1;
+  color: rgb(156 173 196 / var(--tw-text-opacity));
 }
 
 .checked\:translate-x-5:checked {

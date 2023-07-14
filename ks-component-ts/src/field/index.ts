@@ -79,6 +79,8 @@ import type {
 } from "~/field/components/Array/types";
 import type { ArrayWrapperChildrenArgs } from "~/field/components/Array/Wrapper/types";
 
+import RangeInput, { type RangeInputProps } from "./components/RangeInput";
+
 const Field = {
   Address,
   Array,
@@ -112,6 +114,7 @@ const Field = {
   AutoSizeInput,
   AutoSizePriceInput,
   AutoSizeTextArea,
+  RangeInput,
 };
 
 export default Field;
@@ -140,6 +143,7 @@ export interface FieldProps {
   AutoSizeInput: AutoSizeInputProps;
   AutoSizePriceInput: AutoSizePriceInputProps;
   AutoSizeTextArea: AutoSizeTextAreaProps;
+  RangeInput: RangeInputProps;
 }
 
 export type {
