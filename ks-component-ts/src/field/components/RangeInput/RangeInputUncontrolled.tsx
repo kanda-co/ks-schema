@@ -1,9 +1,10 @@
 import React, { useRef, type FunctionComponent } from "react";
 import { SkeletonLoader } from "@kanda-libs/ks-design-library";
 import useRangeInputProps from "./useRangeInputProps";
+import { defaultFormatter } from "./helpers";
 
 export interface RangeInputUncontrolledProps {
-  value?: string;
+  initialValue?: string;
   min?: string;
   max?: string;
   steps?: string;
@@ -12,11 +13,9 @@ export interface RangeInputUncontrolledProps {
   suffix?: string;
 }
 
-const defaultFormatter = (value: string) => value;
-
 const RangeInputUncontrolled: FunctionComponent<RangeInputUncontrolledProps> =
   function ({
-    value = "50",
+    initialValue = undefined,
     min = "0",
     max = "100",
     steps = "100",
@@ -41,7 +40,15 @@ const RangeInputUncontrolled: FunctionComponent<RangeInputUncontrolledProps> =
       minLabel,
       maxLabel,
       currentLabel,
-    } = useRangeInputProps(value, min, max, steps, formatter, prefix, suffix);
+    } = useRangeInputProps(
+      min,
+      max,
+      steps,
+      formatter,
+      prefix,
+      suffix,
+      initialValue
+    );
 
     return (
       <div className={classNames.container}>

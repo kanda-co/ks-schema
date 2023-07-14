@@ -18,14 +18,17 @@ export interface Hook {
 }
 
 export default function useRangeInputProps(
-  value: string,
   min: string,
   max: string,
   steps: string,
   formatter: (input: string) => string,
   prefix: string,
-  suffix: string
+  suffix: string,
+  initialValue?: string
 ): Hook {
+  const value =
+    initialValue || Math.ceil((parseInt(max, 10) - parseInt(min, 10)) / 2);
+
   const [newValue, setNewValue] = useState<string>(String(value));
 
   const ref = useRef<HTMLInputElement>(null);
