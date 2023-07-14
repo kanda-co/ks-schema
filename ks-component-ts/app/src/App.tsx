@@ -25,6 +25,9 @@ const capitalise = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 function App() {
   const form = useForm({
     mode: "onBlur",
+    defaultValues: {
+      range: 2000,
+    },
   });
   const onSubmit = (data: StringIndexedObject) => console.log({ data });
   const [query, setQuery] = useState("");
@@ -32,7 +35,6 @@ function App() {
   const validateRange = (
     value: string | number | boolean | undefined
   ): boolean => {
-    console.log({ value });
     const v = `${value}`;
     const test = parseInt(v, 10);
     if (test < 1000) return false;
@@ -44,7 +46,7 @@ function App() {
     validate: {
       value: (value: string | number | boolean | undefined) =>
         validateRange(value),
-      message: "Must be between 20 and 80",
+      message: "Must be between 1000 and 8000",
     },
   };
 
