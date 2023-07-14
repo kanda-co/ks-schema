@@ -921,3 +921,33 @@ Modified version of toast CSS to match designs
     margin: 0;
   }
 }
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: linear-gradient(
+    to right,
+    transparent 10px,
+    #1cb69c 10px,
+    #1cb69c 50%,
+    #e0e7f0 50%,
+    #e0e7f0 calc(100% - 10px),
+    transparent calc(100% - 10px)
+  );
+  cursor: pointer;
+  width: 100%;
+  height: 4px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  z-index: 10;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  border: 2px solid #fff;
+  background-color: #1cb69c;
+}

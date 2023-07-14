@@ -31,6 +31,9 @@ function App() {
   return (
     <div style={{ maxWidth: 500 }}>
       <SearchInput query={query} onSearch={setQuery} />
+      <div className="px-5">
+        <Field.RangeInput />
+      </div>
     </div>
   );
 }

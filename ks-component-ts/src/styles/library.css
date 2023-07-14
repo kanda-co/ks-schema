@@ -1004,6 +1004,18 @@ input[type="number"]::-webkit-inner-spin-button,
   right: 0;
 }
 
+.top-\[5px\] {
+  top: 5px;
+}
+
+.left-px {
+  left: 1px;
+}
+
+.right-px {
+  right: 1px;
+}
+
 .-right-2 {
   right: -8px;
 }
@@ -1072,16 +1084,16 @@ input[type="number"]::-webkit-inner-spin-button,
   z-index: 30;
 }
 
+.z-0 {
+  z-index: 0;
+}
+
 .z-20 {
   z-index: 20;
 }
 
 .z-10 {
   z-index: 10;
-}
-
-.z-0 {
-  z-index: 0;
 }
 
 .z-40 {
@@ -1527,6 +1539,10 @@ input[type="number"]::-webkit-inner-spin-button,
   height: 56px;
 }
 
+.h-2\.5 {
+  height: 10px;
+}
+
 .h-16 {
   height: 64px;
 }
@@ -1681,6 +1697,10 @@ input[type="number"]::-webkit-inner-spin-button,
 
 .w-1\/6 {
   width: 16.666667%;
+}
+
+.w-2\.5 {
+  width: 10px;
 }
 
 .w-48 {
@@ -2243,14 +2263,14 @@ input[type="number"]::-webkit-inner-spin-button,
   border-color: rgb(108 129 157 / var(--tw-border-opacity));
 }
 
-.border-neutral-100 {
-  --tw-border-opacity: 1;
-  border-color: rgb(247 249 252 / var(--tw-border-opacity));
-}
-
 .border-neutral-000 {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
+.border-neutral-100 {
+  --tw-border-opacity: 1;
+  border-color: rgb(247 249 252 / var(--tw-border-opacity));
 }
 
 .border-neutral-500 {
@@ -2319,6 +2339,11 @@ input[type="number"]::-webkit-inner-spin-button,
 
 .\!bg-transparent {
   background-color: transparent !important;
+}
+
+.bg-green-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(28 182 156 / var(--tw-bg-opacity));
 }
 
 .bg-turquoise-100 {
@@ -2566,6 +2591,11 @@ input[type="number"]::-webkit-inner-spin-button,
 .px-8 {
   padding-left: 32px;
   padding-right: 32px;
+}
+
+.px-5 {
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .py-2\.5 {
@@ -2835,6 +2865,11 @@ input[type="number"]::-webkit-inner-spin-button,
 .\!text-neutral-600 {
   --tw-text-opacity: 1 !important;
   color: rgb(108 129 157 / var(--tw-text-opacity)) !important;
+}
+
+.text-green-600 {
+  --tw-text-opacity: 1;
+  color: rgb(28 182 156 / var(--tw-text-opacity));
 }
 
 .text-green-400 {
@@ -4009,6 +4044,37 @@ Modified version of toast CSS to match designs
   animation-duration: var(--animation-duration);
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  background: linear-gradient(
+    to right,
+    transparent 10px,
+    #1cb69c 10px,
+    #1cb69c 50%,
+    #e0e7f0 50%,
+    #e0e7f0 calc(100% - 10px),
+    transparent calc(100% - 10px)
+  );
+  cursor: pointer;
+  width: 100%;
+  height: 4px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  z-index: 10;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  border: 2px solid #fff;
+  background-color: #1cb69c;
 }
 
 .first\:mt-2:first-child {
