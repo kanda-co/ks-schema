@@ -42,14 +42,19 @@ export default function useRangeInputProps(
 
   const onInput = useCallback(() => {
     if (!ref.current) return;
-    const { value, min, max } = ref.current;
+    const inputArr = Array.from(ref.current.children).filter(
+      (element) => element.tagName === "INPUT"
+    );
+    if (inputArr.length === 0) return;
+    const input = inputArr[0] as HTMLInputElement;
+    const { value, min, max } = input;
     if (!value || !min || !max) return;
     setNewValue(value);
     const pct =
       ((parseInt(value, 10) - parseInt(min, 10)) /
         (parseInt(max, 10) - parseInt(min, 10))) *
       100;
-    ref.current.style.background = BG_COLOR.replaceAll("$PCT", String(pct));
+    input.style.background = BG_COLOR.replaceAll("$PCT", String(pct));
   }, []);
 
   const currentLabel = useMemo(() => {

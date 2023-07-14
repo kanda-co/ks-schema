@@ -19,7 +19,7 @@ const RangeInputUncontrolled: FunctionComponent<RangeInputUncontrolledProps> =
     value = "50",
     min = "0",
     max = "100",
-    steps = "10",
+    steps = "100",
     formatter = defaultFormatter,
     prefix = "",
     suffix = "",
@@ -55,11 +55,10 @@ const RangeInputUncontrolled: FunctionComponent<RangeInputUncontrolledProps> =
                 <p className={classNames.upperLabel}>min</p>
                 <p className={classNames.upperLabel}>max</p>
               </div>
-              <div className="flex flex-row relative">
+              <div className="flex flex-row relative" ref={ref}>
                 <div className="w-2.5 h-2.5 bg-green-600 rounded-full border border-neutral-000 absolute z-0 top-[5px] left-0" />
                 <input
                   type="range"
-                  ref={ref}
                   onInput={onInput}
                   value={newValue}
                   {...inputProps}
