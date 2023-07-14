@@ -1,28 +1,28 @@
-// import Uncontrolled, { type InputUncontrolledProps } from "./InputUncontrolled";
-// import withFieldInfo from "~/field/components/FieldInfo/withFieldInfo";
-// import withFieldFormController, {
-//   FieldFormControllerPropsWithoutChildren,
-// } from "~/field/components/FieldFormController/withFieldFormController";
-// import {
-//   DefaultFormFieldProps,
-//   WrappedWithFieldInfoFormComponentProps,
-// } from "~/field/types";
+import RangeInputUncontrolled, {
+  type RangeInputUncontrolledProps,
+} from "./RangeInputUncontrolled";
+import withFieldInfo from "~/field/components/FieldInfo/withFieldInfo";
+import withFieldFormController, {
+  FieldFormControllerPropsWithoutChildren,
+} from "~/field/components/FieldFormController/withFieldFormController";
+import {
+  DefaultFormFieldProps,
+  WrappedWithFieldInfoFormComponentProps,
+} from "~/field/types";
 
-// const WithFieldInfo = withFieldInfo(Uncontrolled);
+const WithFieldInfo = withFieldInfo(RangeInputUncontrolled);
 
-// export { Uncontrolled, WithFieldInfo };
+export { RangeInputUncontrolled, WithFieldInfo };
 
-// const Input = withFieldFormController(WithFieldInfo);
+const RangeInput = withFieldFormController(WithFieldInfo);
 
-// export type InputBaseProps = DefaultFormFieldProps<InputUncontrolledProps>;
+export type RangeInputBaseProps =
+  DefaultFormFieldProps<RangeInputUncontrolledProps>;
 
-// export type InputWithInfoProps =
-//   WrappedWithFieldInfoFormComponentProps<InputBaseProps>;
+export type RangeInputWithInfoProps =
+  WrappedWithFieldInfoFormComponentProps<RangeInputBaseProps>;
 
-// export type InputProps =
-//   FieldFormControllerPropsWithoutChildren<InputWithInfoProps>;
+export type RangeInputProps =
+  FieldFormControllerPropsWithoutChildren<RangeInputWithInfoProps>;
 
-// export default Input;
-
-import RangeInputUncontrolled from "./RangeInputUncontrolled";
-export default RangeInputUncontrolled;
+export default RangeInput;

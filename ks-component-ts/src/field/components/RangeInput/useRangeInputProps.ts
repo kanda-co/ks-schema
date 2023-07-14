@@ -1,4 +1,10 @@
-import { useCallback, useMemo, useRef, useState } from "react";
+import {
+  ChangeEventHandler,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { BG_COLOR } from "./constants";
 
 interface InputProps {
@@ -23,12 +29,9 @@ export default function useRangeInputProps(
   steps: string,
   formatter: (input: string) => string,
   prefix: string,
-  suffix: string,
-  initialValue?: string
+  suffix: string
 ): Hook {
-  const value =
-    initialValue || Math.ceil((parseInt(max, 10) - parseInt(min, 10)) / 2);
-
+  const value = Math.ceil((parseInt(max, 10) - parseInt(min, 10)) / 2);
   const [newValue, setNewValue] = useState<string>(String(value));
 
   const ref = useRef<HTMLInputElement>(null);
@@ -41,6 +44,7 @@ export default function useRangeInputProps(
     min,
     max,
     step,
+    value,
   };
 
   const onInput = useCallback(() => {
