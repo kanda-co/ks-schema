@@ -261,7 +261,7 @@ paths:
       operationId: infoTrade
       summary: info trade to return matching trades by location
       tags:
-        - InfoTrade
+        - TradeSummary
       requestBody:
         description: info trade request by location
         required: true
