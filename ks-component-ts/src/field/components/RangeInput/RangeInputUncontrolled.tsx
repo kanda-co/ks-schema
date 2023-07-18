@@ -30,24 +30,8 @@ const RangeInputUncontrolled: FunctionComponent<
   name = "",
   ...restProps
 }) {
-  const {
-    ref,
-    inputProps,
-    onInput,
-    minLabel,
-    maxLabel,
-    currentLabel,
-    classNames,
-  } = useRangeInputProps(
-    name,
-    min,
-    max,
-    steps,
-    formatter,
-    prefix,
-    suffix,
-    error
-  );
+  const { ref, inputProps, minLabel, maxLabel, currentLabel, classNames } =
+    useRangeInputProps(name, min, max, steps, formatter, prefix, suffix, error);
 
   return (
     <div className={classNames.container}>
@@ -69,7 +53,6 @@ const RangeInputUncontrolled: FunctionComponent<
                 ref={forwardRef}
                 onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
                   if (onChange) onChange(e);
-                  onInput();
                 }}
                 name={name}
                 {...restProps}
