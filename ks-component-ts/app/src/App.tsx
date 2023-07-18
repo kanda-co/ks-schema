@@ -11,7 +11,7 @@ import {
   ValidationItems,
 } from "@kanda-libs/ks-component-ts";
 import { StringIndexedObject } from "~/types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@kanda-libs/ks-design-library";
 
 if (!(Window.prototype as StringIndexedObject).setImmediate) {
@@ -26,9 +26,14 @@ function App() {
   const form = useForm({
     mode: "onBlur",
     defaultValues: {
-      range: "100000",
+      range1: "100000",
+      range2: "100000",
     },
   });
+
+  const { watch, setValue } = form;
+  const { range1, range2 } = watch();
+
   const onSubmit = (data: StringIndexedObject) => console.log({ data });
   const [query, setQuery] = useState("");
 
@@ -59,6 +64,11 @@ function App() {
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
+  useEffect(() => {
+    const n = 200000 - parseInt(range1, 10);
+    setValue("range2", String(n));
+  }, [range1]);
+
   return (
     <div style={{ maxWidth: 500 }}>
       <SearchInput query={query} onSearch={setQuery} />
@@ -78,15 +88,20 @@ function App() {
           onSubmit={onSubmit}
           className="flex flex-col"
         >
-          <Field.Validator validation={validation}>
-            <Field.RangeInput
-              name="range"
-              isLoading={isLoading}
-              min="0"
-              max="1000000"
-              formatter={formatter}
-            />
-          </Field.Validator>
+          <Field.RangeInput
+            name="range1"
+            isLoading={isLoading}
+            min="0"
+            max="200000"
+            formatter={formatter}
+          />
+          <Field.RangeInput
+            name="range2"
+            isLoading={isLoading}
+            min="0"
+            max="200000"
+            formatter={formatter}
+          />
           <Button.Text submit label="submit" id="ksts-test-form-submit" />
         </Form>
       </div>

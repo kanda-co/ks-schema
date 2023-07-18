@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useFormContext } from "react-hook-form";
+import { useEffect, useMemo, useRef } from "react";
+import { useWatch } from "react-hook-form";
 import clsx from "clsx";
 
 import { BG_COLOR, CLASS_NAMES } from "./constants";
@@ -25,7 +25,6 @@ interface InputProps {
 
 export interface Hook {
   ref: React.RefObject<HTMLInputElement> | null;
-  onInput: () => void;
   inputProps: InputProps;
   maxLabel: string;
   minLabel: string;
@@ -43,11 +42,7 @@ export default function useRangeInputProps(
   suffix: string,
   error?: string | ErrorMessage
 ): Hook {
-  const { getValues } = useFormContext();
-  const initialValue = getValues(name);
-  const value =
-    initialValue || Math.ceil((parseInt(max, 10) - parseInt(min, 10)) / 2);
-  const [newValue, setNewValue] = useState<string>(String(initialValue));
+  const value = useWatch({ name });
 
   const ref = useRef<HTMLInputElement>(null);
 
@@ -61,27 +56,10 @@ export default function useRangeInputProps(
     step,
   };
 
-  const onInput = useCallback(() => {
-    if (!ref.current) return;
-    const inputArr = Array.from(ref.current.children).filter(
-      (element) => element.tagName === "INPUT"
-    );
-    if (inputArr.length === 0) return;
-    const input = inputArr[0] as HTMLInputElement;
-    const { value } = input;
-    if (!value) return;
-    setNewValue(value);
-    const pct =
-      ((parseInt(value, 10) - parseInt(min, 10)) /
-        (parseInt(max, 10) - parseInt(min, 10))) *
-      100;
-    input.style.background = BG_COLOR.replaceAll("$PCT", String(pct));
-  }, [min, max]);
-
   const currentLabel = useMemo(() => {
-    if (!newValue) return undefined;
-    return `${prefix}${formatter(newValue)}${suffix}`;
-  }, [newValue]);
+    if (!value) return undefined;
+    return `${prefix}${formatter(value)}${suffix}`;
+  }, [value]);
 
   const maxLabel = `${prefix}${formatter(String(max))}${suffix}`;
   const minLabel = `${prefix}${formatter(String(min))}${suffix}`;
@@ -101,17 +79,15 @@ export default function useRangeInputProps(
     );
     if (inputArr.length === 0) return;
     const input = inputArr[0] as HTMLInputElement;
-    const initialValue = getValues(name);
     const pct =
-      ((parseInt(initialValue, 10) - parseInt(min, 10)) /
+      ((parseInt(value, 10) - parseInt(min, 10)) /
         (parseInt(max, 10) - parseInt(min, 10))) *
       100;
     input.style.background = BG_COLOR.replaceAll("$PCT", String(pct));
-  }, [getValues, min, max]);
+  }, [value, min, max]);
 
   return {
     ref,
-    onInput,
     inputProps,
     maxLabel,
     minLabel,
