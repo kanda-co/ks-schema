@@ -323,6 +323,10 @@ declare const job: {
         key: string;
         method: import("../generated/operations/unarchiveJob").UnarchiveJobRequestFunction;
     };
+    quoteJob: {
+        key: string;
+        method: import("../generated/operations/quoteJob").QuoteJobRequestFunction;
+    };
     applyJob: {
         key: string;
         method: import("../generated/operations/applyJob").ApplyJobRequestFunction;
@@ -942,6 +946,10 @@ declare const services: {
         unarchiveJob: {
             key: string;
             method: import("../generated/operations/unarchiveJob").UnarchiveJobRequestFunction;
+        };
+        quoteJob: {
+            key: string;
+            method: import("../generated/operations/quoteJob").QuoteJobRequestFunction;
         };
         applyJob: {
             key: string;
