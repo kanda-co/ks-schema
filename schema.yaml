@@ -5294,6 +5294,11 @@ components:
         lat_lng:
           type: object
           $ref: "#/components/schemas/LatLng"
+        distance:
+          type: number
+          title: distance from provided location
+          format: float
+          readOnly: true
 
     CompanyInfo:
       type: object
