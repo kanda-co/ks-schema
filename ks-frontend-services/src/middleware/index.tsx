@@ -251,6 +251,7 @@ async function userIsLoggedIn<P extends StringIndexedObject>(
 ): Promise<boolean> {
   const { user: currentUser } = store.getState().auth;
   let role = currentUser?.role;
+  let user = currentUser;
 
   const page = pathKey.pages[pathKey.page as keyof P];
 
@@ -261,7 +262,7 @@ async function userIsLoggedIn<P extends StringIndexedObject>(
   const isUserLoggedIn = await FirebaseAuthService.isUserLoggedIn();
 
   if (isUserLoggedIn && !role) {
-    const user = await getUser();
+    user = await getUser();
     role = user.role;
 
     store.dispatch(userLoggedIn(user));
@@ -269,8 +270,16 @@ async function userIsLoggedIn<P extends StringIndexedObject>(
 
   const requiredRoles = page.requiredRoles || [];
 
-  if (requiredRoles.length > 0 && requiredRoles.indexOf(role) === -1) {
-    return Promise.reject(false);
+  if (requiredRoles.length > 0) {
+    const [requiredRole] = requiredRoles;
+
+    if (requiredRole === '*') {
+      return Promise.resolve(!!user);
+    }
+
+    if (requiredRoles.indexOf(role) === -1) {
+      return Promise.reject(false);
+    }
   }
 
   return Promise.resolve(true);
