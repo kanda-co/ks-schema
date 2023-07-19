@@ -273,8 +273,13 @@ async function userIsLoggedIn<P extends StringIndexedObject>(
   if (requiredRoles.length > 0) {
     const [requiredRole] = requiredRoles;
 
+    // Splat role means any role can access the page, providing
+    // that the user is logged in
     if (requiredRole === '*') {
-      return Promise.resolve(!!user);
+      if (user) {
+        return Promise.resolve(true);
+      }
+      return Promise.reject(false);
     }
 
     if (requiredRoles.indexOf(role) === -1) {
