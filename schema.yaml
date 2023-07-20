@@ -6654,6 +6654,8 @@ components:
       title: consumer quote
       description: consumer quote
       required:
+        - connected
+        - accepted
         - status
         - expired_at
       properties:
@@ -6719,6 +6721,18 @@ components:
           type: string
           title: external reference
           readOnly: true
+        connected:
+          type: array
+          title: connected trade ids being notified
+          items:
+            type: string
+            title: connected trade id being notified
+        accepted:
+          type: array
+          title: trade ids accepting connection
+          items:
+            type: string
+            title: trade id accepting connection
         status:
           type: string
           title: status
