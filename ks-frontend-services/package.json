@@ -1,6 +1,6 @@
 {
   "name": "@kanda-libs/ks-frontend-services",
-  "version": "0.2.232-qa.7",
+  "version": "0.2.232-qa.8",
   "license": "private",
   "scripts": {
     "clean-incorrect-imports": "grep -rlw \"./src\" -e \"DateFromISOString\" | xargs -I@ sed -i.bak \"s/\\/DateFromISOString//g\" @ && rm -rf **/*.bak",
@@ -43,7 +43,7 @@
     "@babel/preset-env": "^7.18.6",
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.18.6",
-    "@kanda-libs/ks-amplitude-provider": "0.2.22",
+    "@kanda-libs/ks-amplitude-provider": "0.2.25",
     "@reduxjs/toolkit": "^1.9.3",
     "@types/grecaptcha": "^3.0.4",
     "@types/node": "^18.11.9",
