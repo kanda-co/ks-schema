@@ -256,35 +256,6 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-  /api/info/trade:
-    put:
-      operationId: infoTrade
-      summary: info trade to return matching trades by location
-      tags:
-        - TradeSummary
-      requestBody:
-        description: info trade request by location
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/InfoTrade"
-      responses:
-        200:
-          description: got matching trade summaries
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/TradeSummary"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
   /api/info/customer:
     get:
       operationId: infoCustomer
@@ -3274,6 +3245,88 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/lead/{id}/match-trades:
+    post:
+      operationId: matchTradesLead
+      summary: matching a lead to available trades
+      tags:
+        - Lead
+      parameters:
+        - name: id
+          in: path
+          description: lead id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - $ref: "#/components/parameters/x_kanda_bid"
+        - $ref: "#/components/parameters/x_kanda_cid"
+        - $ref: "#/components/parameters/x_kanda_eid"
+        - $ref: "#/components/parameters/x_kanda_tid"
+      responses:
+        200:
+          description: got matching trade summaries
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/TradeSummary"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/lead/{id}/connect-trades:
+    post:
+      operationId: connectTradesLead
+      summary: connecting a lead to trades
+      tags:
+        - Lead
+      parameters:
+        - name: id
+          in: path
+          description: lead id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - $ref: "#/components/parameters/x_kanda_bid"
+        - $ref: "#/components/parameters/x_kanda_cid"
+        - $ref: "#/components/parameters/x_kanda_eid"
+        - $ref: "#/components/parameters/x_kanda_tid"
+      requestBody:
+        description: connecting a lead to trades by their cid
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              title: lead connection to trades
+              items:
+                schema:
+                  type: string
+                  title: lead connection cid
+                  description: lead connection company id
+                  minLength: 1
+      responses:
+        200:
+          description: connected lead to trade summaries
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/TradeSummary"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/lead/{id}/refer:
     post:
       operationId: referLead
@@ -5017,6 +5070,10 @@ components:
           type: string
           title: enterprise id
           readOnly: true
+        rid:
+          type: string
+          title: region id
+          readOnly: true
         bid:
           type: string
           title: branch id
@@ -5026,6 +5083,7 @@ components:
           title: enterprise type
           enum:
             - "main_office"
+            - "region_office"
             - "branch_office"
         subdomain:
           type: string
