@@ -405,6 +405,14 @@ declare const lead: {
         key: string;
         method: import("../generated/operations/tradeQuoteApprovalLead").TradeQuoteApprovalLeadRequestFunction;
     };
+    matchTradesLead: {
+        key: string;
+        method: import("../generated/operations/matchTradesLead").MatchTradesLeadRequestFunction;
+    };
+    connectTradesLead: {
+        key: string;
+        method: import("../generated/operations/connectTradesLead").ConnectTradesLeadRequestFunction;
+    };
     referLead: {
         key: string;
         method: import("../generated/operations/referLead").ReferLeadRequestFunction;
@@ -570,12 +578,6 @@ declare const task: {
     runner: {
         key: string;
         method: import("../generated/operations/runner").RunnerRequestFunction;
-    };
-};
-declare const tradeSummary: {
-    infoTrade: {
-        key: string;
-        method: import("../generated/operations/infoTrade").InfoTradeRequestFunction;
     };
 };
 declare const webhook: {
@@ -1035,6 +1037,14 @@ declare const services: {
             key: string;
             method: import("../generated/operations/tradeQuoteApprovalLead").TradeQuoteApprovalLeadRequestFunction;
         };
+        matchTradesLead: {
+            key: string;
+            method: import("../generated/operations/matchTradesLead").MatchTradesLeadRequestFunction;
+        };
+        connectTradesLead: {
+            key: string;
+            method: import("../generated/operations/connectTradesLead").ConnectTradesLeadRequestFunction;
+        };
         referLead: {
             key: string;
             method: import("../generated/operations/referLead").ReferLeadRequestFunction;
@@ -1202,12 +1212,6 @@ declare const services: {
             method: import("../generated/operations/runner").RunnerRequestFunction;
         };
     };
-    tradeSummary: {
-        infoTrade: {
-            key: string;
-            method: import("../generated/operations/infoTrade").InfoTradeRequestFunction;
-        };
-    };
     webhook: {
         providerCheckWebhook: {
             key: string;
@@ -1255,5 +1259,5 @@ declare const services: {
         };
     };
 };
-export { authUser, company, credit, document, enterprise, event, infoAuth, infoCache, infoCompany, infoCustomer, infoDirector, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoLead, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoValidation, job, lead, monitor, onboarding, partner, payment, rate, subscription, task, tradeSummary, webhook, address, pdf, sheets, };
+export { authUser, company, credit, document, enterprise, event, infoAuth, infoCache, infoCompany, infoCustomer, infoDirector, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoLead, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoValidation, job, lead, monitor, onboarding, partner, payment, rate, subscription, task, webhook, address, pdf, sheets, };
 export default services;
