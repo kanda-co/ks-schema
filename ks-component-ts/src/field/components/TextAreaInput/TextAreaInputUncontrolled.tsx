@@ -1,11 +1,12 @@
-import React, { type FunctionComponent } from "react";
+import React, { type HTMLProps, type FunctionComponent } from "react";
 import Skeleton from "react-loading-skeleton";
 import useTextAreaInputClasses from "./useTextAreaInputClasses";
 import { SKELETON_COUNT } from "./constants";
 import { DefaultFormFieldProps } from "~/field/types";
 import { Uncontrolled as AutoSizeTextArea } from "~/field/components/AutoSizeTextArea";
 
-export interface TextAreaInputUncontrolledProps {
+export interface TextAreaInputUncontrolledProps
+  extends HTMLProps<HTMLTextAreaElement> {
   className?: string;
   autoSize?: string;
 }

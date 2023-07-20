@@ -200,6 +200,10 @@ export const ${camelCaseEntityName}Slice = createSlice({
 	  ...${camelCaseEntityName}Adapter.getInitialState()
   },
   reducers: {
+    reset: (state: ${entityName}State, action: PayloadAction<undefined>) => ({
+	    ...GENERATED_STATE,
+	    ...${camelCaseEntityName}Adapter.getInitialState()
+    }),
     fetching: (state: ${entityName}State, action: PayloadAction<undefined>) => ({
       ...state,
       isLoading: true,
@@ -218,6 +222,8 @@ export const ${camelCaseEntityName}Slice = createSlice({
     .map((actionName) => reducerForAction(entityName, actionName))
     .join('')}},
 });
+
+export const { reset, fetching, fetched } = ${camelCaseEntityName}Slice.actions;
 
 export default ${camelCaseEntityName}Slice.reducer;
 `;

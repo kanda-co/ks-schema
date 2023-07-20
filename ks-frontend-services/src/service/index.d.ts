@@ -323,6 +323,10 @@ declare const job: {
         key: string;
         method: import("../generated/operations/unarchiveJob").UnarchiveJobRequestFunction;
     };
+    quoteJob: {
+        key: string;
+        method: import("../generated/operations/quoteJob").QuoteJobRequestFunction;
+    };
     applyJob: {
         key: string;
         method: import("../generated/operations/applyJob").ApplyJobRequestFunction;
@@ -400,6 +404,14 @@ declare const lead: {
     tradeQuoteApprovalLead: {
         key: string;
         method: import("../generated/operations/tradeQuoteApprovalLead").TradeQuoteApprovalLeadRequestFunction;
+    };
+    matchTradesLead: {
+        key: string;
+        method: import("../generated/operations/matchTradesLead").MatchTradesLeadRequestFunction;
+    };
+    connectTradesLead: {
+        key: string;
+        method: import("../generated/operations/connectTradesLead").ConnectTradesLeadRequestFunction;
     };
     referLead: {
         key: string;
@@ -943,6 +955,10 @@ declare const services: {
             key: string;
             method: import("../generated/operations/unarchiveJob").UnarchiveJobRequestFunction;
         };
+        quoteJob: {
+            key: string;
+            method: import("../generated/operations/quoteJob").QuoteJobRequestFunction;
+        };
         applyJob: {
             key: string;
             method: import("../generated/operations/applyJob").ApplyJobRequestFunction;
@@ -1020,6 +1036,14 @@ declare const services: {
         tradeQuoteApprovalLead: {
             key: string;
             method: import("../generated/operations/tradeQuoteApprovalLead").TradeQuoteApprovalLeadRequestFunction;
+        };
+        matchTradesLead: {
+            key: string;
+            method: import("../generated/operations/matchTradesLead").MatchTradesLeadRequestFunction;
+        };
+        connectTradesLead: {
+            key: string;
+            method: import("../generated/operations/connectTradesLead").ConnectTradesLeadRequestFunction;
         };
         referLead: {
             key: string;

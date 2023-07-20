@@ -756,7 +756,7 @@ paths:
               $ref: "#/components/schemas/ContactInfo"
       responses:
         200:
-          description: info ghosted mode to return custom token
+          description: info lead for enterprise user AIP form link sent out
           content:
             application/json:
               schema:
@@ -1952,6 +1952,43 @@ paths:
       responses:
         200:
           description: unarchived existing already archived job
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/job/{id}/quote:
+    post:
+      operationId: quoteJob
+      summary: >
+        quote job in finance for homeowner to get eligibility,
+        only allowed when job status is sent
+      tags:
+        - Job
+      parameters:
+        - name: id
+          in: path
+          description: job id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: job quote applicant details for eligibility
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LeadApplicant"
+      responses:
+        200:
+          description: got existing job with new payment
           content:
             application/json:
               schema:
@@ -3201,6 +3238,88 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Lead"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/lead/{id}/match-trades:
+    post:
+      operationId: matchTradesLead
+      summary: matching a lead to available trades
+      tags:
+        - Lead
+      parameters:
+        - name: id
+          in: path
+          description: lead id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - $ref: "#/components/parameters/x_kanda_bid"
+        - $ref: "#/components/parameters/x_kanda_cid"
+        - $ref: "#/components/parameters/x_kanda_eid"
+        - $ref: "#/components/parameters/x_kanda_tid"
+      responses:
+        200:
+          description: got matching trade summaries
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/TradeSummary"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/lead/{id}/connect-trades:
+    post:
+      operationId: connectTradesLead
+      summary: connecting a lead to trades
+      tags:
+        - Lead
+      parameters:
+        - name: id
+          in: path
+          description: lead id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - $ref: "#/components/parameters/x_kanda_bid"
+        - $ref: "#/components/parameters/x_kanda_cid"
+        - $ref: "#/components/parameters/x_kanda_eid"
+        - $ref: "#/components/parameters/x_kanda_tid"
+      requestBody:
+        description: connecting a lead to trades by their cid
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              title: lead connection to trades
+              items:
+                schema:
+                  type: string
+                  title: lead connection cid
+                  description: lead connection company id
+                  minLength: 1
+      responses:
+        200:
+          description: connected lead to trade summaries
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/TradeSummary"
         default:
           description: unexpected error
           content:
@@ -4951,6 +5070,10 @@ components:
           type: string
           title: enterprise id
           readOnly: true
+        rid:
+          type: string
+          title: region id
+          readOnly: true
         bid:
           type: string
           title: branch id
@@ -4960,6 +5083,7 @@ components:
           title: enterprise type
           enum:
             - "main_office"
+            - "region_office"
             - "branch_office"
         subdomain:
           type: string
@@ -5173,6 +5297,67 @@ components:
           title: electrical trade association number
           minLength: 1
 
+    LatLng:
+      type: object
+      title: latitude and longitude
+      required:
+        - lat
+        - lng
+      properties:
+        lat:
+          type: number
+          format: float
+          title: latitude
+        lng:
+          type: number
+          format: float
+          title: longitude
+
+    InfoTrade:
+      type: object
+      title: info trade request
+      required:
+        - address
+      properties:
+        address:
+          type: object
+          $ref: "#/components/schemas/Address"
+        lat_lng:
+          type: object
+          $ref: "#/components/schemas/LatLng"
+
+    TradeSummary:
+      type: object
+      title: trade summary
+      properties:
+        cid:
+          type: string
+          title: company id
+        contact_info:
+          type: object
+          title: job company contact info
+          $ref: "#/components/schemas/ContactInfo"
+        trading_type:
+          type: string
+          title: trading type (limited or sole trader)
+        company_logo:
+          type: object
+          title: company logo document
+          $ref: "#/components/schemas/Document"
+        work_types:
+          type: array
+          title: work types
+          items:
+            $ref: "#/components/schemas/WorkType"
+        lat_lng:
+          type: object
+          $ref: "#/components/schemas/LatLng"
+        distance:
+          type: number
+          title: distance from provided location
+          format: float
+          readOnly: true
+
     CompanyInfo:
       type: object
       required:
@@ -5297,6 +5482,11 @@ components:
           type: object
           title: contract agreement
           $ref: "#/components/schemas/ContractAgreement"
+        work_types:
+          type: array
+          title: work types
+          items:
+            $ref: "#/components/schemas/WorkType"
 
     OnlinePresence:
       type: object
@@ -6418,7 +6608,7 @@ components:
           type: string
           title: consumer quote description
           minLength: 1
-          x-kanda-form-widget: AutoSizeTextArea
+          x-kanda-form-widget: TextAreaInput
         job_items:
           type: array
           items:
@@ -6464,12 +6654,14 @@ components:
       title: consumer quote
       description: consumer quote
       required:
+        - connected
+        - accepted
         - status
         - expired_at
       properties:
         id:
           type: string
-          title: payment id
+          title: lead id
           readOnly: true
         cid:
           type: string
@@ -6529,6 +6721,18 @@ components:
           type: string
           title: external reference
           readOnly: true
+        connected:
+          type: array
+          title: connected trade ids being notified
+          items:
+            type: string
+            title: connected trade id being notified
+        accepted:
+          type: array
+          title: trade ids accepting connection
+          items:
+            type: string
+            title: trade id accepting connection
         status:
           type: string
           title: status

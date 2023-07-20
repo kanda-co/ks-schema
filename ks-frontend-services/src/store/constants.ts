@@ -10,6 +10,8 @@ export const INFO_ENTITY_KEY = 'infoEntity.getInfoEntity';
 export const IGNORED_ACTIONS = [
   'resendJob',
   'checkJob',
+  'connectTradesLead',
+  'matchTradesLead',
   'payoutsJob',
   'jobCheckoutLink',
   'jobCompanyInfo',
@@ -27,6 +29,16 @@ export interface SingleActionReducers {
 export const SINGLE_ACTION_REDUCERS: SingleActionReducers[] = [
   { entity: 'job', action: 'JobCompanyInfo' },
   { entity: 'job', action: 'CheckJob', actionEntity: 'JobCreditState' },
+  {
+    entity: 'lead',
+    action: 'ConnectTradesLead',
+    actionEntity: 'TradeSummary',
+  },
+  {
+    entity: 'lead',
+    action: 'MatchTradesLead',
+    actionEntity: 'TradeSummary',
+  },
 ];
 
 export const ENTITY_NAME_OVERRIDES = {
