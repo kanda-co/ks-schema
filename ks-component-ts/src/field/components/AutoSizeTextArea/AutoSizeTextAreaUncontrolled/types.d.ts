@@ -50,4 +50,8 @@ export interface AutoSizeTextAreaUncontrolledProps {
    * Collapses to one line when is defocused
    */
   collapsible?: boolean;
+  /**
+   * Minimum rows
+   */
+  minRows?: number;
 }

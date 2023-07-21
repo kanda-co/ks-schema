@@ -6608,7 +6608,7 @@ components:
           type: string
           title: consumer quote description
           minLength: 1
-          x-kanda-form-widget: TextAreaInput
+          x-kanda-form-widget: AutoSizeTextArea
         job_items:
           type: array
           items:

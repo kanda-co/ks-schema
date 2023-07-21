@@ -48,7 +48,7 @@ const AutoSizeTextAreaUncontrolled: FunctionComponent<
           </div>
         </div>
       ) : (
-        <div className="flex flex-row relative w-full overflow-hidden">
+        <div className="relative flex flex-row w-full overflow-hidden">
           {showPlaceholder && (
             <span className={placeholderClassName}>{value}</span>
           )}
