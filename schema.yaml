@@ -6657,6 +6657,7 @@ components:
         - connected
         - accepted
         - status
+        - source
         - expired_at
       properties:
         id:
@@ -6749,6 +6750,16 @@ components:
         flow_type:
           title: flow_type
           $ref: "#/components/schemas/FlowType"
+        source:
+          type: string
+          title: source
+          enum:
+            - "consumer"
+            - "checkout"
+        referrer:
+          type: string
+          title: referrer
+          readOnly: true
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
