@@ -3233,11 +3233,11 @@ paths:
         - $ref: "#/components/parameters/x_kanda_tid"
       responses:
         200:
-          description: posted existing lead quote approval by trade
+          description: lead converted job draft
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Lead"
+                $ref: "#/components/schemas/Job"
         default:
           description: unexpected error
           content:
