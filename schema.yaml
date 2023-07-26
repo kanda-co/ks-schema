@@ -3263,6 +3263,13 @@ paths:
         - $ref: "#/components/parameters/x_kanda_cid"
         - $ref: "#/components/parameters/x_kanda_eid"
         - $ref: "#/components/parameters/x_kanda_tid"
+      requestBody:
+        description: matching a lead to trades by given filter
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TradeFilter"
       responses:
         200:
           description: got matching trade summaries
@@ -5325,6 +5332,30 @@ components:
         lat_lng:
           type: object
           $ref: "#/components/schemas/LatLng"
+
+    TradeFilter:
+      type: object
+      title: trade filter
+      description: matching a lead to trades by given filter
+      required:
+        - distance
+      properties:
+        distance:
+          type: number
+          title: distance
+          description: matching trades within given distance in miles
+          minimum: 1
+          maximum: 500
+        work_types:
+          type: array
+          title: work types
+          description: matching trades with given work types
+          items:
+            $ref: "#/components/schemas/WorkType"
+        keyword:
+          type: string
+          title: keyword
+          description: matching keyword
 
     TradeSummary:
       type: object
