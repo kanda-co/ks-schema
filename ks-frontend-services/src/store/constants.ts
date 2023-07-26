@@ -31,6 +31,16 @@ export const SINGLE_ACTION_REDUCERS: SingleActionReducers[] = [
   { entity: 'job', action: 'CheckJob', actionEntity: 'JobCreditState' },
   {
     entity: 'lead',
+    action: 'TradeQuoteApprovalLead',
+    actionEntity: 'Job',
+  },
+  {
+    entity: 'lead',
+    action: 'MatchTradesLead',
+    actionEntity: 'TradeSummary',
+  },
+  {
+    entity: 'lead',
     action: 'ConnectTradesLead',
     actionEntity: 'TradeSummary',
   },
