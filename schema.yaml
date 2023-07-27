@@ -5361,9 +5361,9 @@ components:
       type: object
       title: trade summary
       properties:
-        cid:
+        id:
           type: string
-          title: company id
+          title: trade summary id
         contact_info:
           type: object
           title: job company contact info
