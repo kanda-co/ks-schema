@@ -167,6 +167,7 @@ paths:
       parameters:
         - in: query
           name: id
+          required: true
           schema:
             type: string
           description: trade summary id
@@ -176,9 +177,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/TradeSummary"
+                $ref: "#/components/schemas/TradeSummary"
         default:
           description: unexpected error
           content:
