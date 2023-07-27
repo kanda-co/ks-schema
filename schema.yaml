@@ -158,6 +158,34 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/trade-summary:
+    get:
+      operationId: infoTradeSummary
+      summary: query trade summary with branding and logo attached
+      tags:
+        - TradeSummary
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+          description: trade summary id
+      responses:
+        200:
+          description: got trade summary with branding and logo attached
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/TradeSummary"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/info/company:
     get:
       operationId: infoCompany
