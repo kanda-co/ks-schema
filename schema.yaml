@@ -3361,6 +3361,40 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/lead/{id}/accepted-job-summary:
+    post:
+      operationId: acceptedJobSummaryLead
+      summary: query accepted job summary quoted to lead
+      tags:
+        - Lead
+      parameters:
+        - name: id
+          in: path
+          description: lead id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - $ref: "#/components/parameters/x_kanda_bid"
+        - $ref: "#/components/parameters/x_kanda_cid"
+        - $ref: "#/components/parameters/x_kanda_eid"
+        - $ref: "#/components/parameters/x_kanda_tid"
+      responses:
+        200:
+          description: queried accepted job summary quoted to lead
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/LeadJobSummary"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/lead/{id}/refer:
     post:
       operationId: referLead
@@ -6635,6 +6669,10 @@ components:
           type: object
           title: finance details
           $ref: "#/components/schemas/FinanceDetails"
+        budget:
+          type: object
+          title: customer preferred budget
+          $ref: "#/components/schemas/Money"
 
     LeadQuote:
       type: object
@@ -6764,6 +6802,10 @@ components:
           items:
             type: object
             $ref: "#/components/schemas/FinanceRate"
+        budget:
+          type: object
+          title: customer preferred budget
+          $ref: "#/components/schemas/Money"
         max_credit_amount:
           type: object
           $ref: "#/components/schemas/Money"
@@ -6823,6 +6865,57 @@ components:
           $ref: "#/components/schemas/Metadata"
           title: metadata
           readOnly: true
+
+    LeadJobSummary:
+      type: object
+      title: lead assoicated job summary
+      required:
+        - id
+        - archived
+        - status
+        - finance_status
+        - quoted_to
+        - total
+      properties:
+        id:
+          type: string
+          title: lead converted job id
+        cid:
+          type: string
+          title: company id
+        aid:
+          type: string
+          title: author id
+        oid:
+          type: string
+          title: owner id
+        eid:
+          type: string
+          title: enterprise id
+        rid:
+          type: string
+          title: region id
+        bid:
+          type: string
+          title: branch id
+        tid:
+          type: string
+          title: external trade id
+        archived:
+          type: string
+          title: lead converted job currently is archived
+        status:
+          type: string
+          title: lead converted job current status
+        finance_status:
+          type: string
+          title: lead converted job current finance status
+        quoted_to:
+          type: string
+          title: lead id which this job is quoted to
+        total:
+          type: object
+          $ref: "#/components/schemas/MoneyTotal"
 
     Credit:
       type: object
