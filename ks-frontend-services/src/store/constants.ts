@@ -13,6 +13,7 @@ export const IGNORED_ACTIONS = [
   'tradeQuoteApprovalLead',
   'connectTradesLead',
   'matchTradesLead',
+  'acceptedJobSummaryLead',
   'payoutsJob',
   'jobCheckoutLink',
   'jobCompanyInfo',
@@ -44,6 +45,11 @@ export const SINGLE_ACTION_REDUCERS: SingleActionReducers[] = [
     entity: 'lead',
     action: 'MatchTradesLead',
     actionEntity: 'TradeSummary',
+  },
+  {
+    entity: 'lead',
+    action: 'AcceptedJobSummaryLead',
+    actionEntity: 'LeadJobSummary',
   },
 ];
 
