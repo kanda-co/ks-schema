@@ -4045,6 +4045,7 @@ paths:
               - dbv3_user_verify_director_reminder
               - housekeeping_check_referral_expiry
               - housekeeping_check_lender_rate
+              - housekeeping_check_trade_summary
       responses:
         200:
           description: runner has been completed
@@ -4164,6 +4165,24 @@ components:
         bid:
           type: string
           title: branch id
+          readOnly: true
+        groups:
+          type: array
+          title: groups
+          items:
+            type: string
+          readOnly: true
+        departments:
+          type: array
+          title: departments
+          items:
+            type: string
+          readOnly: true
+        branches:
+          type: array
+          title: branches
+          items:
+            type: string
           readOnly: true
         token:
           type: string
@@ -5151,6 +5170,7 @@ components:
           title: enterprise type
           enum:
             - "main_office"
+            - "area_office"
             - "region_office"
             - "branch_office"
         subdomain:
