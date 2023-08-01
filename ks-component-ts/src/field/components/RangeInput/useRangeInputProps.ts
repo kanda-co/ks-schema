@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { BG_COLOR, CLASS_NAMES } from "./constants";
 
 import { ErrorMessage } from "~/field/types";
+import { twMerge } from "tailwind-merge";
 
 interface RangeClassNames {
   container: string;
@@ -40,7 +41,8 @@ export default function useRangeInputProps(
   formatter: (input: string) => string,
   prefix: string,
   suffix: string,
-  error?: string | ErrorMessage
+  error?: string | ErrorMessage,
+  className?: string
 ): Hook {
   const value = useWatch({ name });
 
@@ -66,9 +68,10 @@ export default function useRangeInputProps(
 
   const classNames = {
     ...CLASS_NAMES,
-    container: clsx(
+    container: twMerge(
       CLASS_NAMES.container,
-      error ? "border-red-200" : "border-neutral-100"
+      error ? "border-red-200" : "border-neutral-100",
+      className
     ),
   };
 

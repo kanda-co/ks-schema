@@ -12,6 +12,11 @@ export interface RangeInputUncontrolledProps
   formatter?: (value: string) => string;
   prefix?: string;
   suffix?: string;
+  labels?: {
+    min: string;
+    max: string;
+  };
+  className?: string;
 }
 
 const RangeInputUncontrolled: FunctionComponent<
@@ -28,10 +33,22 @@ const RangeInputUncontrolled: FunctionComponent<
   prefix = "",
   suffix = "",
   name = "",
+  labels = { min: "min", max: "max" },
+  className,
   ...restProps
 }) {
   const { ref, inputProps, minLabel, maxLabel, currentLabel, classNames } =
-    useRangeInputProps(name, min, max, steps, formatter, prefix, suffix, error);
+    useRangeInputProps(
+      name,
+      min,
+      max,
+      steps,
+      formatter,
+      prefix,
+      suffix,
+      error,
+      className
+    );
 
   return (
     <div className={classNames.container}>
@@ -43,8 +60,8 @@ const RangeInputUncontrolled: FunctionComponent<
         afterLoading={
           <>
             <div className={classNames.labels}>
-              <p className={classNames.upperLabel}>min</p>
-              <p className={classNames.upperLabel}>max</p>
+              <p className={classNames.upperLabel}>{labels.min}</p>
+              <p className={classNames.upperLabel}>{labels.max}</p>
             </div>
             <div className={classNames.rangeWrapper} ref={ref}>
               <div className={classNames.cap} />
