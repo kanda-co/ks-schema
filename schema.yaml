@@ -543,6 +543,33 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/checkout-redirect:
+    put:
+      operationId: infoCheckoutRedirect
+      summary: request a new checkout link based on given data for redirect flow
+      tags:
+        - InfoRedirect
+      requestBody:
+        description: request a new checkout link based on given data for checkout redirect flow
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InfoCheckoutRedirect"
+      responses:
+        200:
+          description: got a new checkout link based on given data for checkout redirect flow
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoLegacyRedirect"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/info/ip:
     get:
       operationId: infoIP
@@ -4168,13 +4195,13 @@ components:
           readOnly: true
         groups:
           type: array
-          title: groups
+          title: groups or regions
           items:
             type: string
           readOnly: true
         departments:
           type: array
-          title: departments
+          title: departments or areas
           items:
             type: string
           readOnly: true
@@ -4392,6 +4419,52 @@ components:
           title: work type
           description: optional work type for the job
           $ref: "#/components/schemas/WorkType"
+
+    InfoCheckoutRedirect:
+      type: object
+      title: info checkout redirect
+      required:
+        - work_type
+        - deposit_type
+        - deposit_value
+        - customer
+        - job_items
+      properties:
+        reference:
+          type: string
+          title: title
+          description: >
+            The reference for the loan application.
+            Is mainly used for tracking loan applications
+        work_type:
+          title: work type
+          description: work type for the job
+          $ref: "#/components/schemas/WorkType"
+        deposit_type:
+          type: string
+          title: deposit type
+          enum:
+            - no_deposit
+            - partial_deposit
+            - fixed_deposit
+          default: no_deposit
+        deposit_value:
+          type: object
+          $ref: "#/components/schemas/Money"
+          title: deposit value in pence
+        customer:
+          type: object
+          $ref: "#/components/schemas/Customer"
+        job_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/JobItem"
+          title: job items
+          minLength: 1
+        redirect_urls:
+          type: object
+          title: redirect urls
+          $ref: "#/components/schemas/RedirectURLs"
 
     InfoIP:
       type: object
@@ -5156,10 +5229,6 @@ components:
         eid:
           type: string
           title: enterprise id
-          readOnly: true
-        rid:
-          type: string
-          title: region id
           readOnly: true
         bid:
           type: string
