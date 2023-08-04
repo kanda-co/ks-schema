@@ -3228,6 +3228,40 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/lead/{id}/send-job:
+    post:
+      operationId: sendLeadJob
+      summary: >
+        for enterprise or kanda staff to convert a lead to job
+        and send to homeowner, it also sets lead status to trade_accepted
+      tags:
+        - Lead
+      parameters:
+        - name: id
+          in: path
+          description: lead id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - $ref: "#/components/parameters/x_kanda_bid"
+        - $ref: "#/components/parameters/x_kanda_cid"
+        - $ref: "#/components/parameters/x_kanda_eid"
+        - $ref: "#/components/parameters/x_kanda_tid"
+      responses:
+        200:
+          description: sent lead job to homeowner
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/lead/{id}/trade:
     post:
       operationId: tradeLead
@@ -4424,6 +4458,7 @@ components:
       type: object
       title: info checkout redirect
       required:
+        - reference
         - work_type
         - deposit_type
         - deposit_value
@@ -4436,6 +4471,7 @@ components:
           description: >
             The reference for the loan application.
             Is mainly used for tracking loan applications
+          minLength: 1
         work_type:
           title: work type
           description: work type for the job
@@ -6808,6 +6844,9 @@ components:
           title: job total
           $ref: "#/components/schemas/MoneyTotal"
           readOnly: true
+        reference:
+          type: string
+          title: consumer quote unique reference
 
     LeadTrade:
       type: object
