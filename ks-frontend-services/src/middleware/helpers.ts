@@ -1,4 +1,7 @@
 import type { FunctionComponent } from 'react';
+import * as TE from 'fp-ts/lib/TaskEither';
+import { pipe } from 'fp-ts/lib/function';
+import type { IO } from 'fp-ts/lib/IO';
 import type {
   Args,
   InitialDataAction,
@@ -6,9 +9,7 @@ import type {
   Page,
   PageList,
 } from './types';
-import * as TE from 'fp-ts/lib/TaskEither';
-import { pipe } from 'fp-ts/lib/function';
-import type { IO } from 'fp-ts/lib/IO';
+import { AsyncThunkReturnType } from '../store/types';
 
 export const handleIO = (io: IO<void>): TE.TaskEither<Error, void> =>
   pipe(
@@ -21,7 +22,10 @@ export const createAction = <T extends ValidAction>(
   action: T,
   args?: Args<T>,
   idRequired?: boolean,
-): InitialDataAction<T> => ({ action, args, idRequired });
+  onLoad?: <P extends ValidAction>(
+    entity: AsyncThunkReturnType<T>[0],
+  ) => InitialDataAction[],
+): InitialDataAction<T> => ({ action, args, idRequired, onLoad });
 
 export interface CreatePageArgs<State> {
   path: string;

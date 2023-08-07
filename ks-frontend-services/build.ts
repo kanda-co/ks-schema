@@ -5,12 +5,8 @@ import packageConfig from './package.json' assert { type: 'json' };
 
 const handleYalcPublish = () => {
   // @ts-ignore
-  exec('yalc publish', (e, stdout) => {
+  exec('yalc publish && yalc push', (e, stdout) => {
     console.log('New version of package published to yalc');
-    // @ts-ignore
-    exec('cd ./app && yalc update', (e, stdout) => {
-      console.log('App now using new version of package from yalc');
-    });
   });
 };
 

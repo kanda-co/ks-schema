@@ -10,6 +10,12 @@ import { PageKeys, URLS } from '../../../config';
 import Home from '../../../pages/Home';
 import Login from '../../../pages/Login';
 
+const x = createAction(actions.getJob, {}, true, (job) => [
+  createAction(actions.getLead, {
+    params: { id: job.quoted_to },
+  }),
+]);
+
 const {
   pages,
   router: { Router },
@@ -17,9 +23,20 @@ const {
   home: {
     path: URLS.home,
     PageComponent: Home,
+    idRequired: true,
     requiredRoles: [],
     loadingDependencies: [],
-    initialDataActions: [],
+    initialDataActions: [
+      createAction(actions.getJob, {}, true, (job) => {
+        console.log('job', job);
+        alert('test');
+        return [
+          createAction(actions.getLead, {
+            params: { id: job.quoted_to },
+          }),
+        ];
+      }),
+    ],
   },
 
   login: {

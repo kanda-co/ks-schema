@@ -1,6 +1,7 @@
 import type { FunctionComponent, ReactNode } from 'react';
 import type { StringIndexedObject } from '../types';
 import * as actions from '../store/slices/generated/actions';
+import type { AsyncThunkReturnType } from '../store/types';
 
 export type ValidAction = typeof actions[keyof typeof actions];
 
@@ -9,7 +10,7 @@ export type Role = string | undefined;
 type Params<T extends ValidAction> = T extends (args: {
   params: infer P;
 }) => void
-  ? Omit<P, 'id'>
+  ? P
   : never;
 
 type Body<T extends ValidAction> = T extends (args: { body: infer B }) => void
@@ -23,10 +24,11 @@ type Args<T extends ValidAction> =
     }
   | undefined;
 
-export type InitialDataAction<P extends ValidAction> = {
-  action: P;
-  args?: Args<P>;
+export type InitialDataAction<T extends ValidAction = any> = {
+  action: T;
+  args?: Args<T>;
   idRequired?: boolean;
+  onLoad?: (entity: AsyncThunkReturnType<T>[0]) => InitialDataAction[];
 };
 
 export interface Page {

@@ -1,12 +1,13 @@
 import type { FunctionComponent } from 'react';
-import type { Args, InitialDataAction, ValidAction, Page, PageList } from './types';
 import * as TE from 'fp-ts/lib/TaskEither';
 import type { IO } from 'fp-ts/lib/IO';
+import type { Args, InitialDataAction, ValidAction, Page, PageList } from './types';
+import { AsyncThunkReturnType } from '../store/types';
 export declare const handleIO: (io: IO<void>) => TE.TaskEither<Error, void>;
 export declare const createAction: <T extends ValidAction>(action: T, args?: {
     params?: import("./types").Params<T>;
     body?: import("./types").Body<T>;
-}, idRequired?: boolean) => InitialDataAction<T>;
+}, idRequired?: boolean, onLoad?: <P extends ValidAction>(entity: AsyncThunkReturnType<T>[0]) => InitialDataAction[]) => InitialDataAction<T>;
 export interface CreatePageArgs<State> {
     path: string;
     PageComponent: FunctionComponent;
