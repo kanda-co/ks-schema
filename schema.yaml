@@ -6670,6 +6670,18 @@ components:
           type: string
           title: author id
           readOnly: true
+        eid:
+          type: string
+          title: enterprise id
+          readOnly: true
+        bid:
+          type: string
+          title: branch id
+          readOnly: true
+        tid:
+          type: string
+          title: external trade id
+          readOnly: true
         kid:
           type: string
           title: internal kind id
