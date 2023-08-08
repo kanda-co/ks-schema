@@ -7,10 +7,14 @@ export type ValidAction = typeof actions[keyof typeof actions];
 
 export type Role = string | undefined;
 
+export type WithOptionalId<T extends { id: string }> = Omit<T, 'id'> & {
+  id?: string;
+};
+
 type Params<T extends ValidAction> = T extends (args: {
-  params: infer P;
+  params: infer P extends { id: string };
 }) => void
-  ? P
+  ? WithOptionalId<P>
   : never;
 
 type Body<T extends ValidAction> = T extends (args: { body: infer B }) => void
