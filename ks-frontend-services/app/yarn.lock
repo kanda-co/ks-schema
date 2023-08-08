@@ -2,19 +2,6 @@
 # yarn lockfile v1
 
 
-"@amplitude/analytics-browser@1.10.7":
-  version "1.10.7"
-  resolved "https://registry.yarnpkg.com/@amplitude/analytics-browser/-/analytics-browser-1.10.7.tgz#c084c39cc156c09d23c1fefa0b4607f30bda9846"
-  integrity sha512-gN1DMJHEZSc5ApF0xtkN4jBNl/69v9djREYYKsJMYRPkgKE8jn7oCB5H9tuRu99zeKdMMeAF7g3QzTBxOT+owA==
-  dependencies:
-    "@amplitude/analytics-client-common" "^1.0.0"
-    "@amplitude/analytics-core" "^1.0.0"
-    "@amplitude/analytics-types" "^1.0.0"
-    "@amplitude/plugin-page-view-tracking-browser" "^1.0.1"
-    "@amplitude/plugin-web-attribution-browser" "^1.0.1"
-    "@amplitude/ua-parser-js" "^0.7.31"
-    tslib "^2.4.1"
-
 "@amplitude/analytics-browser@^1.6.4":
   version "1.12.0"
   resolved "https://registry.yarnpkg.com/@amplitude/analytics-browser/-/analytics-browser-1.12.0.tgz#615a3e99ac09cdff3bef73cd014d9f7bb85ffdb6"
@@ -28,7 +15,7 @@
     "@amplitude/ua-parser-js" "^0.7.31"
     tslib "^2.4.1"
 
-"@amplitude/analytics-client-common@^1.0.0", "@amplitude/analytics-client-common@^1.1.0":
+"@amplitude/analytics-client-common@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@amplitude/analytics-client-common/-/analytics-client-common-1.1.0.tgz#beb9e60709e3cfb4850275a7107f86bee2e57e5c"
   integrity sha512-UEAfgpuZZyZBPjVCk+b83m/2s7cNSPkMxJm+0RgAOChFsLgWhX+PJiJ/GOvLUDcZbls1nXHdeOIDYZchhRy6dA==
@@ -43,7 +30,7 @@
   resolved "https://registry.yarnpkg.com/@amplitude/analytics-connector/-/analytics-connector-1.4.8.tgz#dd801303db2662bc51be7e0194eeb8bd72267c42"
   integrity sha512-dFW7c7Wb6Ng7vbmzwbaXZSpqfBx37ukamJV9ErFYYS8vGZK/Hkbt3M7fZHBI4WFU6CCwakr2ZXPme11uGPYWkQ==
 
-"@amplitude/analytics-core@^1.0.0", "@amplitude/analytics-core@^1.2.0":
+"@amplitude/analytics-core@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@amplitude/analytics-core/-/analytics-core-1.2.0.tgz#c60c9d7f6cd0a472b8818c73b96b725766af60f2"
   integrity sha512-KgsrhPWoj2XrEVBiT65aGmGMbpxMGqeugXY99Y7m8DcKkcXfqBMX2tOOrg9ryb9LFCo3OOKnRLplK7WuKTHYLA==
@@ -51,12 +38,12 @@
     "@amplitude/analytics-types" "^1.3.0"
     tslib "^2.4.1"
 
-"@amplitude/analytics-types@^1.0.0", "@amplitude/analytics-types@^1.3.0":
+"@amplitude/analytics-types@^1.3.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@amplitude/analytics-types/-/analytics-types-1.3.0.tgz#0b2d688cfe735b444e2384b477f691d33b79e3af"
   integrity sha512-+Cz7J5lZdOqZv3njpTqtnhG/pZXOR+sTUC/aKnoMisCCVlEdJpPzN9UV17/7RCMwjDUjw8WsfhlNJAIqXO42Iw==
 
-"@amplitude/plugin-page-view-tracking-browser@^1.0.1", "@amplitude/plugin-page-view-tracking-browser@^1.0.6":
+"@amplitude/plugin-page-view-tracking-browser@^1.0.6":
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/@amplitude/plugin-page-view-tracking-browser/-/plugin-page-view-tracking-browser-1.0.6.tgz#83dee8df1b41e232b475f7bbdfee471dd11b7bc5"
   integrity sha512-eeAswgfgLt1weIMpBP3W742SS7k6elSVFbmR8LQ5DHFHe3YioDlSEiOxf1jyidlrFVSSPD6xh76P0Lhe6HEBAQ==
@@ -65,7 +52,7 @@
     "@amplitude/analytics-types" "^1.3.0"
     tslib "^2.4.1"
 
-"@amplitude/plugin-web-attribution-browser@^1.0.1", "@amplitude/plugin-web-attribution-browser@^1.0.6":
+"@amplitude/plugin-web-attribution-browser@^1.0.6":
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/@amplitude/plugin-web-attribution-browser/-/plugin-web-attribution-browser-1.0.6.tgz#a9f5c9970d50b17808cda2e5ec91629ac0af0622"
   integrity sha512-ujrXFM9xo9izqAoGqLxJlbJ0fVB9LY1PSO+089mYrcj6t3snYp+0SQ6wcUZQg4Y42llEF0xgmCNmjQZCtlpRHw==
@@ -787,16 +774,6 @@
   dependencies:
     "@react-pdf/font" "2.3.1"
     "@react-pdf/renderer" "3.0.0"
-
-"@kanda-libs/ks-amplitude-provider@0.0.18":
-  version "0.0.18"
-  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-amplitude-provider/-/ks-amplitude-provider-0.0.18.tgz#3420c7110d3a5b2953165ce1b5c85348e6b54ba7"
-  integrity sha512-syjVpQ3Uv+0j8e8ygY5RVYrOGdWUu4830GvBrsphNBTb6A0MkzezuqjEAXjhDb94FQzWhiC+Tn5CZWuv2ADtzg==
-  dependencies:
-    "@amplitude/analytics-browser" "1.10.7"
-    lodash.clonedeep "^4.5.0"
-    lodash.get "^4.4.2"
-    lodash.set "^4.3.2"
 
 "@kanda-libs/ks-amplitude-provider@^0.0.15":
   version "0.0.15"
@@ -2608,7 +2585,7 @@ react-router-guards@^1.0.2:
   dependencies:
     tiny-invariant "^1.0.4"
 
-react-router@5.3.4:
+react-router@5.3.4, react-router@^5.2.0:
   version "5.3.4"
   resolved "https://registry.yarnpkg.com/react-router/-/react-router-5.3.4.tgz#8ca252d70fcc37841e31473c7a151cf777887bb5"
   integrity sha512-Ys9K+ppnJah3QuaRiLxk+jDWOR1MekYQrlytiXxC1RyfbdsZkS5pvKAzCCr031xHixZwpnsYNT5xysdFHQaYsA==

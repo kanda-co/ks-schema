@@ -158,6 +158,13 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         fetchedList: boolean;
         isLoading: boolean;
     };
+    tradeSummary: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").TradeSummary>;
+        isSubmitting: boolean;
+        fetchedList: boolean;
+        isLoading: boolean;
+    };
     jobCompanyInfo: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").JobCompanyInfo>;
@@ -172,6 +179,13 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         fetchedList: boolean;
         isLoading: boolean;
     };
+    tradeQuoteApprovalLead: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").Job>;
+        isSubmitting: boolean;
+        fetchedList: boolean;
+        isLoading: boolean;
+    };
     connectTradesLead: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").TradeSummary>;
@@ -182,6 +196,13 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
     matchTradesLead: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").TradeSummary>;
+        isSubmitting: boolean;
+        fetchedList: boolean;
+        isLoading: boolean;
+    };
+    acceptedJobSummaryLead: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").LeadJobSummary>;
         isSubmitting: boolean;
         fetchedList: boolean;
         isLoading: boolean;
@@ -343,6 +364,13 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         fetchedList: boolean;
         isLoading: boolean;
     };
+    tradeSummary: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").TradeSummary>;
+        isSubmitting: boolean;
+        fetchedList: boolean;
+        isLoading: boolean;
+    };
     jobCompanyInfo: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").JobCompanyInfo>;
@@ -357,6 +385,13 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         fetchedList: boolean;
         isLoading: boolean;
     };
+    tradeQuoteApprovalLead: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").Job>;
+        isSubmitting: boolean;
+        fetchedList: boolean;
+        isLoading: boolean;
+    };
     connectTradesLead: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").TradeSummary>;
@@ -367,6 +402,13 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
     matchTradesLead: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").TradeSummary>;
+        isSubmitting: boolean;
+        fetchedList: boolean;
+        isLoading: boolean;
+    };
+    acceptedJobSummaryLead: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").LeadJobSummary>;
         isSubmitting: boolean;
         fetchedList: boolean;
         isLoading: boolean;
@@ -407,9 +449,12 @@ export declare function createSelectors<State extends {
     payment: import("./types").Selectors<import("..").Payment, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Payment>>>;
     rate: import("./types").Selectors<import("..").Rate, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Rate>>>;
     subscription: import("./types").Selectors<import("..").Subscription, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Subscription>>>;
+    tradeSummary: import("./types").Selectors<import("..").TradeSummary, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").TradeSummary>>>;
     jobCompanyInfo: import("./types").Selectors<import("..").JobCompanyInfo, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").JobCompanyInfo>>>;
     checkJob: import("./types").Selectors<import("..").JobCreditState, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").JobCreditState>>>;
+    tradeQuoteApprovalLead: import("./types").Selectors<import("..").Job, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Job>>>;
     connectTradesLead: import("./types").Selectors<import("..").TradeSummary, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").TradeSummary>>>;
     matchTradesLead: import("./types").Selectors<import("..").TradeSummary, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").TradeSummary>>>;
+    acceptedJobSummaryLead: import("./types").Selectors<import("..").LeadJobSummary, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").LeadJobSummary>>>;
 };
 export {};

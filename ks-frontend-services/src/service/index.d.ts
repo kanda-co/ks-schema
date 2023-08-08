@@ -267,6 +267,10 @@ declare const infoRedirect: {
         key: string;
         method: import("../generated/operations/infoLegacyRedirect").InfoLegacyRedirectRequestFunction;
     };
+    infoCheckoutRedirect: {
+        key: string;
+        method: import("../generated/operations/infoCheckoutRedirect").InfoCheckoutRedirectRequestFunction;
+    };
 };
 declare const infoValidation: {
     infoValidateEmail: {
@@ -397,6 +401,10 @@ declare const lead: {
         key: string;
         method: import("../generated/operations/quoteLead").QuoteLeadRequestFunction;
     };
+    sendLeadJob: {
+        key: string;
+        method: import("../generated/operations/sendLeadJob").SendLeadJobRequestFunction;
+    };
     tradeLead: {
         key: string;
         method: import("../generated/operations/tradeLead").TradeLeadRequestFunction;
@@ -412,6 +420,10 @@ declare const lead: {
     connectTradesLead: {
         key: string;
         method: import("../generated/operations/connectTradesLead").ConnectTradesLeadRequestFunction;
+    };
+    acceptedJobSummaryLead: {
+        key: string;
+        method: import("../generated/operations/acceptedJobSummaryLead").AcceptedJobSummaryLeadRequestFunction;
     };
     referLead: {
         key: string;
@@ -578,6 +590,12 @@ declare const task: {
     runner: {
         key: string;
         method: import("../generated/operations/runner").RunnerRequestFunction;
+    };
+};
+declare const tradeSummary: {
+    infoTradeSummary: {
+        key: string;
+        method: import("../generated/operations/infoTradeSummary").InfoTradeSummaryRequestFunction;
     };
 };
 declare const webhook: {
@@ -899,6 +917,10 @@ declare const services: {
             key: string;
             method: import("../generated/operations/infoLegacyRedirect").InfoLegacyRedirectRequestFunction;
         };
+        infoCheckoutRedirect: {
+            key: string;
+            method: import("../generated/operations/infoCheckoutRedirect").InfoCheckoutRedirectRequestFunction;
+        };
     };
     infoValidation: {
         infoValidateEmail: {
@@ -1029,6 +1051,10 @@ declare const services: {
             key: string;
             method: import("../generated/operations/quoteLead").QuoteLeadRequestFunction;
         };
+        sendLeadJob: {
+            key: string;
+            method: import("../generated/operations/sendLeadJob").SendLeadJobRequestFunction;
+        };
         tradeLead: {
             key: string;
             method: import("../generated/operations/tradeLead").TradeLeadRequestFunction;
@@ -1044,6 +1070,10 @@ declare const services: {
         connectTradesLead: {
             key: string;
             method: import("../generated/operations/connectTradesLead").ConnectTradesLeadRequestFunction;
+        };
+        acceptedJobSummaryLead: {
+            key: string;
+            method: import("../generated/operations/acceptedJobSummaryLead").AcceptedJobSummaryLeadRequestFunction;
         };
         referLead: {
             key: string;
@@ -1212,6 +1242,12 @@ declare const services: {
             method: import("../generated/operations/runner").RunnerRequestFunction;
         };
     };
+    tradeSummary: {
+        infoTradeSummary: {
+            key: string;
+            method: import("../generated/operations/infoTradeSummary").InfoTradeSummaryRequestFunction;
+        };
+    };
     webhook: {
         providerCheckWebhook: {
             key: string;
@@ -1259,5 +1295,5 @@ declare const services: {
         };
     };
 };
-export { authUser, company, credit, document, enterprise, event, infoAuth, infoCache, infoCompany, infoCustomer, infoDirector, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoLead, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoValidation, job, lead, monitor, onboarding, partner, payment, rate, subscription, task, webhook, address, pdf, sheets, };
+export { authUser, company, credit, document, enterprise, event, infoAuth, infoCache, infoCompany, infoCustomer, infoDirector, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoLead, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoValidation, job, lead, monitor, onboarding, partner, payment, rate, subscription, task, tradeSummary, webhook, address, pdf, sheets, };
 export default services;

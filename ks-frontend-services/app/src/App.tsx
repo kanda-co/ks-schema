@@ -1,7 +1,8 @@
 import './App.css';
+import SharedApp from './components/shared/App';
 
 function App() {
-  return <p>app</p>;
+  return <SharedApp />;
 }
 
 export default App;

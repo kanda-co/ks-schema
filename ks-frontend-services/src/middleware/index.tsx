@@ -1,5 +1,5 @@
 import { FunctionComponent, useMemo } from 'react';
-import { AnyAction } from '@reduxjs/toolkit';
+import { AnyAction, AsyncThunkAction } from '@reduxjs/toolkit';
 import * as TE from 'fp-ts/lib/TaskEither';
 import { pipe } from 'fp-ts/lib/function';
 import type {
@@ -20,6 +20,7 @@ import type {
   Router as RouterType,
   Page as PageType,
   RouterChildren,
+  InitialDataAction,
 } from './types';
 import { createPage, WrapperProps } from './Page';
 import { FirebaseAuthService } from '../auth';
@@ -146,10 +147,49 @@ function getInitialDataPathKey<P extends StringIndexedObject>(
   };
 }
 
-function runActions<State>(store: ToolkitStore<State>, actions: ValidAction[]) {
-  actions.forEach((action) => {
-    store.dispatch(action as unknown as AnyAction);
-  });
+function runInitialDataAction<Store, T extends ValidAction>(
+  store: ToolkitStore<Store>,
+  initialDataAction: InitialDataAction<T>,
+  id?: string,
+  forceReload?: boolean,
+) {
+  const { args, action, idRequired, onLoad } = initialDataAction;
+  const sharedArgs = { forceReload };
+
+  let formattedArgs = args as StringIndexedObject;
+  const formattedAction = action as unknown as (
+    args: StringIndexedObject,
+  ) => ValidAction;
+
+  if (idRequired) {
+    if (!id) {
+      throw new Error('ID not provided');
+    }
+
+    formattedArgs = {
+      params: {
+        id,
+        ...(formattedArgs.params || {}),
+      },
+    };
+  }
+
+  const validAction = formattedAction({
+    ...formattedArgs,
+    ...sharedArgs,
+  }) as unknown as ValidAction;
+
+  store
+    .dispatch(validAction as unknown as AnyAction)
+    .then((entity: StringIndexedObject) => {
+      // If there is an onLoad function, run it with the result of the action
+      // and dispatch the returned action
+      if (onLoad && entity.payload) {
+        onLoad(entity.payload).forEach((currentAction) => {
+          runInitialDataAction(store, currentAction, id, forceReload);
+        });
+      }
+    });
 }
 
 export function fetchPageInitialData<State, P extends StringIndexedObject>(
@@ -158,8 +198,6 @@ export function fetchPageInitialData<State, P extends StringIndexedObject>(
   { page, id }: PathKey<P>,
   forceReload = false,
 ): void {
-  const sharedArgs = { forceReload };
-
   const currentPage = pages[page as keyof P] as PageType;
 
   if (!currentPage) {
@@ -173,39 +211,13 @@ export function fetchPageInitialData<State, P extends StringIndexedObject>(
   }
 
   const initialDataActions = currentPage.initialDataActions;
-  const actionsToRun: ValidAction[] = [];
 
   // Iterate through each of the initial data actions, whilst appending
   // both the shared args (whether or not to forceReload) and the ID
   // from the pathKey
-  initialDataActions.forEach(({ args, action, idRequired }) => {
-    let formattedArgs = args as StringIndexedObject;
-    const formattedAction = action as unknown as (
-      args: StringIndexedObject,
-    ) => ValidAction;
-
-    if (idRequired) {
-      if (!id) {
-        throw new Error('ID not provided');
-      }
-
-      formattedArgs = {
-        params: {
-          id,
-          ...(formattedArgs.params || {}),
-        },
-      };
-    }
-
-    actionsToRun.push(
-      formattedAction({
-        ...formattedArgs,
-        ...sharedArgs,
-      }) as unknown as ValidAction,
-    );
+  initialDataActions.forEach((action) => {
+    runInitialDataAction(store, action, id, forceReload);
   });
-
-  runActions<State>(store, actionsToRun);
 }
 
 export function initialDataProvider<State, P extends StringIndexedObject>(
