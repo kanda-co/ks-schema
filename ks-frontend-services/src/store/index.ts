@@ -32,7 +32,9 @@ export function createStore<PageKeys extends string, ExtraState = {}>(
   return store;
 }
 
-export function createSelectors<State extends { auth: AuthState }, Pages>() {
+export type AuthSlice = { auth: AuthState };
+
+export function createSelectors<State extends AuthSlice, Pages>() {
   return {
     ...getSelectors(),
     ...getAppSelectors<State, Pages>(),
