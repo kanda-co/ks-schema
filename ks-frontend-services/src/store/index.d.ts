@@ -207,6 +207,13 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         fetchedList: boolean;
         isLoading: boolean;
     };
+    postCompanyDirectorVerification: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoCompany>;
+        isSubmitting: boolean;
+        fetchedList: boolean;
+        isLoading: boolean;
+    };
     app: import("./slices/app").AppState<PageKeys>;
     auth: AuthState;
 }, import("redux").AnyAction, import("@reduxjs/toolkit").MiddlewareArray<[import("@reduxjs/toolkit").ThunkMiddleware<{
@@ -413,12 +420,20 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         fetchedList: boolean;
         isLoading: boolean;
     };
+    postCompanyDirectorVerification: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoCompany>;
+        isSubmitting: boolean;
+        fetchedList: boolean;
+        isLoading: boolean;
+    };
     app: import("./slices/app").AppState<PageKeys>;
     auth: AuthState;
 }, import("redux").AnyAction, undefined>]>>;
-export declare function createSelectors<State extends {
+export type AuthSlice = {
     auth: AuthState;
-}, Pages>(): {
+};
+export declare function createSelectors<State extends AuthSlice, Pages>(): {
     getAuth: (state: State) => AuthState;
     getUser: (state: State) => import("..").AuthUser;
     getAuthIsLoading: (state: State) => boolean;
@@ -456,5 +471,6 @@ export declare function createSelectors<State extends {
     connectTradesLead: import("./types").Selectors<import("..").TradeSummary, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").TradeSummary>>>;
     matchTradesLead: import("./types").Selectors<import("..").TradeSummary, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").TradeSummary>>>;
     acceptedJobSummaryLead: import("./types").Selectors<import("..").LeadJobSummary, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").LeadJobSummary>>>;
+    postCompanyDirectorVerification: import("./types").Selectors<import("..").InfoCompany, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoCompany>>>;
 };
 export {};
