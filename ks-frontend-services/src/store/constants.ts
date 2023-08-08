@@ -51,6 +51,11 @@ export const SINGLE_ACTION_REDUCERS: SingleActionReducers[] = [
     action: 'AcceptedJobSummaryLead',
     actionEntity: 'LeadJobSummary',
   },
+  {
+    entity: 'company',
+    action: 'PostCompanyDirectorVerification',
+    actionEntity: 'InfoCompany',
+  },
 ];
 
 export const ENTITY_NAME_OVERRIDES = {
