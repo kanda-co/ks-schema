@@ -1,5 +1,6 @@
 import * as operations from './generated/operations';
 import type { StringIndexedObject } from './types';
+import type { ExtractedError } from './types';
 /**
  * Call fetch, including the baseUrl and attaching headers including authentication
  * @param baseURL
@@ -28,4 +29,4 @@ export declare function getOperationName(operationKey: string, capitalise?: bool
  * 	error: "code=400, message=Hello world"
  * will return "Hello world"
  */
-export declare const extractErrorMessage: (error: StringIndexedObject | string) => string;
+export declare const extractError: (error: StringIndexedObject | string) => ExtractedError;

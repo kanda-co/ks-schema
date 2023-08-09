@@ -2,6 +2,7 @@ import * as operations from './generated/operations';
 import type { StringIndexedObject } from './types';
 import fetch, { originalFetch } from './fetch';
 import { RECAPTCHA_SITE_KEY } from './config';
+import type { ExtractedError } from './types';
 
 const handleProtectedRequest = async (
   init: StringIndexedObject,
@@ -87,11 +88,14 @@ export function getOperationName(
  * 	error: "code=400, message=Hello world"
  * will return "Hello world"
  */
-export const extractErrorMessage = (
+export const extractError = (
   error: StringIndexedObject | string,
-): string => {
-  if (typeof error === 'string') return error;
-  if (!error.message) return 'Unknown error';
+): ExtractedError => {
+  const unknownError = { message: 'Unknown error' };
+
+  if (typeof error === 'string') return { message: error };
+  if (!error.message) return unknownError;
+
   const mapping = error.message
     .split(', ')
     .reduce((errorObj: StringIndexedObject, part: string) => {
@@ -99,10 +103,11 @@ export const extractErrorMessage = (
       if (parts.length !== 2) return errorObj;
       return {
         ...errorObj,
-        [parts[0]]: parts[1],
+        [parts[0]]: parts[0] === 'code' ? parseInt(parts[1], 10) : parts[1],
       };
     }, {});
-  if (Object.keys(mapping).length === 0) return 'Unknown error';
-  if (!mapping.message) return 'Unknown error';
-  return mapping.message;
+  if (Object.keys(mapping).length === 0) return unknownError;
+  if (!mapping.message) return unknownError;
+
+  return mapping as ExtractedError;
 };

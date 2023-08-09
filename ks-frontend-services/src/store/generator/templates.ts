@@ -164,6 +164,7 @@ import {
 } from '../../helpers';
 import { GENERATED_STATE } from '../../constants'
 import type { AsyncThunkReturnType, GeneratedState } from "../../types";
+import type { ExtractedError } from '../../../types';
 import { ${camelCaseEntityName}Adapter } from '../../adapters';
 
 // Service methods
@@ -204,6 +205,10 @@ export const ${camelCaseEntityName}Slice = createSlice({
 	    ...GENERATED_STATE,
 	    ...${camelCaseEntityName}Adapter.getInitialState()
     }),
+    error: (state: ${entityName}State, action: PayloadAction<ExtractedError>) => ({
+      ...state,
+      error: action.payload,
+    }),
     fetching: (state: ${entityName}State, action: PayloadAction<undefined>) => ({
       ...state,
       isLoading: true,
@@ -223,7 +228,7 @@ export const ${camelCaseEntityName}Slice = createSlice({
     .join('')}},
 });
 
-export const { reset, fetching, fetched } = ${camelCaseEntityName}Slice.actions;
+export const { reset, fetching, fetched, error } = ${camelCaseEntityName}Slice.actions;
 
 export default ${camelCaseEntityName}Slice.reducer;
 `;
