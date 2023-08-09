@@ -10,7 +10,7 @@ import * as T from 'io-ts';
 import { pipe } from 'fp-ts/lib/function';
 import { fold } from 'fp-ts/lib/Either';
 import { slices } from './slices/generated';
-import type { StringIndexedObject, NewService } from '../types';
+import type { StringIndexedObject, NewService, ExtractedError } from '../types';
 import { handleResponse as handleApiResponse } from '../handlers';
 import type {
   AsyncThunkActionArgs,
@@ -26,7 +26,7 @@ import {
 import { InfoEntity } from '../generated/components/schemas';
 import { INFO_ENTITY_KEY } from './constants';
 import { GetInfoEntityRequestParameters } from '../generated/operations/getInfoEntity';
-import { extractErrorMessage } from '../helpers';
+import { extractError } from '../helpers';
 
 export const handlePayload = <T>(payload: Payload<T>): Promise<T> =>
   payload().then(handleApiResponse) as Promise<T>;
@@ -189,14 +189,24 @@ export const createAsyncThunkAction = <
 
         return data;
       } catch (error) {
+        const extractedError = extractError(error);
+
+        // Dispatch the error action for the relevant reducer
+        // and throw the error so that the caller can handle it
+        const errorAction = slices[getReducerName(key)].actions
+          .error as ActionCreatorWithOptionalPayload<ExtractedError>;
+
+        thunkAPI.dispatch(errorAction(extractedError));
+
+        // If the onError callback is provided, call it with the extracted error
         if (onError) {
           onError({
-            code: error?.code,
-            message: extractErrorMessage(error),
+            code: extractedError.code || error.code,
+            message: extractedError.message,
           });
         }
 
-        throw error;
+        throw extractedError;
       }
     },
   );
@@ -281,6 +291,8 @@ export const generateSelectors = <
     (reducer) => reducer.fetchedList,
   );
 
+  const getError = createSelector(getReducer, (reducer) => reducer.error);
+
   return {
     getReducer,
     getEntitiesAsArray,
@@ -290,5 +302,6 @@ export const generateSelectors = <
     getIsLoading,
     getIsSubmitting,
     getFetchedList,
+    getError,
   };
 };

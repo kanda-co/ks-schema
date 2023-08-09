@@ -250,7 +250,7 @@ function routeChangeProvider<State, P extends StringIndexedObject>(
   return pathKey;
 }
 
-async function getUser(): Promise<AuthUser> {
+export async function getUser(): Promise<AuthUser> {
   const response = await services.authUser.me.method()();
   const user = await handleResponse<AuthUser>(response as Response<AuthUser>);
 

@@ -80,3 +80,8 @@ declare global {
     captchaOnLoad: () => void;
   }
 }
+
+export interface ExtractedError {
+  code?: number;
+  message: string;
+}

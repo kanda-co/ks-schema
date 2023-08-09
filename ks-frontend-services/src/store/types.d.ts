@@ -1,7 +1,7 @@
 import type { AsyncThunk, EntityState } from '@reduxjs/toolkit';
 import { createAsyncThunk } from './toolkit';
 import type { Response } from '../handlers';
-import type { StringIndexedObject } from '../types';
+import type { StringIndexedObject, ExtractedError } from '../types';
 import type { PageList } from '../middleware/types';
 
 export type Payload<T> = () => Promise<Response<T>>;
@@ -25,6 +25,7 @@ export interface GeneratedState<T> extends EntityState<T> {
   fetchedList: boolean;
   isLoading: boolean;
   isSubmitting: boolean;
+  error?: ExtractedError;
 }
 
 // This isn't great, but reduxjs/toolkit does not export the proper types
@@ -65,4 +66,5 @@ export interface Selectors<T, S> {
   getIsLoading: (state: S) => boolean;
   getIsSubmitting: (state: S) => boolean;
   getFetchedList: (state: S) => boolean;
+  getError: (state: S) => ExtractedError | undefined;
 }
