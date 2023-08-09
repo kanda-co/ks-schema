@@ -56,6 +56,11 @@ export const SINGLE_ACTION_REDUCERS: SingleActionReducers[] = [
     action: 'PostCompanyDirectorVerification',
     actionEntity: 'InfoCompany',
   },
+  {
+    entity: 'company',
+    action: 'GetCompanyDirectorVerification',
+    actionEntity: 'InfoCompany',
+  },
 ];
 
 export const ENTITY_NAME_OVERRIDES = {
