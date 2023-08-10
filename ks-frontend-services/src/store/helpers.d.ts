@@ -22,6 +22,7 @@ export declare const createResponseHandler: <State extends GeneratedState<Entity
 }) | (State & {
     fetchedList: boolean;
     isLoading: boolean;
+    chainedRequest: boolean;
     isSubmitting: boolean;
 });
 export declare const generateSelectors: <Entity, State extends StringIndexedObject<GeneratedState<Entity>>>(reducer: keyof State, entityAdapter: EntityAdapter<Entity>) => Selectors<Entity, State>;

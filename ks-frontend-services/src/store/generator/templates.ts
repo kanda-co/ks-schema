@@ -205,6 +205,11 @@ export const ${camelCaseEntityName}Slice = createSlice({
 	    ...GENERATED_STATE,
 	    ...${camelCaseEntityName}Adapter.getInitialState()
     }),
+    chainedRequest: (state: ${entityName}State, action: PayloadAction<undefined>) => ({
+      ...state,
+      error: action.payload,
+      chainedRequest: true,
+    }),
     error: (state: ${entityName}State, action: PayloadAction<ExtractedError>) => ({
       ...state,
       error: action.payload,
