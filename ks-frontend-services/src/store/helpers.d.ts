@@ -20,6 +20,7 @@ export declare const createResponseHandler: <State extends GeneratedState<Entity
     isLoading: boolean;
     isSubmitting: boolean;
 }) | (State & {
+    chainedRequest: boolean;
     fetchedList: boolean;
     isLoading: boolean;
     isSubmitting: boolean;

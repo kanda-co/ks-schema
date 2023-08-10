@@ -154,13 +154,23 @@ export const createAsyncThunkAction = <
       const { entities, fetchedList } = state[getReducerName(key) as string];
       const {
         preventLoadingState,
-        forceReload,
+        forceReload = false,
+        chainedRequest = false,
         onSuccess,
         onError,
         ...methodArgs
       } = args || {
         args: undefined,
       };
+
+      // Dispatch the chainedRequest action to prevent changing the loading state
+      // if chainedRequest is true
+      if (chainedRequest) {
+        const chainedRequestAction = slices[getReducerName(key)].actions
+          .chainedRequest as ActionCreatorWithOptionalPayload<undefined>;
+
+        thunkAPI.dispatch(chainedRequestAction());
+      }
 
       const finalMethodArgs = methodArgs as unknown as Args;
 
@@ -243,9 +253,10 @@ export const createResponseHandler =
 
     return {
       ...result,
+      chainedRequest: false,
       fetchedList: !state.fetchedList ? isArray : true,
-      isLoading: false,
-      isSubmitting: false,
+      isLoading: state.chainedRequest ? state.isLoading : false,
+      isSubmitting: state.chainedRequest ? state.isLoading : false,
     };
   };
 

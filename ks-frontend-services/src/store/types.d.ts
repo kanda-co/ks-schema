@@ -23,6 +23,7 @@ export interface PathKey<P extends StringIndexedObject> {
 
 export interface GeneratedState<T> extends EntityState<T> {
   fetchedList: boolean;
+  chainedRequest: boolean;
   isLoading: boolean;
   isSubmitting: boolean;
   error?: ExtractedError;
@@ -46,6 +47,7 @@ export type SharedAsyncThunkActionArgs<
   protectedRequest?: boolean;
   preventLoadingState?: boolean;
   forceReload?: boolean;
+  chainedRequest?: boolean;
   onSuccess?: (data: Entity) => void;
   onError?: (error: AsyncThunkActionError) => void;
 };

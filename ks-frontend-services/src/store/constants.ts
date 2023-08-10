@@ -4,6 +4,7 @@ export const GENERATED_STATE: Omit<GeneratedState<{}>, 'entities' | 'ids'> = {
   isLoading: false,
   isSubmitting: false,
   fetchedList: false,
+  chainedRequest: false,
   error: undefined,
 };
 export const INFO_ENTITY_KEY = 'infoEntity.getInfoEntity';
