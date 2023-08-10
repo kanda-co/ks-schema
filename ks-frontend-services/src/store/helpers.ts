@@ -253,10 +253,10 @@ export const createResponseHandler =
 
     return {
       ...result,
+      chainedRequest: false,
       fetchedList: !state.fetchedList ? isArray : true,
       isLoading: state.chainedRequest ? state.isLoading : false,
-      chainedRequest: false,
-      isSubmitting: false,
+      isSubmitting: state.chainedRequest ? state.isLoading : false,
     };
   };
 
