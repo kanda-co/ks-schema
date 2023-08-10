@@ -101,6 +101,22 @@ Closely related is the `loadingDependencies` property. This is an array of strin
 const isLoading = useSelector(getIsLoading)
 ```
 
+The `createAction` method also takes a forth parameter that is a callback for `onSuccess`. This callback will be passed the entity response (correclty typed) and can be used for chaining requests that depend on one another. This callback should return an array of initial data actions. For example:
+
+```
+createAction(actions.getJob, {
+        forceReload: true,
+}, true, (job) => [
+    createAction(actions.getLead, {
+            params: {
+                id: job.quoted_to as string,
+            }
+    })
+])
+```
+
+Notice that `forceReload` is passed to `job` as we always want to load from the API in this call, so `job` is always present.
+
 Rendering of the page
 --
 The final step of the middleware, is to take the generated pathKey and pages, and render the `Page` component with the relevant `PageComponent` defined in the pages array. We export a `createRoutedApp` method, that will take the store and an object of pages. It will then return `pages` as an object, and a `Router` component that we can place in our application, that will handle routing & rendering.

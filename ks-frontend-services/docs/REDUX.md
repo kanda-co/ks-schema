@@ -28,9 +28,10 @@ Code generation for each entity defined in the `ks-schema` involves creating a r
     
 3.  **Actions**: All actions are exported as `actions` and are correctly typed based on their responses and input parameters. These actions are created using `createAsyncThunk`. Actions also have built-in logic to prevent making an API call when the requested item or list of items is already present in the store.
 
-Actions also accept shared options for `onSuccess`, `onError`, `forceReload`. The `onSuccess/onError` will file depending on the outcome of the API call. Setting `forceReload` to `true` will skip the logic that prevents API calls if the item is already in the store.
+Actions also accept shared options for `onSuccess`, `onError`, `forceReload` & `chainedRequest`. The `onSuccess/onError` will file depending on the outcome of the API call. Setting `forceReload` to `true` will skip the logic that prevents API calls if the item is already in the store. Setting `chainedRequest` to true will prevent `isLoading / isSubmitting` resetting to `false` on success. This (as the name implies) is for chained requests where you don't want the loading state to be set until all requests have finished
 
 5.  **getInfoEntity**: `getInfoEntity` has a special action handler. This handler will take the entities in the response (like company, job, etc.) and store them in their relevant reducers, as well as updating any loading states needed.
+
 
 ## Example usage
 1. Defining a new store:
