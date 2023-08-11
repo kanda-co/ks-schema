@@ -1,9 +1,9 @@
 import type { FunctionComponent, ReactNode } from 'react';
-import type { AnyAction, Dispatch } from '@reduxjs/toolkit';
+import type { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 import type { StringIndexedObject } from '../types';
 import * as actions from '../store/slices/generated/actions';
 import type { AsyncThunkReturnType } from '../store/types';
-import useAppDispatch, { AppDispatchHook } from '../hooks/useAppDispatch';
+import { createAppDispatchHook } from '../hooks/useAppDispatch';
 
 export type ValidAction = typeof actions[keyof typeof actions];
 
@@ -57,13 +57,9 @@ export interface Router<Keys extends string | number> {
   };
 }
 
-export interface RoutedApp<
-  Keys extends string | number,
-  AppDispatch extends Dispatch<AnyAction>,
-> {
+export interface RoutedApp<Keys extends string | number> {
   router: Router<Keys>;
   pages: PageList;
-  useAppDispatch: () => AppDispatchHook<AppDispatch>;
 }
 
 export type PageList<T = StringIndexedObject> = {

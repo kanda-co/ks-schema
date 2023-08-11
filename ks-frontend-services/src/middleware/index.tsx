@@ -1,5 +1,5 @@
 import { FunctionComponent, useMemo } from 'react';
-import type { AnyAction, Dispatch } from '@reduxjs/toolkit';
+import type { AnyAction } from '@reduxjs/toolkit';
 import * as TE from 'fp-ts/lib/TaskEither';
 import { pipe } from 'fp-ts/lib/function';
 import type {
@@ -33,7 +33,7 @@ import services from '../service';
 import { handleResponse, type Response } from '../handlers';
 import { AuthUser } from '../generated/components/schemas';
 import { LOGIN_URL } from '../auth/constants';
-import useAppDispatch from 'hooks/useAppDispatch';
+import { createAppDispatchHook } from '../hooks/useAppDispatch';
 
 export function getInitialDataPathKeyLayout<P extends StringIndexedObject>(
   pathKey: PathKey<P>,
@@ -418,16 +418,18 @@ function createRouter<State, Keys extends string | number>(
 export function createRoutedApp<
   State,
   Keys extends string | number,
-  AppDispatch extends Dispatch<AnyAction>,
   ExtraState = {},
 >(
   store: ToolkitStore<State & ExtraState>,
   args: Record<Keys, CreatePageArgs<State>>,
   notFoundPage: FunctionComponent = () => <>404</>,
   Wrapper: FunctionComponent<WrapperProps> = ({ children }) => <>{children}</>,
-): RoutedApp<Keys, AppDispatch> {
+): RoutedApp<Keys> {
   const pages = createPages<State, Keys>(args);
   const router = createRouter<State, Keys>(store, pages, notFoundPage, Wrapper);
 
-  return { router, pages, useAppDispatch: useAppDispatch<AppDispatch> };
+  return {
+    router,
+    pages,
+  };
 }
