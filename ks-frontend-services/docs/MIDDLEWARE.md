@@ -121,6 +121,19 @@ Rendering of the page
 --
 The final step of the middleware, is to take the generated pathKey and pages, and render the `Page` component with the relevant `PageComponent` defined in the pages array. We export a `createRoutedApp` method, that will take the store and an object of pages. It will then return `pages` as an object, and a `Router` component that we can place in our application, that will handle routing & rendering.
 
+Dispatching of actions
+--
+In order to dispatch correctly typed actions, you'll need to create a `useAppDispatch` hook like so:
+
+```
+import { createAppDispatchHook } from '@kanda-libs/ks-frontend-services'
+import type { RootState, AppDispatch } from "store";
+
+const useAppDispatch = createAppDispatchHook<RootState, AppDispatch>();
+```
+
+It is recommended to do the above in your `App/index.tsx` file and export it for use within the application.
+
 Example
 --
 
@@ -129,6 +142,7 @@ import {
   actions,
   createAction,
   createRoutedApp,
+  createAppDispatchHook,
 } from "@kanda-libs/ks-frontend-services";
 import ForgotPassword from "pages/ForgotPassword";
 import Home from "pages/Home";
@@ -136,7 +150,7 @@ import Login from "pages/Login";
 import Logout from "pages/Logout";
 import Staff from "pages/Staff";
 import type { FunctionComponent } from "react";
-import { RootState, store } from "store";
+import { type RootState, type AppDispatch, store } from "store";
 import AppWrapper from "../AppWrapper";
 import { URLS } from "./constants";
 
@@ -188,7 +202,11 @@ const {
   },
 });
 
-export { pages };
+
+// Used for dispatching app actions
+const useAppDispatch = createAppDispatchHook<RootState, AppDispatch>();
+
+export { pages, useAppDispatch};
 
 const App: FunctionComponent = function () {
   return (
