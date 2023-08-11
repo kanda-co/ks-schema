@@ -1,5 +1,5 @@
 import { StringIndexedObject } from '../../types';
-import { ENTITY_NAME_OVERRIDES } from '../constants';
+import { ENTITY_NAME_OVERRIDES, VOID_ACTIONS } from '../constants';
 
 const getCamelCaseEntityName = (entityName: string) =>
   entityName.charAt(0).toLowerCase() + entityName.slice(1);
@@ -7,19 +7,26 @@ const getCamelCaseEntityName = (entityName: string) =>
 const handleResponseName = (entityName: string) =>
   `handle${entityName}Response`;
 
+const handleVoidResponseName = (entityName: string) =>
+  `handle${entityName}VoidResponse`;
+
 const serviceAction = (actionName: string, camelCaseEntityName: string) =>
   `export const ${actionName} = createAsyncThunkAction(services.${camelCaseEntityName}.${actionName})`;
 
 const typeOfActions = (actionNames: string[]) =>
   actionNames.map((actionName) => `typeof ${actionName}`).join(' | ');
 
-const reducerForAction = (entityName: string, actionName: string) => `
+const reducerForAction = (entityName: string, actionName: string) => {
+  const fulfilledAction = VOID_ACTIONS.includes(actionName)
+    ? handleVoidResponseName(entityName)
+    : handleResponseName(entityName);
+  return `
 builder.addCase(${actionName}.pending, (state) => ({
 	...state,
 	isLoading: true,
 	isSubmitting: true,
 }));
-builder.addCase(${actionName}.fulfilled, ${handleResponseName(entityName)});
+builder.addCase(${actionName}.fulfilled, ${fulfilledAction});
 builder.addCase(${actionName}.rejected, (state, action) => {
 	console.log('Unknown error', action)
 	return {
@@ -29,6 +36,7 @@ builder.addCase(${actionName}.rejected, (state, action) => {
 	}
 });
 `;
+};
 
 const selector = (entityName: string, entityNameOverride?: string) => {
   const camelCaseEntityName = getCamelCaseEntityName(entityName);
@@ -161,6 +169,7 @@ import { type ${
 import {
   createAsyncThunkAction,
   createResponseHandler,
+  createVoidResponseHandler,
 } from '../../helpers';
 import { GENERATED_STATE } from '../../constants'
 import type { AsyncThunkReturnType, GeneratedState } from "../../types";
@@ -193,6 +202,10 @@ export const ${handleResponseName(
   )} = createResponseHandler<${formattedEntityName}State, ${
     ENTITY_NAME_OVERRIDES[entityName] || entityName
   }>(${camelCaseEntityName}Adapter);
+
+export const ${handleVoidResponseName(
+    entityName,
+  )} = createVoidResponseHandler<${formattedEntityName}State>();
 
 export const ${camelCaseEntityName}Slice = createSlice({
   name: "${camelCaseEntityName}",

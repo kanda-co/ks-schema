@@ -260,6 +260,21 @@ export const createResponseHandler =
     };
   };
 
+/**
+ * As above, this function is passed to a reducer, but it handles a void response
+ */
+export const createVoidResponseHandler =
+  <State extends GeneratedState>() =>
+  (state: State, action: PayloadAction<void>) => {
+    return {
+      ...state,
+      chainedRequest: false,
+      fetchedList: false,
+      isLoading: state.chainedRequest ? state.isLoading : false,
+      isSubmitting: state.chainedRequest ? state.isLoading : false,
+    };
+  };
+
 export const generateSelectors = <
   Entity,
   State extends StringIndexedObject<GeneratedState<Entity>>,

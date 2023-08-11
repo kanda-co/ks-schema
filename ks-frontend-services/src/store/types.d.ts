@@ -21,7 +21,7 @@ export interface PathKey<P extends StringIndexedObject> {
   pages: PageList<P>;
 }
 
-export interface GeneratedState<T> extends EntityState<T> {
+export interface GeneratedState<T = unknown> extends EntityState<T> {
   fetchedList: boolean;
   chainedRequest: boolean;
   isLoading: boolean;

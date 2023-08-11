@@ -10,7 +10,6 @@ export const GENERATED_STATE: Omit<GeneratedState<{}>, 'entities' | 'ids'> = {
 export const INFO_ENTITY_KEY = 'infoEntity.getInfoEntity';
 
 export const IGNORED_ACTIONS = [
-  'resendJob',
   'checkJob',
   'tradeQuoteApprovalLead',
   'connectTradesLead',
@@ -29,6 +28,9 @@ export interface SingleActionReducers {
   action: string;
   actionEntity?: string;
 }
+
+// An array of actions that return a void payload
+export const VOID_ACTIONS = ['resendJob'];
 
 export const SINGLE_ACTION_REDUCERS: SingleActionReducers[] = [
   { entity: 'job', action: 'JobCompanyInfo' },

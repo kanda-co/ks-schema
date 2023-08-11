@@ -25,4 +25,13 @@ export declare const createResponseHandler: <State extends GeneratedState<Entity
     isLoading: boolean;
     isSubmitting: boolean;
 });
+/**
+ * As above, this function is passed to a reducer, but it handles a void response
+ */
+export declare const createVoidResponseHandler: <State extends GeneratedState<unknown>>() => (state: State, action: PayloadAction<void>) => State & {
+    chainedRequest: boolean;
+    fetchedList: boolean;
+    isLoading: boolean;
+    isSubmitting: boolean;
+};
 export declare const generateSelectors: <Entity, State extends StringIndexedObject<GeneratedState<Entity>>>(reducer: keyof State, entityAdapter: EntityAdapter<Entity>) => Selectors<Entity, State>;
