@@ -5,6 +5,7 @@ export * from './auth';
 export * from './lib';
 export * from './utils';
 export { default as services } from './service';
+export { createAppDispatchHook } from './hooks/useAppDispatch';
 export { loadServerData } from './service/helpers';
 export { type OperationRequestFunctionMap } from './generated/operations';
 export * from './generated/components/schemas';

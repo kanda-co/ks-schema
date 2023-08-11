@@ -1,7 +1,9 @@
 import type { FunctionComponent, ReactNode } from 'react';
+import type { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 import type { StringIndexedObject } from '../types';
 import * as actions from '../store/slices/generated/actions';
 import type { AsyncThunkReturnType } from '../store/types';
+import { createAppDispatchHook } from '../hooks/useAppDispatch';
 
 export type ValidAction = typeof actions[keyof typeof actions];
 
