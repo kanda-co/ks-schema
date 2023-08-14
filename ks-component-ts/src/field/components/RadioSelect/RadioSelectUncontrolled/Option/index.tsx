@@ -49,6 +49,10 @@ export interface Props {
    * Event handler for clicking the option
    */
   onClick?: () => void;
+  /**
+   * Option className override
+   */
+  className?: string;
 }
 
 const Option: FunctionComponent<Props> = function ({
@@ -63,6 +67,7 @@ const Option: FunctionComponent<Props> = function ({
   wrap = false,
   register,
   onClick = () => {},
+  className,
 }) {
   const { id, classNames, handleProps, Handle } = useOption(
     multiple,
@@ -72,7 +77,8 @@ const Option: FunctionComponent<Props> = function ({
     inline,
     wrap,
     register,
-    disabled
+    disabled,
+    className
   );
 
   return (

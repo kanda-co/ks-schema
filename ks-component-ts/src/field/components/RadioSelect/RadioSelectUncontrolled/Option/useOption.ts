@@ -28,7 +28,8 @@ export default function useOption(
   inline: boolean,
   wrap: boolean,
   register: FieldRegisterMethod | null = null,
-  disabled?: boolean
+  disabled?: boolean,
+  className?: string
 ): Hook {
   const { skeletonClasses } = useFormTheme();
 
@@ -63,6 +64,7 @@ export default function useOption(
         ? `.disabled.option`
         : `.${selectedPrefix}.option`,
       ,
+      className,
     ],
     container: [
       disabled && variant?.disabled?.container
