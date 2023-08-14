@@ -1,4 +1,3 @@
-import { string } from "io-ts";
 import { StringIndexedObject } from "~/types";
 
 interface VariantProps {
@@ -14,6 +13,14 @@ interface VariantProps {
     option: string;
     container: string;
   };
+  warning: {
+    option: string;
+    container: string;
+  };
+  warningNotSelected: {
+    option: string;
+    container: string;
+  };
   disabled?: {
     option: string;
     container: string;
@@ -25,6 +32,19 @@ interface VariantProps {
     option: string;
   };
 }
+
+// TODO: Make variant specific
+const warning = {
+  option: "bg-orange-100 cursor-pointer",
+  container:
+    "rounded bg-orange-100 flex flex-full w-full px-4 py-2 text-orange-200 border border-orange-200",
+};
+
+const warningNotSelected = {
+  option: "bg-orange-100 border-orange-100 cursor-pointer",
+  container:
+    "rounded bg-orange-100 flex flex-full w-full px-4 py-2 text-orange-200 border border-orange-100",
+};
 
 export const VARIANTS: StringIndexedObject<VariantProps> = {
   default: {
@@ -39,6 +59,8 @@ export const VARIANTS: StringIndexedObject<VariantProps> = {
       option: "overflow-hidden border border-neutral-300 cursor-pointer",
       container: "bg-neutral-000 flex flex-full w-full p-4 text-neutral-600",
     },
+    warning,
+    warningNotSelected,
     multiline: {
       option: "flex flex-1 rounded-xl mt-2 last:mb-2",
     },
@@ -60,6 +82,8 @@ export const VARIANTS: StringIndexedObject<VariantProps> = {
       container:
         "bg-neutral-000 flex flex-full w-full px-4 py-3.5 text-neutral-600",
     },
+    warning,
+    warningNotSelected,
     multiline: {
       option: "flex flex-1 rounded-xl mt-2 last:mb-2",
     },
@@ -81,6 +105,8 @@ export const VARIANTS: StringIndexedObject<VariantProps> = {
         "overflow-hidden border-b border-neutral-100 cursor-pointer last:border-0",
       container: "bg-neutral-000 flex flex-full w-full p-4 text-neutral-700",
     },
+    warning,
+    warningNotSelected,
     multiline: {
       option: "flex flex-1 rounded-xl mt-2 last:mb-2",
     },
@@ -101,6 +127,8 @@ export const VARIANTS: StringIndexedObject<VariantProps> = {
       option: "border-neutral-000 overflow-hidden cursor-pointer",
       container: "bg-neutral-000 flex flex-full w-full py-2 text-neutral-600",
     },
+    warning,
+    warningNotSelected,
     multiline: {
       option: "flex flex-1 rounded-xl mt-2 last:mb-2",
     },
@@ -121,6 +149,8 @@ export const VARIANTS: StringIndexedObject<VariantProps> = {
       option: "border-neutral-000 overflow-hidden cursor-pointer",
       container: "bg-neutral-000 flex flex-full w-full text-neutral-600",
     },
+    warning,
+    warningNotSelected,
     multiline: {
       option: "flex flex-1 rounded-xl mt-2 last:mb-2",
     },
@@ -142,6 +172,8 @@ export const VARIANTS: StringIndexedObject<VariantProps> = {
       container:
         "bg-neutral-000 px-3 py-2.25 flex flex-full w-full text-neutral-900 rounded hover:bg-neutral-100",
     },
+    warning,
+    warningNotSelected,
     multiline: {
       option: "flex flex-1 rounded-xl first:mt-2 last:mb-2",
     },
@@ -165,6 +197,8 @@ export const VARIANTS: StringIndexedObject<VariantProps> = {
       container:
         "bg-neutral-000 flex flex-full w-full p-1.5 text-neutral-600 hover:text-turquoise-300",
     },
+    warning,
+    warningNotSelected,
     multiline: {
       option: "flex flex-1",
     },
@@ -187,6 +221,8 @@ export const VARIANTS: StringIndexedObject<VariantProps> = {
         "overflow-hidden border border-neutral-300 cursor-pointer border-l-0 first:border-l",
       container: "bg-neutral-000 flex flex-full w-full p-2.5 text-neutral-600",
     },
+    warning,
+    warningNotSelected,
     multiline: {
       option: "flex flex-1",
     },
@@ -209,6 +245,8 @@ export const VARIANTS: StringIndexedObject<VariantProps> = {
       container:
         "rounded bg-neutral-000 flex flex-full w-full px-4 py-2 text-neutral-600",
     },
+    warning,
+    warningNotSelected,
     disabled: {
       option: "border border-neutral-300 cursor-not-allowed",
       container:
@@ -236,6 +274,8 @@ export const VARIANTS: StringIndexedObject<VariantProps> = {
       container:
         "rounded bg-neutral-000 flex flex-full w-full px-2.5 py-2.25 md:py-1.5 text-neutral-900",
     },
+    warning,
+    warningNotSelected,
     multiline: {
       option: "",
     },
@@ -257,6 +297,8 @@ export const CLASS_NAMES_MULTIPLE: VariantProps = {
     option: "overflow-hidden border border-neutral-300 cursor-pointer",
     container: "bg-neutral-000 flex flex-full w-full p-4 flex-row-reverse",
   },
+  warning,
+  warningNotSelected,
   multiline: {
     option: "flex flex-1 rounded-xl mt-2 last:mb-2",
   },

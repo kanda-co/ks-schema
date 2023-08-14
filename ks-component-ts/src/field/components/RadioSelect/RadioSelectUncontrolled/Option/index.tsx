@@ -50,9 +50,9 @@ export interface Props {
    */
   onClick?: () => void;
   /**
-   * Option className override
+   * Whether or not to show the option in a warning state
    */
-  className?: string;
+  warning?: boolean;
 }
 
 const Option: FunctionComponent<Props> = function ({
@@ -67,7 +67,7 @@ const Option: FunctionComponent<Props> = function ({
   wrap = false,
   register,
   onClick = () => {},
-  className,
+  warning = false,
 }) {
   const { id, classNames, handleProps, Handle } = useOption(
     multiple,
@@ -78,7 +78,7 @@ const Option: FunctionComponent<Props> = function ({
     wrap,
     register,
     disabled,
-    className
+    warning
   );
 
   return (

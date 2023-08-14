@@ -5,7 +5,7 @@ export interface SelectOption {
   name: string;
   value: string;
   disabled?: boolean;
-  className?: string;
+  warning?: boolean;
 }
 
 export interface SelectUncontrolledProps {
