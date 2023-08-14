@@ -2,7 +2,7 @@ export const BG_COLOR =
   "linear-gradient(to right, transparent 10px, #1cb69c 10px, #1cb69c $PCT%, #e0e7f0 $PCT%, #e0e7f0 calc(100% - 10px), transparent calc(100% - 10px))";
 
 export const CLASS_NAMES = {
-  container: "flex flex-col w-full px-5 py-4 bg-neutral-100 rounded-lg border",
+  container: "flex flex-col w-full px-5 py-4 rounded-lg border",
   skeletonWrapper: "flex w-full",
   skeletonContainer: "w-full",
   labels: "flex flex-row justify-between first:mb-1 last:mt-1",
