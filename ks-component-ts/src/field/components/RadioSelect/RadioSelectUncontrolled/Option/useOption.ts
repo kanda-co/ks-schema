@@ -77,6 +77,7 @@ export default function useOption(
     skeleton: [
       variant?.skeleton ? `.${selectedPrefix}.skeleton` : skeletonClasses,
     ],
+    icon: [variant?.[selectedPrefix]?.icon],
   });
 
   /**

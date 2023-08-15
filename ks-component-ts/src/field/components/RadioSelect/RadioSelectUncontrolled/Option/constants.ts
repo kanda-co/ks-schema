@@ -8,18 +8,22 @@ interface VariantProps {
   selected: {
     option: string;
     container: string;
+    icon?: string;
   };
   notSelected: {
     option: string;
     container: string;
+    icon?: string;
   };
   warning: {
     option: string;
     container: string;
+    icon?: string;
   };
   warningNotSelected: {
     option: string;
     container: string;
+    icon?: string;
   };
   disabled?: {
     option: string;
@@ -38,12 +42,14 @@ const warning = {
   option: "bg-orange-100 cursor-pointer",
   container:
     "rounded bg-orange-100 flex flex-full w-full px-4 py-2 text-orange-200 border border-orange-200",
+  icon: "text-orange-200",
 };
 
 const warningNotSelected = {
   option: "bg-orange-100 border-orange-100 cursor-pointer",
   container:
     "rounded bg-orange-100 flex flex-full w-full px-4 py-2 text-orange-200 border border-orange-100",
+  icon: "text-orange-200",
 };
 
 export const VARIANTS: StringIndexedObject<VariantProps> = {
@@ -231,7 +237,7 @@ export const VARIANTS: StringIndexedObject<VariantProps> = {
     },
   },
   streamline: {
-    span: "select-none w-full text-14-22-em whitespace-nowrap my-auto text-center",
+    span: "select-none w-full text-14-22-em whitespace-nowrap my-auto text-center flex flex-row items-center justify-center gap-x-2",
     skeleton: "w-full",
     skeletonWrapper: "w-10 -mt-0.5",
     handleContainer: "hidden",
