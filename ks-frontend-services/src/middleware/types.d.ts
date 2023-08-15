@@ -2,7 +2,10 @@ import type { FunctionComponent, ReactNode } from 'react';
 import type { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 import type { StringIndexedObject } from '../types';
 import * as actions from '../store/slices/generated/actions';
-import type { AsyncThunkReturnType } from '../store/types';
+import type {
+  AsyncThunkReturnType,
+  SharedAsyncThunkActionArgs,
+} from '../store/types';
 import { createAppDispatchHook } from '../hooks/useAppDispatch';
 
 export type ValidAction = typeof actions[keyof typeof actions];
@@ -23,16 +26,16 @@ type Body<T extends ValidAction> = T extends (args: { body: infer B }) => void
   ? B
   : never;
 
-type Args<T extends ValidAction> =
-  | {
+type Args<T extends ValidAction, Entity> =
+  | ({
       params?: Params<T>;
       body?: Body<T>;
-    }
+    } & SharedAsyncThunkActionArgs<Entity>)
   | undefined;
 
-export type InitialDataAction<T extends ValidAction = any> = {
+export type InitialDataAction<T extends ValidAction = any, Entity = any> = {
   action: T;
-  args?: Args<T>;
+  args?: Args<T, Entity>;
   idRequired?: boolean;
   onLoad?: (entity: AsyncThunkReturnType<T>[0]) => InitialDataAction[];
 };
