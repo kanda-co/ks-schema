@@ -28,7 +28,8 @@ export default function useOption(
   inline: boolean,
   wrap: boolean,
   register: FieldRegisterMethod | null = null,
-  disabled?: boolean
+  disabled?: boolean,
+  warning?: boolean
 ): Hook {
   const { skeletonClasses } = useFormTheme();
 
@@ -53,7 +54,10 @@ export default function useOption(
 
   const optionFlex = inline ? ".inline.option" : ".multiline.option";
 
-  const selectedPrefix = isSelected ? "selected" : "notSelected";
+  const defaultSelectedPrefix = isSelected ? "selected" : "notSelected";
+  const warningPrefix = isSelected ? "warning" : "warningNotSelected";
+
+  const selectedPrefix = warning ? warningPrefix : defaultSelectedPrefix;
 
   const classNames = useClasses(variant, {
     option: [
@@ -73,6 +77,7 @@ export default function useOption(
     skeleton: [
       variant?.skeleton ? `.${selectedPrefix}.skeleton` : skeletonClasses,
     ],
+    icon: [variant?.[selectedPrefix]?.icon],
   });
 
   /**

@@ -8,6 +8,7 @@ const RadioSelectUncontrolled: FunctionComponent<
   DefaultFormFieldProps<RadioSelectUncontrolledProps>
 > = function ({ name, inline = false, wrap = false, options, ...restProps }) {
   const classNames = useRadioSelectUncontrolledClassNames(inline, wrap);
+
   return (
     <div className={classNames.container}>
       {options?.map((option) => (
@@ -19,6 +20,8 @@ const RadioSelectUncontrolled: FunctionComponent<
           wrap={wrap}
           key={option.value}
           disabled={option?.disabled || false}
+          warning={option.warning || false}
+          icon={option.icon}
           {...restProps}
         />
       ))}

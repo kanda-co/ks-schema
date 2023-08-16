@@ -3,6 +3,7 @@ import { RadioSelectVariant } from "~/field/components/RadioSelect/types";
 import { FieldRegisterMethod } from "~/field/types";
 import useOption from "./useOption";
 import Skeleton from "react-loading-skeleton";
+import { Icon } from "@kanda-libs/ks-design-library";
 
 export interface Props {
   /**
@@ -49,6 +50,14 @@ export interface Props {
    * Event handler for clicking the option
    */
   onClick?: () => void;
+  /**
+   * Whether or not to show the option in a warning state
+   */
+  warning?: boolean;
+  /**
+   * Icon to display next to the option
+   */
+  icon?: string;
 }
 
 const Option: FunctionComponent<Props> = function ({
@@ -63,6 +72,8 @@ const Option: FunctionComponent<Props> = function ({
   wrap = false,
   register,
   onClick = () => {},
+  warning = false,
+  icon,
 }) {
   const { id, classNames, handleProps, Handle } = useOption(
     multiple,
@@ -72,7 +83,8 @@ const Option: FunctionComponent<Props> = function ({
     inline,
     wrap,
     register,
-    disabled
+    disabled,
+    warning
   );
 
   return (
@@ -99,7 +111,16 @@ const Option: FunctionComponent<Props> = function ({
             </div>
           </div>
         ) : (
-          <span className={classNames.span as string}>{name}</span>
+          <span className={classNames.span as string}>
+            {icon && (
+              <Icon
+                icon={icon}
+                size={12}
+                className={classNames.icon as string}
+              />
+            )}
+            {name}
+          </span>
         )}
       </div>
     </label>
