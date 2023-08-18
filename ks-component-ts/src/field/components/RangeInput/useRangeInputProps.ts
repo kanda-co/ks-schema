@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { BG_COLOR, CLASS_NAMES } from "./constants";
 
 import { ErrorMessage } from "~/field/types";
+import { RangeInputUncontrolledProps } from "./RangeInputUncontrolled";
 
 interface RangeClassNames {
   container: string;
@@ -14,6 +15,8 @@ interface RangeClassNames {
   upperLabel: string;
   lowerLabel: string;
   rangeWrapper: string;
+  minLowerLabel: string;
+  maxLowerLabel: string;
   cap: string;
 }
 
@@ -40,7 +43,8 @@ export default function useRangeInputProps(
   formatter: (input: string) => string,
   prefix: string,
   suffix: string,
-  error?: string | ErrorMessage
+  error?: string | ErrorMessage,
+  highlightLabel?: RangeInputUncontrolledProps["highlightLabel"]
 ): Hook {
   const value = useWatch({ name });
 
@@ -69,6 +73,14 @@ export default function useRangeInputProps(
     container: clsx(
       CLASS_NAMES.container,
       error ? "border-red-200" : "border-neutral-100"
+    ),
+    minLowerLabel: clsx(
+      CLASS_NAMES.lowerLabel,
+      highlightLabel === "min" && CLASS_NAMES.highlightedLowerLabel
+    ),
+    maxLowerLabel: clsx(
+      CLASS_NAMES.lowerLabel,
+      highlightLabel === "max" && CLASS_NAMES.highlightedLowerLabel
     ),
   };
 
