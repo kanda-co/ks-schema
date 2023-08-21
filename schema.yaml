@@ -8160,6 +8160,10 @@ components:
           type: object
           title: resource data
           additionalProperties: true
+        comm_context:
+          type: object
+          title: comm context
+          $ref: "#/components/schemas/CommContext"
         error:
           type: string
           title: error of request
@@ -8184,6 +8188,39 @@ components:
           type: string
           title: product type
           $ref: "#/components/schemas/PaymentOption"
+
+    CommContext:
+      type: object
+      title: comm context
+      description: comm context to be used in dynamic templates
+      required:
+        - template
+        - sender
+        - receiver
+        - bank_account
+        - cta_url
+      properties:
+        template:
+          type: string
+          title: template
+        sender:
+          type: object
+          title: sender contact info
+          $ref: "#/components/schemas/ContactInfo"
+        receiver:
+          type: object
+          title: receiver contact info
+          $ref: "#/components/schemas/ContactInfo"
+        bank_account:
+          type: object
+          title: bank account info
+          $ref: "#/components/schemas/BankAccount"
+        cta_url:
+          type: string
+          title: cta url
+        cta_sub_url:
+          type: string
+          title: cta sub url
 
     Error:
       type: object
