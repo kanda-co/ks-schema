@@ -22,6 +22,7 @@ const RadioSelectUncontrolled: FunctionComponent<
           disabled={option?.disabled || false}
           warning={option.warning || false}
           icon={option.icon}
+          className={option.className}
           {...restProps}
         />
       ))}
