@@ -8,6 +8,7 @@ export interface SelectOption {
   warning?: boolean;
   icon?: string;
   className?: string;
+  footer?: JSX.Element;
 }
 
 export interface SelectUncontrolledProps {

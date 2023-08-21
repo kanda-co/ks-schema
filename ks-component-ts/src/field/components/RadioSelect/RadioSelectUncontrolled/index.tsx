@@ -36,6 +36,7 @@ const RadioSelectUncontrolled: FunctionComponent<
           warning={option.warning || false}
           icon={option.icon}
           className={option.className}
+          footer={option.footer}
           {...restProps}
         />
       ))}

@@ -81,6 +81,7 @@ export default function useOption(
       variant?.skeleton ? `.${selectedPrefix}.skeleton` : skeletonClasses,
     ],
     icon: [variant?.[selectedPrefix]?.icon],
+    optionWrapper: "flex flex-col items-start justify-start",
   });
 
   /**
