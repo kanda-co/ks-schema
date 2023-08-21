@@ -15,7 +15,7 @@ var (
 )
 
 // RenderTemplate with given comm context
-func RenderTemplate(cc CommContext) (CommContext, error) {
+func (cc CommContext) RenderTemplate() (CommContext, error) {
 	if cc.Sender.ContactName == nil {
 		cc.Sender.ContactName = &defaultContactName
 	}
@@ -42,7 +42,15 @@ func RenderTemplate(cc CommContext) (CommContext, error) {
 		cc.Receiver.TradingName = &defaultTradingName
 	}
 
-	result, err := raymond.Render(cc.Template, cc)
+	template, err := cc.ToJSON()
+	if err != nil {
+		return cc, err
+	}
+	ctx, err := cc.ToMap()
+	if err != nil {
+		return cc, err
+	}
+	result, err := raymond.Render(string(template), ctx)
 	if err != nil {
 		return cc, fmt.Errorf("render comm template error - %v", err)
 	}
@@ -50,22 +58,26 @@ func RenderTemplate(cc CommContext) (CommContext, error) {
 	return cc, nil
 }
 
-// ToMap turn comm context to a map data
+// ToMap turn comm context itself to a map data, for render template
 func (cc CommContext) ToMap() (map[string]interface{}, error) {
 	m := map[string]interface{}{}
 	b, err := json.Marshal(cc)
 	if err != nil {
 		return m, fmt.Errorf("invalid comm context - %v", err)
 	}
-	if err = json.Unmarshal(b, &m); err != nil {
+	if err := json.Unmarshal(b, &m); err != nil {
 		return m, fmt.Errorf("invalid comm context data - %v", err)
 	}
 	return m, nil
 }
 
-// ToJSON turn comm context to a JSON bytes
+// ToJSON turn comm context parsed with template to a JSON bytes
 func (cc CommContext) ToJSON() ([]byte, error) {
-	b, err := json.Marshal(cc)
+	m := map[string]interface{}{}
+	if err := json.Unmarshal([]byte(cc.Template), &m); err != nil {
+		return nil, fmt.Errorf("invalid comm context data - %v", err)
+	}
+	b, err := json.Marshal(m)
 	if err != nil {
 		return nil, fmt.Errorf("invalid comm context - %v", err)
 	}
