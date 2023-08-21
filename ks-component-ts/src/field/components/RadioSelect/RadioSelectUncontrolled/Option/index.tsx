@@ -58,6 +58,10 @@ export interface Props {
    * Icon to display next to the option
    */
   icon?: string;
+  /**
+   * Class name for the option
+   */
+  className?: string;
 }
 
 const Option: FunctionComponent<Props> = function ({
@@ -73,6 +77,7 @@ const Option: FunctionComponent<Props> = function ({
   register,
   onClick = () => {},
   warning = false,
+  className = "",
   icon,
 }) {
   const { id, classNames, handleProps, Handle } = useOption(
@@ -84,7 +89,8 @@ const Option: FunctionComponent<Props> = function ({
     wrap,
     register,
     disabled,
-    warning
+    warning,
+    className
   );
 
   return (

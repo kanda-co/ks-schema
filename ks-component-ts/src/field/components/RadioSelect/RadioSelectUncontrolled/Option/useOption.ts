@@ -29,7 +29,8 @@ export default function useOption(
   wrap: boolean,
   register: FieldRegisterMethod | null = null,
   disabled?: boolean,
-  warning?: boolean
+  warning?: boolean,
+  className: string = ""
 ): Hook {
   const { skeletonClasses } = useFormTheme();
 
@@ -61,6 +62,7 @@ export default function useOption(
 
   const classNames = useClasses(variant, {
     option: [
+      className,
       optionFlex,
       wrap && "mt-2 ml-2",
       disabled && variant?.disabled?.option
