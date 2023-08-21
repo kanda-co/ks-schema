@@ -27,6 +27,7 @@ export default function useOption(
   variantName: RadioSelectVariant,
   inline: boolean,
   wrap: boolean,
+  wrapBorder: boolean,
   register: FieldRegisterMethod | null = null,
   disabled?: boolean,
   warning?: boolean,
@@ -64,7 +65,7 @@ export default function useOption(
     option: [
       className,
       optionFlex,
-      wrap && "mt-2 ml-2",
+      wrap && wrapBorder && "mt-2 ml-2",
       disabled && variant?.disabled?.option
         ? `.disabled.option`
         : `.${selectedPrefix}.option`,

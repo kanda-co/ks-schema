@@ -39,6 +39,10 @@ export interface Props {
    */
   wrap?: boolean;
   /**
+   * Adds a border to options when wrapping
+   */
+  wrapBorder?: boolean;
+  /**
    * Display variant
    */
   variant?: RadioSelectVariant;
@@ -74,6 +78,7 @@ const Option: FunctionComponent<Props> = function ({
   isLoading,
   inline = false,
   wrap = false,
+  wrapBorder = true,
   register,
   onClick = () => {},
   warning = false,
@@ -87,6 +92,7 @@ const Option: FunctionComponent<Props> = function ({
     variant,
     inline,
     wrap,
+    wrapBorder,
     register,
     disabled,
     warning,
