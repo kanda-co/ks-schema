@@ -14,6 +14,52 @@ var (
 	defaultContactEmail = Email("help@kanda.co.uk")
 )
 
+var (
+	mLenderInfo = map[FinanceProvider]ContactInfo{
+		Allium: {
+			ContactEmail: NewEmail("contact@allium.co.uk"),
+			ContactName:  NewString("Allium"),
+			ContactPhone: NewString(""),
+			TradingName:  NewString("Allium"),
+		},
+		Demo: {
+			ContactEmail: NewEmail("demo@example.co.uk"),
+			ContactName:  NewString("Demo"),
+			ContactPhone: NewString("03308187491"),
+			TradingName:  NewString("Demo"),
+		},
+		Etika: {
+			ContactEmail: NewEmail("contact@etika.co.uk"),
+			ContactName:  NewString("Etika"),
+			ContactPhone: NewString(""),
+			TradingName:  NewString("Etika"),
+		},
+		Omni: {
+			ContactEmail: NewEmail("contact@omni.co.uk"),
+			ContactName:  NewString("Omni"),
+			ContactPhone: NewString(""),
+			TradingName:  NewString("Omni"),
+		},
+		Propensio: {
+			ContactEmail: NewEmail("contact@propensio.co.uk"),
+			ContactName:  NewString("Propensio"),
+			ContactPhone: NewString(""),
+			TradingName:  NewString("Propensio"),
+		},
+	}
+)
+
+// NewString return new pointer value of string
+func NewString(t string) *string {
+	return &t
+}
+
+// NewEmail return new pointer value of email
+func NewEmail(t string) *Email {
+	e := Email(t)
+	return &e
+}
+
 const (
 	DBV4_GENERIC_TEMPLATE string = "dbv4_generic_tempalte"
 )
