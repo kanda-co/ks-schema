@@ -154,8 +154,11 @@ function runInitialDataAction<Store, T extends ValidAction>(
   id?: string,
   forceReload?: boolean,
 ) {
-  const { args, action, idRequired, onLoad } = initialDataAction;
-  const sharedArgs = { forceReload };
+  const { args = {}, action, idRequired, onLoad } = initialDataAction;
+
+  const sharedArgs = {
+    forceReload: forceReload || args.forceReload,
+  };
 
   let formattedArgs = args as StringIndexedObject;
   const formattedAction = action as unknown as (

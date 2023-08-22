@@ -18,9 +18,9 @@ export const handleIO = (io: IO<void>): TE.TaskEither<Error, void> =>
     TE.mapLeft((error) => new Error(error)),
   );
 
-export const createAction = <T extends ValidAction>(
+export const createAction = <T extends ValidAction, Entity>(
   action: T,
-  args?: Args<T>,
+  args?: Args<T, Entity>,
   idRequired?: boolean,
   onLoad?: <P extends ValidAction>(
     entity: AsyncThunkReturnType<T>[0],
