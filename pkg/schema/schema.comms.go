@@ -18,46 +18,45 @@ var (
 	mLenderInfo = map[FinanceProvider]ContactInfo{
 		Allium: {
 			ContactEmail: NewEmail("contact@allium.co.uk"),
-			ContactName:  NewString("Allium"),
-			ContactPhone: NewString(""),
-			TradingName:  NewString("Allium"),
+			ContactName:  NewT("Allium"),
+			ContactPhone: NewT(""),
+			TradingName:  NewT("Allium"),
 		},
 		Demo: {
 			ContactEmail: NewEmail("demo@example.co.uk"),
-			ContactName:  NewString("Demo"),
-			ContactPhone: NewString("03308187491"),
-			TradingName:  NewString("Demo"),
+			ContactName:  NewT("Demo"),
+			ContactPhone: NewT("03308187491"),
+			TradingName:  NewT("Demo"),
 		},
 		Etika: {
 			ContactEmail: NewEmail("contact@etika.co.uk"),
-			ContactName:  NewString("Etika"),
-			ContactPhone: NewString(""),
-			TradingName:  NewString("Etika"),
+			ContactName:  NewT("Etika"),
+			ContactPhone: NewT(""),
+			TradingName:  NewT("Etika"),
 		},
 		Omni: {
 			ContactEmail: NewEmail("contact@omni.co.uk"),
-			ContactName:  NewString("Omni"),
-			ContactPhone: NewString(""),
-			TradingName:  NewString("Omni"),
+			ContactName:  NewT("Omni"),
+			ContactPhone: NewT(""),
+			TradingName:  NewT("Omni"),
 		},
 		Propensio: {
 			ContactEmail: NewEmail("contact@propensio.co.uk"),
-			ContactName:  NewString("Propensio"),
-			ContactPhone: NewString(""),
-			TradingName:  NewString("Propensio"),
+			ContactName:  NewT("Propensio"),
+			ContactPhone: NewT(""),
+			TradingName:  NewT("Propensio"),
 		},
 	}
 )
 
-// NewString return new pointer value of string
-func NewString(t string) *string {
+// NewT return new pointer value of given type
+func NewT[T any](t T) *T {
 	return &t
 }
 
 // NewEmail return new pointer value of email
 func NewEmail(t string) *Email {
-	e := Email(t)
-	return &e
+	return NewT(Email(t))
 }
 
 const (
