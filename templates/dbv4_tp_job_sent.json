@@ -1,16 +1,16 @@
 {
-  "subject": "You've just sent a job to {{receiver.contact_name}}",
-  "flow_type": "example",
+  "subject": "You've just sent a job to {{sender.contact_name}}",
+  "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{sender.contact_name}},"
+      "text": "Hi {{receiver.contact_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "Your job has now been sent to {{receiver.contact_name}}. We will let you know if they apply for finance and what the outcome of their application is. We'll also send them a follow up email if they don't view the job or apply over the next few days."
+          "text": "Your job has now been sent to {{sender.contact_name}}. We will let you know if they apply for finance and what the outcome of their application is. We'll also send them a follow up email if they don't view the job or apply over the next few days."
         },
         {
           "text": "Remember, if this job is no longer needed you can simply archieve it on your dashboard."

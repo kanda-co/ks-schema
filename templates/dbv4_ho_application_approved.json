@@ -1,0 +1,31 @@
+{
+  "subject": "Your finance application has been approved! Sign your loan agreement now",
+  "flow_type": "{{flow_type}}",
+  "header": [
+    {
+      "type": "affirmative_header",
+      "text": "Thank you {{receiver.contact_name}}! Your finance application has been approved!",
+      "icon": "tick",
+      "border": true
+    }
+  ],
+  "body": [
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "What happens now?",
+          "subtext": "{{sender.contact_name}} has been notified that your finance application is approved. They'll get in touch with you soon to schedule and start the work."
+        },
+        {
+          "text": "After the job",
+          "subtext": "When the work's done, we'll ask you if everything is in order. After you sign off on the work we'll get {{sender.contact_name}} paid."
+        },
+        {
+          "text": "Questions? Let us know!",
+          "subtext": "We're here for you all the way. If you have any questions about the loan, or the job itself, please reach out to us."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "subject": "{{sender.contact_name}} has been declined for finance from our alternative lender",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}} - {{sender.contact_name}}'s finance application has not been approved."
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Unfortunately, your customer was not approved for finance on this job from our second line lender."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "What happens now?",
+          "subtext": "We've updated the customer with the decision from the lender. See more information on your dashboard."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}

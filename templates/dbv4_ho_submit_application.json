@@ -1,0 +1,32 @@
+{
+  "subject": "{{receiver.contact_name}}, please submit your finance application",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}} - complete your finance application in 2 minutes"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "You started a finance application on Kanda but you haven't completed it. If you'd still like to apply for finance then click below to continue. It only takes a few minutes."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "Questions? Let us know!",
+          "subtext": "If you have any questions about your finance application don’t hesitate to let us know. We’re here to help."
+        }
+      ]
+    }
+  ]
+}

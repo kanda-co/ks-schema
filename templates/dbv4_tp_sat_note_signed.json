@@ -1,0 +1,32 @@
+{
+  "subject": "{{sender.contact_name}} has signed the satisfaction note for your job",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}}"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "{{sender.contact_name}} has signed the satisfaction note! We'll process your now review the satisfaction note within 24-48 hours."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "What do I need to do?",
+          "subtext": "Nothing, just sit tight. You'll receive an update within 24-48 hours (excluding weekends)."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}

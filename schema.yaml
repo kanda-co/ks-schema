@@ -8197,12 +8197,16 @@ components:
         - template
         - sender
         - receiver
+        - deposit
         - bank_account
         - cta_url
       properties:
         template:
           type: string
           title: template
+        flow_type:
+          title: flow type
+          $ref: "#/components/schemas/FlowType"
         sender:
           type: object
           title: sender contact info
@@ -8211,6 +8215,23 @@ components:
           type: object
           title: receiver contact info
           $ref: "#/components/schemas/ContactInfo"
+        deposit:
+          type: object
+          title: deposit relevant to context
+          required:
+            - original
+            - applied
+            - difference
+          properties:
+            original:
+              type: string
+              title: deposit original formatted value in pounds
+            applied:
+              type: string
+              title: deposit applied formatted value in pounds
+            difference:
+              type: string
+              title: deposit value formatted difference from original in pounds
         bank_account:
           type: object
           title: bank account info

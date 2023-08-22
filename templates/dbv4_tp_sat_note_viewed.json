@@ -1,0 +1,32 @@
+{
+  "subject": "{{sender.contact_name}} has viewed the satisfaction note for your job",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}}"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "{{sender.contact_name}} has viewed the satisfaction note we have sent to them to sign off on your work and get you paid."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "What do I need to do?",
+          "subtext": "Nothing, just sit tight. However, if your customer isn't satisfied with the work and it is something related to the product you have instaled, you might have to go back to correct any issues."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}

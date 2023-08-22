@@ -1,0 +1,36 @@
+{
+  "subject": "Your finance application has been approved! Sign your loan agreement now",
+  "flow_type": "{{flow_type}}",
+  "header": [
+    {
+      "type": "affirmative_header",
+      "text": "Congratulations {{receiver.contact_name}}! Your finance application has been approved!",
+      "icon": "rocket",
+      "border": true
+    }
+  ],
+  "body": [
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Great news, the lender has approved your application and that you need to do now is sign the credit agreement. You can do this by clicking the button below or following the instructions in the email from the lender."
+        },
+        {
+          "text": "If you have any questions email <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a> so we can assist you."
+        }
+      ]
+    },
+    {
+      "type": "cta_button",
+      "text": "Sign the finance agreement",
+      "subtext": "The documents are ready to sign",
+      "url": "{{cta_url}}"
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}

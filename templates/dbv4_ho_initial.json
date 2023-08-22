@@ -1,6 +1,6 @@
 {
   "subject": "{{sender.contact_name}} has sent you a quote on Kanda",
-  "flow_type": "example",
+  "flow_type": "{{flow_type}}",
   "banner": {
     "type": "trustpilot",
     "score": "4.7",

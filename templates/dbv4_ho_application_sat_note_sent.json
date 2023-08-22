@@ -1,0 +1,36 @@
+{
+  "subject": "Sign off on {{sender.contact_name}}'s job on Kanda",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "{{sender.contact_name}} have let us know they have completed the work. Please let us know if everything is in order by signing the satisfaction note."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "Sign a satisfaction note",
+          "subtext": "If you're satisfied with the work, you'll need to sign a satisfaction note for us. Follow the link below to do this."
+        },
+        {
+          "text": "Questions? Let us know",
+          "subtext": "We're here for you all the way. If you have any questions about the loan, or the job itself, please reach out to us by emailing <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}

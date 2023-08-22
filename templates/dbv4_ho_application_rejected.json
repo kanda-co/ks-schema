@@ -1,0 +1,32 @@
+{
+  "subject": "There has been an update on your application",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "The lender has sent Kanda an update about your application, click the link below to see what it is."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "What happens now?",
+          "subtext": "{{sender.contact_name}} has been notified of any changes to your finance application status so they are up to date. "
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "Check my update",
+      "url": "{{cta_url}}"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "subject": "{{sender.contact_name}}'s finance application has been approved with a new deposit value.",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "{{sender.contact_name}}'s finance application has been approved but their deposit value has changed."
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Great news! Your {{sender.contact_name}} has been approved for finance so you can start the job when you're ready. However, they have chosen a higher deposit than the minimum you set. Remember you have 6 months to complete the work."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "What is the new deposit?",
+          "subtext": "Your customer choose a deposit amount of {{deposit.applied}}, which is {{deposit.difference}} more than you asked for. You'll need to collect this difference directly from your customer if you haven't already. If something isn't right let us know by emailing <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}
