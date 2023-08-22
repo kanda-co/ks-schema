@@ -39,6 +39,10 @@ export interface Props {
    */
   wrap?: boolean;
   /**
+   * Adds a border to options when wrapping
+   */
+  wrapBorder?: boolean;
+  /**
    * Display variant
    */
   variant?: RadioSelectVariant;
@@ -58,6 +62,14 @@ export interface Props {
    * Icon to display next to the option
    */
   icon?: string;
+  /**
+   * Class name for the option
+   */
+  className?: string;
+  /**
+   * Footer content that is shown outside of the option
+   */
+  footer?: JSX.Element;
 }
 
 const Option: FunctionComponent<Props> = function ({
@@ -70,9 +82,12 @@ const Option: FunctionComponent<Props> = function ({
   isLoading,
   inline = false,
   wrap = false,
+  wrapBorder = true,
   register,
   onClick = () => {},
   warning = false,
+  className = "",
+  footer,
   icon,
 }) {
   const { id, classNames, handleProps, Handle } = useOption(
@@ -82,48 +97,53 @@ const Option: FunctionComponent<Props> = function ({
     variant,
     inline,
     wrap,
+    wrapBorder,
     register,
     disabled,
-    warning
+    warning,
+    className
   );
 
   return (
-    <label htmlFor={id} key={value} className={classNames.option as string}>
-      <div className={classNames.container as string}>
-        <div
-          className={classNames.handleContainer as string}
-          onClick={() => {
-            onClick();
-          }}
-        >
-          <Handle
-            id={id}
-            {...handleProps}
-            value={value}
-            isLoading={isLoading}
-            disabled={disabled}
-          />
-        </div>
-        {isLoading ? (
-          <div className={classNames.skeletonWrapper as string}>
-            <div className={classNames.skeleton as string}>
-              <Skeleton />
-            </div>
+    <div className="flex flex-col items-start justify-start">
+      <label htmlFor={id} key={value} className={classNames.option as string}>
+        <div className={classNames.container as string}>
+          <div
+            className={classNames.handleContainer as string}
+            onClick={() => {
+              onClick();
+            }}
+          >
+            <Handle
+              id={id}
+              {...handleProps}
+              value={value}
+              isLoading={isLoading}
+              disabled={disabled}
+            />
           </div>
-        ) : (
-          <span className={classNames.span as string}>
-            {icon && (
-              <Icon
-                icon={icon}
-                size={12}
-                className={classNames.icon as string}
-              />
-            )}
-            {name}
-          </span>
-        )}
-      </div>
-    </label>
+          {isLoading ? (
+            <div className={classNames.skeletonWrapper as string}>
+              <div className={classNames.skeleton as string}>
+                <Skeleton />
+              </div>
+            </div>
+          ) : (
+            <span className={classNames.span as string}>
+              {icon && (
+                <Icon
+                  icon={icon}
+                  size={12}
+                  className={classNames.icon as string}
+                />
+              )}
+              {name}
+            </span>
+          )}
+        </div>
+      </label>
+      {footer}
+    </div>
   );
 };
 

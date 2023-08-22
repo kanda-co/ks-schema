@@ -6,8 +6,20 @@ import Option from "./Option";
 
 const RadioSelectUncontrolled: FunctionComponent<
   DefaultFormFieldProps<RadioSelectUncontrolledProps>
-> = function ({ name, inline = false, wrap = false, options, ...restProps }) {
-  const classNames = useRadioSelectUncontrolledClassNames(inline, wrap);
+> = function ({
+  name,
+  inline = false,
+  wrap = false,
+  wrapBorder = true,
+  options,
+  className,
+  ...restProps
+}) {
+  const classNames = useRadioSelectUncontrolledClassNames(
+    inline,
+    wrap,
+    className
+  );
 
   return (
     <div className={classNames.container}>
@@ -18,10 +30,13 @@ const RadioSelectUncontrolled: FunctionComponent<
           name={option.name}
           inline={inline}
           wrap={wrap}
+          wrapBorder={wrapBorder}
           key={option.value}
           disabled={option?.disabled || false}
           warning={option.warning || false}
           icon={option.icon}
+          className={option.className}
+          footer={option.footer}
           {...restProps}
         />
       ))}
