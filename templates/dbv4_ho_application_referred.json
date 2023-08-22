@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "Your finance application has been reviewed by the lender and they've asked that you submit some extra documents. You will have received an email from <strong>{{lender_email}}</strong>. You can follow the link in that email to submit your documents or email it back to them. Click the button below to find out more. Please check your spam folder"
+          "text": "Your finance application has been reviewed by the lender and they've asked that you submit some extra documents. You will have received an email from <strong>{{lender.contact_email}}</strong>. You can follow the link in that email to submit your documents or email it back to them. Click the button below to find out more. Please check your spam folder"
         }
       ]
     },

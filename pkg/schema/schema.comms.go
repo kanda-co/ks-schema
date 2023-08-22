@@ -10,8 +10,12 @@ import (
 var (
 	defaultTradingName  = "Kanda"
 	defaultContactName  = "Kanda"
-	defaultContactPhone = ""
+	defaultContactPhone = "03308187491"
 	defaultContactEmail = Email("help@kanda.co.uk")
+)
+
+const (
+	DBV4_GENERIC_TEMPLATE string = "dbv4_generic_tempalte"
 )
 
 // RenderTemplate with given comm context

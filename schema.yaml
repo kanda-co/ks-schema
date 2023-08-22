@@ -8215,6 +8215,10 @@ components:
           type: object
           title: receiver contact info
           $ref: "#/components/schemas/ContactInfo"
+        lender:
+          type: object
+          title: lender contact info
+          $ref: "#/components/schemas/ContactInfo"
         deposit:
           type: object
           title: deposit relevant to context

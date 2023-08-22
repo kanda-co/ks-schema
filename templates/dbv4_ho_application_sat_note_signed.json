@@ -24,10 +24,10 @@
           "text": "If you need to change any of your details then please contact the lender directly:"
         },
         {
-          "text": "<strong>Telephone:</strong> {{lender_phone}}"
+          "text": "<strong>Telephone:</strong> {{lender.contact_phone}}"
         },
         {
-          "text": "<strong>Email:</strong> {{lender_email}}"
+          "text": "<strong>Email:</strong> {{lender.contact_email}}"
         }
       ]
     },

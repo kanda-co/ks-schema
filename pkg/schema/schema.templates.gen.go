@@ -46,7 +46,7 @@ const DBV4_HO_APPLICATION_REFERRED = `{
       "type": "text",
       "rows": [
         {
-          "text": "Your finance application has been reviewed by the lender and they've asked that you submit some extra documents. You will have received an email from <strong>{{lender_email}}</strong>. You can follow the link in that email to submit your documents or email it back to them. Click the button below to find out more. Please check your spam folder"
+          "text": "Your finance application has been reviewed by the lender and they've asked that you submit some extra documents. You will have received an email from <strong>{{lender.contact_email}}</strong>. You can follow the link in that email to submit your documents or email it back to them. Click the button below to find out more. Please check your spam folder"
         }
       ]
     },
@@ -200,10 +200,10 @@ const DBV4_HO_APPLICATION_SAT_NOTE_SIGNED = `{
           "text": "If you need to change any of your details then please contact the lender directly:"
         },
         {
-          "text": "<strong>Telephone:</strong> {{lender_phone}}"
+          "text": "<strong>Telephone:</strong> {{lender.contact_phone}}"
         },
         {
-          "text": "<strong>Email:</strong> {{lender_email}}"
+          "text": "<strong>Email:</strong> {{lender.contact_email}}"
         }
       ]
     },
