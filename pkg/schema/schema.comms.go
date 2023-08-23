@@ -15,10 +15,6 @@ var (
 	defaultContactEmail = Email("help@kanda.co.uk")
 )
 
-func (in FinanceProvider) ToContact() ContactInfo {
-	return mLenderInfo[in]
-}
-
 var (
 	mLenderInfo = map[FinanceProvider]ContactInfo{
 		Allium: {
@@ -128,6 +124,14 @@ func ParseFirstName(in string) string {
 // ParseLastName parse last name and remove middle name
 func ParseLastName(in string) string {
 	return String(NullOrZero(Last(strings.Split(String(in), " "))))
+}
+
+func (in FinanceProvider) ToContact() *ContactInfo {
+	cInfo, ok := mLenderInfo[in]
+	if !ok {
+		return nil
+	}
+	return New(cInfo)
 }
 
 func (in Company) ToContact() *ContactInfo {
