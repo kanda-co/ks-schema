@@ -8246,6 +8246,11 @@ components:
         cta_sub_url:
           type: string
           title: cta sub url
+        documents:
+          type: array
+          title: documents
+          items:
+            $ref: "#/components/schemas/Document"
 
     Error:
       type: object
