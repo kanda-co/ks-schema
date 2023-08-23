@@ -3,6 +3,7 @@ package schema
 import (
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mailgun/raymond"
 )
@@ -18,45 +19,167 @@ var (
 	mLenderInfo = map[FinanceProvider]ContactInfo{
 		Allium: {
 			ContactEmail: NewEmail("contact@allium.co.uk"),
-			ContactName:  NewT("Allium"),
-			ContactPhone: NewT(""),
-			TradingName:  NewT("Allium"),
+			ContactName:  New("Allium"),
+			ContactPhone: New(""),
+			TradingName:  New("Allium"),
 		},
 		Demo: {
 			ContactEmail: NewEmail("demo@example.co.uk"),
-			ContactName:  NewT("Demo"),
-			ContactPhone: NewT("03308187491"),
-			TradingName:  NewT("Demo"),
+			ContactName:  New("Demo"),
+			ContactPhone: New("03308187491"),
+			TradingName:  New("Demo"),
 		},
 		Etika: {
 			ContactEmail: NewEmail("contact@etika.co.uk"),
-			ContactName:  NewT("Etika"),
-			ContactPhone: NewT(""),
-			TradingName:  NewT("Etika"),
+			ContactName:  New("Etika"),
+			ContactPhone: New(""),
+			TradingName:  New("Etika"),
 		},
 		Omni: {
 			ContactEmail: NewEmail("contact@omni.co.uk"),
-			ContactName:  NewT("Omni"),
-			ContactPhone: NewT(""),
-			TradingName:  NewT("Omni"),
+			ContactName:  New("Omni"),
+			ContactPhone: New(""),
+			TradingName:  New("Omni"),
 		},
 		Propensio: {
 			ContactEmail: NewEmail("contact@propensio.co.uk"),
-			ContactName:  NewT("Propensio"),
-			ContactPhone: NewT(""),
-			TradingName:  NewT("Propensio"),
+			ContactName:  New("Propensio"),
+			ContactPhone: New(""),
+			TradingName:  New("Propensio"),
 		},
 	}
 )
 
-// NewT return new pointer value of given type
-func NewT[T any](t T) *T {
+// NewEmail return new pointer value of email
+func NewEmail(t string) *Email {
+	return New(Email(t))
+}
+
+// New pointer initialisation helper function
+func New[T any](t T) *T {
 	return &t
 }
 
-// NewEmail return new pointer value of email
-func NewEmail(t string) *Email {
-	return NewT(Email(t))
+// String trims any spaces and linebreaks
+func String(in string) string {
+	return strings.TrimSpace(in)
+}
+
+// Head return first item or null
+func Head[T any](t []T) *T {
+	if len(t) > 0 {
+		return New(t[0])
+	}
+	return nil
+}
+
+// Last return last item or null
+func Last[T any](t []T) *T {
+	if len(t) > 0 {
+		return New(t[len(t)-1])
+	}
+	return nil
+}
+
+// NullOrZero helper function to return either lifted or default zero value
+func NullOrZero[T any](t *T) T {
+	d, _ := Lift(t)
+	return d
+}
+
+// Lift helper function
+func Lift[T any](t *T) (T, bool) {
+	if t == nil {
+		var a T
+		return a, false
+	}
+	return *t, true
+}
+
+// ParseAddress parse address into format credit client expects
+func ParseAddress(in Address) Address {
+	in.Line1 = String(strings.TrimLeft(in.Line1, NullOrZero(in.BuildingNumber)))
+	return in
+}
+
+// ParseFullName parse full name and remove middle name
+func ParseFullName(in string) string {
+	first, last := ParseFirstName(in), ParseLastName(in)
+	return String(strings.Join([]string{first, last}, " "))
+}
+
+// ParseFirstName parse first name and remove middle name
+func ParseFirstName(in string) string {
+	return String(NullOrZero(Head(strings.Split(String(in), " "))))
+}
+
+// ParseLastName parse last name and remove middle name
+func ParseLastName(in string) string {
+	return String(NullOrZero(Last(strings.Split(String(in), " "))))
+}
+
+func (in Company) ToContact() *ContactInfo {
+	return in.ContactInfo
+}
+
+func (in Enterprise) ToContact() *ContactInfo {
+	return New(in.ContactInfo)
+}
+
+func (in Partner) ToContact() *ContactInfo {
+	return New(in.ContactInfo)
+}
+
+func (in Job) ToContact() *ContactInfo {
+	if in.Customer == nil {
+		return nil
+	}
+	return New(
+		ContactInfo{
+			ContactAddress: NullOrZero(in.Customer).Address,
+			ContactEmail:   New(NullOrZero(in.Customer).Email),
+			ContactName: New(
+				ParseFullName(
+					fmt.Sprintf("%v %v", NullOrZero(in.Customer).FirstName, NullOrZero(in.Customer).LastName),
+				),
+			),
+			ContactPhone: New(NullOrZero(in.Customer).Phone),
+		},
+	)
+}
+
+func (in Credit) ToContact() *ContactInfo {
+	return New(
+		ContactInfo{
+			ContactAddress: New(in.CustomerDetails.CurrentAddress),
+			ContactEmail:   New(in.CustomerDetails.Email),
+			ContactName: New(
+				ParseFullName(
+					fmt.Sprintf("%v %v", in.CustomerDetails.FirstName, in.CustomerDetails.LastName),
+				),
+			),
+			ContactPhone: in.CustomerDetails.Mobile,
+		},
+	)
+}
+
+func (in Lead) ToContact() *ContactInfo {
+	if in.LeadApplicant == nil {
+		return nil
+	}
+	cd := NullOrZero(in.LeadApplicant).CustomerDetails
+	return New(
+		ContactInfo{
+			ContactAddress: New(cd.CurrentAddress),
+			ContactEmail:   New(cd.Email),
+			ContactName: New(
+				ParseFullName(
+					fmt.Sprintf("%v %v", cd.FirstName, cd.LastName),
+				),
+			),
+			ContactPhone: cd.Mobile,
+		},
+	)
 }
 
 const (
