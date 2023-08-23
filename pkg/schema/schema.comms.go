@@ -15,6 +15,10 @@ var (
 	defaultContactEmail = Email("help@kanda.co.uk")
 )
 
+func (in FinanceProvider) ToContact() ContactInfo {
+	return mLenderInfo[in]
+}
+
 var (
 	mLenderInfo = map[FinanceProvider]ContactInfo{
 		Allium: {
@@ -81,6 +85,14 @@ func Last[T any](t []T) *T {
 	return nil
 }
 
+// IfValueOr return value or fallback
+func IfValueOr[T any](ok bool, yes, no T) T {
+	if ok {
+		return yes
+	}
+	return no
+}
+
 // NullOrZero helper function to return either lifted or default zero value
 func NullOrZero[T any](t *T) T {
 	d, _ := Lift(t)
@@ -123,15 +135,23 @@ func (in Company) ToContact() *ContactInfo {
 }
 
 func (in Enterprise) ToContact() *ContactInfo {
-	return New(in.ContactInfo)
+	return IfValueOr(
+		in.Id != nil,
+		New(in.ContactInfo),
+		nil,
+	)
 }
 
 func (in Partner) ToContact() *ContactInfo {
-	return New(in.ContactInfo)
+	return IfValueOr(
+		in.Id != nil,
+		New(in.ContactInfo),
+		nil,
+	)
 }
 
 func (in Job) ToContact() *ContactInfo {
-	if in.Customer == nil {
+	if in.Id == nil || in.Customer == nil {
 		return nil
 	}
 	return New(
@@ -149,22 +169,26 @@ func (in Job) ToContact() *ContactInfo {
 }
 
 func (in Credit) ToContact() *ContactInfo {
-	return New(
-		ContactInfo{
-			ContactAddress: New(in.CustomerDetails.CurrentAddress),
-			ContactEmail:   New(in.CustomerDetails.Email),
-			ContactName: New(
-				ParseFullName(
-					fmt.Sprintf("%v %v", in.CustomerDetails.FirstName, in.CustomerDetails.LastName),
+	return IfValueOr(
+		in.Id != nil,
+		New(
+			ContactInfo{
+				ContactAddress: New(in.CustomerDetails.CurrentAddress),
+				ContactEmail:   New(in.CustomerDetails.Email),
+				ContactName: New(
+					ParseFullName(
+						fmt.Sprintf("%v %v", in.CustomerDetails.FirstName, in.CustomerDetails.LastName),
+					),
 				),
-			),
-			ContactPhone: in.CustomerDetails.Mobile,
-		},
+				ContactPhone: in.CustomerDetails.Mobile,
+			},
+		),
+		nil,
 	)
 }
 
 func (in Lead) ToContact() *ContactInfo {
-	if in.LeadApplicant == nil {
+	if in.Id == nil || in.LeadApplicant == nil {
 		return nil
 	}
 	cd := NullOrZero(in.LeadApplicant).CustomerDetails
