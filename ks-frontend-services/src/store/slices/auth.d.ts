@@ -18,6 +18,6 @@ export declare const revalidateUser: import("@reduxjs/toolkit").AsyncThunk<void,
 export declare const userLoggedIn: import("@reduxjs/toolkit").ActionCreatorWithOptionalPayload<{
     user: AuthUser;
     firebaseUser: User;
-}, "auth/userLoggedIn">;
+}, "auth/userLoggedIn">, logout: import("@reduxjs/toolkit").ActionCreatorWithoutPayload<"auth/logout">;
 declare const _default: import("redux").Reducer<AuthState, import("redux").AnyAction>;
 export default _default;
