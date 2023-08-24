@@ -4,6 +4,7 @@ import type { AuthState } from '../slices/auth';
 export interface AuthSelectors<State extends { auth: AuthState }> {
   getAuth: (state: State) => AuthState;
   getUser: (state: State) => AuthState['user'];
+  getFirebaseUser: (state: State) => AuthState['firebaseUser'];
   getAuthIsLoading: (state: State) => AuthState['isLoading'];
   getIsUserLoggedIn: (state: State) => boolean;
 }
@@ -14,6 +15,8 @@ export const getAuthSelectors = <
   const getAuth = (state: State) => state.auth;
 
   const getUser = createSelector(getAuth, (auth) => auth.user);
+
+  const getFirebaseUser = createSelector(getAuth, (auth) => auth.firebaseUser);
 
   const getAuthIsLoading = createSelector(getAuth, (auth) => auth.isLoading);
 
@@ -26,6 +29,7 @@ export const getAuthSelectors = <
   return {
     getAuth,
     getUser,
+    getFirebaseUser,
     getAuthIsLoading,
     getIsUserLoggedIn,
   };
