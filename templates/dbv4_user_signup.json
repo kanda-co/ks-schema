@@ -1,0 +1,23 @@
+{
+  "subject": "Welcome to Kanda - verify your email to activate your account",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Welcome to Kanda! Please follow the link below to confirm your email and activate your account."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "Confirm your email",
+      "url": "{{cta_url}}"
+    }
+  ]
+}

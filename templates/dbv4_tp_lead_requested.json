@@ -1,0 +1,68 @@
+{
+  "subject": "A customer has requested a quote",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "A customer has requested a quote from you via Kanda. The customer has been pre-approved for finance and is looking for the following works to be completed."
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "rows": [
+        {
+          "type": "heading",
+          "text": "Quote details:",
+          "colspan": "3"
+        },
+        {
+          "type": "row",
+          "content": [
+            {
+              "text": "Work type:",
+              "colspan": "1"
+            },
+            {
+              "text": "{{lead.work_type}}",
+              "colspan": "2"
+            }
+          ]
+        },
+        {
+          "type": "row",
+          "content": [
+            {
+              "text": "Descripion:",
+              "colspan": "1"
+            },
+            {
+              "text": "{{lead.description}}",
+              "colspan": "2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "What are the next steps?",
+          "subtext": "If you'd like to see the full details of this lead click below and accept the lead. It will then appear on your dashboard for you to quote like normal. You don't have to quote a job after accepting it."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View lead details",
+      "url": "{{cta_url}}"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "subject": "{{sender.contact_name}} is interested in quoting for your job. Here are their details!",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Here are the details of the approved tradesperson who is going to get in touch with you about the job you posted:"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "rows": [
+        {
+          "type": "heading",
+          "text": "Tradesperson details:",
+          "colspan": "3"
+        },
+        {
+          "type": "row",
+          "content": [
+            {
+              "text": "Name:",
+              "colspan": "1"
+            },
+            {
+              "text": "{{sender.contact_name}}",
+              "colspan": "2"
+            }
+          ]
+        },
+        {
+          "type": "row",
+          "content": [
+            {
+              "text": "Email:",
+              "colspan": "1"
+            },
+            {
+              "text": "{{sender.contact_email}}",
+              "colspan": "2"
+            }
+          ]
+        },
+        {
+          "type": "row",
+          "content": [
+            {
+              "text": "Mobile:",
+              "colspan": "1"
+            },
+            {
+              "text": "{{sender.contact_phone}}",
+              "colspan": "2"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Your job details:",
+          "colspan": "3"
+        },
+        {
+          "type": "row",
+          "content": [
+            {
+              "text": "Work type:",
+              "colspan": "1"
+            },
+            {
+              "text": "{{lead.work_type}}",
+              "colspan": "2"
+            }
+          ]
+        },
+        {
+          "type": "row",
+          "content": [
+            {
+              "text": "Descripion:",
+              "colspan": "1"
+            },
+            {
+              "text": "{{lead.description}}",
+              "colspan": "2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "What are the next steps?",
+          "subtext": "The tradesperson should contact you to arrange a quote. Once you've spoke (& they've seen the work) they will send you a quote via Kanda. You'll then be able to pay for it using the loan you've been pre-approved for."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}

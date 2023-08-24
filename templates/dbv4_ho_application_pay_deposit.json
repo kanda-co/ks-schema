@@ -1,0 +1,29 @@
+{
+  "subject": "You have signed your agreement documents, now you need to pay your deposit",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}}! Here's the link to securely pay your deposit online"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "You've signed your credit agreement and the lender has approved your application. The last step is to pay your deposit payment so the work can begin. Click below to this now."
+        }
+      ]
+    },
+    {
+      "type": "cta_button",
+      "text": "Pay the deposit",
+      "subtext": "Pay securely by card",
+      "url": "{{cta_url}}"
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}

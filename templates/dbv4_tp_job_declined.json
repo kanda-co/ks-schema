@@ -1,0 +1,23 @@
+{
+  "subject": "{{sender.contact_name}}}} has declined your job on Kanda",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "{{sender.contact_name}}}} has declined your job on Kanda - if this was a mistake, please send them out a new job. You can do this easily by following the below link, duplicating the job and sending it to them"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}

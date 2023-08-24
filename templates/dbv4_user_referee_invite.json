@@ -1,0 +1,23 @@
+{
+  "subject": "You have been invited to join Kanda by {{sender.contact_name}}",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "You have been invited to join Kanda by {{sender.contact_name}}. Follow the link below to sign up and claim your account."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "Sign up on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}

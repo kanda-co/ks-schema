@@ -1,0 +1,112 @@
+{
+  "subject": "Here are the details for the job you accepted on Kanda",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Here are the details for the job you have requested to quote for on Kanda:"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "rows": [
+        {
+          "type": "heading",
+          "text": "Customer:",
+          "colspan": "3"
+        },
+        {
+          "type": "row",
+          "content": [
+            {
+              "text": "Name:",
+              "colspan": "1"
+            },
+            {
+              "text": "{{sender.contact_name}}",
+              "colspan": "2"
+            }
+          ]
+        },
+        {
+          "type": "row",
+          "content": [
+            {
+              "text": "Email:",
+              "colspan": "1"
+            },
+            {
+              "text": "{{sender.contact_email}}",
+              "colspan": "2"
+            }
+          ]
+        },
+        {
+          "type": "row",
+          "content": [
+            {
+              "text": "Mobile:",
+              "colspan": "1"
+            },
+            {
+              "text": "{{sender.contact_phone}}",
+              "colspan": "2"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Job Details:",
+          "colspan": "3"
+        },
+        {
+          "type": "row",
+          "content": [
+            {
+              "text": "Work type:",
+              "colspan": "1"
+            },
+            {
+              "text": "{{lead.work_type}}",
+              "colspan": "2"
+            }
+          ]
+        },
+        {
+          "type": "row",
+          "content": [
+            {
+              "text": "Descripion:",
+              "colspan": "1"
+            },
+            {
+              "text": "{{lead.description}}",
+              "colspan": "2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "What are the next steps?",
+          "subtext": "Once you have contacted the customer and have a quote for them, log into your dashboard and you'll see a draft we have created with the customers information. Uppdate this draft with your price and click send, easy as that!"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}

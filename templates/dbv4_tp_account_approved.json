@@ -1,0 +1,77 @@
+{
+  "subject": "Congratulations {{receiver.contact_name}}, your Kanda account is approved!",
+  "flow_type": "{{flow_type}}",
+  "banner": {
+    "type": "trustpilot",
+    "score": "4.7",
+    "reviews": "273",
+    "url": "https://uk.trustpilot.com/review/getkanda.com"
+  },
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Congratulations! I'm so happy to let you know that your application has been approved and you're now officially able to use Kanda."
+        },
+        {
+          "text": "My team and I want to personally welcome you to the platform, use the button below to book a welcome call."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "Book welcome call",
+      "url": "https://calendly.com/kanda-sales/welcome-call"
+    },
+    {
+      "type": "video",
+      "heading": "New User Welcome Message + Add Rates - Watch Video",
+      "url": "https://www.loom.com/share/651d747c5b9840efb2552dad403b3d45",
+      "thumbnail": "https://cdn.loom.com/sessions/thumbnails/651d747c5b9840efb2552dad403b3d45-1686232170118-with-play.gif"
+    },
+    {
+      "type": "heading",
+      "text": "Win better work with Kanda, by offering finance in 5 minutes."
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Ever lost a job on price or felt stuck waiting around for that last payment from the customer. No more! With Kanda you’re able to compete on price and guarantee next day payment when the job is complete."
+        }
+      ]
+    },
+    {
+      "type": "usp",
+      "rows": [
+        {
+          "text": "Send your customer a job out the platform"
+        },
+        {
+          "text": "They apply for finance in less than 5 minutes"
+        },
+        {
+          "text": "You complete the work and get paid at the end"
+        }
+      ]
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "trustpilot",
+      "title": "5,000+ jobs financed and counting",
+      "review": "Applying for the finance was very straight forward. And I got a quick decision that I had been accepted for the finance.",
+      "reviewer": "Rodney T"
+    },
+    {
+      "type": "help"
+    }
+  ],
+  "suppress_signoff": true
+}

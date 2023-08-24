@@ -1,0 +1,32 @@
+{
+  "subject": "{{receiver.contact_name}}, you have been pre-approved for finance with Kanda",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}} - Congratulations! You've been pre-approved for a loan for your home imporvement."
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Now that you've been pre-approved, your job request has been shared with out network of tradespeople who will get in touch soon."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "Questions? Let us know!",
+          "subtext": "We're here for you all the way. If you have any questions about the loan, or the job itself, please reach out to us at <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk</a>."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "Submit job",
+      "url": "{{cta_url}}"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "subject": "Here's your link to continue to Kanda",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hey!"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Here's your new link to sign in to Kanda. Click the button below to continue."
+        },
+        {
+          "text": "Didn't ask for a new link or didn't follow an expired link? Email Kanda at <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk</a> to secure your account."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "Continue to Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}
