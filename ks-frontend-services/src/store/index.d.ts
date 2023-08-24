@@ -574,6 +574,7 @@ export type AuthSlice = {
 export declare function createSelectors<State extends AuthSlice, Pages>(): {
     getAuth: (state: State) => AuthState;
     getUser: (state: State) => import("..").AuthUser;
+    getFirebaseUser: (state: State) => import("@firebase/auth").User;
     getAuthIsLoading: (state: State) => boolean;
     getIsUserLoggedIn: (state: State) => boolean;
     getRoot: (state: State) => State;
