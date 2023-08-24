@@ -281,8 +281,6 @@ async function userIsLoggedIn<P extends StringIndexedObject>(
     user = await getUser();
     role = user.role;
 
-    const firebaseUser = FirebaseAuthService.auth.currentUser;
-
     store.dispatch(userLoggedIn({ user, firebaseUser }));
   }
 
