@@ -9,7 +9,7 @@ export interface CurrentUserHook {
     revalidate: () => Promise<unknown>;
     logout: () => void;
 }
-export declare const createCurrentUserHook: <State extends AuthSlice, Dispatch extends ThunkDispatch<State, unknown, any>, Pages>(dispatch: Dispatch, selectors: {
+export declare const createCurrentUserHook: <State extends AuthSlice, Dispatch extends ThunkDispatch<State, unknown, any>, Pages>(useAppDispatch: () => Dispatch, selectors: {
     getAuth: (state: State) => AuthState;
     getUser: (state: State) => import("..").AuthUser;
     getFirebaseUser: (state: State) => import("@firebase/auth").User;
