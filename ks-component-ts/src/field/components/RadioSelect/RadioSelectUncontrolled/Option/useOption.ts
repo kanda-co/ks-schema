@@ -27,9 +27,11 @@ export default function useOption(
   variantName: RadioSelectVariant,
   inline: boolean,
   wrap: boolean,
+  wrapBorder: boolean,
   register: FieldRegisterMethod | null = null,
   disabled?: boolean,
-  warning?: boolean
+  warning?: boolean,
+  className: string = ""
 ): Hook {
   const { skeletonClasses } = useFormTheme();
 
@@ -61,8 +63,9 @@ export default function useOption(
 
   const classNames = useClasses(variant, {
     option: [
+      className,
       optionFlex,
-      wrap && "mt-2 ml-2",
+      wrap && wrapBorder && "mt-2 ml-2",
       disabled && variant?.disabled?.option
         ? `.disabled.option`
         : `.${selectedPrefix}.option`,
@@ -78,6 +81,7 @@ export default function useOption(
       variant?.skeleton ? `.${selectedPrefix}.skeleton` : skeletonClasses,
     ],
     icon: [variant?.[selectedPrefix]?.icon],
+    optionWrapper: "flex flex-col items-start justify-start",
   });
 
   /**

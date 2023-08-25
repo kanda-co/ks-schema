@@ -7744,6 +7744,13 @@ components:
             - "mark_job_as_accepted"
             - "mark_job_as_declined"
             - "mark_job_as_cancelled"
+        customer_options:
+          type: object
+          title: customer selected options, updated only via custom endpoint
+          $ref: "#/components/schemas/CustomerOptions"
+        xref:
+          type: string
+          title: external reference required to be updated
 
     Tally:
       type: object

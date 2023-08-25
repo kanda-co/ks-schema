@@ -11,6 +11,7 @@ export interface RangeInputUncontrolledProps
   steps?: string;
   formatter?: (value: string) => string;
   prefix?: string;
+  highlightLabel?: "min" | "max";
   suffix?: string;
 }
 
@@ -28,10 +29,21 @@ const RangeInputUncontrolled: FunctionComponent<
   prefix = "",
   suffix = "",
   name = "",
+  highlightLabel,
   ...restProps
 }) {
   const { ref, inputProps, minLabel, maxLabel, currentLabel, classNames } =
-    useRangeInputProps(name, min, max, steps, formatter, prefix, suffix, error);
+    useRangeInputProps(
+      name,
+      min,
+      max,
+      steps,
+      formatter,
+      prefix,
+      suffix,
+      error,
+      highlightLabel
+    );
 
   return (
     <div className={classNames.container}>
@@ -61,11 +73,11 @@ const RangeInputUncontrolled: FunctionComponent<
               <div className={classNames.cap} />
             </div>
             <div className={classNames.labels}>
-              <p className={classNames.lowerLabel}>{minLabel}</p>
+              <p className={classNames.minLowerLabel}>{minLabel}</p>
               {currentLabel && (
                 <p className={classNames.lowerLabel}>{currentLabel}</p>
               )}
-              <p className={classNames.lowerLabel}>{maxLabel}</p>
+              <p className={classNames.maxLowerLabel}>{maxLabel}</p>
             </div>
           </>
         }
