@@ -12,6 +12,7 @@ export interface RangeInputUncontrolledProps
   formatter?: (value: string) => string;
   prefix?: string;
   highlightLabel?: "min" | "max";
+  showCurrentValueLabel?: boolean;
   suffix?: string;
 }
 
@@ -30,6 +31,7 @@ const RangeInputUncontrolled: FunctionComponent<
   suffix = "",
   name = "",
   highlightLabel,
+  showCurrentValueLabel = true,
   ...restProps
 }) {
   const { ref, inputProps, minLabel, maxLabel, currentLabel, classNames } =
@@ -74,7 +76,7 @@ const RangeInputUncontrolled: FunctionComponent<
             </div>
             <div className={classNames.labels}>
               <p className={classNames.minLowerLabel}>{minLabel}</p>
-              {currentLabel && (
+              {currentLabel && showCurrentValueLabel && (
                 <p className={classNames.lowerLabel}>{currentLabel}</p>
               )}
               <p className={classNames.maxLowerLabel}>{maxLabel}</p>
