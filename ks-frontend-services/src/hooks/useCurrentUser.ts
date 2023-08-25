@@ -22,10 +22,11 @@ export const createCurrentUserHook = <
   Dispatch extends ThunkDispatch<State, unknown, any>,
   Pages,
 >(
-  dispatch: ReturnType<typeof useDispatch<Dispatch>>,
+  useAppDispatch: typeof useDispatch<Dispatch>,
   selectors: ReturnType<typeof createSelectors<State, Pages>>,
 ): (() => CurrentUserHook) => {
   return function useCurrentUser(): CurrentUserHook {
+    const dispatch = useAppDispatch();
     const { push } = useHistory();
 
     const user = useSelector(selectors.getUser);
