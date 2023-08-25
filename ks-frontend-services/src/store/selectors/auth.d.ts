@@ -4,6 +4,7 @@ export interface AuthSelectors<State extends {
 }> {
     getAuth: (state: State) => AuthState;
     getUser: (state: State) => AuthState['user'];
+    getFirebaseUser: (state: State) => AuthState['firebaseUser'];
     getAuthIsLoading: (state: State) => AuthState['isLoading'];
     getIsUserLoggedIn: (state: State) => boolean;
 }

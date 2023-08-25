@@ -3,10 +3,12 @@ import { FirebaseAuthService } from '../../auth';
 import { getUser } from '../../middleware';
 import type { AuthUser } from '../../generated/components/schemas';
 import { createSlice } from '../toolkit';
+import { User } from 'firebase/auth';
 
 export interface AuthState {
   isLoading: boolean;
   user: AuthUser | null;
+  firebaseUser: User | null;
 }
 
 export const revalidateUser = createAsyncThunk(
@@ -16,8 +18,9 @@ export const revalidateUser = createAsyncThunk(
 
     if (isUserLoggedIn) {
       const user = await getUser();
+      const firebaseUser = FirebaseAuthService.auth.currentUser;
 
-      store.dispatch(userLoggedIn(user));
+      store.dispatch(userLoggedIn({ user, firebaseUser }));
     }
   },
 );
@@ -25,21 +28,29 @@ export const revalidateUser = createAsyncThunk(
 const initialState: AuthState = {
   isLoading: false,
   user: null,
+  firebaseUser: null,
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    userLoggedIn: (state, { payload: user }: PayloadAction<AuthUser>) => {
+    logout: () => initialState,
+    userLoggedIn: (
+      state,
+      {
+        payload: { user, firebaseUser },
+      }: PayloadAction<{ user: AuthUser; firebaseUser: User }>,
+    ) => {
       return {
         ...state,
         user,
+        firebaseUser,
       };
     },
   },
 });
 
-export const { userLoggedIn } = authSlice.actions;
+export const { userLoggedIn, logout } = authSlice.actions;
 
 export default authSlice.reducer;
