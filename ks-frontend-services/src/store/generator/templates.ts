@@ -23,7 +23,6 @@ const reducerForAction = (entityName: string, actionName: string) => {
   return `
 builder.addCase(${actionName}.pending, (state) => ({
 	...state,
-	isLoading: true,
 	isSubmitting: true,
 }));
 builder.addCase(${actionName}.fulfilled, ${fulfilledAction});
