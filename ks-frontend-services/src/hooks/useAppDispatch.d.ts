@@ -1,3 +1,6 @@
 import { useDispatch } from 'react-redux';
 import type { ThunkDispatch } from '@reduxjs/toolkit';
-export declare const createAppDispatchHook: <State, Dispatch extends ThunkDispatch<State, unknown, any>>() => () => Dispatch;
+import { AuthState } from '../store/slices/auth';
+export declare const createAppDispatchHook: <State extends {
+    auth: AuthState;
+}, Dispatch extends ThunkDispatch<State, unknown, any>>() => () => Dispatch;
