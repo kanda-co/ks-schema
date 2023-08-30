@@ -19,6 +19,7 @@ export const IGNORED_ACTIONS = [
   'jobCheckoutLink',
   'jobCompanyInfo',
   'infoSession',
+  'postCompanyBilling',
   'postCompanyDirectorVerification',
   'getCompanyDirectorVerification',
 ];
