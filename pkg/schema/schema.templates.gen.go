@@ -1,6 +1,57 @@
 package schema
 
-const DBV4_HO_AIP_PREAPPROVED = `{
+type TName string
+
+const (
+	dbv4_ho_aip_preapproved                      TName = "dbv4_ho_aip_preapproved"
+	dbv4_ho_application_approved                 TName = "dbv4_ho_application_approved"
+	dbv4_ho_application_cancelled                TName = "dbv4_ho_application_cancelled"
+	dbv4_ho_application_pay_deposit              TName = "dbv4_ho_application_pay_deposit"
+	dbv4_ho_application_referred                 TName = "dbv4_ho_application_referred"
+	dbv4_ho_application_rejected                 TName = "dbv4_ho_application_rejected"
+	dbv4_ho_application_sat_note_sent            TName = "dbv4_ho_application_sat_note_sent"
+	dbv4_ho_application_sat_note_sent_reminder   TName = "dbv4_ho_application_sat_note_sent_reminder"
+	dbv4_ho_application_sat_note_signed          TName = "dbv4_ho_application_sat_note_signed"
+	dbv4_ho_application_sign_documents           TName = "dbv4_ho_application_sign_documents"
+	dbv4_ho_initial                              TName = "dbv4_ho_initial"
+	dbv4_ho_job_declined                         TName = "dbv4_ho_job_declined"
+	dbv4_ho_job_started                          TName = "dbv4_ho_job_started"
+	dbv4_ho_lead_details_provided_tp_assigned    TName = "dbv4_ho_lead_details_provided_tp_assigned"
+	dbv4_ho_lead_posted                          TName = "dbv4_ho_lead_posted"
+	dbv4_ho_submit_application                   TName = "dbv4_ho_submit_application"
+	dbv4_tp_2nd_line_rejected                    TName = "dbv4_tp_2nd_line_rejected"
+	dbv4_tp_account_approved                     TName = "dbv4_tp_account_approved"
+	dbv4_tp_application_accepted                 TName = "dbv4_tp_application_accepted"
+	dbv4_tp_application_accepted_deposit_changed TName = "dbv4_tp_application_accepted_deposit_changed"
+	dbv4_tp_application_cancelled                TName = "dbv4_tp_application_cancelled"
+	dbv4_tp_customer_referred                    TName = "dbv4_tp_customer_referred"
+	dbv4_tp_customer_rejected                    TName = "dbv4_tp_customer_rejected"
+	dbv4_tp_job_declined                         TName = "dbv4_tp_job_declined"
+	dbv4_tp_job_paid_out                         TName = "dbv4_tp_job_paid_out"
+	dbv4_tp_job_sent                             TName = "dbv4_tp_job_sent"
+	dbv4_tp_lead_details_provided                TName = "dbv4_tp_lead_details_provided"
+	dbv4_tp_lead_requested                       TName = "dbv4_tp_lead_requested"
+	dbv4_tp_sat_note_approved                    TName = "dbv4_tp_sat_note_approved"
+	dbv4_tp_sat_note_delayed                     TName = "dbv4_tp_sat_note_delayed"
+	dbv4_tp_sat_note_signed                      TName = "dbv4_tp_sat_note_signed"
+	dbv4_tp_sat_note_viewed                      TName = "dbv4_tp_sat_note_viewed"
+	dbv4_tp_sign_documents                       TName = "dbv4_tp_sign_documents"
+	dbv4_user_claim_account                      TName = "dbv4_user_claim_account"
+	dbv4_user_referee_invite                     TName = "dbv4_user_referee_invite"
+	dbv4_user_reset_password                     TName = "dbv4_user_reset_password"
+	dbv4_user_signup                             TName = "dbv4_user_signup"
+	dbv4_user_verify_email                       TName = "dbv4_user_verify_email"
+)
+
+func (tn TName) Render() string {
+	if tm, ok := TMap[tn]; ok {
+		return tm
+	}
+	panic("template name not in template map")
+}
+
+var TMap = map[TName]string{
+	"dbv4_ho_aip_preapproved": `{
   "subject": "{{receiver.contact_name}}, you have been pre-approved for finance with Kanda",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -31,9 +82,8 @@ const DBV4_HO_AIP_PREAPPROVED = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_HO_APPLICATION_APPROVED = `{
+}`,
+	"dbv4_ho_application_approved": `{
   "subject": "Your finance application has been approved! Sign your loan agreement now",
   "flow_type": "{{flow_type}}",
   "header": [
@@ -63,9 +113,8 @@ const DBV4_HO_APPLICATION_APPROVED = `{
       ]
     }
   ]
-}`
-
-const DBV4_HO_APPLICATION_CANCELLED = `{
+}`,
+	"dbv4_ho_application_cancelled": `{
   "subject": "Your finance application has been cancelled",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -96,9 +145,8 @@ const DBV4_HO_APPLICATION_CANCELLED = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_HO_APPLICATION_PAY_DEPOSIT = `{
+}`,
+	"dbv4_ho_application_pay_deposit": `{
   "subject": "You have signed your agreement documents, now you need to pay your deposit",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -126,9 +174,8 @@ const DBV4_HO_APPLICATION_PAY_DEPOSIT = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_HO_APPLICATION_REFERRED = `{
+}`,
+	"dbv4_ho_application_referred": `{
   "subject": "You need to provide supporting documents for your finance application",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -159,9 +206,8 @@ const DBV4_HO_APPLICATION_REFERRED = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_HO_APPLICATION_REJECTED = `{
+}`,
+	"dbv4_ho_application_rejected": `{
   "subject": "There has been an update on your application",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -192,9 +238,8 @@ const DBV4_HO_APPLICATION_REJECTED = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_HO_APPLICATION_SAT_NOTE_SENT = `{
+}`,
+	"dbv4_ho_application_sat_note_sent": `{
   "subject": "Sign off on {{sender.contact_name}}'s job on Kanda",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -229,9 +274,8 @@ const DBV4_HO_APPLICATION_SAT_NOTE_SENT = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_HO_APPLICATION_SAT_NOTE_SENT_REMINDER = `{
+}`,
+	"dbv4_ho_application_sat_note_sent_reminder": `{
   "subject": "Please confirm your job by {{sender.contact_name}} is complete (24 hours left)",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -266,9 +310,8 @@ const DBV4_HO_APPLICATION_SAT_NOTE_SENT_REMINDER = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_HO_APPLICATION_SAT_NOTE_SIGNED = `{
+}`,
+	"dbv4_ho_application_sat_note_signed": `{
   "subject": "You have signed off on {{sender.contact_name}}'s job",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -316,9 +359,8 @@ const DBV4_HO_APPLICATION_SAT_NOTE_SIGNED = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_HO_APPLICATION_SIGN_DOCUMENTS = `{
+}`,
+	"dbv4_ho_application_sign_documents": `{
   "subject": "Your finance application has been approved! Sign your loan agreement now",
   "flow_type": "{{flow_type}}",
   "header": [
@@ -353,9 +395,8 @@ const DBV4_HO_APPLICATION_SIGN_DOCUMENTS = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_HO_INITIAL = `{
+}`,
+	"dbv4_ho_initial": `{
   "subject": "{{sender.contact_name}} has sent you a quote on Kanda",
   "flow_type": "{{flow_type}}",
   "banner": {
@@ -425,9 +466,8 @@ const DBV4_HO_INITIAL = `{
     }
   ],
   "suppress_signoff": true
-}`
-
-const DBV4_HO_JOB_DECLINED = `{
+}`,
+	"dbv4_ho_job_declined": `{
   "subject": "You have declinded your job on Kanda",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -444,9 +484,8 @@ const DBV4_HO_JOB_DECLINED = `{
       ]
     }
   ]
-}`
-
-const DBV4_HO_JOB_STARTED = `{
+}`,
+	"dbv4_ho_job_started": `{
   "subject": "Your job on Kanda is ready to start",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -485,9 +524,8 @@ const DBV4_HO_JOB_STARTED = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_HO_LEAD_DETAILS_PROVIDED_TP_ASSIGNED = `{
+}`,
+	"dbv4_ho_lead_details_provided_tp_assigned": `{
   "subject": "{{sender.contact_name}} is interested in quoting for your job. Here are their details!",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -598,9 +636,8 @@ const DBV4_HO_LEAD_DETAILS_PROVIDED_TP_ASSIGNED = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_HO_LEAD_POSTED = `{
+}`,
+	"dbv4_ho_lead_posted": `{
   "subject": "{{receiver.contact_name}}, your job has been successfully posted to Kanda",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -631,9 +668,8 @@ const DBV4_HO_LEAD_POSTED = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_HO_SUBMIT_APPLICATION = `{
+}`,
+	"dbv4_ho_submit_application": `{
   "subject": "{{receiver.contact_name}}, please submit your finance application",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -664,9 +700,8 @@ const DBV4_HO_SUBMIT_APPLICATION = `{
       ]
     }
   ]
-}`
-
-const DBV4_TP_2ND_LINE_REJECTED = `{
+}`,
+	"dbv4_tp_2nd_line_rejected": `{
   "subject": "{{sender.contact_name}} has been declined for finance from our alternative lender",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -697,9 +732,8 @@ const DBV4_TP_2ND_LINE_REJECTED = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_TP_ACCOUNT_APPROVED = `{
+}`,
+	"dbv4_tp_account_approved": `{
   "subject": "Congratulations {{receiver.contact_name}}, your Kanda account is approved!",
   "flow_type": "{{flow_type}}",
   "banner": {
@@ -775,9 +809,8 @@ const DBV4_TP_ACCOUNT_APPROVED = `{
     }
   ],
   "suppress_signoff": true
-}`
-
-const DBV4_TP_APPLICATION_ACCEPTED = `{
+}`,
+	"dbv4_tp_application_accepted": `{
   "subject": "{{sender.contact_name}}'s finance application has been approved! The job is ready to start.",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -808,9 +841,8 @@ const DBV4_TP_APPLICATION_ACCEPTED = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_TP_APPLICATION_ACCEPTED_DEPOSIT_CHANGED = `{
+}`,
+	"dbv4_tp_application_accepted_deposit_changed": `{
   "subject": "{{sender.contact_name}}'s finance application has been approved with a new deposit value.",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -841,9 +873,8 @@ const DBV4_TP_APPLICATION_ACCEPTED_DEPOSIT_CHANGED = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_TP_APPLICATION_CANCELLED = `{
+}`,
+	"dbv4_tp_application_cancelled": `{
   "subject": "{{sender.contact_name}}'s finance application has been cancelled",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -874,9 +905,8 @@ const DBV4_TP_APPLICATION_CANCELLED = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_TP_CUSTOMER_REFERRED = `{
+}`,
+	"dbv4_tp_customer_referred": `{
   "subject": "{{sender.contact_name}} needs to provide supporting information",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -901,9 +931,8 @@ const DBV4_TP_CUSTOMER_REFERRED = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_TP_CUSTOMER_REJECTED = `{
+}`,
+	"dbv4_tp_customer_rejected": `{
   "subject": "{{sender.contact_name}}'s application was declined - we've offered them a 2nd chance to apply",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -945,9 +974,8 @@ const DBV4_TP_CUSTOMER_REJECTED = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_TP_JOB_DECLINED = `{
+}`,
+	"dbv4_tp_job_declined": `{
   "subject": "{{sender.contact_name}}}} has declined your job on Kanda",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -969,9 +997,8 @@ const DBV4_TP_JOB_DECLINED = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_TP_JOB_PAID_OUT = `{
+}`,
+	"dbv4_tp_job_paid_out": `{
   "subject": "{{sender.contact_name}}'s job has now been paid out!",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1002,9 +1029,8 @@ const DBV4_TP_JOB_PAID_OUT = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_TP_JOB_SENT = `{
+}`,
+	"dbv4_tp_job_sent": `{
   "subject": "You've just sent a job to {{sender.contact_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1029,9 +1055,8 @@ const DBV4_TP_JOB_SENT = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_TP_LEAD_DETAILS_PROVIDED = `{
+}`,
+	"dbv4_tp_lead_details_provided": `{
   "subject": "Here are the details for the job you accepted on Kanda",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1142,9 +1167,8 @@ const DBV4_TP_LEAD_DETAILS_PROVIDED = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_TP_LEAD_REQUESTED = `{
+}`,
+	"dbv4_tp_lead_requested": `{
   "subject": "A customer has requested a quote",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1211,9 +1235,8 @@ const DBV4_TP_LEAD_REQUESTED = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_TP_SAT_NOTE_APPROVED = `{
+}`,
+	"dbv4_tp_sat_note_approved": `{
   "subject": "{{sender.contact_name}}'s satisfaction note has been approved by Kanda",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1244,9 +1267,8 @@ const DBV4_TP_SAT_NOTE_APPROVED = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_TP_SAT_NOTE_DELAYED = `{
+}`,
+	"dbv4_tp_sat_note_delayed": `{
   "subject": "{{sender.contact_name}}'s satisfaction note is taking longer than usual to process",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1277,9 +1299,8 @@ const DBV4_TP_SAT_NOTE_DELAYED = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_TP_SAT_NOTE_SIGNED = `{
+}`,
+	"dbv4_tp_sat_note_signed": `{
   "subject": "{{sender.contact_name}} has signed the satisfaction note for your job",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1310,9 +1331,8 @@ const DBV4_TP_SAT_NOTE_SIGNED = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_TP_SAT_NOTE_VIEWED = `{
+}`,
+	"dbv4_tp_sat_note_viewed": `{
   "subject": "{{sender.contact_name}} has viewed the satisfaction note for your job",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1343,9 +1363,8 @@ const DBV4_TP_SAT_NOTE_VIEWED = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_TP_SIGN_DOCUMENTS = `{
+}`,
+	"dbv4_tp_sign_documents": `{
   "subject": "{{sender.contact_name}} needs to sign their credit agreement",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1370,9 +1389,8 @@ const DBV4_TP_SIGN_DOCUMENTS = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_USER_CLAIM_ACCOUNT = `{
+}`,
+	"dbv4_user_claim_account": `{
   "subject": "You have been invited to join {{sender.contact_name}}'s team on Kanda",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1394,9 +1412,8 @@ const DBV4_USER_CLAIM_ACCOUNT = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_USER_REFEREE_INVITE = `{
+}`,
+	"dbv4_user_referee_invite": `{
   "subject": "You have been invited to join Kanda by {{sender.contact_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1418,9 +1435,8 @@ const DBV4_USER_REFEREE_INVITE = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_USER_RESET_PASSWORD = `{
+}`,
+	"dbv4_user_reset_password": `{
   "subject": "Reset your password on Kanda",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1442,9 +1458,8 @@ const DBV4_USER_RESET_PASSWORD = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_USER_SIGNUP = `{
+}`,
+	"dbv4_user_signup": `{
   "subject": "Welcome to Kanda - verify your email to activate your account",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1466,9 +1481,8 @@ const DBV4_USER_SIGNUP = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
-
-const DBV4_USER_VERIFY_EMAIL = `{
+}`,
+	"dbv4_user_verify_email": `{
   "subject": "Here's your link to continue to Kanda",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1493,4 +1507,5 @@ const DBV4_USER_VERIFY_EMAIL = `{
       "url": "{{cta_url}}"
     }
   ]
-}`
+}`,
+}

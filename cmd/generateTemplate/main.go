@@ -30,16 +30,36 @@ func main() {
 	}
 
 	fmt.Println("package schema")
+	fmt.Println()
+	fmt.Println("type TName string")
+	fmt.Println()
+	fmt.Println("const (")
+	fmt.Println("	")
+	for _, path := range paths {
+		bits := strings.Split(path, "/")
+		fname := strings.ToLower(strings.Split(bits[len(bits)-1], ".")[0])
+		fmt.Printf("	%v TName = \"%v\"\n", fname, fname)
+	}
+	fmt.Println(")")
+	fmt.Println()
+
+	fmt.Println("func(tn TName) Render() string {")
+	fmt.Println("	if tm, ok := TMap[tn]; ok {")
+	fmt.Println("		return tm")
+	fmt.Println("	}")
+	fmt.Println("	panic(\"template name not in template map\")")
+	fmt.Println("}")
+	fmt.Println()
+
+	fmt.Println("var TMap = map[TName]string{")
 	for _, path := range paths {
 		b, err := ioutil.ReadFile(path)
 		if err != nil {
 			panic(err)
 		}
 		bits := strings.Split(path, "/")
-		fname := strings.ToUpper(strings.Split(bits[len(bits)-1], ".")[0])
-
-		fmt.Println()
-		fmt.Printf("const %v = `%v`", fname, strings.TrimSpace(string(b)))
-		fmt.Println()
+		fname := strings.ToLower(strings.Split(bits[len(bits)-1], ".")[0])
+		fmt.Printf("	\"%v\": `%v`,\n", fname, strings.TrimSpace(string(b)))
 	}
+	fmt.Println("}")
 }
