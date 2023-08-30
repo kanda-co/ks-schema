@@ -1530,6 +1530,62 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/company/{id}/billing:
+    post:
+      operationId: postCompanyBilling
+      summary: post a new company billing for redirected payment page
+      tags:
+        - Company
+      parameters:
+        - name: id
+          in: path
+          description: company id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: posted company billing redirect urls
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RedirectURLs"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/company/{id}/billing-success:
+    post:
+      operationId: postCompanyBillingSuccess
+      summary: post company billing success status
+      tags:
+        - Company
+      parameters:
+        - name: id
+          in: path
+          description: company id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: posted company billing redirect urls
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Company"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/company/{id}/director-verification:
     get:
       operationId: getCompanyDirectorVerification
