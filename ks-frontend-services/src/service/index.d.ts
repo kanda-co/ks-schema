@@ -33,6 +33,14 @@ declare const company: {
         key: string;
         method: import("../generated/operations/deleteCompany").DeleteCompanyRequestFunction;
     };
+    postCompanyBilling: {
+        key: string;
+        method: import("../generated/operations/postCompanyBilling").PostCompanyBillingRequestFunction;
+    };
+    postCompanyBillingSuccess: {
+        key: string;
+        method: import("../generated/operations/postCompanyBillingSuccess").PostCompanyBillingSuccessRequestFunction;
+    };
     getCompanyDirectorVerification: {
         key: string;
         method: import("../generated/operations/getCompanyDirectorVerification").GetCompanyDirectorVerificationRequestFunction;
@@ -682,6 +690,14 @@ declare const services: {
         deleteCompany: {
             key: string;
             method: import("../generated/operations/deleteCompany").DeleteCompanyRequestFunction;
+        };
+        postCompanyBilling: {
+            key: string;
+            method: import("../generated/operations/postCompanyBilling").PostCompanyBillingRequestFunction;
+        };
+        postCompanyBillingSuccess: {
+            key: string;
+            method: import("../generated/operations/postCompanyBillingSuccess").PostCompanyBillingSuccessRequestFunction;
         };
         getCompanyDirectorVerification: {
             key: string;

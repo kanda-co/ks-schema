@@ -50,4 +50,5 @@ export declare const createCurrentUserHook: <State extends AuthSlice, Dispatch e
     acceptedJobSummaryLead: import("../store/types").Selectors<import("..").LeadJobSummary, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").LeadJobSummary>>>;
     postCompanyDirectorVerification: import("../store/types").Selectors<import("..").InfoCompany, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoCompany>>>;
     getCompanyDirectorVerification: import("../store/types").Selectors<import("..").InfoCompany, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoCompany>>>;
+    postCompanyBilling: import("../store/types").Selectors<import("..").RedirectURLs, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").RedirectURLs>>>;
 }) => (() => CurrentUserHook);
