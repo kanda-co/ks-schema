@@ -72,6 +72,11 @@ export const SINGLE_ACTION_REDUCERS: SingleActionReducers[] = [
     action: 'PostCompanyBilling',
     actionEntity: 'RedirectURLs',
   },
+  {
+    entity: 'company',
+    action: 'PostCompanyReferrals',
+    actionEntity: 'Referral',
+  },
 ];
 
 export const ENTITY_NAME_OVERRIDES = {

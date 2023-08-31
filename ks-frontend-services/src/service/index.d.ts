@@ -53,6 +53,10 @@ declare const company: {
         key: string;
         method: import("../generated/operations/directorCompany").DirectorCompanyRequestFunction;
     };
+    postCompanyReferrals: {
+        key: string;
+        method: import("../generated/operations/postCompanyReferrals").PostCompanyReferralsRequestFunction;
+    };
     approveCompany: {
         key: string;
         method: import("../generated/operations/approveCompany").ApproveCompanyRequestFunction;
@@ -710,6 +714,10 @@ declare const services: {
         directorCompany: {
             key: string;
             method: import("../generated/operations/directorCompany").DirectorCompanyRequestFunction;
+        };
+        postCompanyReferrals: {
+            key: string;
+            method: import("../generated/operations/postCompanyReferrals").PostCompanyReferralsRequestFunction;
         };
         approveCompany: {
             key: string;
