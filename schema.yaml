@@ -1720,7 +1720,11 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Referral"
+                type: array
+                title: referrals
+                description: referrals successfully added
+                items:
+                  $ref: "#/components/schemas/Referral"
         default:
           description: unexpected error
           content:
