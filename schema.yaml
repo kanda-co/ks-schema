@@ -1689,6 +1689,45 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/company/{id}/referrals:
+    post:
+      operationId: postCompanyReferrals
+      summary: post existing company referrals
+      tags:
+        - Company
+      parameters:
+        - name: id
+          in: path
+          description: partner id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: post existing company referrals
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              title: referrals
+              description: referrals to be added
+              items:
+                $ref: "#/components/schemas/Referral"
+      responses:
+        200:
+          description: posted existing company referrals
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Referral"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/company/{id}/approve:
     post:
       operationId: approveCompany
@@ -4875,6 +4914,10 @@ components:
           type: string
           title: referral mobile
           x-kanda-form-widget: PhoneNumberInput
+        from:
+          type: string
+          title: from referrer cid
+          description: referrer company id
         cid:
           type: string
           title: referral cid

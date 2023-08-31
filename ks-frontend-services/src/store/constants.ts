@@ -21,6 +21,7 @@ export const IGNORED_ACTIONS = [
   'infoSession',
   'postCompanyBilling',
   'postCompanyDirectorVerification',
+  'postCompanyReferrals',
   'getCompanyDirectorVerification',
 ];
 
