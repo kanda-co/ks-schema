@@ -274,7 +274,7 @@ func (cc CommContext) ToMap() (map[string]interface{}, error) {
 // ToJSON turn comm context parsed with template to a JSON bytes
 func (cc CommContext) ToJSON() ([]byte, error) {
 	m := map[string]interface{}{}
-	if err := json.Unmarshal([]byte(cc.Template), &m); err != nil {
+	if err := json.Unmarshal([]byte(cc.TemplateName.Render()), &m); err != nil {
 		return nil, fmt.Errorf("invalid comm context data - %v", err)
 	}
 	b, err := json.Marshal(m)

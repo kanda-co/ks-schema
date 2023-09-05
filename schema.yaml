@@ -8305,6 +8305,7 @@ components:
       title: comm context
       description: comm context to be used in dynamic templates
       required:
+        - template_name
         - template
         - sender
         - receiver
@@ -8312,10 +8313,13 @@ components:
         - bank_account
         - cta_url
       properties:
+        template_name:
+          type: string
+          title: template name
+          x-go-type: TName
         template:
           type: string
-          title: template
-          x-go-type: TName
+          title: template content
         flow_type:
           title: flow type
           $ref: "#/components/schemas/FlowType"
