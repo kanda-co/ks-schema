@@ -8315,6 +8315,7 @@ components:
         template:
           type: string
           title: template
+          x-go-type: TName
         flow_type:
           title: flow type
           $ref: "#/components/schemas/FlowType"
