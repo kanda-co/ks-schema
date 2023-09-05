@@ -33,6 +33,14 @@ declare const company: {
         key: string;
         method: import("../generated/operations/deleteCompany").DeleteCompanyRequestFunction;
     };
+    postCompanyBilling: {
+        key: string;
+        method: import("../generated/operations/postCompanyBilling").PostCompanyBillingRequestFunction;
+    };
+    postCompanyBillingSuccess: {
+        key: string;
+        method: import("../generated/operations/postCompanyBillingSuccess").PostCompanyBillingSuccessRequestFunction;
+    };
     getCompanyDirectorVerification: {
         key: string;
         method: import("../generated/operations/getCompanyDirectorVerification").GetCompanyDirectorVerificationRequestFunction;
@@ -44,6 +52,10 @@ declare const company: {
     directorCompany: {
         key: string;
         method: import("../generated/operations/directorCompany").DirectorCompanyRequestFunction;
+    };
+    postCompanyReferrals: {
+        key: string;
+        method: import("../generated/operations/postCompanyReferrals").PostCompanyReferralsRequestFunction;
     };
     approveCompany: {
         key: string;
@@ -683,6 +695,14 @@ declare const services: {
             key: string;
             method: import("../generated/operations/deleteCompany").DeleteCompanyRequestFunction;
         };
+        postCompanyBilling: {
+            key: string;
+            method: import("../generated/operations/postCompanyBilling").PostCompanyBillingRequestFunction;
+        };
+        postCompanyBillingSuccess: {
+            key: string;
+            method: import("../generated/operations/postCompanyBillingSuccess").PostCompanyBillingSuccessRequestFunction;
+        };
         getCompanyDirectorVerification: {
             key: string;
             method: import("../generated/operations/getCompanyDirectorVerification").GetCompanyDirectorVerificationRequestFunction;
@@ -694,6 +714,10 @@ declare const services: {
         directorCompany: {
             key: string;
             method: import("../generated/operations/directorCompany").DirectorCompanyRequestFunction;
+        };
+        postCompanyReferrals: {
+            key: string;
+            method: import("../generated/operations/postCompanyReferrals").PostCompanyReferralsRequestFunction;
         };
         approveCompany: {
             key: string;

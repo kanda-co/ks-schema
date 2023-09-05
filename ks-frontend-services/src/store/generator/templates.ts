@@ -23,8 +23,8 @@ const reducerForAction = (entityName: string, actionName: string) => {
   return `
 builder.addCase(${actionName}.pending, (state) => ({
 	...state,
-	isLoading: true,
-	isSubmitting: true,
+	isLoading: ${actionName.includes('get') ? 'true' : 'state.isLoading'},
+	isSubmitting: ${!actionName.includes('get') ? 'true' : 'state.isSubmitting'},
 }));
 builder.addCase(${actionName}.fulfilled, ${fulfilledAction});
 builder.addCase(${actionName}.rejected, (state, action) => {

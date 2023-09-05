@@ -283,6 +283,24 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         chainedRequest: boolean;
         isLoading: boolean;
     };
+    postCompanyBilling: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").RedirectURLs>;
+        error?: import("../types").ExtractedError;
+        isSubmitting: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+    };
+    postCompanyReferrals: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").Referral>;
+        error?: import("../types").ExtractedError;
+        isSubmitting: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+    };
     app: import("./slices/app").AppState<PageKeys>;
     auth: AuthState;
 }, import("redux").AnyAction, import("@reduxjs/toolkit").MiddlewareArray<[import("@reduxjs/toolkit").ThunkMiddleware<{
@@ -565,6 +583,24 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         chainedRequest: boolean;
         isLoading: boolean;
     };
+    postCompanyBilling: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").RedirectURLs>;
+        error?: import("../types").ExtractedError;
+        isSubmitting: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+    };
+    postCompanyReferrals: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").Referral>;
+        error?: import("../types").ExtractedError;
+        isSubmitting: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+    };
     app: import("./slices/app").AppState<PageKeys>;
     auth: AuthState;
 }, import("redux").AnyAction, undefined>]>>;
@@ -574,6 +610,7 @@ export type AuthSlice = {
 export declare function createSelectors<State extends AuthSlice, Pages>(): {
     getAuth: (state: State) => AuthState;
     getUser: (state: State) => import("..").AuthUser;
+    getFirebaseUser: (state: State) => import("@firebase/auth").User;
     getAuthIsLoading: (state: State) => boolean;
     getIsUserLoggedIn: (state: State) => boolean;
     getRoot: (state: State) => State;
@@ -611,5 +648,7 @@ export declare function createSelectors<State extends AuthSlice, Pages>(): {
     acceptedJobSummaryLead: import("./types").Selectors<import("..").LeadJobSummary, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").LeadJobSummary>>>;
     postCompanyDirectorVerification: import("./types").Selectors<import("..").InfoCompany, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoCompany>>>;
     getCompanyDirectorVerification: import("./types").Selectors<import("..").InfoCompany, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoCompany>>>;
+    postCompanyBilling: import("./types").Selectors<import("..").RedirectURLs, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").RedirectURLs>>>;
+    postCompanyReferrals: import("./types").Selectors<import("..").Referral, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Referral>>>;
 };
 export {};

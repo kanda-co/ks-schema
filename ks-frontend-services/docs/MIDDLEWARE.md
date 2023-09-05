@@ -101,7 +101,7 @@ Closely related is the `loadingDependencies` property. This is an array of strin
 const isLoading = useSelector(getIsLoading)
 ```
 
-The `createAction` method also takes a forth parameter that is a callback for `onSuccess`. This callback will be passed the entity response (correclty typed) and can be used for chaining requests that depend on one another. This callback should return an array of initial data actions. For example:
+The `createAction` method also takes a forth parameter that is a callback for `onSuccess`. This callback will be passed the entity response (correctly typed) and can be used for chaining requests that depend on one another. This callback should return an array of initial data actions. For example:
 
 ```
 createAction(actions.getJob, {
@@ -134,7 +134,15 @@ const useAppDispatch = createAppDispatchHook<RootState, AppDispatch>();
 
 It is recommended to do the above in your `App/index.tsx` file and export it for use within the application.
 
-Example
+
+Current user hook
+---
+The `useCurrentUser`
+
+export { createCurrentUserHook } from './hooks/useCurrentUser';
+
+
+Example App/index.tsx
 --
 
 ```
