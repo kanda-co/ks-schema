@@ -1,0 +1,23 @@
+{
+  "subject": "Kanda: Verify you are a director/owner of {{receiver.trading_name}}",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Someone has signed {{receiver.trading_name}} up for Kanda and registered you as a director/owner - please follow the link below to verify your identity."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "Verify on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}

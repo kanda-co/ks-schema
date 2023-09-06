@@ -40,6 +40,7 @@ const (
 	DBV4_USER_REFEREE_INVITE                     TName = "DBV4_USER_REFEREE_INVITE"
 	DBV4_USER_RESET_PASSWORD                     TName = "DBV4_USER_RESET_PASSWORD"
 	DBV4_USER_SIGNUP                             TName = "DBV4_USER_SIGNUP"
+	DBV4_USER_VERIFY_DIRECTOR                    TName = "DBV4_USER_VERIFY_DIRECTOR"
 	DBV4_USER_VERIFY_EMAIL                       TName = "DBV4_USER_VERIFY_EMAIL"
 )
 
@@ -1482,6 +1483,29 @@ var TMap = map[TName]string{
     {
       "type": "button",
       "text": "Confirm your email",
+      "url": "{{cta_url}}"
+    }
+  ]
+}`,
+	"DBV4_USER_VERIFY_DIRECTOR": `{
+  "subject": "Kanda: Verify you are a director/owner of {{receiver.trading_name}}",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Someone has signed {{receiver.trading_name}} up for Kanda and registered you as a director/owner - please follow the link below to verify your identity."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "Verify on Kanda",
       "url": "{{cta_url}}"
     }
   ]
