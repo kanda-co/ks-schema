@@ -18,6 +18,7 @@ const (
 	DBV4_HO_JOB_STARTED                          TName = "DBV4_HO_JOB_STARTED"
 	DBV4_HO_LEAD_DETAILS_PROVIDED_TP_ASSIGNED    TName = "DBV4_HO_LEAD_DETAILS_PROVIDED_TP_ASSIGNED"
 	DBV4_HO_LEAD_POSTED                          TName = "DBV4_HO_LEAD_POSTED"
+	DBV4_HO_QUOTE_POSTED                         TName = "DBV4_HO_QUOTE_POSTED"
 	DBV4_HO_SUBMIT_APPLICATION                   TName = "DBV4_HO_SUBMIT_APPLICATION"
 	DBV4_TP_2ND_LINE_REJECTED                    TName = "DBV4_TP_2ND_LINE_REJECTED"
 	DBV4_TP_ACCOUNT_APPROVED                     TName = "DBV4_TP_ACCOUNT_APPROVED"
@@ -30,6 +31,7 @@ const (
 	DBV4_TP_JOB_PAID_OUT                         TName = "DBV4_TP_JOB_PAID_OUT"
 	DBV4_TP_JOB_SENT                             TName = "DBV4_TP_JOB_SENT"
 	DBV4_TP_LEAD_DETAILS_PROVIDED                TName = "DBV4_TP_LEAD_DETAILS_PROVIDED"
+	DBV4_TP_LEAD_JOB_REQUESTED                   TName = "DBV4_TP_LEAD_JOB_REQUESTED"
 	DBV4_TP_LEAD_REQUESTED                       TName = "DBV4_TP_LEAD_REQUESTED"
 	DBV4_TP_SAT_NOTE_APPROVED                    TName = "DBV4_TP_SAT_NOTE_APPROVED"
 	DBV4_TP_SAT_NOTE_DELAYED                     TName = "DBV4_TP_SAT_NOTE_DELAYED"
@@ -37,10 +39,12 @@ const (
 	DBV4_TP_SAT_NOTE_VIEWED                      TName = "DBV4_TP_SAT_NOTE_VIEWED"
 	DBV4_TP_SIGN_DOCUMENTS                       TName = "DBV4_TP_SIGN_DOCUMENTS"
 	DBV4_USER_CLAIM_ACCOUNT                      TName = "DBV4_USER_CLAIM_ACCOUNT"
+	DBV4_USER_LEGACY_MIGRATION                   TName = "DBV4_USER_LEGACY_MIGRATION"
 	DBV4_USER_REFEREE_INVITE                     TName = "DBV4_USER_REFEREE_INVITE"
 	DBV4_USER_RESET_PASSWORD                     TName = "DBV4_USER_RESET_PASSWORD"
 	DBV4_USER_SIGNUP                             TName = "DBV4_USER_SIGNUP"
 	DBV4_USER_VERIFY_DIRECTOR                    TName = "DBV4_USER_VERIFY_DIRECTOR"
+	DBV4_USER_VERIFY_DIRECTOR_REMINDER           TName = "DBV4_USER_VERIFY_DIRECTOR_REMINDER"
 	DBV4_USER_VERIFY_EMAIL                       TName = "DBV4_USER_VERIFY_EMAIL"
 )
 
@@ -117,7 +121,8 @@ var TMap = map[TName]string{
         }
       ]
     }
-  ]
+  ],
+  "sms": "Great News! Your finance application has been approved and you're ready to start the work!"
 }`,
 	"DBV4_HO_APPLICATION_CANCELLED": `{
   "subject": "Your finance application has been cancelled",
@@ -178,7 +183,8 @@ var TMap = map[TName]string{
       "text": "View on Kanda",
       "url": "{{cta_url}}"
     }
-  ]
+  ],
+  "sms": "Your finance agreement has been signed and you just need to pay your deposit. Check your emails for more info. Kanda!"
 }`,
 	"DBV4_HO_APPLICATION_REFERRED": `{
   "subject": "You need to provide supporting documents for your finance application",
@@ -210,7 +216,8 @@ var TMap = map[TName]string{
       "text": "View on Kanda",
       "url": "{{cta_url}}"
     }
-  ]
+  ],
+  "sms": "Hey {{receiver.contact_name}}, good news! The lender has accepted your application in principal. They just need a few documents. Check your email for more info. Kanda!"
 }`,
 	"DBV4_HO_APPLICATION_REJECTED": `{
   "subject": "There has been an update on your application",
@@ -242,7 +249,8 @@ var TMap = map[TName]string{
       "text": "Check my update",
       "url": "{{cta_url}}"
     }
-  ]
+  ],
+  "sms": "There has been an update to your finance application Kanda. Check your emails for more info."
 }`,
 	"DBV4_HO_APPLICATION_SAT_NOTE_SENT": `{
   "subject": "Sign off on {{sender.contact_name}}'s job on Kanda",
@@ -278,7 +286,8 @@ var TMap = map[TName]string{
       "text": "View on Kanda",
       "url": "{{cta_url}}"
     }
-  ]
+  ],
+  "sms": "{{sender.contact_name}} has told Kanda the works are completed. Check your email for next steps. Kanda!"
 }`,
 	"DBV4_HO_APPLICATION_SAT_NOTE_SENT_REMINDER": `{
   "subject": "Please confirm your job by {{sender.contact_name}} is complete (24 hours left)",
@@ -314,7 +323,8 @@ var TMap = map[TName]string{
       "text": "View on Kanda",
       "url": "{{cta_url}}"
     }
-  ]
+  ],
+  "sms": "{{sender.contact_name}} has told Kanda the works are completed. Check your email for next steps. Kanda!"
 }`,
 	"DBV4_HO_APPLICATION_SAT_NOTE_SIGNED": `{
   "subject": "You have signed off on {{sender.contact_name}}'s job",
@@ -399,7 +409,8 @@ var TMap = map[TName]string{
       "text": "View on Kanda",
       "url": "{{cta_url}}"
     }
-  ]
+  ],
+  "sms": "Great News! You've been approved for finance and all you need to do is sign your credit agreement! Check your emails now! Kanda."
 }`,
 	"DBV4_HO_INITIAL": `{
   "subject": "{{sender.contact_name}} has sent you a quote on Kanda",
@@ -470,7 +481,8 @@ var TMap = map[TName]string{
       "type": "help"
     }
   ],
-  "suppress_signoff": true
+  "suppress_signoff": true,
+  "sms": "Hey {{receiver.contact_name}}! You've just been sent a job on Kanda from {{sender.contact_name}}. Check your emails for more information."
 }`,
 	"DBV4_HO_JOB_DECLINED": `{
   "subject": "You have declinded your job on Kanda",
@@ -674,6 +686,38 @@ var TMap = map[TName]string{
     }
   ]
 }`,
+	"DBV4_HO_QUOTE_POSTED": `{
+  "subject": "{{receiver.contact_name}}, your job has been successfully posted to Kanda",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}} - Your job has succesfully been posted to Kanda."
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Now that you've told us about your job, you can sit back whilst we let our approved tradespeople know about the work you're looking to get done. Expect them to reach out in due course."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "Questions? Let us know!",
+          "subtext": "We're here for you all the way. If you have any questions about your finance agreement, or the job itself, please reach out to us at <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk</a>."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "See job",
+      "url": "{{cta_url}}"
+    }
+  ]
+}`,
 	"DBV4_HO_SUBMIT_APPLICATION": `{
   "subject": "{{receiver.contact_name}}, please submit your finance application",
   "flow_type": "{{flow_type}}",
@@ -704,7 +748,8 @@ var TMap = map[TName]string{
         }
       ]
     }
-  ]
+  ],
+  "sms": "Hey {{receiver.contact_name}}! Don't forget to complete your finance application on Kanda now."
 }`,
 	"DBV4_TP_2ND_LINE_REJECTED": `{
   "subject": "{{sender.contact_name}} has been declined for finance from our alternative lender",
@@ -1173,6 +1218,74 @@ var TMap = map[TName]string{
     }
   ]
 }`,
+	"DBV4_TP_LEAD_JOB_REQUESTED": `{
+  "subject": "A customer has requested a quote",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "A customer has requested a quote from you via Kanda. The customer has been pre-approved for finance and is looking for the following works to be completed."
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "rows": [
+        {
+          "type": "heading",
+          "text": "Quote details:",
+          "colspan": "3"
+        },
+        {
+          "type": "row",
+          "content": [
+            {
+              "text": "Work type:",
+              "colspan": "1"
+            },
+            {
+              "text": "{{lead.work_type}}",
+              "colspan": "2"
+            }
+          ]
+        },
+        {
+          "type": "row",
+          "content": [
+            {
+              "text": "Descripion:",
+              "colspan": "1"
+            },
+            {
+              "text": "{{lead.description}}",
+              "colspan": "2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "What are the next steps?",
+          "subtext": "If you'd like to see the full details of this lead click below and accept the lead. It will then appear on your dashboard for you to quote like normal. You don't have to quote a job after accepting it."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View lead details",
+      "url": "{{cta_url}}"
+    }
+  ]
+}`,
 	"DBV4_TP_LEAD_REQUESTED": `{
   "subject": "A customer has requested a quote",
   "flow_type": "{{flow_type}}",
@@ -1418,6 +1531,35 @@ var TMap = map[TName]string{
     }
   ]
 }`,
+	"DBV4_USER_LEGACY_MIGRATION": `{
+  "subject": "Claim your new Kanda account",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Time to claim your new Kanda dashboard"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Welcome back to Kanda! To claim your new dashboard account, please follow the link below."
+        },
+        {
+          "text": "In your new account you'll be able to build quotes and offer 11.9% APR over up to 10 years. Plus, we removed the fee for 11.9% APR up to 7 years."
+        },
+        {
+          "text": "Click below to claim your account."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "Claim your account",
+      "url": "{{cta_url}}"
+    }
+  ]
+}`,
 	"DBV4_USER_REFEREE_INVITE": `{
   "subject": "You have been invited to join Kanda by {{sender.contact_name}}",
   "flow_type": "{{flow_type}}",
@@ -1500,6 +1642,35 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Someone has signed {{receiver.trading_name}} up for Kanda and registered you as a director/owner - please follow the link below to verify your identity."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "Verify on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}`,
+	"DBV4_USER_VERIFY_DIRECTOR_REMINDER": `{
+  "subject": "Reminder: ID check required to complete Kanda set up for {{receiver.trading_name}}",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "{{receiver.trading_name}} has been signed up to offer finance with Kanda."
+        },
+        {
+          "text": "As a director of the company you need to complete a 2 minute ID check. You'll need your passport or drivers license."
+        },
+        {
+          "text": "Once verified, {{receiver.trading_name}} can start offering finance."
         }
       ]
     },

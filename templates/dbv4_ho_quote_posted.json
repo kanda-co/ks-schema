@@ -1,0 +1,32 @@
+{
+  "subject": "{{receiver.contact_name}}, your job has been successfully posted to Kanda",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}} - Your job has succesfully been posted to Kanda."
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Now that you've told us about your job, you can sit back whilst we let our approved tradespeople know about the work you're looking to get done. Expect them to reach out in due course."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "Questions? Let us know!",
+          "subtext": "We're here for you all the way. If you have any questions about your finance agreement, or the job itself, please reach out to us at <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk</a>."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "See job",
+      "url": "{{cta_url}}"
+    }
+  ]
+}

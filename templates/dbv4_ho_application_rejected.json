@@ -28,5 +28,6 @@
       "text": "Check my update",
       "url": "{{cta_url}}"
     }
-  ]
+  ],
+  "sms": "There has been an update to your finance application Kanda. Check your emails for more info."
 }

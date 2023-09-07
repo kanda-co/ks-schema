@@ -28,5 +28,6 @@
         }
       ]
     }
-  ]
+  ],
+  "sms": "Hey {{receiver.contact_name}}! Don't forget to complete your finance application on Kanda now."
 }

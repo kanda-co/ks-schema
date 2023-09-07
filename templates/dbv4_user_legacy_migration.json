@@ -1,0 +1,29 @@
+{
+  "subject": "Claim your new Kanda account",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Time to claim your new Kanda dashboard"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Welcome back to Kanda! To claim your new dashboard account, please follow the link below."
+        },
+        {
+          "text": "In your new account you'll be able to build quotes and offer 11.9% APR over up to 10 years. Plus, we removed the fee for 11.9% APR up to 7 years."
+        },
+        {
+          "text": "Click below to claim your account."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "Claim your account",
+      "url": "{{cta_url}}"
+    }
+  ]
+}

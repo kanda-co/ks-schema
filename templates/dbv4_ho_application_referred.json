@@ -28,5 +28,6 @@
       "text": "View on Kanda",
       "url": "{{cta_url}}"
     }
-  ]
+  ],
+  "sms": "Hey {{receiver.contact_name}}, good news! The lender has accepted your application in principal. They just need a few documents. Check your email for more info. Kanda!"
 }

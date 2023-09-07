@@ -32,5 +32,6 @@
       "text": "View on Kanda",
       "url": "{{cta_url}}"
     }
-  ]
+  ],
+  "sms": "{{sender.contact_name}} has told Kanda the works are completed. Check your email for next steps. Kanda!"
 }

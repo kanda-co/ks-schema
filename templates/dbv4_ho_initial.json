@@ -67,5 +67,6 @@
       "type": "help"
     }
   ],
-  "suppress_signoff": true
+  "suppress_signoff": true,
+  "sms": "Hey {{receiver.contact_name}}! You've just been sent a job on Kanda from {{sender.contact_name}}. Check your emails for more information."
 }

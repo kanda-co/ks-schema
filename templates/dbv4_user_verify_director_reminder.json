@@ -1,0 +1,29 @@
+{
+  "subject": "Reminder: ID check required to complete Kanda set up for {{receiver.trading_name}}",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "{{receiver.trading_name}} has been signed up to offer finance with Kanda."
+        },
+        {
+          "text": "As a director of the company you need to complete a 2 minute ID check. You'll need your passport or drivers license."
+        },
+        {
+          "text": "Once verified, {{receiver.trading_name}} can start offering finance."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "Verify on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}
