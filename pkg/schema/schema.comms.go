@@ -146,6 +146,32 @@ func (in FinanceProvider) ToContact() *ContactInfo {
 	return New(cInfo)
 }
 
+func (in CustomerDetails) ToContact() *ContactInfo {
+	return New(ContactInfo{
+		ContactAddress: New(in.CurrentAddress),
+		ContactEmail:   New(in.Email),
+		ContactName: New(
+			ParseFullName(
+				fmt.Sprintf("%v %v", in.FirstName, in.LastName),
+			),
+		),
+		ContactPhone: in.Mobile,
+	})
+}
+
+func (in Customer) ToContact() *ContactInfo {
+	return New(ContactInfo{
+		ContactAddress: in.Address,
+		ContactEmail:   New(in.Email),
+		ContactName: New(
+			ParseFullName(
+				fmt.Sprintf("%v %v", in.FirstName, in.LastName),
+			),
+		),
+		ContactPhone: New(in.Phone),
+	})
+}
+
 func (in Company) ToContact() *ContactInfo {
 	return in.ContactInfo
 }
@@ -224,17 +250,25 @@ func (in Lead) ToContact() *ContactInfo {
 	if in.Id == nil || in.LeadApplicant == nil {
 		return nil
 	}
-	cd := NullOrZero(in.LeadApplicant).CustomerDetails
+	leadApplicant := NullOrZero(in.LeadApplicant)
+	return leadApplicant.ToContact()
+}
+
+func (in LeadApplicant) ToContact() *ContactInfo {
 	return New(
 		ContactInfo{
-			ContactAddress: New(cd.CurrentAddress),
-			ContactEmail:   New(cd.Email),
+			ContactAddress: New(in.CustomerDetails.CurrentAddress),
+			ContactEmail:   New(in.CustomerDetails.Email),
 			ContactName: New(
 				ParseFullName(
-					fmt.Sprintf("%v %v", cd.FirstName, cd.LastName),
+					fmt.Sprintf(
+						"%v %v",
+						in.CustomerDetails.FirstName,
+						in.CustomerDetails.LastName,
+					),
 				),
 			),
-			ContactPhone: cd.Mobile,
+			ContactPhone: in.CustomerDetails.Mobile,
 		},
 	)
 }
