@@ -126,6 +126,18 @@ func ParseLastName(in string) string {
 	return String(NullOrZero(Last(strings.Split(String(in), " "))))
 }
 
+func (in AuthUser) ToContact() *ContactInfo {
+	return IfValueOr(
+		in.Id == nil || String(string(in.Email)) == "" || (in.Disabled != nil && !*in.Disabled),
+		nil,
+		New(ContactInfo{
+			ContactEmail: New(in.Email),
+			ContactName:  New(in.Name),
+			ContactPhone: in.Phone,
+		}),
+	)
+}
+
 func (in FinanceProvider) ToContact() *ContactInfo {
 	cInfo, ok := mLenderInfo[in]
 	if !ok {
