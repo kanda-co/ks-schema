@@ -172,6 +172,15 @@ func (in Customer) ToContact() *ContactInfo {
 	})
 }
 
+func (in Referral) ToContact() *ContactInfo {
+	return New(ContactInfo{
+		ContactEmail: New(in.Email),
+		ContactName:  New(in.Name),
+		ContactPhone: in.Mobile,
+		TradingName:  in.TradingName,
+	})
+}
+
 func (in Company) ToContact() *ContactInfo {
 	return in.ContactInfo
 }
