@@ -150,6 +150,23 @@ func (in Company) ToContact() *ContactInfo {
 	return in.ContactInfo
 }
 
+func (in UserType) ToContact() *ContactInfo {
+	return New(ContactInfo{
+		ContactAddress: IfValueOr(
+			in.DirectorInfo == nil,
+			nil,
+			New(NullOrZero(in.DirectorInfo).HomeAddress),
+		),
+		ContactEmail: New(in.Email),
+		ContactName: New(
+			ParseFullName(
+				fmt.Sprintf("%s %s", in.FirstName, NullOrZero(in.LastName)),
+			),
+		),
+		ContactPhone: in.Mobile,
+	})
+}
+
 func (in Enterprise) ToContact() *ContactInfo {
 	return IfValueOr(
 		in.Id != nil,
