@@ -1612,19 +1612,19 @@ var TMap = map[TName]string{
   "body": [
     {
       "type": "heading",
-      "copy": "Hi {{receiver.contact_name}},"
+      "text": "Hi {{receiver.contact_name}},"
     },
     {
-      "type": "body_text",
+      "type": "text",
       "rows": [
         {
-          "copy": "Welcome to Kanda! Please follow the link below to confirm your email and activate your account."
+          "text": "Welcome to Kanda! Please follow the link below to confirm your email and activate your account."
         }
       ]
     },
     {
       "type": "button",
-      "copy": "Confirm your email",
+      "text": "Confirm your email",
       "url": "{{cta_url}}"
     }
   ]
