@@ -291,7 +291,7 @@ func (in LeadApplicant) ToContact() *ContactInfo {
 }
 
 const (
-	DBV4_GENERIC_TEMPLATE string = "dbv4_generic_tempalte"
+	DBV4_GENERIC_TEMPLATE string = "dbv4_generic_template"
 )
 
 // RenderTemplate with given comm context
@@ -309,19 +309,6 @@ func (cc CommContext) RenderTemplate() (CommContext, error) {
 		cc.Sender.TradingName = &defaultTradingName
 	}
 
-	if cc.Receiver.ContactName == nil {
-		cc.Receiver.ContactName = &defaultContactName
-	}
-	if cc.Receiver.ContactEmail == nil {
-		cc.Receiver.ContactEmail = &defaultContactEmail
-	}
-	if cc.Receiver.ContactPhone == nil {
-		cc.Receiver.ContactPhone = &defaultContactPhone
-	}
-	if cc.Receiver.TradingName == nil {
-		cc.Receiver.TradingName = &defaultTradingName
-	}
-
 	template, err := cc.ToJSON()
 	if err != nil {
 		return cc, err
@@ -336,6 +323,24 @@ func (cc CommContext) RenderTemplate() (CommContext, error) {
 	}
 	cc.Template = result
 	return cc, nil
+}
+
+// RenderTemplateMap turn comm context parsed with template to a JSON map
+func (cc CommContext) RenderTemplateMap() (map[string]interface{}, error) {
+	var (
+		m   = map[string]interface{}{}
+		err error
+	)
+	if cc.Template == "" {
+		cc, err = cc.RenderTemplate()
+		if err != nil {
+			return m, err
+		}
+	}
+	if err := json.Unmarshal([]byte(cc.Template), &m); err != nil {
+		return nil, fmt.Errorf("invalid comm context data - %v", err)
+	}
+	return m, nil
 }
 
 // ToMap turn comm context itself to a map data, for render template
