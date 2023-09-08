@@ -138,6 +138,14 @@ func (in AuthUser) ToContact() *ContactInfo {
 	)
 }
 
+func (in InfoMe) ToContact() *ContactInfo {
+	return New(ContactInfo{
+		ContactEmail: in.Email,
+		ContactName:  in.Name,
+		ContactPhone: in.Phone,
+	})
+}
+
 func (in FinanceProvider) ToContact() *ContactInfo {
 	cInfo, ok := mLenderInfo[in]
 	if !ok {
