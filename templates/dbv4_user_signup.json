@@ -4,19 +4,19 @@
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{receiver.contact_name}},"
+      "copy": "Hi {{receiver.contact_name}},"
     },
     {
-      "type": "text",
+      "type": "body_text",
       "rows": [
         {
-          "text": "Welcome to Kanda! Please follow the link below to confirm your email and activate your account."
+          "copy": "Welcome to Kanda! Please follow the link below to confirm your email and activate your account."
         }
       ]
     },
     {
       "type": "button",
-      "text": "Confirm your email",
+      "copy": "Confirm your email",
       "url": "{{cta_url}}"
     }
   ]
