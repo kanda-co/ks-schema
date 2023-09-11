@@ -1,0 +1,18 @@
+{
+  "subject": "Your ID check has been verified",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}}"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Thank you for completing your identity checks with Kanda. Your ID has been verified."
+        }
+      ]
+    }
+  ]
+}

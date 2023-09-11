@@ -13,6 +13,7 @@ const (
 	DBV4_HO_APPLICATION_SAT_NOTE_SENT_REMINDER   TName = "DBV4_HO_APPLICATION_SAT_NOTE_SENT_REMINDER"
 	DBV4_HO_APPLICATION_SAT_NOTE_SIGNED          TName = "DBV4_HO_APPLICATION_SAT_NOTE_SIGNED"
 	DBV4_HO_APPLICATION_SIGN_DOCUMENTS           TName = "DBV4_HO_APPLICATION_SIGN_DOCUMENTS"
+	DBV4_HO_CONTINUE_CHECKOUT                    TName = "DBV4_HO_CONTINUE_CHECKOUT"
 	DBV4_HO_INITIAL                              TName = "DBV4_HO_INITIAL"
 	DBV4_HO_JOB_DECLINED                         TName = "DBV4_HO_JOB_DECLINED"
 	DBV4_HO_JOB_STARTED                          TName = "DBV4_HO_JOB_STARTED"
@@ -39,6 +40,8 @@ const (
 	DBV4_TP_SAT_NOTE_VIEWED                      TName = "DBV4_TP_SAT_NOTE_VIEWED"
 	DBV4_TP_SIGN_DOCUMENTS                       TName = "DBV4_TP_SIGN_DOCUMENTS"
 	DBV4_USER_CLAIM_ACCOUNT                      TName = "DBV4_USER_CLAIM_ACCOUNT"
+	DBV4_USER_ID_CHECKS_DECLINED                 TName = "DBV4_USER_ID_CHECKS_DECLINED"
+	DBV4_USER_ID_CHECKS_VERIFIED                 TName = "DBV4_USER_ID_CHECKS_VERIFIED"
 	DBV4_USER_LEGACY_MIGRATION                   TName = "DBV4_USER_LEGACY_MIGRATION"
 	DBV4_USER_REFEREE_INVITE                     TName = "DBV4_USER_REFEREE_INVITE"
 	DBV4_USER_RESET_PASSWORD                     TName = "DBV4_USER_RESET_PASSWORD"
@@ -411,6 +414,33 @@ var TMap = map[TName]string{
     }
   ],
   "sms": "Great News! You've been approved for finance and all you need to do is sign your credit agreement! Check your emails now! Kanda."
+}`,
+	"DBV4_HO_CONTINUE_CHECKOUT": `{
+  "subject": "View your job from {{sender.contact_name}}",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "You've been sent this email so that you can view your job from {{sender.contact_name}}."
+        },
+        {
+          "text": "Click the link below to verify your email address and view the job."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View job",
+      "url": "{{cta_url}}"
+    }
+  ],
+  "sms": "Hey {{receiver.contact_name}}! You've just been sent a link to view your job from {{sender.contact_name}} on Kanda. Check your emails for more information."
 }`,
 	"DBV4_HO_INITIAL": `{
   "subject": "{{sender.contact_name}} has sent you a quote on Kanda",
@@ -1528,6 +1558,42 @@ var TMap = map[TName]string{
       "type": "button",
       "text": "Claim you account",
       "url": "{{cta_url}}"
+    }
+  ]
+}`,
+	"DBV4_USER_ID_CHECKS_DECLINED": `{
+  "subject": "Your ID check has been declined",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}}"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Thank you for completing your identity checks with Kanda. Unfortunately, your ID has been declined. If you believe this was a mistake, please contact Kanda at <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk</a>"
+        }
+      ]
+    }
+  ]
+}`,
+	"DBV4_USER_ID_CHECKS_VERIFIED": `{
+  "subject": "Your ID check has been verified",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}}"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Thank you for completing your identity checks with Kanda. Your ID has been verified."
+        }
+      ]
     }
   ]
 }`,

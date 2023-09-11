@@ -128,7 +128,7 @@ func ParseLastName(in string) string {
 
 func (in AuthUser) ToContact() *ContactInfo {
 	return IfValueOr(
-		in.Id == nil || String(string(in.Email)) == "" || (in.Disabled != nil && !*in.Disabled),
+		String(string(in.Email)) == "" || (in.Disabled != nil && !*in.Disabled),
 		nil,
 		New(ContactInfo{
 			ContactEmail: New(in.Email),
@@ -211,23 +211,15 @@ func (in UserType) ToContact() *ContactInfo {
 }
 
 func (in Enterprise) ToContact() *ContactInfo {
-	return IfValueOr(
-		in.Id != nil,
-		New(in.ContactInfo),
-		nil,
-	)
+	return New(in.ContactInfo)
 }
 
 func (in Partner) ToContact() *ContactInfo {
-	return IfValueOr(
-		in.Id != nil,
-		New(in.ContactInfo),
-		nil,
-	)
+	return New(in.ContactInfo)
 }
 
 func (in Job) ToContact() *ContactInfo {
-	if in.Id == nil || in.Customer == nil {
+	if in.Customer == nil {
 		return nil
 	}
 	return New(
@@ -245,26 +237,22 @@ func (in Job) ToContact() *ContactInfo {
 }
 
 func (in Credit) ToContact() *ContactInfo {
-	return IfValueOr(
-		in.Id != nil,
-		New(
-			ContactInfo{
-				ContactAddress: New(in.CustomerDetails.CurrentAddress),
-				ContactEmail:   New(in.CustomerDetails.Email),
-				ContactName: New(
-					ParseFullName(
-						fmt.Sprintf("%v %v", in.CustomerDetails.FirstName, in.CustomerDetails.LastName),
-					),
+	return New(
+		ContactInfo{
+			ContactAddress: New(in.CustomerDetails.CurrentAddress),
+			ContactEmail:   New(in.CustomerDetails.Email),
+			ContactName: New(
+				ParseFullName(
+					fmt.Sprintf("%v %v", in.CustomerDetails.FirstName, in.CustomerDetails.LastName),
 				),
-				ContactPhone: in.CustomerDetails.Mobile,
-			},
-		),
-		nil,
+			),
+			ContactPhone: in.CustomerDetails.Mobile,
+		},
 	)
 }
 
 func (in Lead) ToContact() *ContactInfo {
-	if in.Id == nil || in.LeadApplicant == nil {
+	if in.LeadApplicant == nil {
 		return nil
 	}
 	leadApplicant := NullOrZero(in.LeadApplicant)
