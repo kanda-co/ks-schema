@@ -8367,6 +8367,10 @@ components:
           title: documents
           items:
             $ref: "#/components/schemas/Document"
+        message:
+          type: string
+          title: message
+          description: optional comm context message
 
     Error:
       type: object
