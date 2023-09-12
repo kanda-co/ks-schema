@@ -190,7 +190,17 @@ func (in Referral) ToContact() *ContactInfo {
 }
 
 func (in Company) ToContact() *ContactInfo {
-	return in.ContactInfo
+	contactInfo, contactInfoOK := Lift(in.ContactInfo)
+	contactInfo.ContactName = IfValueOr(
+		contactInfo.TradingName != nil,
+		contactInfo.TradingName,
+		contactInfo.ContactName,
+	)
+	return IfValueOr(
+		contactInfoOK,
+		New(contactInfo),
+		nil,
+	)
 }
 
 func (in UserType) ToContact() *ContactInfo {
@@ -211,10 +221,20 @@ func (in UserType) ToContact() *ContactInfo {
 }
 
 func (in Enterprise) ToContact() *ContactInfo {
+	in.ContactInfo.ContactName = IfValueOr(
+		in.ContactInfo.TradingName != nil,
+		in.ContactInfo.TradingName,
+		in.ContactInfo.ContactName,
+	)
 	return New(in.ContactInfo)
 }
 
 func (in Partner) ToContact() *ContactInfo {
+	in.ContactInfo.ContactName = IfValueOr(
+		in.ContactInfo.TradingName != nil,
+		in.ContactInfo.TradingName,
+		in.ContactInfo.ContactName,
+	)
 	return New(in.ContactInfo)
 }
 
