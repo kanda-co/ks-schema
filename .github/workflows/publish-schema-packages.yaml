@@ -31,9 +31,9 @@ jobs:
           registry-url: "https://registry.npmjs.org"
 
       - name: "setup go"
-        uses: actions/setup-go@v3
+        uses: actions/setup-go@v4
         with:
-          go-version: "<=1.16.0"
+          go-version: ">=1.19.0"
 
       - name: "build npm package"
         run: yarn && make qa clean build-frontend
