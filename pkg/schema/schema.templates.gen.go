@@ -992,7 +992,7 @@ var TMap = map[TName]string{
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{receiver.contact_name}} - Rob Gallagher's application is taking longere than usual"
+      "text": "Hi {{receiver.contact_name}} - {{sender.contact_name}}'s application is taking longere than usual"
     },
     {
       "type": "text",
