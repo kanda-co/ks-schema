@@ -26,6 +26,7 @@ const (
 	DBV4_TP_APPLICATION_ACCEPTED                 TName = "DBV4_TP_APPLICATION_ACCEPTED"
 	DBV4_TP_APPLICATION_ACCEPTED_DEPOSIT_CHANGED TName = "DBV4_TP_APPLICATION_ACCEPTED_DEPOSIT_CHANGED"
 	DBV4_TP_APPLICATION_CANCELLED                TName = "DBV4_TP_APPLICATION_CANCELLED"
+	DBV4_TP_APPLICATION_PENDING                  TName = "DBV4_TP_APPLICATION_PENDING"
 	DBV4_TP_CUSTOMER_REFERRED                    TName = "DBV4_TP_CUSTOMER_REFERRED"
 	DBV4_TP_CUSTOMER_REJECTED                    TName = "DBV4_TP_CUSTOMER_REJECTED"
 	DBV4_TP_JOB_DECLINED                         TName = "DBV4_TP_JOB_DECLINED"
@@ -976,6 +977,42 @@ var TMap = map[TName]string{
         {
           "text": "Was this a mistake?",
           "subtext": "If something isn't right let us know by emailing <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}`,
+	"DBV4_TP_APPLICATION_PENDING": `{
+  "subject": "{{sender.contact_name}}'s finance application is pending approval! Don't start the job just yet.",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "{{sender.contact_name}}'s application is currently pending approval from our lender. {{sender.contact_name}} has been informed by the lender of the next steps toc omplete their applciation. Once they have completed their application, we will inform you that the job is good to go."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "What should I do?",
+          "subtext": "For now, nothing. Just sit back and wait for the customer to complete their application. We'll inform you once they have done so."
+        },
+        {
+          "text": "I have a question",
+          "subtext": "If you need to reach out to us, you can email us directly at <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>"
         }
       ]
     },
