@@ -1396,7 +1396,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "{{sender.contact_name}} has signed the satisfaction note and Kanda has approved it@ We'll rpocess your payment within 48 hours."
+          "text": "{{sender.contact_name}} has signed the satisfaction note and Kanda has approved it. We'll process your payment within 48 hours."
         }
       ]
     },
