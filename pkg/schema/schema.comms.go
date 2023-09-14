@@ -128,7 +128,7 @@ func ParseLastName(in string) string {
 
 func (in AuthUser) ToContact() *ContactInfo {
 	return IfValueOr(
-		String(string(in.Email)) == "" || (in.Disabled != nil && !*in.Disabled),
+		String(string(in.Email)) == "" || (in.Disabled != nil && *in.Disabled),
 		nil,
 		New(ContactInfo{
 			ContactEmail: New(in.Email),
