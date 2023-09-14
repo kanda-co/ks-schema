@@ -8579,9 +8579,19 @@ components:
           type: string
           title: section
           enum:
-            - "x"
-            - "y"
-            - "z"
+            - "introduction_to_regulators"
+            - "what_is_an_i/ar"
+            - "fca's_expectations_of_i/ars"
+            - "our_permissions"
+            - "conduct"
+            - "consumer_duty"
+            - "financial_promotions"
+            - "kyc"
+            - "abc"
+            - "whilstblowing"
+            - "vulnerable_customers"
+            - "customer_data"
+            - "customer_complaints"
         number_of_quizzes:
           type: integer
           title: number of quizzes
