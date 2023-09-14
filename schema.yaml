@@ -3771,6 +3771,146 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/training:
+    get:
+      operationId: getTrainings
+      summary: get all trainings
+      tags:
+        - Training
+      parameters:
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
+      responses:
+        200:
+          description: got all trainings
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Training"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    post:
+      operationId: postTraining
+      summary: post new training
+      tags:
+        - Training
+      requestBody:
+        description: post new training
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Training"
+      responses:
+        200:
+          description: posted new training
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Training"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/training/{id}:
+    get:
+      operationId: getTraining
+      summary: get existing training
+      tags:
+        - Training
+      parameters:
+        - name: id
+          in: path
+          description: training id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing training
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Training"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: putTraining
+      summary: put existing training
+      tags:
+        - Training
+      parameters:
+        - name: id
+          in: path
+          description: training id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: put existing training
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Training"
+      responses:
+        200:
+          description: put existing training
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Training"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      operationId: deleteTraining
+      summary: delete existing training
+      tags:
+        - Training
+      parameters:
+        - name: id
+          in: path
+          description: training id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: deleted existing training
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Training"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/rate:
     get:
       operationId: getRates
@@ -8371,6 +8511,107 @@ components:
           type: string
           title: message
           description: optional comm context message
+
+    Training:
+      type: object
+      title: training
+      required:
+        - categories
+      properties:
+        id:
+          type: string
+          title: id
+          readOnly: true
+        cid:
+          type: string
+          title: company id
+          readOnly: true
+        eid:
+          type: string
+          title: enterprise id
+          readOnly: true
+        bid:
+          type: string
+          title: branch id
+          readOnly: true
+        aid:
+          type: string
+          title: author id
+          readOnly: true
+        oid:
+          type: string
+          title: owner id
+          readOnly: true
+        categories:
+          type: array
+          title: training categories
+          items:
+            $ref: "#/components/schemas/Category"
+        quizzes:
+          type: array
+          title: quizzes
+          items:
+            $ref: "#/components/schemas/Quiz"
+        result:
+          type: string
+          title: training result
+          enum:
+            - "MISSING"
+            - "PASSED"
+            - "FAILED"
+          default: "MISSING"
+          readOnly: true
+        metadata:
+          type: object
+          title: metadata
+          $ref: "#/components/schemas/Metadata"
+          readOnly: true
+
+    Category:
+      type: object
+      title: training category
+      required:
+        - section
+        - number_of_quizzes
+      properties:
+        section:
+          type: string
+          title: section
+          enum:
+            - "x"
+            - "y"
+            - "z"
+        number_of_quizzes:
+          type: integer
+          title: number of quizzes
+          format: int32
+
+    Quiz:
+      type: object
+      title: quiz
+      required:
+        - section
+        - question
+        - answers
+      properties:
+        category:
+          type: string
+          $ref: "#/components/schemas/Category"
+        question:
+          type: string
+          title: question
+        answers:
+          type: array
+          title: answers
+          items:
+            type: string
+            title: answer
+        user_answer:
+          type: string
+          title: user answer
+        correct_answer:
+          type: string
+          title: correct answer
 
     Error:
       type: object
