@@ -8581,7 +8581,7 @@ components:
           enum:
             - "introduction_to_regulators"
             - "what_is_an_i/ar"
-            - "fca's_expectations_of_i/ars"
+            - "fca_expectations_of_i/ars"
             - "our_permissions"
             - "conduct"
             - "consumer_duty"
