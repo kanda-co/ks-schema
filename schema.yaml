@@ -8600,6 +8600,9 @@ components:
         question:
           type: string
           title: question
+        videoId:
+          type: string
+          title: video ID
         answers:
           type: array
           title: answers
