@@ -8559,6 +8559,7 @@ components:
             - "MISSING"
             - "PASSED"
             - "FAILED"
+            - "VOIDED"
           default: "MISSING"
           readOnly: true
         metadata:
