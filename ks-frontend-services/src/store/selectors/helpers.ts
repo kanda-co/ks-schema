@@ -1,10 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
 import type { StringIndexedObject } from '../../types';
-import {
-  type PathKey,
-  slices as allSlices,
-  pathKeyToLoadingDependencies,
-} from '../../';
+import { type PathKey, pathKeyToLoadingDependencies } from '../../';
 import type { GeneratedState } from '../types';
 
 export interface AppSelectors<
