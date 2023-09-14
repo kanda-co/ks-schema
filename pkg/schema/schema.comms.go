@@ -18,10 +18,10 @@ var (
 var (
 	mLenderInfo = map[FinanceProvider]ContactInfo{
 		Allium: {
-			ContactEmail: NewEmail("contact@allium.co.uk"),
-			ContactName:  New("Allium"),
-			ContactPhone: New(""),
-			TradingName:  New("Allium"),
+			ContactEmail: NewEmail("service@alliummoney.co.uk"),
+			ContactName:  New("Allium Money"),
+			ContactPhone: New("03330164057"),
+			TradingName:  New("Allium Money"),
 		},
 		Demo: {
 			ContactEmail: NewEmail("demo@example.co.uk"),
@@ -30,22 +30,22 @@ var (
 			TradingName:  New("Demo"),
 		},
 		Etika: {
-			ContactEmail: NewEmail("contact@etika.co.uk"),
-			ContactName:  New("Etika"),
-			ContactPhone: New(""),
-			TradingName:  New("Etika"),
+			ContactEmail: NewEmail("hello.uk@etika.com"),
+			ContactName:  New("etika Finance UK Ltd"),
+			ContactPhone: New("08000289321"),
+			TradingName:  New("etika Finance UK Ltd"),
 		},
 		Omni: {
-			ContactEmail: NewEmail("contact@omni.co.uk"),
-			ContactName:  New("Omni"),
-			ContactPhone: New(""),
-			TradingName:  New("Omni"),
+			ContactEmail: NewEmail("customerenquiries@ocrf.co.uk"),
+			ContactName:  New("Omni Capital Retail Finance"),
+			ContactPhone: New("03332408317"),
+			TradingName:  New("Omni Capital Retail Finance"),
 		},
 		Propensio: {
-			ContactEmail: NewEmail("contact@propensio.co.uk"),
-			ContactName:  New("Propensio"),
-			ContactPhone: New(""),
-			TradingName:  New("Propensio"),
+			ContactEmail: NewEmail("info@propensio.co.uk"),
+			ContactName:  New("Propensio Finance"),
+			ContactPhone: New("01709808990"),
+			TradingName:  New("Propensio Finance"),
 		},
 	}
 )
