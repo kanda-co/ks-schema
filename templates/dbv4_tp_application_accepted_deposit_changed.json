@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "Great news! Your {{sender.contact_name}} has been approved for finance so you can start the job when you're ready. However, they have chosen a higher deposit than the minimum you set. Remember you have 6 months to complete the work."
+          "text": "Great news! {{sender.contact_name}} has been approved for finance so you can start the job when you're ready. However, {{sender.contact_name}} has chosen a larger deposit than the minimum you set, so you still need to collect {{deposit.difference}} from them.. Remember you have 6 months to complete the work."
         }
       ]
     },

@@ -1,0 +1,36 @@
+{
+  "subject": "Pay your deposit - Your finance application has been approved with a higher deposit value",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}}, your finance application has been approved but you have chosen a higher deposit value than {{sender.contact_name}} set."
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Great news! Your application has been approved, so the job can start once {{sender.contact_name}} are ready. However, you have chosen a higher deposit than {{sender.contact_name}} set as a minimum, and need to ensure they have been paid their deposit. Remember, you have 6 months to complete the work."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "What do I need to pay?",
+          "subtext": "You need to make sure you've paid the full deposit of {{deposit.applied}} directly to {{sender.contact_name}}, which is {{deposit.difference}} more than they set as a minimum. They may have already collected their initial deposit of {{deposit.original}} from you."
+        },
+        {
+          "text": "How do I make the payment?",
+          "subtext": "Speak to {{sender.contact_name}}, as they will collect the full deposit from you. If something isn't right let us know by emailing <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}
