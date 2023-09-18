@@ -4582,6 +4582,12 @@ components:
           title: work type
           description: work type for the job
           $ref: "#/components/schemas/WorkType"
+        enabled_rates:
+          type: array
+          title: Enabled rates
+          description: specified the enabled rates optionally for the loan
+          items:
+            type: string
         deposit_type:
           type: string
           title: deposit type
