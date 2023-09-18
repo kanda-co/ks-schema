@@ -502,6 +502,12 @@ paths:
       summary: request available finance rates for API company
       tags:
         - Rate
+      parameters:
+        - in: query
+          name: cid
+          schema:
+            type: string
+          description: query matching cid
       responses:
         200:
           description: got available finance rates for API company
