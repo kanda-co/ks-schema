@@ -568,7 +568,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/InfoLegacyRedirect"
+                $ref: "#/components/schemas/InfoCheckoutRedirect"
         default:
           description: unexpected error
           content:
@@ -4500,6 +4500,34 @@ components:
         - description_of_goods
         - enterprise_id
       properties:
+        id:
+          type: string
+          title: job id
+          readOnly: true
+        cid:
+          type: string
+          title: company id
+          readOnly: true
+        oid:
+          type: string
+          title: owner id
+          readOnly: true
+        aid:
+          type: string
+          title: author id
+          readOnly: true
+        eid:
+          type: string
+          title: enterprise id
+          readOnly: true
+        bid:
+          type: string
+          title: branch id
+          readOnly: true
+        tid:
+          type: string
+          title: external trade id
+          readOnly: true
         reference:
           type: string
           title: title
@@ -4559,6 +4587,11 @@ components:
           title: work type
           description: optional work type for the job
           $ref: "#/components/schemas/WorkType"
+        metadata:
+          type: object
+          title: metadata
+          $ref: "#/components/schemas/Metadata"
+          readOnly: true
 
     InfoCheckoutRedirect:
       type: object
@@ -4571,6 +4604,34 @@ components:
         - customer
         - job_items
       properties:
+        id:
+          type: string
+          title: job id
+          readOnly: true
+        cid:
+          type: string
+          title: company id
+          readOnly: true
+        oid:
+          type: string
+          title: owner id
+          readOnly: true
+        aid:
+          type: string
+          title: author id
+          readOnly: true
+        eid:
+          type: string
+          title: enterprise id
+          readOnly: true
+        bid:
+          type: string
+          title: branch id
+          readOnly: true
+        tid:
+          type: string
+          title: external trade id
+          readOnly: true
         reference:
           type: string
           title: title
@@ -4613,6 +4674,11 @@ components:
           type: object
           title: redirect urls
           $ref: "#/components/schemas/RedirectURLs"
+        metadata:
+          type: object
+          title: metadata
+          $ref: "#/components/schemas/Metadata"
+          readOnly: true
 
     InfoIP:
       type: object
