@@ -8068,6 +8068,24 @@ components:
           type: string
           title: remark
           description: internal remark for this flag
+        trigger:
+          type: string
+          title: trigger
+          description: trigger action
+          enum:
+            - "no_action_required"
+            - "staff_decision_required"
+            - "billing_required__30_days"
+            - "information_required__30_days"
+            - "retrain_required__30_days"
+            - "fca_removed__now"
+            - "suspend__now"
+            - "terminate__now"
+            - "billing_reinstated__now"
+            - "information_reinstated__now"
+            - "retrain_reinstated__now"
+            - "suspend_reinstated__now"
+            - "terminate_reinstated__now"
         flagged_at:
           type: string
           format: date-time
