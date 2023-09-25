@@ -5629,11 +5629,40 @@ components:
         fca_number:
           type: string
           title: FCA number
+        welcome_pack:
+          type: object
+          title: welcome pack
+          description: company welcome pack status
+          $ref: "#/components/schemas/WelcomeSkipBanner"
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
           title: metadata
           readOnly: true
+
+    WelcomeSkipBanner:
+      type: object
+      title: welcome skip banner
+      description: company welcome skip banner
+      properties:
+        invite_team_member:
+          type: string
+          title: invite team member
+          enum:
+            - "yes"
+            - "no"
+        update_website:
+          type: string
+          title: update website
+          enum:
+            - "yes"
+            - "no"
+        advert_finance_calculator:
+          type: string
+          title: advert and finance calculator
+          enum:
+            - "yes"
+            - "no"
 
     SolarCompanyInfo:
       type: object

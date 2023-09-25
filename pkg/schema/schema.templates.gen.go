@@ -514,6 +514,7 @@ var TMap = map[TName]string{
 	"DBV4_HO_INITIAL": `{
   "subject": "{{sender.contact_name}} has sent you a quote on Kanda",
   "flow_type": "{{flow_type}}",
+  "preheader": "Follow this email to view your quote and begin the process of getting approved for finance",
   "banner": {
     "type": "trustpilot",
     "score": "4.7",
