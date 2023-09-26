@@ -610,6 +610,28 @@ declare const tradeSummary: {
         method: import("../generated/operations/infoTradeSummary").InfoTradeSummaryRequestFunction;
     };
 };
+declare const training: {
+    getTrainings: {
+        key: string;
+        method: import("../generated/operations/getTrainings").GetTrainingsRequestFunction;
+    };
+    postTraining: {
+        key: string;
+        method: import("../generated/operations/postTraining").PostTrainingRequestFunction;
+    };
+    getTraining: {
+        key: string;
+        method: import("../generated/operations/getTraining").GetTrainingRequestFunction;
+    };
+    putTraining: {
+        key: string;
+        method: import("../generated/operations/putTraining").PutTrainingRequestFunction;
+    };
+    deleteTraining: {
+        key: string;
+        method: import("../generated/operations/deleteTraining").DeleteTrainingRequestFunction;
+    };
+};
 declare const webhook: {
     providerCheckWebhook: {
         key: string;
@@ -1272,6 +1294,28 @@ declare const services: {
             method: import("../generated/operations/infoTradeSummary").InfoTradeSummaryRequestFunction;
         };
     };
+    training: {
+        getTrainings: {
+            key: string;
+            method: import("../generated/operations/getTrainings").GetTrainingsRequestFunction;
+        };
+        postTraining: {
+            key: string;
+            method: import("../generated/operations/postTraining").PostTrainingRequestFunction;
+        };
+        getTraining: {
+            key: string;
+            method: import("../generated/operations/getTraining").GetTrainingRequestFunction;
+        };
+        putTraining: {
+            key: string;
+            method: import("../generated/operations/putTraining").PutTrainingRequestFunction;
+        };
+        deleteTraining: {
+            key: string;
+            method: import("../generated/operations/deleteTraining").DeleteTrainingRequestFunction;
+        };
+    };
     webhook: {
         providerCheckWebhook: {
             key: string;
@@ -1319,5 +1363,5 @@ declare const services: {
         };
     };
 };
-export { authUser, company, credit, document, enterprise, event, infoAuth, infoCache, infoCompany, infoCustomer, infoDirector, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoLead, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoValidation, job, lead, monitor, onboarding, partner, payment, rate, subscription, task, tradeSummary, webhook, address, pdf, sheets, };
+export { authUser, company, credit, document, enterprise, event, infoAuth, infoCache, infoCompany, infoCustomer, infoDirector, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoLead, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoValidation, job, lead, monitor, onboarding, partner, payment, rate, subscription, task, tradeSummary, training, webhook, address, pdf, sheets, };
 export default services;
