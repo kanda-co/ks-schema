@@ -5645,6 +5645,12 @@ components:
       title: welcome skip banner
       description: company welcome skip banner
       properties:
+        director_verification:
+          type: string
+          title: director verification
+          enum:
+            - "yes"
+            - "no"
         invite_team_member:
           type: string
           title: invite team member
