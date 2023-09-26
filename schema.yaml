@@ -8692,19 +8692,9 @@ components:
           type: string
           title: section
           enum:
-            - "introduction_to_regulators"
-            - "what_is_an_i/ar"
-            - "fca_expectations_of_i/ars"
-            - "our_permissions"
-            - "conduct"
-            - "consumer_duty"
-            - "financial_promotions"
-            - "kyc"
-            - "abc"
-            - "whilstblowing"
-            - "vulnerable_customers"
-            - "customer_data"
-            - "customer_complaints"
+            - "what_can_an_iar_do"
+            - "advertising_and_promotions"
+            - "vulnerable_customers_and_complains"
         number_of_quizzes:
           type: integer
           title: number of quizzes
