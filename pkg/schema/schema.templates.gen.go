@@ -1843,7 +1843,7 @@ var TMap = map[TName]string{
   ]
 }`,
 	"DBV4_USER_VERIFY_DIRECTOR": `{
-  "subject": "Kanda: Verify you are a director/owner of {{receiver.trading_name}}",
+  "subject": "Kanda: Verify you are a director/owner of {{sender.trading_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -1854,7 +1854,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "Someone has signed {{receiver.trading_name}} up for Kanda and registered you as a director/owner - please follow the link below to verify your identity."
+          "text": "Someone has signed {{sender.trading_name}} up for Kanda and registered you as a director/owner - please follow the link below to verify your identity."
         }
       ]
     },
@@ -1866,7 +1866,7 @@ var TMap = map[TName]string{
   ]
 }`,
 	"DBV4_USER_VERIFY_DIRECTOR_REMINDER": `{
-  "subject": "Reminder: ID check required to complete Kanda set up for {{receiver.trading_name}}",
+  "subject": "Reminder: ID check required to complete Kanda set up for {{sender.trading_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -1877,13 +1877,13 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "{{receiver.trading_name}} has been signed up to offer finance with Kanda."
+          "text": "{{sender.trading_name}} has been signed up to offer finance with Kanda."
         },
         {
           "text": "As a director of the company you need to complete a 2 minute ID check. You'll need your passport or drivers license."
         },
         {
-          "text": "Once verified, {{receiver.trading_name}} can start offering finance."
+          "text": "Once verified, {{sender.trading_name}} can start offering finance."
         }
       ]
     },

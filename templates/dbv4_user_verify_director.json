@@ -1,5 +1,5 @@
 {
-  "subject": "Kanda: Verify you are a director/owner of {{receiver.trading_name}}",
+  "subject": "Kanda: Verify you are a director/owner of {{sender.trading_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "Someone has signed {{receiver.trading_name}} up for Kanda and registered you as a director/owner - please follow the link below to verify your identity."
+          "text": "Someone has signed {{sender.trading_name}} up for Kanda and registered you as a director/owner - please follow the link below to verify your identity."
         }
       ]
     },
