@@ -4,8 +4,10 @@ type TName string
 
 const (
 	DBV4_HO_AIP_PREAPPROVED                      TName = "DBV4_HO_AIP_PREAPPROVED"
+	DBV4_HO_APPLICATION_ACCEPTED_DEPOSIT_CHANGED TName = "DBV4_HO_APPLICATION_ACCEPTED_DEPOSIT_CHANGED"
 	DBV4_HO_APPLICATION_APPROVED                 TName = "DBV4_HO_APPLICATION_APPROVED"
 	DBV4_HO_APPLICATION_CANCELLED                TName = "DBV4_HO_APPLICATION_CANCELLED"
+	DBV4_HO_APPLICATION_PAY_DEPOSI_CASH          TName = "DBV4_HO_APPLICATION_PAY_DEPOSI_CASH"
 	DBV4_HO_APPLICATION_PAY_DEPOSIT              TName = "DBV4_HO_APPLICATION_PAY_DEPOSIT"
 	DBV4_HO_APPLICATION_REFERRED                 TName = "DBV4_HO_APPLICATION_REFERRED"
 	DBV4_HO_APPLICATION_REJECTED                 TName = "DBV4_HO_APPLICATION_REJECTED"
@@ -96,6 +98,42 @@ var TMap = map[TName]string{
     }
   ]
 }`,
+	"DBV4_HO_APPLICATION_ACCEPTED_DEPOSIT_CHANGED": `{
+  "subject": "Pay your deposit - Your finance application has been approved with a higher deposit value",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}}, your finance application has been approved but you have chosen a higher deposit value than {{sender.contact_name}} set."
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Great news! Your application has been approved, so the job can start once {{sender.contact_name}} are ready. However, you have chosen a higher deposit than {{sender.contact_name}} set as a minimum, and need to ensure they have been paid their deposit. Remember, you have 6 months to complete the work."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "What do I need to pay?",
+          "subtext": "You need to make sure you've paid the full deposit of {{deposit.applied}} directly to {{sender.contact_name}}, which is {{deposit.difference}} more than they set as a minimum. They may have already collected their initial deposit of {{deposit.original}} from you."
+        },
+        {
+          "text": "How do I make the payment?",
+          "subtext": "Speak to {{sender.contact_name}}, as they will collect the full deposit from you. If something isn't right let us know by emailing <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}`,
 	"DBV4_HO_APPLICATION_APPROVED": `{
   "subject": "Your finance application has been approved! Sign your loan agreement now",
   "flow_type": "{{flow_type}}",
@@ -159,6 +197,36 @@ var TMap = map[TName]string{
       "url": "{{cta_url}}"
     }
   ]
+}`,
+	"DBV4_HO_APPLICATION_PAY_DEPOSI_CASH": `{
+  "subject": "You have signed your agreement documents, now you need to pay your deposit",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}}!"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "You've signed your credit agreement and the lender has approved your application. The last step is to pay your deposit payment so the work can begin. This should be paid directly to {{sender.contact_name}}. You can see the details of your deposit by clicking the below button."
+        }
+      ]
+    },
+    {
+      "type": "cta_button",
+      "text": "View job",
+      "subtext": "View what deposit you need to pay externally",
+      "url": "{{cta_url}}"
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ],
+  "sms": "Your finance agreement has been signed and you just need to pay your deposit. Check your emails for more info. Kanda!"
 }`,
 	"DBV4_HO_APPLICATION_PAY_DEPOSIT": `{
   "subject": "You have signed your agreement documents, now you need to pay your deposit",
@@ -446,6 +514,7 @@ var TMap = map[TName]string{
 	"DBV4_HO_INITIAL": `{
   "subject": "{{sender.contact_name}} has sent you a quote on Kanda",
   "flow_type": "{{flow_type}}",
+  "preheader": "Follow this email to view your quote and begin the process of getting approved for finance",
   "banner": {
     "type": "trustpilot",
     "score": "4.7",
@@ -935,7 +1004,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "Great news! Your {{sender.contact_name}} has been approved for finance so you can start the job when you're ready. However, they have chosen a higher deposit than the minimum you set. Remember you have 6 months to complete the work."
+          "text": "Great news! {{sender.contact_name}} has been approved for finance so you can start the job when you're ready. However, {{sender.contact_name}} has chosen a larger deposit than the minimum you set, so you still need to collect {{deposit.difference}} from them.. Remember you have 6 months to complete the work."
         }
       ]
     },

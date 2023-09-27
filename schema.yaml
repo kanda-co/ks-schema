@@ -502,6 +502,12 @@ paths:
       summary: request available finance rates for API company
       tags:
         - Rate
+      parameters:
+        - in: query
+          name: cid
+          schema:
+            type: string
+          description: query matching cid
       responses:
         200:
           description: got available finance rates for API company
@@ -562,7 +568,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/InfoLegacyRedirect"
+                $ref: "#/components/schemas/InfoCheckoutRedirect"
         default:
           description: unexpected error
           content:
@@ -4634,6 +4640,34 @@ components:
         - description_of_goods
         - enterprise_id
       properties:
+        id:
+          type: string
+          title: job id
+          readOnly: true
+        cid:
+          type: string
+          title: company id
+          readOnly: true
+        oid:
+          type: string
+          title: owner id
+          readOnly: true
+        aid:
+          type: string
+          title: author id
+          readOnly: true
+        eid:
+          type: string
+          title: enterprise id
+          readOnly: true
+        bid:
+          type: string
+          title: branch id
+          readOnly: true
+        tid:
+          type: string
+          title: external trade id
+          readOnly: true
         reference:
           type: string
           title: title
@@ -4693,6 +4727,11 @@ components:
           title: work type
           description: optional work type for the job
           $ref: "#/components/schemas/WorkType"
+        metadata:
+          type: object
+          title: metadata
+          $ref: "#/components/schemas/Metadata"
+          readOnly: true
 
     InfoCheckoutRedirect:
       type: object
@@ -4705,6 +4744,34 @@ components:
         - customer
         - job_items
       properties:
+        id:
+          type: string
+          title: job id
+          readOnly: true
+        cid:
+          type: string
+          title: company id
+          readOnly: true
+        oid:
+          type: string
+          title: owner id
+          readOnly: true
+        aid:
+          type: string
+          title: author id
+          readOnly: true
+        eid:
+          type: string
+          title: enterprise id
+          readOnly: true
+        bid:
+          type: string
+          title: branch id
+          readOnly: true
+        tid:
+          type: string
+          title: external trade id
+          readOnly: true
         reference:
           type: string
           title: title
@@ -4716,6 +4783,12 @@ components:
           title: work type
           description: work type for the job
           $ref: "#/components/schemas/WorkType"
+        enabled_rates:
+          type: array
+          title: Enabled rates
+          description: specified the enabled rates optionally for the loan
+          items:
+            type: string
         deposit_type:
           type: string
           title: deposit type
@@ -4741,6 +4814,11 @@ components:
           type: object
           title: redirect urls
           $ref: "#/components/schemas/RedirectURLs"
+        metadata:
+          type: object
+          title: metadata
+          $ref: "#/components/schemas/Metadata"
+          readOnly: true
 
     InfoIP:
       type: object
@@ -5691,11 +5769,46 @@ components:
         fca_number:
           type: string
           title: FCA number
+        welcome_pack:
+          type: object
+          title: welcome pack
+          description: company welcome pack status
+          $ref: "#/components/schemas/WelcomeSkipBanner"
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
           title: metadata
           readOnly: true
+
+    WelcomeSkipBanner:
+      type: object
+      title: welcome skip banner
+      description: company welcome skip banner
+      properties:
+        director_verification:
+          type: string
+          title: director verification
+          enum:
+            - "yes"
+            - "no"
+        invite_team_member:
+          type: string
+          title: invite team member
+          enum:
+            - "yes"
+            - "no"
+        update_website:
+          type: string
+          title: update website
+          enum:
+            - "yes"
+            - "no"
+        advert_finance_calculator:
+          type: string
+          title: advert and finance calculator
+          enum:
+            - "yes"
+            - "no"
 
     SolarCompanyInfo:
       type: object
@@ -8579,19 +8692,9 @@ components:
           type: string
           title: section
           enum:
-            - "introduction_to_regulators"
-            - "what_is_an_i/ar"
-            - "fca_expectations_of_i/ars"
-            - "our_permissions"
-            - "conduct"
-            - "consumer_duty"
-            - "financial_promotions"
-            - "kyc"
-            - "abc"
-            - "whilstblowing"
-            - "vulnerable_customers"
-            - "customer_data"
-            - "customer_complaints"
+            - "what_can_an_iar_do"
+            - "advertising_and_promotions"
+            - "vulnerable_customers_and_complains"
         number_of_quizzes:
           type: integer
           title: number of quizzes

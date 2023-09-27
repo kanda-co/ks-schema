@@ -15,7 +15,7 @@ export default function useAutomaticTokenRefresh(): void {
     }, REFRESH_TOKEN_TIMER_IN_MINUTES);
 
     return () => {
-      clearTimeout(refreshTimerRef.current);
+      clearTimeout(refreshTimerRef.current as unknown as number);
     };
   }, [isUserLoggedIn]);
 }

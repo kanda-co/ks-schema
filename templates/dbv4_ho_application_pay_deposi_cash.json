@@ -1,0 +1,30 @@
+{
+  "subject": "You have signed your agreement documents, now you need to pay your deposit",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}}!"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "You've signed your credit agreement and the lender has approved your application. The last step is to pay your deposit payment so the work can begin. This should be paid directly to {{sender.contact_name}}. You can see the details of your deposit by clicking the below button."
+        }
+      ]
+    },
+    {
+      "type": "cta_button",
+      "text": "View job",
+      "subtext": "View what deposit you need to pay externally",
+      "url": "{{cta_url}}"
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ],
+  "sms": "Your finance agreement has been signed and you just need to pay your deposit. Check your emails for more info. Kanda!"
+}
