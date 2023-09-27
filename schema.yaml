@@ -8694,7 +8694,7 @@ components:
           enum:
             - "what_can_an_iar_do"
             - "advertising_and_promotions"
-            - "vulnerable_customers_and_complains"
+            - "vulnerable_customers_and_complaints"
         number_of_quizzes:
           type: integer
           title: number of quizzes
