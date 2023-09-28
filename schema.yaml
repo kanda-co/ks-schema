@@ -5288,6 +5288,10 @@ components:
             approval:
               type: object
               $ref: "#/components/schemas/Approval"
+        shared_note:
+          type: string
+          title: shared note
+          description: shared and persistent note for staff to see
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
