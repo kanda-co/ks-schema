@@ -17,6 +17,7 @@ export { revalidateUser, logout, userLoggedIn } from './store/slices/auth';
 export * from './store/toolkit';
 export { createAppSlice } from './store/slices/app';
 export { default as auth } from './store/slices/auth';
+export * as allSlices from './store/slices/generated';
 export { getSelectors } from './store/selectors';
 export { createRoutedApp, createMiddleware, pathKeyToLoadingDependencies, fetchPageInitialData, } from './middleware';
 export { createAction } from './middleware/helpers';

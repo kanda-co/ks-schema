@@ -43,6 +43,7 @@ const (
 	DBV4_TP_SAT_NOTE_VIEWED                      TName = "DBV4_TP_SAT_NOTE_VIEWED"
 	DBV4_TP_SIGN_DOCUMENTS                       TName = "DBV4_TP_SIGN_DOCUMENTS"
 	DBV4_USER_CLAIM_ACCOUNT                      TName = "DBV4_USER_CLAIM_ACCOUNT"
+	DBV4_USER_DEV_CLAIM_ACCOUNT                  TName = "DBV4_USER_DEV_CLAIM_ACCOUNT"
 	DBV4_USER_ID_CHECKS_DECLINED                 TName = "DBV4_USER_ID_CHECKS_DECLINED"
 	DBV4_USER_ID_CHECKS_VERIFIED                 TName = "DBV4_USER_ID_CHECKS_VERIFIED"
 	DBV4_USER_LEGACY_MIGRATION                   TName = "DBV4_USER_LEGACY_MIGRATION"
@@ -1667,6 +1668,46 @@ var TMap = map[TName]string{
     }
   ]
 }`,
+	"DBV4_USER_DEV_CLAIM_ACCOUNT": `{
+  "subject": "You have been invited to join {{sender.contact_name}}'s team on Kanda as a developer",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}}"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "You have been invited as a developer to join {{sender.contact_name}}'s team on Kanda. Follow the link below to claim your account and get integration instructions for the following:"
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "Updating your website",
+          "subtext": "You'll find instructions on legal language that will need to be displayed on your website"
+        },
+        {
+          "text": "Adding a finance calculator",
+          "subtext": "There is an iframe code snippet that you'll be able to include on your website. This will show your customers a finance calculator so they can see what their monthly costs would be with Kanda"
+        },
+        {
+          "text": "API and plugin integrations",
+          "subtext": "We have plugins for a quick installation on WordPress webistes, as well as full API integration documentation"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "Claim you account",
+      "url": "{{cta_url}}"
+    }
+  ]
+}`,
 	"DBV4_USER_ID_CHECKS_DECLINED": `{
   "subject": "Your ID check has been declined",
   "flow_type": "{{flow_type}}",
@@ -1802,7 +1843,7 @@ var TMap = map[TName]string{
   ]
 }`,
 	"DBV4_USER_VERIFY_DIRECTOR": `{
-  "subject": "Kanda: Verify you are a director/owner of {{receiver.trading_name}}",
+  "subject": "Kanda: Verify you are a director/owner of {{sender.trading_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -1813,7 +1854,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "Someone has signed {{receiver.trading_name}} up for Kanda and registered you as a director/owner - please follow the link below to verify your identity."
+          "text": "Someone has signed {{sender.trading_name}} up for Kanda and registered you as a director/owner - please follow the link below to verify your identity."
         }
       ]
     },
@@ -1825,7 +1866,7 @@ var TMap = map[TName]string{
   ]
 }`,
 	"DBV4_USER_VERIFY_DIRECTOR_REMINDER": `{
-  "subject": "Reminder: ID check required to complete Kanda set up for {{receiver.trading_name}}",
+  "subject": "Reminder: ID check required to complete Kanda set up for {{sender.trading_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -1836,13 +1877,13 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "{{receiver.trading_name}} has been signed up to offer finance with Kanda."
+          "text": "{{sender.trading_name}} has been signed up to offer finance with Kanda."
         },
         {
           "text": "As a director of the company you need to complete a 2 minute ID check. You'll need your passport or drivers license."
         },
         {
-          "text": "Once verified, {{receiver.trading_name}} can start offering finance."
+          "text": "Once verified, {{sender.trading_name}} can start offering finance."
         }
       ]
     },
