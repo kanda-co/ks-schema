@@ -8247,6 +8247,10 @@ components:
           type: string
           title: remark
           description: internal remark for this flag
+        remark_external:
+          type: string
+          title: remark external
+          description: external remark to show to recipient via comm
         trigger:
           type: string
           title: trigger
