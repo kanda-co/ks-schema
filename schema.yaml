@@ -4353,6 +4353,7 @@ paths:
               - housekeeping_check_referral_expiry
               - housekeeping_check_lender_rate
               - housekeeping_check_trade_summary
+              - housekeeping_sync_fca_monitor
       responses:
         200:
           description: runner has been completed
