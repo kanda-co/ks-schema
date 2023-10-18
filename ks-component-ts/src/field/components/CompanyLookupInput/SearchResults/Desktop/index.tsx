@@ -25,7 +25,11 @@ const Desktop: FunctionComponent<DesktopProps> = function ({
 
   return (
     <div className={CLASS_NAMES.container}>
-      <Popover.Standard visible={visible} className="w-full -mt-5">
+      <Popover.Standard
+        id="company-lookup-input"
+        visible={visible}
+        className="w-full -mt-5"
+      >
         {({ handleClose }) => (
           <Card padding="p-2" className={CLASS_NAMES.card}>
             <>
@@ -33,7 +37,7 @@ const Desktop: FunctionComponent<DesktopProps> = function ({
                 <Button.Link
                   id="company-lookup-not-listed"
                   label="I can't find my company"
-                  className="w-full sticky top-0 px-3 pb-1 bg-neutral-000"
+                  className="sticky top-0 w-full px-3 pb-1 bg-neutral-000"
                   onClick={() => {
                     handleClose();
                     onClick();

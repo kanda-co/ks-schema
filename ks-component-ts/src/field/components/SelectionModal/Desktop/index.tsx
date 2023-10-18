@@ -18,6 +18,7 @@ const Desktop: FunctionComponent<SelectionModalProps> = function ({
 
   return (
     <Popover.Standard
+      id="selection-modal"
       button={
         <SelectionModalButton
           id={buttonId}
@@ -30,7 +31,7 @@ const Desktop: FunctionComponent<SelectionModalProps> = function ({
     >
       {({ handleClose }) => (
         <FormTheme variant="popover-clean">
-          <div className="min-w-36 px-2">
+          <div className="px-2 min-w-36">
             <SelectionModalSelect
               handleClose={handleClose}
               variant="popover-clean"
