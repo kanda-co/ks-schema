@@ -28,6 +28,7 @@ const PopoverButton: FunctionComponent<PopoverButtonProps> = function ({
           <div className={CLASS_NAMES.button}>
             <div className={CLASS_NAMES.wrapper}>
               <Popover.Standard
+                id={`table-row-popover-${id}`}
                 button={<Button.Icon id={id} {...BUTTON_PROPS} />}
                 {...popoverProps}
               >
