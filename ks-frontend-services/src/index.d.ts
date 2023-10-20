@@ -25,3 +25,4 @@ export type { Payload, PathKey, AsyncThunkReturnType, ThunkAPI, SharedAsyncThunk
 export type { Service, ServiceParams, ServiceMethod, ServiceSubmit, ServiceMethodReturnParams, NewService, } from './types';
 export type { RequestFunction, RequestFunctionArgs, } from '@openapi-io-ts/runtime';
 export type { KeyedMutator } from 'swr';
+export type { FormattedPayoutCompanyData, PayoutCreditFees, FormattedPayoutCreditData, FormattedPayoutJobData, PayoutData, PayoutsResponse, } from './service/external';

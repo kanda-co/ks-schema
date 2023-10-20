@@ -1,3 +1,4 @@
+import * as externalServices from './external';
 declare const authUser: {
     me: {
         key: string;
@@ -648,6 +649,14 @@ declare const address: {
         method: (request: import("./external/address").FindRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
             body: import("./external/address").FindResponse;
         }, import("./external/address").FindResponse>;
+    };
+};
+declare const payouts: {
+    payouts: {
+        key: string;
+        method: () => import("@openapi-io-ts/runtime").RequestFunction<{
+            body: externalServices.PayoutsResponse;
+        }, externalServices.PayoutsResponse>;
     };
 };
 declare const pdf: {
@@ -1334,6 +1343,14 @@ declare const services: {
             }, import("./external/address").FindResponse>;
         };
     };
+    payouts: {
+        payouts: {
+            key: string;
+            method: () => import("@openapi-io-ts/runtime").RequestFunction<{
+                body: externalServices.PayoutsResponse;
+            }, externalServices.PayoutsResponse>;
+        };
+    };
     pdf: {
         compress: {
             key: string;
@@ -1363,5 +1380,5 @@ declare const services: {
         };
     };
 };
-export { authUser, company, credit, document, enterprise, event, infoAuth, infoCache, infoCompany, infoCustomer, infoDirector, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoLead, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoValidation, job, lead, monitor, onboarding, partner, payment, rate, subscription, task, tradeSummary, training, webhook, address, pdf, sheets, };
+export { authUser, company, credit, document, enterprise, event, infoAuth, infoCache, infoCompany, infoCustomer, infoDirector, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoLead, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoValidation, job, lead, monitor, onboarding, partner, payment, rate, subscription, task, tradeSummary, training, webhook, address, payouts, pdf, sheets, };
 export default services;
