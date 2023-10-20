@@ -20,6 +20,7 @@ export interface FormattedPayoutCompanyData {
   company_id: string;
   tp_name: string;
   tp_email: string;
+  bank_account_name: string;
   bank_account_number: string;
   bank_account_sortcode: string;
   skip_deposit: string;
@@ -44,6 +45,8 @@ export interface FormattedPayoutCreditData extends PayoutCreditFees {
   credit_id: string;
   loan_payment_id: string;
   deposit_payment_id: string;
+  credit_created_at: Date;
+  credit_updated_at: Date;
   customer_name: string;
   customer_email: string;
   product_name: string;
@@ -55,8 +58,8 @@ export interface FormattedPayoutJobData {
   job_id: string;
   job_title: string;
   status: string;
-  created_at: Date;
-  updated_at: Date;
+  job_created_at: Date;
+  job_updated_at: Date;
   price: number;
   requested_deposit: number;
   deposit_type: Job['deposit_type'];
@@ -67,7 +70,7 @@ export interface PayoutData
     FormattedPayoutCreditData,
     FormattedPayoutJobData {}
 
-type PayoutsResponse = PayoutData[];
+export type PayoutsResponse = PayoutData[];
 
 export default {
   payouts: {

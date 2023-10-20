@@ -58,3 +58,12 @@ export type {
 } from '@openapi-io-ts/runtime';
 
 export type { KeyedMutator } from 'swr';
+
+export type {
+  FormattedPayoutCompanyData,
+  PayoutCreditFees,
+  FormattedPayoutCreditData,
+  FormattedPayoutJobData,
+  PayoutData,
+  PayoutsResponse,
+} from './service/external';
