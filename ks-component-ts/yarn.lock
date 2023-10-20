@@ -869,19 +869,11 @@
     lodash.get "^4.4.2"
     lodash.set "^4.3.2"
 
-"@kanda-libs/ks-amplitude-provider@^0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-amplitude-provider/-/ks-amplitude-provider-0.0.7.tgz#08f166736b229c44402e3f64debd98321af88842"
-  integrity sha512-gzkZzFcBwh4MQz/VJ8M0TGcuWQzLv0V2bYHOrr8Bc6ErlV/cIE+1NtocsfI7uv+0QRAbmO6YctU4/KztTtui/A==
+"@kanda-libs/ks-design-library@0.2.93":
+  version "0.2.93"
+  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-design-library/-/ks-design-library-0.2.93.tgz#b42bd8bc96b1428cb8c54a5d1f5456e1a0ee28d7"
+  integrity sha512-P9zYpF17NzA/1LXmaHT8vclO98Rw3zRSuYVdONnFdF0yPEmX0bgTlGqHfCJNbvzUKy9zsEyT00i5NFC/Xqs0gQ==
   dependencies:
-    "@amplitude/analytics-browser" "^1.6.4"
-
-"@kanda-libs/ks-design-library@0.2.70":
-  version "0.2.70"
-  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-design-library/-/ks-design-library-0.2.70.tgz#807fd8d366c20cdc0a52deaa6e8c6f0dbc19b5c0"
-  integrity sha512-VwvDnemAL7rBVVCLTnMCEA5jH4fPszpN3jWuTiQ7t0oMpV9g5CQpLSGOpaShZYJya/jQRMs3iR9t4qIpKbitvQ==
-  dependencies:
-    "@kanda-libs/ks-amplitude-provider" "^0.0.7"
     crypto-js "^4.1.1"
     file-saver "^2.0.5"
     fuse.js "^6.6.2"

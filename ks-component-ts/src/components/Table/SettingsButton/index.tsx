@@ -14,6 +14,7 @@ const SettingsButton: FunctionComponent<SettingsButtonProps> = function ({
       <div className={CLASS_NAMES.button}>
         <div className={CLASS_NAMES.wrapper}>
           <Popover.Standard
+            id="table-settings"
             button={<Button.Icon id="table-settings" {...BUTTON_PROPS} />}
             right
           >

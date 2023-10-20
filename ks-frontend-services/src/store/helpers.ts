@@ -256,7 +256,7 @@ export const createResponseHandler =
       chainedRequest: false,
       fetchedList: !state.fetchedList ? isArray : true,
       isLoading: state.chainedRequest ? state.isLoading : false,
-      isSubmitting: state.chainedRequest ? state.isLoading : false,
+      isSubmitting: state.chainedRequest ? state.isSubmitting : false,
     };
   };
 
@@ -271,7 +271,7 @@ export const createVoidResponseHandler =
       chainedRequest: false,
       fetchedList: false,
       isLoading: state.chainedRequest ? state.isLoading : false,
-      isSubmitting: state.chainedRequest ? state.isLoading : false,
+      isSubmitting: state.chainedRequest ? state.isSubmitting : false,
     };
   };
 
