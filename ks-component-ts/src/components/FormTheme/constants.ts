@@ -31,9 +31,9 @@ export const BORDERED_THEME = {
   inputClasses:
     "text-style-g text-neutral-900 placeholder-neutral-600 text-base md:text-sm",
   focusClasses:
-    "border-solid border-transparent focus:outline-none focus:border-turquoise-300 focus:bg-neutral-000",
+    "border-solid focus:outline-none focus:border-turquoise-300 focus:bg-neutral-000",
   focusWithinClasses:
-    "border-solid border-transparent focus-within:outline-none focus-within:border-turquoise-300 focus-within:bg-neutral-000",
+    "border-solid focus-within:outline-none focus-within:border-turquoise-300 focus-within:bg-neutral-000",
   paddingClasses: "px-4 py-3.25",
   skeletonClasses: "w-2/6",
   placeholderClasses: "px-4 pt-1",
