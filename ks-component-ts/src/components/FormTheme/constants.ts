@@ -24,6 +24,30 @@ export const DEFAULT_THEME = {
   },
 };
 
+export const BORDERED_THEME = {
+  fieldWrapper: "Default" as FieldWrapperType,
+  baseClasses:
+    "rounded-lg flex w-full bg-neutral-000 border border-neutral-300 caret-turquoise-300",
+  inputClasses:
+    "text-style-g text-neutral-900 placeholder-neutral-600 text-base md:text-sm",
+  focusClasses:
+    "border-solid border-transparent focus:outline-none focus:border-turquoise-300 focus:bg-neutral-000",
+  focusWithinClasses:
+    "border-solid border-transparent focus-within:outline-none focus-within:border-turquoise-300 focus-within:bg-neutral-000",
+  paddingClasses: "px-4 py-3.25",
+  skeletonClasses: "w-2/6",
+  placeholderClasses: "px-4 pt-1",
+  makeErrorClasses: (error?: string) =>
+    error ? "border-solid border border-red-200" : "",
+  wrapperClasses: {
+    baseContainer: "flex flex-col mb-6 text-left",
+    error: "mt-2 text-style-h text-red-200",
+    warning: "mt-2 text-style-h text-neutral-600",
+    label: "w-full text-style-h-em text-neutral-600 mb-2",
+    helperText: "whitespace-nowrap text-style-h text-neutral-500",
+  },
+};
+
 export const DEFAULT_WHITE_THEME = {
   fieldWrapper: "Default" as FieldWrapperType,
   baseClasses:
@@ -342,6 +366,7 @@ const PERCENTAGE_INCREMENT_THEME = {
 
 enum Variants {
   DEFAULT = "default",
+  BORDERED = "bordered",
   DEFAULT_WHITE = "default-white",
   CLEAN = "clean",
   NARROW = "narrow",
@@ -362,6 +387,7 @@ enum Variants {
 
 export const VARIANTS: StringIndexedObject<string> = {
   DEFAULT: Variants.DEFAULT,
+  BORDERED: Variants.BORDERED,
   DEFAULT_WHITE: Variants.DEFAULT_WHITE,
   CLEAN: Variants.CLEAN,
   NARROW: Variants.NARROW,
@@ -382,6 +408,7 @@ export const VARIANTS: StringIndexedObject<string> = {
 
 export const FORM_THEME_VARIANTS: StringIndexedObject<Theme> = {
   [VARIANTS.DEFAULT]: DEFAULT_THEME,
+  [VARIANTS.BORDERED]: BORDERED_THEME,
   [VARIANTS.DEFAULT_WHITE]: DEFAULT_WHITE_THEME,
   [VARIANTS.CLEAN]: CLEAN_THEME,
   [VARIANTS.NARROW]: NARROW_THEME,
