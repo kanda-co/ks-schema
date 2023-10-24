@@ -18,7 +18,7 @@ export const CLASS_NAMES = {
     progress:
       "absolute bg-turquoise-300 h-full opacity-10 z-0 transition-width transition-slowest ease",
     bottom:
-      "relative border border-t-0 rounded-b-xl border-neutral-200 bg-neutral-000 h-12 overflow-hidden",
+      "relative border border-t-0 rounded-b-xl border-neutral-200 bg-neutral-000 min-h-12 overflow-hidden",
     padding: "flex flex-row justify-between px-3 py-2.5",
   },
   small: {
@@ -29,7 +29,7 @@ export const CLASS_NAMES = {
     progress:
       "absolute bg-turquoise-300 h-full opacity-10 z-0 transition-width transition-slowest ease",
     bottom:
-      "relative border border-t-0 rounded-b-xl border-neutral-200 bg-neutral-000 h-12 overflow-hidden",
+      "relative border border-t-0 rounded-b-xl border-neutral-200 bg-neutral-000 min-h-12 overflow-hidden",
     padding: "flex flex-row justify-between px-3 py-2.5",
   },
 };
@@ -40,18 +40,19 @@ export const ICONS = {
       icon: "file",
       stroke: "turquoise-300",
       size: 24,
-      className: "mr-4",
+      className: "mr-4 min-w-6 min-h-6",
     },
     progress: {
       icon: "load",
       stroke: "neutral-500",
       size: 20,
-      className: "animate-spin ml-2 my-auto",
+      className: "animate-spin ml-2 my-auto min-w-5 min-h-5",
     },
     delete: {
       icon: "remove",
       stroke: "neutral-600",
       size: 28,
+      className: "min-w-7 min-h-7",
     },
   },
   small: {
@@ -59,18 +60,19 @@ export const ICONS = {
       icon: "file",
       stroke: "turquoise-300",
       size: 20,
-      className: "mr-3",
+      className: "mr-3 min-w-5 min-h-5",
     },
     progress: {
       icon: "load",
       stroke: "neutral-500",
       size: 16,
-      className: "animate-spin ml-2 my-auto",
+      className: "animate-spin ml-2 my-auto min-w-4 min-h-4",
     },
     delete: {
       icon: "remove",
       stroke: "neutral-600",
       size: 28,
+      className: "min-w-7 min-h-7",
     },
   },
 };
