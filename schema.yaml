@@ -3144,34 +3144,10 @@ paths:
       tags:
         - Lead
       parameters:
-        - name: x_kanda_bid
-          in: header
-          schema:
-            type: string
-            title: kanda tid
-            description: kanda bid
-            minLength: 1
-        - name: x_kanda_cid
-          in: header
-          schema:
-            type: string
-            title: kanda tid
-            description: kanda cid
-            minLength: 1
-        - name: x_kanda_eid
-          in: header
-          schema:
-            type: string
-            title: kanda tid
-            description: kanda eid
-            minLength: 1
-        - name: x_kanda_tid
-          in: header
-          schema:
-            type: string
-            title: kanda tid
-            description: kanda tid
-            minLength: 1
+        - $ref: "#/components/parameters/x_kanda_bid"
+        - $ref: "#/components/parameters/x_kanda_cid"
+        - $ref: "#/components/parameters/x_kanda_eid"
+        - $ref: "#/components/parameters/x_kanda_tid"
       requestBody:
         description: post new lead
         required: true
@@ -3283,6 +3259,84 @@ paths:
       responses:
         200:
           description: deleted existing lead
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/lead/{id}/apply-invite:
+    post:
+      operationId: applyInviteLead
+      summary: post existing lead from applicant invite
+      tags:
+        - Lead
+      parameters:
+        - name: id
+          in: path
+          description: lead id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - $ref: "#/components/parameters/x_kanda_bid"
+        - $ref: "#/components/parameters/x_kanda_cid"
+        - $ref: "#/components/parameters/x_kanda_eid"
+        - $ref: "#/components/parameters/x_kanda_tid"
+      requestBody:
+        description: post existing lead from applicant invite
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LeadApplicant"
+      responses:
+        200:
+          description: posted existing lead from applicant invite
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/lead/{id}/budget:
+    post:
+      operationId: budgetLead
+      summary: post budget with existing lead
+      tags:
+        - Lead
+      parameters:
+        - name: id
+          in: path
+          description: lead id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - $ref: "#/components/parameters/x_kanda_bid"
+        - $ref: "#/components/parameters/x_kanda_cid"
+        - $ref: "#/components/parameters/x_kanda_eid"
+        - $ref: "#/components/parameters/x_kanda_tid"
+      requestBody:
+        description: post budget with existing lead
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Money"
+      responses:
+        200:
+          description: posted budget with existing lead
           content:
             application/json:
               schema:
@@ -7285,6 +7339,10 @@ components:
           type: string
           title: external trade id
           readOnly: true
+        invite_info:
+          type: object
+          title: invite info
+          $ref: "#/components/schemas/ContactInfo"
         lead_applicant:
           type: object
           title: lead applicant
