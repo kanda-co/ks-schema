@@ -8757,6 +8757,12 @@ components:
             - "what_can_an_iar_do"
             - "advertising_and_promotions"
             - "vulnerable_customers_and_complaints"
+            - "howdens__the_basics_of_offering_finance"
+            - "howdens__what_is_an_iar_and_what_can_it_do"
+            - "howdens__senior_management_responsibilities"
+            - "howdens__advertising_finance"
+            - "howdens__fighting_financial_crime"
+            - "howdens__treating_customers_fairly"
         number_of_quizzes:
           type: integer
           title: number of quizzes
