@@ -81,4 +81,5 @@ export const SINGLE_ACTION_REDUCERS: SingleActionReducers[] = [
 
 export const ENTITY_NAME_OVERRIDES = {
   InfoEnterprise: 'Enterprise',
+  InfoLead: 'ContactInfo',
 };

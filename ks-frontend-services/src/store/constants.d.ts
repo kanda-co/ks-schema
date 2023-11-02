@@ -11,4 +11,5 @@ export declare const VOID_ACTIONS: string[];
 export declare const SINGLE_ACTION_REDUCERS: SingleActionReducers[];
 export declare const ENTITY_NAME_OVERRIDES: {
     InfoEnterprise: string;
+    InfoLead: string;
 };
