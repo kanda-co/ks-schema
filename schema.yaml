@@ -801,6 +801,33 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/enterprise-role:
+    put:
+      operationId: infoEnterpriseRole
+      summary: info enterprise role for enterprise admin to set user role and claims
+      tags:
+        - InfoLead
+      requestBody:
+        description: info enterprise role and claims
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EnterpriseUserRole"
+      responses:
+        200:
+          description: info enterprise role and claims set
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EnterpriseUserRole"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/info/lead:
     put:
       operationId: infoLead
@@ -4593,6 +4620,51 @@ components:
         verified:
           type: boolean
           title: email verified
+
+    EnterpriseUserRole:
+      type: object
+      required:
+        - email
+        - role
+        - groups
+        - departments
+        - branches
+      properties:
+        id:
+          type: string
+          title: enterprise user id
+          readOnly: true
+        eid:
+          type: string
+          title: enterprise id
+          readOnly: true
+        bid:
+          type: string
+          title: branch id
+          readOnly: true
+        email:
+          type: string
+          title: email
+          format: email
+          x-go-type: Email
+        role:
+          type: string
+          title: role
+        groups:
+          type: array
+          title: groups or regions
+          items:
+            type: string
+        departments:
+          type: array
+          title: departments or areas
+          items:
+            type: string
+        branches:
+          type: array
+          title: branches
+          items:
+            type: string
 
     InfoMe:
       type: object
