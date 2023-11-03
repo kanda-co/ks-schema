@@ -6,7 +6,7 @@ export const ghostedUrlToOriginalUrl = (path: string): string =>
   path.replace(GHOST_URL, '');
 
 export const originalUrlToGhostedUrl = (path: string): string =>
-  [GHOST_URL, path].join('/');
+  [GHOST_URL, path].join('');
 
 export const mapUrlsIfGhosted = <T extends string>(
   urls: Record<T, string>,
