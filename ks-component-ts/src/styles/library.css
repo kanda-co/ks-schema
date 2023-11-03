@@ -1543,16 +1543,16 @@ input[type="number"]::-webkit-inner-spin-button,
   height: 32px;
 }
 
-.h-12 {
-  height: 48px;
-}
-
 .h-5\/6 {
   height: 83.333333%;
 }
 
 .h-80 {
   height: 320px;
+}
+
+.h-12 {
+  height: 48px;
 }
 
 .h-52 {
@@ -1617,6 +1617,26 @@ input[type="number"]::-webkit-inner-spin-button,
 
 .min-h-30 {
   min-height: 120px;
+}
+
+.min-h-12 {
+  min-height: 48px;
+}
+
+.min-h-6 {
+  min-height: 24px;
+}
+
+.min-h-5 {
+  min-height: 20px;
+}
+
+.min-h-7 {
+  min-height: 28px;
+}
+
+.min-h-4 {
+  min-height: 16px;
 }
 
 .min-h-20 {
@@ -1794,6 +1814,14 @@ input[type="number"]::-webkit-inner-spin-button,
 
 .min-w-6 {
   min-width: 24px;
+}
+
+.min-w-7 {
+  min-width: 28px;
+}
+
+.min-w-4 {
+  min-width: 16px;
 }
 
 .min-w-36 {

@@ -410,6 +410,14 @@ declare const lead: {
         key: string;
         method: import("../generated/operations/deleteLead").DeleteLeadRequestFunction;
     };
+    applyInviteLead: {
+        key: string;
+        method: import("../generated/operations/applyInviteLead").ApplyInviteLeadRequestFunction;
+    };
+    budgetLead: {
+        key: string;
+        method: import("../generated/operations/budgetLead").BudgetLeadRequestFunction;
+    };
     quoteLead: {
         key: string;
         method: import("../generated/operations/quoteLead").QuoteLeadRequestFunction;
@@ -1101,6 +1109,14 @@ declare const services: {
         deleteLead: {
             key: string;
             method: import("../generated/operations/deleteLead").DeleteLeadRequestFunction;
+        };
+        applyInviteLead: {
+            key: string;
+            method: import("../generated/operations/applyInviteLead").ApplyInviteLeadRequestFunction;
+        };
+        budgetLead: {
+            key: string;
+            method: import("../generated/operations/budgetLead").BudgetLeadRequestFunction;
         };
         quoteLead: {
             key: string;
