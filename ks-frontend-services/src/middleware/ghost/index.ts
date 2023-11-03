@@ -7,3 +7,19 @@ export const ghostedUrlToOriginalUrl = (path: string): string =>
 
 export const originalUrlToGhostedUrl = (path: string): string =>
   [GHOST_URL, path].join('/');
+
+export const mapUrlsIfGhosted = <T extends string>(
+  urls: Record<T, string>,
+): Record<T, string> => {
+  if (!isGhosted(window.location.pathname)) {
+    return urls;
+  }
+
+  return Object.entries(urls).reduce(
+    (acc, [key, value]) => ({
+      ...acc,
+      [key]: originalUrlToGhostedUrl(value as string),
+    }),
+    {} as Record<T, string>,
+  );
+};

@@ -15,7 +15,7 @@ export declare const revalidateUser: import("@reduxjs/toolkit").AsyncThunk<void,
     fulfilledMeta?: unknown;
     rejectedMeta?: unknown;
 }>;
-export declare const ghostUser: import("@reduxjs/toolkit").AsyncThunk<void, string, {
+export declare const infoGhost: import("@reduxjs/toolkit").AsyncThunk<void, string, {
     state?: unknown;
     dispatch?: import("redux").Dispatch<import("redux").AnyAction>;
     extra?: unknown;

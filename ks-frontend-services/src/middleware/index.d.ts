@@ -8,7 +8,7 @@ import { WrapperProps } from './Page';
 import { CreatePageArgs } from './helpers';
 import type { StringIndexedObject } from '../types';
 import type { RoutedApp } from './types';
-import { AuthUser } from '../generated/components/schemas';
+import { AuthUser, InfoGhost } from '../generated/components/schemas';
 export declare function getInitialDataPathKeyLayout<P extends StringIndexedObject>(pathKey: PathKey<P>): FunctionComponent;
 export declare function pathKeyToLoadingDependencies<State, P extends StringIndexedObject>(pathKey: PathKey<P>): Readonly<(keyof State)[]>;
 export declare function getPageUrls<P extends StringIndexedObject>(pages: PageList<P>): Record<keyof P, string>;
@@ -20,6 +20,7 @@ export declare function getPageKeyAndId<P extends StringIndexedObject>(url: stri
 export declare function fetchPageInitialData<State, P extends StringIndexedObject>(store: ToolkitStore<State>, pages: PageList<P>, { page, id }: PathKey<P>, forceReload?: boolean): void;
 export declare function initialDataProvider<State, P extends StringIndexedObject>(store: ToolkitStore<State>, pages: PageList<P>, pathKey: PathKey<P>): PathKey<P>;
 export declare function getUser(): Promise<AuthUser>;
+export declare function ghostUser(email: string): Promise<InfoGhost>;
 export declare function isAuthed<P extends StringIndexedObject>(pathKey: PathKey<P>, store: ToolkitStore): () => Promise<TE.TaskEither<Error, PathKey<P>>>;
 export declare function createMiddleware<State, P extends StringIndexedObject>(store: ToolkitStore<State>, pages: PageList<P>): (to: GuardToRoute, from: GuardFunctionRouteProps | null, next: Next) => void;
 export declare function createRoutedApp<State, Keys extends string | number, ExtraState = {}>(store: ToolkitStore<State & ExtraState>, args: Record<Keys, CreatePageArgs<State>>, notFoundPage?: FunctionComponent, Wrapper?: FunctionComponent<WrapperProps>): RoutedApp<Keys>;
