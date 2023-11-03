@@ -23,6 +23,7 @@ export const createAppSlice = <T>() => {
     page: 'login' as keyof T,
     id: undefined,
     path: '/login',
+    isGhosted: false,
     pages: {
       login: {
         path: '/login',

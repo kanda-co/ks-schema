@@ -1,692 +1,959 @@
 import { type Reducer } from '@reduxjs/toolkit';
 import type { AuthState } from './slices/auth';
 type ReducerMap<M> = {
-    [K in keyof M]: Reducer<M[K]>;
+  [K in keyof M]: Reducer<M[K]>;
 };
-export declare function createStore<PageKeys extends string, ExtraState = {}>(extraReducers?: ReducerMap<ExtraState>): import("@reduxjs/toolkit/dist/configureStore").ToolkitStore<{
+export declare function createStore<PageKeys extends string, ExtraState = {}>(
+  extraReducers?: ReducerMap<ExtraState>,
+): import('@reduxjs/toolkit/dist/configureStore').ToolkitStore<
+  {
     authUser: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").AuthUser>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<import('..').AuthUser>;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     company: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Company>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<import('..').Company>;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     credit: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Credit>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<import('..').Credit>;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     document: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Document>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<import('..').Document>;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     enterprise: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Enterprise>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<import('..').Enterprise>;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     event: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Event>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<import('..').Event>;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     infoAuth: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoAuth>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<import('..').InfoAuth>;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     infoCompany: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoCompany>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<import('..').InfoCompany>;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     infoEnterprise: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Enterprise>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<import('..').Enterprise>;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     infoEntity: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoEntity>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<import('..').InfoEntity>;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     infoGhost: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoGhost>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<import('..').InfoGhost>;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     infoIP: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoIP>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<import('..').InfoIP>;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     infoLead: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").ContactInfo>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<import('..').ContactInfo>;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     infoOnboarding: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoOnboarding>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<
+        import('..').InfoOnboarding
+      >;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     infoQuery: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoQuery>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<import('..').InfoQuery>;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     job: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Job>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<import('..').Job>;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     lead: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Lead>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<import('..').Lead>;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     monitor: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Monitor>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<import('..').Monitor>;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     onboarding: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Onboarding>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<import('..').Onboarding>;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     partner: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Partner>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<import('..').Partner>;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     payment: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Payment>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<import('..').Payment>;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     rate: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Rate>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<import('..').Rate>;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     subscription: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Subscription>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<
+        import('..').Subscription
+      >;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     tradeSummary: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").TradeSummary>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<
+        import('..').TradeSummary
+      >;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     training: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Training>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<import('..').Training>;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     jobCompanyInfo: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").JobCompanyInfo>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<
+        import('..').JobCompanyInfo
+      >;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     checkJob: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").JobCreditState>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<
+        import('..').JobCreditState
+      >;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     tradeQuoteApprovalLead: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Job>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<import('..').Job>;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     connectTradesLead: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").TradeSummary>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<
+        import('..').TradeSummary
+      >;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     matchTradesLead: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").TradeSummary>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<
+        import('..').TradeSummary
+      >;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     acceptedJobSummaryLead: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").LeadJobSummary>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<
+        import('..').LeadJobSummary
+      >;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     postCompanyDirectorVerification: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoCompany>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<import('..').InfoCompany>;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     getCompanyDirectorVerification: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoCompany>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<import('..').InfoCompany>;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     postCompanyBilling: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").RedirectURLs>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<
+        import('..').RedirectURLs
+      >;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
     postCompanyReferrals: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Referral>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
+      ids: import('@reduxjs/toolkit').EntityId[];
+      entities: import('@reduxjs/toolkit').Dictionary<import('..').Referral>;
+      error?: import('../types').ExtractedError;
+      isSubmitting: boolean;
+      fetchedList: boolean;
+      chainedRequest: boolean;
+      isLoading: boolean;
     };
-    app: import("./slices/app").AppState<PageKeys>;
+    app: import('./slices/app').AppState<PageKeys>;
     auth: AuthState;
-}, import("redux").AnyAction, import("@reduxjs/toolkit").MiddlewareArray<[import("@reduxjs/toolkit").ThunkMiddleware<{
-    authUser: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").AuthUser>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    company: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Company>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    credit: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Credit>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    document: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Document>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    enterprise: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Enterprise>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    event: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Event>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    infoAuth: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoAuth>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    infoCompany: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoCompany>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    infoEnterprise: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Enterprise>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    infoEntity: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoEntity>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    infoGhost: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoGhost>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    infoIP: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoIP>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    infoLead: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").ContactInfo>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    infoOnboarding: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoOnboarding>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    infoQuery: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoQuery>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    job: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Job>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    lead: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Lead>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    monitor: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Monitor>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    onboarding: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Onboarding>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    partner: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Partner>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    payment: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Payment>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    rate: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Rate>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    subscription: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Subscription>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    tradeSummary: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").TradeSummary>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    training: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Training>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    jobCompanyInfo: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").JobCompanyInfo>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    checkJob: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").JobCreditState>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    tradeQuoteApprovalLead: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Job>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    connectTradesLead: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").TradeSummary>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    matchTradesLead: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").TradeSummary>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    acceptedJobSummaryLead: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").LeadJobSummary>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    postCompanyDirectorVerification: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoCompany>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    getCompanyDirectorVerification: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoCompany>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    postCompanyBilling: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").RedirectURLs>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    postCompanyReferrals: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").Referral>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    app: import("./slices/app").AppState<PageKeys>;
-    auth: AuthState;
-}, import("redux").AnyAction, undefined>]>>;
+  },
+  import('redux').AnyAction,
+  import('@reduxjs/toolkit').MiddlewareArray<
+    [
+      import('@reduxjs/toolkit').ThunkMiddleware<
+        {
+          authUser: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<
+              import('..').AuthUser
+            >;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          company: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<
+              import('..').Company
+            >;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          credit: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<
+              import('..').Credit
+            >;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          document: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<
+              import('..').Document
+            >;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          enterprise: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<
+              import('..').Enterprise
+            >;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          event: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<import('..').Event>;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          infoAuth: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<
+              import('..').InfoAuth
+            >;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          infoCompany: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<
+              import('..').InfoCompany
+            >;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          infoEnterprise: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<
+              import('..').Enterprise
+            >;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          infoEntity: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<
+              import('..').InfoEntity
+            >;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          infoGhost: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<
+              import('..').InfoGhost
+            >;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          infoIP: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<
+              import('..').InfoIP
+            >;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          infoLead: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<
+              import('..').ContactInfo
+            >;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          infoOnboarding: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<
+              import('..').InfoOnboarding
+            >;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          infoQuery: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<
+              import('..').InfoQuery
+            >;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          job: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<import('..').Job>;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          lead: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<import('..').Lead>;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          monitor: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<
+              import('..').Monitor
+            >;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          onboarding: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<
+              import('..').Onboarding
+            >;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          partner: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<
+              import('..').Partner
+            >;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          payment: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<
+              import('..').Payment
+            >;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          rate: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<import('..').Rate>;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          subscription: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<
+              import('..').Subscription
+            >;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          tradeSummary: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<
+              import('..').TradeSummary
+            >;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          training: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<
+              import('..').Training
+            >;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          jobCompanyInfo: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<
+              import('..').JobCompanyInfo
+            >;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          checkJob: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<
+              import('..').JobCreditState
+            >;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          tradeQuoteApprovalLead: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<import('..').Job>;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          connectTradesLead: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<
+              import('..').TradeSummary
+            >;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          matchTradesLead: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<
+              import('..').TradeSummary
+            >;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          acceptedJobSummaryLead: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<
+              import('..').LeadJobSummary
+            >;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          postCompanyDirectorVerification: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<
+              import('..').InfoCompany
+            >;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          getCompanyDirectorVerification: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<
+              import('..').InfoCompany
+            >;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          postCompanyBilling: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<
+              import('..').RedirectURLs
+            >;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          postCompanyReferrals: {
+            ids: import('@reduxjs/toolkit').EntityId[];
+            entities: import('@reduxjs/toolkit').Dictionary<
+              import('..').Referral
+            >;
+            error?: import('../types').ExtractedError;
+            isSubmitting: boolean;
+            fetchedList: boolean;
+            chainedRequest: boolean;
+            isLoading: boolean;
+          };
+          app: import('./slices/app').AppState<PageKeys>;
+          auth: AuthState;
+        },
+        import('redux').AnyAction,
+        undefined
+      >,
+    ]
+  >
+>;
 export type AuthSlice = {
-    auth: AuthState;
+  auth: AuthState;
 };
 export declare function createSelectors<State extends AuthSlice, Pages>(): {
-    getAuth: (state: State) => AuthState;
-    getUser: (state: State) => import("..").AuthUser;
-    getFirebaseUser: (state: State) => import("@firebase/auth").User;
-    getAuthIsLoading: (state: State) => boolean;
-    getIsUserLoggedIn: (state: State) => boolean;
-    getRoot: (state: State) => State;
-    getApp: (state: State) => State["app"];
-    getPathKey: (state: State) => import("./types").PathKey<Pages>;
-    getIsLoading: (state: State) => boolean;
-    authUser: import("./types").Selectors<import("..").AuthUser, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").AuthUser>>>;
-    company: import("./types").Selectors<import("..").Company, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Company>>>;
-    credit: import("./types").Selectors<import("..").Credit, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Credit>>>;
-    document: import("./types").Selectors<import("..").Document, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Document>>>;
-    enterprise: import("./types").Selectors<import("..").Enterprise, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Enterprise>>>;
-    event: import("./types").Selectors<import("..").Event, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Event>>>;
-    infoAuth: import("./types").Selectors<import("..").InfoAuth, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoAuth>>>;
-    infoCompany: import("./types").Selectors<import("..").InfoCompany, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoCompany>>>;
-    infoEnterprise: import("./types").Selectors<import("..").Enterprise, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Enterprise>>>;
-    infoEntity: import("./types").Selectors<import("..").InfoEntity, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoEntity>>>;
-    infoGhost: import("./types").Selectors<import("..").InfoGhost, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoGhost>>>;
-    infoIP: import("./types").Selectors<import("..").InfoIP, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoIP>>>;
-    infoLead: import("./types").Selectors<import("..").ContactInfo, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").ContactInfo>>>;
-    infoOnboarding: import("./types").Selectors<import("..").InfoOnboarding, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoOnboarding>>>;
-    infoQuery: import("./types").Selectors<import("..").InfoQuery, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoQuery>>>;
-    job: import("./types").Selectors<import("..").Job, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Job>>>;
-    lead: import("./types").Selectors<import("..").Lead, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Lead>>>;
-    monitor: import("./types").Selectors<import("..").Monitor, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Monitor>>>;
-    onboarding: import("./types").Selectors<import("..").Onboarding, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Onboarding>>>;
-    partner: import("./types").Selectors<import("..").Partner, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Partner>>>;
-    payment: import("./types").Selectors<import("..").Payment, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Payment>>>;
-    rate: import("./types").Selectors<import("..").Rate, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Rate>>>;
-    subscription: import("./types").Selectors<import("..").Subscription, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Subscription>>>;
-    tradeSummary: import("./types").Selectors<import("..").TradeSummary, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").TradeSummary>>>;
-    training: import("./types").Selectors<import("..").Training, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Training>>>;
-    jobCompanyInfo: import("./types").Selectors<import("..").JobCompanyInfo, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").JobCompanyInfo>>>;
-    checkJob: import("./types").Selectors<import("..").JobCreditState, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").JobCreditState>>>;
-    tradeQuoteApprovalLead: import("./types").Selectors<import("..").Job, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Job>>>;
-    connectTradesLead: import("./types").Selectors<import("..").TradeSummary, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").TradeSummary>>>;
-    matchTradesLead: import("./types").Selectors<import("..").TradeSummary, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").TradeSummary>>>;
-    acceptedJobSummaryLead: import("./types").Selectors<import("..").LeadJobSummary, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").LeadJobSummary>>>;
-    postCompanyDirectorVerification: import("./types").Selectors<import("..").InfoCompany, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoCompany>>>;
-    getCompanyDirectorVerification: import("./types").Selectors<import("..").InfoCompany, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoCompany>>>;
-    postCompanyBilling: import("./types").Selectors<import("..").RedirectURLs, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").RedirectURLs>>>;
-    postCompanyReferrals: import("./types").Selectors<import("..").Referral, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Referral>>>;
+  getAuth: (state: State) => AuthState;
+  getUser: (state: State) => import('..').AuthUser;
+  getFirebaseUser: (state: State) => import('@firebase/auth').User;
+  getAuthIsLoading: (state: State) => boolean;
+  getIsUserLoggedIn: (state: State) => boolean;
+  getRoot: (state: State) => State;
+  getApp: (state: State) => State['app'];
+  getPathKey: (state: State) => import('./types').PathKey<Pages>;
+  getIsLoading: (state: State) => boolean;
+  authUser: import('./types').Selectors<
+    import('..').AuthUser,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').AuthUser>
+    >
+  >;
+  company: import('./types').Selectors<
+    import('..').Company,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').Company>
+    >
+  >;
+  credit: import('./types').Selectors<
+    import('..').Credit,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').Credit>
+    >
+  >;
+  document: import('./types').Selectors<
+    import('..').Document,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').Document>
+    >
+  >;
+  enterprise: import('./types').Selectors<
+    import('..').Enterprise,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').Enterprise>
+    >
+  >;
+  event: import('./types').Selectors<
+    import('..').Event,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').Event>
+    >
+  >;
+  infoAuth: import('./types').Selectors<
+    import('..').InfoAuth,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').InfoAuth>
+    >
+  >;
+  infoCompany: import('./types').Selectors<
+    import('..').InfoCompany,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').InfoCompany>
+    >
+  >;
+  infoEnterprise: import('./types').Selectors<
+    import('..').Enterprise,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').Enterprise>
+    >
+  >;
+  infoEntity: import('./types').Selectors<
+    import('..').InfoEntity,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').InfoEntity>
+    >
+  >;
+  infoGhost: import('./types').Selectors<
+    import('..').InfoGhost,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').InfoGhost>
+    >
+  >;
+  infoIP: import('./types').Selectors<
+    import('..').InfoIP,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').InfoIP>
+    >
+  >;
+  infoLead: import('./types').Selectors<
+    import('..').ContactInfo,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').ContactInfo>
+    >
+  >;
+  infoOnboarding: import('./types').Selectors<
+    import('..').InfoOnboarding,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').InfoOnboarding>
+    >
+  >;
+  infoQuery: import('./types').Selectors<
+    import('..').InfoQuery,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').InfoQuery>
+    >
+  >;
+  job: import('./types').Selectors<
+    import('..').Job,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').Job>
+    >
+  >;
+  lead: import('./types').Selectors<
+    import('..').Lead,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').Lead>
+    >
+  >;
+  monitor: import('./types').Selectors<
+    import('..').Monitor,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').Monitor>
+    >
+  >;
+  onboarding: import('./types').Selectors<
+    import('..').Onboarding,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').Onboarding>
+    >
+  >;
+  partner: import('./types').Selectors<
+    import('..').Partner,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').Partner>
+    >
+  >;
+  payment: import('./types').Selectors<
+    import('..').Payment,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').Payment>
+    >
+  >;
+  rate: import('./types').Selectors<
+    import('..').Rate,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').Rate>
+    >
+  >;
+  subscription: import('./types').Selectors<
+    import('..').Subscription,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').Subscription>
+    >
+  >;
+  tradeSummary: import('./types').Selectors<
+    import('..').TradeSummary,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').TradeSummary>
+    >
+  >;
+  training: import('./types').Selectors<
+    import('..').Training,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').Training>
+    >
+  >;
+  jobCompanyInfo: import('./types').Selectors<
+    import('..').JobCompanyInfo,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').JobCompanyInfo>
+    >
+  >;
+  checkJob: import('./types').Selectors<
+    import('..').JobCreditState,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').JobCreditState>
+    >
+  >;
+  tradeQuoteApprovalLead: import('./types').Selectors<
+    import('..').Job,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').Job>
+    >
+  >;
+  connectTradesLead: import('./types').Selectors<
+    import('..').TradeSummary,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').TradeSummary>
+    >
+  >;
+  matchTradesLead: import('./types').Selectors<
+    import('..').TradeSummary,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').TradeSummary>
+    >
+  >;
+  acceptedJobSummaryLead: import('./types').Selectors<
+    import('..').LeadJobSummary,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').LeadJobSummary>
+    >
+  >;
+  postCompanyDirectorVerification: import('./types').Selectors<
+    import('..').InfoCompany,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').InfoCompany>
+    >
+  >;
+  getCompanyDirectorVerification: import('./types').Selectors<
+    import('..').InfoCompany,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').InfoCompany>
+    >
+  >;
+  postCompanyBilling: import('./types').Selectors<
+    import('..').RedirectURLs,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').RedirectURLs>
+    >
+  >;
+  postCompanyReferrals: import('./types').Selectors<
+    import('..').Referral,
+    import('../types').StringIndexedObject<
+      import('./types').GeneratedState<import('..').Referral>
+    >
+  >;
 };
 export {};

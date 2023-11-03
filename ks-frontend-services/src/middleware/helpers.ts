@@ -47,14 +47,3 @@ export const createPages = <State, Keys extends string | number>(
     return acc;
   }, {} as PageList);
 };
-
-export const isGhostUrl = (url: string): boolean => url.startsWith('/ghost');
-
-export const formatUrlForGhost = (url: string): string => {
-  if (isGhostUrl(url)) {
-    alert(url.replace('/ghost', ''));
-    return url.replace('/ghost', '');
-  }
-
-  return url;
-};

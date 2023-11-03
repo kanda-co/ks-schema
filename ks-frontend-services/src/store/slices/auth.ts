@@ -4,6 +4,7 @@ import { getUser } from '../../middleware';
 import type { AuthUser } from '../../generated/components/schemas';
 import { createSlice } from '../toolkit';
 import { User } from 'firebase/auth';
+import { infoGhost } from './generated/infoGhost';
 
 export interface AuthState {
   isLoading: boolean;
@@ -22,6 +23,21 @@ export const revalidateUser = createAsyncThunk(
 
       store.dispatch(userLoggedIn({ user, firebaseUser }));
     }
+  },
+);
+
+export const ghostUser = createAsyncThunk(
+  'auth/ghostUser',
+  async (email: string, store) => {
+    store
+      .dispatch(
+        infoGhost({
+          body: { email },
+        }),
+      )
+      .then((value) => {
+        console.log({ payload: value.payload });
+      });
   },
 );
 

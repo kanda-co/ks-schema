@@ -24,12 +24,8 @@ import type {
 } from './types';
 import { createPage, WrapperProps } from './Page';
 import { FirebaseAuthService } from '../auth';
-import {
-  CreatePageArgs,
-  createPages,
-  formatUrlForGhost,
-  handleIO,
-} from './helpers';
+import { CreatePageArgs, createPages, handleIO } from './helpers';
+import { ghostedUrlToOriginalUrl, isGhosted } from './ghost';
 import type { StringIndexedObject } from '../types';
 import type { RoutedApp, ValidAction } from './types';
 import { createAppSlice } from '../store/slices/app';
@@ -38,7 +34,6 @@ import services from '../service';
 import { handleResponse, type Response } from '../handlers';
 import { AuthUser } from '../generated/components/schemas';
 import { LOGIN_URL } from '../auth/constants';
-import { createAppDispatchHook } from '../hooks/useAppDispatch';
 
 export function getInitialDataPathKeyLayout<P extends StringIndexedObject>(
   pathKey: PathKey<P>,
@@ -133,7 +128,8 @@ function getInitialDataPathKey<P extends StringIndexedObject>(
   to: GuardToRoute,
 ): PathKey<P> {
   const urls = getPageUrls<P>(pages);
-  const url = formatUrlForGhost(to.match.url);
+  const originalUrl = to.match.url;
+  const url = ghostedUrlToOriginalUrl(originalUrl);
 
   const { key: page, id } = getPageKeyAndId<P>(url, urls);
 
@@ -144,6 +140,7 @@ function getInitialDataPathKey<P extends StringIndexedObject>(
   const pathKey = {
     page,
     id,
+    isGhosted: isGhosted(originalUrl),
   };
 
   return {
