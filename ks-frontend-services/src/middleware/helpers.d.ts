@@ -18,3 +18,5 @@ export interface CreatePageArgs<State> {
 }
 export declare const createPage: <State>(args: CreatePageArgs<State>) => Page;
 export declare const createPages: <State, Keys extends string | number>(pages: Record<Keys, CreatePageArgs<State>>) => PageList;
+export declare const isGhostUrl: (url: string) => boolean;
+export declare const formatUrlForGhost: (url: string) => string;

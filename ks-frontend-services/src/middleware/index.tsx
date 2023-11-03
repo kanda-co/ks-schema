@@ -24,7 +24,12 @@ import type {
 } from './types';
 import { createPage, WrapperProps } from './Page';
 import { FirebaseAuthService } from '../auth';
-import { CreatePageArgs, createPages, handleIO } from './helpers';
+import {
+  CreatePageArgs,
+  createPages,
+  formatUrlForGhost,
+  handleIO,
+} from './helpers';
 import type { StringIndexedObject } from '../types';
 import type { RoutedApp, ValidAction } from './types';
 import { createAppSlice } from '../store/slices/app';
@@ -128,7 +133,7 @@ function getInitialDataPathKey<P extends StringIndexedObject>(
   to: GuardToRoute,
 ): PathKey<P> {
   const urls = getPageUrls<P>(pages);
-  const url = to.match.url;
+  const url = formatUrlForGhost(to.match.url);
 
   const { key: page, id } = getPageKeyAndId<P>(url, urls);
 
