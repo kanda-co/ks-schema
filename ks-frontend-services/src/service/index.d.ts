@@ -252,6 +252,10 @@ declare const infoIP: {
     };
 };
 declare const infoLead: {
+    infoEnterpriseRole: {
+        key: string;
+        method: import("../generated/operations/infoEnterpriseRole").InfoEnterpriseRoleRequestFunction;
+    };
     infoLead: {
         key: string;
         method: import("../generated/operations/infoLead").InfoLeadRequestFunction;
@@ -409,6 +413,14 @@ declare const lead: {
     deleteLead: {
         key: string;
         method: import("../generated/operations/deleteLead").DeleteLeadRequestFunction;
+    };
+    applyInviteLead: {
+        key: string;
+        method: import("../generated/operations/applyInviteLead").ApplyInviteLeadRequestFunction;
+    };
+    budgetLead: {
+        key: string;
+        method: import("../generated/operations/budgetLead").BudgetLeadRequestFunction;
     };
     quoteLead: {
         key: string;
@@ -944,6 +956,10 @@ declare const services: {
         };
     };
     infoLead: {
+        infoEnterpriseRole: {
+            key: string;
+            method: import("../generated/operations/infoEnterpriseRole").InfoEnterpriseRoleRequestFunction;
+        };
         infoLead: {
             key: string;
             method: import("../generated/operations/infoLead").InfoLeadRequestFunction;
@@ -1101,6 +1117,14 @@ declare const services: {
         deleteLead: {
             key: string;
             method: import("../generated/operations/deleteLead").DeleteLeadRequestFunction;
+        };
+        applyInviteLead: {
+            key: string;
+            method: import("../generated/operations/applyInviteLead").ApplyInviteLeadRequestFunction;
+        };
+        budgetLead: {
+            key: string;
+            method: import("../generated/operations/budgetLead").BudgetLeadRequestFunction;
         };
         quoteLead: {
             key: string;

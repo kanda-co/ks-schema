@@ -19,17 +19,18 @@ export const IGNORED_ACTIONS = [
   'jobCheckoutLink',
   'jobCompanyInfo',
   'infoSession',
+  'infoLead',
   'postCompanyBilling',
   'postCompanyDirectorVerification',
   'postCompanyReferrals',
   'getCompanyDirectorVerification',
 ];
 
-export interface SingleActionReducers {
+export type SingleActionReducers = {
   entity: string;
   action: string;
   actionEntity?: string;
-}
+};
 
 // An array of actions that return a void payload
 export const VOID_ACTIONS = ['resendJob'];
@@ -77,9 +78,18 @@ export const SINGLE_ACTION_REDUCERS: SingleActionReducers[] = [
     action: 'PostCompanyReferrals',
     actionEntity: 'Referral',
   },
+  {
+    entity: 'infoLead',
+    action: 'infolead',
+    actionEntity: 'ContactInfo',
+  },
+  {
+    entity: 'infoLead',
+    action: 'infoEnterpriseRole',
+    actionEntity: 'ContactInfo',
+  },
 ];
 
 export const ENTITY_NAME_OVERRIDES = {
   InfoEnterprise: 'Enterprise',
-  InfoLead: 'ContactInfo',
 };
