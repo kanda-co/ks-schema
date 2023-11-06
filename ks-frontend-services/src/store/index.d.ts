@@ -319,6 +319,24 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         chainedRequest: boolean;
         isLoading: boolean;
     };
+    infolead: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").ContactInfo>;
+        error?: import("../types").ExtractedError;
+        isSubmitting: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+    };
+    infoEnterpriseRole: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").ContactInfo>;
+        error?: import("../types").ExtractedError;
+        isSubmitting: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+    };
     app: import("./slices/app").AppState<PageKeys>;
     auth: AuthState;
 }, import("redux").AnyAction, import("@reduxjs/toolkit").MiddlewareArray<[import("@reduxjs/toolkit").ThunkMiddleware<{
@@ -637,6 +655,24 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         chainedRequest: boolean;
         isLoading: boolean;
     };
+    infolead: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").ContactInfo>;
+        error?: import("../types").ExtractedError;
+        isSubmitting: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+    };
+    infoEnterpriseRole: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").ContactInfo>;
+        error?: import("../types").ExtractedError;
+        isSubmitting: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+    };
     app: import("./slices/app").AppState<PageKeys>;
     auth: AuthState;
 }, import("redux").AnyAction, undefined>]>>;
@@ -665,7 +701,7 @@ export declare function createSelectors<State extends AuthSlice, Pages>(): {
     infoEntity: import("./types").Selectors<import("..").InfoEntity, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoEntity>>>;
     infoGhost: import("./types").Selectors<import("..").InfoGhost, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoGhost>>>;
     infoIP: import("./types").Selectors<import("..").InfoIP, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoIP>>>;
-    infoLead: import("./types").Selectors<import("..").ContactInfo, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").ContactInfo>>>;
+    infoLead: import("./types").Selectors<InfoLead, import("../types").StringIndexedObject<import("./types").GeneratedState<InfoLead>>>;
     infoOnboarding: import("./types").Selectors<import("..").InfoOnboarding, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoOnboarding>>>;
     infoQuery: import("./types").Selectors<import("..").InfoQuery, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoQuery>>>;
     job: import("./types").Selectors<import("..").Job, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Job>>>;
@@ -688,5 +724,7 @@ export declare function createSelectors<State extends AuthSlice, Pages>(): {
     getCompanyDirectorVerification: import("./types").Selectors<import("..").InfoCompany, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoCompany>>>;
     postCompanyBilling: import("./types").Selectors<import("..").RedirectURLs, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").RedirectURLs>>>;
     postCompanyReferrals: import("./types").Selectors<import("..").Referral, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Referral>>>;
+    infolead: import("./types").Selectors<import("..").ContactInfo, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").ContactInfo>>>;
+    infoEnterpriseRole: import("./types").Selectors<import("..").ContactInfo, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").ContactInfo>>>;
 };
 export {};

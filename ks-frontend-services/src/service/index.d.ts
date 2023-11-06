@@ -252,6 +252,10 @@ declare const infoIP: {
     };
 };
 declare const infoLead: {
+    infoEnterpriseRole: {
+        key: string;
+        method: import("../generated/operations/infoEnterpriseRole").InfoEnterpriseRoleRequestFunction;
+    };
     infoLead: {
         key: string;
         method: import("../generated/operations/infoLead").InfoLeadRequestFunction;
@@ -952,6 +956,10 @@ declare const services: {
         };
     };
     infoLead: {
+        infoEnterpriseRole: {
+            key: string;
+            method: import("../generated/operations/infoEnterpriseRole").InfoEnterpriseRoleRequestFunction;
+        };
         infoLead: {
             key: string;
             method: import("../generated/operations/infoLead").InfoLeadRequestFunction;

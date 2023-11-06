@@ -4,10 +4,10 @@ import type { IO } from 'fp-ts/lib/IO';
 import type { Args, InitialDataAction, ValidAction, Page, PageList } from './types';
 import { AsyncThunkReturnType } from '../store/types';
 export declare const handleIO: (io: IO<void>) => TE.TaskEither<Error, void>;
-export declare const createAction: <T extends ValidAction, Entity>(action: T, args?: {
+export declare const createAction: <T extends unknown, Entity>(action: T, args?: {
     params?: import("./types").Params<T>;
     body?: import("./types").Body<T>;
-} & import("../store/types").SharedAsyncThunkActionArgs<Entity>, idRequired?: boolean, onLoad?: <P extends ValidAction>(entity: AsyncThunkReturnType<T>[0]) => InitialDataAction[]) => InitialDataAction<T, any>;
+} & import("../store/types").SharedAsyncThunkActionArgs<Entity>, idRequired?: boolean, onLoad?: <P extends unknown>(entity: AsyncThunkReturnType<T>[0]) => InitialDataAction[]) => InitialDataAction<T, any>;
 export interface CreatePageArgs<State> {
     path: string;
     PageComponent: FunctionComponent;
