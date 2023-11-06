@@ -19,7 +19,13 @@ export * from './generated/components/schemas';
 export { createStore, createSelectors } from './store';
 export * as slices from './store/slices/generated/';
 export * as actions from './store/slices/generated/actions';
-export { revalidateUser, logout, userLoggedIn } from './store/slices/auth';
+export {
+  revalidateUser,
+  infoGhost,
+  logout,
+  userLoggedIn,
+} from './store/slices/auth';
+export {};
 export * from './store/toolkit';
 export { createAppSlice } from './store/slices/app';
 export { default as auth } from './store/slices/auth';
@@ -32,6 +38,7 @@ export {
   pathKeyToLoadingDependencies,
   fetchPageInitialData,
 } from './middleware';
+export { mapUrlsIfGhosted } from './middleware/ghost';
 export { createAction } from './middleware/helpers';
 
 export type {

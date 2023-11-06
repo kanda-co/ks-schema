@@ -1,9 +1,13 @@
 import { createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { FirebaseAuthService } from '../../auth';
-import { getUser } from '../../middleware';
+import { getUser, ghostUser } from '../../middleware';
 import type { AuthUser } from '../../generated/components/schemas';
 import { createSlice } from '../toolkit';
 import { User } from 'firebase/auth';
+import {
+  GHOST_URL,
+  ORIGINAL_USER_SESSION_KEY,
+} from '../../middleware/ghost/constants';
 
 export interface AuthState {
   isLoading: boolean;
@@ -22,6 +26,23 @@ export const revalidateUser = createAsyncThunk(
 
       store.dispatch(userLoggedIn({ user, firebaseUser }));
     }
+  },
+);
+
+export const infoGhost = createAsyncThunk(
+  'auth/ghostUser',
+  async (email: string) => {
+    const user = await getUser();
+    sessionStorage.setItem(ORIGINAL_USER_SESSION_KEY, user.token);
+
+    const infoGhost = await ghostUser(email);
+
+    await FirebaseAuthService.signInWithCustomToken(
+      infoGhost.custom_token,
+      false,
+    );
+
+    window.location.href = `${GHOST_URL}/`;
   },
 );
 

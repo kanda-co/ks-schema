@@ -25,15 +25,15 @@ import type {
 import { createPage, WrapperProps } from './Page';
 import { FirebaseAuthService } from '../auth';
 import { CreatePageArgs, createPages, handleIO } from './helpers';
+import { isGhosted } from './ghost';
 import type { StringIndexedObject } from '../types';
 import type { RoutedApp, ValidAction } from './types';
 import { createAppSlice } from '../store/slices/app';
 import { userLoggedIn } from '../store/slices/auth';
 import services from '../service';
 import { handleResponse, type Response } from '../handlers';
-import { AuthUser } from '../generated/components/schemas';
+import { AuthUser, InfoGhost } from '../generated/components/schemas';
 import { LOGIN_URL } from '../auth/constants';
-import { createAppDispatchHook } from '../hooks/useAppDispatch';
 
 export function getInitialDataPathKeyLayout<P extends StringIndexedObject>(
   pathKey: PathKey<P>,
@@ -128,7 +128,7 @@ function getInitialDataPathKey<P extends StringIndexedObject>(
   to: GuardToRoute,
 ): PathKey<P> {
   const urls = getPageUrls<P>(pages);
-  const url = to.match.url;
+  const { url } = to.match;
 
   const { key: page, id } = getPageKeyAndId<P>(url, urls);
 
@@ -139,6 +139,7 @@ function getInitialDataPathKey<P extends StringIndexedObject>(
   const pathKey = {
     page,
     id,
+    isGhosted: isGhosted(url),
   };
 
   return {
@@ -259,6 +260,17 @@ export async function getUser(): Promise<AuthUser> {
   const user = await handleResponse<AuthUser>(response as Response<AuthUser>);
 
   return user as AuthUser;
+}
+
+export async function ghostUser(email: string): Promise<InfoGhost> {
+  const response = await services.infoGhost.infoGhost.method({
+    body: { email },
+  })();
+  const infoGhost = await handleResponse<InfoGhost>(
+    response as Response<InfoGhost>,
+  );
+
+  return infoGhost as InfoGhost;
 }
 
 async function userIsLoggedIn<P extends StringIndexedObject>(

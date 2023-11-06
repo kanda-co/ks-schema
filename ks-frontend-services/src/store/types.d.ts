@@ -19,6 +19,7 @@ export interface PathKey<P extends StringIndexedObject> {
   id?: string;
   path: string;
   pages: PageList<P>;
+  isGhosted: boolean;
 }
 
 export interface GeneratedState<T = unknown> extends EntityState<T> {

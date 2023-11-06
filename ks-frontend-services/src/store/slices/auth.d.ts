@@ -15,6 +15,16 @@ export declare const revalidateUser: import("@reduxjs/toolkit").AsyncThunk<void,
     fulfilledMeta?: unknown;
     rejectedMeta?: unknown;
 }>;
+export declare const infoGhost: import("@reduxjs/toolkit").AsyncThunk<void, string, {
+    state?: unknown;
+    dispatch?: import("redux").Dispatch<import("redux").AnyAction>;
+    extra?: unknown;
+    rejectValue?: unknown;
+    serializedErrorType?: unknown;
+    pendingMeta?: unknown;
+    fulfilledMeta?: unknown;
+    rejectedMeta?: unknown;
+}>;
 export declare const userLoggedIn: import("@reduxjs/toolkit").ActionCreatorWithOptionalPayload<{
     user: AuthUser;
     firebaseUser: User;
