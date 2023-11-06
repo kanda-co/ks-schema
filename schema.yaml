@@ -834,6 +834,27 @@ paths:
       summary: info lead for enterprise user to send out AIP form link
       tags:
         - InfoLead
+      parameters:
+        - in: query
+          name: eid
+          schema:
+            type: string
+          description: enterprise id
+        - in: query
+          name: bid
+          schema:
+            type: string
+          description: enterprise branch id
+        - in: query
+          name: subdomain
+          schema:
+            type: string
+          description: enterprise / branch subdomain
+        - in: query
+          name: branch_code
+          schema:
+            type: string
+          description: enterprise branch code
       requestBody:
         description: contact information to be sent with AIP form link
         required: true
