@@ -19,7 +19,6 @@ export const IGNORED_ACTIONS = [
   'jobCheckoutLink',
   'jobCompanyInfo',
   'infoSession',
-  'infoLead',
   'postCompanyBilling',
   'postCompanyDirectorVerification',
   'postCompanyReferrals',
@@ -80,13 +79,13 @@ export const SINGLE_ACTION_REDUCERS: SingleActionReducers[] = [
   },
   {
     entity: 'infoLead',
-    action: 'infolead',
+    action: 'InfoLead',
     actionEntity: 'ContactInfo',
   },
   {
     entity: 'infoLead',
-    action: 'infoEnterpriseRole',
-    actionEntity: 'ContactInfo',
+    action: 'InfoEnterpriseRole',
+    actionEntity: 'EnterpriseUserRole',
   },
 ];
 
