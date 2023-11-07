@@ -175,6 +175,7 @@ import { GENERATED_STATE } from '../../constants'
 import type { AsyncThunkReturnType, GeneratedState } from "../../types";
 import type { ExtractedError } from '../../../types';
 import { ${camelCaseEntityName}Adapter } from '../../adapters';
+import { reset } from '../../actions';
 
 // Service methods
 ${actionNames
@@ -214,10 +215,6 @@ export const ${camelCaseEntityName}Slice = createSlice({
 	  ...${camelCaseEntityName}Adapter.getInitialState()
   },
   reducers: {
-    reset: (state: ${entityName}State, action: PayloadAction<undefined>) => ({
-	    ...GENERATED_STATE,
-	    ...${camelCaseEntityName}Adapter.getInitialState()
-    }),
     chainedRequest: (state: ${entityName}State, action: PayloadAction<undefined>) => ({
       ...state,
       error: action.payload,
@@ -241,12 +238,17 @@ export const ${camelCaseEntityName}Slice = createSlice({
             fetchedList: state.fetchedList,
     }),
   },
-  extraReducers: (builder) => {${actionNames
-    .map((actionName) => reducerForAction(entityName, actionName))
-    .join('')}},
+  extraReducers: (builder) => {
+    builder.addCase(reset, (state) => ({
+      ...GENERATED_STATE,
+      ...${camelCaseEntityName}Adapter.getInitialState(),
+    }));
+    ${actionNames
+      .map((actionName) => reducerForAction(entityName, actionName))
+      .join('')}},
 });
 
-export const { reset, fetching, fetched, error } = ${camelCaseEntityName}Slice.actions;
+export const { fetching, fetched, error } = ${camelCaseEntityName}Slice.actions;
 
 export default ${camelCaseEntityName}Slice.reducer;
 `;
