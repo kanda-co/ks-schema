@@ -5746,6 +5746,11 @@ components:
             x-go-type: Email
           title: emails for user who has api access
           readOnly: true
+        users:
+          type: array
+          items:
+            $ref: "#/components/schemas/EnterpriseUserType"
+          title: users under this enterprise
         contact_info:
           type: object
           title: enterprise contact info
@@ -6490,6 +6495,37 @@ components:
         last_name:
           type: string
           title: last name
+          minLength: 1
+        email:
+          type: string
+          format: email
+          x-go-type: Email
+          title: email
+        mobile:
+          type: string
+          title: mobile
+          minLength: 1
+        comm_preferences:
+          type: object
+          $ref: "#/components/schemas/CommPreferences"
+
+    EnterpriseUserType:
+      type: object
+      required:
+        - role
+        - name
+        - email
+      properties:
+        role:
+          type: string
+          enum:
+            - enterprise-admin
+            - enterprise-user
+          title: enterprise role
+          x-kanda-form-widget: Select
+        name:
+          type: string
+          title: user name
           minLength: 1
         email:
           type: string
