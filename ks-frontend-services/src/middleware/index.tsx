@@ -250,7 +250,11 @@ function checkGhostedStatus<P extends StringIndexedObject>(
   if (!isGhosted && originalUserToken) {
     // Login as the original user
     clearOriginalUser();
-    return FirebaseAuthService.signInWithCustomToken(originalUserToken);
+    return FirebaseAuthService.signInWithCustomToken(originalUserToken).then(
+      () => {
+        window.location.reload();
+      },
+    );
   }
 
   return Promise.resolve();
