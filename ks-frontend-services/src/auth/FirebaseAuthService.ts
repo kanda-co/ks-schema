@@ -151,6 +151,14 @@ class FirebaseAuthService {
     }
   };
 
+  signInWithBearerToken = async (token: string, redirect = true) => {
+    await this.setPersistence();
+    await signInWithCustomToken(this.auth, token);
+    if (redirect) {
+      redirectTo(HOME_URL);
+    }
+  };
+
   /**
    * Apply action code
    */

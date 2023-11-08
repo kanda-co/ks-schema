@@ -249,6 +249,7 @@ function checkGhostedStatus<P extends StringIndexedObject>(
 
   if (!isGhosted && originalUserToken) {
     // Login as the original user
+    // TODO: Wait for this to complete before carrying on with the pipe
     FirebaseAuthService.signInWithCustomToken(originalUserToken).then(() => {
       window.location.href = '/';
     });
@@ -370,10 +371,10 @@ export function createMiddleware<State, P extends StringIndexedObject>(
       // Check whether the user is logged in and correctly authenticated
       TE.fromTask(isAuthed(pathKey, store)),
       TE.flatten,
-      // If the user is authenticated, then we can proceed to the next page
-      TE.map((currentPathKey) => routeChangeProvider(store, currentPathKey)),
       // Check the ghosted status of the user
       TE.map((currentPathKey) => checkGhostedStatus(currentPathKey)),
+      // If the user is authenticated, then we can proceed to the next page
+      TE.map((currentPathKey) => routeChangeProvider(store, currentPathKey)),
       // Fetch the initial data required for page rendering
       TE.map((currentPathKey) =>
         initialDataProvider(store, pages, currentPathKey),
