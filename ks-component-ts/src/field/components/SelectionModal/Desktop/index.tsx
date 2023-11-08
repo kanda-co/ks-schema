@@ -18,7 +18,7 @@ const Desktop: FunctionComponent<SelectionModalProps> = function ({
 
   return (
     <Popover.Standard
-      id="selection-modal"
+      id={`${name}-selection-modal`}
       button={
         <SelectionModalButton
           id={buttonId}
