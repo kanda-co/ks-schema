@@ -3,6 +3,7 @@ package schema
 type TName string
 
 const (
+	DBV4_HO_AIP_HOWDENS                          TName = "DBV4_HO_AIP_HOWDENS"
 	DBV4_HO_AIP_PREAPPROVED                      TName = "DBV4_HO_AIP_PREAPPROVED"
 	DBV4_HO_APPLICATION_ACCEPTED_DEPOSIT_CHANGED TName = "DBV4_HO_APPLICATION_ACCEPTED_DEPOSIT_CHANGED"
 	DBV4_HO_APPLICATION_APPROVED                 TName = "DBV4_HO_APPLICATION_APPROVED"
@@ -67,6 +68,32 @@ func (tn TName) Render() string {
 }
 
 var TMap = map[TName]string{
+	"DBV4_HO_AIP_HOWDENS": `{
+  "subject": "{{receiver.contact_name}}, see if you can get finance for a new kitchen from Howdens with Kanda",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "You've inquired with Howdens to get finance for your new kitchen. To find out how much you can borrow complete a short pre-approval check and create your budget."
+        },
+        {
+          "text": "Your budget will then be shared with the Howdens design team so they can design the kitchen of your dreams."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "Get pre-approved",
+      "url": "{{cta_url}}"
+    }
+  ]
+}`,
 	"DBV4_HO_AIP_PREAPPROVED": `{
   "subject": "{{receiver.contact_name}}, you have been pre-approved for finance with Kanda",
   "flow_type": "{{flow_type}}",
