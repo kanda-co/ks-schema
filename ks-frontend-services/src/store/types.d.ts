@@ -20,6 +20,7 @@ export interface PathKey<P extends StringIndexedObject> {
   path: string;
   pages: PageList<P>;
   isGhosted: boolean;
+  originalUserToken?: string;
 }
 
 export interface GeneratedState<T = unknown> extends EntityState<T> {

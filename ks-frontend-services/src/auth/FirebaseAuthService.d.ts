@@ -49,6 +49,7 @@ declare class FirebaseAuthService {
      */
     signInWithFacebook: () => Promise<void>;
     signInWithCustomToken: (token: string, redirect?: boolean) => Promise<void>;
+    signInWithBearerToken: (token: string, redirect?: boolean) => Promise<void>;
     /**
      * Apply action code
      */

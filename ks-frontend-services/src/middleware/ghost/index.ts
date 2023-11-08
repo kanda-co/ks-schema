@@ -1,4 +1,4 @@
-import { GHOST_URL } from './constants';
+import { GHOST_URL, ORIGINAL_USER_SESSION_KEY } from './constants';
 
 export const isGhosted = (path: string) => path.startsWith(GHOST_URL);
 
@@ -7,6 +7,12 @@ export const ghostedUrlToOriginalUrl = (path: string): string =>
 
 export const originalUrlToGhostedUrl = (path: string): string =>
   [GHOST_URL, path].join('');
+
+export const clearOriginalUser = (): void =>
+  localStorage.removeItem(ORIGINAL_USER_SESSION_KEY);
+
+export const getOriginalUser = (): string =>
+  localStorage.getItem(ORIGINAL_USER_SESSION_KEY);
 
 export const mapUrlsIfGhosted = <T extends string>(
   urls: Record<T, string>,

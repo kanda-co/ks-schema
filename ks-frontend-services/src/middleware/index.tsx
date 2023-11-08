@@ -25,7 +25,7 @@ import type {
 import { createPage, WrapperProps } from './Page';
 import { FirebaseAuthService } from '../auth';
 import { CreatePageArgs, createPages, handleIO } from './helpers';
-import { isGhosted } from './ghost';
+import { clearOriginalUser, getOriginalUser, isGhosted } from './ghost';
 import type { StringIndexedObject } from '../types';
 import type { RoutedApp, ValidAction } from './types';
 import { createAppSlice } from '../store/slices/app';
@@ -136,10 +136,13 @@ function getInitialDataPathKey<P extends StringIndexedObject>(
     throw new Error('Invalid page');
   }
 
+  const originalUserToken = getOriginalUser();
+
   const pathKey = {
     page,
     id,
     isGhosted: isGhosted(url),
+    originalUserToken,
   };
 
   return {
@@ -239,6 +242,24 @@ export function initialDataProvider<State, P extends StringIndexedObject>(
   return pathKey;
 }
 
+function checkGhostedStatus<P extends StringIndexedObject>(
+  pathKey: PathKey<P>,
+): Promise<void> {
+  const { isGhosted, originalUserToken } = pathKey;
+
+  if (!isGhosted && originalUserToken) {
+    // Login as the original user
+    clearOriginalUser();
+    return FirebaseAuthService.signInWithCustomToken(originalUserToken).then(
+      () => {
+        window.location.reload();
+      },
+    );
+  }
+
+  return Promise.resolve();
+}
+
 function routeChangeProvider<State, P extends StringIndexedObject>(
   store: ToolkitStore<State>,
   pathKey: PathKey<P>,
@@ -326,7 +347,10 @@ export function isAuthed<P extends StringIndexedObject>(
 ): () => Promise<TE.TaskEither<Error, PathKey<P>>> {
   return async () => {
     return userIsLoggedIn(pathKey, store)
-      .then(() => TE.right(pathKey))
+      .then(async () => {
+        await checkGhostedStatus<P>(pathKey);
+        return TE.right(pathKey);
+      })
       .catch(TE.left);
   };
 }
