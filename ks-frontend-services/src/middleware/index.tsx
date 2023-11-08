@@ -244,23 +244,16 @@ export function initialDataProvider<State, P extends StringIndexedObject>(
 
 function checkGhostedStatus<P extends StringIndexedObject>(
   pathKey: PathKey<P>,
-) {
+): Promise<void> {
   const { isGhosted, originalUserToken } = pathKey;
 
   if (!isGhosted && originalUserToken) {
     // Login as the original user
     clearOriginalUser();
-    // TODO: Wait for this to complete before carrying on with the pipe
-    FirebaseAuthService.signInWithCustomToken(originalUserToken).then(() => {
-      window.location.href = '/';
-    });
+    return FirebaseAuthService.signInWithCustomToken(originalUserToken);
   }
 
-  if (isGhosted && !originalUserToken) {
-    window.location.href = '/';
-  }
-
-  return pathKey;
+  return Promise.resolve();
 }
 
 function routeChangeProvider<State, P extends StringIndexedObject>(
@@ -350,7 +343,10 @@ export function isAuthed<P extends StringIndexedObject>(
 ): () => Promise<TE.TaskEither<Error, PathKey<P>>> {
   return async () => {
     return userIsLoggedIn(pathKey, store)
-      .then(() => TE.right(pathKey))
+      .then(async () => {
+        await checkGhostedStatus<P>(pathKey);
+        return TE.right(pathKey);
+      })
       .catch(TE.left);
   };
 }
@@ -372,8 +368,6 @@ export function createMiddleware<State, P extends StringIndexedObject>(
       // Check whether the user is logged in and correctly authenticated
       TE.fromTask(isAuthed(pathKey, store)),
       TE.flatten,
-      // Check the ghosted status of the user
-      TE.map((currentPathKey) => checkGhostedStatus(currentPathKey)),
       // If the user is authenticated, then we can proceed to the next page
       TE.map((currentPathKey) => routeChangeProvider(store, currentPathKey)),
       // Fetch the initial data required for page rendering
