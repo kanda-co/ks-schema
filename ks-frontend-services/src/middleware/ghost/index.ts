@@ -8,6 +8,9 @@ export const ghostedUrlToOriginalUrl = (path: string): string =>
 export const originalUrlToGhostedUrl = (path: string): string =>
   [GHOST_URL, path].join('');
 
+export const clearOriginalUser = (): void =>
+  sessionStorage.removeItem(ORIGINAL_USER_SESSION_KEY);
+
 export const getOriginalUser = (): string =>
   window.sessionStorage.getItem(ORIGINAL_USER_SESSION_KEY);
 

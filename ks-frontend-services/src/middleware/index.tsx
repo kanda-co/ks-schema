@@ -25,7 +25,7 @@ import type {
 import { createPage, WrapperProps } from './Page';
 import { FirebaseAuthService } from '../auth';
 import { CreatePageArgs, createPages, handleIO } from './helpers';
-import { getOriginalUser, isGhosted } from './ghost';
+import { clearOriginalUser, getOriginalUser, isGhosted } from './ghost';
 import type { StringIndexedObject } from '../types';
 import type { RoutedApp, ValidAction } from './types';
 import { createAppSlice } from '../store/slices/app';
@@ -249,6 +249,7 @@ function checkGhostedStatus<P extends StringIndexedObject>(
 
   if (!isGhosted && originalUserToken) {
     // Login as the original user
+    clearOriginalUser();
     // TODO: Wait for this to complete before carrying on with the pipe
     FirebaseAuthService.signInWithCustomToken(originalUserToken).then(() => {
       window.location.href = '/';

@@ -37,6 +37,7 @@ export const infoGhost = createAsyncThunk(
     // Get a custom token for the original user and store in session
     // TODO: LocalStorage?
     const initialUserGhost = await ghostUser(user.email);
+
     sessionStorage.setItem(
       ORIGINAL_USER_SESSION_KEY,
       initialUserGhost.custom_token,
