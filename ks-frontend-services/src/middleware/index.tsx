@@ -25,7 +25,7 @@ import type {
 import { createPage, WrapperProps } from './Page';
 import { FirebaseAuthService } from '../auth';
 import { CreatePageArgs, createPages, handleIO } from './helpers';
-import { isGhosted } from './ghost';
+import { getOriginalUser, isGhosted } from './ghost';
 import type { StringIndexedObject } from '../types';
 import type { RoutedApp, ValidAction } from './types';
 import { createAppSlice } from '../store/slices/app';
@@ -136,10 +136,13 @@ function getInitialDataPathKey<P extends StringIndexedObject>(
     throw new Error('Invalid page');
   }
 
+  const originalUserToken = getOriginalUser();
+
   const pathKey = {
     page,
     id,
     isGhosted: isGhosted(url),
+    originalUserToken,
   };
 
   return {
@@ -235,6 +238,25 @@ export function initialDataProvider<State, P extends StringIndexedObject>(
   }
 
   fetchPageInitialData<State, P>(store, pages, pathKey);
+
+  return pathKey;
+}
+
+function checkGhostedStatus<P extends StringIndexedObject>(
+  pathKey: PathKey<P>,
+) {
+  const { isGhosted, originalUserToken } = pathKey;
+
+  if (!isGhosted && originalUserToken) {
+    // Login as the original user
+    FirebaseAuthService.signInWithCustomToken(originalUserToken).then(() => {
+      window.location.href = '/';
+    });
+  }
+
+  if (isGhosted && !originalUserToken) {
+    window.location.href = '/';
+  }
 
   return pathKey;
 }
@@ -350,6 +372,8 @@ export function createMiddleware<State, P extends StringIndexedObject>(
       TE.flatten,
       // If the user is authenticated, then we can proceed to the next page
       TE.map((currentPathKey) => routeChangeProvider(store, currentPathKey)),
+      // Check the ghosted status of the user
+      TE.map((currentPathKey) => checkGhostedStatus(currentPathKey)),
       // Fetch the initial data required for page rendering
       TE.map((currentPathKey) =>
         initialDataProvider(store, pages, currentPathKey),
