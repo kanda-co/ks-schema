@@ -250,7 +250,21 @@ function checkGhostedStatus<P extends StringIndexedObject>(
   if (!isGhosted && originalUserToken) {
     // Login as the original user
     clearOriginalUser();
-    return FirebaseAuthService.signInWithCustomToken(originalUserToken);
+    return new Promise((resolve, reject) => {
+      FirebaseAuthService.signInWithCustomToken(originalUserToken)
+        .then(() => {
+          window.location.reload();
+
+          // If we resolve the promise straight away, the auth layer will kick in and
+          // redirect to /login. We could just not resolve the promise, but then in the
+          // event the window doesn't reload correctly, the user will be stuck so better
+          // to redirect to /login in this case
+          setTimeout(() => resolve(), 1000);
+        })
+        .catch(() => {
+          reject();
+        });
+    });
   }
 
   return Promise.resolve();
