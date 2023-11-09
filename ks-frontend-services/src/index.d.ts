@@ -14,7 +14,7 @@ export { createStore, createSelectors } from './store';
 export * as slices from './store/slices/generated/';
 export * as actions from './store/slices/generated/actions';
 export { revalidateUser, infoGhost, logout, userLoggedIn, } from './store/slices/auth';
-export {};
+export { reset } from './store/actions';
 export * from './store/toolkit';
 export { createAppSlice } from './store/slices/app';
 export { default as auth } from './store/slices/auth';
