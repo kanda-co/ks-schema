@@ -229,6 +229,16 @@ func (in Enterprise) ToContact() *ContactInfo {
 	return New(in.ContactInfo)
 }
 
+func (in EnterpriseUserType) ToContact() *ContactInfo {
+	return New(
+		ContactInfo{
+			ContactEmail: New(in.Email),
+			ContactName:  New(in.Name),
+			ContactPhone: in.Mobile,
+		},
+	)
+}
+
 func (in Partner) ToContact() *ContactInfo {
 	in.ContactInfo.ContactName = IfValueOr(
 		in.ContactInfo.TradingName != nil,
