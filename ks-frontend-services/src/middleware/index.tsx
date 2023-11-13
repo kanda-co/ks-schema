@@ -267,6 +267,16 @@ function checkGhostedStatus<P extends StringIndexedObject>(
     });
   }
 
+  // If they have somehow landed on the ghost page without being ghosted, redirect
+  // them to the homepage
+  if (isGhosted && !originalUserToken) {
+    window.location.href = '/';
+    return new Promise((resolve) => {
+      // Same as above
+      setTimeout(() => resolve(), 1000);
+    });
+  }
+
   return Promise.resolve();
 }
 

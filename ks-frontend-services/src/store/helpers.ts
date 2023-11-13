@@ -237,6 +237,10 @@ export const createResponseHandler =
 
     const items = isArray ? payload : [payload];
 
+    console.log(entityAdapter, 'what is going on with this one', {
+      isArray,
+    });
+
     if (!items.length) {
       return {
         ...state,
