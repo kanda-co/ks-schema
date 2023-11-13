@@ -8916,6 +8916,10 @@ components:
           type: integer
           title: number of quizzes
           format: int32
+        result:
+          type: string
+          title: quiz result
+          $ref: "#/components/schemas/Result"
 
     Quiz:
       type: object
@@ -8946,10 +8950,6 @@ components:
         correct_answer:
           type: string
           title: correct answer
-        result:
-          type: string
-          title: quiz result
-          $ref: "#/components/schemas/Result"
 
     Error:
       type: object
