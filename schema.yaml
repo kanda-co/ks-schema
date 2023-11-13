@@ -7190,6 +7190,7 @@ components:
       description: checkout option picked by customer, updated only via custom action
       enum:
         - apply_for_finance
+        - pay_on_card
         - decline_job
         - pay_on_completion
 
@@ -7338,22 +7339,36 @@ components:
         - employment_details
         - finance_details
       properties:
+        budget:
+          type: object
+          title: customer preferred budget
+          $ref: "#/components/schemas/Money"
+        bank_account:
+          type: object
+          title: bank account
+          $ref: "#/components/schemas/BankAccount"
         customer_details:
           type: object
           title: customer details
           $ref: "#/components/schemas/CustomerDetails"
         employment_details:
           type: object
-          title: primary employment details
+          title: employment details
           $ref: "#/components/schemas/EmploymentDetails"
+        additional_employment_details:
+          type: array
+          title: additional employment details
+          items:
+            $ref: "#/components/schemas/EmploymentDetails"
         finance_details:
           type: object
           title: finance details
           $ref: "#/components/schemas/FinanceDetails"
-        budget:
-          type: object
-          title: customer preferred budget
-          $ref: "#/components/schemas/Money"
+        extra_applicants:
+          type: array
+          title: extra applicants
+          items:
+            $ref: "#/components/schemas/ApplicantDetails"
 
     LeadQuote:
       type: object
@@ -8859,18 +8874,23 @@ components:
         result:
           type: string
           title: training result
-          enum:
-            - "MISSING"
-            - "PASSED"
-            - "FAILED"
-            - "VOIDED"
-          default: "MISSING"
-          readOnly: true
+          $ref: "#/components/schemas/Result"
         metadata:
           type: object
           title: metadata
           $ref: "#/components/schemas/Metadata"
           readOnly: true
+
+    Result:
+      type: string
+      title: training result
+      enum:
+        - "MISSING"
+        - "PASSED"
+        - "FAILED"
+        - "VOIDED"
+      default: "MISSING"
+      readOnly: true
 
     Category:
       type: object
@@ -8926,6 +8946,10 @@ components:
         correct_answer:
           type: string
           title: correct answer
+        result:
+          type: string
+          title: quiz result
+          $ref: "#/components/schemas/Result"
 
     Error:
       type: object
