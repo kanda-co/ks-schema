@@ -5011,6 +5011,13 @@ components:
     InfoStats:
       type: object
       title: info stats for trade
+      required:
+        - jobs_sent
+        - jobs_applied_for_finance
+        - jobs_approved_for_finance
+        - jobs_total_revenue_of_approved
+        - jobs_approval_rate
+        - jobs_average_value_of_approved
       properties:
         id:
           type: string
@@ -5028,6 +5035,10 @@ components:
         jobs_total_revenue_of_approved:
           type: object
           title: total revenue of jobs approved for finance in pence
+          $ref: "#/components/schemas/Pence"
+        jobs_approval_rate:
+          type: object
+          title: approval rate of financed jobs
           $ref: "#/components/schemas/Pence"
         jobs_average_value_of_approved:
           type: object
