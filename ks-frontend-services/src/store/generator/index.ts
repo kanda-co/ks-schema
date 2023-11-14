@@ -189,6 +189,7 @@ const entityNames = getOperationKeys(operations)
         'InfoRedirect',
         'InfoValidation',
         'InfoLead',
+        'InfoEnterpriseRole',
       ].indexOf(name) === -1,
   );
 

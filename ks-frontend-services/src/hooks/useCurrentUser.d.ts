@@ -33,6 +33,7 @@ export declare const createCurrentUserHook: <State extends AuthSlice, Dispatch e
     infoIP: import("../store/types").Selectors<import("..").InfoIP, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoIP>>>;
     infoOnboarding: import("../store/types").Selectors<import("..").InfoOnboarding, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoOnboarding>>>;
     infoQuery: import("../store/types").Selectors<import("..").InfoQuery, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoQuery>>>;
+    infoStats: import("../store/types").Selectors<import("..").InfoStats, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoStats>>>;
     job: import("../store/types").Selectors<import("..").Job, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Job>>>;
     lead: import("../store/types").Selectors<import("..").Lead, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Lead>>>;
     monitor: import("../store/types").Selectors<import("..").Monitor, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Monitor>>>;
@@ -53,6 +54,5 @@ export declare const createCurrentUserHook: <State extends AuthSlice, Dispatch e
     getCompanyDirectorVerification: import("../store/types").Selectors<import("..").InfoCompany, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoCompany>>>;
     postCompanyBilling: import("../store/types").Selectors<import("..").RedirectURLs, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").RedirectURLs>>>;
     postCompanyReferrals: import("../store/types").Selectors<import("..").Referral, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Referral>>>;
-    infoLead: import("../store/types").Selectors<import("..").ContactInfo, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").ContactInfo>>>;
     infoEnterpriseRole: import("../store/types").Selectors<import("..").EnterpriseUserRole, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").EnterpriseUserRole>>>;
 }) => (() => CurrentUserHook);

@@ -130,6 +130,15 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         chainedRequest: boolean;
         isLoading: boolean;
     };
+    infoStats: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoStats>;
+        error?: import("../types").ExtractedError;
+        isSubmitting: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+    };
     job: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Job>;
@@ -304,15 +313,6 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
     postCompanyReferrals: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Referral>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
-    infoLead: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").ContactInfo>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
         fetchedList: boolean;
@@ -457,6 +457,15 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         chainedRequest: boolean;
         isLoading: boolean;
     };
+    infoStats: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoStats>;
+        error?: import("../types").ExtractedError;
+        isSubmitting: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+    };
     job: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Job>;
@@ -637,15 +646,6 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         chainedRequest: boolean;
         isLoading: boolean;
     };
-    infoLead: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").ContactInfo>;
-        error?: import("../types").ExtractedError;
-        isSubmitting: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-    };
     infoEnterpriseRole: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").EnterpriseUserRole>;
@@ -685,6 +685,7 @@ export declare function createSelectors<State extends AuthSlice, Pages>(): {
     infoIP: import("./types").Selectors<import("..").InfoIP, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoIP>>>;
     infoOnboarding: import("./types").Selectors<import("..").InfoOnboarding, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoOnboarding>>>;
     infoQuery: import("./types").Selectors<import("..").InfoQuery, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoQuery>>>;
+    infoStats: import("./types").Selectors<import("..").InfoStats, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoStats>>>;
     job: import("./types").Selectors<import("..").Job, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Job>>>;
     lead: import("./types").Selectors<import("..").Lead, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Lead>>>;
     monitor: import("./types").Selectors<import("..").Monitor, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Monitor>>>;
@@ -705,7 +706,6 @@ export declare function createSelectors<State extends AuthSlice, Pages>(): {
     getCompanyDirectorVerification: import("./types").Selectors<import("..").InfoCompany, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoCompany>>>;
     postCompanyBilling: import("./types").Selectors<import("..").RedirectURLs, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").RedirectURLs>>>;
     postCompanyReferrals: import("./types").Selectors<import("..").Referral, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Referral>>>;
-    infoLead: import("./types").Selectors<import("..").ContactInfo, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").ContactInfo>>>;
     infoEnterpriseRole: import("./types").Selectors<import("..").EnterpriseUserRole, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").EnterpriseUserRole>>>;
 };
 export {};

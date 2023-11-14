@@ -78,12 +78,7 @@ export const SINGLE_ACTION_REDUCERS: SingleActionReducers[] = [
     actionEntity: 'Referral',
   },
   {
-    entity: 'infoLead',
-    action: 'InfoLead',
-    actionEntity: 'ContactInfo',
-  },
-  {
-    entity: 'infoLead',
+    entity: 'infoEnterpriseRole',
     action: 'InfoEnterpriseRole',
     actionEntity: 'EnterpriseUserRole',
   },
