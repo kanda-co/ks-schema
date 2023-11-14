@@ -806,7 +806,7 @@ paths:
       operationId: infoEnterpriseRole
       summary: info enterprise role for enterprise admin to set user role and claims
       tags:
-        - InfoLead
+        - InfoEnterpriseRole
       requestBody:
         description: info enterprise role and claims
         required: true
@@ -856,19 +856,42 @@ paths:
             type: string
           description: enterprise branch code
       requestBody:
-        description: contact information to be sent with AIP form link
+        description: info lead with contact information to be sent with AIP form link
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/ContactInfo"
+              $ref: "#/components/schemas/InfoLead"
       responses:
         200:
           description: info lead for enterprise user AIP form link sent out
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ContactInfo"
+                $ref: "#/components/schemas/InfoLead"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/info/stats:
+    get:
+      operationId: infoStats
+      summary: kanda staff or trade admin or get their stats
+      tags:
+        - InfoStats
+      parameters:
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
+      responses:
+        200:
+          description: info stats for requested admin
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoStats"
         default:
           description: unexpected error
           content:
@@ -4966,6 +4989,48 @@ components:
           title: metadata
           $ref: "#/components/schemas/Metadata"
           readOnly: true
+
+    InfoLead:
+      type: object
+      title: info lead
+      properties:
+        id:
+          type: string
+          title: lead id
+          readOnly: true
+        flow_type:
+          title: flow type
+          $ref: "#/components/schemas/FlowType"
+        contact_info:
+          type: object
+          title: invitee contact info
+          $ref: "#/components/schemas/ContactInfo"
+
+    InfoStats:
+      type: object
+      title: info stats for trade
+      properties:
+        id:
+          type: string
+          title: trade id
+          readOnly: true
+        jobs_sent:
+          type: integer
+          title: number of jobs sent
+        jobs_applied_for_finance:
+          type: integer
+          title: number of jobs applied for finance
+        jobs_approved_for_finance:
+          type: integer
+          title: number of jobs approved for finance
+        jobs_total_revenue_of_approved:
+          type: object
+          title: total revenue of jobs approved for finance in pence
+          $ref: "#/components/schemas/Pence"
+        jobs_average_value_of_approved:
+          type: object
+          title: average value of jobs approved
+          $ref: "#/components/schemas/Pence"
 
     InfoIP:
       type: object
