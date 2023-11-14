@@ -4993,6 +4993,8 @@ components:
     InfoLead:
       type: object
       title: info lead
+      required:
+        - contact_info
       properties:
         id:
           type: string
