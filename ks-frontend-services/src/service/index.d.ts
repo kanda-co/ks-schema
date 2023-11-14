@@ -221,6 +221,12 @@ declare const infoDirector: {
         method: import("../generated/operations/infoDirector").InfoDirectorRequestFunction;
     };
 };
+declare const infoEnterpriseRole: {
+    infoEnterpriseRole: {
+        key: string;
+        method: import("../generated/operations/infoEnterpriseRole").InfoEnterpriseRoleRequestFunction;
+    };
+};
 declare const infoEnterprise: {
     infoEnterprise: {
         key: string;
@@ -252,10 +258,6 @@ declare const infoIP: {
     };
 };
 declare const infoLead: {
-    infoEnterpriseRole: {
-        key: string;
-        method: import("../generated/operations/infoEnterpriseRole").InfoEnterpriseRoleRequestFunction;
-    };
     infoLead: {
         key: string;
         method: import("../generated/operations/infoLead").InfoLeadRequestFunction;
@@ -287,6 +289,12 @@ declare const infoRedirect: {
     infoCheckoutRedirect: {
         key: string;
         method: import("../generated/operations/infoCheckoutRedirect").InfoCheckoutRedirectRequestFunction;
+    };
+};
+declare const infoStats: {
+    infoStats: {
+        key: string;
+        method: import("../generated/operations/infoStats").InfoStatsRequestFunction;
     };
 };
 declare const infoValidation: {
@@ -925,6 +933,12 @@ declare const services: {
             method: import("../generated/operations/infoDirector").InfoDirectorRequestFunction;
         };
     };
+    infoEnterpriseRole: {
+        infoEnterpriseRole: {
+            key: string;
+            method: import("../generated/operations/infoEnterpriseRole").InfoEnterpriseRoleRequestFunction;
+        };
+    };
     infoEnterprise: {
         infoEnterprise: {
             key: string;
@@ -956,10 +970,6 @@ declare const services: {
         };
     };
     infoLead: {
-        infoEnterpriseRole: {
-            key: string;
-            method: import("../generated/operations/infoEnterpriseRole").InfoEnterpriseRoleRequestFunction;
-        };
         infoLead: {
             key: string;
             method: import("../generated/operations/infoLead").InfoLeadRequestFunction;
@@ -991,6 +1001,12 @@ declare const services: {
         infoCheckoutRedirect: {
             key: string;
             method: import("../generated/operations/infoCheckoutRedirect").InfoCheckoutRedirectRequestFunction;
+        };
+    };
+    infoStats: {
+        infoStats: {
+            key: string;
+            method: import("../generated/operations/infoStats").InfoStatsRequestFunction;
         };
     };
     infoValidation: {
@@ -1404,5 +1420,5 @@ declare const services: {
         };
     };
 };
-export { authUser, company, credit, document, enterprise, event, infoAuth, infoCache, infoCompany, infoCustomer, infoDirector, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoLead, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoValidation, job, lead, monitor, onboarding, partner, payment, rate, subscription, task, tradeSummary, training, webhook, address, payouts, pdf, sheets, };
+export { authUser, company, credit, document, enterprise, event, infoAuth, infoCache, infoCompany, infoCustomer, infoDirector, infoEnterpriseRole, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoLead, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoStats, infoValidation, job, lead, monitor, onboarding, partner, payment, rate, subscription, task, tradeSummary, training, webhook, address, payouts, pdf, sheets, };
 export default services;
