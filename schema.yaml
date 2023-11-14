@@ -9003,7 +9003,7 @@ components:
       type: object
       title: quiz
       required:
-        - section
+        - category
         - question
         - answers
       properties:
