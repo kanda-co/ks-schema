@@ -25,6 +25,7 @@ export const createAppSlice = <T>() => {
     path: '/login',
     isGhosted: false,
     originalUserToken: undefined,
+    params: {},
     pages: {
       login: {
         path: '/login',

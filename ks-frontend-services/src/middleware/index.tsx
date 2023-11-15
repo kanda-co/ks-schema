@@ -90,19 +90,20 @@ export function getPageUrls<P extends StringIndexedObject>(
   }, {} as Record<keyof P, string>);
 }
 
-type PageKeyAndId<P extends StringIndexedObject> = {
+type PageKeyIdAndParams<P extends StringIndexedObject> = {
   key: keyof P;
   id?: string;
+  params: StringIndexedObject<string>;
 } | null;
 
 interface MatchPathParams {
   id?: string;
 }
 
-export function getPageKeyAndId<P extends StringIndexedObject>(
+function getPageKeyIdAndParams<P extends StringIndexedObject>(
   url: string,
   urls: Record<keyof P, string>,
-): PageKeyAndId<P> {
+): PageKeyIdAndParams<P> {
   // Loop through each key-value pair in the urls object
   for (let [key, value] of Object.entries(urls)) {
     // Get a match object for the given URL and the current route path
@@ -113,9 +114,11 @@ export function getPageKeyAndId<P extends StringIndexedObject>(
     });
     // If there is an exact match, return the key
     if (match && match.isExact) {
+      const { id, ...params } = match.params;
       return {
         key: key as keyof P,
         id: match.params.id,
+        params,
       };
     }
   }
@@ -130,7 +133,7 @@ function getInitialDataPathKey<P extends StringIndexedObject>(
   const urls = getPageUrls<P>(pages);
   const { url } = to.match;
 
-  const { key: page, id } = getPageKeyAndId<P>(url, urls);
+  const { key: page, id, params } = getPageKeyIdAndParams<P>(url, urls);
 
   if (page === null) {
     throw new Error('Invalid page');
@@ -149,6 +152,7 @@ function getInitialDataPathKey<P extends StringIndexedObject>(
     ...pathKey,
     path: getInitialDataPathKeyPath(pages, pathKey),
     pages,
+    params,
   };
 }
 

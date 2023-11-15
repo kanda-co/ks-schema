@@ -19,6 +19,7 @@ export interface PathKey<P extends StringIndexedObject> {
   id?: string;
   path: string;
   pages: PageList<P>;
+  params: StringIndexedObject<string>;
   isGhosted: boolean;
   originalUserToken?: string;
 }

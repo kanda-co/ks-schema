@@ -31,6 +31,7 @@ export declare const createCurrentUserHook: <State extends AuthSlice, Dispatch e
     infoEntity: import("../store/types").Selectors<import("..").InfoEntity, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoEntity>>>;
     infoGhost: import("../store/types").Selectors<import("..").InfoGhost, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoGhost>>>;
     infoIP: import("../store/types").Selectors<import("..").InfoIP, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoIP>>>;
+    infoLead: import("../store/types").Selectors<import("..").InfoLead, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoLead>>>;
     infoOnboarding: import("../store/types").Selectors<import("..").InfoOnboarding, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoOnboarding>>>;
     infoQuery: import("../store/types").Selectors<import("..").InfoQuery, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoQuery>>>;
     infoStats: import("../store/types").Selectors<import("..").InfoStats, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoStats>>>;
