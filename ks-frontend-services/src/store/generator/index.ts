@@ -176,6 +176,13 @@ function generateAdaptersIndex(entityNames: string[]) {
 
 const entityNames = getOperationKeys(operations)
   .map((key) => getOperationName(key, true))
+  .filter((name) => {
+    const reducers = SINGLE_ACTION_REDUCERS.filter(
+      ({ onlyActionForEntity, action }) =>
+        onlyActionForEntity && action === name,
+    );
+    return reducers.length === 0;
+  })
   .filter(
     (name) =>
       [
@@ -188,7 +195,6 @@ const entityNames = getOperationKeys(operations)
         'InfoPartner',
         'InfoRedirect',
         'InfoValidation',
-        'InfoEnterpriseRole',
       ].indexOf(name) === -1,
   );
 
