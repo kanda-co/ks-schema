@@ -4375,6 +4375,7 @@ paths:
               - omni
               - etika
               - allium
+              - novuna
               - stripe
               - veriff
       responses:
@@ -7845,6 +7846,7 @@ components:
         - etika
         - propensio
         - allium
+        - novuna
         - demo
       default: omni
 
