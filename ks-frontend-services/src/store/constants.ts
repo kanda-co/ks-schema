@@ -29,6 +29,8 @@ export type SingleActionReducers = {
   entity: string;
   action: string;
   actionEntity?: string;
+  // If true, this reducer is automatically ignored
+  onlyActionForEntity?: boolean;
 };
 
 // An array of actions that return a void payload
@@ -81,6 +83,7 @@ export const SINGLE_ACTION_REDUCERS: SingleActionReducers[] = [
     entity: 'infoEnterpriseRole',
     action: 'InfoEnterpriseRole',
     actionEntity: 'EnterpriseUserRole',
+    onlyActionForEntity: true,
   },
 ];
 

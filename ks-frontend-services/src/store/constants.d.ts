@@ -6,6 +6,7 @@ export type SingleActionReducers = {
     entity: string;
     action: string;
     actionEntity?: string;
+    onlyActionForEntity?: boolean;
 };
 export declare const VOID_ACTIONS: string[];
 export declare const SINGLE_ACTION_REDUCERS: SingleActionReducers[];
