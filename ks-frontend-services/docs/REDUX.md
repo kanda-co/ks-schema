@@ -32,6 +32,33 @@ Actions also accept shared options for `onSuccess`, `onError`, `forceReload` & `
 
 5.  **getInfoEntity**: `getInfoEntity` has a special action handler. This handler will take the entities in the response (like company, job, etc.) and store them in their relevant reducers, as well as updating any loading states needed.
 
+## Single action reducers
+A core assumption of the codegen'd redux store is that each reducer will define actions that return the same entity type as the base reducer. This is true for almost every case, but there are some exceptions. An example of an exception would be the 'CheckJob' action for the 'Job' reducer. This returns a `JobCreditState` entity rather than a `Job`. Because each reducer will store its own entity type, the default behaviour for this action would mean the type safety breaks quite considerably so we cannot store `JobCreditState` entities in the same reducer as `Job` ones. So for this, we can define a `Single action reducer`. As the name implies, this will create a reducer that contains just that single action and the entity that it requires. So in the above case a new `checkJob` reducer will be created alongside all the needed selectors.
+
+These are defined in `store/constants.ts` in the `SINGLE_ACTION_REDUCERS` array like so:
+
+```
+{ entity: 'job', action: 'CheckJob', actionEntity: 'JobCreditState' },
+```
+
+In this instance `actionEntity` is an optional field. It is only needed if the entity return is different from the name of the `action`. For instance:
+
+```
+{ entity: 'job', action: 'JobCompanyInfo' },
+```
+
+This defines a single action reducer for `JobCompanyInfo`. But because this action returns an entity called `JobCompanyInfo` we don't need to explicitly define an `actionEntity`.
+
+There are some times where the only action in a reducer will need to be define as a single action reducer. However with default behaviour, this will cause an error, because the previous reducer will be defined with no relevant actions (as the action has been moved out into its own store). So we can pass `onlyActionForEntity` in this case:
+
+```
+  {
+    entity: 'infoEnterpriseRole',
+    action: 'InfoEnterpriseRole',
+    actionEntity: 'EnterpriseUserRole',
+    onlyActionForEntity: true,
+  },
+```
 
 ## Example usage
 1. Defining a new store:
