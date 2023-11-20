@@ -755,7 +755,7 @@ var TMap = map[TName]string{
           "type": "row",
           "content": [
             {
-              "text": "Descripion:",
+              "text": "Description:",
               "colspan": "1"
             },
             {
