@@ -215,6 +215,10 @@ export const ${camelCaseEntityName}Slice = createSlice({
 	  ...${camelCaseEntityName}Adapter.getInitialState()
   },
   reducers: {
+    resetService: (state: ${entityName}State, action: PayloadAction<undefined>) => ({
+	    ...GENERATED_STATE,
+	    ...${camelCaseEntityName}Adapter.getInitialState()
+    }),
     chainedRequest: (state: ${entityName}State, action: PayloadAction<undefined>) => ({
       ...state,
       error: action.payload,
