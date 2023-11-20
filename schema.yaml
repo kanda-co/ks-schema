@@ -4405,6 +4405,7 @@ paths:
               - omni
               - etika
               - allium
+              - novuna
               - stripe
               - veriff
       responses:
