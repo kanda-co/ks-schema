@@ -258,6 +258,7 @@ export const createResponseHandler =
     return {
       ...result,
       chainedRequest: false,
+      hasFetched: true,
       fetchedList: !state.fetchedList ? isArray : true,
       isLoading: state.chainedRequest ? state.isLoading : false,
       isSubmitting: state.chainedRequest ? state.isSubmitting : false,

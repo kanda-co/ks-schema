@@ -25,6 +25,7 @@ export interface PathKey<P extends StringIndexedObject> {
 }
 
 export interface GeneratedState<T = unknown> extends EntityState<T> {
+  hasFetched: boolean;
   fetchedList: boolean;
   chainedRequest: boolean;
   isLoading: boolean;

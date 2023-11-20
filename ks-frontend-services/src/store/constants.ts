@@ -3,6 +3,7 @@ import { GeneratedState } from './types';
 export const GENERATED_STATE: Omit<GeneratedState<{}>, 'entities' | 'ids'> = {
   isLoading: false,
   isSubmitting: false,
+  hasFetched: false,
   fetchedList: false,
   chainedRequest: false,
   error: undefined,
