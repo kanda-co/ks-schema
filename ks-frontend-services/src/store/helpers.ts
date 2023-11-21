@@ -312,6 +312,11 @@ export const generateSelectors = <
     (reducer) => reducer.isLoading,
   );
 
+  const getHasFetched = createSelector(
+    getReducer,
+    (reducer) => reducer.hasFetched,
+  );
+
   const getIsSubmitting = createSelector(
     getReducer,
     (reducer) => reducer.isSubmitting,
@@ -331,6 +336,7 @@ export const generateSelectors = <
     getId,
     getEntity,
     getIsLoading,
+    getHasFetched,
     getIsSubmitting,
     getFetchedList,
     getError,

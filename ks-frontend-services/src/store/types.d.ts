@@ -70,6 +70,7 @@ export interface Selectors<T, S> {
   getId: (state: S) => string | undefined;
   getEntity: (state: S) => T | undefined;
   getIsLoading: (state: S) => boolean;
+  getHasFetched: (state: S) => boolean;
   getIsSubmitting: (state: S) => boolean;
   getFetchedList: (state: S) => boolean;
   getError: (state: S) => ExtractedError | undefined;
