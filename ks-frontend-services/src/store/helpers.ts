@@ -244,6 +244,7 @@ export const createResponseHandler =
     if (!items.length) {
       return {
         ...state,
+        hasFetched: true,
         isLoading: false,
         isSubmitting: false,
       };
@@ -275,6 +276,7 @@ export const createVoidResponseHandler =
       ...state,
       chainedRequest: false,
       fetchedList: false,
+      hasFetched: true,
       isLoading: state.chainedRequest ? state.isLoading : false,
       isSubmitting: state.chainedRequest ? state.isSubmitting : false,
     };
