@@ -8,12 +8,15 @@ info:
 
 local:
 	$(eval ENV := "local")
+	$(eval KANDA_SEARCH_API_KEY := ${KANDA_SEARCH_API_KEY})
 
 qa:
 	$(eval ENV := "qa")
+	$(eval KANDA_SEARCH_API_KEY := ${KANDA_SEARCH_API_KEY})
 
 production:
 	$(eval ENV := "production")
+	$(eval KANDA_SEARCH_API_KEY := ${KANDA_SEARCH_API_KEY})
 
 clean-frontend:
 	@echo Cleaning frontend client built artefact...
@@ -98,6 +101,10 @@ endif
 	echo "export { Widget, servers };" >> ks-component-ts/src/generated/index.ts
 	npx prettier --write ks-component-ts/src/generated/widget
 	cd ks-component-ts; yarn && yarn build
+
+search-index:
+	@echo Resetting Search Indexes...
+	go run ./cmd/index/main.go -env=${ENV} -dryrun=${dryrun}
 
 setup-cicd:
 	@echo Create CI/CD global identity pool
