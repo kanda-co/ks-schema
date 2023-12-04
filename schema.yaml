@@ -4944,6 +4944,15 @@ components:
           type: string
           title: external trade id
           readOnly: true
+        flow_type:
+          title: flow type
+          $ref: "#/components/schemas/FlowType"
+        checkout_options:
+          type: array
+          title: checkout options
+          items:
+            $ref: "#/components/schemas/CheckoutOption"
+          minLength: 1
         reference:
           type: string
           title: title
