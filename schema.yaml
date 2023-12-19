@@ -2441,6 +2441,66 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/job/{id}/lender-review:
+    post:
+      operationId: lenderReviewJobSatNote
+      summary: >
+        kanda staff to send signed and completed job with satisfaction note to lender for review,
+        only allowed when sat note is signed or delayed and job status is finished and is financed
+      tags:
+        - Job
+      parameters:
+        - name: id
+          in: path
+          description: job id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing job with signed and lender review with satisfaction note
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/job/{id}/delay:
+    post:
+      operationId: delayJobSatNote
+      summary: >
+        kanda staff to delay a signed satisfaction note for internal review,
+        only allowed when sat note is signed and job status is finished and is financed
+      tags:
+        - Job
+      parameters:
+        - name: id
+          in: path
+          description: job id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing job with signed and delayed satisfaction note
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/job/{id}/payout:
     post:
       operationId: payoutJob
@@ -7216,6 +7276,7 @@ components:
         - sat_note_viewed
         - sat_note_signed
         - sat_note_delayed
+        - sat_note_lender_review
         - payout_pending
         - paid
         - finance_cancelled
@@ -8390,7 +8451,6 @@ components:
           type: string
           title: action
           enum:
-            - "mark_job_as_sat_note_delayed"
             - "mark_job_as_pending"
             - "mark_job_as_referred"
             - "mark_job_as_action_customer"
