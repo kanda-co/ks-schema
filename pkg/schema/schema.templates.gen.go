@@ -24,6 +24,7 @@ const (
 	DBV4_HO_LEAD_POSTED                          TName = "DBV4_HO_LEAD_POSTED"
 	DBV4_HO_QUOTE_POSTED                         TName = "DBV4_HO_QUOTE_POSTED"
 	DBV4_HO_SUBMIT_APPLICATION                   TName = "DBV4_HO_SUBMIT_APPLICATION"
+	DBV4_LENDER_SATNOTE_REVIEW                   TName = "DBV4_LENDER_SATNOTE_REVIEW"
 	DBV4_TP_2ND_LINE_REJECTED                    TName = "DBV4_TP_2ND_LINE_REJECTED"
 	DBV4_TP_ACCOUNT_APPROVED                     TName = "DBV4_TP_ACCOUNT_APPROVED"
 	DBV4_TP_APPLICATION_ACCEPTED                 TName = "DBV4_TP_APPLICATION_ACCEPTED"
@@ -878,6 +879,73 @@ var TMap = map[TName]string{
     }
   ],
   "sms": "Hey {{receiver.contact_name}}! Don't forget to complete your finance application on Kanda now."
+}`,
+	"DBV4_LENDER_SATNOTE_REVIEW": `{
+  "subject": "Signed sat note for {{sender.contact_name}}",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi,"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Please see the attached satisfaction note for {{sender.contact_name}}."
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "rows": [
+        {
+          "type": "heading",
+          "text": "Details:",
+          "colspan": "3"
+        },
+        {
+          "type": "row",
+          "content": [
+            {
+              "text": "Propensio Loan ID:",
+              "colspan": "1"
+            },
+            {
+              "text": "{{xref}}",
+              "colspan": "2"
+            }
+          ]
+        },
+        {
+          "type": "row",
+          "content": [
+            {
+              "text": "Kanda job ID:",
+              "colspan": "1"
+            },
+            {
+              "text": "{{job_id}}",
+              "colspan": "2"
+            }
+          ]
+        },
+        {
+          "type": "row",
+          "content": [
+            {
+              "text": "Kanda loan ID:",
+              "colspan": "1"
+            },
+            {
+              "text": "{{credit_id}}",
+              "colspan": "2"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }`,
 	"DBV4_TP_2ND_LINE_REJECTED": `{
   "subject": "{{sender.contact_name}} has been declined for finance from our alternative lender",

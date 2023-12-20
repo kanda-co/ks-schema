@@ -1,0 +1,67 @@
+{
+  "subject": "Signed sat note for {{sender.contact_name}}",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi,"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Please see the attached satisfaction note for {{sender.contact_name}}."
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "rows": [
+        {
+          "type": "heading",
+          "text": "Details:",
+          "colspan": "3"
+        },
+        {
+          "type": "row",
+          "content": [
+            {
+              "text": "Propensio Loan ID:",
+              "colspan": "1"
+            },
+            {
+              "text": "{{xref}}",
+              "colspan": "2"
+            }
+          ]
+        },
+        {
+          "type": "row",
+          "content": [
+            {
+              "text": "Kanda job ID:",
+              "colspan": "1"
+            },
+            {
+              "text": "{{job_id}}",
+              "colspan": "2"
+            }
+          ]
+        },
+        {
+          "type": "row",
+          "content": [
+            {
+              "text": "Kanda loan ID:",
+              "colspan": "1"
+            },
+            {
+              "text": "{{credit_id}}",
+              "colspan": "2"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
