@@ -3130,7 +3130,7 @@ paths:
                 $ref: "#/components/schemas/Error"
 
   /api/credit/{id}/consent-migrate:
-    post:
+    get:
       operationId: consentMigrateCredit
       summary: >
         homeowner gives consent to credit migration to new lender
@@ -3145,6 +3145,12 @@ paths:
             type: string
             minLength: 1
       responses:
+        200:
+          description: credit which was given consent by homeowner
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Credit"
         303:
           description: >
             consent received by Kanda and redirection will take place
