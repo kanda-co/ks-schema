@@ -3100,6 +3100,66 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/credit/{id}/migrate:
+    post:
+      operationId: migrateCredit
+      summary: >
+        send credit migration to new lender comms to homeowner for consent
+      tags:
+        - Credit
+      parameters:
+        - name: id
+          in: path
+          description: credit id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: credit which was sent comms for lender migration
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Credit"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/credit/{id}/consent-migrate:
+    post:
+      operationId: consentMigrateCredit
+      summary: >
+        homeowner gives consent to credit migration to new lender
+      tags:
+        - Credit
+      parameters:
+        - name: id
+          in: path
+          description: credit id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        303:
+          description: >
+            consent received by Kanda and redirection will take place
+          headers:
+            location:
+              schema:
+                type: string
+              description: consent successful redirection
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/document:
     get:
       operationId: getDocuments
@@ -7293,7 +7353,10 @@ components:
         - artificial_grass
         - bathrooms_supply_and_fitted
         - bathrooms_supply_only
+        - bedrooms_furnitue_custom
+        - blinds_awnings_shutters
         - boiler_swap
+        - carpentry
         - cctv
         - central_heating_system
         - conservatory
@@ -7317,6 +7380,7 @@ components:
         - kitchens_supply_only
         - landscaping
         - loft_boarding
+        - loft_conversion
         - painting_and_decorating
         - patios
         - plastering
