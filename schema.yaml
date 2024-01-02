@@ -8515,6 +8515,7 @@ components:
           type: string
           title: action
           enum:
+            - "mark_job_as_sat_note_delayed"
             - "mark_job_as_pending"
             - "mark_job_as_referred"
             - "mark_job_as_action_customer"
