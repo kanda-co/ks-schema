@@ -6145,6 +6145,12 @@ components:
           title: welcome pack
           description: company welcome pack status
           $ref: "#/components/schemas/WelcomeSkipBanner"
+        lender_configs:
+          type: array
+          title: lender configs
+          description: lender configuration for this company
+          items:
+            $ref: "#/components/schemas/LenderConfig"
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
@@ -6180,6 +6186,22 @@ components:
           enum:
             - "yes"
             - "no"
+
+    LenderConfig:
+      type: object
+      title: lender config
+      description: lender configuration extra info
+      required:
+        - provider
+        - xid
+      properties:
+        provider:
+          type: string
+          title: provider
+          $ref: "#/components/schemas/FinanceProvider"
+        xid:
+          type: string
+          title: external reference id for this lender
 
     SolarCompanyInfo:
       type: object
