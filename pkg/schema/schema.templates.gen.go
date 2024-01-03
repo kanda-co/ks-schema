@@ -1770,13 +1770,53 @@ var TMap = map[TName]string{
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{receiver.contact_name}}"
+      "text": "Hello {{receiver.contact_name}}"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "Due to the unforseen actions of the lender your loan was underwritten by (Omni Retail Capital Finance), we need to move your loan to our new lender, Propensio Finance. Please click the below button"
+          "text": "Unfortunately, Kanda has stopped its commercial relationship with the lender - Omni Capital - who has underwritten your loan. Due to this Omni Capital is not paying out funds to Kanda and therefore, your service provider in a normal timeframe. This means we're unable to fulfill your order with them and pay your tradesperson."
+        },
+        {
+          "text": "We do not believe Omni Capital to be in trouble at this time or for this to cause a risk to you, however, since we can't guarantee payment to your service provider on time we can't fulfil your order with them. This means you'll need to find another method of payment."
+        },
+        {
+          "text": "We're offering you the option to reapply for the same loan or better with another lender on our platform called Propensio Finance. Alternatively, you can cancel your finance agreement and pay your tradesperson directly. Please remember that the finance agreement is separate from any contract of sale you have with your tradesperson."
+        }
+      ]
+    },
+    {
+      "type": "compact_rows",
+      "rows": [
+        {
+          "text": "&#x2022; If your current loan is a 0% loan then the new loan will be identical if approved"
+        },
+        {
+          "text": "&nbsp;"
+        },
+        {
+          "text": "&#x2022; If your current loan is an interest-bearing loan then the number of years will be the same but the APR will be 14.9% APR if approved"
+        },
+        {
+          "text": "&nbsp;"
+        },
+        {
+          "text": "&#x2022; If your current loan is BNPL 6+60 16.9% APR, then your new loan will be the same term but the APR will be 14.9% APR if approved"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "To reapply for the new loan term above please click the button below to consent to this - we will take care of the rest. You'll hear from the lender that your application has been submitted and whether it has been approved or not. If it has you'll need to sign a new finance agreement (online). We'll then cancel your agreement with omni capital. <b>Propensio will perform a soft credit check on you.</b>"
+        },
+        {
+          "text": "<b>If you have any questions before consenting please email <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk</a></b>"
+        },
+        {
+          "text": "Click the button below to give consent (consent given on click). "
         }
       ]
     },
@@ -1785,7 +1825,8 @@ var TMap = map[TName]string{
       "text": "Provide consent",
       "url": "{{cta_url}}"
     }
-  ]
+  ],
+  "sms": "Please check your email for an important update about your job from {{sender.contact_name}}."
 }`,
 	"DBV4_USER_DEV_CLAIM_ACCOUNT": `{
   "subject": "You have been invited to join {{sender.contact_name}}'s team on Kanda as a developer",
