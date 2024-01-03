@@ -1,0 +1,23 @@
+{
+  "subject": "We need your consent to move your loan over to our new provider",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}}"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Due to the unforseen actions of the lender your loan was underwritten by (Omni Retail Capital Finance), we need to move your loan to our new lender, Propensio Finance. Please click the below button"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "Provide consent",
+      "url": "{{cta_url}}"
+    }
+  ]
+}

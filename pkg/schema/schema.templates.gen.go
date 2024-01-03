@@ -45,6 +45,7 @@ const (
 	DBV4_TP_SAT_NOTE_VIEWED                      TName = "DBV4_TP_SAT_NOTE_VIEWED"
 	DBV4_TP_SIGN_DOCUMENTS                       TName = "DBV4_TP_SIGN_DOCUMENTS"
 	DBV4_USER_CLAIM_ACCOUNT                      TName = "DBV4_USER_CLAIM_ACCOUNT"
+	DBV4_USER_CONSENT                            TName = "DBV4_USER_CONSENT"
 	DBV4_USER_DEV_CLAIM_ACCOUNT                  TName = "DBV4_USER_DEV_CLAIM_ACCOUNT"
 	DBV4_USER_ID_CHECKS_DECLINED                 TName = "DBV4_USER_ID_CHECKS_DECLINED"
 	DBV4_USER_ID_CHECKS_VERIFIED                 TName = "DBV4_USER_ID_CHECKS_VERIFIED"
@@ -1759,6 +1760,29 @@ var TMap = map[TName]string{
     {
       "type": "button",
       "text": "Claim you account",
+      "url": "{{cta_url}}"
+    }
+  ]
+}`,
+	"DBV4_USER_CONSENT": `{
+  "subject": "We need your consent to move your loan over to our new provider",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}}"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Due to the unforseen actions of the lender your loan was underwritten by (Omni Retail Capital Finance), we need to move your loan to our new lender, Propensio Finance. Please click the below button"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "Provide consent",
       "url": "{{cta_url}}"
     }
   ]
