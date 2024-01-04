@@ -4544,6 +4544,29 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/adhoc/{action}:
+    post:
+      operationId: actionAdhoc
+      summary: kanda staff only to run adhoc action
+      tags:
+        - Adhoc
+      parameters:
+        - name: action
+          in: path
+          description: adhoc action name
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: adhoc action succeeded
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/event:
     post:
       operationId: postEvent
