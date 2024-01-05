@@ -31,13 +31,13 @@ const Desktop: FunctionComponent<DesktopProps> = function ({
         className="w-full -mt-5"
       >
         {({ handleClose }) => (
-          <Card padding="p-2" className={CLASS_NAMES.card}>
+          <Card padding="p-2 pt-0" className={CLASS_NAMES.card}>
             <>
               {showButton && (
                 <Button.Link
                   id="company-lookup-not-listed"
                   label="I can't find my company"
-                  className="sticky top-0 w-full px-3 pb-1 bg-neutral-000"
+                  className="sticky top-0 w-full p-3 bg-neutral-000"
                   onClick={() => {
                     handleClose();
                     onClick();
