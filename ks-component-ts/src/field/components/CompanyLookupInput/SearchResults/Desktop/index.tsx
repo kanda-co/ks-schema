@@ -29,6 +29,7 @@ const Desktop: FunctionComponent<DesktopProps> = function ({
         id="company-lookup-input"
         visible={visible}
         className="w-full -mt-5"
+        wrapperClassName="w-full"
       >
         {({ handleClose }) => (
           <Card padding="p-2 pt-0" className={CLASS_NAMES.card}>
