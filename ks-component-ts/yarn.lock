@@ -869,10 +869,10 @@
     lodash.get "^4.4.2"
     lodash.set "^4.3.2"
 
-"@kanda-libs/ks-design-library@0.2.93":
-  version "0.2.93"
-  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-design-library/-/ks-design-library-0.2.93.tgz#b42bd8bc96b1428cb8c54a5d1f5456e1a0ee28d7"
-  integrity sha512-P9zYpF17NzA/1LXmaHT8vclO98Rw3zRSuYVdONnFdF0yPEmX0bgTlGqHfCJNbvzUKy9zsEyT00i5NFC/Xqs0gQ==
+"@kanda-libs/ks-design-library@0.3.11":
+  version "0.3.11"
+  resolved "https://registry.yarnpkg.com/@kanda-libs/ks-design-library/-/ks-design-library-0.3.11.tgz#3cc84816c8a0611d235a331bc47b90d50d870cff"
+  integrity sha512-V6MuP5SSiFBzggdA2RPyawbMa+SO62dw6HvPktgdpLTMrNd+2Sb2Ze1FBaXD+guI+sJ7Ljpj3LCYEVvni66sOQ==
   dependencies:
     crypto-js "^4.1.1"
     file-saver "^2.0.5"
