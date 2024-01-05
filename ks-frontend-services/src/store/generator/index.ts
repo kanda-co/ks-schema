@@ -186,6 +186,7 @@ const entityNames = getOperationKeys(operations)
   .filter(
     (name) =>
       [
+        'Adhoc',
         'Webhook',
         'Task',
         'InfoCache',
