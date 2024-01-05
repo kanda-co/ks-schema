@@ -11,16 +11,23 @@ export interface HeaderSearchProps
   options?: JSX.Element[];
   className?: string;
   help?: boolean;
+  hideNumber?: boolean;
 }
 
 const HeaderSearch: FunctionComponent<HeaderSearchProps> = function ({
   options = [],
   help = false,
+  hideNumber = true,
   className,
   ...inputProps
 }) {
   return (
-    <Header.Base className={className} help={help} options={options}>
+    <Header.Base
+      className={className}
+      help={help}
+      hideNumber={hideNumber}
+      options={options}
+    >
       <div className="w-full -ml-4">
         <FormTheme variant="clean">
           <InputUncontrolled
