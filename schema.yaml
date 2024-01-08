@@ -6174,6 +6174,10 @@ components:
           description: lender configuration for this company
           items:
             $ref: "#/components/schemas/LenderConfig"
+        business_type:
+          type: string
+          title: business type
+          description: main business type
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
