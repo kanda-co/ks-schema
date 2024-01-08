@@ -24,19 +24,25 @@
       "type": "compact_rows",
       "rows": [
         {
-          "text": "&#x2022; If your current loan is a 0% loan then the new loan will be identical if approved"
+          "text": "&#x2022; If your current loan is a 0% loan then the new loan <b>you apply for</b> will be identical <b>if approved</b>."
         },
         {
           "text": "&nbsp;"
         },
         {
-          "text": "&#x2022; If your current loan is an interest-bearing loan then the number of years will be the same but the APR will be 14.9% APR if approved"
+          "text": "&#x2022; If your current loan is an interest-bearing loan then the number of years will be the same but the APR will be 14.9% APR on the loan <b>you apply for if approved</b>."
         },
         {
           "text": "&nbsp;"
         },
         {
-          "text": "&#x2022; If your current loan is BNPL 6+60 16.9% APR, then your new loan will be the same term but the APR will be 14.9% APR if approved"
+          "text": "&#x2022; If your current loan is BNPL 6+60 16.9% APR, then the new loan <b>you apply for</b> will be the same term but the APR will be 14.9% APR <b>if approved</b>."
+        },
+        {
+          "text": "&nbsp;"
+        },
+        {
+          "text": "&#x2022; If the loan provider cannot offer you the same option then they will do their best to offer an alternative rate."
         }
       ]
     },
