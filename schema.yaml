@@ -1649,6 +1649,14 @@ paths:
           schema:
             type: string
             minLength: 1
+        - name: provider
+          in: query
+          description: billing payment method
+          schema:
+            type: string
+            enum:
+              - stripe
+              - premium_credit
       responses:
         200:
           description: posted company billing redirect urls
