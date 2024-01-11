@@ -95,7 +95,7 @@ const EMPHASIZED_THEME = {
 const CLEAN_THEME = {
   fieldWrapper: "Simple" as FieldWrapperType,
   baseClasses:
-    "rounded-lg text-style-g flex w-full text-neutral-900 placeholder-neutral-400 mb-1 caret-turquoise-300 text-left",
+    "rounded-lg text-16-18 md:text-14-22 flex w-full text-neutral-900 placeholder-neutral-400 mb-1 caret-turquoise-300 text-left",
   focusClasses: "focus:outline-none",
   focusWithinClasses: "focus-within:outline-none",
   paddingClasses: "py-3.25",
