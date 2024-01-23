@@ -311,6 +311,7 @@ const STREAMLINE_THEME = {
     label: "text-12-18-em text-neutral-700",
     helperText: "whitespace-nowrap text-12-18 text-neutral-500",
   },
+  buttonClasses: "mt-2 mr-2",
 };
 
 const STREAMLINE_INLINE_THEME = {
@@ -337,6 +338,7 @@ const STREAMLINE_INLINE_THEME = {
     label: "w-full text-12-18-em text-neutral-600 mb-2",
     helperText: "whitespace-nowrap text-12-18 text-neutral-500",
   },
+  buttonClasses: "mt-2 mr-2",
 };
 
 const PERCENTAGE_INCREMENT_THEME = {

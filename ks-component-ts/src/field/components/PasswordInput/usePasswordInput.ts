@@ -27,6 +27,7 @@ export default function usePasswordInput(error: string): Hook {
     focusClasses,
     makeErrorClasses,
     skeletonClasses,
+    buttonClasses,
   } = useFormTheme();
 
   const className = clsx(
@@ -37,8 +38,10 @@ export default function usePasswordInput(error: string): Hook {
     makeErrorClasses(error),
     "pr-12"
   );
-  const buttonClassName =
-    "absolute right-0 stroke-current text-neutral-500 mt-3.5 mr-4";
+  const buttonClassName = [
+    buttonClasses || "mt-3.5 mr-4",
+    "absolute right-0 stroke-current text-neutral-500",
+  ].join(" ");
 
   return {
     className,
