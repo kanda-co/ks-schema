@@ -17,10 +17,12 @@ export declare const createResponseHandler: <State extends GeneratedState<Entity
     payload: Entity | Entity[];
     type: string;
 }) => (State & {
+    hasFetched: boolean;
     isLoading: boolean;
     isSubmitting: boolean;
 }) | (State & {
     chainedRequest: boolean;
+    hasFetched: boolean;
     fetchedList: boolean;
     isLoading: boolean;
     isSubmitting: boolean;
@@ -31,6 +33,7 @@ export declare const createResponseHandler: <State extends GeneratedState<Entity
 export declare const createVoidResponseHandler: <State extends GeneratedState<unknown>>() => (state: State, action: PayloadAction<void>) => State & {
     chainedRequest: boolean;
     fetchedList: boolean;
+    hasFetched: boolean;
     isLoading: boolean;
     isSubmitting: boolean;
 };

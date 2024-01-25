@@ -1,4 +1,10 @@
 import * as externalServices from './external';
+declare const adhoc: {
+    actionAdhoc: {
+        key: string;
+        method: import("../generated/operations/actionAdhoc").ActionAdhocRequestFunction;
+    };
+};
 declare const authUser: {
     me: {
         key: string;
@@ -107,6 +113,14 @@ declare const credit: {
     signCredit: {
         key: string;
         method: import("../generated/operations/signCredit").SignCreditRequestFunction;
+    };
+    migrateCredit: {
+        key: string;
+        method: import("../generated/operations/migrateCredit").MigrateCreditRequestFunction;
+    };
+    consentMigrateCredit: {
+        key: string;
+        method: import("../generated/operations/consentMigrateCredit").ConsentMigrateCreditRequestFunction;
     };
 };
 declare const document: {
@@ -379,6 +393,14 @@ declare const job: {
     approveJobSatNote: {
         key: string;
         method: import("../generated/operations/approveJobSatNote").ApproveJobSatNoteRequestFunction;
+    };
+    lenderReviewJobSatNote: {
+        key: string;
+        method: import("../generated/operations/lenderReviewJobSatNote").LenderReviewJobSatNoteRequestFunction;
+    };
+    delayJobSatNote: {
+        key: string;
+        method: import("../generated/operations/delayJobSatNote").DelayJobSatNoteRequestFunction;
     };
     payoutJob: {
         key: string;
@@ -671,6 +693,14 @@ declare const address: {
         }, import("./external/address").FindResponse>;
     };
 };
+declare const contract: {
+    generate: {
+        key: string;
+        method: ({ body, }: import("./external/contract").ContractGenerateRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+            body: import("./external/contract").ContractResponse;
+        }, import("./external/contract").ContractResponse>;
+    };
+};
 declare const payouts: {
     payouts: {
         key: string;
@@ -707,10 +737,30 @@ declare const sheets: {
         }, import("./external/sheets").ReadResponse>;
     };
 };
+declare const subsSheet: {
+    write: {
+        key: string;
+        method: ({ body, }: import("./external/subsSheet").WriteRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+            body: import("./external/subsSheet").SubSheetResponse;
+        }, import("./external/subsSheet").SubSheetResponse>;
+    };
+    update: {
+        key: string;
+        method: ({ body, }: import("./external/subsSheet").UpdateRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+            body: import("./external/subsSheet").SubSheetResponse;
+        }, import("./external/subsSheet").SubSheetResponse>;
+    };
+};
 /**
  * A list of all possible services the frontend can use.
  */
 declare const services: {
+    adhoc: {
+        actionAdhoc: {
+            key: string;
+            method: import("../generated/operations/actionAdhoc").ActionAdhocRequestFunction;
+        };
+    };
     authUser: {
         me: {
             key: string;
@@ -819,6 +869,14 @@ declare const services: {
         signCredit: {
             key: string;
             method: import("../generated/operations/signCredit").SignCreditRequestFunction;
+        };
+        migrateCredit: {
+            key: string;
+            method: import("../generated/operations/migrateCredit").MigrateCreditRequestFunction;
+        };
+        consentMigrateCredit: {
+            key: string;
+            method: import("../generated/operations/consentMigrateCredit").ConsentMigrateCreditRequestFunction;
         };
     };
     document: {
@@ -1091,6 +1149,14 @@ declare const services: {
         approveJobSatNote: {
             key: string;
             method: import("../generated/operations/approveJobSatNote").ApproveJobSatNoteRequestFunction;
+        };
+        lenderReviewJobSatNote: {
+            key: string;
+            method: import("../generated/operations/lenderReviewJobSatNote").LenderReviewJobSatNoteRequestFunction;
+        };
+        delayJobSatNote: {
+            key: string;
+            method: import("../generated/operations/delayJobSatNote").DelayJobSatNoteRequestFunction;
         };
         payoutJob: {
             key: string;
@@ -1383,6 +1449,14 @@ declare const services: {
             }, import("./external/address").FindResponse>;
         };
     };
+    contract: {
+        generate: {
+            key: string;
+            method: ({ body, }: import("./external/contract").ContractGenerateRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+                body: import("./external/contract").ContractResponse;
+            }, import("./external/contract").ContractResponse>;
+        };
+    };
     payouts: {
         payouts: {
             key: string;
@@ -1419,6 +1493,20 @@ declare const services: {
             }, import("./external/sheets").ReadResponse>;
         };
     };
+    subsSheet: {
+        write: {
+            key: string;
+            method: ({ body, }: import("./external/subsSheet").WriteRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+                body: import("./external/subsSheet").SubSheetResponse;
+            }, import("./external/subsSheet").SubSheetResponse>;
+        };
+        update: {
+            key: string;
+            method: ({ body, }: import("./external/subsSheet").UpdateRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+                body: import("./external/subsSheet").SubSheetResponse;
+            }, import("./external/subsSheet").SubSheetResponse>;
+        };
+    };
 };
-export { authUser, company, credit, document, enterprise, event, infoAuth, infoCache, infoCompany, infoCustomer, infoDirector, infoEnterpriseRole, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoLead, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoStats, infoValidation, job, lead, monitor, onboarding, partner, payment, rate, subscription, task, tradeSummary, training, webhook, address, payouts, pdf, sheets, };
+export { adhoc, authUser, company, credit, document, enterprise, event, infoAuth, infoCache, infoCompany, infoCustomer, infoDirector, infoEnterpriseRole, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoLead, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoStats, infoValidation, job, lead, monitor, onboarding, partner, payment, rate, subscription, task, tradeSummary, training, webhook, address, contract, payouts, pdf, sheets, subsSheet, };
 export default services;

@@ -9,6 +9,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").AuthUser>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -18,6 +19,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Company>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -27,6 +29,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Credit>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -36,6 +39,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Document>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -45,6 +49,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Enterprise>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -54,6 +59,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Event>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -63,6 +69,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoAuth>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -72,6 +79,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoCompany>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -81,6 +89,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Enterprise>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -90,6 +99,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoEntity>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -99,6 +109,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoGhost>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -108,6 +119,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoIP>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -117,6 +129,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoLead>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -126,6 +139,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoOnboarding>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -135,6 +149,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoQuery>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -144,6 +159,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoStats>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -153,6 +169,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Job>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -162,6 +179,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Lead>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -171,6 +189,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Monitor>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -180,6 +199,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Onboarding>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -189,6 +209,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Partner>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -198,6 +219,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Payment>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -207,6 +229,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Rate>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -216,6 +239,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Subscription>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -225,6 +249,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").TradeSummary>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -234,6 +259,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Training>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -243,6 +269,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").JobCompanyInfo>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -252,6 +279,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").JobCreditState>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -261,6 +289,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Job>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -270,6 +299,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").TradeSummary>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -279,6 +309,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").TradeSummary>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -288,6 +319,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").LeadJobSummary>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -297,6 +329,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoCompany>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -306,6 +339,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoCompany>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -315,6 +349,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").RedirectURLs>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -324,6 +359,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Referral>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -333,6 +369,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").EnterpriseUserRole>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -345,6 +382,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").AuthUser>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -354,6 +392,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Company>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -363,6 +402,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Credit>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -372,6 +412,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Document>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -381,6 +422,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Enterprise>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -390,6 +432,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Event>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -399,6 +442,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoAuth>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -408,6 +452,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoCompany>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -417,6 +462,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Enterprise>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -426,6 +472,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoEntity>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -435,6 +482,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoGhost>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -444,6 +492,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoIP>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -453,6 +502,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoLead>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -462,6 +512,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoOnboarding>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -471,6 +522,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoQuery>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -480,6 +532,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoStats>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -489,6 +542,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Job>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -498,6 +552,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Lead>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -507,6 +562,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Monitor>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -516,6 +572,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Onboarding>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -525,6 +582,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Partner>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -534,6 +592,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Payment>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -543,6 +602,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Rate>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -552,6 +612,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Subscription>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -561,6 +622,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").TradeSummary>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -570,6 +632,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Training>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -579,6 +642,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").JobCompanyInfo>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -588,6 +652,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").JobCreditState>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -597,6 +662,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Job>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -606,6 +672,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").TradeSummary>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -615,6 +682,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").TradeSummary>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -624,6 +692,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").LeadJobSummary>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -633,6 +702,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoCompany>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -642,6 +712,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoCompany>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -651,6 +722,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").RedirectURLs>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -660,6 +732,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Referral>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
@@ -669,6 +742,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         entities: import("@reduxjs/toolkit").Dictionary<import("..").EnterpriseUserRole>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
+        hasFetched: boolean;
         fetchedList: boolean;
         chainedRequest: boolean;
         isLoading: boolean;
