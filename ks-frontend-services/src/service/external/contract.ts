@@ -6,7 +6,7 @@ import { Company } from '../../generated/components/schemas';
 import type { Guarantor } from './subsSheet';
 
 export const BASE_URL =
-  process.env.REACT_APP_PDF_COMPRESS_SERVICE_URL ||
+  process.env.REACT_APP_FIREBASE_FUNCTION_SERVICE_URL ||
   'https://europe-west1-basic-garden-241310.cloudfunctions.net';
 
 const pdfPoster = <T>(
