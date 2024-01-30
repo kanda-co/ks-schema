@@ -8,6 +8,7 @@
     "generate-store": "mkdir -p ./src/store/slices/generated && ts-node --require ts-node/register --experimental-specifier-resolution=node ./src/store/generator/ && prettier --write ./src/store/",
     "clean": "rimraf dist",
     "remove:nodemodules": "rimraf yarn.lock && rimraf node_modules",
+    "build:deploy": "yarn remove:nodemodules && yarn && yarn build",
     "build:types": "tsc src/index.ts --declaration --emitDeclarationOnly --jsx react-jsx --esModuleInterop",
     "build": "yarn && yarn clean && yarn generate-service-module && yarn generate-store && yarn build:types && ts-node ./build.ts",
     "watch": "yarn && yarn clean && DEV_WATCH=true yarn build",

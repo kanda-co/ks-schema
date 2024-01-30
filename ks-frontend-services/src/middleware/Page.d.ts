@@ -7,4 +7,4 @@ export interface PageProps<P extends StringIndexedObject> {
 export interface WrapperProps {
     children: JSX.Element;
 }
-export declare function createPage(Wrapper?: FunctionComponent<WrapperProps>): <P extends StringIndexedObject<any>>({ pathKey, }: PropsWithChildren<PageProps<P>>) => JSX.Element;
+export declare function createPage(Wrapper?: FunctionComponent<WrapperProps>): <P extends StringIndexedObject<any>>({ pathKey, }: PropsWithChildren<PageProps<P>>) => import("react/jsx-runtime").JSX.Element;
