@@ -2665,6 +2665,37 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/job/all/export-payouts:
+    post:
+      operationId: exportJobPayouts
+      summary: >
+        kanda staff to upload and sync job payments from xid
+        only allowed when in sat note lender review and with matching xids
+      tags:
+        - Job
+      requestBody:
+        description: array of xids which are ready to export to payout
+        content:
+          application/json:
+            schema:
+              type: array
+              title: xids
+              items:
+                type: string
+      responses:
+        200:
+          description: got existing job with finance status set to paid
+          content:
+            text/csv:
+              schema:
+                type: string
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/payment:
     get:
       operationId: getPayments
