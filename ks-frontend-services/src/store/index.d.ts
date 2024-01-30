@@ -266,7 +266,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
     };
     exportJobPayouts: {
         ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").ExportJobPayouts>;
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").JobPayouts>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
         hasFetched: boolean;
@@ -649,7 +649,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
     };
     exportJobPayouts: {
         ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").ExportJobPayouts>;
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").JobPayouts>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
         hasFetched: boolean;
@@ -809,7 +809,7 @@ export declare function createSelectors<State extends AuthSlice, Pages>(): {
     subscription: import("./types").Selectors<import("..").Subscription, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Subscription>>>;
     tradeSummary: import("./types").Selectors<import("..").TradeSummary, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").TradeSummary>>>;
     training: import("./types").Selectors<import("..").Training, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Training>>>;
-    exportJobPayouts: import("./types").Selectors<import("..").ExportJobPayouts, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").ExportJobPayouts>>>;
+    exportJobPayouts: import("./types").Selectors<import("..").JobPayouts, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").JobPayouts>>>;
     jobCompanyInfo: import("./types").Selectors<import("..").JobCompanyInfo, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").JobCompanyInfo>>>;
     checkJob: import("./types").Selectors<import("..").JobCreditState, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").JobCreditState>>>;
     tradeQuoteApprovalLead: import("./types").Selectors<import("..").Job, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Job>>>;

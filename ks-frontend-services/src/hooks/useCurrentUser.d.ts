@@ -45,7 +45,7 @@ export declare const createCurrentUserHook: <State extends AuthSlice, Dispatch e
     subscription: import("../store/types").Selectors<import("..").Subscription, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Subscription>>>;
     tradeSummary: import("../store/types").Selectors<import("..").TradeSummary, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").TradeSummary>>>;
     training: import("../store/types").Selectors<import("..").Training, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Training>>>;
-    exportJobPayouts: import("../store/types").Selectors<import("..").ExportJobPayouts, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").ExportJobPayouts>>>;
+    exportJobPayouts: import("../store/types").Selectors<import("..").JobPayouts, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").JobPayouts>>>;
     jobCompanyInfo: import("../store/types").Selectors<import("..").JobCompanyInfo, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").JobCompanyInfo>>>;
     checkJob: import("../store/types").Selectors<import("..").JobCreditState, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").JobCreditState>>>;
     tradeQuoteApprovalLead: import("../store/types").Selectors<import("..").Job, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Job>>>;

@@ -2688,7 +2688,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ExportJobPayouts"
+                $ref: "#/components/schemas/JobPayouts"
         default:
           description: unexpected error
           content:
@@ -4760,8 +4760,7 @@ components:
         minLength: 1
 
   schemas:
-
-    ExportJobPayouts: 
+    JobPayouts:
       type: object
       required:
         - csv

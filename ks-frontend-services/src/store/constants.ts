@@ -43,7 +43,7 @@ export const SINGLE_ACTION_REDUCERS: SingleActionReducers[] = [
   {
     entity: 'job',
     action: 'ExportJobPayouts',
-    actionEntity: 'ExportJobPayouts',
+    actionEntity: 'JobPayouts',
   },
   { entity: 'job', action: 'JobCompanyInfo' },
   { entity: 'job', action: 'CheckJob', actionEntity: 'JobCreditState' },
