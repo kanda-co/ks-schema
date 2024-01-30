@@ -2686,9 +2686,9 @@ paths:
         200:
           description: got existing job with finance status set to paid
           content:
-            text/csv:
+            application/json:
               schema:
-                type: string
+                $ref: "#/components/schemas/JobPayouts"
         default:
           description: unexpected error
           content:
@@ -4760,6 +4760,15 @@ components:
         minLength: 1
 
   schemas:
+    JobPayouts:
+      type: object
+      required:
+        - csv
+      properties:
+        csv:
+          type: string
+          title: csv
+
     AuthUser:
       type: object
       required:

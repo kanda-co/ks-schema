@@ -422,6 +422,10 @@ declare const job: {
         key: string;
         method: import("../generated/operations/jobCompanyInfo").JobCompanyInfoRequestFunction;
     };
+    exportJobPayouts: {
+        key: string;
+        method: import("../generated/operations/exportJobPayouts").ExportJobPayoutsRequestFunction;
+    };
 };
 declare const lead: {
     getLeads: {
@@ -1177,6 +1181,10 @@ declare const services: {
         jobCompanyInfo: {
             key: string;
             method: import("../generated/operations/jobCompanyInfo").JobCompanyInfoRequestFunction;
+        };
+        exportJobPayouts: {
+            key: string;
+            method: import("../generated/operations/exportJobPayouts").ExportJobPayoutsRequestFunction;
         };
     };
     lead: {

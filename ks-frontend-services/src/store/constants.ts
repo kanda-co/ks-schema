@@ -13,6 +13,7 @@ export const INFO_ENTITY_KEY = 'infoEntity.getInfoEntity';
 export const IGNORED_ACTIONS = [
   'adhoc',
   'checkJob',
+  'exportJobPayouts',
   'tradeQuoteApprovalLead',
   'connectTradesLead',
   'matchTradesLead',
@@ -39,6 +40,11 @@ export type SingleActionReducers = {
 export const VOID_ACTIONS = ['resendJob'];
 
 export const SINGLE_ACTION_REDUCERS: SingleActionReducers[] = [
+  {
+    entity: 'job',
+    action: 'ExportJobPayouts',
+    actionEntity: 'JobPayouts',
+  },
   { entity: 'job', action: 'JobCompanyInfo' },
   { entity: 'job', action: 'CheckJob', actionEntity: 'JobCreditState' },
   {

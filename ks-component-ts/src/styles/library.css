@@ -1232,6 +1232,10 @@ input[type="number"]::-webkit-inner-spin-button,
   margin-bottom: 20px;
 }
 
+.mr-2 {
+  margin-right: 8px;
+}
+
 .-ml-4 {
   margin-left: -16px;
 }
@@ -1254,10 +1258,6 @@ input[type="number"]::-webkit-inner-spin-button,
 
 .ml-2 {
   margin-left: 8px;
-}
-
-.mr-2 {
-  margin-right: 8px;
 }
 
 .mt-\[5px\] {
@@ -4476,6 +4476,12 @@ input[type="checkbox"][disabled]:checked ~ .label-checked-disabled\:bg-neutral-3
 @media (min-width: 768px) {
   .md\:-bottom-18 {
     bottom: -72px;
+  }
+
+  .md\:text-14-22 {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
   }
 
   .md\:text-13-14 {
