@@ -2385,7 +2385,7 @@ paths:
 
   /api/job/{id}/signSatNote:
     post:
-      operationId: signJobSateNote
+      operationId: signJobSatNote
       summary: >
         customer to sign completed job with satisfaction note,
         only allowed when job status is finished and is financed
@@ -3892,6 +3892,146 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Lead"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/installation:
+    get:
+      operationId: getInstallations
+      summary: get all installations
+      tags:
+        - Installation
+      parameters:
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
+      responses:
+        200:
+          description: got all installations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Installation"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    post:
+      operationId: postInstallation
+      summary: post new installation
+      tags:
+        - Installation
+      requestBody:
+        description: post new installation
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Installation"
+      responses:
+        200:
+          description: posted new installation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Installation"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/installation/{id}:
+    get:
+      operationId: getInstallation
+      summary: get existing installation
+      tags:
+        - Installation
+      parameters:
+        - name: id
+          in: path
+          description: installation id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing installation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Installation"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: putInstallation
+      summary: put existing installation
+      tags:
+        - Installation
+      parameters:
+        - name: id
+          in: path
+          description: installation id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: put existing installation
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Installation"
+      responses:
+        200:
+          description: put existing installation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Installation"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      operationId: deleteInstallation
+      summary: delete existing installation
+      tags:
+        - Installation
+      parameters:
+        - name: id
+          in: path
+          description: installation id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: deleted existing installation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Installation"
         default:
           description: unexpected error
           content:
@@ -9283,4 +9423,158 @@ components:
         message:
           type: string
           title: message
+          readOnly: true
+
+    Installation:
+      type: object
+      title: installation
+      required:
+        - customer
+        - configuration
+        - preferred_date
+        - preferred_slot
+        - deposit_payment
+        - vat
+      properties:
+        id:
+          type: string
+          title: job id
+          readOnly: true
+        cid:
+          type: string
+          title: company id
+          readOnly: true
+        oid:
+          type: string
+          title: owner id
+          readOnly: true
+        aid:
+          type: string
+          title: author id
+          readOnly: true
+        customer:
+          type: object
+          $ref: "#/components/schemas/Customer"
+        configuration:
+          type: object
+          title: installation configuration
+          oneOf:
+            - $ref: "#/components/schemas/EVChargerConfig"
+        preferred_date:
+          type: string
+          title: preferred installation date
+        preferred_slot:
+          type: string
+          title: preferred installation slot
+        down_payment:
+          type: object
+          title: down payment
+          $ref: "#/components/schemas/DownPayment"
+        vat:
+          title: vat in pence (20% is 2000)
+          $ref: "#/components/schemas/Pence"
+        total:
+          type: object
+          title: installation total (with vat breakdown)
+          $ref: "#/components/schemas/MoneyTotal"
+          readOnly: true
+        xid:
+          type: string
+          title: external reference id
+          readOnly: true
+        xref:
+          type: string
+          title: external reference
+          readOnly: true
+        metadata:
+          type: object
+          title: metadata
+          $ref: "#/components/schemas/Metadata"
+          readOnly: true
+
+    EVChargerConfig:
+      type: object
+      title: ev charger installation configuration
+      required:
+        - charger
+        - charger_base_price
+        - for_solar
+        - for_off_street_parking
+        - colour
+        - cable_type
+        - fusebox_distance
+      properties:
+        charger:
+          type: string
+          title: ev charger name
+        charger_base_price:
+          title: charger base price
+          $ref: "#/components/schemas/ChargeItem"
+        for_solar:
+          type: string
+          title: for solar?
+          enum:
+            - "yes"
+            - "no"
+        for_off_street_parking:
+          type: string
+          title: for off street parking?
+          enum:
+            - "yes"
+            - "no"
+        colour:
+          type: string
+          title: ev charger colour
+        cable_type:
+          type: string
+          title: cable type
+          enum:
+            - "none"
+            - "type_1"
+            - "type_2"
+        cable_length:
+          title: cable length in pence
+          $ref: "#/components/schemas/Pence"
+        fusebox_distance:
+          type: string
+          title: fusebox distance
+          enum:
+            - "0_to_5m"
+            - "6_to_15m"
+            - "16_to_25m"
+            - "over_25m"
+        fusebox_distance_surcharge:
+          title: fusebox distance surcharge in pence
+          $ref: "#/components/schemas/ChargeItem"
+
+    ChargeItem:
+      type: object
+      title: charge item
+      required:
+        - quantity
+        - price
+      properties:
+        quantity:
+          title: charge item quantity in pence
+          $ref: "#/components/schemas/Pence"
+        price:
+          type: object
+          $ref: "#/components/schemas/Money"
+          title: charge item unit price in pence (vat inclusive)
+
+    DownPayment:
+      type: object
+      title: down payment
+      description: down payment either in partial or full
+      required:
+        - amount
+      properties:
+        amount:
+          title: down payment amount
+          $ref: "#/components/schemas/Money"
+        settled:
+          title: payment settled?
+          enum:
+            - "yes"
+            - "no"
           readOnly: true
