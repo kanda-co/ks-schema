@@ -9478,6 +9478,9 @@ components:
           title: installation total (with vat breakdown)
           $ref: "#/components/schemas/MoneyTotal"
           readOnly: true
+        redirect_urls:
+          type: object
+          $ref: "#/components/schemas/RedirectURLs"
         xid:
           type: string
           title: external reference id
@@ -9496,6 +9499,7 @@ components:
       type: object
       title: ev charger installation configuration
       required:
+        - id
         - charger
         - charger_base_price
         - for_solar
@@ -9504,11 +9508,14 @@ components:
         - cable_type
         - fusebox_distance
       properties:
+        id:
+          type: string
+          title: ev charger id
         charger:
           type: string
           title: ev charger name
         charger_base_price:
-          title: charger base price
+          title: charger base price (vat inclusive)
           $ref: "#/components/schemas/ChargeItem"
         for_solar:
           type: string
@@ -9525,6 +9532,9 @@ components:
         colour:
           type: string
           title: ev charger colour
+        colour_surcharge:
+          title: colour surcharge in pence (vat inclusive)
+          $ref: "#/components/schemas/ChargeItem"
         cable_type:
           type: string
           title: cable type
@@ -9532,9 +9542,15 @@ components:
             - "none"
             - "type_1"
             - "type_2"
+        cable_type_surcharge:
+          title: cable type surcharge in pence (vat inclusive)
+          $ref: "#/components/schemas/ChargeItem"
         cable_length:
           title: cable length in pence
           $ref: "#/components/schemas/Pence"
+        cable_length_surcharge:
+          title: cable length surcharge in pence (vat inclusive)
+          $ref: "#/components/schemas/ChargeItem"
         fusebox_distance:
           type: string
           title: fusebox distance
@@ -9544,7 +9560,7 @@ components:
             - "16_to_25m"
             - "over_25m"
         fusebox_distance_surcharge:
-          title: fusebox distance surcharge in pence
+          title: fusebox distance surcharge in pence (vat inclusive)
           $ref: "#/components/schemas/ChargeItem"
 
     ChargeItem:
