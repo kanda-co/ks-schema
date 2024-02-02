@@ -26,6 +26,7 @@ export const IGNORED_ACTIONS = [
   'postCompanyDirectorVerification',
   'postCompanyReferrals',
   'getCompanyDirectorVerification',
+  'applyInstallationWithFinance',
 ];
 
 export type SingleActionReducers = {
