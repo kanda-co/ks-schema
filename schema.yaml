@@ -9590,6 +9590,7 @@ components:
           $ref: "#/components/schemas/Money"
         settled:
           title: payment settled?
+          type: string
           enum:
             - "yes"
             - "no"
