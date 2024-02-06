@@ -27,10 +27,12 @@ export function handleResponse<T = unknown>(response: Response<T>) {
         console.log('error', error, { args });
         if (APP_ENV === 'qa') console.log('Error:', error);
 
-        const trackingBody = formatTrackingBody(error.response.url, error);
+        if (error?.response?.url) {
+          const trackingBody = formatTrackingBody(error.response.url, error);
 
-        amplitude?.track('api-failed', trackingBody);
-        amplitude?.flush();
+          amplitude?.track('api-failed', trackingBody);
+          amplitude?.flush();
+        }
 
         if (error.response) {
           reject(await error.response.json());
