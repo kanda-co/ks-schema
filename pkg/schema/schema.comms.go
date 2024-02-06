@@ -308,25 +308,6 @@ func (in LeadApplicant) ToContact() *ContactInfo {
 	)
 }
 
-func (in Installation) ToContact() *ContactInfo {
-	return New(
-		ContactInfo{
-			ContactAddress: in.Customer.Address,
-			ContactEmail:   New(in.Customer.Email),
-			ContactName: New(
-				ParseFullName(
-					fmt.Sprintf(
-						"%v %v",
-						in.Customer.FirstName,
-						in.Customer.LastName,
-					),
-				),
-			),
-			ContactPhone: New(in.Customer.Phone),
-		},
-	)
-}
-
 const (
 	DBV4_GENERIC_TEMPLATE string = "dbv4_generic_template"
 )
