@@ -7648,6 +7648,9 @@ components:
             - paid_out
             - cancelled
           readOnly: true
+        xstatus:
+          type: string
+          title: job credit xstatus as per lender
 
     LeadApplicant:
       type: object
