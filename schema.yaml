@@ -2689,7 +2689,6 @@ paths:
             enum:
               - "set_payout_pending"
               - "set_paid"
-            default: "set_payout_pending"
       requestBody:
         description: array of xids which are ready to export to payout
         content:
