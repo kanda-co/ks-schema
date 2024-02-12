@@ -2680,6 +2680,16 @@ paths:
           schema:
             type: boolean
             default: true
+        - name: payout
+          in: query
+          description: set payout status
+          schema:
+            type: string
+            title: set payout status
+            enum:
+              - "set_payout_pending"
+              - "set_paid"
+            default: "set_payout_pending"
       requestBody:
         description: array of xids which are ready to export to payout
         content:
