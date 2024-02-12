@@ -2673,6 +2673,13 @@ paths:
         only allowed when in sat note lender review and with matching xids
       tags:
         - Job
+      parameters:
+        - name: dryrun
+          in: query
+          description: dryrun
+          schema:
+            type: boolean
+            default: true
       requestBody:
         description: array of xids which are ready to export to payout
         content:
