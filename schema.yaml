@@ -1897,6 +1897,28 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/company/all/export-fca-approved:
+    post:
+      operationId: exportFcaApproved
+      summary: >
+        kanda staff to export all companies with completed setup
+        and FCA Approved at onboarding but have no lender configs yet
+      tags:
+        - Company
+      responses:
+        200:
+          description: got all companies with completed setup + fca approved
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ExportCSV"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/job:
     get:
       operationId: getJobs
@@ -2704,7 +2726,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/JobPayouts"
+                $ref: "#/components/schemas/ExportCSV"
         default:
           description: unexpected error
           content:
@@ -4776,15 +4798,6 @@ components:
         minLength: 1
 
   schemas:
-    JobPayouts:
-      type: object
-      required:
-        - csv
-      properties:
-        csv:
-          type: string
-          title: csv
-
     AuthUser:
       type: object
       required:
@@ -9288,6 +9301,17 @@ components:
         correct_answer:
           type: string
           title: correct answer
+
+    ExportCSV:
+      type: object
+      title: export csv
+      description: export csv object
+      required:
+        - csv
+      properties:
+        csv:
+          type: string
+          title: csv
 
     Error:
       type: object
