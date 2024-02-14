@@ -14,6 +14,7 @@ export const IGNORED_ACTIONS = [
   'adhoc',
   'checkJob',
   'exportJobPayouts',
+  'exportFcaApproved',
   'tradeQuoteApprovalLead',
   'connectTradesLead',
   'matchTradesLead',
@@ -43,7 +44,7 @@ export const SINGLE_ACTION_REDUCERS: SingleActionReducers[] = [
   {
     entity: 'job',
     action: 'ExportJobPayouts',
-    actionEntity: 'JobPayouts',
+    actionEntity: 'ExportCSV',
   },
   { entity: 'job', action: 'JobCompanyInfo' },
   { entity: 'job', action: 'CheckJob', actionEntity: 'JobCreditState' },
@@ -86,6 +87,11 @@ export const SINGLE_ACTION_REDUCERS: SingleActionReducers[] = [
     entity: 'company',
     action: 'PostCompanyReferrals',
     actionEntity: 'Referral',
+  },
+  {
+    entity: 'company',
+    action: 'ExportFcaApproved',
+    actionEntity: 'ExportCSV',
   },
   {
     entity: 'infoEnterpriseRole',

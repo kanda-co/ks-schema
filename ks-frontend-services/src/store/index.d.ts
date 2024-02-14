@@ -266,7 +266,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
     };
     exportJobPayouts: {
         ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").JobPayouts>;
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").ExportCSV>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
         hasFetched: boolean;
@@ -367,6 +367,16 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
     postCompanyReferrals: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Referral>;
+        error?: import("../types").ExtractedError;
+        isSubmitting: boolean;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+    };
+    exportFcaApproved: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").ExportCSV>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
         hasFetched: boolean;
@@ -649,7 +659,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
     };
     exportJobPayouts: {
         ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").JobPayouts>;
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").ExportCSV>;
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
         hasFetched: boolean;
@@ -757,6 +767,16 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         chainedRequest: boolean;
         isLoading: boolean;
     };
+    exportFcaApproved: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").ExportCSV>;
+        error?: import("../types").ExtractedError;
+        isSubmitting: boolean;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+    };
     infoEnterpriseRole: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").EnterpriseUserRole>;
@@ -809,7 +829,7 @@ export declare function createSelectors<State extends AuthSlice, Pages>(): {
     subscription: import("./types").Selectors<import("..").Subscription, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Subscription>>>;
     tradeSummary: import("./types").Selectors<import("..").TradeSummary, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").TradeSummary>>>;
     training: import("./types").Selectors<import("..").Training, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Training>>>;
-    exportJobPayouts: import("./types").Selectors<import("..").JobPayouts, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").JobPayouts>>>;
+    exportJobPayouts: import("./types").Selectors<import("..").ExportCSV, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").ExportCSV>>>;
     jobCompanyInfo: import("./types").Selectors<import("..").JobCompanyInfo, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").JobCompanyInfo>>>;
     checkJob: import("./types").Selectors<import("..").JobCreditState, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").JobCreditState>>>;
     tradeQuoteApprovalLead: import("./types").Selectors<import("..").Job, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Job>>>;
@@ -820,6 +840,7 @@ export declare function createSelectors<State extends AuthSlice, Pages>(): {
     getCompanyDirectorVerification: import("./types").Selectors<import("..").InfoCompany, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoCompany>>>;
     postCompanyBilling: import("./types").Selectors<import("..").RedirectURLs, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").RedirectURLs>>>;
     postCompanyReferrals: import("./types").Selectors<import("..").Referral, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Referral>>>;
+    exportFcaApproved: import("./types").Selectors<import("..").ExportCSV, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").ExportCSV>>>;
     infoEnterpriseRole: import("./types").Selectors<import("..").EnterpriseUserRole, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").EnterpriseUserRole>>>;
 };
 export {};

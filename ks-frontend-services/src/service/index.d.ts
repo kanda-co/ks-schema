@@ -72,6 +72,10 @@ declare const company: {
         key: string;
         method: import("../generated/operations/declineCompany").DeclineCompanyRequestFunction;
     };
+    exportFcaApproved: {
+        key: string;
+        method: import("../generated/operations/exportFcaApproved").ExportFcaApprovedRequestFunction;
+    };
 };
 declare const credit: {
     infoCredit: {
@@ -386,9 +390,9 @@ declare const job: {
         key: string;
         method: import("../generated/operations/viewJobSatNote").ViewJobSatNoteRequestFunction;
     };
-    signJobSateNote: {
+    signJobSatNote: {
         key: string;
-        method: import("../generated/operations/signJobSateNote").SignJobSateNoteRequestFunction;
+        method: import("../generated/operations/signJobSatNote").SignJobSatNoteRequestFunction;
     };
     approveJobSatNote: {
         key: string;
@@ -832,6 +836,10 @@ declare const services: {
             key: string;
             method: import("../generated/operations/declineCompany").DeclineCompanyRequestFunction;
         };
+        exportFcaApproved: {
+            key: string;
+            method: import("../generated/operations/exportFcaApproved").ExportFcaApprovedRequestFunction;
+        };
     };
     credit: {
         infoCredit: {
@@ -1146,9 +1154,9 @@ declare const services: {
             key: string;
             method: import("../generated/operations/viewJobSatNote").ViewJobSatNoteRequestFunction;
         };
-        signJobSateNote: {
+        signJobSatNote: {
             key: string;
-            method: import("../generated/operations/signJobSateNote").SignJobSateNoteRequestFunction;
+            method: import("../generated/operations/signJobSatNote").SignJobSatNoteRequestFunction;
         };
         approveJobSatNote: {
             key: string;
