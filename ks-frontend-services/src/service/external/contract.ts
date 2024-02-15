@@ -52,6 +52,6 @@ export default {
     }: ContractGenerateRequest): RequestFunction<
       { body: ContractResponse },
       ContractResponse
-    > => pdfPoster(`/kspdf-contract`, body),
+    > => pdfPoster(`/ks-generate-contract`, body),
   },
 };
