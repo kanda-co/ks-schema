@@ -1,0 +1,23 @@
+{
+  "subject": "Our lender will be calling you soon to perform a welcome call",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}}"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "You’ve signed the satisfaction note and will now receive a welcome call from the lender Propensio. Your tradesperson may not get paid on time if you don’t."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}

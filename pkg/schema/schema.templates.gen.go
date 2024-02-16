@@ -23,6 +23,8 @@ const (
 	DBV4_HO_LEAD_DETAILS_PROVIDED_TP_ASSIGNED    TName = "DBV4_HO_LEAD_DETAILS_PROVIDED_TP_ASSIGNED"
 	DBV4_HO_LEAD_POSTED                          TName = "DBV4_HO_LEAD_POSTED"
 	DBV4_HO_QUOTE_POSTED                         TName = "DBV4_HO_QUOTE_POSTED"
+	DBV4_HO_SAT_NOTE_LENDER_REVIEW               TName = "DBV4_HO_SAT_NOTE_LENDER_REVIEW"
+	DBV4_HO_SAT_NOTE_LENDER_REVIEW_7K            TName = "DBV4_HO_SAT_NOTE_LENDER_REVIEW_7K"
 	DBV4_HO_SUBMIT_APPLICATION                   TName = "DBV4_HO_SUBMIT_APPLICATION"
 	DBV4_LENDER_SATNOTE_REVIEW                   TName = "DBV4_LENDER_SATNOTE_REVIEW"
 	DBV4_TP_2ND_LINE_REJECTED                    TName = "DBV4_TP_2ND_LINE_REJECTED"
@@ -41,6 +43,8 @@ const (
 	DBV4_TP_LEAD_REQUESTED                       TName = "DBV4_TP_LEAD_REQUESTED"
 	DBV4_TP_SAT_NOTE_APPROVED                    TName = "DBV4_TP_SAT_NOTE_APPROVED"
 	DBV4_TP_SAT_NOTE_DELAYED                     TName = "DBV4_TP_SAT_NOTE_DELAYED"
+	DBV4_TP_SAT_NOTE_LENDER_REVIEW               TName = "DBV4_TP_SAT_NOTE_LENDER_REVIEW"
+	DBV4_TP_SAT_NOTE_LENDER_REVIEWED             TName = "DBV4_TP_SAT_NOTE_LENDER_REVIEWED"
 	DBV4_TP_SAT_NOTE_SIGNED                      TName = "DBV4_TP_SAT_NOTE_SIGNED"
 	DBV4_TP_SAT_NOTE_VIEWED                      TName = "DBV4_TP_SAT_NOTE_VIEWED"
 	DBV4_TP_SIGN_DOCUMENTS                       TName = "DBV4_TP_SIGN_DOCUMENTS"
@@ -848,6 +852,52 @@ var TMap = map[TName]string{
     }
   ]
 }`,
+	"DBV4_HO_SAT_NOTE_LENDER_REVIEW": `{
+  "subject": "Our lender will be calling you soon to perform a welcome call",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}}"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "You’ve signed the satisfaction note and will now receive a welcome call from the lender Propensio. Your tradesperson may not get paid on time if you don’t."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}`,
+	"DBV4_HO_SAT_NOTE_LENDER_REVIEW_7K": `{
+  "subject": "Our lender will be calling you soon to perform a welcome call",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}}"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "You’ve signed the satisfaction note and will now receive a welcome call from the lender Propensio. Your tradesperson may not get paid on time if you don’t."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}`,
 	"DBV4_HO_SUBMIT_APPLICATION": `{
   "subject": "{{receiver.contact_name}}, please submit your finance application",
   "flow_type": "{{flow_type}}",
@@ -1641,6 +1691,70 @@ var TMap = map[TName]string{
         {
           "text": "What do I need to do?",
           "subtext": "Nothing, just sit tight. We will get in touch if we need anything - our team can't share anymore information at this point."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}`,
+	"DBV4_TP_SAT_NOTE_LENDER_REVIEW": `{
+  "subject": "The satisfaction note signed by {{sender.contact_name}} has gone to the lender",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}}"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "{{sender.contact_name}} has signed the satisfaction note and now needs to complete their welcome call with the lender. Once completed you’ll be paid within 48 hours. We’ve told them to look out for a call today."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "What do I need to do?",
+          "subtext": "Nothing, just sit tight. We'll update you of any changes or further action needed. Learn more about payments <a href=\"https://clt1489884.bmeurl.co/10B8FC47\">here</>"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}`,
+	"DBV4_TP_SAT_NOTE_LENDER_REVIEWED": `{
+  "subject": "The welcome call with {{sender.contact_name}} has been completed",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}}"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Great news, the welcome call has been completed and payment is on it’s way to your bank account. This will land within 48-72 hours."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "What do I need to do?",
+          "subtext": "Nothing, just sit tight. We'll update you of any changes or further action needed. Learn more about payments <a href=\"https://clt1489884.bmeurl.co/10B8FC47\">here</>"
         }
       ]
     },

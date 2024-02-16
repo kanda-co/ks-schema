@@ -1,0 +1,32 @@
+{
+  "subject": "The satisfaction note signed by {{sender.contact_name}} has gone to the lender",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}}"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "{{sender.contact_name}} has signed the satisfaction note and now needs to complete their welcome call with the lender. Once completed you’ll be paid within 48 hours. We’ve told them to look out for a call today."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "What do I need to do?",
+          "subtext": "Nothing, just sit tight. We'll update you of any changes or further action needed. Learn more about payments <a href=\"https://clt1489884.bmeurl.co/10B8FC47\">here</>"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}
