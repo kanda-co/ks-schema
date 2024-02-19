@@ -4697,6 +4697,8 @@ paths:
               - dbv3_ho_application_customer_action_reminder
               - dbv3_ho_application_etika_customer_action_reminder
               - dbv3_ho_application_sat_note_sent_reminder
+              - dbv3_ho_application_sat_note_lender_review_reminder
+              - dbv3_ho_application_sat_note_lender_review_7k_reminder
               - dbv3_ho_application_sign_docs_reminder
               - dbv3_ho_initial_follow_up
               - dbv3_tp_initial_follow_up
