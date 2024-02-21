@@ -1266,7 +1266,7 @@ var TMap = map[TName]string{
   ]
 }`,
 	"DBV4_TP_CUSTOMER_REJECTED": `{
-  "subject": "{{sender.contact_name}}'s application was declined - we've offered them a 2nd chance to apply",
+  "subject": "{{sender.contact_name}}'s finance application was declined",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -1277,27 +1277,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "Unfortunately, {{sender.contact_name}}'s finance application has not been approved. So, we've given your customer the option to reapply with our 2nd line lender. We'll ask the customer to check if they are eligible and if they are then they can apply in one click."
-        },
-        {
-          "text": "It can take up to 24 hours for the lender to review this information once it's been submitted, but do give your customer a nudge if you haven't had an update from Kanda within 2 days."
-        }
-      ]
-    },
-    {
-      "type": "statements",
-      "rows": [
-        {
-          "text": "How does the 2nd line option work?",
-          "subtext": "Kanda's 2nd line lender offers the same rate of 18.9% APR to all customers who have been rejected. A second line option is only available on some installations due to the lender's restrictions."
-        }
-      ]
-    },
-    {
-      "type": "text",
-      "rows": [
-        {
-          "text": "You can check if this job is eligible for a 2nd line option, and if the customer has chosen to apply for it, by viewing the offered finance section of your job. Click below to check now. The second line application takes a little longer to process but you'll be updated in the usual ways within 1-2 hours."
+          "text": "Unfortunately, {{sender.contact_name}}'s finance application has not been approved. We have informed them of this, and suggested they reach out to you to discuss the option to continue with the work without finance."
         }
       ]
     },
