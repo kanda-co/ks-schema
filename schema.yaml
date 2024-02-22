@@ -4574,11 +4574,12 @@ paths:
           schema:
             type: string
             enum:
-              - gocardless
-              - omni
-              - etika
               - allium
+              - etika
+              - gocardless
+              - humm
               - novuna
+              - omni
               - stripe
               - veriff
       responses:
@@ -6221,6 +6222,10 @@ components:
         referral_code:
           type: string
           title: optional referral code used for the sign up
+        referral_activated_at:
+          type: string
+          title: optional referral code activation date
+          format: date-time
         referred_by:
           type: string
           title: referred by partner id
@@ -6258,11 +6263,70 @@ components:
           type: string
           title: business type
           description: main business type
+        business_config:
+          type: string
+          $ref: "#/components/schemas/BusinessConfig"
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
           title: metadata
           readOnly: true
+
+    BusinessConfig:
+      type: object
+      title: business config
+      required:
+        - show
+        - trade_type
+        - trade_text
+        - business_sector
+        - lender
+        - lender_rate_type
+      properties:
+        show:
+          type: string
+          enum:
+            - "yes"
+            - "no"
+        trade_type:
+          type: string
+          $ref: "#/components/schemas/TradeType"
+        trade_text:
+          type: string
+          title: trade type in text
+        business_sector:
+          type: string
+          $ref: "#/components/schemas/BusinessSector"
+        extra:
+          type: string
+          title: extra text for unlisted trade types
+        lender:
+          type: string
+          $ref: "#/components/schemas/FinanceProvider"
+        lender_rate_type:
+          type: string
+          $ref: "#/components/schemas/LenderRateType"
+
+    BusinessSector:
+      type: string
+      title: busienss sector
+      enum:
+        - "Home improvement"
+        - "Retail"
+        - "IT and technology Services"
+        - "Automotive services"
+        - "Training and education"
+        - "Events (including weddings)"
+        - "Healthcare"
+        - "Other"
+
+    LenderRateType:
+      type: string
+      title: lender rate type
+      enum:
+        - "regulated"
+        - "unregulated"
+      default: "regulated"
 
     WelcomeSkipBanner:
       type: object
@@ -6432,6 +6496,56 @@ components:
           format: float
           readOnly: true
 
+    TradeType:
+      type: string
+      title: trade type
+      enum:
+        - air_conditioning
+        - artificial_grass_specialists
+        - bathrooms
+        - battery_storage
+        - blinds_and_shutters
+        - carpentry
+        - cctv_and_security_installations
+        - cladding_sofits_and_guttering
+        - conservatories
+        - curtains
+        - decking
+        - driveways_and_patios
+        - electrician
+        - ev_charger_installer
+        - fencing
+        - fireplaces
+        - fitted_bedroom_furniture
+        - floor_layer
+        - garage_doors
+        - garden_rooms
+        - gas_engineer
+        - gates
+        - heat_pumps
+        - heating_systems
+        - home_insulation_excl_spray_foam
+        - hot_tub_specialist
+        - kitchen_fitter
+        - kitchen_supplier
+        - landscaping
+        - loft_boarding
+        - painting_and_decorating
+        - plasterer
+        - plumbing
+        - rendering
+        - resin_drive_specialist
+        - resin_driveways
+        - roofing__excluding_flat_roofs
+        - security_systems
+        - stair_case_specialist
+        - tiler
+        - verandas
+        - windows_and_doors
+        - multi_trade
+        - other_trade
+      x-kanda-form-widget: Select
+
     CompanyInfo:
       type: object
       required:
@@ -6446,53 +6560,7 @@ components:
       properties:
         trade_type:
           type: string
-          enum:
-            - air_conditioning
-            - artificial_grass_specialists
-            - bathrooms
-            - battery_storage
-            - blinds_and_shutters
-            - carpentry
-            - cctv_and_security_installations
-            - cladding_sofits_and_guttering
-            - conservatories
-            - curtains
-            - decking
-            - driveways_and_patios
-            - electrician
-            - ev_charger_installer
-            - fencing
-            - fireplaces
-            - fitted_bedroom_furniture
-            - floor_layer
-            - garage_doors
-            - garden_rooms
-            - gas_engineer
-            - gates
-            - heat_pumps
-            - heating_systems
-            - home_insulation_excl_spray_foam
-            - hot_tub_specialist
-            - kitchen_fitter
-            - kitchen_supplier
-            - landscaping
-            - loft_boarding
-            - painting_and_decorating
-            - plasterer
-            - plumbing
-            - rendering
-            - resin_drive_specialist
-            - resin_driveways
-            - roofing__excluding_flat_roofs
-            - security_systems
-            - stair_case_specialist
-            - tiler
-            - verandas
-            - windows_and_doors
-            - multi_trade
-            - other_trade
-          title: trade type
-          x-kanda-form-widget: Select
+          $ref: "#/components/schemas/TradeType"
         trade_type_name:
           type: string
           title: trade type name
@@ -8115,12 +8183,13 @@ components:
       type: string
       title: provider name
       enum:
-        - omni
-        - etika
-        - propensio
         - allium
-        - novuna
         - demo
+        - etika
+        - humm
+        - novuna
+        - omni
+        - propensio
       default: omni
 
     BankAccount:
