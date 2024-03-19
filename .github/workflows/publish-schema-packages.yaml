@@ -51,7 +51,7 @@ jobs:
           registry-url: "https://registry.npmjs.org"
 
       - name: "codegen for TS components"
-        run: make qa clean ts-widget
+        run: make qa clean-widget ts-widget
 
       - name: "install yarn deps + build frontend services"
         run: cd ks-frontend-services && yarn && yarn remove:nodemodules && yarn && yarn build

@@ -24,6 +24,10 @@ clean-frontend:
 	rm -rf ks-frontend-sevices/dist ks-frontend-sevices/src/generated
 	rm -rf ks-component-ts/dist ks-component-ts/src/generated
 
+clean-widget:
+	@echo Cleaning frontend client built artefact...
+	rm -rf ks-component-ts/dist ks-component-ts/src/generated
+
 clean-backend:
 	@echo Cleaning built artefact...
 	rm -rf pkg/schema/*.gen.go
