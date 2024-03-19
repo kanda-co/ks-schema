@@ -53,18 +53,27 @@ export const isArrayOfValue = <Entity>(
   );
 
 const getReducerName = (key: string): keyof typeof slices => {
-  const [reducerName] = key.split('.');
+  const [reducerName, singleActionName] = key.split('.');
 
   const name = reducerName as keyof typeof slices;
 
-  if (!reducerName) {
+  if (reducerName) {
+    if ((Object.keys(slices) as (keyof typeof slices)[]).indexOf(name) === -1) {
+      throw new Error('Invalid reducer provided');
+    }
+    return name;
+  }
+
+  if (!singleActionName) {
     throw new Error('Invald reducer provided');
   }
-  if ((Object.keys(slices) as (keyof typeof slices)[]).indexOf(name) === -1) {
+
+  const sName = singleActionName as keyof typeof slices;
+  if ((Object.keys(slices) as (keyof typeof slices)[]).indexOf(sName) === -1) {
     throw new Error('Invalid reducer provided');
   }
 
-  return name;
+  return sName;
 };
 
 const handleInfoEntity = async <
