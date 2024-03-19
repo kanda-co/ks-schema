@@ -80,10 +80,7 @@ widget:
 	@echo Generating React Field components, validators from schema...
 	rm -rf frontend/generated/widget
 	mkdir -p frontend/generated/widget
-	go run ./cmd/ts-form/main.go -in schema.yaml > frontend/generated/widget/index.tsx
-	echo "import Widget from './widget';" >> frontend/generated/index.ts
-	echo "import { servers } from './servers';" >> frontend/generated/index.ts
-	echo "export { Widget, servers };" >> frontend/generated/index.ts
+	go run ./cmd/form/main.go -in schema.yaml > frontend/generated/widget/index.tsx
 	npx prettier --write frontend/generated/widget
 	rm -rf ks-component-ts/src/generated
 	rm -rf ks-frontend-services/src/generated
@@ -92,6 +89,12 @@ widget:
 
 ts-widget:
 	@echo Generating TS React Field components, validators from schema...
+	go run ./cmd/ts-form/main.go -in schema.yaml > ks-component-ts/src/generated/widget/index.tsx
+	rm -rf ks-component-ts/src/generated/index.ts
+	echo "import Widget from './widget';" >> ks-component-ts/src/generated/index.ts
+	echo "import { servers } from './servers';" >> ks-component-ts/src/generated/index.ts
+	echo "export { Widget, servers };" >> ks-component-ts/src/generated/index.ts
+	npx prettier --write ks-component-ts/src/generated/widget
 	cd ks-component-ts && yarn && yarn build
 
 search-index:
