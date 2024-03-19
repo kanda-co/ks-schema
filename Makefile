@@ -81,12 +81,14 @@ widget:
 	rm -rf frontend/generated/widget
 	mkdir -p frontend/generated/widget
 	go run ./cmd/ts-form/main.go -in schema.yaml > frontend/generated/widget/index.tsx
+	echo "import Widget from './widget';" >> frontend/generated/index.ts
+	echo "import { servers } from './servers';" >> frontend/generated/index.ts
+	echo "export { Widget, servers };" >> frontend/generated/index.ts
 	npx prettier --write frontend/generated/widget
 	rm -rf ks-component-ts/src/generated
 	rm -rf ks-frontend-services/src/generated
 	cp -r frontend/generated ks-frontend-services/src/generated
 	cp -r frontend/generated ks-component-ts/src/generated
-
 
 ts-widget:
 	@echo Generating TS React Field components, validators from schema...
