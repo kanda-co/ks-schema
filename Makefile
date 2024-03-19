@@ -40,9 +40,11 @@ gen-frontend:
 ifeq ($(shell uname), Darwin)
 	@echo Running sed under MacOS...
 	sed -i '' "s/export const operations =/export const operations: Operations =/g" frontend/generated/operations/index.ts
+	grep -rlw "./frontend" -e "DateFromISOString" | xargs -I% sed -i '' "s/\/DateFromISOString//g" %
 else
 	@echo Running sed under non-Darwin...
 	sed -i "s/export const operations =/export const operations: Operations =/g" frontend/generated/operations/index.ts
+	grep -rlw "./frontend" -e "DateFromISOString" | xargs -I% sed -i "s/\/DateFromISOString//g" %
 endif
 	npx prettier --write frontend/generated
 
@@ -80,21 +82,8 @@ ts-widget:
 	@echo Generating TS React Field components, validators from schema...
 	rm -rf ks-component-ts/src/generated
 	rm -rf ks-frontend-services/src/generated
-	mkdir -p ks-component-ts/src/generated/widget
-	npx openapi-io-ts -i schema.yaml -o ks-component-ts/src/generated
-	npx prettier --write ks-component-ts/src/generated
-	echo "\nexport interface Operations {\n" >> ks-component-ts/src/generated/operations/index.ts
-	grep ": .*Operation," ks-component-ts/src/generated/operations/index.ts | sed -E 's/(.*): (.*),/\1: typeof \2,/' >> ks-component-ts/src/generated/operations/index.ts
-	echo "\n}" >> ks-component-ts/src/generated/operations/index.ts
-ifeq ($(shell uname), Darwin)
-	@echo Running sed under MacOS...
-	sed -i '' "s/export const operations =/export const operations: Operations =/g" ks-component-ts/src/generated/operations/index.ts
-else
-	@echo Running sed under non-Darwin...
-	sed -i "s/export const operations =/export const operations: Operations =/g" ks-component-ts/src/generated/operations/index.ts
-endif
-	npx prettier --write ks-component-ts/src/generated/operations/index.ts
-	cp -r ks-component-ts/src/generated ks-frontend-services/src/generated
+	cp -r frontend/generated ks-frontend-services/src/generated
+	cp -r frontend/generated ks-component-ts/src/generated
 	go run ./cmd/ts-form/main.go -in schema.yaml > ks-component-ts/src/generated/widget/index.tsx
 	echo "import Widget from './widget';" >> ks-component-ts/src/generated/index.ts
 	echo "import { servers } from './servers';" >> ks-component-ts/src/generated/index.ts

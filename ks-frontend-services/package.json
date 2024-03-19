@@ -4,7 +4,7 @@
   "license": "private",
   "scripts": {
     "clean-incorrect-imports": "grep -rlw \"./src\" -e \"DateFromISOString\" | xargs -I@ sed -i.bak \"s/\\/DateFromISOString//g\" @ && rm -rf **/*.bak",
-    "generate-service-module": "yarn clean-incorrect-imports && ts-node --experimental-specifier-resolution=node ./src/service/generator/",
+    "generate-service-module": "ts-node --experimental-specifier-resolution=node ./src/service/generator/",
     "generate-store": "mkdir -p ./src/store/slices/generated && ts-node --require ts-node/register --experimental-specifier-resolution=node ./src/store/generator/ && prettier --write ./src/store/",
     "clean": "rimraf dist",
     "remove:nodemodules": "rimraf yarn.lock && rimraf node_modules",
