@@ -1,5 +1,4 @@
 import { StringIndexedObject } from '../../types';
-import { ENTITY_NAME_OVERRIDES, VOID_ACTIONS } from '../constants';
 
 const getCamelCaseEntityName = (entityName: string) =>
   entityName.charAt(0).toLowerCase() + entityName.slice(1);
@@ -16,8 +15,12 @@ const serviceAction = (actionName: string, camelCaseEntityName: string) =>
 const typeOfActions = (actionNames: string[]) =>
   actionNames.map((actionName) => `typeof ${actionName}`).join(' | ');
 
-const reducerForAction = (entityName: string, actionName: string) => {
-  const fulfilledAction = VOID_ACTIONS.includes(actionName)
+const reducerForAction = (
+  entityName: string,
+  actionName: string,
+  voidActionNames: string[],
+) => {
+  const fulfilledAction = voidActionNames.includes(actionName)
     ? handleVoidResponseName(entityName)
     : handleResponseName(entityName);
   return `
@@ -40,8 +43,7 @@ builder.addCase(${actionName}.rejected, (state, action) => {
 
 const selector = (entityName: string, entityNameOverride?: string) => {
   const camelCaseEntityName = getCamelCaseEntityName(entityName);
-  const entityNameToUse =
-    ENTITY_NAME_OVERRIDES[entityName] || entityNameOverride || entityName;
+  const entityNameToUse = entityNameOverride || entityName;
 
   return `const ${camelCaseEntityName} = generateSelectors<${entityNameToUse}, StringIndexedObject<GeneratedState<${entityNameToUse}>>>("${camelCaseEntityName}", ${camelCaseEntityName}Adapter);`;
 };
@@ -50,7 +52,7 @@ const selector = (entityName: string, entityNameOverride?: string) => {
 // only contains unique values
 const typeImports = (entityNames: string[]) =>
   `import type {${entityNames
-    .map((entityName) => ENTITY_NAME_OVERRIDES[entityName] || entityName)
+    .map((entityName) => entityName)
     .filter((value, index, array) => array.indexOf(value) === index)
     .join(', ')}} from '../../generated/components/schemas';`;
 
@@ -60,9 +62,7 @@ const selectorAdapterImports = (camelCaseEntityNames: string[]): string =>
     .join(',\n')} } from '../adapters';`;
 
 const adapter = (camelCaseEntityName: string, entityName: string) =>
-  `export const ${camelCaseEntityName}Adapter = createEntityAdapter<${
-    ENTITY_NAME_OVERRIDES[entityName] || entityName
-  }>();`;
+  `export const ${camelCaseEntityName}Adapter = createEntityAdapter<${entityName}>();`;
 
 export const adapters = (
   entityNames: string[],
@@ -149,6 +149,7 @@ export const slice = (
   entityName: string,
   camelCaseEntityName: string,
   actionNames: string[],
+  voidActionNames: string[],
   // This is used by action specific reducers
   // to override the service name
   serviceNameOverride?: string,
@@ -157,19 +158,19 @@ export const slice = (
   entityNameOverride?: string,
 ) => {
   const formattedEntityName = entityNameOverride || entityName;
+  const includeVoidResponse = voidActionNames.length >= 1;
+
   return `// Imports
 import {
   type PayloadAction,
   type AsyncThunkAction,
 } from "@reduxjs/toolkit";
 import { createSlice } from "../../toolkit";
-import { type ${
-    ENTITY_NAME_OVERRIDES[entityName] || entityName
-  }, services } from "../../../";
+import { type ${entityName}, services } from "../../../";
 import {
   createAsyncThunkAction,
   createResponseHandler,
-  createVoidResponseHandler,
+  ${includeVoidResponse ? 'createVoidResponseHandler,' : ''}
 } from '../../helpers';
 import { GENERATED_STATE } from '../../constants'
 import type { AsyncThunkReturnType, GeneratedState } from "../../types";
@@ -194,19 +195,21 @@ export type ${formattedEntityName}Config = ${formattedEntityName}Return[2];
 export type ${formattedEntityName}AsyncThunkAction = AsyncThunkAction<${formattedEntityName}Entity, ${formattedEntityName}Params, ${formattedEntityName}Config>;
 
 // Reducer
-export type ${formattedEntityName}State = GeneratedState<${
-    ENTITY_NAME_OVERRIDES[entityName] || formattedEntityName
-  }>;
+export type ${formattedEntityName}State = GeneratedState<${formattedEntityName}>;
 
 export const ${handleResponseName(
     entityName,
-  )} = createResponseHandler<${formattedEntityName}State, ${
-    ENTITY_NAME_OVERRIDES[entityName] || entityName
-  }>(${camelCaseEntityName}Adapter);
+  )} = createResponseHandler<${formattedEntityName}State, ${entityName}>(${camelCaseEntityName}Adapter);
 
+${
+  includeVoidResponse
+    ? `
 export const ${handleVoidResponseName(
-    entityName,
-  )} = createVoidResponseHandler<${formattedEntityName}State>();
+        entityName,
+      )} = createVoidResponseHandler<${formattedEntityName}State>();
+`
+    : ''
+}
 
 export const ${camelCaseEntityName}Slice = createSlice({
   name: "${camelCaseEntityName}",
@@ -232,9 +235,7 @@ export const ${camelCaseEntityName}Slice = createSlice({
       ...state,
       isLoading: true,
     }),
-    fetched: (state: ${entityName}State, action: PayloadAction<${
-    ENTITY_NAME_OVERRIDES[entityName] || entityName
-  }[]>) => ({
+    fetched: (state: ${entityName}State, action: PayloadAction<${entityName}[]>) => ({
 	    ...state,
 	    ...${handleResponseName(entityName)}(state, action),
             // Don't set fetchedList when using this action, as it's used
@@ -248,7 +249,9 @@ export const ${camelCaseEntityName}Slice = createSlice({
       ...${camelCaseEntityName}Adapter.getInitialState(),
     }));
     ${actionNames
-      .map((actionName) => reducerForAction(entityName, actionName))
+      .map((actionName) =>
+        reducerForAction(entityName, actionName, voidActionNames),
+      )
       .join('')}},
 });
 

@@ -1,4 +1,4 @@
-import { writeFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import type { StringIndexedObject } from '../../types';
@@ -6,29 +6,149 @@ import * as operations from '../../generated/operations';
 import services from '../../service';
 import { getOperationKeys, getOperationName } from '../../helpers';
 import { actions, adapters, selectors, slice, sliceIndex } from './templates';
-import { filterActions } from './helpers';
-import { ENTITY_NAME_OVERRIDES, SINGLE_ACTION_REDUCERS } from '../constants';
+
+const capitalise = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
 const getCamelCaseEntityName = (entityName: string) =>
   entityName.charAt(0).toLowerCase() + entityName.slice(1);
 
+type EntityServiceResponseSchemas = {
+  [service: string]: string;
+};
+
+function getEntityServiceResponses(
+  entityName: string,
+): EntityServiceResponseSchemas {
+  // Get directory name
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
+
+  // Get entity actions
+  const camelCaseEntityName = getCamelCaseEntityName(entityName);
+  const entityActions = Object.keys(services[camelCaseEntityName]);
+
+  // Map entity to response schemas
+  return entityActions.reduce(
+    (responseSchemas: EntityServiceResponseSchemas, actionName: string) => {
+      const generatedFileName = __dirname.replace(
+        'store/generator',
+        `generated/operations/${actionName}.ts`,
+      );
+      const serviceFile = readFileSync(generatedFileName, 'utf-8');
+      return {
+        ...responseSchemas,
+        [actionName]:
+          serviceFile
+            ?.split('\n')
+            ?.join('')
+            ?.split('RequestFunction')
+            ?.slice(-1)?.[0]
+            ?.split(',')
+            ?.slice(-1)?.[0]
+            ?.replace(/\s/g, '')
+            ?.replace('>;', '') || 'void',
+      };
+    },
+    {},
+  );
+}
+
+function getUniqueServiceResponses(
+  services: EntityServiceResponseSchemas,
+): string[] {
+  const responses = Object.values(services);
+  return responses.filter(
+    (schema: string, index: number, schemas: string[]) =>
+      schemas.indexOf(schema) === index,
+  );
+}
+
+export type SingleActionReducer = {
+  entity: string;
+  action: string;
+  actionEntity: string;
+  // If true, this reducer is automatically ignored
+  onlyActionForEntity?: boolean;
+};
+
+function formatSchema(schema: string) {
+  if (schema.includes('Array')) {
+    return `${schema.replace('Array<schemas.', '').replace('>', '')}`;
+  }
+  return schema.replace('schemas.', '');
+}
+
+function getNonStandardNonVoidEntityServiceResponses(
+  responses: EntityServiceResponseSchemas,
+  entity: string,
+): SingleActionReducer[] {
+  const filtered = Object.entries(responses).filter(
+    ([_, schema]) =>
+      ![`schemas.${entity}`, `Array<schemas.${entity}>`, 'void'].includes(
+        schema,
+      ),
+  );
+  if (filtered.length === 0) return [];
+  return filtered.map(([service, schema]) => ({
+    entity: getCamelCaseEntityName(entity),
+    action: capitalise(service),
+    actionEntity: formatSchema(schema),
+  }));
+}
+
+function getStandardOrVoidServiceResponses(
+  entityName: string,
+  servicesResponses: EntityServiceResponseSchemas,
+): string[] {
+  return Object.keys(servicesResponses).filter((service) => {
+    const schema = servicesResponses[service];
+    return [
+      `schemas.${entityName}`,
+      `Array<schemas.${entityName}>`,
+      'void',
+    ].includes(schema);
+  });
+}
+
+function getVoidServiceResponses(
+  servicesResponses: EntityServiceResponseSchemas,
+): string[] {
+  return Object.keys(servicesResponses).filter((service) => {
+    const schema = servicesResponses[service];
+    return ['void'].includes(schema);
+  });
+}
+
 // Generate a slice file for a given entity
 // that contains all the actions for that entity and the reducer
 function generateSlices(entityName: string) {
-  const entityNameOverride = ENTITY_NAME_OVERRIDES[entityName] || '';
+  // Get directory path
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
 
+  // Get entity name in camel case
   const camelCaseEntityName = getCamelCaseEntityName(entityName);
 
-  const actionNames = filterActions(Object.keys(services[camelCaseEntityName]));
+  // Get action names
+  const entityServiceResponses = getEntityServiceResponses(entityName);
+  const actionNames = getStandardOrVoidServiceResponses(
+    entityName,
+    entityServiceResponses,
+  );
 
-  const template = slice(entityName, camelCaseEntityName, actionNames);
+  // Get void action names
+  const voidActionNames = getVoidServiceResponses(entityServiceResponses);
+
+  const template = slice(
+    entityName,
+    camelCaseEntityName,
+    actionNames,
+    voidActionNames,
+  );
 
   // Determine the output file name
   const fileName = `${camelCaseEntityName}.ts`;
 
-  const __filename = fileURLToPath(import.meta.url);
-
-  const __dirname = dirname(__filename);
   const outputPath = join(__dirname, `../slices/generated/${fileName}`);
 
   writeFileSync(outputPath, template, {
@@ -38,42 +158,72 @@ function generateSlices(entityName: string) {
   console.log(`Success: ${fileName} generated`);
 }
 
-// Generate slices for single action reducers, such as jobCompanyInfo
-// These reducers are created solely for the purpose of storing the result
-// of these API calls where the entity does not match up to an entity that
-// we generate slices for
-function generateActionSpecificSlices() {
-  SINGLE_ACTION_REDUCERS.forEach(({ entity, action, actionEntity }) => {
-    const camelCaseActionName = getCamelCaseEntityName(action);
+// Generate a slice file for a given entity
+// that contains all the actions for that entity and the reducer
+function generateSingleReducerSlice(singleActionReducer: SingleActionReducer) {
+  // Get directory path
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
 
-    const template = slice(
-      actionEntity || action,
-      camelCaseActionName,
-      [camelCaseActionName],
-      entity,
-    );
+  const { entity, action, actionEntity } = singleActionReducer;
 
-    // Determine the output file name
-    const fileName = `${camelCaseActionName}.ts`;
+  // Get entity name in camel case
+  const camelCaseActionName = getCamelCaseEntityName(action);
 
-    const __filename = fileURLToPath(import.meta.url);
+  const template = slice(
+    actionEntity || action,
+    camelCaseActionName,
+    [camelCaseActionName],
+    [],
+    entity,
+  );
 
-    const __dirname = dirname(__filename);
-    const outputPath = join(__dirname, `../slices/generated/${fileName}`);
+  // Determine the output file name
+  const fileName = `${camelCaseActionName}.ts`;
 
-    writeFileSync(outputPath, template, {
-      flag: 'w',
-    });
+  const outputPath = join(__dirname, `../slices/generated/${fileName}`);
 
-    console.log(`Success: ${fileName} generated`);
+  writeFileSync(outputPath, template, {
+    flag: 'w',
   });
+
+  console.log(`Success: ${fileName} generated`);
 }
 
-function generateSlicesIndex(entityNames: string[]) {
+function generateAdaptersIndex(
+  entityNames: string[],
+  singleActionReducers: SingleActionReducer[],
+) {
+  const exports = adapters(
+    [...entityNames, ...singleActionReducers.map(({ action }) => action)],
+    singleActionReducers.reduce(
+      (final: StringIndexedObject, current: SingleActionReducer) => ({
+        ...final,
+        [current.action]: current.actionEntity,
+      }),
+      {},
+    ),
+  );
+
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
+  const outputPath = join(__dirname, `../adapters/index.ts`);
+
+  writeFileSync(outputPath, exports, {
+    flag: 'w',
+  });
+
+  console.log(`Success: adapters generated`);
+}
+
+function generateSlicesIndex(
+  entityNames: string[],
+  singleActionReducers: SingleActionReducer[],
+) {
   const exports = sliceIndex([
     ...entityNames,
     // Create adapters for the single action reducers
-    ...SINGLE_ACTION_REDUCERS.map(({ action }) => action),
+    ...singleActionReducers.map(({ action }) => action),
   ]);
 
   const __filename = fileURLToPath(import.meta.url);
@@ -87,27 +237,50 @@ function generateSlicesIndex(entityNames: string[]) {
   console.log(`Success: index.ts generated`);
 }
 
-function generateActions(entityNames: string[]) {
-  const camelCaseEntityNames = entityNames.map(getCamelCaseEntityName);
-
-  const serviceActionNames = camelCaseEntityNames.reduce(
-    (final, entityName) => ({
-      ...final,
-      [entityName]: Object.keys(services[entityName]),
-    }),
-    {} as StringIndexedObject<string[]>,
+function generateSelectorsIndex(
+  entityNames: string[],
+  singleActionReducers: SingleActionReducer[],
+) {
+  const exports = selectors(
+    [...entityNames, ...singleActionReducers.map(({ action }) => action)],
+    singleActionReducers.reduce(
+      (final: StringIndexedObject, current: SingleActionReducer) => ({
+        ...final,
+        [current.action]: current.actionEntity,
+      }),
+      {},
+    ),
   );
 
-  const standardActionExports = Object.keys(serviceActionNames)
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
+  const outputPath = join(__dirname, `../selectors/index.ts`);
+
+  writeFileSync(outputPath, exports, {
+    flag: 'w',
+  });
+
+  console.log(`Success: selectors generated`);
+}
+
+function generateActions(
+  entityNames: string[],
+  singleActionReducers: SingleActionReducer[],
+) {
+  const standardActionExports = entityNames
     .map((entityName) => {
-      const actionNames = filterActions(serviceActionNames[entityName]);
-      return actions(entityName, actionNames);
+      const entityServiceResponses = getEntityServiceResponses(entityName);
+      const actionNames = getStandardOrVoidServiceResponses(
+        entityName,
+        entityServiceResponses,
+      );
+      return actions(getCamelCaseEntityName(entityName), actionNames);
     })
     .join('');
 
   const exports = [
     ...standardActionExports,
-    ...SINGLE_ACTION_REDUCERS.map(({ action }) => {
+    ...singleActionReducers.map(({ action }) => {
       const camelCaseActionName = getCamelCaseEntityName(action);
       return actions(camelCaseActionName, [camelCaseActionName]);
     }),
@@ -124,84 +297,63 @@ function generateActions(entityNames: string[]) {
   console.log(`Success: actions.ts generated`);
 }
 
-function generateSelectorsIndex(entityNames: string[]) {
-  const exports = selectors(
-    [
-      ...entityNames,
-      // Create selectors for the single action reducers
-      ...SINGLE_ACTION_REDUCERS.map(({ action }) => action),
-    ],
-    getEntityNameOverrides(),
-  );
+const allEntities = getOperationKeys(operations).map((key) =>
+  getOperationName(key, true),
+);
 
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = dirname(__filename);
-  const outputPath = join(__dirname, `../selectors/index.ts`);
-
-  writeFileSync(outputPath, exports, {
-    flag: 'w',
-  });
-
-  console.log(`Success: selectors generated`);
-}
-
-// Used to map the action name, to its override. For instance,
-// checkJob is mapped to JobCreditState
-const getEntityNameOverrides = (): StringIndexedObject<string> =>
-  SINGLE_ACTION_REDUCERS.reduce((final, { action, actionEntity }) => {
-    final[action] = actionEntity || action;
-    return final;
-  }, {} as StringIndexedObject<string>);
-
-function generateAdaptersIndex(entityNames: string[]) {
-  const exports = adapters(
-    [
-      ...entityNames,
-      // Create adapters for the single action reducers
-      ...SINGLE_ACTION_REDUCERS.map(({ action }) => action),
-    ],
-    getEntityNameOverrides(),
-  );
-
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = dirname(__filename);
-  const outputPath = join(__dirname, `../adapters/index.ts`);
-
-  writeFileSync(outputPath, exports, {
-    flag: 'w',
-  });
-
-  console.log(`Success: adapters generated`);
-}
-
-const entityNames = getOperationKeys(operations)
-  .map((key) => getOperationName(key, true))
-  .filter((name) => {
-    const reducers = SINGLE_ACTION_REDUCERS.filter(
-      ({ onlyActionForEntity, action }) =>
-        onlyActionForEntity && action === name,
+const voidOnlyEntities = allEntities.reduce(
+  (final: string[], entity: string) => {
+    const responses = getUniqueServiceResponses(
+      getEntityServiceResponses(entity),
     );
-    return reducers.length === 0;
-  })
-  .filter(
-    (name) =>
-      [
-        'Adhoc',
-        'Webhook',
-        'Task',
-        'InfoCache',
-        'InfoCustomer',
-        'InfoDirector',
-        'InfoHealth',
-        'InfoPartner',
-        'InfoRedirect',
-        'InfoValidation',
-      ].indexOf(name) === -1,
-  );
+    if (responses.length !== 1) return final;
+    if (responses[0] !== 'void') return final;
+    final.push(entity);
+    return final;
+  },
+  [],
+);
 
-entityNames.forEach(generateSlices);
-generateActionSpecificSlices();
-generateAdaptersIndex(entityNames);
-generateSlicesIndex(entityNames);
-generateActions(entityNames);
-generateSelectorsIndex(entityNames);
+const nonMatchOnlyEntities = allEntities.reduce(
+  (final: string[], entity: string) => {
+    const responses = getUniqueServiceResponses(
+      getEntityServiceResponses(entity),
+    );
+    if (responses.length === 1 && responses[0] === 'void') return final;
+    const matchedResponses = responses.filter(
+      (response: string) =>
+        response === `schemas.${entity}` ||
+        response === `Array<schemas.${entity}>`,
+    );
+    if (matchedResponses.length >= 1) return final;
+    final.push(entity);
+    return final;
+  },
+  [],
+);
+
+const standardEntities = allEntities.filter(
+  (entity: string) =>
+    !voidOnlyEntities.includes(entity) &&
+    !nonMatchOnlyEntities.includes(entity),
+);
+
+const singleActionReducers = allEntities.reduce(
+  (final: SingleActionReducer[], entityName: string) => {
+    const entityResponses = getEntityServiceResponses(entityName);
+    const uniqueResponses = getNonStandardNonVoidEntityServiceResponses(
+      entityResponses,
+      entityName,
+    );
+    if (uniqueResponses.length === 0) return final;
+    return [...final, ...uniqueResponses];
+  },
+  [],
+);
+
+standardEntities.forEach(generateSlices);
+singleActionReducers.forEach(generateSingleReducerSlice);
+generateAdaptersIndex(standardEntities, singleActionReducers);
+generateSlicesIndex(standardEntities, singleActionReducers);
+generateActions(standardEntities, singleActionReducers);
+generateSelectorsIndex(standardEntities, singleActionReducers);
