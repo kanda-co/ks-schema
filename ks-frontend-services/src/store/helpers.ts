@@ -56,24 +56,24 @@ const getReducerName = (key: string): keyof typeof slices => {
   const [reducerName, singleActionName] = key.split('.');
 
   const name = reducerName as keyof typeof slices;
-
-  if (reducerName) {
-    if ((Object.keys(slices) as (keyof typeof slices)[]).indexOf(name) === -1) {
-      throw new Error('Invalid reducer provided');
-    }
-    return name;
-  }
-
-  if (!singleActionName) {
-    throw new Error('Invald reducer provided');
-  }
-
   const sName = singleActionName as keyof typeof slices;
-  if ((Object.keys(slices) as (keyof typeof slices)[]).indexOf(sName) === -1) {
+
+  if (!reducerName && !sName) {
     throw new Error('Invalid reducer provided');
   }
 
-  return sName;
+  if (
+    (Object.keys(slices) as (keyof typeof slices)[]).indexOf(name) === -1 &&
+    (Object.keys(slices) as (keyof typeof slices)[]).indexOf(sName) === -1
+  ) {
+    throw new Error('Invalid reducer provided');
+  }
+
+  if ((Object.keys(slices) as (keyof typeof slices)[]).indexOf(name) === -1) {
+    return sName;
+  }
+
+  return name;
 };
 
 const handleInfoEntity = async <
