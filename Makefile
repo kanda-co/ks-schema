@@ -21,6 +21,7 @@ production:
 clean-frontend:
 	@echo Cleaning frontend client built artefact...
 	rm -rf dist/ frontend/generated
+	rm -rf ks-frontend-sevices/dist ks-frontend-sevices/src/generated
 	rm -rf ks-component-ts/dist ks-component-ts/src/generated
 
 clean-backend:
@@ -77,13 +78,14 @@ widget:
 	mkdir -p frontend/generated/widget
 	go run ./cmd/form/main.go -in schema.yaml > frontend/generated/widget/index.tsx
 	npx prettier --write frontend/generated/widget
-
-ts-widget:
-	@echo Generating TS React Field components, validators from schema...
 	rm -rf ks-component-ts/src/generated
 	rm -rf ks-frontend-services/src/generated
 	cp -r frontend/generated ks-frontend-services/src/generated
 	cp -r frontend/generated ks-component-ts/src/generated
+
+
+ts-widget:
+	@echo Generating TS React Field components, validators from schema...
 	go run ./cmd/ts-form/main.go -in schema.yaml > ks-component-ts/src/generated/widget/index.tsx
 	echo "import Widget from './widget';" >> ks-component-ts/src/generated/index.ts
 	echo "import { servers } from './servers';" >> ks-component-ts/src/generated/index.ts
