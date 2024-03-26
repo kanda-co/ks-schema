@@ -8958,21 +8958,28 @@ components:
           items:
             $ref: "#/components/schemas/Payment"
 
+    SearchIndex:
+      type: string
+      title: search specific index or multi-search
+      enum:
+        - "company"
+        - "credit"
+        - "enterprise"
+        - "job"
+
     InfoSearch:
       type: object
       title: info search
       description: info search of resources
       required:
+        - index
         - q
       properties:
         index:
-          type: string
-          title: search specific index or multi-search
-          enum:
-            - "company"
-            - "credit"
-            - "enterprise"
-            - "job"
+          type: array
+          title: search specific indexes or multi-search
+          items:
+            $ref: "#/components/schemas/SearchIndex"
         q:
           type: string
           title: search query (keyword and fuzzy)
