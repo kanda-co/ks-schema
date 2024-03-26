@@ -8975,10 +8975,13 @@ components:
             - "job"
         q:
           type: string
-          title: search query
+          title: search query (keyword and fuzzy)
+        filter:
+          type: string
+          title: search filter (Lucene-like syntax)
         sort:
           type: array
-          title: search sort
+          title: search sort (field:asc or field:desc)
           items:
             type: string
         offset:
