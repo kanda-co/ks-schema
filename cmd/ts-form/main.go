@@ -62,7 +62,9 @@ import React from "react";
 import Field, { type FieldProps, type ValidatedFieldProps, type WidgetArrayWrapperProps, type ArrayWrapperChildrenArgs, type WidgetArrayInputProps } from "~/field";`)
 	for name, ref := range doc.Components.Schemas {
 		// write to individual module for Schema Form Fields
-
+		if name == "InfoSearch" || name == "SearchHits" {
+			continue
+		}
 		var moduleDef, exports = renderModule(name, ref.Value)
 
 		fmt.Println(moduleDef)
@@ -137,7 +139,7 @@ func getKandaFormWidget(schema *openapi3.Schema) string {
 	// FIXME: once we have the components, remove these lines
 	switch widget {
 	case "Company":
-	    widget = "CompanyLookupInput"
+		widget = "CompanyLookupInput"
 	case "File":
 		widget = "FileInput"
 	}
@@ -171,34 +173,34 @@ func renderModule(name string, schema *openapi3.Schema) (string, string) {
 	moduleDef := strings.Join(moduleDefs, "\n\n")
 
 	for _, md := range moduleDefs {
-	    isTsConst := strings.Contains(md, "export const")
+		isTsConst := strings.Contains(md, "export const")
 
-	 	if isTsConst {
-	 	    exports = append(
-                exports,
-                strings.Split(
-                    strings.Replace(md, "export const ", "", 1),
-                    "=",
-                )[0],
-            )
-            continue
+		if isTsConst {
+			exports = append(
+				exports,
+				strings.Split(
+					strings.Replace(md, "export const ", "", 1),
+					"=",
+				)[0],
+			)
+			continue
 		}
 
 		exports = append(
-            exports,
-            strings.Split(
-                strings.Replace(md, "export function ", "", 1),
-                "(",
-            )[0],
-        )
+			exports,
+			strings.Split(
+				strings.Replace(md, "export function ", "", 1),
+				"(",
+			)[0],
+		)
 	}
 
 	defaultExports := []string{}
 
 	for _, export := range exports {
-	    if export != "" {
-	        defaultExports = append(defaultExports, export)
-        }
+		if export != "" {
+			defaultExports = append(defaultExports, export)
+		}
 	}
 
 	return moduleDef, strings.Join(defaultExports, ",\n")
@@ -237,7 +239,7 @@ func renderField(name string, schema, root *openapi3.Schema, isArray bool) strin
 			// props.Required = true
 		}
 		if schema.ReadOnly {
-		    return ""
+			return ""
 		}
 		if schema.Description != "" {
 			props.Placeholder = &schema.Description

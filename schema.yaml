@@ -731,6 +731,33 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/search:
+    put:
+      operationId: infoSearch
+      summary: info search to query from main resources
+      tags:
+        - InfoSearch
+      requestBody:
+        description: info search query body
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InfoSearch"
+      responses:
+        200:
+          description: got info search hits with query body
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoSearch"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/info/partner-branding:
     get:
       operationId: infoPartnerBranding
@@ -4896,6 +4923,10 @@ components:
         verified:
           type: boolean
           title: email verified
+        authorisation_url:
+          type: string
+          title: authorisation url
+          readOnly: true
 
     EnterpriseUserRole:
       type: object
@@ -7705,6 +7736,7 @@ components:
             - cash
             - card
             - loan
+            - external
           default: cash
           x-kanda-form-widget: RadioSelect
         amount:
@@ -8925,6 +8957,78 @@ components:
           description: relevant payments
           items:
             $ref: "#/components/schemas/Payment"
+
+    InfoSearch:
+      type: object
+      title: info search
+      description: info search of resources
+      required:
+        - q
+      properties:
+        index:
+          type: string
+          title: search specific index or multi-search
+          enum:
+            - "company"
+            - "credit"
+            - "enterprise"
+            - "job"
+        q:
+          type: string
+          title: search query
+        sort:
+          type: array
+          title: search sort
+          items:
+            type: string
+        offset:
+          type: integer
+          title: offset
+        limit:
+          type: integer
+          title: limit
+        total:
+          type: integer
+          title: total
+          readOnly: true
+        hits:
+          $ref: "#/components/schemas/SearchHits"
+          readOnly: true
+
+    SearchHits:
+      type: object
+      title: search hits
+      description: search hits of resources
+      required:
+        - company
+        - credit
+        - enterprise
+        - job
+      properties:
+        company:
+          type: array
+          title: matching companies
+          description: matching companies
+          items:
+            $ref: "#/components/schemas/Company"
+        credit:
+          type: array
+          title: matching credits
+          description: matching credits
+          items:
+            $ref: "#/components/schemas/Credit"
+        enterprise:
+          type: array
+          title: matching enterprises
+          description: matching enterprises
+          items:
+            $ref: "#/components/schemas/Enterprise"
+        job:
+          type: array
+          title: matching jobs
+          description: matching jobs
+          items:
+            $ref: "#/components/schemas/Job"
 
     InfoPartnerBranding:
       type: object

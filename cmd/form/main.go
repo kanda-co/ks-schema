@@ -59,6 +59,9 @@ func main() {
 	fmt.Println(`// @ts-ignore`)
 	fmt.Println(`import { Wrapped } from '@kanda-form-components/library';`)
 	for name, ref := range doc.Components.Schemas {
+		if name == "InfoSearch" || name == "SearchHits" {
+			continue
+		}
 		// write to individual module for Schema Form Fields
 		fmt.Println(renderModule(name, ref.Value))
 	}
