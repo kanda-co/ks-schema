@@ -33,6 +33,7 @@ export declare const createCurrentUserHook: <State extends AuthSlice, Dispatch e
     infoLead: import("../store/types").Selectors<import("..").InfoLead, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoLead>>>;
     infoOnboarding: import("../store/types").Selectors<import("..").InfoOnboarding, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoOnboarding>>>;
     infoQuery: import("../store/types").Selectors<import("..").InfoQuery, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoQuery>>>;
+    infoSearch: import("../store/types").Selectors<import("..").InfoSearch, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoSearch>>>;
     infoStats: import("../store/types").Selectors<import("..").InfoStats, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoStats>>>;
     job: import("../store/types").Selectors<import("..").Job, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Job>>>;
     lead: import("../store/types").Selectors<import("..").Lead, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Lead>>>;

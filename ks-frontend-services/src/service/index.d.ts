@@ -309,6 +309,12 @@ declare const infoRedirect: {
         method: import("../generated/operations/infoCheckoutRedirect").InfoCheckoutRedirectRequestFunction;
     };
 };
+declare const infoSearch: {
+    infoSearch: {
+        key: string;
+        method: import("../generated/operations/infoSearch").InfoSearchRequestFunction;
+    };
+};
 declare const infoStats: {
     infoStats: {
         key: string;
@@ -737,6 +743,14 @@ declare const pdf: {
         }, import("./external/pdf").FindResponse>;
     };
 };
+declare const personalGuarantee: {
+    generate: {
+        key: string;
+        method: ({ body, }: import("./external/personalGuarantee").PersonalGuaranteeGenerateRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+            body: externalServices.PersonalGuaranteeResponse;
+        }, externalServices.PersonalGuaranteeResponse>;
+    };
+};
 declare const sheets: {
     read: {
         key: string;
@@ -1071,6 +1085,12 @@ declare const services: {
         infoCheckoutRedirect: {
             key: string;
             method: import("../generated/operations/infoCheckoutRedirect").InfoCheckoutRedirectRequestFunction;
+        };
+    };
+    infoSearch: {
+        infoSearch: {
+            key: string;
+            method: import("../generated/operations/infoSearch").InfoSearchRequestFunction;
         };
     };
     infoStats: {
@@ -1501,6 +1521,14 @@ declare const services: {
             }, import("./external/pdf").FindResponse>;
         };
     };
+    personalGuarantee: {
+        generate: {
+            key: string;
+            method: ({ body, }: import("./external/personalGuarantee").PersonalGuaranteeGenerateRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+                body: externalServices.PersonalGuaranteeResponse;
+            }, externalServices.PersonalGuaranteeResponse>;
+        };
+    };
     sheets: {
         read: {
             key: string;
@@ -1524,5 +1552,5 @@ declare const services: {
         };
     };
 };
-export { adhoc, authUser, company, credit, document, enterprise, event, infoAuth, infoCache, infoCompany, infoCustomer, infoDirector, infoEnterpriseRole, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoLead, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoStats, infoValidation, job, lead, monitor, onboarding, partner, payment, rate, subscription, task, tradeSummary, training, webhook, address, contract, payouts, pdf, sheets, subsSheet, };
+export { adhoc, authUser, company, credit, document, enterprise, event, infoAuth, infoCache, infoCompany, infoCustomer, infoDirector, infoEnterpriseRole, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoLead, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoSearch, infoStats, infoValidation, job, lead, monitor, onboarding, partner, payment, rate, subscription, task, tradeSummary, training, webhook, address, contract, payouts, pdf, personalGuarantee, sheets, subsSheet, };
 export default services;
