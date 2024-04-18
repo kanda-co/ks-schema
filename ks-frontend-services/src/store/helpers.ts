@@ -55,9 +55,9 @@ export const isArrayOfValue = <Entity>(
   );
 
 export const entityContainsId = <Entity>(
-  data: Entity | Entity[],
+  data: Entity,
 ): data is EntityWithId<Entity> =>
-  (data as EntityWithId<Entity>).id !== undefined;
+  (data as EntityWithId<Entity>)?.id !== undefined;
 
 const getReducerName = (key: string): keyof typeof slices => {
   const [reducerName, singleActionName] = key.split('.');
@@ -249,14 +249,11 @@ export const createResponseHandler =
   ) =>
   (state: State, action: PayloadAction<Entity | Entity[]>) => {
     const { payload } = action;
+
     const isArray = isArrayOfValue<Entity>(payload);
-    const hasId = entityContainsId<Entity>(payload);
+    const hasId = entityContainsId<Entity>(isArray ? payload[0] : payload);
 
     const items = isArray ? payload : [payload];
-
-    console.log(entityAdapter, 'what is going on with this one', {
-      isArray,
-    });
 
     if (!items.length) {
       return {
