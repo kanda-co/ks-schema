@@ -1,6 +1,7 @@
 import { GeneratedState } from './types';
 
 export const GENERATED_STATE: Omit<GeneratedState<{}>, 'entities' | 'ids'> = {
+  raw: undefined,
   isLoading: false,
   isSubmitting: false,
   hasFetched: false,

@@ -5,8 +5,10 @@ export declare const handlePayload: <T>(payload: Payload<T>) => Promise<T>;
 export type DataWithId = {
     id: string;
 };
+export type EntityWithId<Entity> = Entity & DataWithId;
 export declare const formatById: <T>(data: T[]) => StringIndexedObject<T>;
 export declare const isArrayOfValue: <Entity>(data: Entity | Entity[]) => data is Entity[];
+export declare const entityContainsId: <Entity>(data: Entity | Entity[]) => data is EntityWithId<Entity>;
 export declare const createAsyncThunkAction: <Entity extends void | StringIndexedObject<any>, Args extends StringIndexedObject<any> = undefined>(service: NewService<Entity, Args>) => AsyncThunk<Entity, AsyncThunkActionArgs<Args, Entity>, {}>;
 /**
  * This function is passed to the reducers that are defined for the async thunk actions
@@ -21,6 +23,13 @@ export declare const createResponseHandler: <State extends GeneratedState<Entity
     isLoading: boolean;
     isSubmitting: boolean;
 }) | (State & {
+    chainedRequest: boolean;
+    hasFetched: boolean;
+    fetchedList: boolean;
+    isLoading: boolean;
+    isSubmitting: boolean;
+}) | (State & {
+    raw: Entity | Entity[];
     chainedRequest: boolean;
     hasFetched: boolean;
     fetchedList: boolean;

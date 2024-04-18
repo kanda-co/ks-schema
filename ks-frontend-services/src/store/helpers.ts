@@ -35,6 +35,8 @@ export type DataWithId = {
   id: string;
 };
 
+export type EntityWithId<Entity> = Entity & DataWithId;
+
 export const formatById = <T>(data: T[]): StringIndexedObject<T> =>
   data.reduce((acc: StringIndexedObject<T>, item) => {
     acc[(item as DataWithId).id] = item;
@@ -51,6 +53,11 @@ export const isArrayOfValue = <Entity>(
       () => true,
     ),
   );
+
+export const entityContainsId = <Entity>(
+  data: Entity | Entity[],
+): data is EntityWithId<Entity> =>
+  (data as EntityWithId<Entity>).id !== undefined;
 
 const getReducerName = (key: string): keyof typeof slices => {
   const [reducerName, singleActionName] = key.split('.');
@@ -243,6 +250,7 @@ export const createResponseHandler =
   (state: State, action: PayloadAction<Entity | Entity[]>) => {
     const { payload } = action;
     const isArray = isArrayOfValue<Entity>(payload);
+    const hasId = entityContainsId<Entity>(payload);
 
     const items = isArray ? payload : [payload];
 
@@ -261,12 +269,24 @@ export const createResponseHandler =
 
     const nextState = { ...state };
 
-    const result = isArray
-      ? entityAdapter.upsertMany(nextState, payload)
-      : entityAdapter.upsertOne(nextState, payload);
+    if (hasId) {
+      const result = isArray
+        ? entityAdapter.upsertMany(nextState, payload)
+        : entityAdapter.upsertOne(nextState, payload);
+
+      return {
+        ...result,
+        chainedRequest: false,
+        hasFetched: true,
+        fetchedList: !state.fetchedList ? isArray : true,
+        isLoading: state.chainedRequest ? state.isLoading : false,
+        isSubmitting: state.chainedRequest ? state.isSubmitting : false,
+      };
+    }
 
     return {
-      ...result,
+      ...nextState,
+      raw: payload,
       chainedRequest: false,
       hasFetched: true,
       fetchedList: !state.fetchedList ? isArray : true,
@@ -338,6 +358,8 @@ export const generateSelectors = <
     (reducer) => reducer.fetchedList,
   );
 
+  const getRawResponse = createSelector(getReducer, (reducer) => reducer.raw);
+
   const getError = createSelector(getReducer, (reducer) => reducer.error);
 
   return {
@@ -351,5 +373,6 @@ export const generateSelectors = <
     getIsSubmitting,
     getFetchedList,
     getError,
+    getRawResponse,
   };
 };

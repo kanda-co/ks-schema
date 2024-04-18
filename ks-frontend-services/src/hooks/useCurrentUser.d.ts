@@ -48,6 +48,7 @@ export declare const createCurrentUserHook: <State extends AuthSlice, Dispatch e
     postCompanyBilling: import("../store/types").Selectors<import("..").RedirectURLs, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").RedirectURLs>>>;
     getCompanyDirectorVerification: import("../store/types").Selectors<import("..").InfoCompany, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoCompany>>>;
     postCompanyDirectorVerification: import("../store/types").Selectors<import("..").InfoCompany, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoCompany>>>;
+    getCompanyReferrals: import("../store/types").Selectors<import("..").Referral, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Referral>>>;
     postCompanyReferrals: import("../store/types").Selectors<import("..").Referral, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Referral>>>;
     exportFcaApproved: import("../store/types").Selectors<import("..").ExportCSV, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").ExportCSV>>>;
     infoSession: import("../store/types").Selectors<import("..").InfoSession, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoSession>>>;

@@ -25,6 +25,7 @@ export interface PathKey<P extends StringIndexedObject> {
 }
 
 export interface GeneratedState<T = unknown> extends EntityState<T> {
+  raw?: T | T[];
   hasFetched: boolean;
   fetchedList: boolean;
   chainedRequest: boolean;
@@ -74,4 +75,5 @@ export interface Selectors<T, S> {
   getIsSubmitting: (state: S) => boolean;
   getFetchedList: (state: S) => boolean;
   getError: (state: S) => ExtractedError | undefined;
+  getRawResponse: (state: S) => T | T[] | undefined;
 }
