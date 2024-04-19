@@ -195,13 +195,19 @@ export const createAsyncThunkAction = <
       if (isGet && !forceReload) {
         if (finalMethodArgs?.params?.id) {
           const item = entities[finalMethodArgs.params.id];
-
           // If the data is already in the store, don't fetch it again
           if (item) {
-            return [] as any;
+            if (onSuccess) {
+              onSuccess(item);
+            }
+            return item;
           }
         } else if (fetchedList) {
-          return [] as any;
+          const items = Object.values(entities);
+          if (onSuccess) {
+            onSuccess(items as unknown as Entity);
+          }
+          return items;
         }
       }
       const payload = method(finalMethodArgs);
