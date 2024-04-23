@@ -1963,9 +1963,59 @@ paths:
         and FCA Approved at onboarding but have no lender configs yet
       tags:
         - Company
+      parameters:
+        - name: lender
+          in: query
+          description: for particular lender or all
+          schema:
+            type: string
+            enum:
+              - "humm"
+              - "propensio"
       responses:
         200:
           description: got all companies with completed setup + fca approved
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ExportCSV"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/company/all/import-fca-approved:
+    post:
+      operationId: importFcaApproved
+      summary: >
+        kanda staff to import all companies with completed setup
+        and FCA Approved at onboarding with updates of lender configs
+      tags:
+        - Company
+      parameters:
+        - name: lender
+          in: query
+          description: for particular lender or all
+          required: true
+          schema:
+            type: string
+            enum:
+              - "humm"
+              - "propensio"
+      requestBody:
+        description: post all companies with completed setup + fca approved updates
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/LenderImport"
+      responses:
+        200:
+          description: got all companies with completed setup + fca approved updates
           content:
             application/json:
               schema:
@@ -9529,6 +9579,54 @@ components:
         csv:
           type: string
           title: csv
+
+    LenderImport:
+      type: object
+      title: lender import for new account
+      required:
+        - ibc_ref
+        - fca_number
+      properties:
+        ibc_ref:
+          type: string
+          title: ibc ref or account id
+        cid:
+          type: string
+          title: cid
+        fca_number:
+          type: string
+          title: fca number
+
+    # Payout:
+    #   type: object
+    #   title: payout
+    #   description: payout records from lender
+    #   properties:
+    #     id:
+    #       type: string
+    #       title: payout id (same as credit id)
+    #     lender:
+    #       type: string
+    #       $ref: "#/components/schemas/FinanceProvider"
+    #     reference:
+    #       type: string
+    #       title: lender reference
+    #     credit_amount:
+    #       $ref: "#/components/schemas/Money"
+    #     pay_in:
+    #       $ref: "#/components/schemas/Pence"
+    #     pay_in_vat:
+    #       $ref: "#/components/schemas/Pence"
+    #     pay_in_fee:
+    #       $ref: "#/components/schemas/Pence"
+    #     pay_in_note:
+    #       type: string
+    #       title: pay in note
+    #     pay_in_date:
+    #       type: string
+    #       title: pay in date (for back date in format YYYY-mm-dd)
+    #     metadata:
+    #       $ref: "#/components/schemas/Metadata"
 
     Error:
       type: object
