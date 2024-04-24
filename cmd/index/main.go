@@ -73,21 +73,24 @@ func main() {
 			continue
 		}
 		if NotIn(name, []string{
-			"Company",
 			// "Cache",
+			"Company",
 			"Credit",
 			// "Document",
-			"Enterprise",
 			"Job",
 			// "Lead",
-			// "Monitor",
-			// "Onboarding",
-			// "Partner",
 			// "Payment",
-			// "Rate",
-			// "Redirect",
 			// "Subscription",
+			// "Rate",
+			// "Monitor",
+			// "Partner",
+			// "Onboarding",
+			"Enterprise",
 			// "Summary",
+			// "Redirect",
+			// "Training",
+			"Transaction",
+			// "Consent",
 		}) {
 			continue
 		}
