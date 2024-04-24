@@ -4668,6 +4668,146 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/transaction:
+    get:
+      operationId: getTransactions
+      summary: get all transactions
+      tags:
+        - Transaction
+      parameters:
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
+      responses:
+        200:
+          description: got all transactions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Transaction"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    post:
+      operationId: postTransaction
+      summary: post new transaction
+      tags:
+        - Transaction
+      requestBody:
+        description: post new transaction
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Transaction"
+      responses:
+        200:
+          description: posted new transaction
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transaction"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/transaction/{id}:
+    get:
+      operationId: getTransaction
+      summary: get existing transaction
+      tags:
+        - Transaction
+      parameters:
+        - name: id
+          in: path
+          description: transaction id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing transaction
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transaction"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: putTransaction
+      summary: put existing transaction
+      tags:
+        - Transaction
+      parameters:
+        - name: id
+          in: path
+          description: transaction id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: put existing transaction
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Transaction"
+      responses:
+        200:
+          description: put existing transaction
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transaction"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      operationId: deleteTransaction
+      summary: delete existing transaction
+      tags:
+        - Transaction
+      parameters:
+        - name: id
+          in: path
+          description: transaction id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: deleted existing transaction
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transaction"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/webhook/{provider}:
     get:
       operationId: providerCheckWebhook
@@ -9597,36 +9737,55 @@ components:
           type: string
           title: fca number
 
-    # Payout:
-    #   type: object
-    #   title: payout
-    #   description: payout records from lender
-    #   properties:
-    #     id:
-    #       type: string
-    #       title: payout id (same as credit id)
-    #     lender:
-    #       type: string
-    #       $ref: "#/components/schemas/FinanceProvider"
-    #     reference:
-    #       type: string
-    #       title: lender reference
-    #     credit_amount:
-    #       $ref: "#/components/schemas/Money"
-    #     pay_in:
-    #       $ref: "#/components/schemas/Pence"
-    #     pay_in_vat:
-    #       $ref: "#/components/schemas/Pence"
-    #     pay_in_fee:
-    #       $ref: "#/components/schemas/Pence"
-    #     pay_in_note:
-    #       type: string
-    #       title: pay in note
-    #     pay_in_date:
-    #       type: string
-    #       title: pay in date (for back date in format YYYY-mm-dd)
-    #     metadata:
-    #       $ref: "#/components/schemas/Metadata"
+    Transaction:
+      type: object
+      title: transaction
+      description: transaction record from lender
+      required:
+        - id
+        - lender
+        - xid
+        - payout_type
+        - payout_date
+        - amount
+        - vat
+        - fee
+      properties:
+        id:
+          type: string
+          title: transaction id
+        lender:
+          type: string
+          $ref: "#/components/schemas/FinanceProvider"
+        xid:
+          type: string
+          title: transaction external id
+        xref:
+          type: string
+          title: transaction external reference
+        account_name:
+          type: string
+          title: account name (trade)
+        payout_type:
+          type: string
+          title: payout type
+          enum:
+            - "paid_to_kanda"
+            - "paid_from_kanda"
+        payout_date:
+          type: string
+          title: payout date (in format YYYY-mm-dd)
+        amount:
+          $ref: "#/components/schemas/Pence"
+        vat:
+          $ref: "#/components/schemas/Pence"
+        fee:
+          $ref: "#/components/schemas/Pence"
+        note:
+          type: string
+          title: payout note
+        metadata:
+          $ref: "#/components/schemas/Metadata"
 
     Error:
       type: object
