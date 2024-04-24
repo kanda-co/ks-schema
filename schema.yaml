@@ -9237,6 +9237,7 @@ components:
         - credit
         - enterprise
         - job
+        - transaction
       properties:
         company:
           type: array
@@ -9262,6 +9263,12 @@ components:
           description: matching jobs
           items:
             $ref: "#/components/schemas/Job"
+        transaction:
+          type: array
+          title: matching transactions
+          description: matching transactions
+          items:
+            $ref: "#/components/schemas/Transaction"
 
     InfoPartnerBranding:
       type: object
