@@ -80,6 +80,10 @@ declare const company: {
         key: string;
         method: import("../generated/operations/exportFcaApproved").ExportFcaApprovedRequestFunction;
     };
+    importFcaApproved: {
+        key: string;
+        method: import("../generated/operations/importFcaApproved").ImportFcaApprovedRequestFunction;
+    };
 };
 declare const credit: {
     infoCredit: {
@@ -861,6 +865,10 @@ declare const services: {
         exportFcaApproved: {
             key: string;
             method: import("../generated/operations/exportFcaApproved").ExportFcaApprovedRequestFunction;
+        };
+        importFcaApproved: {
+            key: string;
+            method: import("../generated/operations/importFcaApproved").ImportFcaApprovedRequestFunction;
         };
     };
     credit: {

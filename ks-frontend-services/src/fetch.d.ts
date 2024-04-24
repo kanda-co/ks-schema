@@ -27,5 +27,5 @@ export declare const originalFetch: () => any;
  * @param options
  * @param args
  */
-declare const interceptedFetch: (url: string, options: StringIndexedObject, ...args: any[]) => any;
+declare const interceptedFetch: (url: string, options: StringIndexedObject, ...args: any[]) => Promise<any>;
 export default interceptedFetch;

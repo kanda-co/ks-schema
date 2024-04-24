@@ -153,14 +153,15 @@ export const originalFetch = () => fetch.bind(currentWindow);
  * @param options
  * @param args
  */
-const interceptedFetch = (
+const interceptedFetch = async (
   url: string,
   options: StringIndexedObject,
   ...args
 ) => {
   const id = FirebaseAuthService?.auth?.currentUser?.uid;
   const token =
-    global?.token || FirebaseAuthService?.auth?.currentUser?.accessToken;
+    global?.token ||
+    (await FirebaseAuthService?.auth?.currentUser?.getIdToken(true));
 
   const trackingBody = formatTrackingBody(url, options);
   const ids = getIds(amplitude);
