@@ -53,6 +53,7 @@ const (
 	DBV4_USER_DEV_CLAIM_ACCOUNT                  TName = "DBV4_USER_DEV_CLAIM_ACCOUNT"
 	DBV4_USER_ID_CHECKS_DECLINED                 TName = "DBV4_USER_ID_CHECKS_DECLINED"
 	DBV4_USER_ID_CHECKS_VERIFIED                 TName = "DBV4_USER_ID_CHECKS_VERIFIED"
+	DBV4_USER_KANDA_REFEREE_INVITE               TName = "DBV4_USER_KANDA_REFEREE_INVITE"
 	DBV4_USER_LEGACY_MIGRATION                   TName = "DBV4_USER_LEGACY_MIGRATION"
 	DBV4_USER_REFEREE_INVITE                     TName = "DBV4_USER_REFEREE_INVITE"
 	DBV4_USER_RESET_PASSWORD                     TName = "DBV4_USER_RESET_PASSWORD"
@@ -2001,6 +2002,35 @@ var TMap = map[TName]string{
           "text": "Thank you for completing your identity checks with Kanda. Your ID has been verified."
         }
       ]
+    }
+  ]
+}`,
+	"DBV4_USER_KANDA_REFEREE_INVITE": `{
+  "subject": "{{sender.contact_name}} sent you £50",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hey {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "<b>{{sender.contact_name}}</b>uses Kanda to grow their business by offering their clients financing options. They want to help you grow your business, so they've sent you £50-off your yearly subscription to Kanda."
+        },
+        {
+          "text": "With Kanda you can offer your customers finance options like 0% finance and BNPL. We're a proven method of closing more customers and increasing the amount they spend with businesses."
+        },
+        {
+          "text": "Click below to join <b>{{sender.contact_name}}</b> and 1000s of other businesses growing with Kanda"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "Join Kanda Now",
+      "url": "{{cta_url}}"
     }
   ]
 }`,
