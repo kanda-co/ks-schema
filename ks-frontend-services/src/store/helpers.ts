@@ -287,6 +287,19 @@ export const createResponseHandler =
       };
     }
 
+    if (!isArray) {
+      const result = entityAdapter.upsertOne(nextState, payload);
+      return {
+        ...result,
+        raw: payload,
+        chainedRequest: false,
+        hasFetched: true,
+        fetchedList: !state.fetchedList ? isArray : true,
+        isLoading: state.chainedRequest ? state.isLoading : false,
+        isSubmitting: state.chainedRequest ? state.isSubmitting : false,
+      };
+    }
+
     return {
       ...nextState,
       raw: payload,
