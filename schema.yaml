@@ -1494,6 +1494,279 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/introduction:
+    get:
+      operationId: getIntroductions
+      summary: get all introductions
+      tags:
+        - Introduction
+      parameters:
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
+      responses:
+        200:
+          description: got all introductions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Introduction"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    post:
+      operationId: postIntroduction
+      summary: post new introduction for consumer and send comms
+      tags:
+        - Introduction
+      requestBody:
+        description: post new introduction
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Introduction"
+      responses:
+        200:
+          description: posted new introduction for consumer and comms sent
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Introduction"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/introduction/{id}:
+    get:
+      operationId: getIntroduction
+      summary: get existing introduction
+      tags:
+        - Introduction
+      parameters:
+        - name: id
+          in: path
+          description: introduction id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing introduction
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Introduction"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: putIntroduction
+      summary: put existing introduction
+      tags:
+        - Introduction
+      parameters:
+        - name: id
+          in: path
+          description: introduction id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: put existing introduction
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Introduction"
+      responses:
+        200:
+          description: put existing introduction
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Introduction"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      operationId: deleteIntroduction
+      summary: delete existing introduction
+      tags:
+        - Introduction
+      parameters:
+        - name: id
+          in: path
+          description: introduction id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: deleted existing introduction
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Introduction"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/introduction/{id}/consumer-details:
+    post:
+      operationId: postIntroductionConsumerDetails
+      summary: consumer to submit existing introduction consumer details
+      tags:
+        - Introduction
+      parameters:
+        - name: id
+          in: path
+          description: introduction id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: submit existing introduction with consumer details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ApplicantDetails"
+      responses:
+        200:
+          description: submitted introduction with consumer details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Introduction"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/introduction/{id}/job-details:
+    post:
+      operationId: postIntroductionJobDetails
+      summary: submit existing introduction job details
+      tags:
+        - Introduction
+      parameters:
+        - name: id
+          in: path
+          description: introduction id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: submit existing introduction with job details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/JobDetails"
+      responses:
+        200:
+          description: submitted introduction with job details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Introduction"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/introduction/{id}/trader:
+    post:
+      operationId: postIntroductionTrader
+      summary: submit existing introduction trader contact info and send comms
+      tags:
+        - Introduction
+      parameters:
+        - name: id
+          in: path
+          description: introduction id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: submit existing introduction with trader contact info
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ContactInfo"
+      responses:
+        200:
+          description: submitted introduction with trader contact info and comms sent
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Introduction"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/introduction/{id}/convert-job:
+    post:
+      operationId: postIntroductionConvertJob
+      summary: convert existing introduction details to job and send comms to consumer
+      tags:
+        - Introduction
+      parameters:
+        - name: id
+          in: path
+          description: introduction id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: converted existing introduction to job and comms sent to consumer
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Introduction"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/company:
     get:
       operationId: getCompanies
@@ -8117,6 +8390,122 @@ components:
         address:
           type: object
           $ref: "#/components/schemas/Address"
+
+    Introduction:
+      type: object
+      title: credit introduction
+      description: credit introduction for enterprise
+      required:
+        - consumer
+      properties:
+        id:
+          type: string
+          title: introduction id
+          readOnly: true
+        cid:
+          type: string
+          title: company id
+          readOnly: true
+        oid:
+          type: string
+          title: owner id
+          readOnly: true
+        aid:
+          type: string
+          title: author id
+          readOnly: true
+        eid:
+          type: string
+          title: enterprise id
+          readOnly: true
+        bid:
+          type: string
+          title: branch id
+          readOnly: true
+        tid:
+          type: string
+          title: external trade id
+          readOnly: true
+        consumer:
+          $ref: "#/components/schemas/ContactInfo"
+        consumer_details:
+          $ref: "#/components/schemas/ApplicantDetails"
+        budgets:
+          $ref: "#/components/schemas/Budgets"
+        trader:
+          $ref: "#/components/schemas/ContactInfo"
+        job_details:
+          $ref: "#/components/schemas/JobDetails"
+        current_state:
+          type: string
+          title: current state
+          $ref: "#/components/schemas/IntroductionState"
+        states:
+          type: array
+          title: all states
+          items:
+            $ref: "#/components/schemas/IntroductionState"
+        flow_type:
+          title: flow type
+          $ref: "#/components/schemas/FlowType"
+        metadata:
+          type: object
+          $ref: "#/components/schemas/Metadata"
+          title: metadata
+          readOnly: true
+
+    IntroductionState:
+      type: string
+      title: introduction state
+      enum:
+        - "consumer_sent"
+        - "consumer_viewed"
+        - "consumer_agreed"
+        - "consumer_details_provided"
+        - "consumer_rejected"
+        - "trader_sent"
+        - "trader_viewed"
+        - "trader_agreed"
+        - "trader_rejected"
+        - "trader_details_provided"
+        - "trader_is_reviewed"
+        - "trader_is_verified"
+        - "trader_is_declined"
+        - "job_converted"
+
+    Budgets:
+      type: object
+      title: budgets
+      required:
+        - min
+        - max
+      properties:
+        min:
+          $ref: "#/components/schemas/Money"
+        max:
+          $ref: "#/components/schemas/Money"
+
+    JobDetails:
+      title: job details
+      description: introduction job details
+      required:
+        - reference
+        - description
+        - items
+      properties:
+        reference:
+          type: string
+          title: job unique reference
+        description:
+          type: string
+          title: job description
+        items:
+          type: array
+          title: job items
+          items:
+            $ref: "#/components/schemas/JobItem"
+        total:
+          $ref: "#/components/schemas/MoneyTotal"
 
     Lead:
       type: object

@@ -47,6 +47,12 @@ var (
 			ContactPhone: New("01709808990"),
 			TradingName:  New("Propensio Finance"),
 		},
+		Humm: {
+			ContactEmail: NewEmail("contactuk@shophumm.com"),
+			ContactName:  New("Humm"),
+			ContactPhone: New("02891422113"),
+			TradingName:  New("Humm Group Limited"),
+		},
 	}
 )
 
@@ -237,6 +243,10 @@ func (in EnterpriseUserType) ToContact() *ContactInfo {
 			ContactPhone: in.Mobile,
 		},
 	)
+}
+
+func (in Introduction) ToContact() *ContactInfo {
+	return New(in.Consumer)
 }
 
 func (in Partner) ToContact() *ContactInfo {
