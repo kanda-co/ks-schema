@@ -1921,6 +1921,7 @@ paths:
           schema:
             type: string
             minLength: 1
+        - $ref: "#/components/parameters/tier"
       responses:
         200:
           description: posted company billing redirect urls
@@ -1951,12 +1952,13 @@ paths:
             minLength: 1
         - name: provider
           in: query
-          description: billing payment method
+          description: billing provider
           schema:
             type: string
             enum:
               - stripe
               - premium_credit
+        - $ref: "#/components/parameters/tier"
       responses:
         200:
           description: posted company billing redirect urls
@@ -5273,6 +5275,17 @@ components:
         description: query filter in colon path+value pairs, with comma separated filters
         minLength: 1
 
+    tier:
+      name: tier
+      in: query
+      schema:
+        type: string
+        title: query tier
+        description: tier level
+        enum:
+          - "base_rate"
+          - "enterprise_rate"
+
     x_kanda_protected:
       name: x_kanda_protected
       in: header
@@ -6792,11 +6805,59 @@ components:
         business_config:
           type: string
           $ref: "#/components/schemas/BusinessConfig"
+        tier_config:
+          $ref: "#/components/schemas/TierConfig"
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
           title: metadata
           readOnly: true
+
+    Tier:
+      type: string
+      title: tier level
+      enum:
+        - "base_rate"
+        - "enterprise_rate"
+
+    TierEvent:
+      type: object
+      title: tier event
+      required:
+        - tier
+        - action
+        - actioned_at
+      properties:
+        tier:
+          $ref: "#/components/schemas/Tier"
+        action:
+          type: string
+          title: tier event action
+          enum:
+            - "add_tier"
+            - "remove_tier"
+        actioned_at:
+          type: string
+          title: tier event created at
+          format: date-time
+
+    TierConfig:
+      type: object
+      title: tier config
+      required:
+        - current_tier
+        - tiers
+        - metadata
+      properties:
+        current_tier:
+          type: string
+          title: current tier
+          $ref: "#/components/schemas/Tier"
+        tiers:
+          type: array
+          title: all tier events
+          items:
+            $ref: "#/components/schemas/TierEvent"
 
     BusinessConfig:
       type: object
