@@ -6847,7 +6847,6 @@ components:
       required:
         - current_tier
         - tiers
-        - metadata
       properties:
         current_tier:
           type: string
