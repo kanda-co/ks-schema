@@ -47,6 +47,17 @@ func renderObject(base string, o openapi3.Schema) []string {
 			fields = append(fields, renderObject(IfValueOr(base == "", n, base+"."+n), *f.Value)...)
 		}
 	}
+	if o.Type == "array" {
+		if o.Items.Value.Type == "object" {
+			fields = append(
+				fields,
+				renderObject(
+					base,
+					*o.Items.Value,
+				)...,
+			)
+		}
+	}
 	return fields
 }
 
