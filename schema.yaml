@@ -904,6 +904,32 @@ paths:
                 $ref: "#/components/schemas/Error"
 
   /api/info/stats:
+    put:
+      operationId: putInfoStats
+      summary: kanda staff or trade admin to generate their stats by filters
+      tags:
+        - InfoStats
+      requestBody:
+        description: filter info stats
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InfoSearch"
+      responses:
+        200:
+          description: info stats for requested admin
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoStats"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
     get:
       operationId: infoStats
       summary: kanda staff or trade admin or get their stats
