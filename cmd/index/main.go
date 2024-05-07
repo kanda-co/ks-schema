@@ -166,5 +166,29 @@ func main() {
 			}
 			fmt.Println("[INDEX]", endpoint)
 		}
+
+		endpoint := fmt.Sprintf(
+			"https://%s/indexes/%s/settings/pagination",
+			searchDomain,
+			k,
+		)
+		r, err := http.NewRequest(
+			http.MethodPatch,
+			endpoint,
+			bytes.NewBuffer([]byte(`{"maxTotalHits":99999}`)),
+		)
+		r.Header.Set("Content-Type", "application/json")
+		r.Header.Set("Authorization", "Bearer "+bearer)
+		resp, err := http.DefaultClient.Do(r)
+		if err != nil {
+			panic(err)
+		}
+		if resp.StatusCode > 299 {
+			body, _ := io.ReadAll(resp.Body)
+			defer resp.Body.Close()
+			panic(fmt.Errorf("maxTotalHits with endpoint '%v' error - %s '%v'", endpoint, resp.Status, string(body)))
+		}
+		fmt.Println("[MaxTotalHits]", endpoint)
+
 	}
 }
