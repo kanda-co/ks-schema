@@ -35,6 +35,7 @@ export declare const createCurrentUserHook: <State extends AuthSlice, Dispatch e
     infoQuery: import("../store/types").Selectors<import("..").InfoQuery, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoQuery>>>;
     infoSearch: import("../store/types").Selectors<import("..").InfoSearch, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoSearch>>>;
     infoStats: import("../store/types").Selectors<import("..").InfoStats, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoStats>>>;
+    introduction: import("../store/types").Selectors<import("..").Introduction, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Introduction>>>;
     job: import("../store/types").Selectors<import("..").Job, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Job>>>;
     lead: import("../store/types").Selectors<import("..").Lead, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Lead>>>;
     monitor: import("../store/types").Selectors<import("..").Monitor, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Monitor>>>;
@@ -45,6 +46,7 @@ export declare const createCurrentUserHook: <State extends AuthSlice, Dispatch e
     subscription: import("../store/types").Selectors<import("..").Subscription, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Subscription>>>;
     tradeSummary: import("../store/types").Selectors<import("..").TradeSummary, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").TradeSummary>>>;
     training: import("../store/types").Selectors<import("..").Training, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Training>>>;
+    transaction: import("../store/types").Selectors<import("..").Transaction, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Transaction>>>;
     postCompanyBilling: import("../store/types").Selectors<import("..").RedirectURLs, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").RedirectURLs>>>;
     getCompanyDirectorVerification: import("../store/types").Selectors<import("..").InfoCompany, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoCompany>>>;
     postCompanyDirectorVerification: import("../store/types").Selectors<import("..").InfoCompany, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoCompany>>>;

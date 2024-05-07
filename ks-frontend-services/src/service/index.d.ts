@@ -328,11 +328,53 @@ declare const infoStats: {
         key: string;
         method: import("../generated/operations/infoStats").InfoStatsRequestFunction;
     };
+    putInfoStats: {
+        key: string;
+        method: import("../generated/operations/putInfoStats").PutInfoStatsRequestFunction;
+    };
 };
 declare const infoValidation: {
     infoValidateEmail: {
         key: string;
         method: import("../generated/operations/infoValidateEmail").InfoValidateEmailRequestFunction;
+    };
+};
+declare const introduction: {
+    getIntroductions: {
+        key: string;
+        method: import("../generated/operations/getIntroductions").GetIntroductionsRequestFunction;
+    };
+    postIntroduction: {
+        key: string;
+        method: import("../generated/operations/postIntroduction").PostIntroductionRequestFunction;
+    };
+    getIntroduction: {
+        key: string;
+        method: import("../generated/operations/getIntroduction").GetIntroductionRequestFunction;
+    };
+    putIntroduction: {
+        key: string;
+        method: import("../generated/operations/putIntroduction").PutIntroductionRequestFunction;
+    };
+    deleteIntroduction: {
+        key: string;
+        method: import("../generated/operations/deleteIntroduction").DeleteIntroductionRequestFunction;
+    };
+    postIntroductionConsumerDetails: {
+        key: string;
+        method: import("../generated/operations/postIntroductionConsumerDetails").PostIntroductionConsumerDetailsRequestFunction;
+    };
+    postIntroductionJobDetails: {
+        key: string;
+        method: import("../generated/operations/postIntroductionJobDetails").PostIntroductionJobDetailsRequestFunction;
+    };
+    postIntroductionTrader: {
+        key: string;
+        method: import("../generated/operations/postIntroductionTrader").PostIntroductionTraderRequestFunction;
+    };
+    postIntroductionConvertJob: {
+        key: string;
+        method: import("../generated/operations/postIntroductionConvertJob").PostIntroductionConvertJobRequestFunction;
     };
 };
 declare const job: {
@@ -695,6 +737,28 @@ declare const training: {
     deleteTraining: {
         key: string;
         method: import("../generated/operations/deleteTraining").DeleteTrainingRequestFunction;
+    };
+};
+declare const transaction: {
+    getTransactions: {
+        key: string;
+        method: import("../generated/operations/getTransactions").GetTransactionsRequestFunction;
+    };
+    postTransaction: {
+        key: string;
+        method: import("../generated/operations/postTransaction").PostTransactionRequestFunction;
+    };
+    getTransaction: {
+        key: string;
+        method: import("../generated/operations/getTransaction").GetTransactionRequestFunction;
+    };
+    putTransaction: {
+        key: string;
+        method: import("../generated/operations/putTransaction").PutTransactionRequestFunction;
+    };
+    deleteTransaction: {
+        key: string;
+        method: import("../generated/operations/deleteTransaction").DeleteTransactionRequestFunction;
     };
 };
 declare const webhook: {
@@ -1114,11 +1178,53 @@ declare const services: {
             key: string;
             method: import("../generated/operations/infoStats").InfoStatsRequestFunction;
         };
+        putInfoStats: {
+            key: string;
+            method: import("../generated/operations/putInfoStats").PutInfoStatsRequestFunction;
+        };
     };
     infoValidation: {
         infoValidateEmail: {
             key: string;
             method: import("../generated/operations/infoValidateEmail").InfoValidateEmailRequestFunction;
+        };
+    };
+    introduction: {
+        getIntroductions: {
+            key: string;
+            method: import("../generated/operations/getIntroductions").GetIntroductionsRequestFunction;
+        };
+        postIntroduction: {
+            key: string;
+            method: import("../generated/operations/postIntroduction").PostIntroductionRequestFunction;
+        };
+        getIntroduction: {
+            key: string;
+            method: import("../generated/operations/getIntroduction").GetIntroductionRequestFunction;
+        };
+        putIntroduction: {
+            key: string;
+            method: import("../generated/operations/putIntroduction").PutIntroductionRequestFunction;
+        };
+        deleteIntroduction: {
+            key: string;
+            method: import("../generated/operations/deleteIntroduction").DeleteIntroductionRequestFunction;
+        };
+        postIntroductionConsumerDetails: {
+            key: string;
+            method: import("../generated/operations/postIntroductionConsumerDetails").PostIntroductionConsumerDetailsRequestFunction;
+        };
+        postIntroductionJobDetails: {
+            key: string;
+            method: import("../generated/operations/postIntroductionJobDetails").PostIntroductionJobDetailsRequestFunction;
+        };
+        postIntroductionTrader: {
+            key: string;
+            method: import("../generated/operations/postIntroductionTrader").PostIntroductionTraderRequestFunction;
+        };
+        postIntroductionConvertJob: {
+            key: string;
+            method: import("../generated/operations/postIntroductionConvertJob").PostIntroductionConvertJobRequestFunction;
         };
     };
     job: {
@@ -1483,6 +1589,28 @@ declare const services: {
             method: import("../generated/operations/deleteTraining").DeleteTrainingRequestFunction;
         };
     };
+    transaction: {
+        getTransactions: {
+            key: string;
+            method: import("../generated/operations/getTransactions").GetTransactionsRequestFunction;
+        };
+        postTransaction: {
+            key: string;
+            method: import("../generated/operations/postTransaction").PostTransactionRequestFunction;
+        };
+        getTransaction: {
+            key: string;
+            method: import("../generated/operations/getTransaction").GetTransactionRequestFunction;
+        };
+        putTransaction: {
+            key: string;
+            method: import("../generated/operations/putTransaction").PutTransactionRequestFunction;
+        };
+        deleteTransaction: {
+            key: string;
+            method: import("../generated/operations/deleteTransaction").DeleteTransactionRequestFunction;
+        };
+    };
     webhook: {
         providerCheckWebhook: {
             key: string;
@@ -1568,5 +1696,5 @@ declare const services: {
         };
     };
 };
-export { adhoc, authUser, company, credit, document, enterprise, event, infoAuth, infoCache, infoCompany, infoCustomer, infoDirector, infoEnterpriseRole, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoLead, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoSearch, infoStats, infoValidation, job, lead, monitor, onboarding, partner, payment, rate, subscription, task, tradeSummary, training, webhook, address, contract, payouts, pdf, personalGuarantee, sheets, subsSheet, };
+export { adhoc, authUser, company, credit, document, enterprise, event, infoAuth, infoCache, infoCompany, infoCustomer, infoDirector, infoEnterpriseRole, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoLead, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoSearch, infoStats, infoValidation, introduction, job, lead, monitor, onboarding, partner, payment, rate, subscription, task, tradeSummary, training, transaction, webhook, address, contract, payouts, pdf, personalGuarantee, sheets, subsSheet, };
 export default services;

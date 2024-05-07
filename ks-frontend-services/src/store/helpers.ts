@@ -23,8 +23,12 @@ import {
   getHasVisitedCurrentPagePreviously,
   getPathKey,
 } from './selectors/app';
-import { InfoEntity } from '../generated/components/schemas';
-import { INFO_ENTITY_KEY } from './constants';
+import {
+  InfoEntity,
+  InfoSearch,
+  SearchIndex,
+} from '../generated/components/schemas';
+import { INFO_ENTITY_KEY, INFO_SEARCH_KEY } from './constants';
 import { GetInfoEntityRequestParameters } from '../generated/operations/getInfoEntity';
 import { extractError } from '../helpers';
 
@@ -83,6 +87,81 @@ const getReducerName = (key: string): keyof typeof slices => {
   return name;
 };
 
+const getHasAlreadySearchedBody = (
+  body: InfoSearch,
+  thunkAPI: ThunkAPI,
+): boolean => {
+  const state = thunkAPI.getState();
+  const previous = state['infoSearch'] as GeneratedState<InfoSearch>;
+  const raw = previous.raw as InfoSearch | undefined;
+  if (!raw) return false;
+  const { q: previousQ, index: previousIndex } = raw;
+  const { q, index } = body;
+  if (
+    q === previousQ &&
+    index.length === previousIndex.length &&
+    index.every((searchIndex) => previousIndex.includes(searchIndex))
+  )
+    return true;
+  return false;
+};
+
+const handleInfoSearchInit = async <
+  Entity extends StringIndexedObject | undefined | void,
+  Args extends StringIndexedObject<any> | undefined = undefined,
+>(
+  args: { body: InfoSearch; forceReload?: boolean },
+  thunkAPI: ThunkAPI,
+) => {
+  const { body, forceReload } = args;
+  const indexKeys = body.index;
+
+  const hasAlreadySearchedBody = getHasAlreadySearchedBody(body, thunkAPI);
+
+  if (hasAlreadySearchedBody && !forceReload) return;
+
+  indexKeys.forEach((key: SearchIndex) => {
+    const fetchingAction = slices[key].actions.fetching();
+    thunkAPI.dispatch(fetchingAction);
+  });
+};
+
+const handleInfoSearchSuccess = async <
+  Entity extends StringIndexedObject | undefined | void,
+  Args extends StringIndexedObject<any> | undefined = undefined,
+>(
+  data: InfoSearch,
+  args: { body: InfoSearch },
+  thunkAPI: ThunkAPI,
+) => {
+  const indexKeys = args.body.index;
+
+  indexKeys.forEach((key: SearchIndex) => {
+    const fetchedData = data.hits[key];
+    // We have to cast here because it calling it without doing so, results in a type error
+    // because typescript infers the type as Company[] & Job[] & Monitor[] etc
+    const fetchedAction = slices[key].actions
+      .fetched as ActionCreatorWithOptionalPayload<typeof fetchedData>;
+
+    thunkAPI.dispatch(fetchedAction(fetchedData));
+  });
+};
+
+const handleInfoSearchError = async <
+  Entity extends StringIndexedObject | undefined | void,
+  Args extends StringIndexedObject<any> | undefined = undefined,
+>(
+  args: { body: InfoSearch },
+  thunkAPI: ThunkAPI,
+) => {
+  const indexKeys = args.body.index;
+
+  indexKeys.forEach((key: SearchIndex) => {
+    const errorAction = slices[key].actions.error();
+    thunkAPI.dispatch(errorAction);
+  });
+};
+
 const handleInfoEntity = async <
   Entity extends StringIndexedObject | undefined | void,
   Args extends StringIndexedObject<any> | undefined = undefined,
@@ -127,7 +206,7 @@ const handleInfoEntity = async <
     const fetchedAction = slices[key].actions
       .fetched as ActionCreatorWithOptionalPayload<typeof fetchedData>;
 
-    thunkAPI.dispatch(fetchedAction(data[key]));
+    thunkAPI.dispatch(fetchedAction(fetchedData));
   });
 
   return;
@@ -165,6 +244,10 @@ export const createAsyncThunkAction = <
           thunkAPI,
         );
         return [] as any;
+      }
+
+      if (key === INFO_SEARCH_KEY) {
+        handleInfoSearchInit(args as unknown as { body: InfoSearch }, thunkAPI);
       }
 
       const { entities, fetchedList } = state[getReducerName(key) as string];
@@ -215,13 +298,24 @@ export const createAsyncThunkAction = <
       try {
         const data = await handlePayload(payload as unknown as Payload<Entity>);
 
-        if (onSuccess) {
-          onSuccess(data);
-        }
+        if (onSuccess) onSuccess(data);
+
+        if (key === INFO_SEARCH_KEY)
+          handleInfoSearchSuccess(
+            data as InfoSearch,
+            args as unknown as { body: InfoSearch },
+            thunkAPI,
+          );
 
         return data;
       } catch (error) {
         const extractedError = extractError(error);
+
+        if (key === INFO_SEARCH_KEY)
+          handleInfoSearchError(
+            args as unknown as { body: InfoSearch },
+            thunkAPI,
+          );
 
         // Dispatch the error action for the relevant reducer
         // and throw the error so that the caller can handle it
