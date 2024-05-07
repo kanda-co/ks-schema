@@ -180,6 +180,17 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         chainedRequest: boolean;
         isLoading: boolean;
     };
+    introduction: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").Introduction>;
+        raw?: {} | {}[];
+        error?: import("../types").ExtractedError;
+        isSubmitting: boolean;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+    };
     job: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Job>;
@@ -282,6 +293,17 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
     training: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Training>;
+        raw?: {} | {}[];
+        error?: import("../types").ExtractedError;
+        isSubmitting: boolean;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+    };
+    transaction: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").Transaction>;
         raw?: {} | {}[];
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
@@ -788,6 +810,17 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         chainedRequest: boolean;
         isLoading: boolean;
     };
+    introduction: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").Introduction>;
+        raw?: {} | {}[];
+        error?: import("../types").ExtractedError;
+        isSubmitting: boolean;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+    };
     job: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Job>;
@@ -890,6 +923,17 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
     training: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Training>;
+        raw?: {} | {}[];
+        error?: import("../types").ExtractedError;
+        isSubmitting: boolean;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+    };
+    transaction: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").Transaction>;
         raw?: {} | {}[];
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
@@ -1249,6 +1293,7 @@ export declare function createSelectors<State extends AuthSlice, Pages>(): {
     infoQuery: import("./types").Selectors<import("..").InfoQuery, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoQuery>>>;
     infoSearch: import("./types").Selectors<import("..").InfoSearch, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoSearch>>>;
     infoStats: import("./types").Selectors<import("..").InfoStats, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoStats>>>;
+    introduction: import("./types").Selectors<import("..").Introduction, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Introduction>>>;
     job: import("./types").Selectors<import("..").Job, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Job>>>;
     lead: import("./types").Selectors<import("..").Lead, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Lead>>>;
     monitor: import("./types").Selectors<import("..").Monitor, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Monitor>>>;
@@ -1259,6 +1304,7 @@ export declare function createSelectors<State extends AuthSlice, Pages>(): {
     subscription: import("./types").Selectors<import("..").Subscription, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Subscription>>>;
     tradeSummary: import("./types").Selectors<import("..").TradeSummary, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").TradeSummary>>>;
     training: import("./types").Selectors<import("..").Training, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Training>>>;
+    transaction: import("./types").Selectors<import("..").Transaction, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Transaction>>>;
     postCompanyBilling: import("./types").Selectors<import("..").RedirectURLs, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").RedirectURLs>>>;
     getCompanyDirectorVerification: import("./types").Selectors<import("..").InfoCompany, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoCompany>>>;
     postCompanyDirectorVerification: import("./types").Selectors<import("..").InfoCompany, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoCompany>>>;

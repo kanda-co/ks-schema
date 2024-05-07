@@ -11,6 +11,8 @@ export const GENERATED_STATE: Omit<GeneratedState<{}>, 'entities' | 'ids'> = {
 };
 export const INFO_ENTITY_KEY = 'infoEntity.getInfoEntity';
 
+export const INFO_SEARCH_KEY = 'infoSearch.infoSearch';
+
 export const IGNORED_ACTIONS = [
   'adhoc',
   'checkJob',
