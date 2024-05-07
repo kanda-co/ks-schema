@@ -154,6 +154,8 @@ export const createAsyncThunkAction = <
     ) => {
       const state = thunkAPI.getState() as StringIndexedObject;
 
+      console.log({ key });
+
       // Special case here because InfoEntity returns an object, with
       // keys corresponding to each entity with arrays in each. So we
       // take all the keys and then call the fetched action for the reducer
