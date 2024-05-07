@@ -9691,13 +9691,16 @@ components:
             type: string
         offset:
           type: integer
+          format: int64
           title: offset
         limit:
           type: integer
+          format: int64
           title: limit
         total:
           type: integer
-          title: total
+          format: int64
+          title: total records returned
           readOnly: true
         hits:
           $ref: "#/components/schemas/SearchHits"
@@ -9709,10 +9712,20 @@ components:
       description: search hits of resources
       required:
         - company
+        - company_hits
+        - company_returned
         - credit
+        - credit_hits
+        - credit_returned
         - enterprise
+        - enterprise_hits
+        - enterprise_returned
         - job
+        - job_hits
+        - job_returned
         - transaction
+        - transaction_hits
+        - transaction_returned
       properties:
         company:
           type: array
@@ -9720,30 +9733,70 @@ components:
           description: matching companies
           items:
             $ref: "#/components/schemas/Company"
+        company_hits:
+          type: integer
+          format: int64
+          title: matching companies hits
+        company_returned:
+          type: integer
+          format: int64
+          title: matching companies returned
         credit:
           type: array
           title: matching credits
           description: matching credits
           items:
             $ref: "#/components/schemas/Credit"
+        credit_hits:
+          type: integer
+          format: int64
+          title: matching credits hits
+        credit_returned:
+          type: integer
+          format: int64
+          title: matching credits returned
         enterprise:
           type: array
           title: matching enterprises
           description: matching enterprises
           items:
             $ref: "#/components/schemas/Enterprise"
+        enterprise_hits:
+          type: integer
+          format: int64
+          title: matching enterprises hits
+        enterprise_returned:
+          type: integer
+          format: int64
+          title: matching enterprises returned
         job:
           type: array
           title: matching jobs
           description: matching jobs
           items:
             $ref: "#/components/schemas/Job"
+        job_hits:
+          type: integer
+          format: int64
+          title: matching jobs hits
+        job_returned:
+          type: integer
+          format: int64
+          title: matching jobs returned
         transaction:
           type: array
           title: matching transactions
           description: matching transactions
           items:
             $ref: "#/components/schemas/Transaction"
+        transaction_hits:
+          type: integer
+          format: int64
+          title: matching transactions hits
+        transaction_returned:
+          type: integer
+          format: int64
+          title: matching transactions returned
 
     InfoPartnerBranding:
       type: object

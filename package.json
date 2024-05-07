@@ -47,5 +47,6 @@
     "openapi-typescript-codegen": "^0.21.0",
     "prettier": "^2.6.2",
     "swagger-ui-cli": "^0.11.1"
-  }
+  },
+  "packageManager": "yarn@1.22.21+sha1.1959a18351b811cdeedbd484a8f86c3cc3bbaf72"
 }
