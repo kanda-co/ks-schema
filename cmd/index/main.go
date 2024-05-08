@@ -101,6 +101,7 @@ func main() {
 			// "Redirect",
 			// "Training",
 			"Transaction",
+			"Introduction",
 			// "Consent",
 		}) {
 			continue

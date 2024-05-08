@@ -9662,6 +9662,7 @@ components:
         - "company"
         - "credit"
         - "enterprise"
+        - "introduction"
         - "job"
         - "transaction"
 
