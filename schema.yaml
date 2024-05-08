@@ -9721,6 +9721,9 @@ components:
         - enterprise
         - enterprise_hits
         - enterprise_returned
+        - introduction
+        - introduction_hits
+        - introduction_returned
         - job
         - job_hits
         - job_returned
@@ -9770,6 +9773,20 @@ components:
           type: integer
           format: int64
           title: matching enterprises returned
+        introduction:
+          type: array
+          title: matching introductions
+          description: matching introductions
+          items:
+            $ref: "#/components/schemas/Introduction"
+        introduction_hits:
+          type: integer
+          format: int64
+          title: matching introductions hits
+        introduction_returned:
+          type: integer
+          format: int64
+          title: matching introductions returned
         job:
           type: array
           title: matching jobs
