@@ -1765,6 +1765,41 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/introduction/{id}/trader-details:
+    post:
+      operationId: postIntroductionTraderDetails
+      summary: submit existing introduction trader details, bank verified
+      tags:
+        - Introduction
+      parameters:
+        - name: id
+          in: path
+          description: introduction id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: submit existing introduction with trader details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TraderDetails"
+      responses:
+        200:
+          description: submitted introduction with trader details with verification result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Introduction"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/introduction/{id}/convert-job:
     post:
       operationId: postIntroductionConvertJob
@@ -6720,11 +6755,7 @@ components:
           title: solar company info
         company_type:
           type: string
-          enum:
-            - limited_company
-            - sole_trader
-          title: company type
-          x-kanda-form-widget: RadioSelect
+          $ref: "#/components/schemas/CompanyType"
         limited_company_info:
           type: object
           title: limited company info
@@ -6838,6 +6869,14 @@ components:
           $ref: "#/components/schemas/Metadata"
           title: metadata
           readOnly: true
+
+    CompanyType:
+      type: string
+      title: company type
+      enum:
+        - limited_company
+        - sole_trader
+      x-kanda-form-widget: RadioSelect
 
     Tier:
       type: string
@@ -8520,6 +8559,8 @@ components:
           $ref: "#/components/schemas/Budgets"
         trader:
           $ref: "#/components/schemas/ContactInfo"
+        trader_details:
+          $ref: "#/components/schemas/TraderDetails"
         job_details:
           $ref: "#/components/schemas/JobDetails"
         current_state:
@@ -8540,6 +8581,51 @@ components:
           title: metadata
           readOnly: true
 
+    TraderDetails:
+      type: object
+      title: trader details
+      description: trader details and bank account verification
+      required:
+        - company_type
+        - bank_type
+        - bank_account
+      properties:
+        company_type:
+          type: string
+          $ref: "#/components/schemas/CompanyType"
+        limited_company_info:
+          $ref: "#/components/schemas/LimitedCompanyInfo"
+        sole_trader_info:
+          $ref: "#/components/schemas/SoleTraderInfo"
+        bank_type:
+          type: string
+          $ref: "#/components/schemas/BankAccountType"
+        bank_account:
+          $ref: "#/components/schemas/BankAccount"
+        bank_report:
+          type: string
+          title: bank report
+        bank_verification:
+          type: string
+          $ref: "#/components/schemas/VerificationStatus"
+
+    BankAccountType:
+      type: string
+      title: bank account type
+      enum:
+        - "Business"
+        - "Personal"
+
+    VerificationStatus:
+      type: string
+      title: verification status
+      enum:
+        - "not_started"
+        - "verification_passed"
+        - "verification_failed"
+        - "verification_skipped"
+        - "verification_error"
+
     IntroductionState:
       type: string
       title: introduction state
@@ -8553,6 +8639,7 @@ components:
         - "trader_viewed"
         - "trader_agreed"
         - "trader_rejected"
+        - "trader_contact_provided"
         - "trader_details_provided"
         - "trader_is_reviewed"
         - "trader_is_verified"
