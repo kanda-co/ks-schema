@@ -1,9 +1,9 @@
-import { type Reducer } from '@reduxjs/toolkit';
+import { PreloadedState, type Reducer } from '@reduxjs/toolkit';
 import type { AuthState } from './slices/auth';
 type ReducerMap<M> = {
     [K in keyof M]: Reducer<M[K]>;
 };
-export declare function createStore<PageKeys extends string, ExtraState = {}>(extraReducers?: ReducerMap<ExtraState>): import("@reduxjs/toolkit/dist/configureStore").ToolkitStore<{
+export declare function createStore<PageKeys extends string, ExtraState = {}>(extraReducers?: ReducerMap<ExtraState>, extraPreloadedState?: PreloadedState<ExtraState>): import("@reduxjs/toolkit/dist/configureStore").ToolkitStore<{
     authUser: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").AuthUser>;

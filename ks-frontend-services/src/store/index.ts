@@ -1,4 +1,4 @@
-import { configureStore, type Reducer } from '@reduxjs/toolkit';
+import { configureStore, PreloadedState, type Reducer } from '@reduxjs/toolkit';
 import { slices as allSlices, getSelectors } from '..';
 import { createAppSlice } from './slices/app';
 import auth from './slices/auth';
@@ -12,6 +12,7 @@ type ReducerMap<M> = {
 
 export function createStore<PageKeys extends string, ExtraState = {}>(
   extraReducers: ReducerMap<ExtraState> = {} as ReducerMap<ExtraState>,
+  extraPreloadedState?: PreloadedState<Partial<ExtraState>>,
 ) {
   const appSlice = createAppSlice<PageKeys>();
   const app = appSlice.reducer;
@@ -24,6 +25,7 @@ export function createStore<PageKeys extends string, ExtraState = {}>(
       getDefaultMiddleware({
         serializableCheck: false,
       }),
+    ...(extraPreloadedState && { preloadedState: extraPreloadedState }),
   });
 
   // It's not nice having to cast like this, but the types do not infer
