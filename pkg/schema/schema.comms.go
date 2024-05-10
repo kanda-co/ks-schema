@@ -246,7 +246,12 @@ func (in EnterpriseUserType) ToContact() *ContactInfo {
 }
 
 func (in Introduction) ToContact() *ContactInfo {
-	return New(in.Consumer)
+	return New(ContactInfo{
+		ContactAddress: in.Consumer.Address,
+		ContactEmail:   New(in.Consumer.Email),
+		ContactName:    New(in.Consumer.FirstName + " " + in.Consumer.LastName),
+		ContactPhone:   New(in.Consumer.Phone),
+	})
 }
 
 func (in Partner) ToContact() *ContactInfo {
