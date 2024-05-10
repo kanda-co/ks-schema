@@ -8552,7 +8552,7 @@ components:
           title: external trade id
           readOnly: true
         consumer:
-          $ref: "#/components/schemas/ContactInfo"
+          $ref: "#/components/schemas/Customer"
         consumer_details:
           $ref: "#/components/schemas/ApplicantDetails"
         budgets:
