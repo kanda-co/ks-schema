@@ -1800,6 +1800,69 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/introduction/{id}/reject-job:
+    post:
+      operationId: postIntroductionRejectJob
+      summary: reject existing introduction
+      tags:
+        - Introduction
+      parameters:
+        - name: id
+          in: path
+          description: introduction id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: reject existing introduction
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Introduction"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/introduction/{id}/state:
+    post:
+      operationId: submitIntroductionState
+      summary: submit new state for existing introduction
+      tags:
+        - Introduction
+      parameters:
+        - name: id
+          in: path
+          description: introduction id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: submit existing introduction with new state
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/IntroductionStateRequest"
+      responses:
+        200:
+          description: submitted existing introduction with new state
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Introduction"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/introduction/{id}/convert-job:
     post:
       operationId: postIntroductionConvertJob
@@ -7890,12 +7953,7 @@ components:
           title: job notes
         archived:
           type: string
-          title: job is archived?
-          enum:
-            - "yes"
-            - "no"
-          default: "no"
-          readOnly: true
+          $ref: "#/components/schemas/Archived"
         status:
           type: string
           title: job status
@@ -7957,6 +8015,10 @@ components:
         quoted_to:
           type: string
           title: quoted to
+          readOnly: true
+        introduced_to:
+          type: string
+          title: introduced to
           readOnly: true
         job_documents:
           type: array
@@ -8336,6 +8398,10 @@ components:
           type: string
           title: quoted to
           readOnly: true
+        introduced_to:
+          type: string
+          title: introduced to
+          readOnly: true
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
@@ -8551,6 +8617,9 @@ components:
           type: string
           title: external trade id
           readOnly: true
+        archived:
+          type: string
+          $ref: "#/components/schemas/Archived"
         consumer:
           $ref: "#/components/schemas/Customer"
         consumer_details:
@@ -8626,6 +8695,13 @@ components:
         - "verification_skipped"
         - "verification_error"
 
+    Archived:
+      type: string
+      title: archived
+      enum:
+        - "no"
+        - "yes"
+
     IntroductionState:
       type: string
       title: introduction state
@@ -8634,17 +8710,28 @@ components:
         - "consumer_viewed"
         - "consumer_agreed"
         - "consumer_details_provided"
+        - "consumer_budgets_set"
         - "consumer_rejected"
         - "trader_sent"
         - "trader_viewed"
         - "trader_agreed"
-        - "trader_rejected"
         - "trader_contact_provided"
         - "trader_details_provided"
+        - "trader_rejected"
         - "trader_is_reviewed"
         - "trader_is_verified"
         - "trader_is_declined"
         - "job_converted"
+
+    IntroductionStateRequest:
+      type: object
+      title: introduction state request
+      required:
+        - state
+      properties:
+        state:
+          type: string
+          $ref: "#/components/schemas/IntroductionState"
 
     Budgets:
       type: object
@@ -8988,6 +9075,10 @@ components:
         quoted_to:
           type: string
           title: quoted to
+          readOnly: true
+        introduced_to:
+          type: string
+          title: introduced to
           readOnly: true
         metadata:
           type: object
