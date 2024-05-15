@@ -1660,6 +1660,41 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/introduction/{id}/consumer-signature:
+    post:
+      operationId: postIntroductionConsumerSignature
+      summary: consumer to agree and sign existing introduction
+      tags:
+        - Introduction
+      parameters:
+        - name: id
+          in: path
+          description: introduction id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: consumer agreement and signature of existing introduction
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Signature"
+      responses:
+        200:
+          description: agreed and signed existing introduction
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Introduction"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/introduction/{id}/consumer-details:
     post:
       operationId: postIntroductionConsumerDetails
@@ -1754,6 +1789,41 @@ paths:
       responses:
         200:
           description: submitted introduction with trader contact info and comms sent
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Introduction"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/introduction/{id}/trader-signature:
+    post:
+      operationId: postIntroductionTraderSignature
+      summary: trader to agree and sign existing introduction
+      tags:
+        - Introduction
+      parameters:
+        - name: id
+          in: path
+          description: introduction id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: trader agreement and signature of existing introduction
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Signature"
+      responses:
+        200:
+          description: agreed and signed existing introduction
           content:
             application/json:
               schema:
@@ -8622,12 +8692,16 @@ components:
           $ref: "#/components/schemas/Archived"
         consumer:
           $ref: "#/components/schemas/Customer"
+        consumer_signature:
+          $ref: "#/components/schemas/Signature"
         consumer_details:
           $ref: "#/components/schemas/ApplicantDetails"
         budgets:
           $ref: "#/components/schemas/Budgets"
         trader:
-          $ref: "#/components/schemas/ContactInfo"
+          $ref: "#/components/schemas/Trader"
+        trader_signature:
+          $ref: "#/components/schemas/Signature"
         trader_details:
           $ref: "#/components/schemas/TraderDetails"
         job_details:
@@ -8649,6 +8723,25 @@ components:
           $ref: "#/components/schemas/Metadata"
           title: metadata
           readOnly: true
+
+    Trader:
+      type: object
+      title: trader
+      description: trader info
+      required:
+        - trading_name
+        - trading_address
+        - vat_number
+      properties:
+        trading_name:
+          type: string
+          title: trading name
+        trading_address:
+          $ref: "#/components/schemas/Address"
+        vat_number:
+          type: string
+          title: vat number
+          default: "NOT VAT REGISTERED"
 
     TraderDetails:
       type: object
