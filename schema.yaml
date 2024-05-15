@@ -8732,6 +8732,9 @@ components:
         - trading_name
         - trading_address
         - vat_number
+        - contact_name
+        - contact_email
+        - contact_mobile
       properties:
         trading_name:
           type: string
@@ -8742,6 +8745,18 @@ components:
           type: string
           title: vat number
           default: "NOT VAT REGISTERED"
+        contact_name:
+          type: string
+          title: contact name
+        contact_email:
+          type: string
+          title: contact email
+          format: email
+          x-go-type: Email
+        contact_mobile:
+          type: string
+          title: contact mobile
+          x-kanda-form-widget: PhoneNumberInput
 
     TraderDetails:
       type: object

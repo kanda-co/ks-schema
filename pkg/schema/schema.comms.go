@@ -254,6 +254,15 @@ func (in Introduction) ToContact() *ContactInfo {
 	})
 }
 
+func (in Trader) ToContact() *ContactInfo {
+	return New(ContactInfo{
+		ContactAddress: New(in.TradingAddress),
+		ContactEmail:   New(in.ContactEmail),
+		ContactName:    New(in.ContactName),
+		ContactPhone:   New(in.ContactMobile),
+	})
+}
+
 func (in Partner) ToContact() *ContactInfo {
 	in.ContactInfo.ContactName = IfValueOr(
 		in.ContactInfo.TradingName != nil,
