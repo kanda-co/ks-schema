@@ -8820,6 +8820,7 @@ components:
         - "consumer_details_provided"
         - "consumer_budgets_set"
         - "consumer_rejected"
+        - "job_details_provided"
         - "trader_sent"
         - "trader_viewed"
         - "trader_agreed"
