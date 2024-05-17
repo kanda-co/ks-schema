@@ -360,6 +360,10 @@ declare const introduction: {
         key: string;
         method: import("../generated/operations/deleteIntroduction").DeleteIntroductionRequestFunction;
     };
+    postIntroductionConsumerSignature: {
+        key: string;
+        method: import("../generated/operations/postIntroductionConsumerSignature").PostIntroductionConsumerSignatureRequestFunction;
+    };
     postIntroductionConsumerDetails: {
         key: string;
         method: import("../generated/operations/postIntroductionConsumerDetails").PostIntroductionConsumerDetailsRequestFunction;
@@ -371,6 +375,22 @@ declare const introduction: {
     postIntroductionTrader: {
         key: string;
         method: import("../generated/operations/postIntroductionTrader").PostIntroductionTraderRequestFunction;
+    };
+    postIntroductionTraderSignature: {
+        key: string;
+        method: import("../generated/operations/postIntroductionTraderSignature").PostIntroductionTraderSignatureRequestFunction;
+    };
+    postIntroductionTraderDetails: {
+        key: string;
+        method: import("../generated/operations/postIntroductionTraderDetails").PostIntroductionTraderDetailsRequestFunction;
+    };
+    postIntroductionRejectJob: {
+        key: string;
+        method: import("../generated/operations/postIntroductionRejectJob").PostIntroductionRejectJobRequestFunction;
+    };
+    submitIntroductionState: {
+        key: string;
+        method: import("../generated/operations/submitIntroductionState").SubmitIntroductionStateRequestFunction;
     };
     postIntroductionConvertJob: {
         key: string;
@@ -1210,6 +1230,10 @@ declare const services: {
             key: string;
             method: import("../generated/operations/deleteIntroduction").DeleteIntroductionRequestFunction;
         };
+        postIntroductionConsumerSignature: {
+            key: string;
+            method: import("../generated/operations/postIntroductionConsumerSignature").PostIntroductionConsumerSignatureRequestFunction;
+        };
         postIntroductionConsumerDetails: {
             key: string;
             method: import("../generated/operations/postIntroductionConsumerDetails").PostIntroductionConsumerDetailsRequestFunction;
@@ -1221,6 +1245,22 @@ declare const services: {
         postIntroductionTrader: {
             key: string;
             method: import("../generated/operations/postIntroductionTrader").PostIntroductionTraderRequestFunction;
+        };
+        postIntroductionTraderSignature: {
+            key: string;
+            method: import("../generated/operations/postIntroductionTraderSignature").PostIntroductionTraderSignatureRequestFunction;
+        };
+        postIntroductionTraderDetails: {
+            key: string;
+            method: import("../generated/operations/postIntroductionTraderDetails").PostIntroductionTraderDetailsRequestFunction;
+        };
+        postIntroductionRejectJob: {
+            key: string;
+            method: import("../generated/operations/postIntroductionRejectJob").PostIntroductionRejectJobRequestFunction;
+        };
+        submitIntroductionState: {
+            key: string;
+            method: import("../generated/operations/submitIntroductionState").SubmitIntroductionStateRequestFunction;
         };
         postIntroductionConvertJob: {
             key: string;
