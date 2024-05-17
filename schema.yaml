@@ -1730,6 +1730,34 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/introduction/{id}/consumer-apply:
+    post:
+      operationId: postIntroductionConsumerApply
+      summary: consumer to submit and apply with existing introduction consumer details
+      tags:
+        - Introduction
+      parameters:
+        - name: id
+          in: path
+          description: introduction id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: submitted and applied introduction with consumer details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Introduction"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/introduction/{id}/job-details:
     post:
       operationId: postIntroductionJobDetails
@@ -8820,6 +8848,8 @@ components:
         - "consumer_details_provided"
         - "consumer_budgets_set"
         - "consumer_rejected"
+        - "consumer_is_accepted"
+        - "consumer_is_declined"
         - "job_details_provided"
         - "trader_sent"
         - "trader_viewed"
