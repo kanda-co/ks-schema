@@ -368,6 +368,14 @@ declare const introduction: {
         key: string;
         method: import("../generated/operations/postIntroductionConsumerDetails").PostIntroductionConsumerDetailsRequestFunction;
     };
+    postIntroductionConsumerBudgets: {
+        key: string;
+        method: import("../generated/operations/postIntroductionConsumerBudgets").PostIntroductionConsumerBudgetsRequestFunction;
+    };
+    postIntroductionConsumerApply: {
+        key: string;
+        method: import("../generated/operations/postIntroductionConsumerApply").PostIntroductionConsumerApplyRequestFunction;
+    };
     postIntroductionJobDetails: {
         key: string;
         method: import("../generated/operations/postIntroductionJobDetails").PostIntroductionJobDetailsRequestFunction;
@@ -1237,6 +1245,14 @@ declare const services: {
         postIntroductionConsumerDetails: {
             key: string;
             method: import("../generated/operations/postIntroductionConsumerDetails").PostIntroductionConsumerDetailsRequestFunction;
+        };
+        postIntroductionConsumerBudgets: {
+            key: string;
+            method: import("../generated/operations/postIntroductionConsumerBudgets").PostIntroductionConsumerBudgetsRequestFunction;
+        };
+        postIntroductionConsumerApply: {
+            key: string;
+            method: import("../generated/operations/postIntroductionConsumerApply").PostIntroductionConsumerApplyRequestFunction;
         };
         postIntroductionJobDetails: {
             key: string;

@@ -273,7 +273,8 @@ export const createAsyncThunkAction = <
 
       const finalMethodArgs = methodArgs as unknown as Args;
 
-      const isGet = key.includes('get');
+      const funcMethod = key.split('.').slice(-1)[0];
+      const isGet = funcMethod.startsWith('get');
 
       if (isGet && !forceReload) {
         if (finalMethodArgs?.params?.id) {
@@ -293,6 +294,7 @@ export const createAsyncThunkAction = <
           return items;
         }
       }
+
       const payload = method(finalMethodArgs);
 
       try {
