@@ -1680,7 +1680,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Signature"
+              $ref: "#/components/schemas/ConsumerSignature"
       responses:
         200:
           description: agreed and signed existing introduction
@@ -8786,6 +8786,22 @@ components:
           $ref: "#/components/schemas/Metadata"
           title: metadata
           readOnly: true
+
+    ConsumerSignature:
+      type: object
+      title: consumer signature
+      description: consumer pre-application questions and agreement with signature
+      required:
+        - pre_application_declarations
+        - signature
+      properties:
+        pre_application_declarations:
+          type: object
+          title: pre-application declarations from consumer
+          additionalProperties:
+            type: string
+        signature:
+          $ref: "#/components/schemas/Signature"
 
     Trader:
       type: object
