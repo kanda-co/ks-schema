@@ -8920,6 +8920,7 @@ components:
           $ref: "#/components/schemas/Money"
 
     JobDetails:
+      type: object
       title: job details
       description: introduction job details
       required:
