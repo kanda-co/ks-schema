@@ -8756,7 +8756,7 @@ components:
         consumer:
           $ref: "#/components/schemas/Customer"
         consumer_signature:
-          $ref: "#/components/schemas/Signature"
+          $ref: "#/components/schemas/ConsumerSignature"
         consumer_details:
           $ref: "#/components/schemas/ApplicantDetails"
         budgets:
