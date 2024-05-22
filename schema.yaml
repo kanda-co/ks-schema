@@ -8836,6 +8836,7 @@ components:
       title: trader
       description: trader info
       required:
+        - trading_type
         - trading_name
         - trading_address
         - vat_number
@@ -8843,6 +8844,9 @@ components:
         - contact_email
         - contact_mobile
       properties:
+        trading_type:
+          type: string
+          $ref: "#/components/schemas/CompanyType"
         trading_name:
           type: string
           title: trading name
