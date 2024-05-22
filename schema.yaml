@@ -1848,7 +1848,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/ContactInfo"
+              $ref: "#/components/schemas/Trader"
       responses:
         200:
           description: submitted introduction with trader contact info and comms sent
