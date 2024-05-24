@@ -4502,11 +4502,10 @@ paths:
               type: array
               title: lead connection to trades
               items:
-                schema:
-                  type: string
-                  title: lead connection cid
-                  description: lead connection company id
-                  minLength: 1
+                type: string
+                title: lead connection cid
+                description: lead connection company id
+                minLength: 1
       responses:
         200:
           description: connected lead to trade summaries
