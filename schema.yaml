@@ -7643,6 +7643,12 @@ components:
           title: metadata
           readOnly: true
 
+    VatNumber:
+      type: string
+      title: vat number
+      pattern: "^(GB)?([0-9]{9}([0-9]{3})?|[A-Z]{2}[0-9]{3})$"
+      minLength: 1
+
     LimitedCompanyInfo:
       type: object
       required:
@@ -7669,9 +7675,7 @@ components:
           minLength: 1
         vat_number:
           type: string
-          title: vat number
-          pattern: "^(GB)?([0-9]{9}([0-9]{3})?|[A-Z]{2}[0-9]{3})$"
-          minLength: 1
+          $ref: "#/components/schemas/VatNumber"
 
     SoleTraderInfo:
       type: object
@@ -7691,6 +7695,9 @@ components:
           type: object
           $ref: "#/components/schemas/Address"
           title: trading address
+        vat_number:
+          type: string
+          $ref: "#/components/schemas/VatNumber"
 
     DirectorVerification:
       type: object
