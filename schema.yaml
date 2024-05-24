@@ -7646,8 +7646,9 @@ components:
     VatNumber:
       type: string
       title: vat number
-      pattern: "^(GB)?([0-9]{9}([0-9]{3})?|[A-Z]{2}[0-9]{3})$"
+      pattern: "^(GB)?([0-9]{9}([0-9]{3})?|[A-Z]{2}[0-9]{3})|NOT VAT REGISTERED$"
       minLength: 1
+      default: "NOT VAT REGISTERED"
 
     LimitedCompanyInfo:
       type: object
@@ -8861,8 +8862,7 @@ components:
           $ref: "#/components/schemas/Address"
         vat_number:
           type: string
-          title: vat number
-          default: "NOT VAT REGISTERED"
+          $ref: "#/components/schemas/VatNumber"
         contact_name:
           type: string
           title: contact name
