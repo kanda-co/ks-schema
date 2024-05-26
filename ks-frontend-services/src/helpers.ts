@@ -96,6 +96,11 @@ export const extractError = (
   if (typeof error === 'string') return { message: error };
   if (!error.message) return unknownError;
 
+  if (
+    ['code', 'message'].every((key: string) => Object.keys(error).includes(key))
+  )
+    return error as ExtractedError;
+
   const mapping = error.message
     .split(', ')
     .reduce((errorObj: StringIndexedObject, part: string) => {

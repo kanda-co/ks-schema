@@ -404,6 +404,10 @@ declare const introduction: {
         key: string;
         method: import("../generated/operations/postIntroductionConvertJob").PostIntroductionConvertJobRequestFunction;
     };
+    postIntroductionNotification: {
+        key: string;
+        method: import("../generated/operations/postIntroductionNotification").PostIntroductionNotificationRequestFunction;
+    };
 };
 declare const job: {
     infoExampleJob: {
@@ -1281,6 +1285,10 @@ declare const services: {
         postIntroductionConvertJob: {
             key: string;
             method: import("../generated/operations/postIntroductionConvertJob").PostIntroductionConvertJobRequestFunction;
+        };
+        postIntroductionNotification: {
+            key: string;
+            method: import("../generated/operations/postIntroductionNotification").PostIntroductionNotificationRequestFunction;
         };
     };
     job: {

@@ -31,6 +31,7 @@ import {
 import { INFO_ENTITY_KEY, INFO_SEARCH_KEY } from './constants';
 import { GetInfoEntityRequestParameters } from '../generated/operations/getInfoEntity';
 import { extractError } from '../helpers';
+import { operations } from '../generated/operations';
 
 export const handlePayload = <T>(payload: Payload<T>): Promise<T> =>
   payload().then(handleApiResponse) as Promise<T>;
@@ -212,6 +213,17 @@ const handleInfoEntity = async <
   return;
 };
 
+// Checks if operation is a GET operation by finding the
+// generated operation from the redux key. If the operation
+// can't be found, the name is checked for if it starts
+// with 'get', else if it is found the method is checked
+export const checkMethodIsGet = (key: string): boolean => {
+  const operationName = key.split('.').slice(-1)[0];
+  const operation = operations?.[operationName];
+  if (!operation) return operationName.startsWith('get');
+  return operation?.method === 'get';
+};
+
 // Creates an asyncThunkAction for a given service
 // This will do the following when the action is called:
 // 1. If InfoEntity, place the data in the relevant stores based on the Response
@@ -272,9 +284,7 @@ export const createAsyncThunkAction = <
       }
 
       const finalMethodArgs = methodArgs as unknown as Args;
-
-      const funcMethod = key.split('.').slice(-1)[0];
-      const isGet = funcMethod.startsWith('get');
+      const isGet = checkMethodIsGet(key);
 
       if (isGet && !forceReload) {
         if (finalMethodArgs?.params?.id) {
