@@ -20,16 +20,19 @@ export declare const createResponseHandler: <State extends GeneratedState<Entity
     payload: Entity | Entity[];
     type: string;
 }) => (State & {
+    error: any;
     hasFetched: boolean;
     isLoading: boolean;
     isSubmitting: boolean;
 }) | (State & {
+    error: any;
     chainedRequest: boolean;
     hasFetched: boolean;
     fetchedList: boolean;
     isLoading: boolean;
     isSubmitting: boolean;
 }) | (State & {
+    error: any;
     raw: Entity;
     chainedRequest: boolean;
     hasFetched: boolean;
@@ -37,6 +40,7 @@ export declare const createResponseHandler: <State extends GeneratedState<Entity
     isLoading: boolean;
     isSubmitting: boolean;
 }) | (State & {
+    error: any;
     raw: Entity[];
     chainedRequest: boolean;
     hasFetched: boolean;
@@ -48,6 +52,7 @@ export declare const createResponseHandler: <State extends GeneratedState<Entity
  * As above, this function is passed to a reducer, but it handles a void response
  */
 export declare const createVoidResponseHandler: <State extends GeneratedState<unknown>>() => (state: State, action: PayloadAction<void>) => State & {
+    error: any;
     chainedRequest: boolean;
     fetchedList: boolean;
     hasFetched: boolean;
