@@ -370,6 +370,7 @@ export const createResponseHandler =
     if (!items.length) {
       return {
         ...state,
+        error: undefined,
         hasFetched: true,
         isLoading: false,
         isSubmitting: false,
@@ -385,6 +386,7 @@ export const createResponseHandler =
 
       return {
         ...result,
+        error: undefined,
         chainedRequest: false,
         hasFetched: true,
         fetchedList: !state.fetchedList ? isArray : true,
@@ -397,6 +399,7 @@ export const createResponseHandler =
       const result = entityAdapter.upsertOne(nextState, payload);
       return {
         ...result,
+        error: undefined,
         raw: payload,
         chainedRequest: false,
         hasFetched: true,
@@ -408,6 +411,7 @@ export const createResponseHandler =
 
     return {
       ...nextState,
+      error: undefined,
       raw: payload,
       chainedRequest: false,
       hasFetched: true,
@@ -425,6 +429,7 @@ export const createVoidResponseHandler =
   (state: State, action: PayloadAction<void>) => {
     return {
       ...state,
+      error: undefined,
       chainedRequest: false,
       fetchedList: false,
       hasFetched: true,
