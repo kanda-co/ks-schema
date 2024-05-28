@@ -107,6 +107,7 @@ func main() {
 			continue
 		}
 		index["Kanda"+name] = renderObject("", *ref.Value)
+		index["Kanda"+name] = append(index["Kanda"+name], "metadata.created", "metadata.updated")
 		sort.Strings(index["Kanda"+name])
 	}
 
