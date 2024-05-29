@@ -5518,6 +5518,7 @@ paths:
               - housekeeping_check_lender_rate
               - housekeeping_check_lender_update
               - housekeeping_check_trade_summary
+              - housekeeping_run_propensio_payouts
       responses:
         200:
           description: runner has been completed
