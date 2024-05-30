@@ -383,6 +383,7 @@ export function isAuthed<P extends StringIndexedObject>(
 export function createMiddleware<State, P extends StringIndexedObject>(
   store: ToolkitStore<State>,
   pages: PageList<P>,
+  unauthorizedRedirectRoute: string = LOGIN_URL,
 ) {
   return (
     to: GuardToRoute,
@@ -408,7 +409,7 @@ export function createMiddleware<State, P extends StringIndexedObject>(
       // If not, log the user out
       TE.orElse(() =>
         handleIO(() => {
-          window.location.href = LOGIN_URL;
+          window.location.href = unauthorizedRedirectRoute;
         }),
       ),
     )();
@@ -421,6 +422,7 @@ function createRouterComponent<State, P extends StringIndexedObject>(
   pages: PageList<P>,
   notFoundPage: FunctionComponent,
   Wrapper: FunctionComponent<WrapperProps> = ({ children }) => <>{children}</>,
+  unauthorizedRedirectRoute: string = LOGIN_URL,
 ): FunctionComponent<RouterChildren> {
   return ({ children: additionaChildren }): JSX.Element => {
     // This package doesn't include correct typings for children,
@@ -434,7 +436,9 @@ function createRouterComponent<State, P extends StringIndexedObject>(
     return (
       <Router>
         <Provider
-          guards={[createMiddleware<State, P>(store, pages)]}
+          guards={[
+            createMiddleware<State, P>(store, pages, unauthorizedRedirectRoute),
+          ]}
           error={notFoundPage}
         >
           <Switch>
@@ -466,12 +470,14 @@ function createRouter<State, Keys extends string | number>(
   pages: PageList,
   notFoundPage: FunctionComponent,
   Wrapper: FunctionComponent<WrapperProps> = ({ children }) => <>{children}</>,
+  unauthorizedRedirectRoute: string = LOGIN_URL,
 ): RouterType<Keys> {
   const RouterComponent = createRouterComponent(
     store,
     pages,
     notFoundPage,
     Wrapper,
+    unauthorizedRedirectRoute,
   );
 
   return {
@@ -489,10 +495,16 @@ export function createRoutedApp<
   args: Record<Keys, CreatePageArgs<State>>,
   notFoundPage: FunctionComponent = () => <>404</>,
   Wrapper: FunctionComponent<WrapperProps> = ({ children }) => <>{children}</>,
+  unauthorizedRedirectRoute: string = LOGIN_URL,
 ): RoutedApp<Keys> {
   const pages = createPages<State, Keys>(args);
-  const router = createRouter<State, Keys>(store, pages, notFoundPage, Wrapper);
-
+  const router = createRouter<State, Keys>(
+    store,
+    pages,
+    notFoundPage,
+    Wrapper,
+    unauthorizedRedirectRoute,
+  );
   return {
     router,
     pages,
