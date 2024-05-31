@@ -5689,6 +5689,7 @@ components:
           type: string
           title: phone
           minLength: 1
+          x-kanda-form-widget: PhoneNumberInput
         photoURL:
           type: string
           title: photo URL
@@ -5783,6 +5784,7 @@ components:
           type: string
           title: phone
           minLength: 1
+          x-kanda-form-widget: PhoneNumberInput
         photoURL:
           type: string
           title: photo URL
@@ -7726,6 +7728,7 @@ components:
           type: string
           title: mobile
           minLength: 1
+          x-kanda-form-widget: PhoneNumberInput
         date_of_birth:
           type: string
           title: date of birth
@@ -7821,6 +7824,7 @@ components:
           type: string
           title: mobile
           minLength: 1
+          x-kanda-form-widget: PhoneNumberInput
         comm_preferences:
           type: object
           $ref: "#/components/schemas/CommPreferences"
@@ -7852,6 +7856,7 @@ components:
           type: string
           title: mobile
           minLength: 1
+          x-kanda-form-widget: PhoneNumberInput
         comm_preferences:
           type: object
           $ref: "#/components/schemas/CommPreferences"
@@ -7992,6 +7997,7 @@ components:
           type: string
           title: phone number
           minLength: 1
+          x-kanda-form-widget: PhoneNumberInput
         address:
           type: object
           $ref: "#/components/schemas/Address"
@@ -8743,6 +8749,7 @@ components:
           type: string
           title: mobile phone number
           minLength: 1
+          x-kanda-form-widget: PhoneNumberInput
         trading_name:
           type: string
           title: trading name
@@ -9415,9 +9422,11 @@ components:
         telephone:
           type: string
           title: telephone
+          x-kanda-form-widget: PhoneNumberInput
         mobile:
           type: string
           title: mobile
+          x-kanda-form-widget: PhoneNumberInput
         date_of_birth:
           type: string
           title: date of birth
