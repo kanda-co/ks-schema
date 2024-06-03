@@ -37,6 +37,19 @@ func NotIn[T comparable](in T, ins []T) bool {
 	return !IsIn(in, ins)
 }
 
+// Unique helper function
+func Unique[T comparable](ins []T) []T {
+	m := make(map[T]bool)
+	out := []T{}
+	for _, in := range ins {
+		if _, existed := m[in]; !existed {
+			m[in] = true
+			out = append(out, in)
+		}
+	}
+	return out
+}
+
 func renderObject(base string, o openapi3.Schema) []string {
 	fields := []string{}
 	if base != "" {
@@ -108,6 +121,7 @@ func main() {
 		}
 		index["Kanda"+name] = renderObject("", *ref.Value)
 		index["Kanda"+name] = append(index["Kanda"+name], "metadata.created", "metadata.updated")
+		index["Kanda"+name] = Unique(index["Kanda"+name])
 		sort.Strings(index["Kanda"+name])
 	}
 
