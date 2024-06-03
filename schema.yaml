@@ -6926,6 +6926,12 @@ components:
           title: branding
           description: branding style override
           $ref: "#/components/schemas/Branding"
+        lender_configs:
+          type: array
+          title: lender configs
+          description: lender configuration for this company
+          items:
+            $ref: "#/components/schemas/LenderConfig"
         metadata:
           type: object
           title: metadata
