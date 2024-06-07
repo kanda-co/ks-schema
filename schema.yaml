@@ -7842,6 +7842,10 @@ components:
         - name
         - email
       properties:
+        uid:
+          type: string
+          title: user id
+          readOnly: true
         role:
           type: string
           enum:
