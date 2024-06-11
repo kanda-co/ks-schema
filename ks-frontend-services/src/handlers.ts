@@ -2,6 +2,7 @@ import { amplitude } from '@kanda-libs/ks-amplitude-provider';
 import * as fp from 'fp-ts';
 import { APP_ENV } from './config';
 import { formatTrackingBody } from './fetch';
+import { StringIndexedObject } from 'types';
 
 type Error = {
   response: {
@@ -23,13 +24,21 @@ export type Response<T = unknown> = fp.either.Either<Error, ResponseBody<T>>;
 export function handleResponse<T = unknown>(response: Response<T>) {
   return new Promise((resolve, reject) =>
     fp.either.fold(
-      async (error: Error, ...args) => {
-        console.log('error', error, { args });
-        if (APP_ENV === 'qa') console.log('Error:', error);
-
+      async (error: Error) => {
+        if (APP_ENV === 'qa') {
+          const e = error as StringIndexedObject;
+          const tag = e?._tag;
+          if (tag && tag === 'DecodeError') {
+            console.log(
+              'DecodeError',
+              e?.errors?.length || 0,
+              'First 10:',
+              e?.errors?.slice(0, 10),
+            );
+          }
+        }
         if (error?.response?.url) {
           const trackingBody = formatTrackingBody(error.response.url, error);
-
           amplitude?.track('api-failed', trackingBody);
           amplitude?.flush();
         }
@@ -41,7 +50,6 @@ export function handleResponse<T = unknown>(response: Response<T>) {
         }
       },
       async (r: ResponseBody) => {
-        console.log('success', r.response?.url);
         if (r.data) {
           resolve(r.data);
 
