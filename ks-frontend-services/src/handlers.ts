@@ -2,7 +2,7 @@ import { amplitude } from '@kanda-libs/ks-amplitude-provider';
 import * as fp from 'fp-ts';
 import { APP_ENV } from './config';
 import { formatTrackingBody } from './fetch';
-import { StringIndexedObject } from 'types';
+import { StringIndexedObject } from './types';
 
 type Error = {
   response: {
