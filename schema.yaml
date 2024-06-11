@@ -8474,6 +8474,7 @@ components:
         - garage_doors
         - garden_buildings
         - gates
+        - glass_splash_backs
         - granite_worktops
         - home_study
         - hot_tubs_and_spas
