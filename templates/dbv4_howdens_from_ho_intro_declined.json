@@ -1,0 +1,18 @@
+{
+  "subject": "{{sender.contact_name}} has been declined in finance pre-qualification",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "HO declined for finance"
+        }
+      ]
+    }
+  ]
+}

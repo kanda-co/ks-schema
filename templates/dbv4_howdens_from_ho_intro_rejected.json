@@ -1,0 +1,18 @@
+{
+  "subject": "{{sender.contact_name}} has rejected your finance introduction",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "HO rejected introduction"
+        }
+      ]
+    }
+  ]
+}

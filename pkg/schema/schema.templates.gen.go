@@ -26,6 +26,15 @@ const (
 	DBV4_HO_SAT_NOTE_LENDER_REVIEW               TName = "DBV4_HO_SAT_NOTE_LENDER_REVIEW"
 	DBV4_HO_SAT_NOTE_LENDER_REVIEW_7K            TName = "DBV4_HO_SAT_NOTE_LENDER_REVIEW_7K"
 	DBV4_HO_SUBMIT_APPLICATION                   TName = "DBV4_HO_SUBMIT_APPLICATION"
+	DBV4_HOWDENS_FROM_HO_INTRO_COMPLETED         TName = "DBV4_HOWDENS_FROM_HO_INTRO_COMPLETED"
+	DBV4_HOWDENS_FROM_HO_INTRO_DECLINED          TName = "DBV4_HOWDENS_FROM_HO_INTRO_DECLINED"
+	DBV4_HOWDENS_FROM_HO_INTRO_REJECTED          TName = "DBV4_HOWDENS_FROM_HO_INTRO_REJECTED"
+	DBV4_HOWDENS_FROM_TP_INTRO_COMPLETED         TName = "DBV4_HOWDENS_FROM_TP_INTRO_COMPLETED"
+	DBV4_HOWDENS_FROM_TP_INTRO_REJECTED          TName = "DBV4_HOWDENS_FROM_TP_INTRO_REJECTED"
+	DBV4_HOWDENS_TO_HO_CONVERTED_JOB             TName = "DBV4_HOWDENS_TO_HO_CONVERTED_JOB"
+	DBV4_HOWDENS_TO_HO_INTRO                     TName = "DBV4_HOWDENS_TO_HO_INTRO"
+	DBV4_HOWDENS_TO_HO_INTRO_BUDGET_REMINDER     TName = "DBV4_HOWDENS_TO_HO_INTRO_BUDGET_REMINDER"
+	DBV4_HOWDENS_TO_TP_INTRO                     TName = "DBV4_HOWDENS_TO_TP_INTRO"
 	DBV4_LENDER_SATNOTE_REVIEW                   TName = "DBV4_LENDER_SATNOTE_REVIEW"
 	DBV4_TP_2ND_LINE_REJECTED                    TName = "DBV4_TP_2ND_LINE_REJECTED"
 	DBV4_TP_ACCOUNT_APPROVED                     TName = "DBV4_TP_ACCOUNT_APPROVED"
@@ -931,6 +940,198 @@ var TMap = map[TName]string{
     }
   ],
   "sms": "Hey {{receiver.contact_name}}! Don't forget to complete your finance application on Kanda now."
+}`,
+	"DBV4_HOWDENS_FROM_HO_INTRO_COMPLETED": `{
+  "subject": "{{sender.contact_name}} has completed their finance introduction",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "HO completed finance introduction"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}`,
+	"DBV4_HOWDENS_FROM_HO_INTRO_DECLINED": `{
+  "subject": "{{sender.contact_name}} has been declined in finance pre-qualification",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "HO declined for finance"
+        }
+      ]
+    }
+  ]
+}`,
+	"DBV4_HOWDENS_FROM_HO_INTRO_REJECTED": `{
+  "subject": "{{sender.contact_name}} has rejected your finance introduction",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "HO rejected introduction"
+        }
+      ]
+    }
+  ]
+}`,
+	"DBV4_HOWDENS_FROM_TP_INTRO_COMPLETED": `{
+  "subject": "{{sender.contact_name}} has approved the order invoice you sent",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "TP approved order"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}`,
+	"DBV4_HOWDENS_FROM_TP_INTRO_REJECTED": `{
+  "subject": "{{sender.contact_name}} has rejected the order invoice you sent them",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "HO rejected introduction"
+        }
+      ]
+    }
+  ]
+}`,
+	"DBV4_HOWDENS_TO_HO_CONVERTED_JOB": `{
+  "subject": "{{sender.contact_name}} has sent you an invoice - apply for finance with Kanda now",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "HO converted job"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}`,
+	"DBV4_HOWDENS_TO_HO_INTRO": `{
+  "subject": "{{sender.contact_name}} has sent you a credit introduction",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "HO credit introduction"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}`,
+	"DBV4_HOWDENS_TO_HO_INTRO_BUDGET_REMINDER": `{
+  "subject": "You need to set your budget for your credit introduction",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "HO reminder set credit budget"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}`,
+	"DBV4_HOWDENS_TO_TP_INTRO": `{
+  "subject": "{{sender.contact_name}} has sent you a new order invoice for approval",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "TP order invoice approval"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
 }`,
 	"DBV4_LENDER_SATNOTE_REVIEW": `{
   "subject": "Signed sat note for {{sender.contact_name}}",

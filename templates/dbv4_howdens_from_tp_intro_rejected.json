@@ -1,0 +1,18 @@
+{
+  "subject": "{{sender.contact_name}} has rejected the order invoice you sent them",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "HO rejected introduction"
+        }
+      ]
+    }
+  ]
+}
