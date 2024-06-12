@@ -1,5 +1,5 @@
 {
-  "subject": "{{sender.contact_name}} has sent you an invoice - apply for finance with Kanda now",
+  "subject": "You can now complete a finance application for your Howdens goods purchase",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "HO converted job"
+          "text": "You can now complete your purchase of your Howdens goods from TRADES COMPANY NAME via finance. Click below to choose which finance plan you want to apply for and complete the application. You'll receive a decision in a few minutes and we'll keep both your tradesperson and Howdens updated."
         }
       ]
     },

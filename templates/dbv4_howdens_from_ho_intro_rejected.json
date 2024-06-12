@@ -1,5 +1,5 @@
 {
-  "subject": "{{sender.contact_name}} has rejected your finance introduction",
+  "subject": "{{sender.contact_name}} does not want to check their eligibility ",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "HO rejected introduction"
+          "text": "Your end user {{sender.contact_name}} has declined your invitation to check their eligibility for finance on Kanda.  Please get in touch with the end user if you have any questions."
         }
       ]
     }

@@ -1,5 +1,5 @@
 {
-  "subject": "{{sender.contact_name}} has sent you a new order invoice for approval",
+  "subject": "Approval requested from your Howdens Partner Designer - {{sender.contact_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -10,7 +10,32 @@
       "type": "text",
       "rows": [
         {
-          "text": "TP order invoice approval"
+          "text": "Howdens have partnered with Kanda to allow end users to finance their kitchen goods purchase from you. Your Partner Designer at Howdens is requesting you approve this invoice pricing so your end user can apply to finance it. "
+        }
+      ]
+    },
+    {
+      "type": "compact_rows",
+      "rows": [
+        {
+          "text": "<b>1.</b> Approve the purchase price"
+        },
+        {
+          "text": "<b>2.</b> End user applies for finance"
+        },
+        {
+          "text": "<b>3.</b> If approved, Howdens deliver the goods"
+        },
+        {
+          "text": "<b>4.</b> Once delivered, Howdens finance partner - Propensio Finance - pay the invoice price straight to you."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Click below to see more and approve this invoice in 2 minutes."
         }
       ]
     },

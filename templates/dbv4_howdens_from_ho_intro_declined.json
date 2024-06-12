@@ -1,5 +1,5 @@
 {
-  "subject": "{{sender.contact_name}} has been declined in finance pre-qualification",
+  "subject": "{{sender.contact_name}} is not eligible to apply for finance with Kanda",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "HO declined for finance"
+          "text": "Your end user {{sender.contact_name}} has completed their eligibility check on Kanda. Unfortunately, they were not passed as eligible to apply for credit at this time."
         }
       ]
     }

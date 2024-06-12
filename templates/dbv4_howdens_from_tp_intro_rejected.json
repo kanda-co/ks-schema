@@ -1,5 +1,5 @@
 {
-  "subject": "{{sender.contact_name}} has rejected the order invoice you sent them",
+  "subject": "INVOICE NUMBER has been rejected by {{sender.contact_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "HO rejected introduction"
+          "text": "{{sender.contact_name}} has rejected your invoice (INVOICE NUMBER). Please contact them directly to understand more."
         }
       ]
     }

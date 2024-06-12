@@ -1,5 +1,5 @@
 {
-  "subject": "{{sender.contact_name}} has approved the order invoice you sent",
+  "subject": "INVOICE NUMBER has been approved by {{sender.contact_name}} - we've now sent it to the end user",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -10,7 +10,15 @@
       "type": "text",
       "rows": [
         {
-          "text": "TP approved order"
+          "text": "{{sender.contact_name}} has approved invoice (INVOICE NUMBER) to be sent to their end user to apply for finance. We've now emailed a link to the end user to apply for finance in minutes."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Once the end user has completed their application, we'll let you know. You can follow their application progress on your Kanda dashboard. "
         }
       ]
     },

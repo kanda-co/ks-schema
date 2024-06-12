@@ -1,5 +1,5 @@
 {
-  "subject": "{{sender.contact_name}} has sent you a credit introduction",
+  "subject": "Check your eligibility to finance your Howdens purchase",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "HO credit introduction"
+          "text": "Howdens have partnered with Kanda to allow you apply for finance for your new Howdens purchase. Before your can apply for finance you'll need to first check if you're eligible. Click below to complete a short eligibility checker and set your budget for your new purchase. "
         }
       ]
     },

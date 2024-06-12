@@ -1,5 +1,5 @@
 {
-  "subject": "You need to set your budget for your credit introduction",
+  "subject": "Remember to check your eligibility for finance",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "HO reminder set credit budget"
+          "text": "Howdens have partnered with Kanda to allow you apply for finance for your new Howdens purchase. We noticed you haven't checked if you're eligible for finance on this purchase yet. Click below to complete a short eligibility checker and set your budget for your new purchase. "
         }
       ]
     },

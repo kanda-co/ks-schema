@@ -1,5 +1,5 @@
 {
-  "subject": "{{sender.contact_name}} has completed their finance introduction",
+  "subject": "{{sender.contact_name}} has completed their eligibility check successfully",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "HO completed finance introduction"
+          "text": "Your end user {{sender.contact_name}} has completed their eligibility check on Kanda. Login to your dashboard to see if they set a budget for this purchase."
         }
       ]
     },
