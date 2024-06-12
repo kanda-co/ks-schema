@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "You can now complete your purchase of your Howdens goods from TRADES COMPANY NAME via finance. Click below to choose which finance plan you want to apply for and complete the application. You'll receive a decision in a few minutes and we'll keep both your tradesperson and Howdens updated."
+          "text": "You can now complete your purchase of your Howdens goods from {{sender.contact_name}} via finance. Click below to choose which finance plan you want to apply for and complete the application. You'll receive a decision in a few minutes and we'll keep both your tradesperson and Howdens updated."
         }
       ]
     },

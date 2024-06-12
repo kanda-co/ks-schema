@@ -1,0 +1,18 @@
+{
+  "subject": "Your Howdens Partner Designer - {{sender.contact_name}} - has marked their order delivered",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "{{sender.contact_name}} have informed us that they have delivered the order goods to your customer. Once the customer has informed us they are satisfied with the goods, our lending partner will pay you directly. Once you've been paid, you can settle your account with Howdens."
+        }
+      ]
+    }
+  ]
+}
