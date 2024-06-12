@@ -34,6 +34,7 @@ const (
 	DBV4_HOWDENS_TO_HO_CONVERTED_JOB             TName = "DBV4_HOWDENS_TO_HO_CONVERTED_JOB"
 	DBV4_HOWDENS_TO_HO_INTRO                     TName = "DBV4_HOWDENS_TO_HO_INTRO"
 	DBV4_HOWDENS_TO_HO_INTRO_BUDGET_REMINDER     TName = "DBV4_HOWDENS_TO_HO_INTRO_BUDGET_REMINDER"
+	DBV4_HOWDENS_TO_TP_APPLICATION_ACCEPTED      TName = "DBV4_HOWDENS_TO_TP_APPLICATION_ACCEPTED"
 	DBV4_HOWDENS_TO_TP_GOODS_DELIVERED           TName = "DBV4_HOWDENS_TO_TP_GOODS_DELIVERED"
 	DBV4_HOWDENS_TO_TP_INTRO                     TName = "DBV4_HOWDENS_TO_TP_INTRO"
 	DBV4_LENDER_SATNOTE_REVIEW                   TName = "DBV4_LENDER_SATNOTE_REVIEW"
@@ -1116,6 +1117,24 @@ var TMap = map[TName]string{
       "type": "button",
       "text": "View on Kanda",
       "url": "{{cta_url}}"
+    }
+  ]
+}`,
+	"DBV4_HOWDENS_TO_TP_APPLICATION_ACCEPTED": `{
+  "subject": "Your customer has been approved for finance for their purchase of goods from your Howdens Partner Designer - {{sender.contact_name}}",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Your customer has been approved for finance for their purchase of goods from Howdens. They have selected a deposit of {{deposit.applied}}, so you will need to collect this along with the finance payment we will make to clear your Howdens account balance."
+        }
+      ]
     }
   ]
 }`,

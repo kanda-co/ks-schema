@@ -1,0 +1,18 @@
+{
+  "subject": "Your customer has been approved for finance for their purchase of goods from your Howdens Partner Designer - {{sender.contact_name}}",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Your customer has been approved for finance for their purchase of goods from Howdens. They have selected a deposit of {{deposit.applied}}, so you will need to collect this along with the finance payment we will make to clear your Howdens account balance."
+        }
+      ]
+    }
+  ]
+}
