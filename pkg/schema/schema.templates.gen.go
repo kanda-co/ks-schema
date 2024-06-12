@@ -34,6 +34,7 @@ const (
 	DBV4_HOWDENS_TO_HO_CONVERTED_JOB             TName = "DBV4_HOWDENS_TO_HO_CONVERTED_JOB"
 	DBV4_HOWDENS_TO_HO_INTRO                     TName = "DBV4_HOWDENS_TO_HO_INTRO"
 	DBV4_HOWDENS_TO_HO_INTRO_BUDGET_REMINDER     TName = "DBV4_HOWDENS_TO_HO_INTRO_BUDGET_REMINDER"
+	DBV4_HOWDENS_TO_TP_GOODS_DELIVERED           TName = "DBV4_HOWDENS_TO_TP_GOODS_DELIVERED"
 	DBV4_HOWDENS_TO_TP_INTRO                     TName = "DBV4_HOWDENS_TO_TP_INTRO"
 	DBV4_LENDER_SATNOTE_REVIEW                   TName = "DBV4_LENDER_SATNOTE_REVIEW"
 	DBV4_TP_2ND_LINE_REJECTED                    TName = "DBV4_TP_2ND_LINE_REJECTED"
@@ -1001,7 +1002,7 @@ var TMap = map[TName]string{
   ]
 }`,
 	"DBV4_HOWDENS_FROM_TP_INTRO_COMPLETED": `{
-  "subject": "INVOICE NUMBER has been approved by {{sender.contact_name}} - we've now sent it to the end user",
+  "subject": "{{reference}} has been approved by {{sender.contact_name}} - we've now sent it to the end user",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -1012,7 +1013,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "{{sender.contact_name}} has approved invoice (INVOICE NUMBER) to be sent to their end user to apply for finance. We've now emailed a link to the end user to apply for finance in minutes."
+          "text": "{{sender.contact_name}} has approved invoice ({{reference}}) to be sent to their end user to apply for finance. We've now emailed a link to the end user to apply for finance in minutes."
         }
       ]
     },
@@ -1032,7 +1033,7 @@ var TMap = map[TName]string{
   ]
 }`,
 	"DBV4_HOWDENS_FROM_TP_INTRO_REJECTED": `{
-  "subject": "INVOICE NUMBER has been rejected by {{sender.contact_name}}",
+  "subject": "{{reference}} has been rejected by {{sender.contact_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -1043,7 +1044,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "{{sender.contact_name}} has rejected your invoice (INVOICE NUMBER). Please contact them directly to understand more."
+          "text": "{{sender.contact_name}} has rejected your invoice ({{reference}}). Please contact them directly to understand more."
         }
       ]
     }
@@ -1061,7 +1062,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "You can now complete your purchase of your Howdens goods from TRADES COMPANY NAME via finance. Click below to choose which finance plan you want to apply for and complete the application. You'll receive a decision in a few minutes and we'll keep both your tradesperson and Howdens updated."
+          "text": "You can now complete your purchase of your Howdens goods from {{sender.contact_name}} via finance. Click below to choose which finance plan you want to apply for and complete the application. You'll receive a decision in a few minutes and we'll keep both your tradesperson and Howdens updated."
         }
       ]
     },
@@ -1115,6 +1116,24 @@ var TMap = map[TName]string{
       "type": "button",
       "text": "View on Kanda",
       "url": "{{cta_url}}"
+    }
+  ]
+}`,
+	"DBV4_HOWDENS_TO_TP_GOODS_DELIVERED": `{
+  "subject": "Your Howdens Partner Designer - {{sender.contact_name}} - has marked their order delivered",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "{{sender.contact_name}} have informed us that they have delivered the order goods to your customer. Once the customer has informed us they are satisfied with the goods, our lending partner will pay you directly. Once you've been paid, you can settle your account with Howdens."
+        }
+      ]
     }
   ]
 }`,
