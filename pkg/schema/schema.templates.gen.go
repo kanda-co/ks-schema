@@ -942,7 +942,7 @@ var TMap = map[TName]string{
   "sms": "Hey {{receiver.contact_name}}! Don't forget to complete your finance application on Kanda now."
 }`,
 	"DBV4_HOWDENS_FROM_HO_INTRO_COMPLETED": `{
-  "subject": "{{sender.contact_name}} has completed their finance introduction",
+  "subject": "{{sender.contact_name}} has completed their eligibility check successfully",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -953,7 +953,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "HO completed finance introduction"
+          "text": "Your end user {{sender.contact_name}} has completed their eligibility check on Kanda. Login to your dashboard to see if they set a budget for this purchase."
         }
       ]
     },
@@ -965,7 +965,7 @@ var TMap = map[TName]string{
   ]
 }`,
 	"DBV4_HOWDENS_FROM_HO_INTRO_DECLINED": `{
-  "subject": "{{sender.contact_name}} has been declined in finance pre-qualification",
+  "subject": "{{sender.contact_name}} is not eligible to apply for finance with Kanda",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -976,14 +976,14 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "HO declined for finance"
+          "text": "Your end user {{sender.contact_name}} has completed their eligibility check on Kanda. Unfortunately, they were not passed as eligible to apply for credit at this time."
         }
       ]
     }
   ]
 }`,
 	"DBV4_HOWDENS_FROM_HO_INTRO_REJECTED": `{
-  "subject": "{{sender.contact_name}} has rejected your finance introduction",
+  "subject": "{{sender.contact_name}} does not want to check their eligibility ",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -994,14 +994,14 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "HO rejected introduction"
+          "text": "Your end user {{sender.contact_name}} has declined your invitation to check their eligibility for finance on Kanda.  Please get in touch with the end user if you have any questions."
         }
       ]
     }
   ]
 }`,
 	"DBV4_HOWDENS_FROM_TP_INTRO_COMPLETED": `{
-  "subject": "{{sender.contact_name}} has approved the order invoice you sent",
+  "subject": "INVOICE NUMBER has been approved by {{sender.contact_name}} - we've now sent it to the end user",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -1012,7 +1012,15 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "TP approved order"
+          "text": "{{sender.contact_name}} has approved invoice (INVOICE NUMBER) to be sent to their end user to apply for finance. We've now emailed a link to the end user to apply for finance in minutes."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Once the end user has completed their application, we'll let you know. You can follow their application progress on your Kanda dashboard. "
         }
       ]
     },
@@ -1024,7 +1032,7 @@ var TMap = map[TName]string{
   ]
 }`,
 	"DBV4_HOWDENS_FROM_TP_INTRO_REJECTED": `{
-  "subject": "{{sender.contact_name}} has rejected the order invoice you sent them",
+  "subject": "INVOICE NUMBER has been rejected by {{sender.contact_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -1035,14 +1043,14 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "HO rejected introduction"
+          "text": "{{sender.contact_name}} has rejected your invoice (INVOICE NUMBER). Please contact them directly to understand more."
         }
       ]
     }
   ]
 }`,
 	"DBV4_HOWDENS_TO_HO_CONVERTED_JOB": `{
-  "subject": "{{sender.contact_name}} has sent you an invoice - apply for finance with Kanda now",
+  "subject": "You can now complete a finance application for your Howdens goods purchase",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -1053,7 +1061,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "HO converted job"
+          "text": "You can now complete your purchase of your Howdens goods from TRADES COMPANY NAME via finance. Click below to choose which finance plan you want to apply for and complete the application. You'll receive a decision in a few minutes and we'll keep both your tradesperson and Howdens updated."
         }
       ]
     },
@@ -1065,7 +1073,7 @@ var TMap = map[TName]string{
   ]
 }`,
 	"DBV4_HOWDENS_TO_HO_INTRO": `{
-  "subject": "{{sender.contact_name}} has sent you a credit introduction",
+  "subject": "Check your eligibility to finance your Howdens purchase",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -1076,7 +1084,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "HO credit introduction"
+          "text": "Howdens have partnered with Kanda to allow you apply for finance for your new Howdens purchase. Before your can apply for finance you'll need to first check if you're eligible. Click below to complete a short eligibility checker and set your budget for your new purchase. "
         }
       ]
     },
@@ -1088,7 +1096,7 @@ var TMap = map[TName]string{
   ]
 }`,
 	"DBV4_HOWDENS_TO_HO_INTRO_BUDGET_REMINDER": `{
-  "subject": "You need to set your budget for your credit introduction",
+  "subject": "Remember to check your eligibility for finance",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -1099,7 +1107,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "HO reminder set credit budget"
+          "text": "Howdens have partnered with Kanda to allow you apply for finance for your new Howdens purchase. We noticed you haven't checked if you're eligible for finance on this purchase yet. Click below to complete a short eligibility checker and set your budget for your new purchase. "
         }
       ]
     },
@@ -1111,7 +1119,7 @@ var TMap = map[TName]string{
   ]
 }`,
 	"DBV4_HOWDENS_TO_TP_INTRO": `{
-  "subject": "{{sender.contact_name}} has sent you a new order invoice for approval",
+  "subject": "Approval requested from your Howdens Partner Designer - {{sender.contact_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -1122,7 +1130,32 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "TP order invoice approval"
+          "text": "Howdens have partnered with Kanda to allow end users to finance their kitchen goods purchase from you. Your Partner Designer at Howdens is requesting you approve this invoice pricing so your end user can apply to finance it. "
+        }
+      ]
+    },
+    {
+      "type": "compact_rows",
+      "rows": [
+        {
+          "text": "<b>1.</b> Approve the purchase price"
+        },
+        {
+          "text": "<b>2.</b> End user applies for finance"
+        },
+        {
+          "text": "<b>3.</b> If approved, Howdens deliver the goods"
+        },
+        {
+          "text": "<b>4.</b> Once delivered, Howdens finance partner - Propensio Finance - pay the invoice price straight to you."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Click below to see more and approve this invoice in 2 minutes."
         }
       ]
     },

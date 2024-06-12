@@ -10570,6 +10570,10 @@ components:
           type: string
           title: message
           description: optional comm context message
+        reference:
+          type: string
+          title: reference
+          description: optional comm context reference
 
     Training:
       type: object
