@@ -1,6 +1,11 @@
 import { RequestFunction } from '@openapi-io-ts/runtime';
 import { StringIndexedObject } from '../../types';
 import { createPoster } from './helpers';
+import {
+  Introduction,
+  Job,
+  JobCompanyInfo,
+} from 'generated/components/schemas';
 
 export const BASE_URL =
   process.env.REACT_APP_PDF_COMPRESS_SERVICE_URL ||
@@ -24,8 +29,9 @@ export interface CompressRequest {
 
 export interface CreateRequest {
   body: {
-    job: StringIndexedObject;
-    company: StringIndexedObject;
+    job: Job;
+    company: JobCompanyInfo;
+    introduction?: Introduction;
   };
 }
 
@@ -44,7 +50,7 @@ export interface FindResponse {
 
 export default {
   compress: {
-    key: '/compress',
+    key: 'pdf.compress',
     method: ({
       body: { content, mimetype },
     }: CompressRequest): RequestFunction<
@@ -57,14 +63,13 @@ export default {
       }),
   },
   create: {
-    key: '/create',
+    key: 'pdf.create',
     method: ({
-      body: { job, company },
-    }: CreateRequest): RequestFunction<{ body: FindResponse }, FindResponse> =>
-      pdfPoster(`/kspdf-create`, {
-        job,
-        company,
-      }),
+      body,
+    }: CreateRequest): RequestFunction<
+      { body: CreateRequest },
+      CreateRequest
+    > => pdfPoster(`/kspdf-create`, body),
   },
   satnote: {
     key: '/satnote',
