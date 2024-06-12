@@ -5,7 +5,7 @@ import {
   Introduction,
   Job,
   JobCompanyInfo,
-} from 'generated/components/schemas';
+} from '../../generated/components/schemas';
 
 export const BASE_URL =
   process.env.REACT_APP_PDF_COMPRESS_SERVICE_URL ||
