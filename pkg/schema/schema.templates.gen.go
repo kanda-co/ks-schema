@@ -1086,7 +1086,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "Howdens have partnered with Kanda to allow you apply for finance for your new Howdens purchase. Before your can apply for finance you'll need to first check if you're eligible. Click below to complete a short eligibility checker and set your budget for your new purchase. "
+          "text": "Howdens have partnered with Kanda to allow you to apply for finance for your new Howdens purchase. Before you can apply for finance you'll need to first check if you're eligible. Click below to complete a short eligibility checker and set your budget for your new purchase. "
         }
       ]
     },
@@ -1176,16 +1176,16 @@ var TMap = map[TName]string{
       "type": "compact_rows",
       "rows": [
         {
-          "text": "<b>1.</b> Approve the purchase price"
+          "text": "<b>1.</b> View and approve the job details"
         },
         {
-          "text": "<b>2.</b> End user applies for finance"
+          "text": "<b>2.</b> Your customer applies for finance"
         },
         {
-          "text": "<b>3.</b> If approved, Howdens deliver the goods"
+          "text": "<b>3.</b> Howdens deliver the goods"
         },
         {
-          "text": "<b>4.</b> Once delivered, Howdens finance partner - Propensio Finance - pay the invoice price straight to you."
+          "text": "<b>4.</b> You get paid"
         }
       ]
     },
