@@ -855,6 +855,33 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/relation:
+    put:
+      operationId: infoRelation
+      summary: info relation for admin to set entity relations
+      tags:
+        - InfoRelation
+      requestBody:
+        description: info relation
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InfoRelation"
+      responses:
+        200:
+          description: info relation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoRelation"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/info/lead:
     put:
       operationId: infoLead
@@ -6853,6 +6880,57 @@ components:
           type: object
           $ref: "#/components/schemas/Metadata"
           title: metadata
+          readOnly: true
+
+    InfoRelation:
+      type: object
+      title: info relation
+      required:
+        - groups
+        - departments
+        - branches
+      properties:
+        id:
+          type: string
+          title: relation id
+          description: relation id
+          readOnly: true
+        cid:
+          type: string
+          title: company id
+        aid:
+          type: string
+          title: author id
+          readOnly: true
+        oid:
+          type: string
+          title: owner id
+          readOnly: true
+        eid:
+          type: string
+          title: enterprise id
+        bid:
+          type: string
+          title: branch id
+        groups:
+          type: array
+          title: groups or regions
+          items:
+            type: string
+        departments:
+          type: array
+          title: departments or areas
+          items:
+            type: string
+        branches:
+          type: array
+          title: branches
+          items:
+            type: string
+        metadata:
+          type: object
+          title: metadata
+          $ref: "#/components/schemas/Metadata"
           readOnly: true
 
     Enterprise:
