@@ -2,18 +2,21 @@ import { InputHTMLAttributes } from "react";
 import { DefaultFormFieldProps, FieldInfoWrapperProps } from "~/field/types";
 
 export interface AddressApiResponseAddress {
-  building_number?: string;
-  sub_building_number?: string;
+  formatted_address: string[];
+  thoroughfare?: string;
   building_name?: string;
+  building_number?: string;
   sub_building_name?: string;
+  sub_building_number?: string;
   town_or_city?: string;
-  line1?: string;
-  line2?: string;
+  line_1?: string;
+  line_2?: string;
+  line_3?: string;
+  line_4?: string;
   locality?: string;
   county?: string;
+  district?: string;
   country?: string;
-  formatted_address: string[];
-  formattedAddress: string[];
 }
 
 export interface Address {

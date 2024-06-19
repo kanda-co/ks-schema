@@ -75,11 +75,11 @@ export default function useAddressSelectProps(
       );
       setValue(
         `${prefix}.line_1`,
-        address?.line1 || address?.formatted_address[0]
+        address?.line_1 || address?.formatted_address[0]
       );
       setValue(
         `${prefix}.line_2`,
-        address?.line2 ||
+        address?.line_2 ||
           address?.formatted_address[1] ||
           address?.locality ||
           null

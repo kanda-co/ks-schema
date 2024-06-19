@@ -11,7 +11,7 @@ export const validatePostcode = (postcode: string): boolean =>
  * Format address for proper display on select field
  */
 export const formatSelectName = (address: AddressApiResponseAddress) =>
-  address.formattedAddress.filter(Boolean).join(", ");
+  address.formatted_address.filter(Boolean).join(", ");
 
 /**
  * Creates select field options from address api data
