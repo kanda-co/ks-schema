@@ -35,6 +35,7 @@ export default function usePhoneNumberInputUncontrolled({
     focusClasses,
     makeErrorClasses,
     skeletonClasses,
+    variant,
   } = useFormTheme();
 
   const classNames = useClasses(CLASS_NAMES, {
@@ -48,8 +49,11 @@ export default function usePhoneNumberInputUncontrolled({
       initialClassName,
     ],
     select: [baseClasses, paddingClasses, focusClasses, ".select"],
-    code: [paddingClasses, ".code"],
+    code: [paddingClasses, variant === "inline" ? ".inlineCode" : ".code"],
     phoneInput: [baseClasses, paddingClasses, focusClasses, ".phoneInput"],
+    selectWrapper: [
+      variant === "inline" ? ".selectWrapper.inline" : ".selectWrapper.default",
+    ],
   });
 
   const code = useWatch({ name: name as string, defaultValue });

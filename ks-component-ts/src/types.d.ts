@@ -21,4 +21,5 @@ export interface Theme {
     helperText: string;
   };
   buttonClasses?: string;
+  variant?: string;
 }

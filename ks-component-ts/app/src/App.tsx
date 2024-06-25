@@ -9,6 +9,8 @@ import {
   Label,
   SearchInput,
   ValidationItems,
+  Widget,
+  FormTheme,
 } from "@kanda-libs/ks-component-ts";
 import { StringIndexedObject } from "~/types";
 import { useEffect, useState } from "react";
@@ -25,10 +27,6 @@ const capitalise = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 function App() {
   const form = useForm({
     mode: "onBlur",
-    defaultValues: {
-      range1: "100000",
-      range2: "100000",
-    },
   });
 
   const { watch, setValue } = form;
@@ -71,38 +69,28 @@ function App() {
 
   return (
     <div style={{ maxWidth: 500 }}>
-      <SearchInput query={query} onSearch={setQuery} />
-      <button
-        onClick={() => {
-          console.log("click");
-          setIsLoading(!isLoading);
-        }}
-        className="mb-10"
-      >
-        change
-      </button>
-      <div className="px-5">
+      <div className="p-5">
         <Form
           id="ksts-test-form"
           form={form}
           onSubmit={onSubmit}
-          className="flex flex-col"
+          className="flex flex-col p-6 bg-neutral-100"
         >
-          <Field.RangeInput
-            name="range1"
-            isLoading={isLoading}
-            min="0"
-            max="200000"
-            formatter={formatter}
+          <FormTheme variant="inline">
+            <Widget.JobCustomerPhone className="bg-neutral-000 mb-10" />
+          </FormTheme>
+          <FormTheme variant="default">
+            <Widget.JobCustomerPhone
+              className="bg-neutral-000"
+              name="defaultphone"
+            />
+          </FormTheme>
+          <Button.Text
+            submit
+            label="submit"
+            id="ksts-test-form-submit"
+            className="mt-6"
           />
-          <Field.RangeInput
-            name="range2"
-            isLoading={isLoading}
-            min="0"
-            max="200000"
-            formatter={formatter}
-          />
-          <Button.Text submit label="submit" id="ksts-test-form-submit" />
         </Form>
       </div>
     </div>

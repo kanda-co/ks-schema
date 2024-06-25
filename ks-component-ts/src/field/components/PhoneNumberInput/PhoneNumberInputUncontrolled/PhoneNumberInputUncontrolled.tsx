@@ -55,4 +55,4 @@ const PhoneNumberInputUncontrolled: FunctionComponent<PhoneNumberInputUncontroll
     );
   };
 
-export default (PhoneNumberInputUncontrolled);
+export default PhoneNumberInputUncontrolled;

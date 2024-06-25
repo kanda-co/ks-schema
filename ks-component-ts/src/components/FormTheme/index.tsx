@@ -10,13 +10,18 @@ export interface FormThemeProps {
 }
 
 const FormTheme: FunctionComponent<FormThemeProps> = function ({
-  variant,
+  variant = "default",
   children,
 }) {
   const theme = variant ? FORM_THEME_VARIANTS[variant] : DEFAULT_THEME;
 
   return (
-    <FormThemeContext.Provider value={theme}>
+    <FormThemeContext.Provider
+      value={{
+        ...theme,
+        variant,
+      }}
+    >
       {children}
     </FormThemeContext.Provider>
   );
