@@ -5394,6 +5394,84 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/audit:
+    post:
+      tags:
+        - Audit
+      summary: post audit
+      description: post audit
+      operationId: postAudit
+      requestBody:
+        description: post audit body
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AuditInput"
+      responses:
+        200:
+          description: posted audit
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Audit"
+        default:
+          description: got error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    get:
+      tags:
+        - Audit
+      summary: get audits
+      description: get audits
+      operationId: getAudits
+      responses:
+        200:
+          description: got audits
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Audit"
+        default:
+          description: got error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/audit/{id}:
+    get:
+      operationId: getAudit
+      summary: get existing audit
+      tags:
+        - Audit
+      parameters:
+        - name: id
+          in: path
+          description: audit id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing audit
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Audit"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/webhook/{provider}:
     get:
       operationId: providerCheckWebhook
@@ -10854,6 +10932,147 @@ components:
           title: payout note
         metadata:
           $ref: "#/components/schemas/Metadata"
+
+    BaseId:
+      type: object
+      required:
+        - id
+        - metadata
+      properties:
+        id:
+          type: string
+          title: resource id
+          description: resource id
+        aid:
+          type: string
+          title: resource author id
+          description: resource author id
+        oid:
+          type: string
+          title: resource owner id
+          description: resource owner id
+        cid:
+          type: string
+          title: company id
+          description: resource company id
+        eid:
+          type: string
+          title: enterprise id
+          description: resource enterprise id
+        bid:
+          type: string
+          title: branch id
+          description: resource branch id
+        tid:
+          type: string
+          title: trader id
+          description: resource trader id
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+
+    Audit:
+      allOf:
+        - $ref: "#/components/schemas/BaseId"
+        - type: object
+          title: audit
+          description: audit of resource
+          required:
+            - resources
+            - resource_id
+            - current_action_state
+            - entries
+          properties:
+            resources:
+              type: array
+              title: resources
+              description: resources of this audit attached to
+              items:
+                type: string
+                title: resource
+            resource_id:
+              type: string
+              title: resource id
+              description: resource id of this audit attached to
+            current_action_state:
+              type: string
+              title: current action state
+              description: current action state for this resource
+              $ref: "#/components/schemas/ActionState"
+            entries:
+              type: array
+              title: entries
+              description: entries ever taken for this resource
+              items:
+                $ref: "#/components/schemas/Entry"
+
+    AuditInput:
+      type: object
+      title: audit input
+      description: audit of resource input
+      required:
+        - resource
+        - resource_id
+        - action_state
+        - note
+      properties:
+        resource:
+          type: string
+          title: resource
+          description: resource of this audit attached to
+        resource_id:
+          type: string
+          title: resource id
+          description: resource id of this audit attached to
+        action_state:
+          type: string
+          $ref: "#/components/schemas/ActionState"
+        note:
+          type: string
+          title: note
+
+    Entry:
+      type: object
+      title: entry
+      description: entry of action
+      required:
+        - who
+        - resource
+        - resource_id
+        - timestamp
+        - action_state
+        - note
+      properties:
+        who:
+          type: string
+          title: who
+        resource:
+          type: string
+          title: resource
+        resource_id:
+          type: string
+          title: resource id
+        timestamp:
+          type: string
+          title: timestamp
+          format: date-time
+        action_state:
+          type: string
+          $ref: "#/components/schemas/ActionState"
+        note:
+          type: string
+          title: note
+
+    ActionState:
+      type: string
+      title: action state
+      description: action state
+      enum:
+        - "action_not_needed"
+        - "action_required"
+        - "action_acknowledged"
+        - "action_taken"
+        - "action_to_follow_up"
+        - "action_resolved"
 
     Error:
       type: object
