@@ -97,6 +97,7 @@ func main() {
 			continue
 		}
 		if NotIn(name, []string{
+			"Audit",
 			// "Cache",
 			"Company",
 			"Credit",
@@ -108,7 +109,7 @@ func main() {
 			// "Rate",
 			// "Monitor",
 			// "Partner",
-			// "Onboarding",
+			"Onboarding",
 			"Enterprise",
 			// "Summary",
 			// "Redirect",
