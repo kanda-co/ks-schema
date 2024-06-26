@@ -10301,6 +10301,9 @@ components:
       title: search hits
       description: search hits of resources
       required:
+        - audit
+        - audit_hits
+        - audit_returned
         - company
         - company_hits
         - company_returned
@@ -10316,10 +10319,27 @@ components:
         - job
         - job_hits
         - job_returned
+        - onboarding
+        - onboarding_hits
+        - onboarding_returned
         - transaction
         - transaction_hits
         - transaction_returned
       properties:
+        audit:
+          type: array
+          title: matching audits
+          description: matching audits
+          items:
+            $ref: "#/components/schemas/Audit"
+        audit_hits:
+          type: integer
+          format: int64
+          title: matching audits hits
+        audit_returned:
+          type: integer
+          format: int64
+          title: matching audits returned
         company:
           type: array
           title: matching companies
@@ -10390,6 +10410,20 @@ components:
           type: integer
           format: int64
           title: matching jobs returned
+        onboarding:
+          type: array
+          title: matching onboardings
+          description: matching onboardings
+          items:
+            $ref: "#/components/schemas/Onboarding"
+        onboarding_hits:
+          type: integer
+          format: int64
+          title: matching onboardings hits
+        onboarding_returned:
+          type: integer
+          format: int64
+          title: matching onboardings returned
         transaction:
           type: array
           title: matching transactions
