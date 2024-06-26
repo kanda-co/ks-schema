@@ -55,6 +55,11 @@ func renderObject(base string, o openapi3.Schema) []string {
 	if base != "" {
 		fields = append(fields, base)
 	}
+	if o.Type == "" && len(o.AllOf) > 0 {
+		for _, ao := range o.AllOf {
+			fields = append(fields, renderObject(base, *ao.Value)...)
+		}
+	}
 	if o.Type == "object" {
 		for n, f := range o.Properties {
 			fields = append(fields, renderObject(IfValueOr(base == "", n, base+"."+n), *f.Value)...)
@@ -93,7 +98,7 @@ func main() {
 
 	index := map[string][]string{}
 	for name, ref := range doc.Components.Schemas {
-		if ref.Value.Type != "object" {
+		if ref.Value.Type != "object" && len(ref.Value.AllOf) == 0 {
 			continue
 		}
 		if NotIn(name, []string{

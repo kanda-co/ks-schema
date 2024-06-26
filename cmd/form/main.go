@@ -168,6 +168,12 @@ func renderField(name string, schema, root *openapi3.Schema, isArray bool) strin
 		root = &rootSchema
 	}
 
+	if schema.Type == "" && len(schema.AllOf) > 0 {
+		for _, ao := range schema.AllOf {
+			components = append(components, renderField(name, ao.Value, root, isArray))
+		}
+	}
+
 	if !isIn(schema.Type, []string{"object", "array"}) && len(schema.Properties) == 0 {
 		propName := ""
 		props := Props{}
