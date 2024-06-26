@@ -5428,6 +5428,9 @@ paths:
       summary: get audits
       description: get audits
       operationId: getAudits
+      parameters:
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
       responses:
         200:
           description: got audits
@@ -10243,11 +10246,13 @@ components:
       type: string
       title: search specific index or multi-search
       enum:
+        - "audit"
         - "company"
         - "credit"
         - "enterprise"
         - "introduction"
         - "job"
+        - "onboarding"
         - "transaction"
 
     InfoSearch:
