@@ -11049,11 +11049,16 @@ components:
       title: audit input
       description: audit of resource input
       required:
+        - assignee_email
         - resource
         - resource_id
         - action_state
         - note
       properties:
+        assignee_email:
+          type: string
+          title: assignee email
+          format: email
         resource:
           type: string
           title: resource
@@ -11074,32 +11079,46 @@ components:
       title: entry
       description: entry of action
       required:
-        - who
+        - owner_name
+        - owner_email
+        - assignee_name
+        - assignee_email
         - resource
         - resource_id
-        - timestamp
         - action_state
         - note
+        - timestamp
       properties:
-        who:
+        owner_name:
           type: string
-          title: who
+          title: owner name
+        owner_email:
+          type: string
+          title: owner email
+          format: email
+        assignee_name:
+          type: string
+          title: assignee name
+        assignee_email:
+          type: string
+          title: assignee email
+          format: email
         resource:
           type: string
           title: resource
         resource_id:
           type: string
           title: resource id
-        timestamp:
-          type: string
-          title: timestamp
-          format: date-time
         action_state:
           type: string
           $ref: "#/components/schemas/ActionState"
         note:
           type: string
           title: note
+        timestamp:
+          type: string
+          title: timestamp
+          format: date-time
 
     ActionState:
       type: string
