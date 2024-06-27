@@ -11059,6 +11059,7 @@ components:
           type: string
           title: assignee email
           format: email
+          x-go-type: Email
         resource:
           type: string
           title: resource
@@ -11096,6 +11097,7 @@ components:
           type: string
           title: owner email
           format: email
+          x-go-type: Email
         assignee_name:
           type: string
           title: assignee name
@@ -11103,6 +11105,7 @@ components:
           type: string
           title: assignee email
           format: email
+          x-go-type: Email
         resource:
           type: string
           title: resource
