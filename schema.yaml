@@ -5626,6 +5626,7 @@ paths:
               - housekeeping_check_lender_rate
               - housekeeping_check_lender_update
               - housekeeping_check_trade_summary
+              - housekeeping_check_audit_action
               - housekeeping_run_propensio_payouts
       responses:
         200:
@@ -8783,7 +8784,7 @@ components:
       type: object
       required:
         - id
-        - financed
+        - has_finance_application
       properties:
         id:
           type: string
