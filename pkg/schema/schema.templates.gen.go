@@ -38,6 +38,7 @@ const (
 	DBV4_HOWDENS_TO_TP_GOODS_DELIVERED           TName = "DBV4_HOWDENS_TO_TP_GOODS_DELIVERED"
 	DBV4_HOWDENS_TO_TP_INTRO                     TName = "DBV4_HOWDENS_TO_TP_INTRO"
 	DBV4_LENDER_SATNOTE_REVIEW                   TName = "DBV4_LENDER_SATNOTE_REVIEW"
+	DBV4_STAFF_AUDIT_NOTIFICATION                TName = "DBV4_STAFF_AUDIT_NOTIFICATION"
 	DBV4_TP_2ND_LINE_REJECTED                    TName = "DBV4_TP_2ND_LINE_REJECTED"
 	DBV4_TP_ACCOUNT_APPROVED                     TName = "DBV4_TP_ACCOUNT_APPROVED"
 	DBV4_TP_APPLICATION_ACCEPTED                 TName = "DBV4_TP_APPLICATION_ACCEPTED"
@@ -1268,6 +1269,32 @@ var TMap = map[TName]string{
           ]
         }
       ]
+    }
+  ]
+}`,
+	"DBV4_STAFF_AUDIT_NOTIFICATION": `{
+  "subject": "New update on company in onboarding",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "There is an update on a company you are resposible for in the onboarding portal. Please check below"
+        },
+        {
+          "text": "{{message}}"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "Go to onboarding",
+      "url": "{{cta_url}}"
     }
   ]
 }`,

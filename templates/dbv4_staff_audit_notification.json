@@ -1,0 +1,26 @@
+{
+  "subject": "New update on company in onboarding",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "There is an update on a company you are resposible for in the onboarding portal. Please check below"
+        },
+        {
+          "text": "{{message}}"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "Go to onboarding",
+      "url": "{{cta_url}}"
+    }
+  ]
+}
