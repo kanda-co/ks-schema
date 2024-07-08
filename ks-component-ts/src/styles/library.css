@@ -2572,6 +2572,10 @@ input[type="number"]::-webkit-inner-spin-button,
   padding: 10px;
 }
 
+.p-5 {
+  padding: 20px;
+}
+
 .p-8 {
   padding: 32px;
 }
@@ -2636,6 +2640,11 @@ input[type="number"]::-webkit-inner-spin-button,
   padding-right: 32px;
 }
 
+.px-1 {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
 .py-2\.5 {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -2661,11 +2670,6 @@ input[type="number"]::-webkit-inner-spin-button,
   padding-right: 10px;
 }
 
-.px-5 {
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
 .px-6 {
   padding-left: 24px;
   padding-right: 24px;
@@ -2684,11 +2688,6 @@ input[type="number"]::-webkit-inner-spin-button,
 .px-1\.5 {
   padding-left: 6px;
   padding-right: 6px;
-}
-
-.px-1 {
-  padding-left: 4px;
-  padding-right: 4px;
 }
 
 .py-8 {

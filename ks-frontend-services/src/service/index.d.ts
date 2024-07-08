@@ -5,6 +5,20 @@ declare const adhoc: {
         method: import("../generated/operations/actionAdhoc").ActionAdhocRequestFunction;
     };
 };
+declare const audit: {
+    getAudits: {
+        key: string;
+        method: import("../generated/operations/getAudits").GetAuditsRequestFunction;
+    };
+    postAudit: {
+        key: string;
+        method: import("../generated/operations/postAudit").PostAuditRequestFunction;
+    };
+    getAudit: {
+        key: string;
+        method: import("../generated/operations/getAudit").GetAuditRequestFunction;
+    };
+};
 declare const authUser: {
     me: {
         key: string;
@@ -315,6 +329,12 @@ declare const infoRedirect: {
     infoCheckoutRedirect: {
         key: string;
         method: import("../generated/operations/infoCheckoutRedirect").InfoCheckoutRedirectRequestFunction;
+    };
+};
+declare const infoRelation: {
+    infoRelation: {
+        key: string;
+        method: import("../generated/operations/infoRelation").InfoRelationRequestFunction;
     };
 };
 declare const infoSearch: {
@@ -836,9 +856,9 @@ declare const pdf: {
     };
     create: {
         key: string;
-        method: ({ body: { job, company }, }: import("./external/pdf").CreateRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
-            body: import("./external/pdf").FindResponse;
-        }, import("./external/pdf").FindResponse>;
+        method: ({ body, }: import("./external/pdf").CreateRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+            body: import("./external/pdf").CreateRequest;
+        }, import("./external/pdf").CreateRequest>;
     };
     satnote: {
         key: string;
@@ -885,6 +905,20 @@ declare const services: {
         actionAdhoc: {
             key: string;
             method: import("../generated/operations/actionAdhoc").ActionAdhocRequestFunction;
+        };
+    };
+    audit: {
+        getAudits: {
+            key: string;
+            method: import("../generated/operations/getAudits").GetAuditsRequestFunction;
+        };
+        postAudit: {
+            key: string;
+            method: import("../generated/operations/postAudit").PostAuditRequestFunction;
+        };
+        getAudit: {
+            key: string;
+            method: import("../generated/operations/getAudit").GetAuditRequestFunction;
         };
     };
     authUser: {
@@ -1197,6 +1231,12 @@ declare const services: {
         infoCheckoutRedirect: {
             key: string;
             method: import("../generated/operations/infoCheckoutRedirect").InfoCheckoutRedirectRequestFunction;
+        };
+    };
+    infoRelation: {
+        infoRelation: {
+            key: string;
+            method: import("../generated/operations/infoRelation").InfoRelationRequestFunction;
         };
     };
     infoSearch: {
@@ -1718,9 +1758,9 @@ declare const services: {
         };
         create: {
             key: string;
-            method: ({ body: { job, company }, }: import("./external/pdf").CreateRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
-                body: import("./external/pdf").FindResponse;
-            }, import("./external/pdf").FindResponse>;
+            method: ({ body, }: import("./external/pdf").CreateRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+                body: import("./external/pdf").CreateRequest;
+            }, import("./external/pdf").CreateRequest>;
         };
         satnote: {
             key: string;
@@ -1760,5 +1800,5 @@ declare const services: {
         };
     };
 };
-export { adhoc, authUser, company, credit, document, enterprise, event, infoAuth, infoCache, infoCompany, infoCustomer, infoDirector, infoEnterpriseRole, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoLead, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoSearch, infoStats, infoValidation, introduction, job, lead, monitor, onboarding, partner, payment, rate, subscription, task, tradeSummary, training, transaction, webhook, address, contract, payouts, pdf, personalGuarantee, sheets, subsSheet, };
+export { adhoc, audit, authUser, company, credit, document, enterprise, event, infoAuth, infoCache, infoCompany, infoCustomer, infoDirector, infoEnterpriseRole, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoLead, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoRelation, infoSearch, infoStats, infoValidation, introduction, job, lead, monitor, onboarding, partner, payment, rate, subscription, task, tradeSummary, training, transaction, webhook, address, contract, payouts, pdf, personalGuarantee, sheets, subsSheet, };
 export default services;

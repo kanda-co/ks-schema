@@ -1,5 +1,6 @@
 import { RequestFunction } from '@openapi-io-ts/runtime';
 import { StringIndexedObject } from '../../types';
+import { Introduction, Job, JobCompanyInfo } from '../../generated/components/schemas';
 export declare const BASE_URL: string;
 export interface CompressRequest {
     body: {
@@ -9,8 +10,9 @@ export interface CompressRequest {
 }
 export interface CreateRequest {
     body: {
-        job: StringIndexedObject;
-        company: StringIndexedObject;
+        job: Job;
+        company: JobCompanyInfo;
+        introduction?: Introduction;
     };
 }
 export interface SatNoteRequest {
@@ -33,9 +35,9 @@ declare const _default: {
     };
     create: {
         key: string;
-        method: ({ body: { job, company }, }: CreateRequest) => RequestFunction<{
-            body: FindResponse;
-        }, FindResponse>;
+        method: ({ body, }: CreateRequest) => RequestFunction<{
+            body: CreateRequest;
+        }, CreateRequest>;
     };
     satnote: {
         key: string;

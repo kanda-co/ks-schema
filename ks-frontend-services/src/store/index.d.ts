@@ -4,6 +4,17 @@ type ReducerMap<M> = {
     [K in keyof M]: Reducer<M[K]>;
 };
 export declare function createStore<PageKeys extends string, ExtraState = {}>(extraReducers?: ReducerMap<ExtraState>, extraPreloadedState?: PreloadedState<Partial<ExtraState>>): import("@reduxjs/toolkit/dist/configureStore").ToolkitStore<{
+    audit: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").Audit>;
+        raw?: {} | {}[];
+        error?: import("../types").ExtractedError;
+        isSubmitting: boolean;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+    };
     authUser: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").AuthUser>;
@@ -150,6 +161,17 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
     infoQuery: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoQuery>;
+        raw?: {} | {}[];
+        error?: import("../types").ExtractedError;
+        isSubmitting: boolean;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+    };
+    infoRelation: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoRelation>;
         raw?: {} | {}[];
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
@@ -634,6 +656,17 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
     app: import("./slices/app").AppState<PageKeys>;
     auth: AuthState;
 }, import("redux").AnyAction, import("@reduxjs/toolkit").MiddlewareArray<[import("@reduxjs/toolkit").ThunkMiddleware<{
+    audit: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").Audit>;
+        raw?: {} | {}[];
+        error?: import("../types").ExtractedError;
+        isSubmitting: boolean;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+    };
     authUser: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").AuthUser>;
@@ -780,6 +813,17 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
     infoQuery: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoQuery>;
+        raw?: {} | {}[];
+        error?: import("../types").ExtractedError;
+        isSubmitting: boolean;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+    };
+    infoRelation: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoRelation>;
         raw?: {} | {}[];
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
@@ -1277,6 +1321,7 @@ export declare function createSelectors<State extends AuthSlice, Pages>(): {
     getApp: (state: State) => State["app"];
     getPathKey: (state: State) => import("./types").PathKey<Pages>;
     getIsLoading: (state: State) => boolean;
+    audit: import("./types").Selectors<import("..").Audit, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Audit>>>;
     authUser: import("./types").Selectors<import("..").AuthUser, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").AuthUser>>>;
     company: import("./types").Selectors<import("..").Company, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Company>>>;
     credit: import("./types").Selectors<import("..").Credit, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Credit>>>;
@@ -1291,6 +1336,7 @@ export declare function createSelectors<State extends AuthSlice, Pages>(): {
     infoLead: import("./types").Selectors<import("..").InfoLead, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoLead>>>;
     infoOnboarding: import("./types").Selectors<import("..").InfoOnboarding, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoOnboarding>>>;
     infoQuery: import("./types").Selectors<import("..").InfoQuery, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoQuery>>>;
+    infoRelation: import("./types").Selectors<import("..").InfoRelation, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoRelation>>>;
     infoSearch: import("./types").Selectors<import("..").InfoSearch, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoSearch>>>;
     infoStats: import("./types").Selectors<import("..").InfoStats, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoStats>>>;
     introduction: import("./types").Selectors<import("..").Introduction, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Introduction>>>;

@@ -19,6 +19,7 @@ export declare const createCurrentUserHook: <State extends AuthSlice, Dispatch e
     getApp: (state: State) => State["app"];
     getPathKey: (state: State) => import("..").PathKey<Pages>;
     getIsLoading: (state: State) => boolean;
+    audit: import("../store/types").Selectors<import("..").Audit, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Audit>>>;
     authUser: import("../store/types").Selectors<import("..").AuthUser, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").AuthUser>>>;
     company: import("../store/types").Selectors<import("..").Company, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Company>>>;
     credit: import("../store/types").Selectors<import("..").Credit, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Credit>>>;
@@ -33,6 +34,7 @@ export declare const createCurrentUserHook: <State extends AuthSlice, Dispatch e
     infoLead: import("../store/types").Selectors<import("..").InfoLead, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoLead>>>;
     infoOnboarding: import("../store/types").Selectors<import("..").InfoOnboarding, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoOnboarding>>>;
     infoQuery: import("../store/types").Selectors<import("..").InfoQuery, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoQuery>>>;
+    infoRelation: import("../store/types").Selectors<import("..").InfoRelation, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoRelation>>>;
     infoSearch: import("../store/types").Selectors<import("..").InfoSearch, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoSearch>>>;
     infoStats: import("../store/types").Selectors<import("..").InfoStats, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoStats>>>;
     introduction: import("../store/types").Selectors<import("..").Introduction, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Introduction>>>;
