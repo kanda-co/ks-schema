@@ -10196,6 +10196,7 @@ components:
         - "stripe"
         - "gocardless"
         - "premium_credit"
+        - "free_trial"
 
     Subscription:
       type: object
