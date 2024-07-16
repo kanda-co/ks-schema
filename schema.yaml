@@ -5475,6 +5475,148 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/billing:
+    post:
+      tags:
+        - Billing
+      summary: post billing
+      description: post billing
+      operationId: postBilling
+      requestBody:
+        description: post billing body
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BillingInput"
+      responses:
+        200:
+          description: posted billing
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Billing"
+        default:
+          description: got error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    get:
+      tags:
+        - Billing
+      summary: get billings
+      description: get billings
+      operationId: getBillings
+      parameters:
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
+      responses:
+        200:
+          description: got billings
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Billing"
+        default:
+          description: got error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/billing/{id}:
+    get:
+      operationId: getBilling
+      summary: get existing billing
+      tags:
+        - Billing
+      parameters:
+        - name: id
+          in: path
+          description: billing id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing billing
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Billing"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: putBilling
+      summary: kanda staff to put existing billing
+      tags:
+        - Billing
+      parameters:
+        - name: id
+          in: path
+          description: billing id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: put billing body
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Billing"
+      responses:
+        200:
+          description: got existing billing
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Billing"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      operationId: deleteBilling
+      summary: kanda staff to delete existing billing
+      tags:
+        - Billing
+      parameters:
+        - name: id
+          in: path
+          description: billing id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got deleted billing
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Billing"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/webhook/{provider}:
     get:
       operationId: providerCheckWebhook
@@ -9930,6 +10072,130 @@ components:
           type: object
           title: monthly amount
           $ref: "#/components/schemas/Money"
+
+    Billing:
+      allOf:
+        - $ref: "#/components/schemas/BaseId"
+        - type: object
+          required:
+            - current_provider
+            - current_type
+            - current_interval
+            - current_status
+            - current_amount_vat_inclusive
+            - last_billing_at
+            - next_billing_at
+            - records
+          properties:
+            current_provider:
+              type: string
+              $ref: "#/components/schemas/BillingProvider"
+            current_type:
+              type: string
+              $ref: "#/components/schemas/BillingType"
+            current_interval:
+              type: string
+              $ref: "#/components/schemas/BillingInterval"
+            current_status:
+              type: string
+              $ref: "#/components/schemas/BillingStatus"
+            current_amount_vat_inclusive:
+              type: object
+              $ref: "#/components/schemas/Money"
+              title: current billing amount in pence (vat inclusive)
+            last_billing_at:
+              type: string
+              title: last billing at
+              format: date-time
+            next_billing_at:
+              type: string
+              title: next billing at
+              format: date-time
+            records:
+              type: array
+              title: billing records
+              items:
+                $ref: "#/components/schemas/BillingInput"
+            xid:
+              type: string
+              title: external reference id
+            xref:
+              type: string
+              title: external reference
+
+    BillingInput:
+      type: object
+      required:
+        - provider
+        - type
+        - interval
+        - status
+        - amount
+      properties:
+        provider:
+          type: string
+          $ref: "#/components/schemas/BillingProvider"
+        type:
+          type: string
+          $ref: "#/components/schemas/BillingType"
+        interval:
+          type: string
+          $ref: "#/components/schemas/BillingInterval"
+        status:
+          type: string
+          $ref: "#/components/schemas/BillingStatus"
+        amount:
+          type: object
+          $ref: "#/components/schemas/Money"
+          title: total amount in pence (vat inclusive)
+        deferred_months:
+          type: integer
+          title: deferred months
+          format: int32
+        registered_at:
+          type: string
+          title: registered at
+          format: date-time
+        xid:
+          type: string
+          title: external reference id
+        xref:
+          type: string
+          title: external reference
+
+    BillingStatus:
+      type: string
+      title: billing status
+      enum:
+        - "active"
+        - "pause"
+        - "change"
+        - "suspended"
+        - "cancelled"
+
+    BillingInterval:
+      type: string
+      title: billing interval
+      enum:
+        - "monthly"
+        - "yearly"
+
+    BillingType:
+      type: string
+      title: billing type
+      enum:
+        - "legacy"
+        - "referral"
+        - "contract"
+        - "subscription"
+
+    BillingProvider:
+      type: string
+      title: billing provider
+      enum:
+        - "stripe"
+        - "gocardless"
+        - "premium_credit"
 
     Subscription:
       type: object
