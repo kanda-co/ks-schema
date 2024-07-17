@@ -5617,6 +5617,34 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/billing/{id}/export-pdf:
+    post:
+      operationId: exportBillingPDF
+      summary: export existing billing in pdf
+      tags:
+        - Billing
+      parameters:
+        - name: id
+          in: path
+          description: billing id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: exported existing billing in pdf
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Document"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/webhook/{provider}:
     get:
       operationId: providerCheckWebhook
