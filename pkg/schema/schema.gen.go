@@ -34,12 +34,22 @@ const (
 	ActionToFollowUp   ActionState = "action_to_follow_up"
 )
 
-// Defines values for ApiEventMethod.
+// Defines values for AdvertFinanceCalculatorYesNo.
 const (
-	Delete ApiEventMethod = "delete"
-	Get    ApiEventMethod = "get"
-	Post   ApiEventMethod = "post"
-	Put    ApiEventMethod = "put"
+	AdvertFinanceCalculatorYesNoNo  AdvertFinanceCalculatorYesNo = "no"
+	AdvertFinanceCalculatorYesNoYes AdvertFinanceCalculatorYesNo = "yes"
+)
+
+// Defines values for AgreedTermsAndConditions.
+const (
+	AgreedTermsAndConditionsNo  AgreedTermsAndConditions = "no"
+	AgreedTermsAndConditionsYes AgreedTermsAndConditions = "yes"
+)
+
+// Defines values for AgreedToBecomeIarOfKanda.
+const (
+	AgreedToBecomeIarOfKandaNo  AgreedToBecomeIarOfKanda = "no"
+	AgreedToBecomeIarOfKandaYes AgreedToBecomeIarOfKanda = "yes"
 )
 
 // Defines values for ApprovalOutcome.
@@ -64,6 +74,13 @@ const (
 	NotApprovedSeveralNegativesAgainstCompany ApprovalReason = "not_approved_several_negatives_against_company"
 )
 
+// Defines values for AprType.
+const (
+	BUYNOWPAYLATER  AprType = "BUYNOW_PAYLATER"
+	INTERESTBEARING AprType = "INTEREST_BEARING"
+	INTERESTFREE    AprType = "INTEREST_FREE"
+)
+
 // Defines values for Archived.
 const (
 	ArchivedNo  Archived = "no"
@@ -76,10 +93,33 @@ const (
 	Personal BankAccountType = "Personal"
 )
 
-// Defines values for BusinessConfigShow.
+// Defines values for BankVerificationStatus.
 const (
-	BusinessConfigShowNo  BusinessConfigShow = "no"
-	BusinessConfigShowYes BusinessConfigShow = "yes"
+	NotStarted          BankVerificationStatus = "not_started"
+	VerificationError   BankVerificationStatus = "verification_error"
+	VerificationFailed  BankVerificationStatus = "verification_failed"
+	VerificationPassed  BankVerificationStatus = "verification_passed"
+	VerificationSkipped BankVerificationStatus = "verification_skipped"
+)
+
+// Defines values for BankrupcyOrIvaInLast5Years.
+const (
+	BankrupcyOrIvaInLast5YearsNo  BankrupcyOrIvaInLast5Years = "no"
+	BankrupcyOrIvaInLast5YearsYes BankrupcyOrIvaInLast5Years = "yes"
+)
+
+// Defines values for BillingStatus.
+const (
+	BillingStatusCancelled               BillingStatus = "cancelled"
+	BillingStatusLegacy                  BillingStatus = "legacy"
+	BillingStatusPending                 BillingStatus = "pending"
+	BillingStatusRecurringPaymentFailed1 BillingStatus = "recurring_payment_failed_1"
+	BillingStatusRecurringPaymentFailed2 BillingStatus = "recurring_payment_failed_2"
+	BillingStatusRecurringPaymentFailed3 BillingStatus = "recurring_payment_failed_3"
+	BillingStatusReferred                BillingStatus = "referred"
+	BillingStatusSubscribed              BillingStatus = "subscribed"
+	BillingStatusSuspended               BillingStatus = "suspended"
+	BillingStatusTrial                   BillingStatus = "trial"
 )
 
 // Defines values for BusinessSector.
@@ -94,19 +134,6 @@ const (
 	BusinessSectorTrainingAndEducation    BusinessSector = "Training and education"
 )
 
-// Defines values for CategorySection.
-const (
-	AdvertisingFinance                      CategorySection = "advertising_finance"
-	HowdensAdvertisingFinance               CategorySection = "howdens__advertising_finance"
-	HowdensFightingFinancialCrime           CategorySection = "howdens__fighting_financial_crime"
-	HowdensSeniorManagementResponsibilities CategorySection = "howdens__senior_management_responsibilities"
-	HowdensTheBasicsOfOfferingFinance       CategorySection = "howdens__the_basics_of_offering_finance"
-	HowdensTreatingCustomersFairly          CategorySection = "howdens__treating_customers_fairly"
-	HowdensWhatIsAnArAndWhatCanItDo         CategorySection = "howdens__what_is_an_ar_and_what_can_it_do"
-	TreatingCustomersFairly                 CategorySection = "treating_customers_fairly"
-	WhatIsAnIarAndWhatCanItDo               CategorySection = "what_is_an_iar_and_what_can_it_do"
-)
-
 // Defines values for CheckoutOption.
 const (
 	ApplyForFinance CheckoutOption = "apply_for_finance"
@@ -115,68 +142,17 @@ const (
 	PayOnCompletion CheckoutOption = "pay_on_completion"
 )
 
-// Defines values for CompanyBilling.
-const (
-	CompanyBillingCancelled               CompanyBilling = "cancelled"
-	CompanyBillingLegacy                  CompanyBilling = "legacy"
-	CompanyBillingPending                 CompanyBilling = "pending"
-	CompanyBillingRecurringPaymentFailed1 CompanyBilling = "recurring_payment_failed_1"
-	CompanyBillingRecurringPaymentFailed2 CompanyBilling = "recurring_payment_failed_2"
-	CompanyBillingRecurringPaymentFailed3 CompanyBilling = "recurring_payment_failed_3"
-	CompanyBillingReferred                CompanyBilling = "referred"
-	CompanyBillingSubscribed              CompanyBilling = "subscribed"
-	CompanyBillingSuspended               CompanyBilling = "suspended"
-	CompanyBillingTrial                   CompanyBilling = "trial"
-)
-
-// Defines values for CompanyLifecycle.
-const (
-	CompanyLifecycleCompletedSetup           CompanyLifecycle = "completed_setup"
-	CompanyLifecycleDeclined                 CompanyLifecycle = "declined"
-	CompanyLifecycleDirectorDetailsSubmitted CompanyLifecycle = "director_details_submitted"
-	CompanyLifecycleDirectorInfoProvided     CompanyLifecycle = "director_info_provided"
-	CompanyLifecycleInsuranceUploaded        CompanyLifecycle = "insurance_uploaded"
-	CompanyLifecycleOnboarded                CompanyLifecycle = "onboarded"
-	CompanyLifecycleRegistered               CompanyLifecycle = "registered"
-	CompanyLifecycleSubscribed               CompanyLifecycle = "subscribed"
-	CompanyLifecycleVerified                 CompanyLifecycle = "verified"
-)
-
-// Defines values for CompanyQuotePreference.
-const (
-	CompanyQuotePreferenceCustom       CompanyQuotePreference = "custom"
-	CompanyQuotePreferenceKanda        CompanyQuotePreference = "kanda"
-	CompanyQuotePreferenceNoPreference CompanyQuotePreference = "no_preference"
-)
-
-// Defines values for CompanySkipDeposit.
-const (
-	CompanySkipDepositNo  CompanySkipDeposit = "No"
-	CompanySkipDepositYes CompanySkipDeposit = "Yes"
-)
-
-// Defines values for CompanyInfoTradeBody.
-const (
-	CompanyInfoTradeBodyAcrib   CompanyInfoTradeBody = "acrib"
-	CompanyInfoTradeBodyAphc    CompanyInfoTradeBody = "aphc"
-	CompanyInfoTradeBodyAssure  CompanyInfoTradeBody = "assure"
-	CompanyInfoTradeBodyCertass CompanyInfoTradeBody = "certass"
-	CompanyInfoTradeBodyElecsa  CompanyInfoTradeBody = "elecsa"
-	CompanyInfoTradeBodyFensa   CompanyInfoTradeBody = "fensa"
-	CompanyInfoTradeBodyFeta    CompanyInfoTradeBody = "feta"
-	CompanyInfoTradeBodyGasSafe CompanyInfoTradeBody = "gas_safe"
-	CompanyInfoTradeBodyHetas   CompanyInfoTradeBody = "hetas"
-	CompanyInfoTradeBodyNapit   CompanyInfoTradeBody = "napit"
-	CompanyInfoTradeBodyNfrc    CompanyInfoTradeBody = "nfrc"
-	CompanyInfoTradeBodyNiceic  CompanyInfoTradeBody = "niceic"
-	CompanyInfoTradeBodyNone    CompanyInfoTradeBody = "none"
-	CompanyInfoTradeBodyOther   CompanyInfoTradeBody = "other"
-)
-
 // Defines values for CompanyInfoUseSubcontractor.
 const (
 	CompanyInfoUseSubcontractorNo  CompanyInfoUseSubcontractor = "no"
 	CompanyInfoUseSubcontractorYes CompanyInfoUseSubcontractor = "yes"
+)
+
+// Defines values for CompanyRole.
+const (
+	CompanyAdmin   CompanyRole = "company-admin"
+	CompanyManager CompanyRole = "company-manager"
+	CompanyStaff   CompanyRole = "company-staff"
 )
 
 // Defines values for CompanyType.
@@ -185,74 +161,43 @@ const (
 	SoleTrader     CompanyType = "sole_trader"
 )
 
-// Defines values for ContractAgreementAgreedTermsAndConditions.
+// Defines values for CreditApplicationState.
 const (
-	ContractAgreementAgreedTermsAndConditionsNo  ContractAgreementAgreedTermsAndConditions = "no"
-	ContractAgreementAgreedTermsAndConditionsYes ContractAgreementAgreedTermsAndConditions = "yes"
+	CreditApplicationStateAccepted       CreditApplicationState = "accepted"
+	CreditApplicationStateActionCustomer CreditApplicationState = "action_customer"
+	CreditApplicationStateActionLender   CreditApplicationState = "action_lender"
+	CreditApplicationStateCancelled      CreditApplicationState = "cancelled"
+	CreditApplicationStateDeclined       CreditApplicationState = "declined"
+	CreditApplicationStateFinished       CreditApplicationState = "finished"
+	CreditApplicationStatePaidOut        CreditApplicationState = "paid_out"
+	CreditApplicationStatePending        CreditApplicationState = "pending"
+	CreditApplicationStateReferred       CreditApplicationState = "referred"
 )
 
-// Defines values for ContractAgreementAgreedToBecomeIarOfKanda.
+// Defines values for DepositType.
 const (
-	ContractAgreementAgreedToBecomeIarOfKandaNo  ContractAgreementAgreedToBecomeIarOfKanda = "no"
-	ContractAgreementAgreedToBecomeIarOfKandaYes ContractAgreementAgreedToBecomeIarOfKanda = "yes"
+	DepositTypeFixedDeposit   DepositType = "fixed_deposit"
+	DepositTypeNoDeposit      DepositType = "no_deposit"
+	DepositTypePartialDeposit DepositType = "partial_deposit"
 )
 
-// Defines values for CreditKind.
+// Defines values for DirectorVerificationYesNo.
 const (
-	CreditKindCharge CreditKind = "charge"
-	CreditKindJob    CreditKind = "job"
+	DirectorVerificationYesNoNo  DirectorVerificationYesNo = "no"
+	DirectorVerificationYesNoYes DirectorVerificationYesNo = "yes"
 )
 
-// Defines values for CreditState.
+// Defines values for ElectricalTradeAssociation.
 const (
-	CreditStateAccepted       CreditState = "accepted"
-	CreditStateActionCustomer CreditState = "action_customer"
-	CreditStateActionLender   CreditState = "action_lender"
-	CreditStateCancelled      CreditState = "cancelled"
-	CreditStateDeclined       CreditState = "declined"
-	CreditStateFinished       CreditState = "finished"
-	CreditStatePaidOut        CreditState = "paid_out"
-	CreditStatePending        CreditState = "pending"
-	CreditStateReferred       CreditState = "referred"
+	ElectricalTradeAssociationNapit  ElectricalTradeAssociation = "napit"
+	ElectricalTradeAssociationNiceic ElectricalTradeAssociation = "niceic"
+	ElectricalTradeAssociationNone   ElectricalTradeAssociation = "none"
 )
 
-// Defines values for CustomerDetailsMaritalStatus.
+// Defines values for EmployedType.
 const (
-	CustomerDetailsMaritalStatusCohabiting  CustomerDetailsMaritalStatus = "cohabiting"
-	CustomerDetailsMaritalStatusDivorced    CustomerDetailsMaritalStatus = "divorced"
-	CustomerDetailsMaritalStatusMarried     CustomerDetailsMaritalStatus = "married"
-	CustomerDetailsMaritalStatusOther       CustomerDetailsMaritalStatus = "other"
-	CustomerDetailsMaritalStatusSeparated   CustomerDetailsMaritalStatus = "separated"
-	CustomerDetailsMaritalStatusSingle      CustomerDetailsMaritalStatus = "single"
-	CustomerDetailsMaritalStatusToBeMarried CustomerDetailsMaritalStatus = "to_be_married"
-	CustomerDetailsMaritalStatusWidowed     CustomerDetailsMaritalStatus = "widowed"
-)
-
-// Defines values for CustomerDetailsResidentialStatus.
-const (
-	ArmedForces                      CustomerDetailsResidentialStatus = "armed_forces"
-	CouncilTenant                    CustomerDetailsResidentialStatus = "council_tenant"
-	HomeownerBuyToLetLivingElsewhere CustomerDetailsResidentialStatus = "homeowner_buy_to_let_living_elsewhere"
-	HomeownerSharedOwnership         CustomerDetailsResidentialStatus = "homeowner_shared_ownership"
-	LivingWithParents                CustomerDetailsResidentialStatus = "living_with_parents"
-	Lodger                           CustomerDetailsResidentialStatus = "lodger"
-	Owner                            CustomerDetailsResidentialStatus = "owner"
-	OwnerWithoutMortgage             CustomerDetailsResidentialStatus = "owner_without_mortgage"
-	Tenant                           CustomerDetailsResidentialStatus = "tenant"
-)
-
-// Defines values for DirectorInfoVerificationStatus.
-const (
-	NotVerified           DirectorInfoVerificationStatus = "not_verified"
-	VerificationDeclined  DirectorInfoVerificationStatus = "verification_declined"
-	VerificationSubmitted DirectorInfoVerificationStatus = "verification_submitted"
-	Verified              DirectorInfoVerificationStatus = "verified"
-)
-
-// Defines values for EmployedDetailsEmployedType.
-const (
-	EmployedDetailsEmployedTypeFullTime EmployedDetailsEmployedType = "full_time"
-	EmployedDetailsEmployedTypePartTime EmployedDetailsEmployedType = "part_time"
+	EmployedTypeFullTime EmployedType = "full_time"
+	EmployedTypePartTime EmployedType = "part_time"
 )
 
 // Defines values for EmploymentDetailsEmploymentStatus.
@@ -271,65 +216,22 @@ const (
 	RegionOffice EnterpriseEnterpriseType = "region_office"
 )
 
-// Defines values for EnterpriseUserTypeRole.
+// Defines values for EnterpriseRole.
 const (
-	EnterpriseAdmin EnterpriseUserTypeRole = "enterprise-admin"
-	EnterpriseUser  EnterpriseUserTypeRole = "enterprise-user"
-)
-
-// Defines values for EventName.
-const (
-	ApiAttempted                   EventName = "api-attempted"
-	ApiFailed                      EventName = "api-failed"
-	ApiSucceeded                   EventName = "api-succeeded"
-	ButtonInteracted               EventName = "button-interacted"
-	CommsSent                      EventName = "comms-sent"
-	FormError                      EventName = "form-error"
-	FormFilled                     EventName = "form-filled"
-	FormSubmitted                  EventName = "form-submitted"
-	LoginAttempted                 EventName = "login-attempted"
-	LoginFailed                    EventName = "login-failed"
-	LoginSucceeded                 EventName = "login-succeeded"
-	OnboardingBillingCancelled     EventName = "onboarding-billing-cancelled"
-	OnboardingBillingReferred      EventName = "onboarding-billing-referred"
-	OnboardingBillingSubscribed    EventName = "onboarding-billing-subscribed"
-	OnboardingCompleted            EventName = "onboarding-completed"
-	OnboardingContractSigned       EventName = "onboarding-contract-signed"
-	OnboardingDeclined             EventName = "onboarding-declined"
-	OnboardingDirectorFailed       EventName = "onboarding-director-failed"
-	OnboardingDirectorInfoProvided EventName = "onboarding-director-info-provided"
-	OnboardingDirectorPending      EventName = "onboarding-director-pending"
-	OnboardingDirectorVerified     EventName = "onboarding-director-verified"
-	OnboardingInsuranceUploaded    EventName = "onboarding-insurance-uploaded"
-	OnboardingLegacy               EventName = "onboarding-legacy"
-	OnboardingOnboarded            EventName = "onboarding-onboarded"
-	OnboardingRegistered           EventName = "onboarding-registered"
-	OnboardingRejected             EventName = "onboarding-rejected"
-	OnboardingVerified             EventName = "onboarding-verified"
-	PageClosed                     EventName = "page-closed"
-	PageError                      EventName = "page-error"
-	PageView                       EventName = "page-view"
-	SignupAttempted                EventName = "signup-attempted"
-	SignupFailed                   EventName = "signup-failed"
-	SignupSucceeded                EventName = "signup-succeeded"
+	EnterpriseAdmin EnterpriseRole = "enterprise-admin"
+	EnterpriseUser  EnterpriseRole = "enterprise-user"
 )
 
 // Defines values for ExpenditureExpenditureType.
 const (
-	ChildSupportAgency ExpenditureExpenditureType = "child_support_agency"
-	Clothes            ExpenditureExpenditureType = "clothes"
-	CouncilTaxAndBills ExpenditureExpenditureType = "council_tax_and_bills"
-	CreditCard         ExpenditureExpenditureType = "credit_card"
-	Healthcare         ExpenditureExpenditureType = "healthcare"
-	Holidays           ExpenditureExpenditureType = "holidays"
-	Mortgage           ExpenditureExpenditureType = "mortgage"
-	Rent               ExpenditureExpenditureType = "rent"
-)
-
-// Defines values for FinanceDetailsBankrupcyOrIvaInLast5Years.
-const (
-	FinanceDetailsBankrupcyOrIvaInLast5YearsNo  FinanceDetailsBankrupcyOrIvaInLast5Years = "no"
-	FinanceDetailsBankrupcyOrIvaInLast5YearsYes FinanceDetailsBankrupcyOrIvaInLast5Years = "yes"
+	ExpenditureExpenditureTypeChildSupportAgency ExpenditureExpenditureType = "child_support_agency"
+	ExpenditureExpenditureTypeClothes            ExpenditureExpenditureType = "clothes"
+	ExpenditureExpenditureTypeCouncilTaxAndBills ExpenditureExpenditureType = "council_tax_and_bills"
+	ExpenditureExpenditureTypeCreditCard         ExpenditureExpenditureType = "credit_card"
+	ExpenditureExpenditureTypeHealthcare         ExpenditureExpenditureType = "healthcare"
+	ExpenditureExpenditureTypeHolidays           ExpenditureExpenditureType = "holidays"
+	ExpenditureExpenditureTypeMortgage           ExpenditureExpenditureType = "mortgage"
+	ExpenditureExpenditureTypeRent               ExpenditureExpenditureType = "rent"
 )
 
 // Defines values for FinanceProvider.
@@ -341,13 +243,6 @@ const (
 	Novuna    FinanceProvider = "novuna"
 	Omni      FinanceProvider = "omni"
 	Propensio FinanceProvider = "propensio"
-)
-
-// Defines values for FinanceRateAprType.
-const (
-	BUYNOWPAYLATER  FinanceRateAprType = "BUYNOW_PAYLATER"
-	INTERESTBEARING FinanceRateAprType = "INTEREST_BEARING"
-	INTERESTFREE    FinanceRateAprType = "INTEREST_FREE"
 )
 
 // Defines values for FinanceStatus.
@@ -394,10 +289,10 @@ const (
 
 // Defines values for IncomeIncomeType.
 const (
-	Benefits             IncomeIncomeType = "benefits"
-	EarningAfterTax      IncomeIncomeType = "earning_after_tax"
-	OtherSourcesOfIncome IncomeIncomeType = "other_sources_of_income"
-	Pensions             IncomeIncomeType = "pensions"
+	IncomeIncomeTypeBenefits             IncomeIncomeType = "benefits"
+	IncomeIncomeTypeEarningAfterTax      IncomeIncomeType = "earning_after_tax"
+	IncomeIncomeTypeOtherSourcesOfIncome IncomeIncomeType = "other_sources_of_income"
+	IncomeIncomeTypePensions             IncomeIncomeType = "pensions"
 )
 
 // Defines values for IncomeIncomeTypeInfo.
@@ -444,58 +339,47 @@ const (
 	TraderViewed            IntroductionState = "trader_viewed"
 )
 
-// Defines values for JobDepositType.
+// Defines values for InviteTeamMemberYesNo.
 const (
-	JobDepositTypeFixedDeposit   JobDepositType = "fixed_deposit"
-	JobDepositTypeNoDeposit      JobDepositType = "no_deposit"
-	JobDepositTypePartialDeposit JobDepositType = "partial_deposit"
+	InviteTeamMemberYesNoNo  InviteTeamMemberYesNo = "no"
+	InviteTeamMemberYesNoYes InviteTeamMemberYesNo = "yes"
 )
 
-// Defines values for JobJobType.
+// Defines values for JobApplicationStatus.
 const (
-	Solar    JobJobType = "solar"
-	Standard JobJobType = "standard"
+	JobApplicationStatusAccepted JobApplicationStatus = "accepted"
+	JobApplicationStatusDeclined JobApplicationStatus = "declined"
+	JobApplicationStatusDraft    JobApplicationStatus = "draft"
+	JobApplicationStatusFinished JobApplicationStatus = "finished"
+	JobApplicationStatusSent     JobApplicationStatus = "sent"
 )
 
-// Defines values for JobStatus.
+// Defines values for JobBaseType.
 const (
-	JobStatusAccepted JobStatus = "accepted"
-	JobStatusDeclined JobStatus = "declined"
-	JobStatusDraft    JobStatus = "draft"
-	JobStatusFinished JobStatus = "finished"
-	JobStatusSent     JobStatus = "sent"
+	Solar    JobBaseType = "solar"
+	Standard JobBaseType = "standard"
 )
 
 // Defines values for JobCreditStateCurrentStatus.
 const (
-	Accepted                JobCreditStateCurrentStatus = "accepted"
-	AcceptedDepositRequired JobCreditStateCurrentStatus = "accepted_deposit_required"
-	AcceptedSignDocument    JobCreditStateCurrentStatus = "accepted_sign_document"
-	ActionCustomer          JobCreditStateCurrentStatus = "action_customer"
-	ActionLender            JobCreditStateCurrentStatus = "action_lender"
-	Cancelled               JobCreditStateCurrentStatus = "cancelled"
-	Declined                JobCreditStateCurrentStatus = "declined"
-	Finished                JobCreditStateCurrentStatus = "finished"
-	NotSubmitted            JobCreditStateCurrentStatus = "not_submitted"
-	PaidOut                 JobCreditStateCurrentStatus = "paid_out"
-	Pending                 JobCreditStateCurrentStatus = "pending"
-	Referred                JobCreditStateCurrentStatus = "referred"
+	JobCreditStateCurrentStatusAccepted                JobCreditStateCurrentStatus = "accepted"
+	JobCreditStateCurrentStatusAcceptedDepositRequired JobCreditStateCurrentStatus = "accepted_deposit_required"
+	JobCreditStateCurrentStatusAcceptedSignDocument    JobCreditStateCurrentStatus = "accepted_sign_document"
+	JobCreditStateCurrentStatusActionCustomer          JobCreditStateCurrentStatus = "action_customer"
+	JobCreditStateCurrentStatusActionLender            JobCreditStateCurrentStatus = "action_lender"
+	JobCreditStateCurrentStatusCancelled               JobCreditStateCurrentStatus = "cancelled"
+	JobCreditStateCurrentStatusDeclined                JobCreditStateCurrentStatus = "declined"
+	JobCreditStateCurrentStatusFinished                JobCreditStateCurrentStatus = "finished"
+	JobCreditStateCurrentStatusNotSubmitted            JobCreditStateCurrentStatus = "not_submitted"
+	JobCreditStateCurrentStatusPaidOut                 JobCreditStateCurrentStatus = "paid_out"
+	JobCreditStateCurrentStatusPending                 JobCreditStateCurrentStatus = "pending"
+	JobCreditStateCurrentStatusReferred                JobCreditStateCurrentStatus = "referred"
 )
 
 // Defines values for JobItemStyle.
 const (
 	JobItemStyleCustom JobItemStyle = "custom"
 	JobItemStyleKanda  JobItemStyle = "kanda"
-)
-
-// Defines values for JobItemVatRate.
-const (
-	Custom    JobItemVatRate = "custom"
-	Exempted  JobItemVatRate = "exempted"
-	N0        JobItemVatRate = "0%"
-	N20       JobItemVatRate = "20%"
-	N5        JobItemVatRate = "5%"
-	VatNotSet JobItemVatRate = "vat_not_set"
 )
 
 // Defines values for JobOverrideAction.
@@ -509,32 +393,10 @@ const (
 	MarkJobAsSatNoteDelayed JobOverrideAction = "mark_job_as_sat_note_delayed"
 )
 
-// Defines values for LeadSource.
+// Defines values for Kind.
 const (
-	Checkout LeadSource = "checkout"
-	Consumer LeadSource = "consumer"
-)
-
-// Defines values for LeadStatus.
-const (
-	Closed         LeadStatus = "closed"
-	CreditDeclined LeadStatus = "credit_declined"
-	Expired        LeadStatus = "expired"
-	Issued         LeadStatus = "issued"
-	Open           LeadStatus = "open"
-	QuoteDeclined  LeadStatus = "quote_declined"
-	TradeAccepted  LeadStatus = "trade_accepted"
-	TradeDeclined  LeadStatus = "trade_declined"
-	TradeNotified  LeadStatus = "trade_notified"
-)
-
-// Defines values for LeadQuoteWorkFinishedBy.
-const (
-	AsSoonAsPossible LeadQuoteWorkFinishedBy = "as soon as possible"
-	Over6Months      LeadQuoteWorkFinishedBy = "over 6 months"
-	Within1Month     LeadQuoteWorkFinishedBy = "within 1 month"
-	Within3Months    LeadQuoteWorkFinishedBy = "within 3 months"
-	Within6Months    LeadQuoteWorkFinishedBy = "within 6 months"
+	KindCharge Kind = "charge"
+	KindJob    Kind = "job"
 )
 
 // Defines values for LenderRateType.
@@ -543,22 +405,34 @@ const (
 	Unregulated LenderRateType = "unregulated"
 )
 
+// Defines values for LifecycleStatus.
+const (
+	LifecycleStatusCompletedSetup           LifecycleStatus = "completed_setup"
+	LifecycleStatusDeclined                 LifecycleStatus = "declined"
+	LifecycleStatusDirectorDetailsSubmitted LifecycleStatus = "director_details_submitted"
+	LifecycleStatusDirectorInfoProvided     LifecycleStatus = "director_info_provided"
+	LifecycleStatusInsuranceUploaded        LifecycleStatus = "insurance_uploaded"
+	LifecycleStatusOnboarded                LifecycleStatus = "onboarded"
+	LifecycleStatusRegistered               LifecycleStatus = "registered"
+	LifecycleStatusSubscribed               LifecycleStatus = "subscribed"
+	LifecycleStatusVerified                 LifecycleStatus = "verified"
+)
+
+// Defines values for MaritalStatus.
+const (
+	MaritalStatusCohabiting  MaritalStatus = "cohabiting"
+	MaritalStatusDivorced    MaritalStatus = "divorced"
+	MaritalStatusMarried     MaritalStatus = "married"
+	MaritalStatusOther       MaritalStatus = "other"
+	MaritalStatusSeparated   MaritalStatus = "separated"
+	MaritalStatusSingle      MaritalStatus = "single"
+	MaritalStatusToBeMarried MaritalStatus = "to_be_married"
+	MaritalStatusWidowed     MaritalStatus = "widowed"
+)
+
 // Defines values for MoneyCurrency.
 const (
 	GBP MoneyCurrency = "GBP"
-)
-
-// Defines values for NotEmployedDetailsSourceOfIncome.
-const (
-	NotEmployedDetailsSourceOfIncomeBenefits      NotEmployedDetailsSourceOfIncome = "benefits"
-	NotEmployedDetailsSourceOfIncomeDisabled      NotEmployedDetailsSourceOfIncome = "disabled"
-	NotEmployedDetailsSourceOfIncomeFulltimeCarer NotEmployedDetailsSourceOfIncome = "fulltime_carer"
-	NotEmployedDetailsSourceOfIncomeHomemaker     NotEmployedDetailsSourceOfIncome = "homemaker"
-	NotEmployedDetailsSourceOfIncomeMaintenance   NotEmployedDetailsSourceOfIncome = "maintenance"
-	NotEmployedDetailsSourceOfIncomeOther         NotEmployedDetailsSourceOfIncome = "other"
-	NotEmployedDetailsSourceOfIncomePartner       NotEmployedDetailsSourceOfIncome = "partner"
-	NotEmployedDetailsSourceOfIncomePermanentDla  NotEmployedDetailsSourceOfIncome = "permanent_dla"
-	NotEmployedDetailsSourceOfIncomeStudent       NotEmployedDetailsSourceOfIncome = "student"
 )
 
 // Defines values for OnboardingStage.
@@ -585,34 +459,22 @@ const (
 	TradeReviewed          OnboardingStage = "trade_reviewed"
 )
 
-// Defines values for OnlinePresenceQOnline.
+// Defines values for PaymentCurrentStatus.
 const (
-	NoIDontHaveThis          OnlinePresenceQOnline = "No, I don't have this"
-	YesICanProvideTheDetails OnlinePresenceQOnline = "Yes, I can provide the details"
+	PaymentCurrentStatusCancelled PaymentCurrentStatus = "cancelled"
+	PaymentCurrentStatusDisputed  PaymentCurrentStatus = "disputed"
+	PaymentCurrentStatusPaid      PaymentCurrentStatus = "paid"
+	PaymentCurrentStatusPending   PaymentCurrentStatus = "pending"
+	PaymentCurrentStatusRefunded  PaymentCurrentStatus = "refunded"
+	PaymentCurrentStatusUnpaid    PaymentCurrentStatus = "unpaid"
 )
 
-// Defines values for PaymentKind.
+// Defines values for PaymentMethod.
 const (
-	PaymentKindCharge PaymentKind = "charge"
-	PaymentKindJob    PaymentKind = "job"
-)
-
-// Defines values for PaymentStatus.
-const (
-	PaymentStatusCancelled PaymentStatus = "cancelled"
-	PaymentStatusDisputed  PaymentStatus = "disputed"
-	PaymentStatusPaid      PaymentStatus = "paid"
-	PaymentStatusPending   PaymentStatus = "pending"
-	PaymentStatusRefunded  PaymentStatus = "refunded"
-	PaymentStatusUnpaid    PaymentStatus = "unpaid"
-)
-
-// Defines values for PaymentOptionPaymentMethod.
-const (
-	Card     PaymentOptionPaymentMethod = "card"
-	Cash     PaymentOptionPaymentMethod = "cash"
-	External PaymentOptionPaymentMethod = "external"
-	Loan     PaymentOptionPaymentMethod = "loan"
+	Card     PaymentMethod = "card"
+	Cash     PaymentMethod = "cash"
+	External PaymentMethod = "external"
+	Loan     PaymentMethod = "loan"
 )
 
 // Defines values for PreferenceOption.
@@ -621,59 +483,77 @@ const (
 	Enabled  PreferenceOption = "enabled"
 )
 
-// Defines values for Result.
+// Defines values for QAdvice.
 const (
-	FAILED  Result = "FAILED"
-	MISSING Result = "MISSING"
-	PASSED  Result = "PASSED"
-	VOIDED  Result = "VOIDED"
+	TheyCompletedTheApplicationForMe         QAdvice = "They completed the application for me"
+	TheyHelpedMeWorkOutMyPotentialRepayments QAdvice = "They helped me work out my potential repayments"
+	TheyJustSentMeALinkToApply               QAdvice = "They just sent me a link to apply"
+	TheyToldMeWhatRatesWhereAvailable        QAdvice = "They told me what rates where available"
 )
 
-// Defines values for SatNoteQAdvice.
+// Defines values for QApplication.
 const (
-	TheyCompletedTheApplicationForMe         SatNoteQAdvice = "They completed the application for me"
-	TheyHelpedMeWorkOutMyPotentialRepayments SatNoteQAdvice = "They helped me work out my potential repayments"
-	TheyJustSentMeALinkToApply               SatNoteQAdvice = "They just sent me a link to apply"
-	TheyToldMeWhatRatesWhereAvailable        SatNoteQAdvice = "They told me what rates where available"
+	ICompletedTheApplicationMyself          QApplication = "I completed the application myself"
+	SomeoneCompletedTheAppliationOnMyBehalf QApplication = "Someone completed the appliation on my behalf"
 )
 
-// Defines values for SatNoteQApplication.
+// Defines values for QAvailability.
 const (
-	ICompletedTheApplicationMyself          SatNoteQApplication = "I completed the application myself"
-	SomeoneCompletedTheAppliationOnMyBehalf SatNoteQApplication = "Someone completed the appliation on my behalf"
+	IFoundOutWhenTheInstallerSentMeALinkViaKanda QAvailability = "I found out when the installer sent me a link via Kanda"
+	ISawItAdvertisedByTheInstaller               QAvailability = "I saw it advertised by the installer"
+	TheInstallerToldMeWhenQuotingMe              QAvailability = "The installer told me when quoting me"
 )
 
-// Defines values for SatNoteQAvailability.
+// Defines values for QEasiness.
 const (
-	IFoundOutWhenTheInstallerSentMeALinkViaKanda SatNoteQAvailability = "I found out when the installer sent me a link via Kanda"
-	ISawItAdvertisedByTheInstaller               SatNoteQAvailability = "I saw it advertised by the installer"
-	TheInstallerToldMeWhenQuotingMe              SatNoteQAvailability = "The installer told me when quoting me"
+	QEasinessNo       QEasiness = "no"
+	QEasinessSomewhat QEasiness = "somewhat"
+	QEasinessYes      QEasiness = "yes"
 )
 
-// Defines values for SatNoteQEasiness.
+// Defines values for QOnline.
 const (
-	SatNoteQEasinessNo       SatNoteQEasiness = "no"
-	SatNoteQEasinessSomewhat SatNoteQEasiness = "somewhat"
-	SatNoteQEasinessYes      SatNoteQEasiness = "yes"
+	NoIDoNotHaveThis         QOnline = "No, I do not have this"
+	YesICanProvideTheDetails QOnline = "Yes, I can provide the details"
 )
 
-// Defines values for SatNoteQPressure.
+// Defines values for QPressure.
 const (
-	SatNoteQPressureNo       SatNoteQPressure = "no"
-	SatNoteQPressureSomewhat SatNoteQPressure = "somewhat"
-	SatNoteQPressureYes      SatNoteQPressure = "yes"
+	QPressureNo       QPressure = "no"
+	QPressureSomewhat QPressure = "somewhat"
+	QPressureYes      QPressure = "yes"
 )
 
-// Defines values for SatNoteQRate.
+// Defines values for QRate.
 const (
-	NoIWasNotToldToChooseASpecificOption SatNoteQRate = "No - I was not told to choose a specific option"
-	YesIWasToldToChooseASpecificOption   SatNoteQRate = "Yes - I was told to choose a specific option"
+	NoIWasNotToldToChooseASpecificOption QRate = "No - I was not told to choose a specific option"
+	YesIWasToldToChooseASpecificOption   QRate = "Yes - I was told to choose a specific option"
 )
 
-// Defines values for SatNoteQSaving.
+// Defines values for QSaving.
 const (
-	NoIDoNotUnderstand SatNoteQSaving = "No I do not understand"
-	YesIUnderstand     SatNoteQSaving = "Yes I understand"
+	NoIDoNotUnderstand QSaving = "No I do not understand"
+	YesIUnderstand     QSaving = "Yes I understand"
+)
+
+// Defines values for QuotePreference.
+const (
+	QuotePreferenceCustom       QuotePreference = "custom"
+	QuotePreferenceKanda        QuotePreference = "kanda"
+	QuotePreferenceNoPreference QuotePreference = "no_preference"
+)
+
+// Defines values for ResidentialStatus.
+const (
+	ArmedForces                      ResidentialStatus = "armed_forces"
+	CouncilTenant                    ResidentialStatus = "council_tenant"
+	HomeownerBuyToLetLivingElsewhere ResidentialStatus = "homeowner_buy_to_let_living_elsewhere"
+	HomeownerSharedOwnership         ResidentialStatus = "homeowner_shared_ownership"
+	LivingWithParents                ResidentialStatus = "living_with_parents"
+	Lodger                           ResidentialStatus = "lodger"
+	Owner                            ResidentialStatus = "owner"
+	OwnerWithoutMortgage             ResidentialStatus = "owner_without_mortgage"
+	Tenant                           ResidentialStatus = "tenant"
 )
 
 // Defines values for SearchIndex.
@@ -688,30 +568,48 @@ const (
 	SearchIndexTransaction  SearchIndex = "transaction"
 )
 
-// Defines values for SelfEmployedDetailsSelfEmployedType.
+// Defines values for SelfEmployedType.
 const (
-	SelfEmployedDetailsSelfEmployedTypeFullTime SelfEmployedDetailsSelfEmployedType = "full_time"
-	SelfEmployedDetailsSelfEmployedTypePartTime SelfEmployedDetailsSelfEmployedType = "part_time"
+	SelfEmployedTypeFullTime SelfEmployedType = "full_time"
+	SelfEmployedTypePartTime SelfEmployedType = "part_time"
 )
 
-// Defines values for SignatureSigned.
+// Defines values for ShowYesNo.
 const (
-	SignatureSignedNo  SignatureSigned = "no"
-	SignatureSignedYes SignatureSigned = "yes"
+	ShowYesNoNo  ShowYesNo = "no"
+	ShowYesNoYes ShowYesNo = "yes"
 )
 
-// Defines values for SolarCompanyInfoElectricalTradeAssociation.
+// Defines values for SignatureSignedStatus.
 const (
-	Napit  SolarCompanyInfoElectricalTradeAssociation = "napit"
-	Niceic SolarCompanyInfoElectricalTradeAssociation = "niceic"
-	None   SolarCompanyInfoElectricalTradeAssociation = "none"
+	SignatureSignedStatusNo  SignatureSignedStatus = "no"
+	SignatureSignedStatusYes SignatureSignedStatus = "yes"
 )
 
-// Defines values for SolarCompanyInfoSolarTradeAssociation.
+// Defines values for SkipDeposit.
 const (
-	Heis SolarCompanyInfoSolarTradeAssociation = "heis"
-	Msc  SolarCompanyInfoSolarTradeAssociation = "msc"
-	Recc SolarCompanyInfoSolarTradeAssociation = "recc"
+	SkipDepositNo  SkipDeposit = "No"
+	SkipDepositYes SkipDeposit = "Yes"
+)
+
+// Defines values for SolarTradeAssociation.
+const (
+	Heis SolarTradeAssociation = "heis"
+	Msc  SolarTradeAssociation = "msc"
+	Recc SolarTradeAssociation = "recc"
+)
+
+// Defines values for SourceOfIncome.
+const (
+	SourceOfIncomeBenefits      SourceOfIncome = "benefits"
+	SourceOfIncomeDisabled      SourceOfIncome = "disabled"
+	SourceOfIncomeFulltimeCarer SourceOfIncome = "fulltime_carer"
+	SourceOfIncomeHomemaker     SourceOfIncome = "homemaker"
+	SourceOfIncomeMaintenance   SourceOfIncome = "maintenance"
+	SourceOfIncomeOther         SourceOfIncome = "other"
+	SourceOfIncomePartner       SourceOfIncome = "partner"
+	SourceOfIncomePermanentDla  SourceOfIncome = "permanent_dla"
+	SourceOfIncomeStudent       SourceOfIncome = "student"
 )
 
 // Defines values for SubscriptionInterval.
@@ -720,16 +618,16 @@ const (
 	Yearly  SubscriptionInterval = "yearly"
 )
 
-// Defines values for Tier.
+// Defines values for TierAction.
 const (
-	BaseRate       Tier = "base_rate"
-	EnterpriseRate Tier = "enterprise_rate"
+	AddTier    TierAction = "add_tier"
+	RemoveTier TierAction = "remove_tier"
 )
 
-// Defines values for TierEventAction.
+// Defines values for TierType.
 const (
-	AddTier    TierEventAction = "add_tier"
-	RemoveTier TierEventAction = "remove_tier"
+	TierTypeBaseRate       TierType = "base_rate"
+	TierTypeEnterpriseRate TierType = "enterprise_rate"
 )
 
 // Defines values for Title.
@@ -741,106 +639,105 @@ const (
 	Ms   Title = "ms"
 )
 
+// Defines values for TradeBody.
+const (
+	TradeBodyAcrib   TradeBody = "acrib"
+	TradeBodyAphc    TradeBody = "aphc"
+	TradeBodyAssure  TradeBody = "assure"
+	TradeBodyCertass TradeBody = "certass"
+	TradeBodyElecsa  TradeBody = "elecsa"
+	TradeBodyFensa   TradeBody = "fensa"
+	TradeBodyFeta    TradeBody = "feta"
+	TradeBodyGasSafe TradeBody = "gas_safe"
+	TradeBodyHetas   TradeBody = "hetas"
+	TradeBodyNapit   TradeBody = "napit"
+	TradeBodyNfrc    TradeBody = "nfrc"
+	TradeBodyNiceic  TradeBody = "niceic"
+	TradeBodyNone    TradeBody = "none"
+	TradeBodyOther   TradeBody = "other"
+)
+
 // Defines values for TradeType.
 const (
-	TradeTypeAirConditioning              TradeType = "air_conditioning"
-	TradeTypeArtificialGrassSpecialists   TradeType = "artificial_grass_specialists"
-	TradeTypeBathrooms                    TradeType = "bathrooms"
-	TradeTypeBatteryStorage               TradeType = "battery_storage"
-	TradeTypeBlindsAndShutters            TradeType = "blinds_and_shutters"
-	TradeTypeCarpentry                    TradeType = "carpentry"
-	TradeTypeCctvAndSecurityInstallations TradeType = "cctv_and_security_installations"
-	TradeTypeCladdingSofitsAndGuttering   TradeType = "cladding_sofits_and_guttering"
-	TradeTypeConservatories               TradeType = "conservatories"
-	TradeTypeCurtains                     TradeType = "curtains"
-	TradeTypeDecking                      TradeType = "decking"
-	TradeTypeDrivewaysAndPatios           TradeType = "driveways_and_patios"
-	TradeTypeElectrician                  TradeType = "electrician"
-	TradeTypeEvChargerInstaller           TradeType = "ev_charger_installer"
-	TradeTypeFencing                      TradeType = "fencing"
-	TradeTypeFireplaces                   TradeType = "fireplaces"
-	TradeTypeFittedBedroomFurniture       TradeType = "fitted_bedroom_furniture"
-	TradeTypeFloorLayer                   TradeType = "floor_layer"
-	TradeTypeGarageDoors                  TradeType = "garage_doors"
-	TradeTypeGardenRooms                  TradeType = "garden_rooms"
-	TradeTypeGasEngineer                  TradeType = "gas_engineer"
-	TradeTypeGates                        TradeType = "gates"
-	TradeTypeHeatPumps                    TradeType = "heat_pumps"
-	TradeTypeHeatingSystems               TradeType = "heating_systems"
-	TradeTypeHomeInsulationExclSprayFoam  TradeType = "home_insulation_excl_spray_foam"
-	TradeTypeHotTubSpecialist             TradeType = "hot_tub_specialist"
-	TradeTypeKitchenFitter                TradeType = "kitchen_fitter"
-	TradeTypeKitchenSupplier              TradeType = "kitchen_supplier"
-	TradeTypeLandscaping                  TradeType = "landscaping"
-	TradeTypeLoftBoarding                 TradeType = "loft_boarding"
-	TradeTypeMultiTrade                   TradeType = "multi_trade"
-	TradeTypeOtherTrade                   TradeType = "other_trade"
-	TradeTypePaintingAndDecorating        TradeType = "painting_and_decorating"
-	TradeTypePlasterer                    TradeType = "plasterer"
-	TradeTypePlumbing                     TradeType = "plumbing"
-	TradeTypeRendering                    TradeType = "rendering"
-	TradeTypeResinDriveSpecialist         TradeType = "resin_drive_specialist"
-	TradeTypeResinDriveways               TradeType = "resin_driveways"
-	TradeTypeRoofingExcludingFlatRoofs    TradeType = "roofing__excluding_flat_roofs"
-	TradeTypeSecuritySystems              TradeType = "security_systems"
-	TradeTypeStairCaseSpecialist          TradeType = "stair_case_specialist"
-	TradeTypeTiler                        TradeType = "tiler"
-	TradeTypeVerandas                     TradeType = "verandas"
-	TradeTypeWindowsAndDoors              TradeType = "windows_and_doors"
+	AirConditioning              TradeType = "air_conditioning"
+	ArtificialGrassSpecialists   TradeType = "artificial_grass_specialists"
+	Bathrooms                    TradeType = "bathrooms"
+	BatteryStorage               TradeType = "battery_storage"
+	BlindsAndShutters            TradeType = "blinds_and_shutters"
+	Carpentry                    TradeType = "carpentry"
+	CctvAndSecurityInstallations TradeType = "cctv_and_security_installations"
+	CladdingSofitsAndGuttering   TradeType = "cladding_sofits_and_guttering"
+	Conservatories               TradeType = "conservatories"
+	Curtains                     TradeType = "curtains"
+	Decking                      TradeType = "decking"
+	DrivewaysAndPatios           TradeType = "driveways_and_patios"
+	Electrician                  TradeType = "electrician"
+	EvChargerInstaller           TradeType = "ev_charger_installer"
+	Fencing                      TradeType = "fencing"
+	Fireplaces                   TradeType = "fireplaces"
+	FittedBedroomFurniture       TradeType = "fitted_bedroom_furniture"
+	FloorLayer                   TradeType = "floor_layer"
+	GarageDoors                  TradeType = "garage_doors"
+	GardenRooms                  TradeType = "garden_rooms"
+	GasEngineer                  TradeType = "gas_engineer"
+	Gates                        TradeType = "gates"
+	HeatPumps                    TradeType = "heat_pumps"
+	HeatingSystems               TradeType = "heating_systems"
+	HomeInsulationExclSprayFoam  TradeType = "home_insulation_excl_spray_foam"
+	HotTubSpecialist             TradeType = "hot_tub_specialist"
+	KitchenFitter                TradeType = "kitchen_fitter"
+	KitchenSupplier              TradeType = "kitchen_supplier"
+	Landscaping                  TradeType = "landscaping"
+	LoftBoarding                 TradeType = "loft_boarding"
+	MultiTrade                   TradeType = "multi_trade"
+	OtherTrade                   TradeType = "other_trade"
+	PaintingAndDecorating        TradeType = "painting_and_decorating"
+	Plasterer                    TradeType = "plasterer"
+	Plumbing                     TradeType = "plumbing"
+	Rendering                    TradeType = "rendering"
+	ResinDriveSpecialist         TradeType = "resin_drive_specialist"
+	ResinDriveways               TradeType = "resin_driveways"
+	RoofingExcludingFlatRoofs    TradeType = "roofing__excluding_flat_roofs"
+	SecuritySystems              TradeType = "security_systems"
+	StairCaseSpecialist          TradeType = "stair_case_specialist"
+	Tiler                        TradeType = "tiler"
+	Verandas                     TradeType = "verandas"
+	WindowsAndDoors              TradeType = "windows_and_doors"
 )
 
-// Defines values for TransactionPayoutType.
+// Defines values for TrainingCategorySection.
 const (
-	PaidFromKanda TransactionPayoutType = "paid_from_kanda"
-	PaidToKanda   TransactionPayoutType = "paid_to_kanda"
+	AdvertisingFinance                      TrainingCategorySection = "advertising_finance"
+	HowdensAdvertisingFinance               TrainingCategorySection = "howdens__advertising_finance"
+	HowdensFightingFinancialCrime           TrainingCategorySection = "howdens__fighting_financial_crime"
+	HowdensSeniorManagementResponsibilities TrainingCategorySection = "howdens__senior_management_responsibilities"
+	HowdensTheBasicsOfOfferingFinance       TrainingCategorySection = "howdens__the_basics_of_offering_finance"
+	HowdensTreatingCustomersFairly          TrainingCategorySection = "howdens__treating_customers_fairly"
+	HowdensWhatIsAnArAndWhatCanItDo         TrainingCategorySection = "howdens__what_is_an_ar_and_what_can_it_do"
+	TreatingCustomersFairly                 TrainingCategorySection = "treating_customers_fairly"
+	WhatIsAnIarAndWhatCanItDo               TrainingCategorySection = "what_is_an_iar_and_what_can_it_do"
 )
 
-// Defines values for UserEventProvider.
+// Defines values for TrainingState.
 const (
-	Facebook UserEventProvider = "facebook"
-	Firebase UserEventProvider = "firebase"
-	Google   UserEventProvider = "google"
-	System   UserEventProvider = "system"
+	FAILED  TrainingState = "FAILED"
+	MISSING TrainingState = "MISSING"
+	PASSED  TrainingState = "PASSED"
+	VOIDED  TrainingState = "VOIDED"
 )
 
-// Defines values for UserTypeRole.
+// Defines values for UpdateWebsiteYesNo.
 const (
-	CompanyAdmin   UserTypeRole = "company-admin"
-	CompanyManager UserTypeRole = "company-manager"
-	CompanyStaff   UserTypeRole = "company-staff"
+	UpdateWebsiteYesNoNo  UpdateWebsiteYesNo = "no"
+	UpdateWebsiteYesNoYes UpdateWebsiteYesNo = "yes"
 )
 
 // Defines values for VerificationStatus.
 const (
-	NotStarted          VerificationStatus = "not_started"
-	VerificationError   VerificationStatus = "verification_error"
-	VerificationFailed  VerificationStatus = "verification_failed"
-	VerificationPassed  VerificationStatus = "verification_passed"
-	VerificationSkipped VerificationStatus = "verification_skipped"
-)
-
-// Defines values for WelcomeSkipBannerAdvertFinanceCalculator.
-const (
-	WelcomeSkipBannerAdvertFinanceCalculatorNo  WelcomeSkipBannerAdvertFinanceCalculator = "no"
-	WelcomeSkipBannerAdvertFinanceCalculatorYes WelcomeSkipBannerAdvertFinanceCalculator = "yes"
-)
-
-// Defines values for WelcomeSkipBannerDirectorVerification.
-const (
-	WelcomeSkipBannerDirectorVerificationNo  WelcomeSkipBannerDirectorVerification = "no"
-	WelcomeSkipBannerDirectorVerificationYes WelcomeSkipBannerDirectorVerification = "yes"
-)
-
-// Defines values for WelcomeSkipBannerInviteTeamMember.
-const (
-	WelcomeSkipBannerInviteTeamMemberNo  WelcomeSkipBannerInviteTeamMember = "no"
-	WelcomeSkipBannerInviteTeamMemberYes WelcomeSkipBannerInviteTeamMember = "yes"
-)
-
-// Defines values for WelcomeSkipBannerUpdateWebsite.
-const (
-	WelcomeSkipBannerUpdateWebsiteNo  WelcomeSkipBannerUpdateWebsite = "no"
-	WelcomeSkipBannerUpdateWebsiteYes WelcomeSkipBannerUpdateWebsite = "yes"
+	VerificationStatusNotVerified           VerificationStatus = "not_verified"
+	VerificationStatusVerificationDeclined  VerificationStatus = "verification_declined"
+	VerificationStatusVerificationSubmitted VerificationStatus = "verification_submitted"
+	VerificationStatusVerified              VerificationStatus = "verified"
 )
 
 // Defines values for WorkType.
@@ -903,6 +800,12 @@ const (
 	Reduced Format = "reduced"
 )
 
+// Defines values for Tier.
+const (
+	TierBaseRate       Tier = "base_rate"
+	TierEnterpriseRate Tier = "enterprise_rate"
+)
+
 // Defines values for XKandaProtected.
 const (
 	No  XKandaProtected = "no"
@@ -925,30 +828,18 @@ type Address struct {
 	Postcode        string  `json:"postcode"`
 }
 
+// AdvertFinanceCalculatorYesNo defines model for AdvertFinanceCalculatorYesNo.
+type AdvertFinanceCalculatorYesNo string
+
+// AgreedTermsAndConditions defines model for AgreedTermsAndConditions.
+type AgreedTermsAndConditions string
+
+// AgreedToBecomeIarOfKanda defines model for AgreedToBecomeIarOfKanda.
+type AgreedToBecomeIarOfKanda string
+
 // Analytics defines model for Analytics.
 type Analytics struct {
 	Utms *[]UTM `json:"utms,omitempty"`
-}
-
-// ApiEvent defines model for ApiEvent.
-type ApiEvent struct {
-	Action string `json:"action"`
-
-	// comm context to be used in dynamic templates
-	CommContext  *CommContext           `json:"comm_context,omitempty"`
-	Error        *string                `json:"error,omitempty"`
-	Method       ApiEventMethod         `json:"method"`
-	Resource     string                 `json:"resource"`
-	ResourceData *ApiEvent_ResourceData `json:"resource_data,omitempty"`
-	ResourceId   string                 `json:"resource_id"`
-}
-
-// ApiEventMethod defines model for ApiEvent.Method.
-type ApiEventMethod string
-
-// ApiEvent_ResourceData defines model for ApiEvent.ResourceData.
-type ApiEvent_ResourceData struct {
-	AdditionalProperties map[string]interface{} `json:"-"`
 }
 
 // ApplicantDetails defines model for ApplicantDetails.
@@ -972,6 +863,9 @@ type ApprovalOutcome string
 
 // ApprovalReason defines model for Approval.Reason.
 type ApprovalReason string
+
+// AprType defines model for AprType.
+type AprType string
 
 // Archived defines model for Archived.
 type Archived string
@@ -1062,6 +956,12 @@ type BankAccount struct {
 // BankAccountType defines model for BankAccountType.
 type BankAccountType string
 
+// BankVerificationStatus defines model for BankVerificationStatus.
+type BankVerificationStatus string
+
+// BankrupcyOrIvaInLast5Years defines model for BankrupcyOrIvaInLast5Years.
+type BankrupcyOrIvaInLast5Years string
+
 // BaseId defines model for BaseId.
 type BaseId struct {
 	// resource author id
@@ -1087,6 +987,9 @@ type BaseId struct {
 	Tid *string `json:"tid,omitempty"`
 }
 
+// BillingStatus defines model for BillingStatus.
+type BillingStatus string
+
 // branding override object
 type Branding struct {
 	Logo                 Document               `json:"logo"`
@@ -1101,68 +1004,51 @@ type Budgets struct {
 
 // BusinessConfig defines model for BusinessConfig.
 type BusinessConfig struct {
-	BusinessSector BusinessSector     `json:"business_sector"`
-	Extra          *string            `json:"extra,omitempty"`
-	Lender         FinanceProvider    `json:"lender"`
-	LenderRateType LenderRateType     `json:"lender_rate_type"`
-	Show           BusinessConfigShow `json:"show"`
-	TradeText      string             `json:"trade_text"`
-	TradeType      TradeType          `json:"trade_type"`
+	BusinessSector BusinessSector  `json:"business_sector"`
+	Extra          *string         `json:"extra,omitempty"`
+	Lender         FinanceProvider `json:"lender"`
+	LenderRateType LenderRateType  `json:"lender_rate_type"`
+	Show           ShowYesNo       `json:"show"`
+	TradeText      string          `json:"trade_text"`
+	TradeType      TradeType       `json:"trade_type"`
 }
-
-// BusinessConfigShow defines model for BusinessConfig.Show.
-type BusinessConfigShow string
 
 // BusinessSector defines model for BusinessSector.
 type BusinessSector string
 
 // Cache defines model for Cache.
 type Cache struct {
-	Cid                  *string           `json:"cid,omitempty"`
-	Id                   *string           `json:"id,omitempty"`
-	Metadata             *Metadata         `json:"metadata,omitempty"`
-	Oid                  *string           `json:"oid,omitempty"`
+	// resource author id
+	Aid *string `json:"aid,omitempty"`
+
+	// resource branch id
+	Bid *string `json:"bid,omitempty"`
+
+	// resource company id
+	Cid *string `json:"cid,omitempty"`
+
+	// resource enterprise id
+	Eid *string `json:"eid,omitempty"`
+
+	// resource id
+	Id       string   `json:"id"`
+	Metadata Metadata `json:"metadata"`
+
+	// resource owner id
+	Oid *string `json:"oid,omitempty"`
+
+	// resource trader id
+	Tid                  *string           `json:"tid,omitempty"`
 	AdditionalProperties map[string]string `json:"-"`
 }
 
-// Category defines model for Category.
-type Category struct {
-	NumberOfCorrectQuizzes *int32          `json:"number_of_correct_quizzes,omitempty"`
-	NumberOfQuizzes        int32           `json:"number_of_quizzes"`
-	Result                 *Result         `json:"result,omitempty"`
-	Section                CategorySection `json:"section"`
+// CacheInput defines model for CacheInput.
+type CacheInput struct {
+	AdditionalProperties map[string]string `json:"-"`
 }
-
-// CategorySection defines model for Category.Section.
-type CategorySection string
 
 // checkout option picked by customer, updated only via custom action
 type CheckoutOption string
-
-// comm context to be used in dynamic templates
-type CommContext struct {
-	BankAccount BankAccount `json:"bank_account"`
-	CtaSubUrl   *string     `json:"cta_sub_url,omitempty"`
-	CtaUrl      string      `json:"cta_url"`
-	Deposit     struct {
-		Applied    string `json:"applied"`
-		Difference string `json:"difference"`
-		Original   string `json:"original"`
-	} `json:"deposit"`
-	Documents *[]Document  `json:"documents,omitempty"`
-	FlowType  *FlowType    `json:"flow_type,omitempty"`
-	Lender    *ContactInfo `json:"lender,omitempty"`
-
-	// optional comm context message
-	Message  *string     `json:"message,omitempty"`
-	Receiver ContactInfo `json:"receiver"`
-
-	// optional comm context reference
-	Reference    *string     `json:"reference,omitempty"`
-	Sender       ContactInfo `json:"sender"`
-	Template     string      `json:"template"`
-	TemplateName TName       `json:"template_name"`
-}
 
 // CommPreferences defines model for CommPreferences.
 type CommPreferences struct {
@@ -1173,56 +1059,60 @@ type CommPreferences struct {
 
 // Company defines model for Company.
 type Company struct {
-	Aid            *string         `json:"aid,omitempty"`
-	Analytics      *Analytics      `json:"analytics,omitempty"`
-	BankAccount    *BankAccount    `json:"bank_account,omitempty"`
-	Billing        *CompanyBilling `json:"billing,omitempty"`
+	// resource author id
+	Aid         *string      `json:"aid,omitempty"`
+	Analytics   *Analytics   `json:"analytics,omitempty"`
+	BankAccount *BankAccount `json:"bank_account,omitempty"`
+
+	// resource branch id
+	Bid            *string         `json:"bid,omitempty"`
+	Billing        BillingStatus   `json:"billing"`
 	BusinessConfig *BusinessConfig `json:"business_config,omitempty"`
 
 	// main business type
-	BusinessType *string        `json:"business_type,omitempty"`
-	Cid          *string        `json:"cid,omitempty"`
-	CompanyInfo  *CompanyInfo   `json:"company_info,omitempty"`
-	CompanyLogo  *Document      `json:"company_logo,omitempty"`
-	CompanyType  CompanyType    `json:"company_type"`
-	ContactInfo  *ContactInfo   `json:"contact_info,omitempty"`
-	Emails       *[]Email       `json:"emails,omitempty"`
+	BusinessType *string `json:"business_type,omitempty"`
+
+	// resource company id
+	Cid         *string      `json:"cid,omitempty"`
+	CompanyInfo *CompanyInfo `json:"company_info,omitempty"`
+	CompanyLogo *Document    `json:"company_logo,omitempty"`
+	CompanyType CompanyType  `json:"company_type"`
+	ContactInfo *ContactInfo `json:"contact_info,omitempty"`
+
+	// resource enterprise id
+	Eid          *string        `json:"eid,omitempty"`
+	Emails       []Email        `json:"emails"`
 	FcaNumber    *string        `json:"fca_number,omitempty"`
 	FinanceRates *[]FinanceRate `json:"finance_rates,omitempty"`
-	Id           *string        `json:"id,omitempty"`
+
+	// resource id
+	Id string `json:"id"`
 
 	// lender configuration for this company
-	LenderConfigs       *[]LenderConfig         `json:"lender_configs,omitempty"`
-	Lifecycle           *CompanyLifecycle       `json:"lifecycle,omitempty"`
-	LimitedCompanyInfo  *LimitedCompanyInfo     `json:"limited_company_info,omitempty"`
-	Metadata            *Metadata               `json:"metadata,omitempty"`
-	Oid                 *string                 `json:"oid,omitempty"`
-	QuotePreference     *CompanyQuotePreference `json:"quote_preference,omitempty"`
-	RedirectUrls        *RedirectURLs           `json:"redirect_urls,omitempty"`
-	ReferralActivatedAt *time.Time              `json:"referral_activated_at,omitempty"`
-	ReferralCode        *string                 `json:"referral_code,omitempty"`
-	ReferredBy          *string                 `json:"referred_by,omitempty"`
-	SkipDeposit         *CompanySkipDeposit     `json:"skip_deposit,omitempty"`
-	SolarCompanyInfo    *SolarCompanyInfo       `json:"solar_company_info,omitempty"`
-	SoleTraderInfo      *SoleTraderInfo         `json:"sole_trader_info,omitempty"`
-	TierConfig          *TierConfig             `json:"tier_config,omitempty"`
-	Users               *[]UserType             `json:"users,omitempty"`
+	LenderConfigs      *[]LenderConfig     `json:"lender_configs,omitempty"`
+	Lifecycle          LifecycleStatus     `json:"lifecycle"`
+	LimitedCompanyInfo *LimitedCompanyInfo `json:"limited_company_info,omitempty"`
+	Metadata           Metadata            `json:"metadata"`
+
+	// resource owner id
+	Oid                 *string           `json:"oid,omitempty"`
+	QuotePreference     *QuotePreference  `json:"quote_preference,omitempty"`
+	RedirectUrls        *RedirectURLs     `json:"redirect_urls,omitempty"`
+	ReferralActivatedAt *time.Time        `json:"referral_activated_at,omitempty"`
+	ReferralCode        *string           `json:"referral_code,omitempty"`
+	ReferredBy          *string           `json:"referred_by,omitempty"`
+	SkipDeposit         *SkipDeposit      `json:"skip_deposit,omitempty"`
+	SolarCompanyInfo    *SolarCompanyInfo `json:"solar_company_info,omitempty"`
+	SoleTraderInfo      *SoleTraderInfo   `json:"sole_trader_info,omitempty"`
+
+	// resource trader id
+	Tid        *string     `json:"tid,omitempty"`
+	TierConfig *TierConfig `json:"tier_config,omitempty"`
+	Users      *[]UserType `json:"users,omitempty"`
 
 	// company welcome skip banner
 	WelcomePack *WelcomeSkipBanner `json:"welcome_pack,omitempty"`
 }
-
-// CompanyBilling defines model for Company.Billing.
-type CompanyBilling string
-
-// CompanyLifecycle defines model for Company.Lifecycle.
-type CompanyLifecycle string
-
-// CompanyQuotePreference defines model for Company.QuotePreference.
-type CompanyQuotePreference string
-
-// CompanySkipDeposit defines model for Company.SkipDeposit.
-type CompanySkipDeposit string
 
 // company director report
 type CompanyDirectorReport struct {
@@ -1256,12 +1146,12 @@ type CompanyDirectorReport struct {
 
 // CompanyInfo defines model for CompanyInfo.
 type CompanyInfo struct {
-	AverageJobValue    Pence                       `json:"average_job_value"`
+	AverageJobValue    int32                       `json:"average_job_value"`
 	AverageMonthlyJobs int                         `json:"average_monthly_jobs"`
 	ContractAgreement  *ContractAgreement          `json:"contract_agreement,omitempty"`
 	InsuranceDocument  *Document                   `json:"insurance_document,omitempty"`
 	OnlinePresence     *OnlinePresence             `json:"online_presence,omitempty"`
-	TradeBody          CompanyInfoTradeBody        `json:"trade_body"`
+	TradeBody          TradeBody                   `json:"trade_body"`
 	TradeBodyName      string                      `json:"trade_body_name"`
 	TradeBodyNumber    *string                     `json:"trade_body_number,omitempty"`
 	TradeType          TradeType                   `json:"trade_type"`
@@ -1271,11 +1161,34 @@ type CompanyInfo struct {
 	WorkTypes          *[]WorkType                 `json:"work_types,omitempty"`
 }
 
-// CompanyInfoTradeBody defines model for CompanyInfo.TradeBody.
-type CompanyInfoTradeBody string
-
 // CompanyInfoUseSubcontractor defines model for CompanyInfo.UseSubcontractor.
 type CompanyInfoUseSubcontractor string
+
+// CompanyInput defines model for CompanyInput.
+type CompanyInput struct {
+	BankAccount    *BankAccount    `json:"bank_account,omitempty"`
+	BusinessConfig *BusinessConfig `json:"business_config,omitempty"`
+
+	// main business type
+	BusinessType       *string             `json:"business_type,omitempty"`
+	CompanyInfo        *CompanyInfo        `json:"company_info,omitempty"`
+	CompanyLogo        *Document           `json:"company_logo,omitempty"`
+	CompanyType        CompanyType         `json:"company_type"`
+	ContactInfo        *ContactInfo        `json:"contact_info,omitempty"`
+	FcaNumber          *string             `json:"fca_number,omitempty"`
+	LimitedCompanyInfo *LimitedCompanyInfo `json:"limited_company_info,omitempty"`
+	QuotePreference    *QuotePreference    `json:"quote_preference,omitempty"`
+	RedirectUrls       *RedirectURLs       `json:"redirect_urls,omitempty"`
+	ReferralCode       *string             `json:"referral_code,omitempty"`
+	SkipDeposit        *SkipDeposit        `json:"skip_deposit,omitempty"`
+	SolarCompanyInfo   *SolarCompanyInfo   `json:"solar_company_info,omitempty"`
+	SoleTraderInfo     *SoleTraderInfo     `json:"sole_trader_info,omitempty"`
+	TierConfig         *TierConfig         `json:"tier_config,omitempty"`
+	Users              *[]UserType         `json:"users,omitempty"`
+
+	// company welcome skip banner
+	WelcomePack *WelcomeSkipBanner `json:"welcome_pack,omitempty"`
+}
 
 // company onboarding report
 type CompanyReport struct {
@@ -1307,6 +1220,9 @@ type CompanyReport struct {
 	// company status
 	Status string `json:"status"`
 }
+
+// CompanyRole defines model for CompanyRole.
+type CompanyRole string
 
 // CompanyType defines model for CompanyType.
 type CompanyType string
@@ -1351,57 +1267,72 @@ type ContactInfo struct {
 
 // ContractAgreement defines model for ContractAgreement.
 type ContractAgreement struct {
-	AgreedTermsAndConditions *ContractAgreementAgreedTermsAndConditions `json:"agreed_terms_and_conditions,omitempty"`
-	AgreedToBecomeIarOfKanda *ContractAgreementAgreedToBecomeIarOfKanda `json:"agreed_to_become_iar_of_kanda,omitempty"`
-	Contract                 *Document                                  `json:"contract,omitempty"`
-	PrintName                *string                                    `json:"print_name,omitempty"`
-	SignedAt                 *time.Time                                 `json:"signed_at,omitempty"`
+	AgreedTermsAndConditions *AgreedTermsAndConditions `json:"agreed_terms_and_conditions,omitempty"`
+	AgreedToBecomeIarOfKanda *AgreedToBecomeIarOfKanda `json:"agreed_to_become_iar_of_kanda,omitempty"`
+	Contract                 *Document                 `json:"contract,omitempty"`
+	PrintName                *string                   `json:"print_name,omitempty"`
+	SignedAt                 *time.Time                `json:"signed_at,omitempty"`
 }
-
-// ContractAgreementAgreedTermsAndConditions defines model for ContractAgreement.AgreedTermsAndConditions.
-type ContractAgreementAgreedTermsAndConditions string
-
-// ContractAgreementAgreedToBecomeIarOfKanda defines model for ContractAgreement.AgreedToBecomeIarOfKanda.
-type ContractAgreementAgreedToBecomeIarOfKanda string
 
 // Credit defines model for Credit.
 type Credit struct {
 	AdditionalEmploymentDetails *[]EmploymentDetails `json:"additional_employment_details,omitempty"`
-	Aid                         *string              `json:"aid,omitempty"`
-	Amount                      *Money               `json:"amount,omitempty"`
+
+	// resource author id
+	Aid         *string     `json:"aid,omitempty"`
+	Amount      Money       `json:"amount"`
+	BankAccount BankAccount `json:"bank_account"`
+
+	// resource branch id
+	Bid *string `json:"bid,omitempty"`
+
+	// resource company id
+	Cid             *string         `json:"cid,omitempty"`
+	CreditDocuments *[]Document     `json:"credit_documents,omitempty"`
+	CustomerDetails CustomerDetails `json:"customer_details"`
+	DepositValue    Money           `json:"deposit_value"`
+
+	// resource enterprise id
+	Eid               *string             `json:"eid,omitempty"`
+	EmploymentDetails EmploymentDetails   `json:"employment_details"`
+	ExtraApplicants   *[]ApplicantDetails `json:"extra_applicants,omitempty"`
+	FinanceDetails    *FinanceDetails     `json:"finance_details,omitempty"`
+	FinanceOption     FinanceRate         `json:"finance_option"`
+	FlowType          *FlowType           `json:"flow_type,omitempty"`
+
+	// resource id
+	Id           string   `json:"id"`
+	IntroducedTo *string  `json:"introduced_to,omitempty"`
+	Kid          string   `json:"kid"`
+	Kind         Kind     `json:"kind"`
+	Metadata     Metadata `json:"metadata"`
+
+	// resource owner id
+	Oid       *string                `json:"oid,omitempty"`
+	Provider  FinanceProvider        `json:"provider"`
+	QuotedTo  *string                `json:"quoted_to,omitempty"`
+	Signature *Signature             `json:"signature,omitempty"`
+	State     CreditApplicationState `json:"state"`
+
+	// resource trader id
+	Tid     *string `json:"tid,omitempty"`
+	Xid     *string `json:"xid,omitempty"`
+	Xref    *string `json:"xref,omitempty"`
+	Xstatus *string `json:"xstatus,omitempty"`
+}
+
+// CreditApplicationState defines model for CreditApplicationState.
+type CreditApplicationState string
+
+// CreditInput defines model for CreditInput.
+type CreditInput struct {
+	AdditionalEmploymentDetails *[]EmploymentDetails `json:"additional_employment_details,omitempty"`
 	BankAccount                 BankAccount          `json:"bank_account"`
-	Bid                         *string              `json:"bid,omitempty"`
-	Cid                         *string              `json:"cid,omitempty"`
-	CreditDocuments             *[]Document          `json:"credit_documents,omitempty"`
 	CustomerDetails             CustomerDetails      `json:"customer_details"`
-	DepositValue                *Money               `json:"deposit_value,omitempty"`
-	Eid                         *string              `json:"eid,omitempty"`
 	EmploymentDetails           EmploymentDetails    `json:"employment_details"`
 	ExtraApplicants             *[]ApplicantDetails  `json:"extra_applicants,omitempty"`
 	FinanceDetails              *FinanceDetails      `json:"finance_details,omitempty"`
-	FinanceOption               FinanceRate          `json:"finance_option"`
-	FlowType                    *FlowType            `json:"flow_type,omitempty"`
-	Id                          *string              `json:"id,omitempty"`
-	IntroducedTo                *string              `json:"introduced_to,omitempty"`
-	Kid                         *string              `json:"kid,omitempty"`
-	Kind                        *CreditKind          `json:"kind,omitempty"`
-	Metadata                    *Metadata            `json:"metadata,omitempty"`
-	Oid                         *string              `json:"oid,omitempty"`
-	Provider                    *FinanceProvider     `json:"provider,omitempty"`
-	QuotedTo                    *string              `json:"quoted_to,omitempty"`
-	Signature                   *Signature           `json:"signature,omitempty"`
-	State                       *CreditState         `json:"state,omitempty"`
-	Tid                         *string              `json:"tid,omitempty"`
-	Xid                         *string              `json:"xid,omitempty"`
-	Xref                        *string              `json:"xref,omitempty"`
-	Xstatus                     *string              `json:"xstatus,omitempty"`
 }
-
-// CreditKind defines model for Credit.Kind.
-type CreditKind string
-
-// CreditState defines model for Credit.State.
-type CreditState string
 
 // Customer defines model for Customer.
 type Customer struct {
@@ -1416,35 +1347,29 @@ type Customer struct {
 type CustomerDetails struct {
 	CurrentAddress Address `json:"current_address"`
 
-	// Customer's date of birth. Format to use: `yyyy-mm-dd`
+	// Customer date of birth. Format to use: yyyy-mm-dd
 	DateOfBirth string `json:"date_of_birth"`
 	Email       Email  `json:"email"`
 	FirstName   string `json:"first_name"`
 
 	// gender
-	Gender               Gender                           `json:"gender"`
-	GoodsDeliveryAddress *Address                         `json:"goods_delivery_address,omitempty"`
-	LastName             string                           `json:"last_name"`
-	MaidenName           *string                          `json:"maiden_name,omitempty"`
-	MaritalStatus        CustomerDetailsMaritalStatus     `json:"marital_status"`
-	MiddleName           *string                          `json:"middle_name,omitempty"`
-	Mobile               *string                          `json:"mobile,omitempty"`
-	MonthlyRentAmount    *Money                           `json:"monthly_rent_amount,omitempty"`
-	NumberOfDependants   int32                            `json:"number_of_dependants"`
-	PreviousAddressOne   *Address                         `json:"previous_address_one,omitempty"`
-	PreviousAddressTwo   *Address                         `json:"previous_address_two,omitempty"`
-	ResidentialStatus    CustomerDetailsResidentialStatus `json:"residential_status"`
-	Telephone            *string                          `json:"telephone,omitempty"`
+	Gender               Gender            `json:"gender"`
+	GoodsDeliveryAddress *Address          `json:"goods_delivery_address,omitempty"`
+	LastName             string            `json:"last_name"`
+	MaidenName           *string           `json:"maiden_name,omitempty"`
+	MaritalStatus        MaritalStatus     `json:"marital_status"`
+	MiddleName           *string           `json:"middle_name,omitempty"`
+	Mobile               *string           `json:"mobile,omitempty"`
+	MonthlyRentAmount    *Money            `json:"monthly_rent_amount,omitempty"`
+	NumberOfDependants   int32             `json:"number_of_dependants"`
+	PreviousAddressOne   *Address          `json:"previous_address_one,omitempty"`
+	PreviousAddressTwo   *Address          `json:"previous_address_two,omitempty"`
+	ResidentialStatus    ResidentialStatus `json:"residential_status"`
+	Telephone            *string           `json:"telephone,omitempty"`
 
 	// title
 	Title Title `json:"title"`
 }
-
-// CustomerDetailsMaritalStatus defines model for CustomerDetails.MaritalStatus.
-type CustomerDetailsMaritalStatus string
-
-// CustomerDetailsResidentialStatus defines model for CustomerDetails.ResidentialStatus.
-type CustomerDetailsResidentialStatus string
 
 // CustomerOptions defines model for CustomerOptions.
 type CustomerOptions struct {
@@ -1454,15 +1379,15 @@ type CustomerOptions struct {
 	FinanceOption  FinanceRate    `json:"finance_option"`
 }
 
+// DepositType defines model for DepositType.
+type DepositType string
+
 // DirectorInfo defines model for DirectorInfo.
 type DirectorInfo struct {
-	DateOfBirth        *string                         `json:"date_of_birth,omitempty"`
-	HomeAddress        Address                         `json:"home_address"`
-	VerificationStatus *DirectorInfoVerificationStatus `json:"verification_status,omitempty"`
+	DateOfBirth        *string             `json:"date_of_birth,omitempty"`
+	HomeAddress        Address             `json:"home_address"`
+	VerificationStatus *VerificationStatus `json:"verification_status,omitempty"`
 }
-
-// DirectorInfoVerificationStatus defines model for DirectorInfo.VerificationStatus.
-type DirectorInfoVerificationStatus string
 
 // DirectorVerification defines model for DirectorVerification.
 type DirectorVerification struct {
@@ -1473,6 +1398,9 @@ type DirectorVerification struct {
 	LastName    string  `json:"last_name"`
 	Mobile      string  `json:"mobile"`
 }
+
+// DirectorVerificationYesNo defines model for DirectorVerificationYesNo.
+type DirectorVerificationYesNo string
 
 // Document defines model for Document.
 type Document struct {
@@ -1490,17 +1418,20 @@ type Document struct {
 	Tid      *string   `json:"tid,omitempty"`
 }
 
+// ElectricalTradeAssociation defines model for ElectricalTradeAssociation.
+type ElectricalTradeAssociation string
+
 // EmployedDetails defines model for EmployedDetails.
 type EmployedDetails struct {
-	EmployedType    *EmployedDetailsEmployedType `json:"employed_type,omitempty"`
-	EmployerAddress *Address                     `json:"employer_address,omitempty"`
-	EmployerName    string                       `json:"employer_name"`
-	MainOccupation  string                       `json:"main_occupation"`
-	MonthsEmployed  int32                        `json:"months_employed"`
+	EmployedType    *EmployedType `json:"employed_type,omitempty"`
+	EmployerAddress *Address      `json:"employer_address,omitempty"`
+	EmployerName    string        `json:"employer_name"`
+	MainOccupation  string        `json:"main_occupation"`
+	MonthsEmployed  int32         `json:"months_employed"`
 }
 
-// EmployedDetailsEmployedType defines model for EmployedDetails.EmployedType.
-type EmployedDetailsEmployedType string
+// EmployedType defines model for EmployedType.
+type EmployedType string
 
 // EmploymentDetails defines model for EmploymentDetails.
 type EmploymentDetails struct {
@@ -1548,6 +1479,9 @@ type Enterprise struct {
 // EnterpriseEnterpriseType defines model for Enterprise.EnterpriseType.
 type EnterpriseEnterpriseType string
 
+// EnterpriseRole defines model for EnterpriseRole.
+type EnterpriseRole string
+
 // EnterpriseUserRole defines model for EnterpriseUserRole.
 type EnterpriseUserRole struct {
 	Bid         *string  `json:"bid,omitempty"`
@@ -1562,16 +1496,13 @@ type EnterpriseUserRole struct {
 
 // EnterpriseUserType defines model for EnterpriseUserType.
 type EnterpriseUserType struct {
-	CommPreferences *CommPreferences       `json:"comm_preferences,omitempty"`
-	Email           Email                  `json:"email"`
-	Mobile          *string                `json:"mobile,omitempty"`
-	Name            string                 `json:"name"`
-	Role            EnterpriseUserTypeRole `json:"role"`
-	Uid             *string                `json:"uid,omitempty"`
+	CommPreferences *CommPreferences `json:"comm_preferences,omitempty"`
+	Email           Email            `json:"email"`
+	Mobile          *string          `json:"mobile,omitempty"`
+	Name            string           `json:"name"`
+	Role            EnterpriseRole   `json:"role"`
+	Uid             *string          `json:"uid,omitempty"`
 }
-
-// EnterpriseUserTypeRole defines model for EnterpriseUserType.Role.
-type EnterpriseUserTypeRole string
 
 // entry of action
 type Entry struct {
@@ -1589,56 +1520,8 @@ type Entry struct {
 
 // Error defines model for Error.
 type Error struct {
-	Code    *int32  `json:"code,omitempty"`
-	Message *string `json:"message,omitempty"`
-}
-
-// Event defines model for Event.
-type Event struct {
-	EventOptions EventOptions `json:"event_options"`
-	EventProps   *EventProps  `json:"event_props,omitempty"`
-
-	// Name of the event.  Can specify pageview which is a special type of event. All other names will be treated as custom events.
-	Name     EventName      `json:"name"`
-	Purchase *PurchaseEvent `json:"purchase,omitempty"`
-}
-
-// Name of the event.  Can specify pageview which is a special type of event. All other names will be treated as custom events.
-type EventName string
-
-// EventOptions defines model for EventOptions.
-type EventOptions struct {
-	DeviceId  string    `json:"device_id"`
-	Ip        string    `json:"ip"`
-	SessionId int       `json:"session_id"`
-	Time      time.Time `json:"time"`
-	UserId    *string   `json:"user_id,omitempty"`
-}
-
-// EventProps defines model for EventProps.
-type EventProps struct {
-	Api         *ApiEvent          `json:"api,omitempty"`
-	Domain      *string            `json:"domain,omitempty"`
-	Element     *string            `json:"element,omitempty"`
-	ElementId   *string            `json:"element_id,omitempty"`
-	ElementPath *string            `json:"element_path,omitempty"`
-	Info        *EventProps_Info   `json:"info,omitempty"`
-	Params      *EventProps_Params `json:"params,omitempty"`
-	Path        *string            `json:"path,omitempty"`
-	Referrer    *string            `json:"referrer,omitempty"`
-	RequestUser *UserEvent         `json:"request_user,omitempty"`
-	Url         *string            `json:"url,omitempty"`
-	UserAgent   *string            `json:"user_agent,omitempty"`
-}
-
-// EventProps_Info defines model for EventProps.Info.
-type EventProps_Info struct {
-	AdditionalProperties map[string]interface{} `json:"-"`
-}
-
-// EventProps_Params defines model for EventProps.Params.
-type EventProps_Params struct {
-	AdditionalProperties map[string]interface{} `json:"-"`
+	Code    int32  `json:"code"`
+	Message string `json:"message"`
 }
 
 // Expenditure defines model for Expenditure.
@@ -1657,42 +1540,36 @@ type ExportCSV struct {
 
 // FinanceDetails defines model for FinanceDetails.
 type FinanceDetails struct {
-	BankrupcyOrIvaInLast5Years *FinanceDetailsBankrupcyOrIvaInLast5Years `json:"bankrupcy_or_iva_in_last_5_years,omitempty"`
-	Expenditures               *[]Expenditure                            `json:"expenditures,omitempty"`
-	Incomes                    *[]Income                                 `json:"incomes,omitempty"`
+	BankrupcyOrIvaInLast5Years *BankrupcyOrIvaInLast5Years `json:"bankrupcy_or_iva_in_last_5_years,omitempty"`
+	Expenditures               *[]Expenditure              `json:"expenditures,omitempty"`
+	Incomes                    *[]Income                   `json:"incomes,omitempty"`
 }
-
-// FinanceDetailsBankrupcyOrIvaInLast5Years defines model for FinanceDetails.BankrupcyOrIvaInLast5Years.
-type FinanceDetailsBankrupcyOrIvaInLast5Years string
 
 // FinanceProvider defines model for FinanceProvider.
 type FinanceProvider string
 
 // FinanceRate defines model for FinanceRate.
 type FinanceRate struct {
-	Apr              *int                `json:"apr,omitempty"`
-	AprType          *FinanceRateAprType `json:"apr_type,omitempty"`
-	Charge           int                 `json:"charge"`
-	CreditLine       *int                `json:"credit_line,omitempty"`
-	DeferredDuration *int                `json:"deferred_duration,omitempty"`
-	Duration         *int                `json:"duration,omitempty"`
-	Enabled          bool                `json:"enabled"`
-	Fee              int                 `json:"fee"`
-	FinanceTypes     []FinanceType       `json:"finance_types"`
-	MaxDepositPct    *int                `json:"max_deposit_pct,omitempty"`
-	MaxDepositValue  *int                `json:"max_deposit_value,omitempty"`
-	MaxJobValue      *int                `json:"max_job_value,omitempty"`
-	MinCharge        *int                `json:"min_charge,omitempty"`
-	MinDepositPct    *int                `json:"min_deposit_pct,omitempty"`
-	MinDepositValue  *int                `json:"min_deposit_value,omitempty"`
-	MinJobValue      *int                `json:"min_job_value,omitempty"`
-	Name             string              `json:"name"`
-	Provider         FinanceProvider     `json:"provider"`
-	WorkTypes        *[]WorkType         `json:"work_types,omitempty"`
+	Apr              *int            `json:"apr,omitempty"`
+	AprType          *AprType        `json:"apr_type,omitempty"`
+	Charge           int             `json:"charge"`
+	CreditLine       *int            `json:"credit_line,omitempty"`
+	DeferredDuration *int            `json:"deferred_duration,omitempty"`
+	Duration         *int            `json:"duration,omitempty"`
+	Enabled          bool            `json:"enabled"`
+	Fee              int             `json:"fee"`
+	FinanceTypes     []FinanceType   `json:"finance_types"`
+	MaxDepositPct    *int            `json:"max_deposit_pct,omitempty"`
+	MaxDepositValue  *int            `json:"max_deposit_value,omitempty"`
+	MaxJobValue      *int            `json:"max_job_value,omitempty"`
+	MinCharge        *int            `json:"min_charge,omitempty"`
+	MinDepositPct    *int            `json:"min_deposit_pct,omitempty"`
+	MinDepositValue  *int            `json:"min_deposit_value,omitempty"`
+	MinJobValue      *int            `json:"min_job_value,omitempty"`
+	Name             string          `json:"name"`
+	Provider         FinanceProvider `json:"provider"`
+	WorkTypes        *[]WorkType     `json:"work_types,omitempty"`
 }
-
-// FinanceRateAprType defines model for FinanceRate.AprType.
-type FinanceRateAprType string
 
 // FinanceStatus defines model for FinanceStatus.
 type FinanceStatus string
@@ -1813,19 +1690,12 @@ type InfoIP struct {
 	Ipv4 string `json:"ipv4"`
 }
 
-// InfoLead defines model for InfoLead.
-type InfoLead struct {
-	ContactInfo ContactInfo `json:"contact_info"`
-	FlowType    *FlowType   `json:"flow_type,omitempty"`
-	Id          *string     `json:"id,omitempty"`
-}
-
 // InfoLegacyRedirect defines model for InfoLegacyRedirect.
 type InfoLegacyRedirect struct {
 	Aid     *string `json:"aid,omitempty"`
 	Bid     *string `json:"bid,omitempty"`
 	Cid     *string `json:"cid,omitempty"`
-	Deposit *Pence  `json:"deposit,omitempty"`
+	Deposit *int32  `json:"deposit,omitempty"`
 
 	// The description of the goods.
 	DescriptionOfGoods string  `json:"description_of_goods"`
@@ -1849,9 +1719,11 @@ type InfoLegacyRedirect struct {
 	Metadata *Metadata `json:"metadata,omitempty"`
 
 	// The mobile number of the customer applying for the loan
-	Mobile       *string       `json:"mobile,omitempty"`
-	Oid          *string       `json:"oid,omitempty"`
-	Price        Pence         `json:"price"`
+	Mobile *string `json:"mobile,omitempty"`
+	Oid    *string `json:"oid,omitempty"`
+
+	// The price of the loan in pennies. Ex.: If the price is 2,450.99, the value should be passed as 245099.
+	Price        int32         `json:"price"`
 	RedirectUrls *RedirectURLs `json:"redirect_urls,omitempty"`
 
 	// The reference for the loan application. Is mainly used for tracking loan applications
@@ -1936,11 +1808,11 @@ type InfoSession struct {
 type InfoStats struct {
 	Id                         *string `json:"id,omitempty"`
 	JobsAppliedForFinance      int     `json:"jobs_applied_for_finance"`
-	JobsApprovalRate           Pence   `json:"jobs_approval_rate"`
+	JobsApprovalRate           int32   `json:"jobs_approval_rate"`
 	JobsApprovedForFinance     int     `json:"jobs_approved_for_finance"`
-	JobsAverageValueOfApproved Pence   `json:"jobs_average_value_of_approved"`
+	JobsAverageValueOfApproved int32   `json:"jobs_average_value_of_approved"`
 	JobsSent                   int     `json:"jobs_sent"`
-	JobsTotalRevenueOfApproved Pence   `json:"jobs_total_revenue_of_approved"`
+	JobsTotalRevenueOfApproved int32   `json:"jobs_total_revenue_of_approved"`
 }
 
 // InfoValidationEmail defines model for InfoValidationEmail.
@@ -1954,29 +1826,63 @@ type InfoValidationEmail struct {
 // InfoValidationEmailVerdict defines model for InfoValidationEmail.Verdict.
 type InfoValidationEmailVerdict string
 
-// credit introduction for enterprise
+// Introduction defines model for Introduction.
 type Introduction struct {
-	Aid             *string           `json:"aid,omitempty"`
-	Archived        *Archived         `json:"archived,omitempty"`
-	Bid             *string           `json:"bid,omitempty"`
-	Budgets         *Budgets          `json:"budgets,omitempty"`
+	// resource author id
+	Aid      *string  `json:"aid,omitempty"`
+	Archived Archived `json:"archived"`
+
+	// resource branch id
+	Bid     *string  `json:"bid,omitempty"`
+	Budgets *Budgets `json:"budgets,omitempty"`
+
+	// resource company id
 	Cid             *string           `json:"cid,omitempty"`
 	Consumer        Customer          `json:"consumer"`
 	ConsumerDetails *ApplicantDetails `json:"consumer_details,omitempty"`
 
 	// consumer pre-application questions and agreement with signature
 	ConsumerSignature *ConsumerSignature `json:"consumer_signature,omitempty"`
-	CurrentState      *IntroductionState `json:"current_state,omitempty"`
-	Eid               *string            `json:"eid,omitempty"`
-	FlowType          *FlowType          `json:"flow_type,omitempty"`
-	Id                *string            `json:"id,omitempty"`
+	CurrentState      IntroductionState  `json:"current_state"`
+
+	// resource enterprise id
+	Eid      *string   `json:"eid,omitempty"`
+	FlowType *FlowType `json:"flow_type,omitempty"`
+
+	// resource id
+	Id string `json:"id"`
 
 	// introduction job details
-	JobDetails *JobDetails          `json:"job_details,omitempty"`
-	Metadata   *Metadata            `json:"metadata,omitempty"`
-	Oid        *string              `json:"oid,omitempty"`
-	States     *[]IntroductionState `json:"states,omitempty"`
-	Tid        *string              `json:"tid,omitempty"`
+	JobDetails *JobDetails `json:"job_details,omitempty"`
+	Metadata   Metadata    `json:"metadata"`
+
+	// resource owner id
+	Oid    *string             `json:"oid,omitempty"`
+	States []IntroductionState `json:"states"`
+
+	// resource trader id
+	Tid *string `json:"tid,omitempty"`
+
+	// trader info
+	Trader *Trader `json:"trader,omitempty"`
+
+	// trader details and bank account verification
+	TraderDetails   *TraderDetails `json:"trader_details,omitempty"`
+	TraderSignature *Signature     `json:"trader_signature,omitempty"`
+}
+
+// credit introduction input for enterprise
+type IntroductionInput struct {
+	Budgets         *Budgets          `json:"budgets,omitempty"`
+	Consumer        Customer          `json:"consumer"`
+	ConsumerDetails *ApplicantDetails `json:"consumer_details,omitempty"`
+
+	// consumer pre-application questions and agreement with signature
+	ConsumerSignature *ConsumerSignature `json:"consumer_signature,omitempty"`
+	FlowType          *FlowType          `json:"flow_type,omitempty"`
+
+	// introduction job details
+	JobDetails *JobDetails `json:"job_details,omitempty"`
 
 	// trader info
 	Trader *Trader `json:"trader,omitempty"`
@@ -1994,52 +1900,65 @@ type IntroductionStateRequest struct {
 	State IntroductionState `json:"state"`
 }
 
+// InviteTeamMemberYesNo defines model for InviteTeamMemberYesNo.
+type InviteTeamMemberYesNo string
+
 // Job defines model for Job.
 type Job struct {
-	Aid             *string           `json:"aid,omitempty"`
-	Archived        *Archived         `json:"archived,omitempty"`
+	// resource author id
+	Aid      *string  `json:"aid,omitempty"`
+	Archived Archived `json:"archived"`
+
+	// resource branch id
 	Bid             *string           `json:"bid,omitempty"`
 	CheckoutOptions *[]CheckoutOption `json:"checkout_options,omitempty"`
-	Cid             *string           `json:"cid,omitempty"`
-	Customer        *Customer         `json:"customer,omitempty"`
-	CustomerOptions *CustomerOptions  `json:"customer_options,omitempty"`
-	DepositType     JobDepositType    `json:"deposit_type"`
-	DepositValue    Money             `json:"deposit_value"`
-	Description     *string           `json:"description,omitempty"`
-	Eid             *string           `json:"eid,omitempty"`
-	FinanceOptions  *[]FinanceRate    `json:"finance_options,omitempty"`
-	FinanceStatus   *FinanceStatus    `json:"finance_status,omitempty"`
-	FlowType        *FlowType         `json:"flow_type,omitempty"`
-	Id              *string           `json:"id,omitempty"`
-	IntroducedTo    *string           `json:"introduced_to,omitempty"`
-	JobDocuments    *[]Document       `json:"job_documents,omitempty"`
-	JobItems        []JobItem         `json:"job_items"`
-	JobType         *JobJobType       `json:"job_type,omitempty"`
-	Metadata        *Metadata         `json:"metadata,omitempty"`
-	Notes           *[]string         `json:"notes,omitempty"`
-	Oid             *string           `json:"oid,omitempty"`
-	Payments        *[]Payment        `json:"payments,omitempty"`
-	QuotedTo        *string           `json:"quoted_to,omitempty"`
-	RedirectUrls    *RedirectURLs     `json:"redirect_urls,omitempty"`
-	SatNote         *SatNote          `json:"sat_note,omitempty"`
-	SatNoteTimeline *SatNoteTimeline  `json:"sat_note_timeline,omitempty"`
-	Status          *JobStatus        `json:"status,omitempty"`
-	Tid             *string           `json:"tid,omitempty"`
-	Title           string            `json:"title"`
-	Total           *MoneyTotal       `json:"total,omitempty"`
-	WorkType        *WorkType         `json:"work_type,omitempty"`
-	Xid             *string           `json:"xid,omitempty"`
-	Xref            *string           `json:"xref,omitempty"`
+
+	// resource company id
+	Cid             *string         `json:"cid,omitempty"`
+	Customer        *Customer       `json:"customer,omitempty"`
+	CustomerOptions CustomerOptions `json:"customer_options"`
+	DepositType     DepositType     `json:"deposit_type"`
+	DepositValue    Money           `json:"deposit_value"`
+	Description     *string         `json:"description,omitempty"`
+
+	// resource enterprise id
+	Eid            *string        `json:"eid,omitempty"`
+	FinanceOptions *[]FinanceRate `json:"finance_options,omitempty"`
+	FinanceStatus  FinanceStatus  `json:"finance_status"`
+	FlowType       *FlowType      `json:"flow_type,omitempty"`
+
+	// resource id
+	Id           string      `json:"id"`
+	IntroducedTo *string     `json:"introduced_to,omitempty"`
+	JobDocuments *[]Document `json:"job_documents,omitempty"`
+	JobItems     []JobItem   `json:"job_items"`
+	JobType      JobBaseType `json:"job_type"`
+	Metadata     Metadata    `json:"metadata"`
+	Notes        *[]string   `json:"notes,omitempty"`
+
+	// resource owner id
+	Oid             *string              `json:"oid,omitempty"`
+	Payments        []Payment            `json:"payments"`
+	QuotedTo        *string              `json:"quoted_to,omitempty"`
+	RedirectUrls    *RedirectURLs        `json:"redirect_urls,omitempty"`
+	SatNote         *SatNote             `json:"sat_note,omitempty"`
+	SatNoteTimeline *SatNoteTimeline     `json:"sat_note_timeline,omitempty"`
+	Status          JobApplicationStatus `json:"status"`
+
+	// resource trader id
+	Tid      *string    `json:"tid,omitempty"`
+	Title    string     `json:"title"`
+	Total    MoneyTotal `json:"total"`
+	WorkType *WorkType  `json:"work_type,omitempty"`
+	Xid      *string    `json:"xid,omitempty"`
+	Xref     *string    `json:"xref,omitempty"`
 }
 
-// JobDepositType defines model for Job.DepositType.
-type JobDepositType string
+// JobApplicationStatus defines model for JobApplicationStatus.
+type JobApplicationStatus string
 
-// JobJobType defines model for Job.JobType.
-type JobJobType string
-
-// JobStatus defines model for Job.Status.
-type JobStatus string
+// JobBaseType defines model for JobBaseType.
+type JobBaseType string
 
 // JobCompanyInfo defines model for JobCompanyInfo.
 type JobCompanyInfo struct {
@@ -2070,23 +1989,35 @@ type JobDetails struct {
 	Total       *MoneyTotal `json:"total,omitempty"`
 }
 
+// JobInput defines model for JobInput.
+type JobInput struct {
+	CheckoutOptions *[]CheckoutOption `json:"checkout_options,omitempty"`
+	Customer        *Customer         `json:"customer,omitempty"`
+	DepositType     DepositType       `json:"deposit_type"`
+	DepositValue    Money             `json:"deposit_value"`
+	Description     *string           `json:"description,omitempty"`
+	FinanceOptions  *[]FinanceRate    `json:"finance_options,omitempty"`
+	JobDocuments    *[]Document       `json:"job_documents,omitempty"`
+	JobItems        []JobItem         `json:"job_items"`
+	Notes           *[]string         `json:"notes,omitempty"`
+	Title           string            `json:"title"`
+	WorkType        *WorkType         `json:"work_type,omitempty"`
+}
+
 // JobItem defines model for JobItem.
 type JobItem struct {
-	Description   *string         `json:"description,omitempty"`
-	Price         Money           `json:"price"`
-	Quantity      Pence           `json:"quantity"`
-	QuoteDocument *Document       `json:"quote_document,omitempty"`
-	Style         *JobItemStyle   `json:"style,omitempty"`
-	Title         string          `json:"title"`
-	Vat           Money           `json:"vat"`
-	VatRate       *JobItemVatRate `json:"vat_rate,omitempty"`
+	Description   *string       `json:"description,omitempty"`
+	Price         Money         `json:"price"`
+	Quantity      int32         `json:"quantity"`
+	QuoteDocument *Document     `json:"quote_document,omitempty"`
+	Style         *JobItemStyle `json:"style,omitempty"`
+	Title         string        `json:"title"`
+	Vat           Money         `json:"vat"`
+	VatRate       *string       `json:"vat_rate,omitempty"`
 }
 
 // JobItemStyle defines model for JobItem.Style.
 type JobItemStyle string
-
-// JobItemVatRate defines model for JobItem.VatRate.
-type JobItemVatRate string
 
 // JobOverride defines model for JobOverride.
 type JobOverride struct {
@@ -2098,98 +2029,8 @@ type JobOverride struct {
 // JobOverrideAction defines model for JobOverride.Action.
 type JobOverrideAction string
 
-// LatLng defines model for LatLng.
-type LatLng struct {
-	Lat float32 `json:"lat"`
-	Lng float32 `json:"lng"`
-}
-
-// consumer quote
-type Lead struct {
-	Accepted        []string       `json:"accepted"`
-	Aid             *string        `json:"aid,omitempty"`
-	Bid             *string        `json:"bid,omitempty"`
-	Budget          *Money         `json:"budget,omitempty"`
-	Cid             *string        `json:"cid,omitempty"`
-	Connected       []string       `json:"connected"`
-	Eid             *string        `json:"eid,omitempty"`
-	ExpiredAt       time.Time      `json:"expired_at"`
-	FinanceOptions  *[]FinanceRate `json:"finance_options,omitempty"`
-	FlowType        *FlowType      `json:"flow_type,omitempty"`
-	Id              *string        `json:"id,omitempty"`
-	InviteInfo      *ContactInfo   `json:"invite_info,omitempty"`
-	LeadApplicant   *LeadApplicant `json:"lead_applicant,omitempty"`
-	LeadQuote       *LeadQuote     `json:"lead_quote,omitempty"`
-	LeadTrade       *LeadTrade     `json:"lead_trade,omitempty"`
-	MaxCreditAmount *Money         `json:"max_credit_amount,omitempty"`
-	Metadata        *Metadata      `json:"metadata,omitempty"`
-	Oid             *string        `json:"oid,omitempty"`
-	Referrer        *string        `json:"referrer,omitempty"`
-	Source          LeadSource     `json:"source"`
-	Status          LeadStatus     `json:"status"`
-	Tid             *string        `json:"tid,omitempty"`
-	Xid             *string        `json:"xid,omitempty"`
-	Xref            *string        `json:"xref,omitempty"`
-}
-
-// LeadSource defines model for Lead.Source.
-type LeadSource string
-
-// LeadStatus defines model for Lead.Status.
-type LeadStatus string
-
-// LeadApplicant defines model for LeadApplicant.
-type LeadApplicant struct {
-	AdditionalEmploymentDetails *[]EmploymentDetails `json:"additional_employment_details,omitempty"`
-	BankAccount                 *BankAccount         `json:"bank_account,omitempty"`
-	Budget                      *Money               `json:"budget,omitempty"`
-	CustomerDetails             CustomerDetails      `json:"customer_details"`
-	EmploymentDetails           EmploymentDetails    `json:"employment_details"`
-	ExtraApplicants             *[]ApplicantDetails  `json:"extra_applicants,omitempty"`
-	FinanceDetails              FinanceDetails       `json:"finance_details"`
-}
-
-// LeadJobSummary defines model for LeadJobSummary.
-type LeadJobSummary struct {
-	Aid           *string    `json:"aid,omitempty"`
-	Archived      string     `json:"archived"`
-	Bid           *string    `json:"bid,omitempty"`
-	Cid           *string    `json:"cid,omitempty"`
-	Eid           *string    `json:"eid,omitempty"`
-	FinanceStatus string     `json:"finance_status"`
-	Id            string     `json:"id"`
-	Oid           *string    `json:"oid,omitempty"`
-	QuotedTo      string     `json:"quoted_to"`
-	Rid           *string    `json:"rid,omitempty"`
-	Status        string     `json:"status"`
-	Tid           *string    `json:"tid,omitempty"`
-	Total         MoneyTotal `json:"total"`
-}
-
-// LeadQuote defines model for LeadQuote.
-type LeadQuote struct {
-	Deposit       *Money       `json:"deposit,omitempty"`
-	Description   string       `json:"description"`
-	FinanceOption *FinanceRate `json:"finance_option,omitempty"`
-	JobItems      *[]JobItem   `json:"job_items,omitempty"`
-	Reference     *string      `json:"reference,omitempty"`
-	Total         *MoneyTotal  `json:"total,omitempty"`
-
-	// when do you need the work finished by?
-	WorkFinishedBy LeadQuoteWorkFinishedBy `json:"work_finished_by"`
-	WorkType       WorkType                `json:"work_type"`
-}
-
-// when do you need the work finished by?
-type LeadQuoteWorkFinishedBy string
-
-// LeadTrade defines model for LeadTrade.
-type LeadTrade struct {
-	Address     *Address `json:"address,omitempty"`
-	Email       Email    `json:"email"`
-	Mobile      string   `json:"mobile"`
-	TradingName string   `json:"trading_name"`
-}
+// Kind defines model for Kind.
+type Kind string
 
 // lender configuration extra info
 type LenderConfig struct {
@@ -2207,25 +2048,31 @@ type LenderImport struct {
 // LenderRateType defines model for LenderRateType.
 type LenderRateType string
 
+// LifecycleStatus defines model for LifecycleStatus.
+type LifecycleStatus string
+
 // LimitedCompanyInfo defines model for LimitedCompanyInfo.
 type LimitedCompanyInfo struct {
-	CompanyAddress Address    `json:"company_address"`
-	CompanyName    string     `json:"company_name"`
-	CompanyNumber  string     `json:"company_number"`
-	TradingAddress *Address   `json:"trading_address,omitempty"`
-	VatNumber      *VatNumber `json:"vat_number,omitempty"`
+	CompanyAddress Address  `json:"company_address"`
+	CompanyName    string   `json:"company_name"`
+	CompanyNumber  string   `json:"company_number"`
+	TradingAddress *Address `json:"trading_address,omitempty"`
+	VatNumber      *string  `json:"vat_number,omitempty"`
 }
+
+// MaritalStatus defines model for MaritalStatus.
+type MaritalStatus string
 
 // Metadata defines model for Metadata.
 type Metadata struct {
-	CreatedAt *time.Time `json:"created_at,omitempty"`
-	Liveness  *bool      `json:"liveness,omitempty"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	CreatedAt time.Time `json:"created_at"`
+	Liveness  bool      `json:"liveness"`
+	UpdatedAt time.Time `json:"updated_at"`
 }
 
 // Money defines model for Money.
 type Money struct {
-	Amount   Pence          `json:"amount"`
+	Amount   int32          `json:"amount"`
 	Currency *MoneyCurrency `json:"currency,omitempty"`
 }
 
@@ -2239,25 +2086,32 @@ type MoneyTotal struct {
 	AmountVatInclusive *Money `json:"amount_vat_inclusive,omitempty"`
 }
 
-// internal monitoring with flags
+// Monitor defines model for Monitor.
 type Monitor struct {
 	// flag
-	Flag *Flag `json:"flag,omitempty"`
+	Flag Flag `json:"flag"`
 
 	// flags
-	Flags    *[]Flag   `json:"flags,omitempty"`
-	Id       *string   `json:"id,omitempty"`
+	Flags    []Flag    `json:"flags"`
+	Id       string    `json:"id"`
 	Metadata *Metadata `json:"metadata,omitempty"`
+}
+
+// monitoring with flags input
+type MonitorInput struct {
+	// flag
+	Flag Flag `json:"flag"`
+
+	// flags
+	Flags []Flag `json:"flags"`
+	Id    string `json:"id"`
 }
 
 // NotEmployedDetails defines model for NotEmployedDetails.
 type NotEmployedDetails struct {
-	MonthsNotEmployed int32                            `json:"months_not_employed"`
-	SourceOfIncome    NotEmployedDetailsSourceOfIncome `json:"source_of_income"`
+	MonthsNotEmployed int32          `json:"months_not_employed"`
+	SourceOfIncome    SourceOfIncome `json:"source_of_income"`
 }
-
-// NotEmployedDetailsSourceOfIncome defines model for NotEmployedDetails.SourceOfIncome.
-type NotEmployedDetailsSourceOfIncome string
 
 // company onboarding
 type Onboarding struct {
@@ -2353,14 +2207,11 @@ type OnboardingStage string
 
 // OnlinePresence defines model for OnlinePresence.
 type OnlinePresence struct {
-	Facebook *string               `json:"facebook,omitempty"`
-	Google   *string               `json:"google,omitempty"`
-	QOnline  OnlinePresenceQOnline `json:"q_online"`
-	Website  *string               `json:"website,omitempty"`
+	Facebook *string `json:"facebook,omitempty"`
+	Google   *string `json:"google,omitempty"`
+	QOnline  QOnline `json:"q_online"`
+	Website  *string `json:"website,omitempty"`
 }
-
-// OnlinePresenceQOnline defines model for OnlinePresence.QOnline.
-type OnlinePresenceQOnline string
 
 // owner report with checks for AML + AdverseMedia
 type OwnerReport struct {
@@ -2414,90 +2265,138 @@ type Partner struct {
 	Rewards   *[]Reward   `json:"rewards,omitempty"`
 
 	// current referral stats
-	Stats *struct {
-		// number of referral company activations
-		Activations *int32 `json:"activations,omitempty"`
-
-		// number of tradesperson signups to unlock
-		Signups *int32 `json:"signups,omitempty"`
-
-		// number of referral company subscribers
-		Subscribers *int32 `json:"subscribers,omitempty"`
-
-		// number of referrals made
-		TotalReferrals *int32 `json:"total_referrals,omitempty"`
-
-		// number of referral company verifications
-		Verifications *int32 `json:"verifications,omitempty"`
-	} `json:"stats,omitempty"`
+	Stats *ReferralStats `json:"stats,omitempty"`
 }
 
 // Payment defines model for Payment.
 type Payment struct {
-	Aid           *string        `json:"aid,omitempty"`
-	Bid           *string        `json:"bid,omitempty"`
-	Cid           *string        `json:"cid,omitempty"`
-	Eid           *string        `json:"eid,omitempty"`
-	FlowType      *FlowType      `json:"flow_type,omitempty"`
-	Id            *string        `json:"id,omitempty"`
-	IntroducedTo  *string        `json:"introduced_to,omitempty"`
-	Kid           *string        `json:"kid,omitempty"`
-	Kind          *PaymentKind   `json:"kind,omitempty"`
-	Metadata      *Metadata      `json:"metadata,omitempty"`
-	Oid           *string        `json:"oid,omitempty"`
-	PaymentOption PaymentOption  `json:"payment_option"`
-	QuotedTo      *string        `json:"quoted_to,omitempty"`
-	Status        *PaymentStatus `json:"status,omitempty"`
-	Tid           *string        `json:"tid,omitempty"`
-	Xid           *string        `json:"xid,omitempty"`
-	Xref          *string        `json:"xref,omitempty"`
+	// resource author id
+	Aid *string `json:"aid,omitempty"`
+
+	// resource branch id
+	Bid *string `json:"bid,omitempty"`
+
+	// resource company id
+	Cid *string `json:"cid,omitempty"`
+
+	// resource enterprise id
+	Eid      *string   `json:"eid,omitempty"`
+	FlowType *FlowType `json:"flow_type,omitempty"`
+
+	// resource id
+	Id           string   `json:"id"`
+	IntroducedTo *string  `json:"introduced_to,omitempty"`
+	Kid          *string  `json:"kid,omitempty"`
+	Kind         *Kind    `json:"kind,omitempty"`
+	Metadata     Metadata `json:"metadata"`
+
+	// resource owner id
+	Oid           *string               `json:"oid,omitempty"`
+	PaymentOption PaymentOption         `json:"payment_option"`
+	QuotedTo      *string               `json:"quoted_to,omitempty"`
+	Status        *PaymentCurrentStatus `json:"status,omitempty"`
+
+	// resource trader id
+	Tid  *string `json:"tid,omitempty"`
+	Xid  *string `json:"xid,omitempty"`
+	Xref *string `json:"xref,omitempty"`
 }
 
-// PaymentKind defines model for Payment.Kind.
-type PaymentKind string
+// PaymentCurrentStatus defines model for PaymentCurrentStatus.
+type PaymentCurrentStatus string
 
-// PaymentStatus defines model for Payment.Status.
-type PaymentStatus string
+// PaymentInput defines model for PaymentInput.
+type PaymentInput struct {
+	FlowType      *FlowType             `json:"flow_type,omitempty"`
+	IntroducedTo  *string               `json:"introduced_to,omitempty"`
+	Kid           *string               `json:"kid,omitempty"`
+	Kind          *Kind                 `json:"kind,omitempty"`
+	PaymentOption PaymentOption         `json:"payment_option"`
+	QuotedTo      *string               `json:"quoted_to,omitempty"`
+	Status        *PaymentCurrentStatus `json:"status,omitempty"`
+	Xid           *string               `json:"xid,omitempty"`
+	Xref          *string               `json:"xref,omitempty"`
+}
+
+// PaymentMethod defines model for PaymentMethod.
+type PaymentMethod string
 
 // PaymentOption defines model for PaymentOption.
 type PaymentOption struct {
-	Amount        Money                      `json:"amount"`
-	PaymentMethod PaymentOptionPaymentMethod `json:"payment_method"`
-	Provider      *FinanceProvider           `json:"provider,omitempty"`
+	Amount        Money            `json:"amount"`
+	PaymentMethod PaymentMethod    `json:"payment_method"`
+	Provider      *FinanceProvider `json:"provider,omitempty"`
 }
-
-// PaymentOptionPaymentMethod defines model for PaymentOption.PaymentMethod.
-type PaymentOptionPaymentMethod string
-
-// Pence defines model for Pence.
-type Pence = int32
 
 // PreferenceOption defines model for PreferenceOption.
 type PreferenceOption string
 
-// PurchaseEvent defines model for PurchaseEvent.
-type PurchaseEvent struct {
-	Kid     *string       `json:"kid,omitempty"`
-	Kind    string        `json:"kind"`
-	Payment PaymentOption `json:"payment"`
-	Pid     *string       `json:"pid,omitempty"`
-}
+// QAdvice defines model for Q_Advice.
+type QAdvice string
+
+// QApplication defines model for Q_Application.
+type QApplication string
+
+// QAvailability defines model for Q_Availability.
+type QAvailability string
+
+// QEasiness defines model for Q_Easiness.
+type QEasiness string
+
+// QOnline defines model for Q_Online.
+type QOnline string
+
+// QPressure defines model for Q_Pressure.
+type QPressure string
+
+// QRate defines model for Q_Rate.
+type QRate string
+
+// QSaving defines model for Q_Saving.
+type QSaving string
 
 // Quiz defines model for Quiz.
 type Quiz struct {
-	Answers       []string `json:"answers"`
-	Category      Category `json:"category"`
-	CorrectAnswer *string  `json:"correct_answer,omitempty"`
-	Question      string   `json:"question"`
-	UserAnswer    *string  `json:"user_answer,omitempty"`
-	VideoId       *string  `json:"videoId,omitempty"`
+	Answers       []string         `json:"answers"`
+	Category      TrainingCategory `json:"category"`
+	CorrectAnswer *string          `json:"correct_answer,omitempty"`
+	Question      string           `json:"question"`
+	UserAnswer    *string          `json:"user_answer,omitempty"`
+	VideoId       *string          `json:"videoId,omitempty"`
 }
+
+// QuotePreference defines model for QuotePreference.
+type QuotePreference string
 
 // Rate defines model for Rate.
 type Rate struct {
+	// resource author id
+	Aid *string `json:"aid,omitempty"`
+
+	// resource branch id
+	Bid *string `json:"bid,omitempty"`
+
+	// resource company id
+	Cid *string `json:"cid,omitempty"`
+
+	// resource enterprise id
+	Eid          *string       `json:"eid,omitempty"`
 	FinanceRates []FinanceRate `json:"finance_rates"`
-	Id           *string       `json:"id,omitempty"`
-	Metadata     *Metadata     `json:"metadata,omitempty"`
+
+	// resource id
+	Id       string   `json:"id"`
+	Metadata Metadata `json:"metadata"`
+
+	// resource owner id
+	Oid *string `json:"oid,omitempty"`
+
+	// resource trader id
+	Tid *string `json:"tid,omitempty"`
+}
+
+// RateInput defines model for RateInput.
+type RateInput struct {
+	FinanceRates []FinanceRate `json:"finance_rates"`
 }
 
 // RedirectURLs defines model for RedirectURLs.
@@ -2528,8 +2427,26 @@ type Referral struct {
 	TradingName *string   `json:"trading_name,omitempty"`
 }
 
-// Result defines model for Result.
-type Result string
+// current referral stats
+type ReferralStats struct {
+	// number of referral company activations
+	Activations *int32 `json:"activations,omitempty"`
+
+	// number of tradesperson signups to unlock
+	Signups *int32 `json:"signups,omitempty"`
+
+	// number of referral company subscribers
+	Subscribers *int32 `json:"subscribers,omitempty"`
+
+	// number of referrals made
+	TotalReferrals *int32 `json:"total_referrals,omitempty"`
+
+	// number of referral company verifications
+	Verifications *int32 `json:"verifications,omitempty"`
+}
+
+// ResidentialStatus defines model for ResidentialStatus.
+type ResidentialStatus string
 
 // RetiredDetails defines model for RetiredDetails.
 type RetiredDetails struct {
@@ -2560,37 +2477,16 @@ type Reward struct {
 
 // SatNote defines model for SatNote.
 type SatNote struct {
-	Certificate   Document             `json:"certificate"`
-	QAdvice       SatNoteQAdvice       `json:"q_advice"`
-	QApplication  SatNoteQApplication  `json:"q_application"`
-	QAvailability SatNoteQAvailability `json:"q_availability"`
-	QEasiness     SatNoteQEasiness     `json:"q_easiness"`
-	QPressure     SatNoteQPressure     `json:"q_pressure"`
-	QRate         *SatNoteQRate        `json:"q_rate,omitempty"`
-	QSaving       *SatNoteQSaving      `json:"q_saving,omitempty"`
-	Signature     Signature            `json:"signature"`
+	Certificate   Document      `json:"certificate"`
+	QAdvice       QAdvice       `json:"q_advice"`
+	QApplication  QApplication  `json:"q_application"`
+	QAvailability QAvailability `json:"q_availability"`
+	QEasiness     QEasiness     `json:"q_easiness"`
+	QPressure     QPressure     `json:"q_pressure"`
+	QRate         *QRate        `json:"q_rate,omitempty"`
+	QSaving       *QSaving      `json:"q_saving,omitempty"`
+	Signature     Signature     `json:"signature"`
 }
-
-// SatNoteQAdvice defines model for SatNote.QAdvice.
-type SatNoteQAdvice string
-
-// SatNoteQApplication defines model for SatNote.QApplication.
-type SatNoteQApplication string
-
-// SatNoteQAvailability defines model for SatNote.QAvailability.
-type SatNoteQAvailability string
-
-// SatNoteQEasiness defines model for SatNote.QEasiness.
-type SatNoteQEasiness string
-
-// SatNoteQPressure defines model for SatNote.QPressure.
-type SatNoteQPressure string
-
-// SatNoteQRate defines model for SatNote.QRate.
-type SatNoteQRate string
-
-// SatNoteQSaving defines model for SatNote.QSaving.
-type SatNoteQSaving string
 
 // SatNoteTimeline defines model for SatNoteTimeline.
 type SatNoteTimeline struct {
@@ -2635,11 +2531,6 @@ type SearchHits struct {
 	Onboarding         []Onboarding `json:"onboarding"`
 	OnboardingHits     int64        `json:"onboarding_hits"`
 	OnboardingReturned int64        `json:"onboarding_returned"`
-
-	// matching transactions
-	Transaction         []Transaction `json:"transaction"`
-	TransactionHits     int64         `json:"transaction_hits"`
-	TransactionReturned int64         `json:"transaction_returned"`
 }
 
 // SearchIndex defines model for SearchIndex.
@@ -2647,15 +2538,18 @@ type SearchIndex string
 
 // SelfEmployedDetails defines model for SelfEmployedDetails.
 type SelfEmployedDetails struct {
-	BusinessAddress    *Address                             `json:"business_address,omitempty"`
-	BusinessName       string                               `json:"business_name"`
-	MonthsSelfEmployed int32                                `json:"months_self_employed"`
-	SelfEmployedType   *SelfEmployedDetailsSelfEmployedType `json:"self_employed_type,omitempty"`
-	TypeOfBusiness     string                               `json:"type_of_business"`
+	BusinessAddress    *Address          `json:"business_address,omitempty"`
+	BusinessName       string            `json:"business_name"`
+	MonthsSelfEmployed int32             `json:"months_self_employed"`
+	SelfEmployedType   *SelfEmployedType `json:"self_employed_type,omitempty"`
+	TypeOfBusiness     string            `json:"type_of_business"`
 }
 
-// SelfEmployedDetailsSelfEmployedType defines model for SelfEmployedDetails.SelfEmployedType.
-type SelfEmployedDetailsSelfEmployedType string
+// SelfEmployedType defines model for SelfEmployedType.
+type SelfEmployedType string
+
+// ShowYesNo defines model for ShowYesNo.
+type ShowYesNo string
 
 // SignDocument defines model for SignDocument.
 type SignDocument struct {
@@ -2665,56 +2559,79 @@ type SignDocument struct {
 
 // Signature defines model for Signature.
 type Signature struct {
-	Fingerprint string          `json:"fingerprint"`
-	Signed      SignatureSigned `json:"signed"`
+	Fingerprint string                `json:"fingerprint"`
+	Signed      SignatureSignedStatus `json:"signed"`
 }
 
-// SignatureSigned defines model for Signature.Signed.
-type SignatureSigned string
+// SignatureSignedStatus defines model for SignatureSignedStatus.
+type SignatureSignedStatus string
+
+// SkipDeposit defines model for SkipDeposit.
+type SkipDeposit string
 
 // SolarCompanyInfo defines model for SolarCompanyInfo.
 type SolarCompanyInfo struct {
-	ElectricalTradeAssociation       SolarCompanyInfoElectricalTradeAssociation `json:"electrical_trade_association"`
-	ElectricalTradeAssociationNumber *string                                    `json:"electrical_trade_association_number,omitempty"`
-	EpvsRegistrationNumber           string                                     `json:"epvs_registration_number"`
-	SolarTradeAssociation            SolarCompanyInfoSolarTradeAssociation      `json:"solar_trade_association"`
-	SolarTradeAssociationNumber      string                                     `json:"solar_trade_association_number"`
+	ElectricalTradeAssociation       ElectricalTradeAssociation `json:"electrical_trade_association"`
+	ElectricalTradeAssociationNumber *string                    `json:"electrical_trade_association_number,omitempty"`
+	EpvsRegistrationNumber           string                     `json:"epvs_registration_number"`
+	SolarTradeAssociation            SolarTradeAssociation      `json:"solar_trade_association"`
+	SolarTradeAssociationNumber      string                     `json:"solar_trade_association_number"`
 }
 
-// SolarCompanyInfoElectricalTradeAssociation defines model for SolarCompanyInfo.ElectricalTradeAssociation.
-type SolarCompanyInfoElectricalTradeAssociation string
-
-// SolarCompanyInfoSolarTradeAssociation defines model for SolarCompanyInfo.SolarTradeAssociation.
-type SolarCompanyInfoSolarTradeAssociation string
+// SolarTradeAssociation defines model for SolarTradeAssociation.
+type SolarTradeAssociation string
 
 // SoleTraderInfo defines model for SoleTraderInfo.
 type SoleTraderInfo struct {
-	NationalInsuranceNumber *string    `json:"national_insurance_number,omitempty"`
-	TradingAddress          Address    `json:"trading_address"`
-	TradingName             string     `json:"trading_name"`
-	VatNumber               *VatNumber `json:"vat_number,omitempty"`
+	NationalInsuranceNumber *string `json:"national_insurance_number,omitempty"`
+	TradingAddress          Address `json:"trading_address"`
+	TradingName             string  `json:"trading_name"`
+	VatNumber               *string `json:"vat_number,omitempty"`
 }
+
+// SourceOfIncome defines model for SourceOfIncome.
+type SourceOfIncome string
 
 // Subscription defines model for Subscription.
 type Subscription struct {
-	Aid              *string               `json:"aid,omitempty"`
-	Amount           *Money                `json:"amount,omitempty"`
-	AuthorisationUrl *string               `json:"authorisation_url,omitempty"`
-	Billing          *string               `json:"billing,omitempty"`
-	BillingStatus    *string               `json:"billing_status,omitempty"`
-	Cid              *string               `json:"cid,omitempty"`
-	DayOfMonth       *int32                `json:"day_of_month,omitempty"`
-	Id               *string               `json:"id,omitempty"`
-	Interval         *SubscriptionInterval `json:"interval,omitempty"`
-	Mandate          *string               `json:"mandate,omitempty"`
-	MandateStatus    *string               `json:"mandate_status,omitempty"`
-	Metadata         *Metadata             `json:"metadata,omitempty"`
-	Oid              *string               `json:"oid,omitempty"`
-	Xid              *string               `json:"xid,omitempty"`
-	Xref             *string               `json:"xref,omitempty"`
+	// resource author id
+	Aid              *string `json:"aid,omitempty"`
+	Amount           Money   `json:"amount"`
+	AuthorisationUrl *string `json:"authorisation_url,omitempty"`
+
+	// resource branch id
+	Bid           *string `json:"bid,omitempty"`
+	Billing       *string `json:"billing,omitempty"`
+	BillingStatus string  `json:"billing_status"`
+
+	// resource company id
+	Cid *string `json:"cid,omitempty"`
+
+	// resource enterprise id
+	Eid *string `json:"eid,omitempty"`
+
+	// resource id
+	Id            string   `json:"id"`
+	Mandate       *string  `json:"mandate,omitempty"`
+	MandateStatus *string  `json:"mandate_status,omitempty"`
+	Metadata      Metadata `json:"metadata"`
+
+	// resource owner id
+	Oid *string `json:"oid,omitempty"`
+
+	// resource trader id
+	Tid  *string `json:"tid,omitempty"`
+	Xid  *string `json:"xid,omitempty"`
+	Xref *string `json:"xref,omitempty"`
 }
 
-// SubscriptionInterval defines model for Subscription.Interval.
+// SubscriptionInput defines model for SubscriptionInput.
+type SubscriptionInput struct {
+	DayOfMonth *int32               `json:"day_of_month,omitempty"`
+	Interval   SubscriptionInterval `json:"interval"`
+}
+
+// SubscriptionInterval defines model for SubscriptionInterval.
 type SubscriptionInterval string
 
 // Tally defines model for Tally.
@@ -2723,50 +2640,30 @@ type Tally struct {
 	Id      string  `json:"id"`
 }
 
-// Tier defines model for Tier.
-type Tier string
+// TierAction defines model for TierAction.
+type TierAction string
 
 // TierConfig defines model for TierConfig.
 type TierConfig struct {
-	CurrentTier Tier        `json:"current_tier"`
+	CurrentTier TierType    `json:"current_tier"`
 	Tiers       []TierEvent `json:"tiers"`
 }
 
 // TierEvent defines model for TierEvent.
 type TierEvent struct {
-	Action     TierEventAction `json:"action"`
-	ActionedAt time.Time       `json:"actioned_at"`
-	Tier       Tier            `json:"tier"`
+	Action     TierAction `json:"action"`
+	ActionedAt time.Time  `json:"actioned_at"`
+	Tier       TierType   `json:"tier"`
 }
 
-// TierEventAction defines model for TierEvent.Action.
-type TierEventAction string
+// TierType defines model for TierType.
+type TierType string
 
 // title
 type Title string
 
-// matching a lead to trades by given filter
-type TradeFilter struct {
-	// matching trades within given distance in miles
-	Distance float32 `json:"distance"`
-
-	// matching keyword
-	Keyword *string `json:"keyword,omitempty"`
-
-	// matching trades with given work types
-	WorkTypes *[]WorkType `json:"work_types,omitempty"`
-}
-
-// TradeSummary defines model for TradeSummary.
-type TradeSummary struct {
-	CompanyLogo *Document    `json:"company_logo,omitempty"`
-	ContactInfo *ContactInfo `json:"contact_info,omitempty"`
-	Distance    *float32     `json:"distance,omitempty"`
-	Id          *string      `json:"id,omitempty"`
-	LatLng      *LatLng      `json:"lat_lng,omitempty"`
-	TradingType *string      `json:"trading_type,omitempty"`
-	WorkTypes   *[]WorkType  `json:"work_types,omitempty"`
-}
+// TradeBody defines model for TradeBody.
+type TradeBody string
 
 // TradeType defines model for TradeType.
 type TradeType string
@@ -2779,52 +2676,67 @@ type Trader struct {
 	TradingAddress Address     `json:"trading_address"`
 	TradingName    string      `json:"trading_name"`
 	TradingType    CompanyType `json:"trading_type"`
-	VatNumber      VatNumber   `json:"vat_number"`
+	VatNumber      string      `json:"vat_number"`
 }
 
 // trader details and bank account verification
 type TraderDetails struct {
-	BankAccount        BankAccount         `json:"bank_account"`
-	BankReport         *string             `json:"bank_report,omitempty"`
-	BankType           BankAccountType     `json:"bank_type"`
-	BankVerification   *VerificationStatus `json:"bank_verification,omitempty"`
-	CompanyType        CompanyType         `json:"company_type"`
-	LimitedCompanyInfo *LimitedCompanyInfo `json:"limited_company_info,omitempty"`
-	SoleTraderInfo     *SoleTraderInfo     `json:"sole_trader_info,omitempty"`
+	BankAccount        BankAccount             `json:"bank_account"`
+	BankReport         *string                 `json:"bank_report,omitempty"`
+	BankType           BankAccountType         `json:"bank_type"`
+	BankVerification   *BankVerificationStatus `json:"bank_verification,omitempty"`
+	CompanyType        CompanyType             `json:"company_type"`
+	LimitedCompanyInfo *LimitedCompanyInfo     `json:"limited_company_info,omitempty"`
+	SoleTraderInfo     *SoleTraderInfo         `json:"sole_trader_info,omitempty"`
 }
 
 // Training defines model for Training.
 type Training struct {
-	Aid        *string    `json:"aid,omitempty"`
-	Bid        *string    `json:"bid,omitempty"`
-	Categories []Category `json:"categories"`
-	Cid        *string    `json:"cid,omitempty"`
-	Eid        *string    `json:"eid,omitempty"`
-	Id         *string    `json:"id,omitempty"`
-	Metadata   *Metadata  `json:"metadata,omitempty"`
-	Oid        *string    `json:"oid,omitempty"`
-	Quizzes    *[]Quiz    `json:"quizzes,omitempty"`
-	Result     *Result    `json:"result,omitempty"`
+	// resource author id
+	Aid *string `json:"aid,omitempty"`
+
+	// resource branch id
+	Bid        *string            `json:"bid,omitempty"`
+	Categories []TrainingCategory `json:"categories"`
+
+	// resource company id
+	Cid *string `json:"cid,omitempty"`
+
+	// resource enterprise id
+	Eid *string `json:"eid,omitempty"`
+
+	// resource id
+	Id       string   `json:"id"`
+	Metadata Metadata `json:"metadata"`
+
+	// resource owner id
+	Oid     *string        `json:"oid,omitempty"`
+	Quizzes *[]Quiz        `json:"quizzes,omitempty"`
+	Result  *TrainingState `json:"result,omitempty"`
+
+	// resource trader id
+	Tid *string `json:"tid,omitempty"`
 }
 
-// transaction record from lender
-type Transaction struct {
-	AccountName *string               `json:"account_name,omitempty"`
-	Amount      Pence                 `json:"amount"`
-	Fee         Pence                 `json:"fee"`
-	Id          string                `json:"id"`
-	Lender      FinanceProvider       `json:"lender"`
-	Metadata    *Metadata             `json:"metadata,omitempty"`
-	Note        *string               `json:"note,omitempty"`
-	PayoutDate  string                `json:"payout_date"`
-	PayoutType  TransactionPayoutType `json:"payout_type"`
-	Vat         Pence                 `json:"vat"`
-	Xid         string                `json:"xid"`
-	Xref        *string               `json:"xref,omitempty"`
+// TrainingCategory defines model for TrainingCategory.
+type TrainingCategory struct {
+	NumberOfCorrectQuizzes *int32                  `json:"number_of_correct_quizzes,omitempty"`
+	NumberOfQuizzes        int32                   `json:"number_of_quizzes"`
+	Result                 *TrainingState          `json:"result,omitempty"`
+	Section                TrainingCategorySection `json:"section"`
 }
 
-// TransactionPayoutType defines model for Transaction.PayoutType.
-type TransactionPayoutType string
+// TrainingCategorySection defines model for TrainingCategory.Section.
+type TrainingCategorySection string
+
+// TrainingInput defines model for TrainingInput.
+type TrainingInput struct {
+	Categories []TrainingCategory `json:"categories"`
+	Quizzes    *[]Quiz            `json:"quizzes,omitempty"`
+}
+
+// TrainingState defines model for TrainingState.
+type TrainingState string
 
 // UTM defines model for UTM.
 type UTM struct {
@@ -2835,20 +2747,8 @@ type UTM struct {
 	UtmTerm     *string `json:"utm_term,omitempty"`
 }
 
-// UserEvent defines model for UserEvent.
-type UserEvent struct {
-	Cid      *string           `json:"cid,omitempty"`
-	Email    Email             `json:"email"`
-	Id       string            `json:"id"`
-	Mobile   *string           `json:"mobile,omitempty"`
-	Name     string            `json:"name"`
-	Provider UserEventProvider `json:"provider"`
-	Role     *string           `json:"role,omitempty"`
-	Verified bool              `json:"verified"`
-}
-
-// UserEventProvider defines model for UserEvent.Provider.
-type UserEventProvider string
+// UpdateWebsiteYesNo defines model for UpdateWebsiteYesNo.
+type UpdateWebsiteYesNo string
 
 // UserType defines model for UserType.
 type UserType struct {
@@ -2858,37 +2758,19 @@ type UserType struct {
 	FirstName       string           `json:"first_name"`
 	LastName        *string          `json:"last_name,omitempty"`
 	Mobile          *string          `json:"mobile,omitempty"`
-	Role            UserTypeRole     `json:"role"`
+	Role            CompanyRole      `json:"role"`
 }
-
-// UserTypeRole defines model for UserType.Role.
-type UserTypeRole string
-
-// VatNumber defines model for VatNumber.
-type VatNumber = string
 
 // VerificationStatus defines model for VerificationStatus.
 type VerificationStatus string
 
 // company welcome skip banner
 type WelcomeSkipBanner struct {
-	AdvertFinanceCalculator *WelcomeSkipBannerAdvertFinanceCalculator `json:"advert_finance_calculator,omitempty"`
-	DirectorVerification    *WelcomeSkipBannerDirectorVerification    `json:"director_verification,omitempty"`
-	InviteTeamMember        *WelcomeSkipBannerInviteTeamMember        `json:"invite_team_member,omitempty"`
-	UpdateWebsite           *WelcomeSkipBannerUpdateWebsite           `json:"update_website,omitempty"`
+	AdvertFinanceCalculator *AdvertFinanceCalculatorYesNo `json:"advert_finance_calculator,omitempty"`
+	DirectorVerification    *DirectorVerificationYesNo    `json:"director_verification,omitempty"`
+	InviteTeamMember        *InviteTeamMemberYesNo        `json:"invite_team_member,omitempty"`
+	UpdateWebsite           *UpdateWebsiteYesNo           `json:"update_website,omitempty"`
 }
-
-// WelcomeSkipBannerAdvertFinanceCalculator defines model for WelcomeSkipBanner.AdvertFinanceCalculator.
-type WelcomeSkipBannerAdvertFinanceCalculator string
-
-// WelcomeSkipBannerDirectorVerification defines model for WelcomeSkipBanner.DirectorVerification.
-type WelcomeSkipBannerDirectorVerification string
-
-// WelcomeSkipBannerInviteTeamMember defines model for WelcomeSkipBanner.InviteTeamMember.
-type WelcomeSkipBannerInviteTeamMember string
-
-// WelcomeSkipBannerUpdateWebsite defines model for WelcomeSkipBanner.UpdateWebsite.
-type WelcomeSkipBannerUpdateWebsite string
 
 // WorkType defines model for WorkType.
 type WorkType string
@@ -2899,20 +2781,11 @@ type Format string
 // query filter in colon path+value pairs, with comma separated filters
 type Q = string
 
-// kanda bid
-type XKandaBid = string
-
-// kanda cid
-type XKandaCid = string
-
-// kanda eid
-type XKandaEid = string
+// tier level
+type Tier string
 
 // kanda protected request indicator
 type XKandaProtected string
-
-// kanda tid
-type XKandaTid = string
 
 // GetAuditsParams defines parameters for GetAudits.
 type GetAuditsParams struct {
@@ -2936,7 +2809,7 @@ type GetCompaniesParams struct {
 type GetCompaniesParamsFormat string
 
 // PostCompanyJSONBody defines parameters for PostCompany.
-type PostCompanyJSONBody = Company
+type PostCompanyJSONBody = CompanyInput
 
 // ExportFcaApprovedParams defines parameters for ExportFcaApproved.
 type ExportFcaApprovedParams struct {
@@ -2960,7 +2833,7 @@ type ImportFcaApprovedParams struct {
 type ImportFcaApprovedParamsLender string
 
 // PutCompanyJSONBody defines parameters for PutCompany.
-type PutCompanyJSONBody = Company
+type PutCompanyJSONBody = CompanyInput
 
 // PostCompanyBillingParams defines parameters for PostCompanyBilling.
 type PostCompanyBillingParams struct {
@@ -3020,10 +2893,10 @@ type GetCreditsParams struct {
 type GetCreditsParamsFormat string
 
 // PostCreditJSONBody defines parameters for PostCredit.
-type PostCreditJSONBody = Credit
+type PostCreditJSONBody = CreditInput
 
 // PutCreditJSONBody defines parameters for PutCredit.
-type PutCreditJSONBody = Credit
+type PutCreditJSONBody = CreditInput
 
 // SignCreditJSONBody defines parameters for SignCredit.
 type SignCreditJSONBody = SignDocument
@@ -3061,14 +2934,11 @@ type PutEnterpriseJSONBody = Enterprise
 // PostEnterpriseBranchesJSONBody defines parameters for PostEnterpriseBranches.
 type PostEnterpriseBranchesJSONBody = []Enterprise
 
-// PostEventJSONBody defines parameters for PostEvent.
-type PostEventJSONBody = Event
-
 // InfoAuthJSONBody defines parameters for InfoAuth.
 type InfoAuthJSONBody = InfoAuth
 
 // InfoPutCacheJSONBody defines parameters for InfoPutCache.
-type InfoPutCacheJSONBody = Cache
+type InfoPutCacheJSONBody = CacheInput
 
 // InfoCheckoutRedirectJSONBody defines parameters for InfoCheckoutRedirect.
 type InfoCheckoutRedirectJSONBody = InfoCheckoutRedirect
@@ -3089,7 +2959,7 @@ type InfoCompanyParams struct {
 }
 
 // InfoCreditJSONBody defines parameters for InfoCredit.
-type InfoCreditJSONBody = Credit
+type InfoCreditJSONBody = CreditInput
 
 // InfoCustomerParams defines parameters for InfoCustomer.
 type InfoCustomerParams struct {
@@ -3142,24 +3012,6 @@ type GetInfoEntityParamsKind string
 // InfoGhostJSONBody defines parameters for InfoGhost.
 type InfoGhostJSONBody = InfoGhost
 
-// InfoLeadJSONBody defines parameters for InfoLead.
-type InfoLeadJSONBody = InfoLead
-
-// InfoLeadParams defines parameters for InfoLead.
-type InfoLeadParams struct {
-	// enterprise id
-	Eid *string `form:"eid,omitempty" json:"eid,omitempty"`
-
-	// enterprise branch id
-	Bid *string `form:"bid,omitempty" json:"bid,omitempty"`
-
-	// enterprise / branch subdomain
-	Subdomain *string `form:"subdomain,omitempty" json:"subdomain,omitempty"`
-
-	// enterprise branch code
-	BranchCode *string `form:"branch_code,omitempty" json:"branch_code,omitempty"`
-}
-
 // InfoLegacyRedirectJSONBody defines parameters for InfoLegacyRedirect.
 type InfoLegacyRedirectJSONBody = InfoLegacyRedirect
 
@@ -3202,12 +3054,6 @@ type InfoStatsParamsFormat string
 // PutInfoStatsJSONBody defines parameters for PutInfoStats.
 type PutInfoStatsJSONBody = InfoSearch
 
-// InfoTradeSummaryParams defines parameters for InfoTradeSummary.
-type InfoTradeSummaryParams struct {
-	// trade summary id
-	Id string `form:"id" json:"id"`
-}
-
 // InfoValidateEmailParams defines parameters for InfoValidateEmail.
 type InfoValidateEmailParams struct {
 	// validate this given email
@@ -3227,10 +3073,10 @@ type GetIntroductionsParams struct {
 type GetIntroductionsParamsFormat string
 
 // PostIntroductionJSONBody defines parameters for PostIntroduction.
-type PostIntroductionJSONBody = Introduction
+type PostIntroductionJSONBody = IntroductionInput
 
 // PutIntroductionJSONBody defines parameters for PutIntroduction.
-type PutIntroductionJSONBody = Introduction
+type PutIntroductionJSONBody = IntroductionInput
 
 // PostIntroductionConsumerBudgetsJSONBody defines parameters for PostIntroductionConsumerBudgets.
 type PostIntroductionConsumerBudgetsJSONBody = Budgets
@@ -3266,7 +3112,7 @@ type GetJobsParams struct {
 type GetJobsParamsFormat string
 
 // PostJobJSONBody defines parameters for PostJob.
-type PostJobJSONBody = Job
+type PostJobJSONBody = JobInput
 
 // ExportJobPayoutsJSONBody defines parameters for ExportJobPayouts.
 type ExportJobPayoutsJSONBody = []string
@@ -3293,7 +3139,7 @@ type PayoutsJobParams struct {
 type PayoutsJobParamsJobType string
 
 // PutJobJSONBody defines parameters for PutJob.
-type PutJobJSONBody = Job
+type PutJobJSONBody = JobInput
 
 // ApplyJobJSONBody defines parameters for ApplyJob.
 type ApplyJobJSONBody = CustomerOptions
@@ -3304,169 +3150,11 @@ type OverrideJobJSONBody = JobOverride
 // PayJobJSONBody defines parameters for PayJob.
 type PayJobJSONBody = PaymentOption
 
-// QuoteJobJSONBody defines parameters for QuoteJob.
-type QuoteJobJSONBody = LeadApplicant
-
 // ReapplyJobJSONBody defines parameters for ReapplyJob.
 type ReapplyJobJSONBody interface{}
 
 // SignJobSatNoteJSONBody defines parameters for SignJobSatNote.
 type SignJobSatNoteJSONBody = SatNote
-
-// GetLeadsParams defines parameters for GetLeads.
-type GetLeadsParams struct {
-	Format    *GetLeadsParamsFormat `form:"format,omitempty" json:"format,omitempty"`
-	Q         *Q                    `form:"q,omitempty" json:"q,omitempty"`
-	XKandaBid *XKandaBid            `json:"x_kanda_bid,omitempty"`
-	XKandaCid *XKandaCid            `json:"x_kanda_cid,omitempty"`
-	XKandaEid *XKandaEid            `json:"x_kanda_eid,omitempty"`
-	XKandaTid *XKandaTid            `json:"x_kanda_tid,omitempty"`
-}
-
-// GetLeadsParamsFormat defines parameters for GetLeads.
-type GetLeadsParamsFormat string
-
-// PostLeadJSONBody defines parameters for PostLead.
-type PostLeadJSONBody = LeadApplicant
-
-// PostLeadParams defines parameters for PostLead.
-type PostLeadParams struct {
-	XKandaBid *XKandaBid `json:"x_kanda_bid,omitempty"`
-	XKandaCid *XKandaCid `json:"x_kanda_cid,omitempty"`
-	XKandaEid *XKandaEid `json:"x_kanda_eid,omitempty"`
-	XKandaTid *XKandaTid `json:"x_kanda_tid,omitempty"`
-}
-
-// DeleteLeadParams defines parameters for DeleteLead.
-type DeleteLeadParams struct {
-	XKandaBid *XKandaBid `json:"x_kanda_bid,omitempty"`
-	XKandaCid *XKandaCid `json:"x_kanda_cid,omitempty"`
-	XKandaEid *XKandaEid `json:"x_kanda_eid,omitempty"`
-	XKandaTid *XKandaTid `json:"x_kanda_tid,omitempty"`
-}
-
-// GetLeadParams defines parameters for GetLead.
-type GetLeadParams struct {
-	XKandaBid *XKandaBid `json:"x_kanda_bid,omitempty"`
-	XKandaCid *XKandaCid `json:"x_kanda_cid,omitempty"`
-	XKandaEid *XKandaEid `json:"x_kanda_eid,omitempty"`
-	XKandaTid *XKandaTid `json:"x_kanda_tid,omitempty"`
-}
-
-// PutLeadJSONBody defines parameters for PutLead.
-type PutLeadJSONBody = Lead
-
-// PutLeadParams defines parameters for PutLead.
-type PutLeadParams struct {
-	XKandaBid *XKandaBid `json:"x_kanda_bid,omitempty"`
-	XKandaCid *XKandaCid `json:"x_kanda_cid,omitempty"`
-	XKandaEid *XKandaEid `json:"x_kanda_eid,omitempty"`
-	XKandaTid *XKandaTid `json:"x_kanda_tid,omitempty"`
-}
-
-// AcceptedJobSummaryLeadParams defines parameters for AcceptedJobSummaryLead.
-type AcceptedJobSummaryLeadParams struct {
-	XKandaBid *XKandaBid `json:"x_kanda_bid,omitempty"`
-	XKandaCid *XKandaCid `json:"x_kanda_cid,omitempty"`
-	XKandaEid *XKandaEid `json:"x_kanda_eid,omitempty"`
-	XKandaTid *XKandaTid `json:"x_kanda_tid,omitempty"`
-}
-
-// ApplyInviteLeadJSONBody defines parameters for ApplyInviteLead.
-type ApplyInviteLeadJSONBody = LeadApplicant
-
-// ApplyInviteLeadParams defines parameters for ApplyInviteLead.
-type ApplyInviteLeadParams struct {
-	XKandaBid *XKandaBid `json:"x_kanda_bid,omitempty"`
-	XKandaCid *XKandaCid `json:"x_kanda_cid,omitempty"`
-	XKandaEid *XKandaEid `json:"x_kanda_eid,omitempty"`
-	XKandaTid *XKandaTid `json:"x_kanda_tid,omitempty"`
-}
-
-// BudgetLeadJSONBody defines parameters for BudgetLead.
-type BudgetLeadJSONBody = Money
-
-// BudgetLeadParams defines parameters for BudgetLead.
-type BudgetLeadParams struct {
-	XKandaBid *XKandaBid `json:"x_kanda_bid,omitempty"`
-	XKandaCid *XKandaCid `json:"x_kanda_cid,omitempty"`
-	XKandaEid *XKandaEid `json:"x_kanda_eid,omitempty"`
-	XKandaTid *XKandaTid `json:"x_kanda_tid,omitempty"`
-}
-
-// ConnectTradesLeadJSONBody defines parameters for ConnectTradesLead.
-type ConnectTradesLeadJSONBody = []string
-
-// ConnectTradesLeadParams defines parameters for ConnectTradesLead.
-type ConnectTradesLeadParams struct {
-	XKandaBid *XKandaBid `json:"x_kanda_bid,omitempty"`
-	XKandaCid *XKandaCid `json:"x_kanda_cid,omitempty"`
-	XKandaEid *XKandaEid `json:"x_kanda_eid,omitempty"`
-	XKandaTid *XKandaTid `json:"x_kanda_tid,omitempty"`
-}
-
-// MatchTradesLeadJSONBody defines parameters for MatchTradesLead.
-type MatchTradesLeadJSONBody = TradeFilter
-
-// MatchTradesLeadParams defines parameters for MatchTradesLead.
-type MatchTradesLeadParams struct {
-	XKandaBid *XKandaBid `json:"x_kanda_bid,omitempty"`
-	XKandaCid *XKandaCid `json:"x_kanda_cid,omitempty"`
-	XKandaEid *XKandaEid `json:"x_kanda_eid,omitempty"`
-	XKandaTid *XKandaTid `json:"x_kanda_tid,omitempty"`
-}
-
-// QuoteLeadJSONBody defines parameters for QuoteLead.
-type QuoteLeadJSONBody = LeadQuote
-
-// QuoteLeadParams defines parameters for QuoteLead.
-type QuoteLeadParams struct {
-	XKandaBid *XKandaBid `json:"x_kanda_bid,omitempty"`
-	XKandaCid *XKandaCid `json:"x_kanda_cid,omitempty"`
-	XKandaEid *XKandaEid `json:"x_kanda_eid,omitempty"`
-	XKandaTid *XKandaTid `json:"x_kanda_tid,omitempty"`
-}
-
-// ReferLeadJSONBody defines parameters for ReferLead.
-type ReferLeadJSONBody struct {
-	// lead referral company id
-	Cid string `json:"cid"`
-}
-
-// ReferLeadParams defines parameters for ReferLead.
-type ReferLeadParams struct {
-	XKandaBid *XKandaBid `json:"x_kanda_bid,omitempty"`
-	XKandaCid *XKandaCid `json:"x_kanda_cid,omitempty"`
-	XKandaEid *XKandaEid `json:"x_kanda_eid,omitempty"`
-	XKandaTid *XKandaTid `json:"x_kanda_tid,omitempty"`
-}
-
-// SendLeadJobParams defines parameters for SendLeadJob.
-type SendLeadJobParams struct {
-	XKandaBid *XKandaBid `json:"x_kanda_bid,omitempty"`
-	XKandaCid *XKandaCid `json:"x_kanda_cid,omitempty"`
-	XKandaEid *XKandaEid `json:"x_kanda_eid,omitempty"`
-	XKandaTid *XKandaTid `json:"x_kanda_tid,omitempty"`
-}
-
-// TradeLeadJSONBody defines parameters for TradeLead.
-type TradeLeadJSONBody = LeadTrade
-
-// TradeLeadParams defines parameters for TradeLead.
-type TradeLeadParams struct {
-	XKandaBid *XKandaBid `json:"x_kanda_bid,omitempty"`
-	XKandaCid *XKandaCid `json:"x_kanda_cid,omitempty"`
-	XKandaEid *XKandaEid `json:"x_kanda_eid,omitempty"`
-	XKandaTid *XKandaTid `json:"x_kanda_tid,omitempty"`
-}
-
-// TradeQuoteApprovalLeadParams defines parameters for TradeQuoteApprovalLead.
-type TradeQuoteApprovalLeadParams struct {
-	XKandaBid *XKandaBid `json:"x_kanda_bid,omitempty"`
-	XKandaCid *XKandaCid `json:"x_kanda_cid,omitempty"`
-	XKandaEid *XKandaEid `json:"x_kanda_eid,omitempty"`
-	XKandaTid *XKandaTid `json:"x_kanda_tid,omitempty"`
-}
 
 // PostMeJSONBody defines parameters for PostMe.
 type PostMeJSONBody = InfoMe
@@ -3492,10 +3180,10 @@ type GetMonitorsParams struct {
 type GetMonitorsParamsFormat string
 
 // PostMonitorJSONBody defines parameters for PostMonitor.
-type PostMonitorJSONBody = Monitor
+type PostMonitorJSONBody = MonitorInput
 
 // PutMonitorJSONBody defines parameters for PutMonitor.
-type PutMonitorJSONBody = Monitor
+type PutMonitorJSONBody = MonitorInput
 
 // PostMonitorFlagJSONBody defines parameters for PostMonitorFlag.
 type PostMonitorFlagJSONBody = Flag
@@ -3564,10 +3252,10 @@ type GetRatesParams struct {
 type GetRatesParamsFormat string
 
 // PostRateJSONBody defines parameters for PostRate.
-type PostRateJSONBody = Rate
+type PostRateJSONBody = RateInput
 
 // PutRateJSONBody defines parameters for PutRate.
-type PutRateJSONBody = Rate
+type PutRateJSONBody = RateInput
 
 // RunnerParams defines parameters for Runner.
 type RunnerParams struct {
@@ -3594,10 +3282,10 @@ type GetSubscriptionsParams struct {
 type GetSubscriptionsParamsFormat string
 
 // PostSubscriptionJSONBody defines parameters for PostSubscription.
-type PostSubscriptionJSONBody = Subscription
+type PostSubscriptionJSONBody = SubscriptionInput
 
 // PutSubscriptionJSONBody defines parameters for PutSubscription.
-type PutSubscriptionJSONBody = Subscription
+type PutSubscriptionJSONBody = SubscriptionInput
 
 // GetTrainingsParams defines parameters for GetTrainings.
 type GetTrainingsParams struct {
@@ -3609,25 +3297,10 @@ type GetTrainingsParams struct {
 type GetTrainingsParamsFormat string
 
 // PostTrainingJSONBody defines parameters for PostTraining.
-type PostTrainingJSONBody = Training
+type PostTrainingJSONBody = TrainingInput
 
 // PutTrainingJSONBody defines parameters for PutTraining.
-type PutTrainingJSONBody = Training
-
-// GetTransactionsParams defines parameters for GetTransactions.
-type GetTransactionsParams struct {
-	Format *GetTransactionsParamsFormat `form:"format,omitempty" json:"format,omitempty"`
-	Q      *Q                           `form:"q,omitempty" json:"q,omitempty"`
-}
-
-// GetTransactionsParamsFormat defines parameters for GetTransactions.
-type GetTransactionsParamsFormat string
-
-// PostTransactionJSONBody defines parameters for PostTransaction.
-type PostTransactionJSONBody = Transaction
-
-// PutTransactionJSONBody defines parameters for PutTransaction.
-type PutTransactionJSONBody = Transaction
+type PutTrainingJSONBody = TrainingInput
 
 // ProviderCheckWebhookParamsProvider defines parameters for ProviderCheckWebhook.
 type ProviderCheckWebhookParamsProvider string
@@ -3677,9 +3350,6 @@ type PutEnterpriseJSONRequestBody = PutEnterpriseJSONBody
 // PostEnterpriseBranchesJSONRequestBody defines body for PostEnterpriseBranches for application/json ContentType.
 type PostEnterpriseBranchesJSONRequestBody = PostEnterpriseBranchesJSONBody
 
-// PostEventJSONRequestBody defines body for PostEvent for application/json ContentType.
-type PostEventJSONRequestBody = PostEventJSONBody
-
 // InfoAuthJSONRequestBody defines body for InfoAuth for application/json ContentType.
 type InfoAuthJSONRequestBody = InfoAuthJSONBody
 
@@ -3703,9 +3373,6 @@ type InfoEnterpriseRoleJSONRequestBody = InfoEnterpriseRoleJSONBody
 
 // InfoGhostJSONRequestBody defines body for InfoGhost for application/json ContentType.
 type InfoGhostJSONRequestBody = InfoGhostJSONBody
-
-// InfoLeadJSONRequestBody defines body for InfoLead for application/json ContentType.
-type InfoLeadJSONRequestBody = InfoLeadJSONBody
 
 // InfoLegacyRedirectJSONRequestBody defines body for InfoLegacyRedirect for application/json ContentType.
 type InfoLegacyRedirectJSONRequestBody = InfoLegacyRedirectJSONBody
@@ -3779,41 +3446,11 @@ type OverrideJobJSONRequestBody = OverrideJobJSONBody
 // PayJobJSONRequestBody defines body for PayJob for application/json ContentType.
 type PayJobJSONRequestBody = PayJobJSONBody
 
-// QuoteJobJSONRequestBody defines body for QuoteJob for application/json ContentType.
-type QuoteJobJSONRequestBody = QuoteJobJSONBody
-
 // ReapplyJobJSONRequestBody defines body for ReapplyJob for application/json ContentType.
 type ReapplyJobJSONRequestBody ReapplyJobJSONBody
 
 // SignJobSatNoteJSONRequestBody defines body for SignJobSatNote for application/json ContentType.
 type SignJobSatNoteJSONRequestBody = SignJobSatNoteJSONBody
-
-// PostLeadJSONRequestBody defines body for PostLead for application/json ContentType.
-type PostLeadJSONRequestBody = PostLeadJSONBody
-
-// PutLeadJSONRequestBody defines body for PutLead for application/json ContentType.
-type PutLeadJSONRequestBody = PutLeadJSONBody
-
-// ApplyInviteLeadJSONRequestBody defines body for ApplyInviteLead for application/json ContentType.
-type ApplyInviteLeadJSONRequestBody = ApplyInviteLeadJSONBody
-
-// BudgetLeadJSONRequestBody defines body for BudgetLead for application/json ContentType.
-type BudgetLeadJSONRequestBody = BudgetLeadJSONBody
-
-// ConnectTradesLeadJSONRequestBody defines body for ConnectTradesLead for application/json ContentType.
-type ConnectTradesLeadJSONRequestBody = ConnectTradesLeadJSONBody
-
-// MatchTradesLeadJSONRequestBody defines body for MatchTradesLead for application/json ContentType.
-type MatchTradesLeadJSONRequestBody = MatchTradesLeadJSONBody
-
-// QuoteLeadJSONRequestBody defines body for QuoteLead for application/json ContentType.
-type QuoteLeadJSONRequestBody = QuoteLeadJSONBody
-
-// ReferLeadJSONRequestBody defines body for ReferLead for application/json ContentType.
-type ReferLeadJSONRequestBody ReferLeadJSONBody
-
-// TradeLeadJSONRequestBody defines body for TradeLead for application/json ContentType.
-type TradeLeadJSONRequestBody = TradeLeadJSONBody
 
 // PostMeJSONRequestBody defines body for PostMe for application/json ContentType.
 type PostMeJSONRequestBody = PostMeJSONBody
@@ -3871,65 +3508,6 @@ type PostTrainingJSONRequestBody = PostTrainingJSONBody
 
 // PutTrainingJSONRequestBody defines body for PutTraining for application/json ContentType.
 type PutTrainingJSONRequestBody = PutTrainingJSONBody
-
-// PostTransactionJSONRequestBody defines body for PostTransaction for application/json ContentType.
-type PostTransactionJSONRequestBody = PostTransactionJSONBody
-
-// PutTransactionJSONRequestBody defines body for PutTransaction for application/json ContentType.
-type PutTransactionJSONRequestBody = PutTransactionJSONBody
-
-// Getter for additional properties for ApiEvent_ResourceData. Returns the specified
-// element and whether it was found
-func (a ApiEvent_ResourceData) Get(fieldName string) (value interface{}, found bool) {
-	if a.AdditionalProperties != nil {
-		value, found = a.AdditionalProperties[fieldName]
-	}
-	return
-}
-
-// Setter for additional properties for ApiEvent_ResourceData
-func (a *ApiEvent_ResourceData) Set(fieldName string, value interface{}) {
-	if a.AdditionalProperties == nil {
-		a.AdditionalProperties = make(map[string]interface{})
-	}
-	a.AdditionalProperties[fieldName] = value
-}
-
-// Override default JSON handling for ApiEvent_ResourceData to handle AdditionalProperties
-func (a *ApiEvent_ResourceData) UnmarshalJSON(b []byte) error {
-	object := make(map[string]json.RawMessage)
-	err := json.Unmarshal(b, &object)
-	if err != nil {
-		return err
-	}
-
-	if len(object) != 0 {
-		a.AdditionalProperties = make(map[string]interface{})
-		for fieldName, fieldBuf := range object {
-			var fieldVal interface{}
-			err := json.Unmarshal(fieldBuf, &fieldVal)
-			if err != nil {
-				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
-			}
-			a.AdditionalProperties[fieldName] = fieldVal
-		}
-	}
-	return nil
-}
-
-// Override default JSON handling for ApiEvent_ResourceData to handle AdditionalProperties
-func (a ApiEvent_ResourceData) MarshalJSON() ([]byte, error) {
-	var err error
-	object := make(map[string]json.RawMessage)
-
-	for fieldName, field := range a.AdditionalProperties {
-		object[fieldName], err = json.Marshal(field)
-		if err != nil {
-			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
-		}
-	}
-	return json.Marshal(object)
-}
 
 // Getter for additional properties for Branding. Returns the specified
 // element and whether it was found
@@ -4022,12 +3600,36 @@ func (a *Cache) UnmarshalJSON(b []byte) error {
 		return err
 	}
 
+	if raw, found := object["aid"]; found {
+		err = json.Unmarshal(raw, &a.Aid)
+		if err != nil {
+			return fmt.Errorf("error reading 'aid': %w", err)
+		}
+		delete(object, "aid")
+	}
+
+	if raw, found := object["bid"]; found {
+		err = json.Unmarshal(raw, &a.Bid)
+		if err != nil {
+			return fmt.Errorf("error reading 'bid': %w", err)
+		}
+		delete(object, "bid")
+	}
+
 	if raw, found := object["cid"]; found {
 		err = json.Unmarshal(raw, &a.Cid)
 		if err != nil {
 			return fmt.Errorf("error reading 'cid': %w", err)
 		}
 		delete(object, "cid")
+	}
+
+	if raw, found := object["eid"]; found {
+		err = json.Unmarshal(raw, &a.Eid)
+		if err != nil {
+			return fmt.Errorf("error reading 'eid': %w", err)
+		}
+		delete(object, "eid")
 	}
 
 	if raw, found := object["id"]; found {
@@ -4054,6 +3656,14 @@ func (a *Cache) UnmarshalJSON(b []byte) error {
 		delete(object, "oid")
 	}
 
+	if raw, found := object["tid"]; found {
+		err = json.Unmarshal(raw, &a.Tid)
+		if err != nil {
+			return fmt.Errorf("error reading 'tid': %w", err)
+		}
+		delete(object, "tid")
+	}
+
 	if len(object) != 0 {
 		a.AdditionalProperties = make(map[string]string)
 		for fieldName, fieldBuf := range object {
@@ -4073,6 +3683,20 @@ func (a Cache) MarshalJSON() ([]byte, error) {
 	var err error
 	object := make(map[string]json.RawMessage)
 
+	if a.Aid != nil {
+		object["aid"], err = json.Marshal(a.Aid)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'aid': %w", err)
+		}
+	}
+
+	if a.Bid != nil {
+		object["bid"], err = json.Marshal(a.Bid)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'bid': %w", err)
+		}
+	}
+
 	if a.Cid != nil {
 		object["cid"], err = json.Marshal(a.Cid)
 		if err != nil {
@@ -4080,18 +3704,21 @@ func (a Cache) MarshalJSON() ([]byte, error) {
 		}
 	}
 
-	if a.Id != nil {
-		object["id"], err = json.Marshal(a.Id)
+	if a.Eid != nil {
+		object["eid"], err = json.Marshal(a.Eid)
 		if err != nil {
-			return nil, fmt.Errorf("error marshaling 'id': %w", err)
+			return nil, fmt.Errorf("error marshaling 'eid': %w", err)
 		}
 	}
 
-	if a.Metadata != nil {
-		object["metadata"], err = json.Marshal(a.Metadata)
-		if err != nil {
-			return nil, fmt.Errorf("error marshaling 'metadata': %w", err)
-		}
+	object["id"], err = json.Marshal(a.Id)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'id': %w", err)
+	}
+
+	object["metadata"], err = json.Marshal(a.Metadata)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'metadata': %w", err)
 	}
 
 	if a.Oid != nil {
@@ -4100,6 +3727,66 @@ func (a Cache) MarshalJSON() ([]byte, error) {
 			return nil, fmt.Errorf("error marshaling 'oid': %w", err)
 		}
 	}
+
+	if a.Tid != nil {
+		object["tid"], err = json.Marshal(a.Tid)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'tid': %w", err)
+		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for CacheInput. Returns the specified
+// element and whether it was found
+func (a CacheInput) Get(fieldName string) (value string, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for CacheInput
+func (a *CacheInput) Set(fieldName string, value string) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]string)
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for CacheInput to handle AdditionalProperties
+func (a *CacheInput) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]string)
+		for fieldName, fieldBuf := range object {
+			var fieldVal string
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for CacheInput to handle AdditionalProperties
+func (a CacheInput) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
 
 	for fieldName, field := range a.AdditionalProperties {
 		object[fieldName], err = json.Marshal(field)
@@ -4151,112 +3838,6 @@ func (a *ConsumerSignature_PreApplicationDeclarations) UnmarshalJSON(b []byte) e
 
 // Override default JSON handling for ConsumerSignature_PreApplicationDeclarations to handle AdditionalProperties
 func (a ConsumerSignature_PreApplicationDeclarations) MarshalJSON() ([]byte, error) {
-	var err error
-	object := make(map[string]json.RawMessage)
-
-	for fieldName, field := range a.AdditionalProperties {
-		object[fieldName], err = json.Marshal(field)
-		if err != nil {
-			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
-		}
-	}
-	return json.Marshal(object)
-}
-
-// Getter for additional properties for EventProps_Info. Returns the specified
-// element and whether it was found
-func (a EventProps_Info) Get(fieldName string) (value interface{}, found bool) {
-	if a.AdditionalProperties != nil {
-		value, found = a.AdditionalProperties[fieldName]
-	}
-	return
-}
-
-// Setter for additional properties for EventProps_Info
-func (a *EventProps_Info) Set(fieldName string, value interface{}) {
-	if a.AdditionalProperties == nil {
-		a.AdditionalProperties = make(map[string]interface{})
-	}
-	a.AdditionalProperties[fieldName] = value
-}
-
-// Override default JSON handling for EventProps_Info to handle AdditionalProperties
-func (a *EventProps_Info) UnmarshalJSON(b []byte) error {
-	object := make(map[string]json.RawMessage)
-	err := json.Unmarshal(b, &object)
-	if err != nil {
-		return err
-	}
-
-	if len(object) != 0 {
-		a.AdditionalProperties = make(map[string]interface{})
-		for fieldName, fieldBuf := range object {
-			var fieldVal interface{}
-			err := json.Unmarshal(fieldBuf, &fieldVal)
-			if err != nil {
-				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
-			}
-			a.AdditionalProperties[fieldName] = fieldVal
-		}
-	}
-	return nil
-}
-
-// Override default JSON handling for EventProps_Info to handle AdditionalProperties
-func (a EventProps_Info) MarshalJSON() ([]byte, error) {
-	var err error
-	object := make(map[string]json.RawMessage)
-
-	for fieldName, field := range a.AdditionalProperties {
-		object[fieldName], err = json.Marshal(field)
-		if err != nil {
-			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
-		}
-	}
-	return json.Marshal(object)
-}
-
-// Getter for additional properties for EventProps_Params. Returns the specified
-// element and whether it was found
-func (a EventProps_Params) Get(fieldName string) (value interface{}, found bool) {
-	if a.AdditionalProperties != nil {
-		value, found = a.AdditionalProperties[fieldName]
-	}
-	return
-}
-
-// Setter for additional properties for EventProps_Params
-func (a *EventProps_Params) Set(fieldName string, value interface{}) {
-	if a.AdditionalProperties == nil {
-		a.AdditionalProperties = make(map[string]interface{})
-	}
-	a.AdditionalProperties[fieldName] = value
-}
-
-// Override default JSON handling for EventProps_Params to handle AdditionalProperties
-func (a *EventProps_Params) UnmarshalJSON(b []byte) error {
-	object := make(map[string]json.RawMessage)
-	err := json.Unmarshal(b, &object)
-	if err != nil {
-		return err
-	}
-
-	if len(object) != 0 {
-		a.AdditionalProperties = make(map[string]interface{})
-		for fieldName, fieldBuf := range object {
-			var fieldVal interface{}
-			err := json.Unmarshal(fieldBuf, &fieldVal)
-			if err != nil {
-				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
-			}
-			a.AdditionalProperties[fieldName] = fieldVal
-		}
-	}
-	return nil
-}
-
-// Override default JSON handling for EventProps_Params to handle AdditionalProperties
-func (a EventProps_Params) MarshalJSON() ([]byte, error) {
 	var err error
 	object := make(map[string]json.RawMessage)
 
@@ -4559,9 +4140,6 @@ type ServerInterface interface {
 	// post existing enterprise branches
 	// (POST /api/enterprise/{id}/branch)
 	PostEnterpriseBranches(ctx echo.Context, id string) error
-	// post event by kanda staff
-	// (POST /api/event)
-	PostEvent(ctx echo.Context) error
 	// put auth info by email, send sign-in magic link
 	// (PUT /api/info/auth)
 	InfoAuth(ctx echo.Context) error
@@ -4613,9 +4191,6 @@ type ServerInterface interface {
 	// query request IPv4 address or fallback to server IP
 	// (GET /api/info/ip)
 	InfoIP(ctx echo.Context) error
-	// info lead for enterprise user to send out AIP form link
-	// (PUT /api/info/lead)
-	InfoLead(ctx echo.Context, params InfoLeadParams) error
 	// request a new checkout link based on given data for redirect flow
 	// (PUT /api/info/legacy-redirect)
 	InfoLegacyRedirect(ctx echo.Context) error
@@ -4649,9 +4224,6 @@ type ServerInterface interface {
 	// kanda staff or trade admin to generate their stats by filters
 	// (PUT /api/info/stats)
 	PutInfoStats(ctx echo.Context) error
-	// query trade summary with branding and logo attached
-	// (GET /api/info/trade-summary)
-	InfoTradeSummary(ctx echo.Context, params InfoTradeSummaryParams) error
 	// validate email info
 	// (GET /api/info/validate-email)
 	InfoValidateEmail(ctx echo.Context, params InfoValidateEmailParams) error
@@ -4766,9 +4338,6 @@ type ServerInterface interface {
 	// kanda staff to approve a payout for job, only allowed when provider approved sat note and job status is finished and is financed
 	// (POST /api/job/{id}/payout)
 	PayoutJob(ctx echo.Context, id string) error
-	// quote job in finance for homeowner to get eligibility, only allowed when job status is sent
-	// (POST /api/job/{id}/quote)
-	QuoteJob(ctx echo.Context, id string) error
 	// customer to reapply existing job with second line options, only allowed when job is applied and primary finance not approved
 	// (POST /api/job/{id}/reapply)
 	ReapplyJob(ctx echo.Context, id string) error
@@ -4787,51 +4356,6 @@ type ServerInterface interface {
 	// customer to view completed job with satisfaction note, only allowed when job status is finished and is financed
 	// (POST /api/job/{id}/viewSatNote)
 	ViewJobSatNote(ctx echo.Context, id string) error
-	// kanda staff only to get all leads
-	// (GET /api/lead)
-	GetLeads(ctx echo.Context, params GetLeadsParams) error
-	// post new lead from applicant
-	// (POST /api/lead)
-	PostLead(ctx echo.Context, params PostLeadParams) error
-	// kanda staff only to delete existing lead
-	// (DELETE /api/lead/{id})
-	DeleteLead(ctx echo.Context, id string, params DeleteLeadParams) error
-	// get existing lead
-	// (GET /api/lead/{id})
-	GetLead(ctx echo.Context, id string, params GetLeadParams) error
-	// kanda staff only to put existing lead
-	// (PUT /api/lead/{id})
-	PutLead(ctx echo.Context, id string, params PutLeadParams) error
-	// query accepted job summary quoted to lead
-	// (POST /api/lead/{id}/accepted-job-summary)
-	AcceptedJobSummaryLead(ctx echo.Context, id string, params AcceptedJobSummaryLeadParams) error
-	// post existing lead from applicant invite
-	// (POST /api/lead/{id}/apply-invite)
-	ApplyInviteLead(ctx echo.Context, id string, params ApplyInviteLeadParams) error
-	// post budget with existing lead
-	// (POST /api/lead/{id}/budget)
-	BudgetLead(ctx echo.Context, id string, params BudgetLeadParams) error
-	// connecting a lead to trades
-	// (POST /api/lead/{id}/connect-trades)
-	ConnectTradesLead(ctx echo.Context, id string, params ConnectTradesLeadParams) error
-	// matching a lead to available trades
-	// (POST /api/lead/{id}/match-trades)
-	MatchTradesLead(ctx echo.Context, id string, params MatchTradesLeadParams) error
-	// post existing lead quote
-	// (POST /api/lead/{id}/quote)
-	QuoteLead(ctx echo.Context, id string, params QuoteLeadParams) error
-	// kanda staff only to post existing referred lead
-	// (POST /api/lead/{id}/refer)
-	ReferLead(ctx echo.Context, id string, params ReferLeadParams) error
-	// for enterprise or kanda staff to convert a lead to job and send to homeowner, it also sets lead status to trade_accepted
-	// (POST /api/lead/{id}/send-job)
-	SendLeadJob(ctx echo.Context, id string, params SendLeadJobParams) error
-	// post existing lead trade
-	// (POST /api/lead/{id}/trade)
-	TradeLead(ctx echo.Context, id string, params TradeLeadParams) error
-	// external trade to post existing lead quote approval by trade
-	// (POST /api/lead/{id}/trade-quote-approval)
-	TradeQuoteApprovalLead(ctx echo.Context, id string, params TradeQuoteApprovalLeadParams) error
 	// get me info
 	// (GET /api/me)
 	Me(ctx echo.Context) error
@@ -4964,21 +4488,6 @@ type ServerInterface interface {
 	// put existing training
 	// (PUT /api/training/{id})
 	PutTraining(ctx echo.Context, id string) error
-	// get all transactions
-	// (GET /api/transaction)
-	GetTransactions(ctx echo.Context, params GetTransactionsParams) error
-	// post new transaction
-	// (POST /api/transaction)
-	PostTransaction(ctx echo.Context) error
-	// delete existing transaction
-	// (DELETE /api/transaction/{id})
-	DeleteTransaction(ctx echo.Context, id string) error
-	// get existing transaction
-	// (GET /api/transaction/{id})
-	GetTransaction(ctx echo.Context, id string) error
-	// put existing transaction
-	// (PUT /api/transaction/{id})
-	PutTransaction(ctx echo.Context, id string) error
 	// provider check webhook
 	// (GET /api/webhook/{provider})
 	ProviderCheckWebhook(ctx echo.Context, provider ProviderCheckWebhookParamsProvider) error
@@ -5832,17 +5341,6 @@ func (w *ServerInterfaceWrapper) PostEnterpriseBranches(ctx echo.Context) error 
 	return err
 }
 
-// PostEvent converts echo context to params.
-func (w *ServerInterfaceWrapper) PostEvent(ctx echo.Context) error {
-	var err error
-
-	ctx.Set(BearerAuthScopes, []string{""})
-
-	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.PostEvent(ctx)
-	return err
-}
-
 // InfoAuth converts echo context to params.
 func (w *ServerInterfaceWrapper) InfoAuth(ctx echo.Context) error {
 	var err error
@@ -6117,47 +5615,6 @@ func (w *ServerInterfaceWrapper) InfoIP(ctx echo.Context) error {
 	return err
 }
 
-// InfoLead converts echo context to params.
-func (w *ServerInterfaceWrapper) InfoLead(ctx echo.Context) error {
-	var err error
-
-	ctx.Set(BearerAuthScopes, []string{""})
-
-	// Parameter object where we will unmarshal all parameters from the context
-	var params InfoLeadParams
-	// ------------- Optional query parameter "eid" -------------
-
-	err = runtime.BindQueryParameter("form", true, false, "eid", ctx.QueryParams(), &params.Eid)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter eid: %s", err))
-	}
-
-	// ------------- Optional query parameter "bid" -------------
-
-	err = runtime.BindQueryParameter("form", true, false, "bid", ctx.QueryParams(), &params.Bid)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter bid: %s", err))
-	}
-
-	// ------------- Optional query parameter "subdomain" -------------
-
-	err = runtime.BindQueryParameter("form", true, false, "subdomain", ctx.QueryParams(), &params.Subdomain)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter subdomain: %s", err))
-	}
-
-	// ------------- Optional query parameter "branch_code" -------------
-
-	err = runtime.BindQueryParameter("form", true, false, "branch_code", ctx.QueryParams(), &params.BranchCode)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter branch_code: %s", err))
-	}
-
-	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.InfoLead(ctx, params)
-	return err
-}
-
 // InfoLegacyRedirect converts echo context to params.
 func (w *ServerInterfaceWrapper) InfoLegacyRedirect(ctx echo.Context) error {
 	var err error
@@ -6310,26 +5767,6 @@ func (w *ServerInterfaceWrapper) PutInfoStats(ctx echo.Context) error {
 
 	// Invoke the callback with all the unmarshalled arguments
 	err = w.Handler.PutInfoStats(ctx)
-	return err
-}
-
-// InfoTradeSummary converts echo context to params.
-func (w *ServerInterfaceWrapper) InfoTradeSummary(ctx echo.Context) error {
-	var err error
-
-	ctx.Set(BearerAuthScopes, []string{""})
-
-	// Parameter object where we will unmarshal all parameters from the context
-	var params InfoTradeSummaryParams
-	// ------------- Required query parameter "id" -------------
-
-	err = runtime.BindQueryParameter("form", true, true, "id", ctx.QueryParams(), &params.Id)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter id: %s", err))
-	}
-
-	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.InfoTradeSummary(ctx, params)
 	return err
 }
 
@@ -7027,24 +6464,6 @@ func (w *ServerInterfaceWrapper) PayoutJob(ctx echo.Context) error {
 	return err
 }
 
-// QuoteJob converts echo context to params.
-func (w *ServerInterfaceWrapper) QuoteJob(ctx echo.Context) error {
-	var err error
-	// ------------- Path parameter "id" -------------
-	var id string
-
-	err = runtime.BindStyledParameterWithLocation("simple", false, "id", runtime.ParamLocationPath, ctx.Param("id"), &id)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter id: %s", err))
-	}
-
-	ctx.Set(BearerAuthScopes, []string{""})
-
-	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.QuoteJob(ctx, id)
-	return err
-}
-
 // ReapplyJob converts echo context to params.
 func (w *ServerInterfaceWrapper) ReapplyJob(ctx echo.Context) error {
 	var err error
@@ -7150,1250 +6569,6 @@ func (w *ServerInterfaceWrapper) ViewJobSatNote(ctx echo.Context) error {
 
 	// Invoke the callback with all the unmarshalled arguments
 	err = w.Handler.ViewJobSatNote(ctx, id)
-	return err
-}
-
-// GetLeads converts echo context to params.
-func (w *ServerInterfaceWrapper) GetLeads(ctx echo.Context) error {
-	var err error
-
-	ctx.Set(BearerAuthScopes, []string{""})
-
-	// Parameter object where we will unmarshal all parameters from the context
-	var params GetLeadsParams
-	// ------------- Optional query parameter "format" -------------
-
-	err = runtime.BindQueryParameter("form", true, false, "format", ctx.QueryParams(), &params.Format)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter format: %s", err))
-	}
-
-	// ------------- Optional query parameter "q" -------------
-
-	err = runtime.BindQueryParameter("form", true, false, "q", ctx.QueryParams(), &params.Q)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter q: %s", err))
-	}
-
-	headers := ctx.Request().Header
-	// ------------- Optional header parameter "x_kanda_bid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_bid")]; found {
-		var XKandaBid XKandaBid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_bid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_bid", runtime.ParamLocationHeader, valueList[0], &XKandaBid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_bid: %s", err))
-		}
-
-		params.XKandaBid = &XKandaBid
-	}
-	// ------------- Optional header parameter "x_kanda_cid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_cid")]; found {
-		var XKandaCid XKandaCid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_cid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_cid", runtime.ParamLocationHeader, valueList[0], &XKandaCid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_cid: %s", err))
-		}
-
-		params.XKandaCid = &XKandaCid
-	}
-	// ------------- Optional header parameter "x_kanda_eid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_eid")]; found {
-		var XKandaEid XKandaEid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_eid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_eid", runtime.ParamLocationHeader, valueList[0], &XKandaEid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_eid: %s", err))
-		}
-
-		params.XKandaEid = &XKandaEid
-	}
-	// ------------- Optional header parameter "x_kanda_tid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_tid")]; found {
-		var XKandaTid XKandaTid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_tid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_tid", runtime.ParamLocationHeader, valueList[0], &XKandaTid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_tid: %s", err))
-		}
-
-		params.XKandaTid = &XKandaTid
-	}
-
-	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.GetLeads(ctx, params)
-	return err
-}
-
-// PostLead converts echo context to params.
-func (w *ServerInterfaceWrapper) PostLead(ctx echo.Context) error {
-	var err error
-
-	ctx.Set(BearerAuthScopes, []string{""})
-
-	// Parameter object where we will unmarshal all parameters from the context
-	var params PostLeadParams
-
-	headers := ctx.Request().Header
-	// ------------- Optional header parameter "x_kanda_bid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_bid")]; found {
-		var XKandaBid XKandaBid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_bid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_bid", runtime.ParamLocationHeader, valueList[0], &XKandaBid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_bid: %s", err))
-		}
-
-		params.XKandaBid = &XKandaBid
-	}
-	// ------------- Optional header parameter "x_kanda_cid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_cid")]; found {
-		var XKandaCid XKandaCid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_cid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_cid", runtime.ParamLocationHeader, valueList[0], &XKandaCid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_cid: %s", err))
-		}
-
-		params.XKandaCid = &XKandaCid
-	}
-	// ------------- Optional header parameter "x_kanda_eid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_eid")]; found {
-		var XKandaEid XKandaEid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_eid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_eid", runtime.ParamLocationHeader, valueList[0], &XKandaEid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_eid: %s", err))
-		}
-
-		params.XKandaEid = &XKandaEid
-	}
-	// ------------- Optional header parameter "x_kanda_tid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_tid")]; found {
-		var XKandaTid XKandaTid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_tid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_tid", runtime.ParamLocationHeader, valueList[0], &XKandaTid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_tid: %s", err))
-		}
-
-		params.XKandaTid = &XKandaTid
-	}
-
-	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.PostLead(ctx, params)
-	return err
-}
-
-// DeleteLead converts echo context to params.
-func (w *ServerInterfaceWrapper) DeleteLead(ctx echo.Context) error {
-	var err error
-	// ------------- Path parameter "id" -------------
-	var id string
-
-	err = runtime.BindStyledParameterWithLocation("simple", false, "id", runtime.ParamLocationPath, ctx.Param("id"), &id)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter id: %s", err))
-	}
-
-	ctx.Set(BearerAuthScopes, []string{""})
-
-	// Parameter object where we will unmarshal all parameters from the context
-	var params DeleteLeadParams
-
-	headers := ctx.Request().Header
-	// ------------- Optional header parameter "x_kanda_bid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_bid")]; found {
-		var XKandaBid XKandaBid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_bid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_bid", runtime.ParamLocationHeader, valueList[0], &XKandaBid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_bid: %s", err))
-		}
-
-		params.XKandaBid = &XKandaBid
-	}
-	// ------------- Optional header parameter "x_kanda_cid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_cid")]; found {
-		var XKandaCid XKandaCid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_cid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_cid", runtime.ParamLocationHeader, valueList[0], &XKandaCid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_cid: %s", err))
-		}
-
-		params.XKandaCid = &XKandaCid
-	}
-	// ------------- Optional header parameter "x_kanda_eid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_eid")]; found {
-		var XKandaEid XKandaEid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_eid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_eid", runtime.ParamLocationHeader, valueList[0], &XKandaEid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_eid: %s", err))
-		}
-
-		params.XKandaEid = &XKandaEid
-	}
-	// ------------- Optional header parameter "x_kanda_tid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_tid")]; found {
-		var XKandaTid XKandaTid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_tid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_tid", runtime.ParamLocationHeader, valueList[0], &XKandaTid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_tid: %s", err))
-		}
-
-		params.XKandaTid = &XKandaTid
-	}
-
-	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.DeleteLead(ctx, id, params)
-	return err
-}
-
-// GetLead converts echo context to params.
-func (w *ServerInterfaceWrapper) GetLead(ctx echo.Context) error {
-	var err error
-	// ------------- Path parameter "id" -------------
-	var id string
-
-	err = runtime.BindStyledParameterWithLocation("simple", false, "id", runtime.ParamLocationPath, ctx.Param("id"), &id)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter id: %s", err))
-	}
-
-	ctx.Set(BearerAuthScopes, []string{""})
-
-	// Parameter object where we will unmarshal all parameters from the context
-	var params GetLeadParams
-
-	headers := ctx.Request().Header
-	// ------------- Optional header parameter "x_kanda_bid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_bid")]; found {
-		var XKandaBid XKandaBid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_bid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_bid", runtime.ParamLocationHeader, valueList[0], &XKandaBid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_bid: %s", err))
-		}
-
-		params.XKandaBid = &XKandaBid
-	}
-	// ------------- Optional header parameter "x_kanda_cid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_cid")]; found {
-		var XKandaCid XKandaCid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_cid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_cid", runtime.ParamLocationHeader, valueList[0], &XKandaCid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_cid: %s", err))
-		}
-
-		params.XKandaCid = &XKandaCid
-	}
-	// ------------- Optional header parameter "x_kanda_eid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_eid")]; found {
-		var XKandaEid XKandaEid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_eid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_eid", runtime.ParamLocationHeader, valueList[0], &XKandaEid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_eid: %s", err))
-		}
-
-		params.XKandaEid = &XKandaEid
-	}
-	// ------------- Optional header parameter "x_kanda_tid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_tid")]; found {
-		var XKandaTid XKandaTid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_tid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_tid", runtime.ParamLocationHeader, valueList[0], &XKandaTid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_tid: %s", err))
-		}
-
-		params.XKandaTid = &XKandaTid
-	}
-
-	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.GetLead(ctx, id, params)
-	return err
-}
-
-// PutLead converts echo context to params.
-func (w *ServerInterfaceWrapper) PutLead(ctx echo.Context) error {
-	var err error
-	// ------------- Path parameter "id" -------------
-	var id string
-
-	err = runtime.BindStyledParameterWithLocation("simple", false, "id", runtime.ParamLocationPath, ctx.Param("id"), &id)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter id: %s", err))
-	}
-
-	ctx.Set(BearerAuthScopes, []string{""})
-
-	// Parameter object where we will unmarshal all parameters from the context
-	var params PutLeadParams
-
-	headers := ctx.Request().Header
-	// ------------- Optional header parameter "x_kanda_bid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_bid")]; found {
-		var XKandaBid XKandaBid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_bid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_bid", runtime.ParamLocationHeader, valueList[0], &XKandaBid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_bid: %s", err))
-		}
-
-		params.XKandaBid = &XKandaBid
-	}
-	// ------------- Optional header parameter "x_kanda_cid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_cid")]; found {
-		var XKandaCid XKandaCid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_cid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_cid", runtime.ParamLocationHeader, valueList[0], &XKandaCid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_cid: %s", err))
-		}
-
-		params.XKandaCid = &XKandaCid
-	}
-	// ------------- Optional header parameter "x_kanda_eid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_eid")]; found {
-		var XKandaEid XKandaEid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_eid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_eid", runtime.ParamLocationHeader, valueList[0], &XKandaEid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_eid: %s", err))
-		}
-
-		params.XKandaEid = &XKandaEid
-	}
-	// ------------- Optional header parameter "x_kanda_tid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_tid")]; found {
-		var XKandaTid XKandaTid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_tid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_tid", runtime.ParamLocationHeader, valueList[0], &XKandaTid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_tid: %s", err))
-		}
-
-		params.XKandaTid = &XKandaTid
-	}
-
-	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.PutLead(ctx, id, params)
-	return err
-}
-
-// AcceptedJobSummaryLead converts echo context to params.
-func (w *ServerInterfaceWrapper) AcceptedJobSummaryLead(ctx echo.Context) error {
-	var err error
-	// ------------- Path parameter "id" -------------
-	var id string
-
-	err = runtime.BindStyledParameterWithLocation("simple", false, "id", runtime.ParamLocationPath, ctx.Param("id"), &id)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter id: %s", err))
-	}
-
-	ctx.Set(BearerAuthScopes, []string{""})
-
-	// Parameter object where we will unmarshal all parameters from the context
-	var params AcceptedJobSummaryLeadParams
-
-	headers := ctx.Request().Header
-	// ------------- Optional header parameter "x_kanda_bid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_bid")]; found {
-		var XKandaBid XKandaBid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_bid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_bid", runtime.ParamLocationHeader, valueList[0], &XKandaBid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_bid: %s", err))
-		}
-
-		params.XKandaBid = &XKandaBid
-	}
-	// ------------- Optional header parameter "x_kanda_cid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_cid")]; found {
-		var XKandaCid XKandaCid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_cid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_cid", runtime.ParamLocationHeader, valueList[0], &XKandaCid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_cid: %s", err))
-		}
-
-		params.XKandaCid = &XKandaCid
-	}
-	// ------------- Optional header parameter "x_kanda_eid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_eid")]; found {
-		var XKandaEid XKandaEid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_eid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_eid", runtime.ParamLocationHeader, valueList[0], &XKandaEid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_eid: %s", err))
-		}
-
-		params.XKandaEid = &XKandaEid
-	}
-	// ------------- Optional header parameter "x_kanda_tid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_tid")]; found {
-		var XKandaTid XKandaTid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_tid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_tid", runtime.ParamLocationHeader, valueList[0], &XKandaTid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_tid: %s", err))
-		}
-
-		params.XKandaTid = &XKandaTid
-	}
-
-	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.AcceptedJobSummaryLead(ctx, id, params)
-	return err
-}
-
-// ApplyInviteLead converts echo context to params.
-func (w *ServerInterfaceWrapper) ApplyInviteLead(ctx echo.Context) error {
-	var err error
-	// ------------- Path parameter "id" -------------
-	var id string
-
-	err = runtime.BindStyledParameterWithLocation("simple", false, "id", runtime.ParamLocationPath, ctx.Param("id"), &id)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter id: %s", err))
-	}
-
-	ctx.Set(BearerAuthScopes, []string{""})
-
-	// Parameter object where we will unmarshal all parameters from the context
-	var params ApplyInviteLeadParams
-
-	headers := ctx.Request().Header
-	// ------------- Optional header parameter "x_kanda_bid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_bid")]; found {
-		var XKandaBid XKandaBid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_bid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_bid", runtime.ParamLocationHeader, valueList[0], &XKandaBid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_bid: %s", err))
-		}
-
-		params.XKandaBid = &XKandaBid
-	}
-	// ------------- Optional header parameter "x_kanda_cid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_cid")]; found {
-		var XKandaCid XKandaCid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_cid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_cid", runtime.ParamLocationHeader, valueList[0], &XKandaCid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_cid: %s", err))
-		}
-
-		params.XKandaCid = &XKandaCid
-	}
-	// ------------- Optional header parameter "x_kanda_eid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_eid")]; found {
-		var XKandaEid XKandaEid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_eid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_eid", runtime.ParamLocationHeader, valueList[0], &XKandaEid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_eid: %s", err))
-		}
-
-		params.XKandaEid = &XKandaEid
-	}
-	// ------------- Optional header parameter "x_kanda_tid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_tid")]; found {
-		var XKandaTid XKandaTid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_tid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_tid", runtime.ParamLocationHeader, valueList[0], &XKandaTid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_tid: %s", err))
-		}
-
-		params.XKandaTid = &XKandaTid
-	}
-
-	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.ApplyInviteLead(ctx, id, params)
-	return err
-}
-
-// BudgetLead converts echo context to params.
-func (w *ServerInterfaceWrapper) BudgetLead(ctx echo.Context) error {
-	var err error
-	// ------------- Path parameter "id" -------------
-	var id string
-
-	err = runtime.BindStyledParameterWithLocation("simple", false, "id", runtime.ParamLocationPath, ctx.Param("id"), &id)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter id: %s", err))
-	}
-
-	ctx.Set(BearerAuthScopes, []string{""})
-
-	// Parameter object where we will unmarshal all parameters from the context
-	var params BudgetLeadParams
-
-	headers := ctx.Request().Header
-	// ------------- Optional header parameter "x_kanda_bid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_bid")]; found {
-		var XKandaBid XKandaBid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_bid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_bid", runtime.ParamLocationHeader, valueList[0], &XKandaBid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_bid: %s", err))
-		}
-
-		params.XKandaBid = &XKandaBid
-	}
-	// ------------- Optional header parameter "x_kanda_cid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_cid")]; found {
-		var XKandaCid XKandaCid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_cid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_cid", runtime.ParamLocationHeader, valueList[0], &XKandaCid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_cid: %s", err))
-		}
-
-		params.XKandaCid = &XKandaCid
-	}
-	// ------------- Optional header parameter "x_kanda_eid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_eid")]; found {
-		var XKandaEid XKandaEid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_eid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_eid", runtime.ParamLocationHeader, valueList[0], &XKandaEid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_eid: %s", err))
-		}
-
-		params.XKandaEid = &XKandaEid
-	}
-	// ------------- Optional header parameter "x_kanda_tid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_tid")]; found {
-		var XKandaTid XKandaTid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_tid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_tid", runtime.ParamLocationHeader, valueList[0], &XKandaTid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_tid: %s", err))
-		}
-
-		params.XKandaTid = &XKandaTid
-	}
-
-	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.BudgetLead(ctx, id, params)
-	return err
-}
-
-// ConnectTradesLead converts echo context to params.
-func (w *ServerInterfaceWrapper) ConnectTradesLead(ctx echo.Context) error {
-	var err error
-	// ------------- Path parameter "id" -------------
-	var id string
-
-	err = runtime.BindStyledParameterWithLocation("simple", false, "id", runtime.ParamLocationPath, ctx.Param("id"), &id)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter id: %s", err))
-	}
-
-	ctx.Set(BearerAuthScopes, []string{""})
-
-	// Parameter object where we will unmarshal all parameters from the context
-	var params ConnectTradesLeadParams
-
-	headers := ctx.Request().Header
-	// ------------- Optional header parameter "x_kanda_bid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_bid")]; found {
-		var XKandaBid XKandaBid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_bid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_bid", runtime.ParamLocationHeader, valueList[0], &XKandaBid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_bid: %s", err))
-		}
-
-		params.XKandaBid = &XKandaBid
-	}
-	// ------------- Optional header parameter "x_kanda_cid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_cid")]; found {
-		var XKandaCid XKandaCid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_cid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_cid", runtime.ParamLocationHeader, valueList[0], &XKandaCid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_cid: %s", err))
-		}
-
-		params.XKandaCid = &XKandaCid
-	}
-	// ------------- Optional header parameter "x_kanda_eid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_eid")]; found {
-		var XKandaEid XKandaEid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_eid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_eid", runtime.ParamLocationHeader, valueList[0], &XKandaEid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_eid: %s", err))
-		}
-
-		params.XKandaEid = &XKandaEid
-	}
-	// ------------- Optional header parameter "x_kanda_tid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_tid")]; found {
-		var XKandaTid XKandaTid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_tid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_tid", runtime.ParamLocationHeader, valueList[0], &XKandaTid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_tid: %s", err))
-		}
-
-		params.XKandaTid = &XKandaTid
-	}
-
-	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.ConnectTradesLead(ctx, id, params)
-	return err
-}
-
-// MatchTradesLead converts echo context to params.
-func (w *ServerInterfaceWrapper) MatchTradesLead(ctx echo.Context) error {
-	var err error
-	// ------------- Path parameter "id" -------------
-	var id string
-
-	err = runtime.BindStyledParameterWithLocation("simple", false, "id", runtime.ParamLocationPath, ctx.Param("id"), &id)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter id: %s", err))
-	}
-
-	ctx.Set(BearerAuthScopes, []string{""})
-
-	// Parameter object where we will unmarshal all parameters from the context
-	var params MatchTradesLeadParams
-
-	headers := ctx.Request().Header
-	// ------------- Optional header parameter "x_kanda_bid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_bid")]; found {
-		var XKandaBid XKandaBid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_bid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_bid", runtime.ParamLocationHeader, valueList[0], &XKandaBid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_bid: %s", err))
-		}
-
-		params.XKandaBid = &XKandaBid
-	}
-	// ------------- Optional header parameter "x_kanda_cid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_cid")]; found {
-		var XKandaCid XKandaCid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_cid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_cid", runtime.ParamLocationHeader, valueList[0], &XKandaCid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_cid: %s", err))
-		}
-
-		params.XKandaCid = &XKandaCid
-	}
-	// ------------- Optional header parameter "x_kanda_eid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_eid")]; found {
-		var XKandaEid XKandaEid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_eid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_eid", runtime.ParamLocationHeader, valueList[0], &XKandaEid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_eid: %s", err))
-		}
-
-		params.XKandaEid = &XKandaEid
-	}
-	// ------------- Optional header parameter "x_kanda_tid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_tid")]; found {
-		var XKandaTid XKandaTid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_tid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_tid", runtime.ParamLocationHeader, valueList[0], &XKandaTid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_tid: %s", err))
-		}
-
-		params.XKandaTid = &XKandaTid
-	}
-
-	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.MatchTradesLead(ctx, id, params)
-	return err
-}
-
-// QuoteLead converts echo context to params.
-func (w *ServerInterfaceWrapper) QuoteLead(ctx echo.Context) error {
-	var err error
-	// ------------- Path parameter "id" -------------
-	var id string
-
-	err = runtime.BindStyledParameterWithLocation("simple", false, "id", runtime.ParamLocationPath, ctx.Param("id"), &id)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter id: %s", err))
-	}
-
-	ctx.Set(BearerAuthScopes, []string{""})
-
-	// Parameter object where we will unmarshal all parameters from the context
-	var params QuoteLeadParams
-
-	headers := ctx.Request().Header
-	// ------------- Optional header parameter "x_kanda_bid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_bid")]; found {
-		var XKandaBid XKandaBid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_bid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_bid", runtime.ParamLocationHeader, valueList[0], &XKandaBid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_bid: %s", err))
-		}
-
-		params.XKandaBid = &XKandaBid
-	}
-	// ------------- Optional header parameter "x_kanda_cid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_cid")]; found {
-		var XKandaCid XKandaCid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_cid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_cid", runtime.ParamLocationHeader, valueList[0], &XKandaCid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_cid: %s", err))
-		}
-
-		params.XKandaCid = &XKandaCid
-	}
-	// ------------- Optional header parameter "x_kanda_eid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_eid")]; found {
-		var XKandaEid XKandaEid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_eid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_eid", runtime.ParamLocationHeader, valueList[0], &XKandaEid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_eid: %s", err))
-		}
-
-		params.XKandaEid = &XKandaEid
-	}
-	// ------------- Optional header parameter "x_kanda_tid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_tid")]; found {
-		var XKandaTid XKandaTid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_tid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_tid", runtime.ParamLocationHeader, valueList[0], &XKandaTid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_tid: %s", err))
-		}
-
-		params.XKandaTid = &XKandaTid
-	}
-
-	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.QuoteLead(ctx, id, params)
-	return err
-}
-
-// ReferLead converts echo context to params.
-func (w *ServerInterfaceWrapper) ReferLead(ctx echo.Context) error {
-	var err error
-	// ------------- Path parameter "id" -------------
-	var id string
-
-	err = runtime.BindStyledParameterWithLocation("simple", false, "id", runtime.ParamLocationPath, ctx.Param("id"), &id)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter id: %s", err))
-	}
-
-	ctx.Set(BearerAuthScopes, []string{""})
-
-	// Parameter object where we will unmarshal all parameters from the context
-	var params ReferLeadParams
-
-	headers := ctx.Request().Header
-	// ------------- Optional header parameter "x_kanda_bid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_bid")]; found {
-		var XKandaBid XKandaBid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_bid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_bid", runtime.ParamLocationHeader, valueList[0], &XKandaBid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_bid: %s", err))
-		}
-
-		params.XKandaBid = &XKandaBid
-	}
-	// ------------- Optional header parameter "x_kanda_cid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_cid")]; found {
-		var XKandaCid XKandaCid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_cid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_cid", runtime.ParamLocationHeader, valueList[0], &XKandaCid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_cid: %s", err))
-		}
-
-		params.XKandaCid = &XKandaCid
-	}
-	// ------------- Optional header parameter "x_kanda_eid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_eid")]; found {
-		var XKandaEid XKandaEid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_eid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_eid", runtime.ParamLocationHeader, valueList[0], &XKandaEid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_eid: %s", err))
-		}
-
-		params.XKandaEid = &XKandaEid
-	}
-	// ------------- Optional header parameter "x_kanda_tid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_tid")]; found {
-		var XKandaTid XKandaTid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_tid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_tid", runtime.ParamLocationHeader, valueList[0], &XKandaTid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_tid: %s", err))
-		}
-
-		params.XKandaTid = &XKandaTid
-	}
-
-	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.ReferLead(ctx, id, params)
-	return err
-}
-
-// SendLeadJob converts echo context to params.
-func (w *ServerInterfaceWrapper) SendLeadJob(ctx echo.Context) error {
-	var err error
-	// ------------- Path parameter "id" -------------
-	var id string
-
-	err = runtime.BindStyledParameterWithLocation("simple", false, "id", runtime.ParamLocationPath, ctx.Param("id"), &id)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter id: %s", err))
-	}
-
-	ctx.Set(BearerAuthScopes, []string{""})
-
-	// Parameter object where we will unmarshal all parameters from the context
-	var params SendLeadJobParams
-
-	headers := ctx.Request().Header
-	// ------------- Optional header parameter "x_kanda_bid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_bid")]; found {
-		var XKandaBid XKandaBid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_bid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_bid", runtime.ParamLocationHeader, valueList[0], &XKandaBid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_bid: %s", err))
-		}
-
-		params.XKandaBid = &XKandaBid
-	}
-	// ------------- Optional header parameter "x_kanda_cid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_cid")]; found {
-		var XKandaCid XKandaCid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_cid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_cid", runtime.ParamLocationHeader, valueList[0], &XKandaCid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_cid: %s", err))
-		}
-
-		params.XKandaCid = &XKandaCid
-	}
-	// ------------- Optional header parameter "x_kanda_eid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_eid")]; found {
-		var XKandaEid XKandaEid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_eid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_eid", runtime.ParamLocationHeader, valueList[0], &XKandaEid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_eid: %s", err))
-		}
-
-		params.XKandaEid = &XKandaEid
-	}
-	// ------------- Optional header parameter "x_kanda_tid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_tid")]; found {
-		var XKandaTid XKandaTid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_tid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_tid", runtime.ParamLocationHeader, valueList[0], &XKandaTid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_tid: %s", err))
-		}
-
-		params.XKandaTid = &XKandaTid
-	}
-
-	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.SendLeadJob(ctx, id, params)
-	return err
-}
-
-// TradeLead converts echo context to params.
-func (w *ServerInterfaceWrapper) TradeLead(ctx echo.Context) error {
-	var err error
-	// ------------- Path parameter "id" -------------
-	var id string
-
-	err = runtime.BindStyledParameterWithLocation("simple", false, "id", runtime.ParamLocationPath, ctx.Param("id"), &id)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter id: %s", err))
-	}
-
-	ctx.Set(BearerAuthScopes, []string{""})
-
-	// Parameter object where we will unmarshal all parameters from the context
-	var params TradeLeadParams
-
-	headers := ctx.Request().Header
-	// ------------- Optional header parameter "x_kanda_bid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_bid")]; found {
-		var XKandaBid XKandaBid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_bid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_bid", runtime.ParamLocationHeader, valueList[0], &XKandaBid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_bid: %s", err))
-		}
-
-		params.XKandaBid = &XKandaBid
-	}
-	// ------------- Optional header parameter "x_kanda_cid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_cid")]; found {
-		var XKandaCid XKandaCid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_cid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_cid", runtime.ParamLocationHeader, valueList[0], &XKandaCid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_cid: %s", err))
-		}
-
-		params.XKandaCid = &XKandaCid
-	}
-	// ------------- Optional header parameter "x_kanda_eid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_eid")]; found {
-		var XKandaEid XKandaEid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_eid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_eid", runtime.ParamLocationHeader, valueList[0], &XKandaEid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_eid: %s", err))
-		}
-
-		params.XKandaEid = &XKandaEid
-	}
-	// ------------- Optional header parameter "x_kanda_tid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_tid")]; found {
-		var XKandaTid XKandaTid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_tid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_tid", runtime.ParamLocationHeader, valueList[0], &XKandaTid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_tid: %s", err))
-		}
-
-		params.XKandaTid = &XKandaTid
-	}
-
-	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.TradeLead(ctx, id, params)
-	return err
-}
-
-// TradeQuoteApprovalLead converts echo context to params.
-func (w *ServerInterfaceWrapper) TradeQuoteApprovalLead(ctx echo.Context) error {
-	var err error
-	// ------------- Path parameter "id" -------------
-	var id string
-
-	err = runtime.BindStyledParameterWithLocation("simple", false, "id", runtime.ParamLocationPath, ctx.Param("id"), &id)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter id: %s", err))
-	}
-
-	ctx.Set(BearerAuthScopes, []string{""})
-
-	// Parameter object where we will unmarshal all parameters from the context
-	var params TradeQuoteApprovalLeadParams
-
-	headers := ctx.Request().Header
-	// ------------- Optional header parameter "x_kanda_bid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_bid")]; found {
-		var XKandaBid XKandaBid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_bid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_bid", runtime.ParamLocationHeader, valueList[0], &XKandaBid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_bid: %s", err))
-		}
-
-		params.XKandaBid = &XKandaBid
-	}
-	// ------------- Optional header parameter "x_kanda_cid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_cid")]; found {
-		var XKandaCid XKandaCid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_cid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_cid", runtime.ParamLocationHeader, valueList[0], &XKandaCid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_cid: %s", err))
-		}
-
-		params.XKandaCid = &XKandaCid
-	}
-	// ------------- Optional header parameter "x_kanda_eid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_eid")]; found {
-		var XKandaEid XKandaEid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_eid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_eid", runtime.ParamLocationHeader, valueList[0], &XKandaEid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_eid: %s", err))
-		}
-
-		params.XKandaEid = &XKandaEid
-	}
-	// ------------- Optional header parameter "x_kanda_tid" -------------
-	if valueList, found := headers[http.CanonicalHeaderKey("x_kanda_tid")]; found {
-		var XKandaTid XKandaTid
-		n := len(valueList)
-		if n != 1 {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Expected one value for x_kanda_tid, got %d", n))
-		}
-
-		err = runtime.BindStyledParameterWithLocation("simple", false, "x_kanda_tid", runtime.ParamLocationHeader, valueList[0], &XKandaTid)
-		if err != nil {
-			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter x_kanda_tid: %s", err))
-		}
-
-		params.XKandaTid = &XKandaTid
-	}
-
-	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.TradeQuoteApprovalLead(ctx, id, params)
 	return err
 }
 
@@ -9221,98 +7396,6 @@ func (w *ServerInterfaceWrapper) PutTraining(ctx echo.Context) error {
 	return err
 }
 
-// GetTransactions converts echo context to params.
-func (w *ServerInterfaceWrapper) GetTransactions(ctx echo.Context) error {
-	var err error
-
-	ctx.Set(BearerAuthScopes, []string{""})
-
-	// Parameter object where we will unmarshal all parameters from the context
-	var params GetTransactionsParams
-	// ------------- Optional query parameter "format" -------------
-
-	err = runtime.BindQueryParameter("form", true, false, "format", ctx.QueryParams(), &params.Format)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter format: %s", err))
-	}
-
-	// ------------- Optional query parameter "q" -------------
-
-	err = runtime.BindQueryParameter("form", true, false, "q", ctx.QueryParams(), &params.Q)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter q: %s", err))
-	}
-
-	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.GetTransactions(ctx, params)
-	return err
-}
-
-// PostTransaction converts echo context to params.
-func (w *ServerInterfaceWrapper) PostTransaction(ctx echo.Context) error {
-	var err error
-
-	ctx.Set(BearerAuthScopes, []string{""})
-
-	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.PostTransaction(ctx)
-	return err
-}
-
-// DeleteTransaction converts echo context to params.
-func (w *ServerInterfaceWrapper) DeleteTransaction(ctx echo.Context) error {
-	var err error
-	// ------------- Path parameter "id" -------------
-	var id string
-
-	err = runtime.BindStyledParameterWithLocation("simple", false, "id", runtime.ParamLocationPath, ctx.Param("id"), &id)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter id: %s", err))
-	}
-
-	ctx.Set(BearerAuthScopes, []string{""})
-
-	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.DeleteTransaction(ctx, id)
-	return err
-}
-
-// GetTransaction converts echo context to params.
-func (w *ServerInterfaceWrapper) GetTransaction(ctx echo.Context) error {
-	var err error
-	// ------------- Path parameter "id" -------------
-	var id string
-
-	err = runtime.BindStyledParameterWithLocation("simple", false, "id", runtime.ParamLocationPath, ctx.Param("id"), &id)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter id: %s", err))
-	}
-
-	ctx.Set(BearerAuthScopes, []string{""})
-
-	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.GetTransaction(ctx, id)
-	return err
-}
-
-// PutTransaction converts echo context to params.
-func (w *ServerInterfaceWrapper) PutTransaction(ctx echo.Context) error {
-	var err error
-	// ------------- Path parameter "id" -------------
-	var id string
-
-	err = runtime.BindStyledParameterWithLocation("simple", false, "id", runtime.ParamLocationPath, ctx.Param("id"), &id)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter id: %s", err))
-	}
-
-	ctx.Set(BearerAuthScopes, []string{""})
-
-	// Invoke the callback with all the unmarshalled arguments
-	err = w.Handler.PutTransaction(ctx, id)
-	return err
-}
-
 // ProviderCheckWebhook converts echo context to params.
 func (w *ServerInterfaceWrapper) ProviderCheckWebhook(ctx echo.Context) error {
 	var err error
@@ -9420,7 +7503,6 @@ func RegisterHandlersWithBaseURL(router EchoRouter, si ServerInterface, baseURL 
 	router.PUT(baseURL+"/api/enterprise/:id", wrapper.PutEnterprise)
 	router.GET(baseURL+"/api/enterprise/:id/branch", wrapper.GetEnterpriseBranches)
 	router.POST(baseURL+"/api/enterprise/:id/branch", wrapper.PostEnterpriseBranches)
-	router.POST(baseURL+"/api/event", wrapper.PostEvent)
 	router.PUT(baseURL+"/api/info/auth", wrapper.InfoAuth)
 	router.DELETE(baseURL+"/api/info/cache", wrapper.InfoDeleteCache)
 	router.GET(baseURL+"/api/info/cache", wrapper.InfoGetCache)
@@ -9438,7 +7520,6 @@ func RegisterHandlersWithBaseURL(router EchoRouter, si ServerInterface, baseURL 
 	router.PUT(baseURL+"/api/info/ghost", wrapper.InfoGhost)
 	router.GET(baseURL+"/api/info/health", wrapper.InfoHealth)
 	router.GET(baseURL+"/api/info/ip", wrapper.InfoIP)
-	router.PUT(baseURL+"/api/info/lead", wrapper.InfoLead)
 	router.PUT(baseURL+"/api/info/legacy-redirect", wrapper.InfoLegacyRedirect)
 	router.GET(baseURL+"/api/info/onboarding", wrapper.InfoOnboarding)
 	router.GET(baseURL+"/api/info/partner-branding", wrapper.InfoPartnerBranding)
@@ -9450,7 +7531,6 @@ func RegisterHandlersWithBaseURL(router EchoRouter, si ServerInterface, baseURL 
 	router.PUT(baseURL+"/api/info/session", wrapper.InfoSession)
 	router.GET(baseURL+"/api/info/stats", wrapper.InfoStats)
 	router.PUT(baseURL+"/api/info/stats", wrapper.PutInfoStats)
-	router.GET(baseURL+"/api/info/trade-summary", wrapper.InfoTradeSummary)
 	router.GET(baseURL+"/api/info/validate-email", wrapper.InfoValidateEmail)
 	router.PUT(baseURL+"/api/info/verify", wrapper.InfoVerify)
 	router.GET(baseURL+"/api/introduction", wrapper.GetIntroductions)
@@ -9489,28 +7569,12 @@ func RegisterHandlersWithBaseURL(router EchoRouter, si ServerInterface, baseURL 
 	router.POST(baseURL+"/api/job/:id/override", wrapper.OverrideJob)
 	router.POST(baseURL+"/api/job/:id/pay", wrapper.PayJob)
 	router.POST(baseURL+"/api/job/:id/payout", wrapper.PayoutJob)
-	router.POST(baseURL+"/api/job/:id/quote", wrapper.QuoteJob)
 	router.POST(baseURL+"/api/job/:id/reapply", wrapper.ReapplyJob)
 	router.POST(baseURL+"/api/job/:id/resend", wrapper.ResendJob)
 	router.POST(baseURL+"/api/job/:id/send", wrapper.SendJob)
 	router.POST(baseURL+"/api/job/:id/signSatNote", wrapper.SignJobSatNote)
 	router.POST(baseURL+"/api/job/:id/unarchive", wrapper.UnarchiveJob)
 	router.POST(baseURL+"/api/job/:id/viewSatNote", wrapper.ViewJobSatNote)
-	router.GET(baseURL+"/api/lead", wrapper.GetLeads)
-	router.POST(baseURL+"/api/lead", wrapper.PostLead)
-	router.DELETE(baseURL+"/api/lead/:id", wrapper.DeleteLead)
-	router.GET(baseURL+"/api/lead/:id", wrapper.GetLead)
-	router.PUT(baseURL+"/api/lead/:id", wrapper.PutLead)
-	router.POST(baseURL+"/api/lead/:id/accepted-job-summary", wrapper.AcceptedJobSummaryLead)
-	router.POST(baseURL+"/api/lead/:id/apply-invite", wrapper.ApplyInviteLead)
-	router.POST(baseURL+"/api/lead/:id/budget", wrapper.BudgetLead)
-	router.POST(baseURL+"/api/lead/:id/connect-trades", wrapper.ConnectTradesLead)
-	router.POST(baseURL+"/api/lead/:id/match-trades", wrapper.MatchTradesLead)
-	router.POST(baseURL+"/api/lead/:id/quote", wrapper.QuoteLead)
-	router.POST(baseURL+"/api/lead/:id/refer", wrapper.ReferLead)
-	router.POST(baseURL+"/api/lead/:id/send-job", wrapper.SendLeadJob)
-	router.POST(baseURL+"/api/lead/:id/trade", wrapper.TradeLead)
-	router.POST(baseURL+"/api/lead/:id/trade-quote-approval", wrapper.TradeQuoteApprovalLead)
 	router.GET(baseURL+"/api/me", wrapper.Me)
 	router.POST(baseURL+"/api/me", wrapper.PostMe)
 	router.PUT(baseURL+"/api/me", wrapper.PutMe)
@@ -9555,11 +7619,6 @@ func RegisterHandlersWithBaseURL(router EchoRouter, si ServerInterface, baseURL 
 	router.DELETE(baseURL+"/api/training/:id", wrapper.DeleteTraining)
 	router.GET(baseURL+"/api/training/:id", wrapper.GetTraining)
 	router.PUT(baseURL+"/api/training/:id", wrapper.PutTraining)
-	router.GET(baseURL+"/api/transaction", wrapper.GetTransactions)
-	router.POST(baseURL+"/api/transaction", wrapper.PostTransaction)
-	router.DELETE(baseURL+"/api/transaction/:id", wrapper.DeleteTransaction)
-	router.GET(baseURL+"/api/transaction/:id", wrapper.GetTransaction)
-	router.PUT(baseURL+"/api/transaction/:id", wrapper.PutTransaction)
 	router.GET(baseURL+"/api/webhook/:provider", wrapper.ProviderCheckWebhook)
 	router.POST(baseURL+"/api/webhook/:provider", wrapper.ProviderWebhook)
 
@@ -9568,443 +7627,397 @@ func RegisterHandlersWithBaseURL(router EchoRouter, si ServerInterface, baseURL 
 // Base64 encoded, gzipped, json marshaled Swagger object
 var swaggerSpec = []string{
 
-	"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",
-	"AP//Xr4Edyc+AwA=",
+	"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",
+	"L//y6V8+Xbx99fb/DwAA//8Op13wAsoCAA==",
 }
 
 // GetSwagger returns the content of the embedded swagger specification file

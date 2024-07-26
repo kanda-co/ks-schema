@@ -158,33 +158,6 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-  /api/info/trade-summary:
-    get:
-      operationId: infoTradeSummary
-      summary: query trade summary with branding and logo attached
-      tags:
-        - TradeSummary
-      parameters:
-        - in: query
-          name: id
-          required: true
-          schema:
-            type: string
-          description: trade summary id
-      responses:
-        200:
-          description: got trade summary with branding and logo attached
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TradeSummary"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
   /api/info/company:
     get:
       operationId: infoCompany
@@ -326,7 +299,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Job"
+                $ref: "#/components/schemas/JobInput"
         default:
           description: unexpected error
           content:
@@ -346,7 +319,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Credit"
+              $ref: "#/components/schemas/CreditInput"
       responses:
         200:
           description: put me info
@@ -656,7 +629,8 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Cache"
+              type: object
+              $ref: "#/components/schemas/CacheInput"
       responses:
         200:
           description: put cache info
@@ -875,54 +849,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InfoRelation"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-  /api/info/lead:
-    put:
-      operationId: infoLead
-      summary: info lead for enterprise user to send out AIP form link
-      tags:
-        - InfoLead
-      parameters:
-        - in: query
-          name: eid
-          schema:
-            type: string
-          description: enterprise id
-        - in: query
-          name: bid
-          schema:
-            type: string
-          description: enterprise branch id
-        - in: query
-          name: subdomain
-          schema:
-            type: string
-          description: enterprise / branch subdomain
-        - in: query
-          name: branch_code
-          schema:
-            type: string
-          description: enterprise branch code
-      requestBody:
-        description: info lead with contact information to be sent with AIP form link
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/InfoLead"
-      responses:
-        200:
-          description: info lead for enterprise user AIP form link sent out
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/InfoLead"
         default:
           description: unexpected error
           content:
@@ -1583,7 +1509,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Introduction"
+              $ref: "#/components/schemas/IntroductionInput"
       responses:
         200:
           description: posted new introduction for consumer and comms sent
@@ -1645,7 +1571,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Introduction"
+              $ref: "#/components/schemas/IntroductionInput"
       responses:
         200:
           description: put existing introduction
@@ -2115,7 +2041,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Company"
+              $ref: "#/components/schemas/CompanyInput"
       responses:
         200:
           description: posted new company
@@ -2177,7 +2103,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Company"
+              $ref: "#/components/schemas/CompanyInput"
       responses:
         200:
           description: put existing company
@@ -2650,7 +2576,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Job"
+              $ref: "#/components/schemas/JobInput"
       responses:
         200:
           description: posted new job
@@ -2712,7 +2638,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Job"
+              $ref: "#/components/schemas/JobInput"
       responses:
         200:
           description: put existing job
@@ -2907,43 +2833,6 @@ paths:
       responses:
         200:
           description: unarchived existing already archived job
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Job"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-  /api/job/{id}/quote:
-    post:
-      operationId: quoteJob
-      summary: >
-        quote job in finance for homeowner to get eligibility,
-        only allowed when job status is sent
-      tags:
-        - Job
-      parameters:
-        - name: id
-          in: path
-          description: job id
-          required: true
-          schema:
-            type: string
-            minLength: 1
-      requestBody:
-        description: job quote applicant details for eligibility
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/LeadApplicant"
-      responses:
-        200:
-          description: got existing job with new payment
           content:
             application/json:
               schema:
@@ -3645,7 +3534,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Credit"
+              $ref: "#/components/schemas/CreditInput"
       responses:
         200:
           description: posted new credit
@@ -3707,7 +3596,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Credit"
+              $ref: "#/components/schemas/CreditInput"
       responses:
         200:
           description: put existing credit
@@ -4078,559 +3967,6 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-  /api/lead:
-    get:
-      operationId: getLeads
-      summary: kanda staff only to get all leads
-      tags:
-        - Lead
-      parameters:
-        - $ref: "#/components/parameters/format"
-        - $ref: "#/components/parameters/q"
-        - $ref: "#/components/parameters/x_kanda_bid"
-        - $ref: "#/components/parameters/x_kanda_cid"
-        - $ref: "#/components/parameters/x_kanda_eid"
-        - $ref: "#/components/parameters/x_kanda_tid"
-      responses:
-        200:
-          description: got all leads
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Lead"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-    post:
-      operationId: postLead
-      summary: post new lead from applicant
-      tags:
-        - Lead
-      parameters:
-        - $ref: "#/components/parameters/x_kanda_bid"
-        - $ref: "#/components/parameters/x_kanda_cid"
-        - $ref: "#/components/parameters/x_kanda_eid"
-        - $ref: "#/components/parameters/x_kanda_tid"
-      requestBody:
-        description: post new lead
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/LeadApplicant"
-      responses:
-        200:
-          description: posted new lead
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Lead"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-  /api/lead/{id}:
-    get:
-      operationId: getLead
-      summary: get existing lead
-      tags:
-        - Lead
-      parameters:
-        - name: id
-          in: path
-          description: lead id
-          required: true
-          schema:
-            type: string
-            minLength: 1
-        - $ref: "#/components/parameters/x_kanda_bid"
-        - $ref: "#/components/parameters/x_kanda_cid"
-        - $ref: "#/components/parameters/x_kanda_eid"
-        - $ref: "#/components/parameters/x_kanda_tid"
-      responses:
-        200:
-          description: got existing lead
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Lead"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-    put:
-      operationId: putLead
-      summary: kanda staff only to put existing lead
-      tags:
-        - Lead
-      parameters:
-        - name: id
-          in: path
-          description: lead id
-          required: true
-          schema:
-            type: string
-            minLength: 1
-        - $ref: "#/components/parameters/x_kanda_bid"
-        - $ref: "#/components/parameters/x_kanda_cid"
-        - $ref: "#/components/parameters/x_kanda_eid"
-        - $ref: "#/components/parameters/x_kanda_tid"
-      requestBody:
-        description: put existing lead
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Lead"
-      responses:
-        200:
-          description: put existing lead
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Lead"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-    delete:
-      operationId: deleteLead
-      summary: kanda staff only to delete existing lead
-      tags:
-        - Lead
-      parameters:
-        - name: id
-          in: path
-          description: lead id
-          required: true
-          schema:
-            type: string
-            minLength: 1
-        - $ref: "#/components/parameters/x_kanda_bid"
-        - $ref: "#/components/parameters/x_kanda_cid"
-        - $ref: "#/components/parameters/x_kanda_eid"
-        - $ref: "#/components/parameters/x_kanda_tid"
-      responses:
-        200:
-          description: deleted existing lead
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Lead"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-  /api/lead/{id}/apply-invite:
-    post:
-      operationId: applyInviteLead
-      summary: post existing lead from applicant invite
-      tags:
-        - Lead
-      parameters:
-        - name: id
-          in: path
-          description: lead id
-          required: true
-          schema:
-            type: string
-            minLength: 1
-        - $ref: "#/components/parameters/x_kanda_bid"
-        - $ref: "#/components/parameters/x_kanda_cid"
-        - $ref: "#/components/parameters/x_kanda_eid"
-        - $ref: "#/components/parameters/x_kanda_tid"
-      requestBody:
-        description: post existing lead from applicant invite
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/LeadApplicant"
-      responses:
-        200:
-          description: posted existing lead from applicant invite
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Lead"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-  /api/lead/{id}/budget:
-    post:
-      operationId: budgetLead
-      summary: post budget with existing lead
-      tags:
-        - Lead
-      parameters:
-        - name: id
-          in: path
-          description: lead id
-          required: true
-          schema:
-            type: string
-            minLength: 1
-        - $ref: "#/components/parameters/x_kanda_bid"
-        - $ref: "#/components/parameters/x_kanda_cid"
-        - $ref: "#/components/parameters/x_kanda_eid"
-        - $ref: "#/components/parameters/x_kanda_tid"
-      requestBody:
-        description: post budget with existing lead
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Money"
-      responses:
-        200:
-          description: posted budget with existing lead
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Lead"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-  /api/lead/{id}/quote:
-    post:
-      operationId: quoteLead
-      summary: post existing lead quote
-      tags:
-        - Lead
-      parameters:
-        - name: id
-          in: path
-          description: lead id
-          required: true
-          schema:
-            type: string
-            minLength: 1
-        - $ref: "#/components/parameters/x_kanda_bid"
-        - $ref: "#/components/parameters/x_kanda_cid"
-        - $ref: "#/components/parameters/x_kanda_eid"
-        - $ref: "#/components/parameters/x_kanda_tid"
-      requestBody:
-        description: posted existing lead quote
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/LeadQuote"
-      responses:
-        200:
-          description: posted existing lead quote
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Lead"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-  /api/lead/{id}/send-job:
-    post:
-      operationId: sendLeadJob
-      summary: >
-        for enterprise or kanda staff to convert a lead to job
-        and send to homeowner, it also sets lead status to trade_accepted
-      tags:
-        - Lead
-      parameters:
-        - name: id
-          in: path
-          description: lead id
-          required: true
-          schema:
-            type: string
-            minLength: 1
-        - $ref: "#/components/parameters/x_kanda_bid"
-        - $ref: "#/components/parameters/x_kanda_cid"
-        - $ref: "#/components/parameters/x_kanda_eid"
-        - $ref: "#/components/parameters/x_kanda_tid"
-      responses:
-        200:
-          description: sent lead job to homeowner
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Lead"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-  /api/lead/{id}/trade:
-    post:
-      operationId: tradeLead
-      summary: post existing lead trade
-      tags:
-        - Lead
-      parameters:
-        - name: id
-          in: path
-          description: lead id
-          required: true
-          schema:
-            type: string
-            minLength: 1
-        - $ref: "#/components/parameters/x_kanda_bid"
-        - $ref: "#/components/parameters/x_kanda_cid"
-        - $ref: "#/components/parameters/x_kanda_eid"
-        - $ref: "#/components/parameters/x_kanda_tid"
-      requestBody:
-        description: posted existing lead trade
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/LeadTrade"
-      responses:
-        200:
-          description: posted existing lead quote
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Lead"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-  /api/lead/{id}/trade-quote-approval:
-    post:
-      operationId: tradeQuoteApprovalLead
-      summary: external trade to post existing lead quote approval by trade
-      tags:
-        - Lead
-      parameters:
-        - name: id
-          in: path
-          description: lead id
-          required: true
-          schema:
-            type: string
-            minLength: 1
-        - $ref: "#/components/parameters/x_kanda_bid"
-        - $ref: "#/components/parameters/x_kanda_cid"
-        - $ref: "#/components/parameters/x_kanda_eid"
-        - $ref: "#/components/parameters/x_kanda_tid"
-      responses:
-        200:
-          description: lead converted job draft
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Job"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-  /api/lead/{id}/match-trades:
-    post:
-      operationId: matchTradesLead
-      summary: matching a lead to available trades
-      tags:
-        - Lead
-      parameters:
-        - name: id
-          in: path
-          description: lead id
-          required: true
-          schema:
-            type: string
-            minLength: 1
-        - $ref: "#/components/parameters/x_kanda_bid"
-        - $ref: "#/components/parameters/x_kanda_cid"
-        - $ref: "#/components/parameters/x_kanda_eid"
-        - $ref: "#/components/parameters/x_kanda_tid"
-      requestBody:
-        description: matching a lead to trades by given filter
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/TradeFilter"
-      responses:
-        200:
-          description: got matching trade summaries
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/TradeSummary"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-  /api/lead/{id}/connect-trades:
-    post:
-      operationId: connectTradesLead
-      summary: connecting a lead to trades
-      tags:
-        - Lead
-      parameters:
-        - name: id
-          in: path
-          description: lead id
-          required: true
-          schema:
-            type: string
-            minLength: 1
-        - $ref: "#/components/parameters/x_kanda_bid"
-        - $ref: "#/components/parameters/x_kanda_cid"
-        - $ref: "#/components/parameters/x_kanda_eid"
-        - $ref: "#/components/parameters/x_kanda_tid"
-      requestBody:
-        description: connecting a lead to trades by their cid
-        required: true
-        content:
-          application/json:
-            schema:
-              type: array
-              title: lead connection to trades
-              items:
-                type: string
-                title: lead connection cid
-                description: lead connection company id
-                minLength: 1
-      responses:
-        200:
-          description: connected lead to trade summaries
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/TradeSummary"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-  /api/lead/{id}/accepted-job-summary:
-    post:
-      operationId: acceptedJobSummaryLead
-      summary: query accepted job summary quoted to lead
-      tags:
-        - Lead
-      parameters:
-        - name: id
-          in: path
-          description: lead id
-          required: true
-          schema:
-            type: string
-            minLength: 1
-        - $ref: "#/components/parameters/x_kanda_bid"
-        - $ref: "#/components/parameters/x_kanda_cid"
-        - $ref: "#/components/parameters/x_kanda_eid"
-        - $ref: "#/components/parameters/x_kanda_tid"
-      responses:
-        200:
-          description: queried accepted job summary quoted to lead
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/LeadJobSummary"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-  /api/lead/{id}/refer:
-    post:
-      operationId: referLead
-      summary: kanda staff only to post existing referred lead
-      tags:
-        - Lead
-      parameters:
-        - name: id
-          in: path
-          description: lead id
-          required: true
-          schema:
-            type: string
-            minLength: 1
-        - $ref: "#/components/parameters/x_kanda_bid"
-        - $ref: "#/components/parameters/x_kanda_cid"
-        - $ref: "#/components/parameters/x_kanda_eid"
-        - $ref: "#/components/parameters/x_kanda_tid"
-      requestBody:
-        description: posted existing lead quote
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              title: lead referral to trade
-              required:
-                - cid
-              properties:
-                cid:
-                  type: string
-                  title: lead referral cid
-                  description: lead referral company id
-                  minLength: 1
-      responses:
-        200:
-          description: posted existing referred lead
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Lead"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
   /api/subscription:
     get:
       operationId: getSubscriptions
@@ -4667,7 +4003,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Subscription"
+              $ref: "#/components/schemas/SubscriptionInput"
       responses:
         200:
           description: posted new subscription
@@ -4729,7 +4065,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Subscription"
+              $ref: "#/components/schemas/SubscriptionInput"
       responses:
         200:
           description: put existing subscription
@@ -4835,7 +4171,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Training"
+              $ref: "#/components/schemas/TrainingInput"
       responses:
         200:
           description: posted new training
@@ -4897,7 +4233,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Training"
+              $ref: "#/components/schemas/TrainingInput"
       responses:
         200:
           description: put existing training
@@ -4975,7 +4311,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Rate"
+              $ref: "#/components/schemas/RateInput"
       responses:
         200:
           description: posted new rate
@@ -5037,7 +4373,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Rate"
+              $ref: "#/components/schemas/RateInput"
       responses:
         200:
           description: put existing rate
@@ -5115,7 +4451,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Monitor"
+              $ref: "#/components/schemas/MonitorInput"
       responses:
         200:
           description: posted new monitor
@@ -5177,7 +4513,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Monitor"
+              $ref: "#/components/schemas/MonitorInput"
       responses:
         200:
           description: put existing monitor
@@ -5247,146 +4583,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Monitor"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-  /api/transaction:
-    get:
-      operationId: getTransactions
-      summary: get all transactions
-      tags:
-        - Transaction
-      parameters:
-        - $ref: "#/components/parameters/format"
-        - $ref: "#/components/parameters/q"
-      responses:
-        200:
-          description: got all transactions
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Transaction"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-    post:
-      operationId: postTransaction
-      summary: post new transaction
-      tags:
-        - Transaction
-      requestBody:
-        description: post new transaction
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Transaction"
-      responses:
-        200:
-          description: posted new transaction
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Transaction"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-  /api/transaction/{id}:
-    get:
-      operationId: getTransaction
-      summary: get existing transaction
-      tags:
-        - Transaction
-      parameters:
-        - name: id
-          in: path
-          description: transaction id
-          required: true
-          schema:
-            type: string
-            minLength: 1
-      responses:
-        200:
-          description: got existing transaction
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Transaction"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-    put:
-      operationId: putTransaction
-      summary: put existing transaction
-      tags:
-        - Transaction
-      parameters:
-        - name: id
-          in: path
-          description: transaction id
-          required: true
-          schema:
-            type: string
-            minLength: 1
-      requestBody:
-        description: put existing transaction
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Transaction"
-      responses:
-        200:
-          description: put existing transaction
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Transaction"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-    delete:
-      operationId: deleteTransaction
-      summary: delete existing transaction
-      tags:
-        - Transaction
-      parameters:
-        - name: id
-          in: path
-          description: transaction id
-          required: true
-          schema:
-            type: string
-            minLength: 1
-      responses:
-        200:
-          description: deleted existing transaction
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Transaction"
         default:
           description: unexpected error
           content:
@@ -5561,33 +4757,6 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-  /api/event:
-    post:
-      operationId: postEvent
-      summary: post event by kanda staff
-      tags:
-        - Event
-      requestBody:
-        description: post event record
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Event"
-      responses:
-        200:
-          description: posted event
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Event"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
   /api/runner:
     get:
       operationId: runner
@@ -5732,6 +4901,7 @@ components:
   schemas:
     AuthUser:
       type: object
+      title: auth user
       required:
         - id
         - token
@@ -5833,6 +5003,7 @@ components:
 
     EnterpriseUserRole:
       type: object
+      title: enterprise user role
       required:
         - email
         - role
@@ -6018,7 +5189,6 @@ components:
           description: >
             The price of the loan in pennies.
             Ex.: If the price is 2,450.99, the value should be passed as 245099.
-          $ref: "#/components/schemas/Pence"
         email:
           type: string
           title: email
@@ -6049,7 +5219,6 @@ components:
           type: integer
           format: int32
           title: Deposit in pence
-          $ref: "#/components/schemas/Pence"
         redirect_urls:
           type: object
           title: redirect urls
@@ -6061,8 +5230,7 @@ components:
           items:
             type: string
         work_type:
-          title: work type
-          description: optional work type for the job
+          type: string
           $ref: "#/components/schemas/WorkType"
         metadata:
           type: object
@@ -6126,8 +5294,7 @@ components:
             Is mainly used for tracking loan applications
           minLength: 1
         work_type:
-          title: work type
-          description: work type for the job
+          type: string
           $ref: "#/components/schemas/WorkType"
         enabled_rates:
           type: array
@@ -6166,24 +5333,6 @@ components:
           $ref: "#/components/schemas/Metadata"
           readOnly: true
 
-    InfoLead:
-      type: object
-      title: info lead
-      required:
-        - contact_info
-      properties:
-        id:
-          type: string
-          title: lead id
-          readOnly: true
-        flow_type:
-          title: flow type
-          $ref: "#/components/schemas/FlowType"
-        contact_info:
-          type: object
-          title: invitee contact info
-          $ref: "#/components/schemas/ContactInfo"
-
     InfoStats:
       type: object
       title: info stats for trade
@@ -6209,20 +5358,21 @@ components:
           type: integer
           title: number of jobs approved for finance
         jobs_total_revenue_of_approved:
-          type: object
+          type: integer
+          format: int32
           title: total revenue of jobs approved for finance in pence
-          $ref: "#/components/schemas/Pence"
         jobs_approval_rate:
-          type: object
+          type: integer
+          format: int32
           title: approval rate of financed jobs
-          $ref: "#/components/schemas/Pence"
         jobs_average_value_of_approved:
-          type: object
+          type: integer
+          format: int32
           title: average value of jobs approved
-          $ref: "#/components/schemas/Pence"
 
     InfoIP:
       type: object
+      title: info ip
       required:
         - ipv4
       properties:
@@ -6232,6 +5382,7 @@ components:
 
     Money:
       type: object
+      title: money
       required:
         - amount
       properties:
@@ -6242,19 +5393,13 @@ components:
             - GBP
           default: GBP
         amount:
+          type: integer
+          format: int32
           title: amount in pence
-          $ref: "#/components/schemas/Pence"
-
-    Pence:
-      type: integer
-      format: int32
-      title: amount / number in pence
-      minimum: 0
-      maximum: 2147483647
-      x-kanda-form-widget: NumberInput
 
     Metadata:
       type: object
+      title: metadata
       required:
         - liveness
         - created_at
@@ -6263,20 +5408,18 @@ components:
         liveness:
           type: boolean
           title: liveness
-          readOnly: true
         created_at:
           type: string
           format: date-time
           title: created at
-          readOnly: true
         updated_at:
           type: string
           format: date-time
           title: updated at
-          readOnly: true
 
     Address:
       type: object
+      title: address
       required:
         - line_1
         - city
@@ -6325,6 +5468,7 @@ components:
 
     InfoCompany:
       type: object
+      title: info company
       properties:
         id:
           type: string
@@ -6418,40 +5562,43 @@ components:
           readOnly: true
         stats:
           type: object
-          title: stats
-          description: current referral stats
-          readOnly: true
-          properties:
-            total_referrals:
-              type: integer
-              title: number of referrals made
-              description: number of referrals made
-              format: int32
-            signups:
-              type: integer
-              title: number of tradesperson signups
-              description: number of tradesperson signups to unlock
-              format: int32
-            subscribers:
-              type: integer
-              title: number of referral company subscribers
-              description: number of referral company subscribers
-              format: int32
-            verifications:
-              type: integer
-              title: number of referral company verifications
-              description: number of referral company verifications
-              format: int32
-            activations:
-              type: integer
-              title: number of referral company activations
-              description: number of referral company activations
-              format: int32
+          $ref: "#/components/schemas/ReferralStats"
         metadata:
           type: object
           title: metadata
           $ref: "#/components/schemas/Metadata"
           readOnly: true
+
+    ReferralStats:
+      type: object
+      title: referral stats
+      description: current referral stats
+      properties:
+        total_referrals:
+          type: integer
+          title: number of referrals made
+          description: number of referrals made
+          format: int32
+        signups:
+          type: integer
+          title: number of tradesperson signups
+          description: number of tradesperson signups to unlock
+          format: int32
+        subscribers:
+          type: integer
+          title: number of referral company subscribers
+          description: number of referral company subscribers
+          format: int32
+        verifications:
+          type: integer
+          title: number of referral company verifications
+          description: number of referral company verifications
+          format: int32
+        activations:
+          type: integer
+          title: number of referral company activations
+          description: number of referral company activations
+          format: int32
 
     Branding:
       type: object
@@ -6462,7 +5609,6 @@ components:
       properties:
         logo:
           type: object
-          title: partner logo
           $ref: "#/components/schemas/Document"
       additionalProperties: true
 
@@ -7100,38 +6246,58 @@ components:
 
     Company:
       type: object
+      title: company
+      allOf:
+        - $ref: "#/components/schemas/BaseId"
+        - $ref: "#/components/schemas/CompanyInput"
+        - type: object
+          required:
+            - emails
+            - lifecycle
+            - billing
+          properties:
+            analytics:
+              type: object
+              title: referrer
+              $ref: "#/components/schemas/Analytics"
+            emails:
+              type: array
+              items:
+                type: string
+                format: email
+                x-go-type: Email
+              title: emails for user who has api access
+            finance_rates:
+              type: array
+              items:
+                $ref: "#/components/schemas/FinanceRate"
+              title: finance rates
+            lifecycle:
+              type: string
+              $ref: "#/components/schemas/LifecycleStatus"
+            billing:
+              type: string
+              $ref: "#/components/schemas/BillingStatus"
+            referral_activated_at:
+              type: string
+              title: optional referral code activation date
+              format: date-time
+            referred_by:
+              type: string
+              title: referred by partner id
+            lender_configs:
+              type: array
+              title: lender configs
+              description: lender configuration for this company
+              items:
+                $ref: "#/components/schemas/LenderConfig"
+
+    CompanyInput:
+      type: object
+      title: company input
       required:
         - company_type
       properties:
-        id:
-          type: string
-          title: company unique id
-          readOnly: true
-        cid:
-          type: string
-          title: company id
-          readOnly: true
-        oid:
-          type: string
-          title: owner id
-          readOnly: true
-        aid:
-          type: string
-          title: author id
-          readOnly: true
-        analytics:
-          type: object
-          title: referrer
-          $ref: "#/components/schemas/Analytics"
-          readOnly: true
-        emails:
-          type: array
-          items:
-            type: string
-            format: email
-            x-go-type: Email
-          title: emails for user who has api access
-          readOnly: true
         users:
           type: array
           items:
@@ -7156,74 +6322,21 @@ components:
           type: object
           title: sole trader info
           $ref: "#/components/schemas/SoleTraderInfo"
-        finance_rates:
-          type: array
-          items:
-            $ref: "#/components/schemas/FinanceRate"
-          title: finance rates
         quote_preference:
           type: string
-          title: quote preference
-          enum:
-            - no_preference
-            - kanda
-            - custom
-          default: no_preference
+          $ref: "#/components/schemas/QuotePreference"
         skip_deposit:
           type: string
-          title: company is allowed to take own deposit
-          enum:
-            - "Yes"
-            - "No"
-          default: "No"
-        lifecycle:
-          type: string
-          title: company lifecycle state
-          enum:
-            - registered
-            - subscribed
-            - director_info_provided
-            - director_details_submitted
-            - onboarded
-            - insurance_uploaded
-            - completed_setup
-            - verified
-            - declined
-          default: registered
-          readOnly: true
-        billing:
-          type: string
-          title: company billing
-          enum:
-            - legacy
-            - trial
-            - pending
-            - referred
-            - subscribed
-            - recurring_payment_failed_1
-            - recurring_payment_failed_2
-            - recurring_payment_failed_3
-            - suspended
-            - cancelled
-          default: legacy
-          readOnly: true
+          $ref: "#/components/schemas/SkipDeposit"
         referral_code:
           type: string
           title: optional referral code used for the sign up
-        referral_activated_at:
-          type: string
-          title: optional referral code activation date
-          format: date-time
-        referred_by:
-          type: string
-          title: referred by partner id
         company_logo:
           type: object
           title: company logo document
           $ref: "#/components/schemas/Document"
         bank_account:
           type: object
-          title: bank account to be shown to customer if paid by cash / bank transfer
           $ref: "#/components/schemas/BankAccount"
         contact_info:
           type: object
@@ -7241,12 +6354,6 @@ components:
           title: welcome pack
           description: company welcome pack status
           $ref: "#/components/schemas/WelcomeSkipBanner"
-        lender_configs:
-          type: array
-          title: lender configs
-          description: lender configuration for this company
-          items:
-            $ref: "#/components/schemas/LenderConfig"
         business_type:
           type: string
           title: business type
@@ -7256,11 +6363,54 @@ components:
           $ref: "#/components/schemas/BusinessConfig"
         tier_config:
           $ref: "#/components/schemas/TierConfig"
-        metadata:
-          type: object
-          $ref: "#/components/schemas/Metadata"
-          title: metadata
-          readOnly: true
+
+    QuotePreference:
+      type: string
+      title: quote preference
+      enum:
+        - no_preference
+        - kanda
+        - custom
+      default: no_preference
+
+    SkipDeposit:
+      type: string
+      title: company is allowed to take own deposit
+      enum:
+        - "Yes"
+        - "No"
+      default: "No"
+
+    LifecycleStatus:
+      type: string
+      title: company lifecycle status
+      enum:
+        - registered
+        - subscribed
+        - director_info_provided
+        - director_details_submitted
+        - onboarded
+        - insurance_uploaded
+        - completed_setup
+        - verified
+        - declined
+      default: registered
+
+    BillingStatus:
+      type: string
+      title: billing status
+      enum:
+        - legacy
+        - trial
+        - pending
+        - referred
+        - subscribed
+        - recurring_payment_failed_1
+        - recurring_payment_failed_2
+        - recurring_payment_failed_3
+        - suspended
+        - cancelled
+      default: legacy
 
     CompanyType:
       type: string
@@ -7270,9 +6420,9 @@ components:
         - sole_trader
       x-kanda-form-widget: RadioSelect
 
-    Tier:
+    TierType:
       type: string
-      title: tier level
+      title: tier type
       enum:
         - "base_rate"
         - "enterprise_rate"
@@ -7286,17 +6436,21 @@ components:
         - actioned_at
       properties:
         tier:
-          $ref: "#/components/schemas/Tier"
+          $ref: "#/components/schemas/TierType"
         action:
           type: string
-          title: tier event action
-          enum:
-            - "add_tier"
-            - "remove_tier"
+          $ref: "#/components/schemas/TierAction"
         actioned_at:
           type: string
           title: tier event created at
           format: date-time
+
+    TierAction:
+      type: string
+      title: tier event action
+      enum:
+        - "add_tier"
+        - "remove_tier"
 
     TierConfig:
       type: object
@@ -7308,7 +6462,7 @@ components:
         current_tier:
           type: string
           title: current tier
-          $ref: "#/components/schemas/Tier"
+          $ref: "#/components/schemas/TierType"
         tiers:
           type: array
           title: all tier events
@@ -7328,9 +6482,7 @@ components:
       properties:
         show:
           type: string
-          enum:
-            - "yes"
-            - "no"
+          $ref: "#/components/schemas/ShowYesNo"
         trade_type:
           type: string
           $ref: "#/components/schemas/TradeType"
@@ -7349,6 +6501,13 @@ components:
         lender_rate_type:
           type: string
           $ref: "#/components/schemas/LenderRateType"
+
+    ShowYesNo:
+      type: string
+      title: show?
+      enum:
+        - "yes"
+        - "no"
 
     BusinessSector:
       type: string
@@ -7378,28 +6537,44 @@ components:
       properties:
         director_verification:
           type: string
-          title: director verification
-          enum:
-            - "yes"
-            - "no"
+          $ref: "#/components/schemas/DirectorVerificationYesNo"
         invite_team_member:
           type: string
-          title: invite team member
-          enum:
-            - "yes"
-            - "no"
+          $ref: "#/components/schemas/InviteTeamMemberYesNo"
         update_website:
           type: string
-          title: update website
-          enum:
-            - "yes"
-            - "no"
+          $ref: "#/components/schemas/UpdateWebsiteYesNo"
         advert_finance_calculator:
           type: string
-          title: advert and finance calculator
-          enum:
-            - "yes"
-            - "no"
+          $ref: "#/components/schemas/AdvertFinanceCalculatorYesNo"
+
+    DirectorVerificationYesNo:
+      type: string
+      title: director verification
+      enum:
+        - "yes"
+        - "no"
+
+    InviteTeamMemberYesNo:
+      type: string
+      title: invite team member
+      enum:
+        - "yes"
+        - "no"
+
+    UpdateWebsiteYesNo:
+      type: string
+      title: update website
+      enum:
+        - "yes"
+        - "no"
+
+    AdvertFinanceCalculatorYesNo:
+      type: string
+      title: advert and finance calculator
+      enum:
+        - "yes"
+        - "no"
 
     LenderConfig:
       type: object
@@ -7411,7 +6586,6 @@ components:
       properties:
         provider:
           type: string
-          title: provider
           $ref: "#/components/schemas/FinanceProvider"
         xid:
           type: string
@@ -7431,113 +6605,36 @@ components:
           minLength: 1
         solar_trade_association:
           type: string
-          enum:
-            - "msc"
-            - "heis"
-            - "recc"
-          title: solar trade association
-          x-kanda-form-widget: Select
+          $ref: "#/components/schemas/SolarTradeAssociation"
         solar_trade_association_number:
           type: string
           title: solar trade association number
           minLength: 1
         electrical_trade_association:
           type: string
-          enum:
-            - "niceic"
-            - "napit"
-            - "none"
-          title: electrical trade association
-          x-kanda-form-widget: Select
+          $ref: "#/components/schemas/ElectricalTradeAssociation"
         electrical_trade_association_number:
           type: string
           title: electrical trade association number
           minLength: 1
 
-    LatLng:
-      type: object
-      title: latitude and longitude
-      required:
-        - lat
-        - lng
-      properties:
-        lat:
-          type: number
-          format: float
-          title: latitude
-        lng:
-          type: number
-          format: float
-          title: longitude
+    SolarTradeAssociation:
+      type: string
+      title: solar trade association
+      enum:
+        - "msc"
+        - "heis"
+        - "recc"
+      x-kanda-form-widget: Select
 
-    InfoTrade:
-      type: object
-      title: info trade request
-      required:
-        - address
-      properties:
-        address:
-          type: object
-          $ref: "#/components/schemas/Address"
-        lat_lng:
-          type: object
-          $ref: "#/components/schemas/LatLng"
-
-    TradeFilter:
-      type: object
-      title: trade filter
-      description: matching a lead to trades by given filter
-      required:
-        - distance
-      properties:
-        distance:
-          type: number
-          title: distance
-          description: matching trades within given distance in miles
-          minimum: 1
-          maximum: 500
-        work_types:
-          type: array
-          title: work types
-          description: matching trades with given work types
-          items:
-            $ref: "#/components/schemas/WorkType"
-        keyword:
-          type: string
-          title: keyword
-          description: matching keyword
-
-    TradeSummary:
-      type: object
-      title: trade summary
-      properties:
-        id:
-          type: string
-          title: trade summary id
-        contact_info:
-          type: object
-          title: job company contact info
-          $ref: "#/components/schemas/ContactInfo"
-        trading_type:
-          type: string
-          title: trading type (limited or sole trader)
-        company_logo:
-          type: object
-          title: company logo document
-          $ref: "#/components/schemas/Document"
-        work_types:
-          type: array
-          title: work types
-          items:
-            $ref: "#/components/schemas/WorkType"
-        lat_lng:
-          type: object
-          $ref: "#/components/schemas/LatLng"
-        distance:
-          type: number
-          title: distance from provided location
-          format: float
-          readOnly: true
+    ElectricalTradeAssociation:
+      type: string
+      title: electrical trade association
+      enum:
+        - "niceic"
+        - "napit"
+        - "none"
+      x-kanda-form-widget: Select
 
     TradeType:
       type: string
@@ -7610,23 +6707,7 @@ components:
           minLength: 1
         trade_body:
           type: string
-          enum:
-            - "none"
-            - "acrib"
-            - "aphc"
-            - "assure"
-            - "certass"
-            - "elecsa"
-            - "fensa"
-            - "feta"
-            - "gas_safe"
-            - "hetas"
-            - "napit"
-            - "nfrc"
-            - "niceic"
-            - "other"
-          title: trade body
-          x-kanda-form-widget: Select
+          $ref: "#/components/schemas/TradeBody"
         trade_body_name:
           type: string
           title: trade body name
@@ -7645,9 +6726,9 @@ components:
           minimum: 1
           maximum: 2147483647
         average_job_value:
-          $ref: "#/components/schemas/Pence"
+          type: integer
+          format: int32
           title: average job value in pence
-          minimum: 1
         use_subcontractor:
           type: string
           title: use subcontractor?
@@ -7673,6 +6754,26 @@ components:
           items:
             $ref: "#/components/schemas/WorkType"
 
+    TradeBody:
+      type: string
+      title: trade body
+      enum:
+        - "none"
+        - "acrib"
+        - "aphc"
+        - "assure"
+        - "certass"
+        - "elecsa"
+        - "fensa"
+        - "feta"
+        - "gas_safe"
+        - "hetas"
+        - "napit"
+        - "nfrc"
+        - "niceic"
+        - "other"
+      x-kanda-form-widget: Select
+
     OnlinePresence:
       type: object
       title: online presence
@@ -7681,11 +6782,7 @@ components:
       properties:
         q_online:
           type: string
-          title: Can you provide your business online details?
-          enum:
-            - "Yes, I can provide the details"
-            - "No, I don't have this"
-          x-kanda-form-widget: Select
+          $ref: "#/components/schemas/Q_Online"
         website:
           type: string
           title: website URL
@@ -7697,6 +6794,14 @@ components:
           type: string
           title: google business name or link
 
+    Q_Online:
+      type: string
+      title: Can you provide your business online details?
+      enum:
+        - "Yes, I can provide the details"
+        - "No, I do not have this"
+      x-kanda-form-widget: Select
+
     ContractAgreement:
       type: object
       title: contract agreement
@@ -7707,18 +6812,10 @@ components:
           $ref: "#/components/schemas/Document"
         agreed_terms_and_conditions:
           type: string
-          title: agreed terms and conditions
-          enum:
-            - "yes"
-            - "no"
-          default: "no"
+          $ref: "#/components/schemas/AgreedTermsAndConditions"
         agreed_to_become_iar_of_kanda:
           type: string
-          title: agreed to become IAR of Kanda
-          enum:
-            - "yes"
-            - "no"
-          default: "no"
+          $ref: "#/components/schemas/AgreedToBecomeIarOfKanda"
         print_name:
           type: string
           title: print name
@@ -7728,6 +6825,22 @@ components:
           title: signed at
           format: date-time
           readOnly: true
+
+    AgreedTermsAndConditions:
+      type: string
+      title: agreed terms and conditions
+      enum:
+        - "yes"
+        - "no"
+      default: "no"
+
+    AgreedToBecomeIarOfKanda:
+      type: string
+      title: agreed to become IAR of Kanda
+      enum:
+        - "yes"
+        - "no"
+      default: "no"
 
     ContactInfo:
       type: object
@@ -7811,13 +6924,6 @@ components:
           title: metadata
           readOnly: true
 
-    VatNumber:
-      type: string
-      title: vat number
-      pattern: "^(GB)?([0-9]{9}([0-9]{3})?|[A-Z]{2}[0-9]{3})|NOT VAT REGISTERED$"
-      minLength: 1
-      default: "NOT VAT REGISTERED"
-
     LimitedCompanyInfo:
       type: object
       required:
@@ -7844,7 +6950,10 @@ components:
           minLength: 1
         vat_number:
           type: string
-          $ref: "#/components/schemas/VatNumber"
+          title: vat number
+          pattern: "^(GB)?([0-9]{9}([0-9]{3})?|[A-Z]{2}[0-9]{3})|NOT VAT REGISTERED$"
+          minLength: 1
+          default: "NOT VAT REGISTERED"
 
     SoleTraderInfo:
       type: object
@@ -7866,7 +6975,10 @@ components:
           title: trading address
         vat_number:
           type: string
-          $ref: "#/components/schemas/VatNumber"
+          title: vat number
+          pattern: "^(GB)?([0-9]{9}([0-9]{3})?|[A-Z]{2}[0-9]{3})|NOT VAT REGISTERED$"
+          minLength: 1
+          default: "NOT VAT REGISTERED"
 
     DirectorVerification:
       type: object
@@ -7912,13 +7024,7 @@ components:
       properties:
         verification_status:
           type: string
-          enum:
-            - not_verified
-            - verification_submitted
-            - verification_declined
-            - verified
-          title: verification status
-          readOnly: true
+          $ref: "#/components/schemas/VerificationStatus"
         home_address:
           type: object
           $ref: "#/components/schemas/Address"
@@ -7929,21 +7035,30 @@ components:
           pattern: "^[0-9]{4}-(0[0-9]|10|11|12)-([0-2][0-9]|30|31)(T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?(Z|(\\+|-)[0-9]{2}:[0-9]{2})?)?$"
           x-kanda-form-widget: DatePickerInput
 
+    VerificationStatus:
+      type: string
+      title: verification status
+      enum:
+        - not_verified
+        - verification_submitted
+        - verification_declined
+        - verified
+
     CommPreferences:
       type: object
       title: comm preferences
       properties:
         pre_job:
           type: string
-          title: bucket 1
+          title: pre job
           $ref: "#/components/schemas/PreferenceOption"
         post_job:
           type: string
-          title: bucket 1
+          title: post job
           $ref: "#/components/schemas/PreferenceOption"
         other:
           type: string
-          title: bucket 1
+          title: other
           $ref: "#/components/schemas/PreferenceOption"
 
     PreferenceOption:
@@ -7967,12 +7082,7 @@ components:
           title: director info
         role:
           type: string
-          enum:
-            - company-admin
-            - company-manager
-            - company-staff
-          title: company role
-          x-kanda-form-widget: Select
+          $ref: "#/components/schemas/CompanyRole"
         first_name:
           type: string
           title: first name
@@ -7995,6 +7105,15 @@ components:
           type: object
           $ref: "#/components/schemas/CommPreferences"
 
+    CompanyRole:
+      type: string
+      title: company role
+      enum:
+        - "company-admin"
+        - "company-manager"
+        - "company-staff"
+      x-kanda-form-widget: Select
+
     EnterpriseUserType:
       type: object
       required:
@@ -8008,11 +7127,7 @@ components:
           readOnly: true
         role:
           type: string
-          enum:
-            - enterprise-admin
-            - enterprise-user
-          title: enterprise role
-          x-kanda-form-widget: Select
+          $ref: "#/components/schemas/EnterpriseRole"
         name:
           type: string
           title: user name
@@ -8030,6 +7145,14 @@ components:
         comm_preferences:
           type: object
           $ref: "#/components/schemas/CommPreferences"
+
+    EnterpriseRole:
+      type: string
+      title: enterprise role
+      enum:
+        - "enterprise-admin"
+        - "enterprise-user"
+      x-kanda-form-widget: Select
 
     FinanceRate:
       type: object
@@ -8075,15 +7198,10 @@ components:
             $ref: "#/components/schemas/FinanceType"
         provider:
           type: string
-          title: provider
           $ref: "#/components/schemas/FinanceProvider"
         apr_type:
           type: string
-          title: apr type
-          enum:
-            - "INTEREST_FREE"
-            - "INTEREST_BEARING"
-            - "BUYNOW_PAYLATER"
+          $ref: "#/components/schemas/AprType"
         apr:
           type: integer
           title: apr in pence
@@ -8134,6 +7252,14 @@ components:
           title: work types
           items:
             $ref: "#/components/schemas/WorkType"
+
+    AprType:
+      type: string
+      title: apr type
+      enum:
+        - "INTEREST_FREE"
+        - "INTEREST_BEARING"
+        - "BUYNOW_PAYLATER"
 
     FinanceType:
       type: string
@@ -8213,7 +7339,6 @@ components:
           readOnly: true
         bank_account:
           type: object
-          title: company bank account
           $ref: "#/components/schemas/BankAccount"
           readOnly: true
         contact_info:
@@ -8223,40 +7348,83 @@ components:
 
     Job:
       type: object
+      title: job
+      allOf:
+        - $ref: "#/components/schemas/BaseId"
+        - $ref: "#/components/schemas/JobInput"
+        - type: object
+          required:
+            - archived
+            - status
+            - finance_status
+            - customer_options
+            - payments
+            - flow_type
+            - job_type
+            - total
+          properties:
+            archived:
+              type: string
+              $ref: "#/components/schemas/Archived"
+            status:
+              type: string
+              $ref: "#/components/schemas/JobApplicationStatus"
+            finance_status:
+              title: finance status
+              $ref: "#/components/schemas/FinanceStatus"
+            customer_options:
+              type: object
+              title: customer selected options, updated only via custom endpoint
+              $ref: "#/components/schemas/CustomerOptions"
+            payments:
+              type: array
+              title: payments
+              items:
+                $ref: "#/components/schemas/Payment"
+            sat_note_timeline:
+              type: object
+              title: customer satisfaction note timeline
+              $ref: "#/components/schemas/SatNoteTimeline"
+            sat_note:
+              type: object
+              title: customer satisfaction note
+              $ref: "#/components/schemas/SatNote"
+            job_type:
+              type: string
+              $ref: "#/components/schemas/JobBaseType"
+            flow_type:
+              title: flow type
+              $ref: "#/components/schemas/FlowType"
+            quoted_to:
+              type: string
+              title: quoted to
+            introduced_to:
+              type: string
+              title: introduced to
+            xid:
+              type: string
+              title: external reference id
+            xref:
+              type: string
+              title: external reference
+            redirect_urls:
+              type: object
+              title: redirect urls
+              $ref: "#/components/schemas/RedirectURLs"
+            total:
+              type: object
+              title: job total
+              $ref: "#/components/schemas/MoneyTotal"
+
+    JobInput:
+      type: object
+      title: job input
       required:
         - title
         - deposit_type
         - deposit_value
         - job_items
       properties:
-        id:
-          type: string
-          title: job id
-          readOnly: true
-        cid:
-          type: string
-          title: company id
-          readOnly: true
-        oid:
-          type: string
-          title: owner id
-          readOnly: true
-        aid:
-          type: string
-          title: author id
-          readOnly: true
-        eid:
-          type: string
-          title: enterprise id
-          readOnly: true
-        bid:
-          type: string
-          title: branch id
-          readOnly: true
-        tid:
-          type: string
-          title: external trade id
-          readOnly: true
         title:
           type: string
           title: job title
@@ -8267,12 +7435,7 @@ components:
           minLength: 1
         deposit_type:
           type: string
-          title: deposit type
-          enum:
-            - no_deposit
-            - partial_deposit
-            - fixed_deposit
-          default: no_deposit
+          $ref: "#/components/schemas/DepositType"
         deposit_value:
           type: object
           $ref: "#/components/schemas/Money"
@@ -8286,35 +7449,14 @@ components:
             $ref: "#/components/schemas/JobItem"
           title: job items
           minLength: 1
-        total:
-          type: object
-          title: job total
-          $ref: "#/components/schemas/MoneyTotal"
-          readOnly: true
+        work_type:
+          type: string
+          $ref: "#/components/schemas/WorkType"
         notes:
           type: array
           items:
             type: string
           title: job notes
-        archived:
-          type: string
-          $ref: "#/components/schemas/Archived"
-        status:
-          type: string
-          title: job status
-          enum:
-            - draft
-            - sent
-            - accepted
-            - declined
-            - finished
-          readOnly: true
-        finance_status:
-          title: finance status
-          $ref: "#/components/schemas/FinanceStatus"
-        work_type:
-          title: work type
-          $ref: "#/components/schemas/WorkType"
         checkout_options:
           type: array
           title: checkout options
@@ -8327,66 +7469,37 @@ components:
           items:
             type: object
             $ref: "#/components/schemas/FinanceRate"
-        customer_options:
-          type: object
-          title: customer selected options, updated only via custom endpoint
-          $ref: "#/components/schemas/CustomerOptions"
-          readOnly: true
-        payments:
-          type: array
-          title: payments
-          items:
-            $ref: "#/components/schemas/Payment"
-          readOnly: true
-        sat_note_timeline:
-          type: object
-          title: customer satisfaction note timeline
-          $ref: "#/components/schemas/SatNoteTimeline"
-          readOnly: true
-        sat_note:
-          type: object
-          title: customer satisfaction note
-          $ref: "#/components/schemas/SatNote"
-          readOnly: true
-        job_type:
-          type: string
-          title: job type
-          enum:
-            - standard
-            - solar
-        flow_type:
-          title: flow type
-          $ref: "#/components/schemas/FlowType"
-        quoted_to:
-          type: string
-          title: quoted to
-          readOnly: true
-        introduced_to:
-          type: string
-          title: introduced to
-          readOnly: true
         job_documents:
           type: array
           title: job documents
           items:
             $ref: "#/components/schemas/Document"
-        xid:
-          type: string
-          title: external reference id
-          readOnly: true
-        xref:
-          type: string
-          title: external reference
-          readOnly: true
-        redirect_urls:
-          type: object
-          title: redirect urls
-          $ref: "#/components/schemas/RedirectURLs"
-        metadata:
-          type: object
-          $ref: "#/components/schemas/Metadata"
-          title: metadata
-          readOnly: true
+
+    JobApplicationStatus:
+      type: string
+      title: job application status
+      enum:
+        - draft
+        - sent
+        - accepted
+        - declined
+        - finished
+
+    JobBaseType:
+      type: string
+      title: job type
+      enum:
+        - standard
+        - solar
+
+    DepositType:
+      type: string
+      title: deposit type
+      enum:
+        - no_deposit
+        - partial_deposit
+        - fixed_deposit
+      default: no_deposit
 
     FlowType:
       type: string
@@ -8405,7 +7518,6 @@ components:
       properties:
         checkout_option:
           type: string
-          title: checkout option selected by customer
           $ref: "#/components/schemas/CheckoutOption"
         finance_option:
           type: object
@@ -8450,57 +7562,25 @@ components:
       properties:
         q_pressure:
           type: string
-          title: Did the installer pressure you to apply for finance?
-          enum:
-            - "no"
-            - "somewhat"
-            - "yes"
-          x-kanda-form-widget: Select
+          $ref: "#/components/schemas/Q_Pressure"
         q_easiness:
           type: string
-          title: Do you find it hard to apply for finance with Kanda?
-          enum:
-            - "no"
-            - "somewhat"
-            - "yes"
-          x-kanda-form-widget: Select
+          $ref: "#/components/schemas/Q_Easiness"
         q_availability:
           type: string
-          title: How did you first become aware that finance was available?
-          enum:
-            - "The installer told me when quoting me"
-            - "I saw it advertised by the installer"
-            - "I found out when the installer sent me a link via Kanda"
-          x-kanda-form-widget: Select
+          $ref: "#/components/schemas/Q_Availability"
         q_application:
           type: string
-          title: Who completed your application for finance?
-          enum:
-            - "I completed the application myself"
-            - "Someone completed the appliation on my behalf"
-          x-kanda-form-widget: Select
+          $ref: "#/components/schemas/Q_Application"
         q_advice:
           type: string
-          title: What advice did the installer give you on your finance application?
-          enum:
-            - "They just sent me a link to apply"
-            - "They told me what rates where available"
-            - "They helped me work out my potential repayments"
-            - "They completed the application for me"
-          x-kanda-form-widget: Select
+          $ref: "#/components/schemas/Q_Advice"
         q_rate:
           type: string
-          title: Were you advised to select a specific finance option by the tradesperson?
-          enum:
-            - "No - I was not told to choose a specific option"
-            - "Yes - I was told to choose a specific option"
-          x-kanda-form-widget: Select
+          $ref: "#/components/schemas/Q_Rate"
         q_saving:
           type: string
-          title: Were you told about any potential feed in tariffs, savings, returns or Renewable Heat incentive and do you understand that the actual amounts  you  receive, and your estimated returns/savings were based on varying factors including you own energy consumption and any returns/savings/payback periods are not linked to your repayments on this agreement.
-          enum:
-            - "Yes I understand"
-            - "No I do not understand"
+          $ref: "#/components/schemas/Q_Saving"
         signature:
           type: object
           title: sat note customer signature
@@ -8509,6 +7589,66 @@ components:
           type: object
           title: sat note generated document with e-signature
           $ref: "#/components/schemas/Document"
+
+    Q_Pressure:
+      type: string
+      title: Did the installer pressure you to apply for finance?
+      enum:
+        - "no"
+        - "somewhat"
+        - "yes"
+      x-kanda-form-widget: Select
+
+    Q_Easiness:
+      type: string
+      title: Do you find it hard to apply for finance with Kanda?
+      enum:
+        - "no"
+        - "somewhat"
+        - "yes"
+      x-kanda-form-widget: Select
+
+    Q_Availability:
+      type: string
+      title: How did you first become aware that finance was available?
+      enum:
+        - "The installer told me when quoting me"
+        - "I saw it advertised by the installer"
+        - "I found out when the installer sent me a link via Kanda"
+      x-kanda-form-widget: Select
+
+    Q_Application:
+      type: string
+      title: Who completed your application for finance?
+      enum:
+        - "I completed the application myself"
+        - "Someone completed the appliation on my behalf"
+      x-kanda-form-widget: Select
+
+    Q_Advice:
+      type: string
+      title: What advice did the installer give you on your finance application?
+      enum:
+        - "They just sent me a link to apply"
+        - "They told me what rates where available"
+        - "They helped me work out my potential repayments"
+        - "They completed the application for me"
+      x-kanda-form-widget: Select
+
+    Q_Rate:
+      type: string
+      title: Were you advised to select a specific finance option by the tradesperson?
+      enum:
+        - "No - I was not told to choose a specific option"
+        - "Yes - I was told to choose a specific option"
+      x-kanda-form-widget: Select
+
+    Q_Saving:
+      type: string
+      title: Were you told about any potential feed in tariffs, savings, returns or Renewable Heat incentive and do you understand that the actual amounts  you  receive, and your estimated returns/savings were based on varying factors including you own energy consumption and any returns/savings/payback periods are not linked to your repayments on this agreement.
+      enum:
+        - "Yes I understand"
+        - "No I do not understand"
 
     JobItem:
       type: object
@@ -8529,8 +7669,9 @@ components:
           minLength: 1
           x-kanda-form-widget: RichTextInput
         quantity:
+          type: integer
+          format: int32
           title: job item quantity
-          $ref: "#/components/schemas/Pence"
         price:
           type: object
           $ref: "#/components/schemas/Money"
@@ -8538,15 +7679,6 @@ components:
         vat_rate:
           type: string
           title: vat applicable rate
-          enum:
-            - "vat_not_set"
-            - "exempted"
-            - "0%"
-            - "5%"
-            - "20%"
-            - "custom"
-          default: "vat_not_set"
-          x-kanda-form-widget: SelectionModal
         vat:
           type: object
           $ref: "#/components/schemas/Money"
@@ -8602,7 +7734,6 @@ components:
         - paid
         - finance_cancelled
       default: not_applied
-      readOnly: true
 
     WorkType:
       type: string
@@ -8672,87 +7803,56 @@ components:
 
     Payment:
       type: object
+      title: payment
+      allOf:
+        - $ref: "#/components/schemas/BaseId"
+        - $ref: "#/components/schemas/PaymentInput"
+
+    PaymentInput:
+      type: object
+      title: payment input
       required:
         - payment_option
       properties:
-        id:
-          type: string
-          title: payment id
-          readOnly: true
-        cid:
-          type: string
-          title: company id
-          readOnly: true
-        oid:
-          type: string
-          title: owner id
-          readOnly: true
-        aid:
-          type: string
-          title: author id
-          readOnly: true
-        eid:
-          type: string
-          title: enterprise id
-          readOnly: true
-        bid:
-          type: string
-          title: branch id
-          readOnly: true
-        tid:
-          type: string
-          title: external trade id
-          readOnly: true
         kid:
           type: string
           title: internal kind id
-          readOnly: true
         kind:
           type: string
-          title: internal kind
-          enum:
-            - job
-            - charge
-          readOnly: true
+          $ref: "#/components/schemas/Kind"
         xid:
           type: string
           title: external reference id
-          readOnly: true
         xref:
           type: string
           title: external reference
-          readOnly: true
         payment_option:
           type: object
           title: payment option
           $ref: "#/components/schemas/PaymentOption"
         status:
           type: string
-          title: payment status
-          enum:
-            - unpaid
-            - pending
-            - paid
-            - disputed
-            - cancelled
-            - refunded
-          readOnly: true
+          $ref: "#/components/schemas/PaymentCurrentStatus"
         flow_type:
           title: flow_type
           $ref: "#/components/schemas/FlowType"
         quoted_to:
           type: string
           title: quoted to
-          readOnly: true
         introduced_to:
           type: string
           title: introduced to
-          readOnly: true
-        metadata:
-          type: object
-          $ref: "#/components/schemas/Metadata"
-          title: metadata
-          readOnly: true
+
+    PaymentCurrentStatus:
+      type: string
+      title: payment current status
+      enum:
+        - unpaid
+        - pending
+        - paid
+        - disputed
+        - cancelled
+        - refunded
 
     PaymentOption:
       type: object
@@ -8763,22 +7863,24 @@ components:
       properties:
         payment_method:
           type: string
-          title: payment method
-          enum:
-            - cash
-            - card
-            - loan
-            - external
-          default: cash
-          x-kanda-form-widget: RadioSelect
+          $ref: "#/components/schemas/PaymentMethod"
         amount:
           type: object
-          title: payment option amount
           $ref: "#/components/schemas/Money"
         provider:
           type: string
-          title: provider name
           $ref: "#/components/schemas/FinanceProvider"
+
+    PaymentMethod:
+      type: string
+      title: payment method
+      enum:
+        - cash
+        - card
+        - loan
+        - external
+      default: cash
+      x-kanda-form-widget: RadioSelect
 
     JobCreditState:
       type: object
@@ -8815,158 +7917,39 @@ components:
           type: string
           title: job credit xstatus as per lender
 
-    LeadApplicant:
-      type: object
-      title: lead applicant details
-      required:
-        - customer_details
-        - employment_details
-        - finance_details
-      properties:
-        budget:
-          type: object
-          title: customer preferred budget
-          $ref: "#/components/schemas/Money"
-        bank_account:
-          type: object
-          title: bank account
-          $ref: "#/components/schemas/BankAccount"
-        customer_details:
-          type: object
-          title: customer details
-          $ref: "#/components/schemas/CustomerDetails"
-        employment_details:
-          type: object
-          title: employment details
-          $ref: "#/components/schemas/EmploymentDetails"
-        additional_employment_details:
-          type: array
-          title: additional employment details
-          items:
-            $ref: "#/components/schemas/EmploymentDetails"
-        finance_details:
-          type: object
-          title: finance details
-          $ref: "#/components/schemas/FinanceDetails"
-        extra_applicants:
-          type: array
-          title: extra applicants
-          items:
-            $ref: "#/components/schemas/ApplicantDetails"
-
-    LeadQuote:
-      type: object
-      title: lead quote details
-      required:
-        - work_type
-        - work_finished_by
-        - description
-      properties:
-        finance_option:
-          type: object
-          $ref: "#/components/schemas/FinanceRate"
-          title: consumer quote selected finance option
-        work_type:
-          title: work type
-          description: work type for the job
-          $ref: "#/components/schemas/WorkType"
-        work_finished_by:
-          type: string
-          title: consumer quote work finished by
-          description: when do you need the work finished by?
-          enum:
-            - "as soon as possible"
-            - "within 1 month"
-            - "within 3 months"
-            - "within 6 months"
-            - "over 6 months"
-        description:
-          type: string
-          title: consumer quote description
-          minLength: 1
-          x-kanda-form-widget: AutoSizeTextArea
-        job_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/JobItem"
-          title: job items
-        deposit:
-          type: object
-          $ref: "#/components/schemas/Money"
-          title: deposit value in pence
-        total:
-          type: object
-          title: job total
-          $ref: "#/components/schemas/MoneyTotal"
-          readOnly: true
-        reference:
-          type: string
-          title: consumer quote unique reference
-
-    LeadTrade:
-      type: object
-      title: lead trade
-      required:
-        - trading_name
-        - email
-        - mobile
-      properties:
-        email:
-          type: string
-          format: email
-          x-go-type: Email
-          title: email
-        mobile:
-          type: string
-          title: mobile phone number
-          minLength: 1
-          x-kanda-form-widget: PhoneNumberInput
-        trading_name:
-          type: string
-          title: trading name
-          minLength: 1
-        address:
-          type: object
-          $ref: "#/components/schemas/Address"
-
     Introduction:
       type: object
-      title: credit introduction
-      description: credit introduction for enterprise
+      title: introduction
+      allOf:
+        - $ref: "#/components/schemas/BaseId"
+        - $ref: "#/components/schemas/IntroductionInput"
+        - type: object
+          title: introduction states
+          required:
+            - archived
+            - current_state
+            - states
+          properties:
+            archived:
+              type: string
+              $ref: "#/components/schemas/Archived"
+            current_state:
+              type: string
+              title: current state
+              $ref: "#/components/schemas/IntroductionState"
+            states:
+              type: array
+              title: all states
+              items:
+                $ref: "#/components/schemas/IntroductionState"
+
+    IntroductionInput:
+      type: object
+      title: credit introduction input
+      description: credit introduction input for enterprise
       required:
         - consumer
       properties:
-        id:
-          type: string
-          title: introduction id
-          readOnly: true
-        cid:
-          type: string
-          title: company id
-          readOnly: true
-        oid:
-          type: string
-          title: owner id
-          readOnly: true
-        aid:
-          type: string
-          title: author id
-          readOnly: true
-        eid:
-          type: string
-          title: enterprise id
-          readOnly: true
-        bid:
-          type: string
-          title: branch id
-          readOnly: true
-        tid:
-          type: string
-          title: external trade id
-          readOnly: true
-        archived:
-          type: string
-          $ref: "#/components/schemas/Archived"
         consumer:
           $ref: "#/components/schemas/Customer"
         consumer_signature:
@@ -8983,23 +7966,9 @@ components:
           $ref: "#/components/schemas/TraderDetails"
         job_details:
           $ref: "#/components/schemas/JobDetails"
-        current_state:
-          type: string
-          title: current state
-          $ref: "#/components/schemas/IntroductionState"
-        states:
-          type: array
-          title: all states
-          items:
-            $ref: "#/components/schemas/IntroductionState"
         flow_type:
           title: flow type
           $ref: "#/components/schemas/FlowType"
-        metadata:
-          type: object
-          $ref: "#/components/schemas/Metadata"
-          title: metadata
-          readOnly: true
 
     ConsumerSignature:
       type: object
@@ -9040,7 +8009,10 @@ components:
           $ref: "#/components/schemas/Address"
         vat_number:
           type: string
-          $ref: "#/components/schemas/VatNumber"
+          title: vat number
+          pattern: "^(GB)?([0-9]{9}([0-9]{3})?|[A-Z]{2}[0-9]{3})|NOT VAT REGISTERED$"
+          minLength: 1
+          default: "NOT VAT REGISTERED"
         contact_name:
           type: string
           title: contact name
@@ -9074,13 +8046,14 @@ components:
           type: string
           $ref: "#/components/schemas/BankAccountType"
         bank_account:
+          type: object
           $ref: "#/components/schemas/BankAccount"
         bank_report:
           type: string
           title: bank report
         bank_verification:
           type: string
-          $ref: "#/components/schemas/VerificationStatus"
+          $ref: "#/components/schemas/BankVerificationStatus"
 
     BankAccountType:
       type: string
@@ -9089,9 +8062,9 @@ components:
         - "Business"
         - "Personal"
 
-    VerificationStatus:
+    BankVerificationStatus:
       type: string
-      title: verification status
+      title: bank verification status
       enum:
         - "not_started"
         - "verification_passed"
@@ -9175,276 +8148,106 @@ components:
         total:
           $ref: "#/components/schemas/MoneyTotal"
 
-    Lead:
-      type: object
-      title: consumer quote
-      description: consumer quote
-      required:
-        - connected
-        - accepted
-        - status
-        - source
-        - expired_at
-      properties:
-        id:
-          type: string
-          title: lead id
-          readOnly: true
-        cid:
-          type: string
-          title: company id
-          readOnly: true
-        oid:
-          type: string
-          title: owner id
-          readOnly: true
-        aid:
-          type: string
-          title: author id
-          readOnly: true
-        eid:
-          type: string
-          title: enterprise id
-          readOnly: true
-        bid:
-          type: string
-          title: branch id
-          readOnly: true
-        tid:
-          type: string
-          title: external trade id
-          readOnly: true
-        invite_info:
-          type: object
-          title: invite info
-          $ref: "#/components/schemas/ContactInfo"
-        lead_applicant:
-          type: object
-          title: lead applicant
-          $ref: "#/components/schemas/LeadApplicant"
-        lead_quote:
-          type: object
-          title: lead quote
-          $ref: "#/components/schemas/LeadQuote"
-        lead_trade:
-          type: object
-          title: lead trade
-          $ref: "#/components/schemas/LeadTrade"
-        finance_options:
-          type: array
-          title: finance options
-          items:
-            type: object
-            $ref: "#/components/schemas/FinanceRate"
-        budget:
-          type: object
-          title: customer preferred budget
-          $ref: "#/components/schemas/Money"
-        max_credit_amount:
-          type: object
-          $ref: "#/components/schemas/Money"
-          title: lead maximum credit amount
-        expired_at:
-          type: string
-          format: date-time
-          title: expired at
-        xid:
-          type: string
-          title: external reference id
-          readOnly: true
-        xref:
-          type: string
-          title: external reference
-          readOnly: true
-        connected:
-          type: array
-          title: connected trade ids being notified
-          items:
-            type: string
-            title: connected trade id being notified
-        accepted:
-          type: array
-          title: trade ids accepting connection
-          items:
-            type: string
-            title: trade id accepting connection
-        status:
-          type: string
-          title: status
-          enum:
-            - "issued"
-            - "open"
-            - "credit_declined"
-            - "quote_declined"
-            - "trade_notified"
-            - "trade_accepted"
-            - "trade_declined"
-            - "expired"
-            - "closed"
-        flow_type:
-          title: flow_type
-          $ref: "#/components/schemas/FlowType"
-        source:
-          type: string
-          title: source
-          enum:
-            - "consumer"
-            - "checkout"
-        referrer:
-          type: string
-          title: referrer
-          readOnly: true
-        metadata:
-          type: object
-          $ref: "#/components/schemas/Metadata"
-          title: metadata
-          readOnly: true
-
-    LeadJobSummary:
-      type: object
-      title: lead assoicated job summary
-      required:
-        - id
-        - archived
-        - status
-        - finance_status
-        - quoted_to
-        - total
-      properties:
-        id:
-          type: string
-          title: lead converted job id
-        cid:
-          type: string
-          title: company id
-        aid:
-          type: string
-          title: author id
-        oid:
-          type: string
-          title: owner id
-        eid:
-          type: string
-          title: enterprise id
-        rid:
-          type: string
-          title: region id
-        bid:
-          type: string
-          title: branch id
-        tid:
-          type: string
-          title: external trade id
-        archived:
-          type: string
-          title: lead converted job currently is archived
-        status:
-          type: string
-          title: lead converted job current status
-        finance_status:
-          type: string
-          title: lead converted job current finance status
-        quoted_to:
-          type: string
-          title: lead id which this job is quoted to
-        total:
-          type: object
-          $ref: "#/components/schemas/MoneyTotal"
-
     Credit:
       type: object
+      title: credit
+      allOf:
+        - $ref: "#/components/schemas/BaseId"
+        - $ref: "#/components/schemas/CreditInput"
+        - type: object
+          title: credit
+          required:
+            - kid
+            - kind
+            - provider
+            - state
+            - amount
+            - deposit_value
+            - finance_option
+          properties:
+            kid:
+              type: string
+              title: internal kind id
+            kind:
+              type: string
+              $ref: "#/components/schemas/Kind"
+            provider:
+              type: string
+              $ref: "#/components/schemas/FinanceProvider"
+            xid:
+              type: string
+              title: external reference id
+            xref:
+              type: string
+              title: external reference
+            xstatus:
+              type: string
+              title: external status
+            state:
+              type: string
+              $ref: "#/components/schemas/CreditApplicationState"
+            amount:
+              type: object
+              $ref: "#/components/schemas/Money"
+              title: credit amount in pence
+            deposit_value:
+              type: object
+              $ref: "#/components/schemas/Money"
+              title: deposit value in pence
+            finance_option:
+              type: object
+              $ref: "#/components/schemas/FinanceRate"
+              title: finance option for this credit
+            credit_documents:
+              type: array
+              title: credit documents
+              items:
+                $ref: "#/components/schemas/Document"
+            signature:
+              type: object
+              title: elecontronic signature
+              $ref: "#/components/schemas/Signature"
+            flow_type:
+              title: flow_type
+              $ref: "#/components/schemas/FlowType"
+            quoted_to:
+              type: string
+              title: quoted to
+            introduced_to:
+              type: string
+              title: introduced to
+
+    Kind:
+      type: string
+      title: kind
+      enum:
+        - job
+        - charge
+
+    CreditApplicationState:
+      type: string
+      title: credit application state
+      enum:
+        - accepted
+        - declined
+        - referred
+        - action_lender
+        - action_customer
+        - pending
+        - finished
+        - paid_out
+        - cancelled
+
+    CreditInput:
+      type: object
+      title: credit input
       required:
         - bank_account
         - customer_details
         - employment_details
-        - finance_option
       properties:
-        id:
-          type: string
-          title: payment id
-          readOnly: true
-        cid:
-          type: string
-          title: company id
-          readOnly: true
-        oid:
-          type: string
-          title: owner id
-          readOnly: true
-        aid:
-          type: string
-          title: author id
-          readOnly: true
-        eid:
-          type: string
-          title: enterprise id
-          readOnly: true
-        bid:
-          type: string
-          title: branch id
-          readOnly: true
-        tid:
-          type: string
-          title: external trade id
-          readOnly: true
-        kid:
-          type: string
-          title: internal kind id
-          readOnly: true
-        kind:
-          type: string
-          title: internal kind
-          enum:
-            - job
-            - charge
-          readOnly: true
-        provider:
-          type: string
-          title: provider name
-          $ref: "#/components/schemas/FinanceProvider"
-        xid:
-          type: string
-          title: external reference id
-          readOnly: true
-        xref:
-          type: string
-          title: external reference
-          readOnly: true
-        xstatus:
-          type: string
-          title: external status
-          readOnly: true
-        state:
-          type: string
-          title: credit state
-          enum:
-            - accepted
-            - declined
-            - referred
-            - action_lender
-            - action_customer
-            - pending
-            - finished
-            - paid_out
-            - cancelled
-          readOnly: true
-        amount:
-          type: object
-          $ref: "#/components/schemas/Money"
-          title: credit amount in pence
-          readOnly: true
-        deposit_value:
-          type: object
-          $ref: "#/components/schemas/Money"
-          title: deposit value in pence
-        finance_option:
-          type: object
-          $ref: "#/components/schemas/FinanceRate"
-          title: finance option for this credit
-          readOnly: true
         bank_account:
           type: object
-          title: bank account
           $ref: "#/components/schemas/BankAccount"
         customer_details:
           type: object
@@ -9468,35 +8271,10 @@ components:
           title: extra applicants
           items:
             $ref: "#/components/schemas/ApplicantDetails"
-        credit_documents:
-          type: array
-          title: credit documents
-          items:
-            $ref: "#/components/schemas/Document"
-        signature:
-          type: object
-          title: elecontronic signature
-          $ref: "#/components/schemas/Signature"
-        flow_type:
-          title: flow_type
-          $ref: "#/components/schemas/FlowType"
-        quoted_to:
-          type: string
-          title: quoted to
-          readOnly: true
-        introduced_to:
-          type: string
-          title: introduced to
-          readOnly: true
-        metadata:
-          type: object
-          $ref: "#/components/schemas/Metadata"
-          title: metadata
-          readOnly: true
 
     FinanceProvider:
       type: string
-      title: provider name
+      title: finance provider
       enum:
         - allium
         - demo
@@ -9509,6 +8287,7 @@ components:
 
     BankAccount:
       type: object
+      title: bank account
       required:
         - account_name
         - account_number
@@ -9601,21 +8380,12 @@ components:
         date_of_birth:
           type: string
           title: date of birth
-          description: "Customer's date of birth. Format to use: `yyyy-mm-dd`"
+          description: "Customer date of birth. Format to use: yyyy-mm-dd"
           pattern: "^[0-9]{4}-(0[0-9]|10|11|12)-([0-2][0-9]|30|31)(T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?(Z|(\\+|-)[0-9]{2}:[0-9]{2})?)?$"
           x-kanda-form-widget: DatePickerInput
         marital_status:
           type: string
-          title: marital status
-          enum:
-            - widowed
-            - other
-            - married
-            - divorced
-            - cohabiting
-            - to_be_married
-            - separated
-            - single
+          $ref: "#/components/schemas/MaritalStatus"
         number_of_dependants:
           type: integer
           title: number of dependants
@@ -9624,17 +8394,7 @@ components:
           maximum: 2147483647
         residential_status:
           type: string
-          title: residential status
-          enum:
-            - tenant
-            - council_tenant
-            - living_with_parents
-            - owner
-            - owner_without_mortgage
-            - homeowner_shared_ownership
-            - homeowner_buy_to_let_living_elsewhere
-            - lodger
-            - armed_forces
+          $ref: "#/components/schemas/ResidentialStatus"
         monthly_rent_amount:
           type: object
           title: monthly rent amount
@@ -9656,6 +8416,33 @@ components:
           title: goods delivery address
           $ref: "#/components/schemas/Address"
 
+    MaritalStatus:
+      type: string
+      title: marital status
+      enum:
+        - widowed
+        - other
+        - married
+        - divorced
+        - cohabiting
+        - to_be_married
+        - separated
+        - single
+
+    ResidentialStatus:
+      type: string
+      title: residential status
+      enum:
+        - tenant
+        - council_tenant
+        - living_with_parents
+        - owner
+        - owner_without_mortgage
+        - homeowner_shared_ownership
+        - homeowner_buy_to_let_living_elsewhere
+        - lodger
+        - armed_forces
+
     EmployedDetails:
       type: object
       title: employed details
@@ -9666,10 +8453,7 @@ components:
       properties:
         employed_type:
           type: string
-          title: employed type
-          enum:
-            - "full_time"
-            - "part_time"
+          $ref: "#/components/schemas/EmployedType"
         employer_name:
           type: string
           title: employer name
@@ -9689,6 +8473,13 @@ components:
           title: employer address
           $ref: "#/components/schemas/Address"
 
+    EmployedType:
+      type: string
+      title: employed type
+      enum:
+        - "full_time"
+        - "part_time"
+
     SelfEmployedDetails:
       type: object
       title: self employed details
@@ -9699,10 +8490,7 @@ components:
       properties:
         self_employed_type:
           type: string
-          title: self employed type
-          enum:
-            - "full_time"
-            - "part_time"
+          $ref: "#/components/schemas/SelfEmployedType"
         business_name:
           type: string
           title: business name
@@ -9722,6 +8510,13 @@ components:
           title: business address
           $ref: "#/components/schemas/Address"
 
+    SelfEmployedType:
+      type: string
+      title: self employed type
+      enum:
+        - "full_time"
+        - "part_time"
+
     NotEmployedDetails:
       type: object
       title: not employed details
@@ -9731,23 +8526,27 @@ components:
       properties:
         source_of_income:
           type: string
-          title: source of income
-          enum:
-            - partner
-            - benefits
-            - maintenance
-            - disabled
-            - fulltime_carer
-            - homemaker
-            - permanent_dla
-            - student
-            - other
+          $ref: "#/components/schemas/SourceOfIncome"
         months_not_employed:
           type: integer
           title: months not employed
           format: int32
           minimum: 0
           maximum: 2147483647
+
+    SourceOfIncome:
+      type: string
+      title: source of income
+      enum:
+        - partner
+        - benefits
+        - maintenance
+        - disabled
+        - fulltime_carer
+        - homemaker
+        - permanent_dla
+        - student
+        - other
 
     RetiredDetails:
       type: object
@@ -9826,14 +8625,18 @@ components:
       properties:
         signed:
           type: string
-          title: signed your signature
-          enum:
-            - "yes"
-            - "no"
-          default: "no"
+          $ref: "#/components/schemas/SignatureSignedStatus"
         fingerprint:
           type: string
           title: fingerprint reference such as IP
+
+    SignatureSignedStatus:
+      type: string
+      title: signed your signature
+      enum:
+        - "yes"
+        - "no"
+      default: "yes"
 
     ApplicantDetails:
       type: object
@@ -9846,7 +8649,6 @@ components:
       properties:
         bank_account:
           type: object
-          title: bank account
           $ref: "#/components/schemas/BankAccount"
         customer_details:
           type: object
@@ -9872,10 +8674,7 @@ components:
       properties:
         bankrupcy_or_iva_in_last_5_years:
           type: string
-          title: any bankrupcy or IVA in the last 5 years?
-          enum:
-            - "yes"
-            - "no"
+          $ref: "#/components/schemas/BankrupcyOrIvaInLast5Years"
         incomes:
           type: array
           title: incomes
@@ -9886,6 +8685,13 @@ components:
           title: expenditures
           items:
             $ref: "#/components/schemas/Expenditure"
+
+    BankrupcyOrIvaInLast5Years:
+      type: string
+      title: anay bankrupcy or IVA in the last 5 years?
+      enum:
+        - "yes"
+        - "no"
 
     Income:
       type: object
@@ -9933,77 +8739,67 @@ components:
 
     Subscription:
       type: object
+      title: subscription
+      allOf:
+        - $ref: "#/components/schemas/BaseId"
+        - type: object
+          title: subscription
+          required:
+            - amount
+            - billing_status
+          properties:
+            billing:
+              type: string
+              title: billing reference
+            billing_status:
+              type: string
+              title: billing status
+            mandate:
+              type: string
+              title: mandate reference
+            mandate_status:
+              type: string
+              title: mandate status
+            authorisation_url:
+              type: string
+              title: authorisation url to submit a mandate agreement
+            amount:
+              type: object
+              title: subscription amount
+              $ref: "#/components/schemas/Money"
+            xid:
+              type: string
+              title: external reference id
+            xref:
+              type: string
+              title: external reference
+
+    SubscriptionInput:
+      type: object
+      title: subscription input
+      required:
+        - interval
       properties:
-        id:
-          type: string
-          title: subscription id
-          readOnly: true
-        cid:
-          type: string
-          title: company id
-          readOnly: true
-        oid:
-          type: string
-          title: owner id
-          readOnly: true
-        aid:
-          type: string
-          title: author id
-          readOnly: true
-        billing:
-          type: string
-          title: billing reference
-          readOnly: true
-        billing_status:
-          type: string
-          title: billing status
-          readOnly: true
-        mandate:
-          type: string
-          title: mandate reference
-          readOnly: true
-        mandate_status:
-          type: string
-          title: mandate status
-          readOnly: true
-        authorisation_url:
-          type: string
-          title: authorisation url to submit a mandate agreement
-          readOnly: true
         interval:
           type: string
-          title: subscription interval
-          enum:
-            - monthly
-            - yearly
-          default: monthly
+          $ref: "#/components/schemas/SubscriptionInterval"
         day_of_month:
           type: integer
           title: day of month for collection
           format: int32
           minimum: -1
           maximum: 28
-        amount:
-          type: object
-          title: subscription amount
-          $ref: "#/components/schemas/Money"
-          readOnly: true
-        xid:
-          type: string
-          title: external reference id
-          readOnly: true
-        xref:
-          type: string
-          title: external reference
-          readOnly: true
-        metadata:
-          type: object
-          $ref: "#/components/schemas/Metadata"
-          title: metadata
-          readOnly: true
+
+    SubscriptionInterval:
+      type: string
+      title: subscription interval
+      enum:
+        - monthly
+        - yearly
 
     InfoValidationEmail:
       type: object
+      title: info validation email
       properties:
         email:
           type: string
@@ -10070,49 +8866,37 @@ components:
     Cache:
       type: object
       title: cache
-      properties:
-        id:
-          type: string
-          title: cache id
-          readOnly: true
-        cid:
-          type: string
-          title: company id
-          readOnly: true
-        oid:
-          type: string
-          title: owner id
-          readOnly: true
-        metadata:
-          type: object
-          $ref: "#/components/schemas/Metadata"
-          title: metadata
-          readOnly: true
+      allOf:
+        - $ref: "#/components/schemas/BaseId"
+        - $ref: "#/components/schemas/CacheInput"
+
+    CacheInput:
+      type: object
       additionalProperties:
         type: string
 
     Rate:
       type: object
-      title: rate details
+      title: rate
+      allOf:
+        - $ref: "#/components/schemas/BaseId"
+        - $ref: "#/components/schemas/RateInput"
+
+    RateInput:
+      type: object
+      title: rate input
       required:
         - finance_rates
       properties:
-        id:
-          type: string
-          title: rate or comapny id
         finance_rates:
           type: array
           title: finance rates
           items:
             $ref: "#/components/schemas/FinanceRate"
-        metadata:
-          type: object
-          $ref: "#/components/schemas/Metadata"
-          title: metadata
-          readOnly: true
 
     Analytics:
       type: object
+      title: analytics
       properties:
         utms:
           type: array
@@ -10146,11 +8930,26 @@ components:
     Monitor:
       type: object
       title: monitor
-      description: internal monitoring with flags
+      allOf:
+        - $ref: "#/components/schemas/MonitorInput"
+        - type: object
+          title: internal monitoring with flags
+          properties:
+            metadata:
+              $ref: "#/components/schemas/Metadata"
+
+    MonitorInput:
+      type: object
+      title: monitor input
+      description: monitoring with flags input
+      required:
+        - id
+        - flag
+        - flags
       properties:
         id:
           type: string
-          title: flag or company id
+          title: monitoring id
         flag:
           type: object
           $ref: "#/components/schemas/Flag"
@@ -10160,9 +8959,6 @@ components:
           description: flags
           items:
             $ref: "#/components/schemas/Flag"
-        metadata:
-          type: object
-          $ref: "#/components/schemas/Metadata"
 
     Flag:
       type: object
@@ -10323,9 +9119,6 @@ components:
         - onboarding
         - onboarding_hits
         - onboarding_returned
-        - transaction
-        - transaction_hits
-        - transaction_returned
       properties:
         audit:
           type: array
@@ -10425,20 +9218,6 @@ components:
           type: integer
           format: int64
           title: matching onboardings returned
-        transaction:
-          type: array
-          title: matching transactions
-          description: matching transactions
-          items:
-            $ref: "#/components/schemas/Transaction"
-        transaction_hits:
-          type: integer
-          format: int64
-          title: matching transactions hits
-        transaction_returned:
-          type: integer
-          format: int64
-          title: matching transactions returned
 
     InfoPartnerBranding:
       type: object
@@ -10461,239 +9240,6 @@ components:
           title: branding
           description: branding style override
           $ref: "#/components/schemas/Branding"
-
-    Event:
-      type: object
-      required:
-        - name
-        - event_options
-      properties:
-        name:
-          type: string
-          title: event name
-          description: >
-            Name of the event. 
-            Can specify pageview which is a special type of event.
-            All other names will be treated as custom events.
-          enum:
-            - "page-view"
-            - "page-closed"
-            - "page-error"
-            - "signup-attempted"
-            - "signup-succeeded"
-            - "signup-failed"
-            - "login-attempted"
-            - "login-succeeded"
-            - "login-failed"
-            - "button-interacted"
-            - "form-filled"
-            - "form-submitted"
-            - "form-error"
-            - "api-attempted"
-            - "api-succeeded"
-            - "api-failed"
-            - "comms-sent"
-            - "onboarding-registered"
-            - "onboarding-legacy"
-            - "onboarding-billing-subscribed"
-            - "onboarding-billing-referred"
-            - "onboarding-billing-cancelled"
-            - "onboarding-director-info-provided"
-            - "onboarding-director-verified"
-            - "onboarding-director-pending"
-            - "onboarding-director-failed"
-            - "onboarding-onboarded"
-            - "onboarding-insurance-uploaded"
-            - "onboarding-contract-signed"
-            - "onboarding-completed"
-            - "onboarding-verified"
-            - "onboarding-rejected"
-            - "onboarding-declined"
-        event_options:
-          type: object
-          title: event options
-          $ref: "#/components/schemas/EventOptions"
-        event_props:
-          type: object
-          title: event props
-          $ref: "#/components/schemas/EventProps"
-        purchase:
-          type: object
-          title: purchase event
-          $ref: "#/components/schemas/PurchaseEvent"
-
-    EventOptions:
-      type: object
-      title: event options
-      required:
-        - device_id
-        - session_id
-        - ip
-        - time
-      properties:
-        user_id:
-          type: string
-          title: user id
-        device_id:
-          type: string
-          title: device id
-        session_id:
-          type: integer
-          title: session id
-        ip:
-          type: string
-          title: ip address associated with the event
-        time:
-          type: string
-          title: event time tracked at
-          format: date-time
-
-    EventProps:
-      type: object
-      title: event props
-      properties:
-        domain:
-          type: string
-          title: event domain
-        url:
-          type: string
-          title: event url
-        path:
-          type: string
-          title: event path
-        referrer:
-          type: string
-          title: event referrer
-        params:
-          type: object
-          title: event page search parameters
-          additionalProperties: true
-        user_agent:
-          type: string
-          title: event user agent, if applicable
-        request_user:
-          type: object
-          title: request user
-          $ref: "#/components/schemas/UserEvent"
-        element:
-          type: string
-          title: element label of component
-        element_id:
-          type: string
-          title: element id of component
-        element_path:
-          type: string
-          title: element path of component
-        api:
-          type: object
-          title: api event
-          $ref: "#/components/schemas/ApiEvent"
-        info:
-          type: object
-          title: event info props, in a map object
-          additionalProperties: true
-
-    UserEvent:
-      type: object
-      title: user event
-      required:
-        - id
-        - verified
-        - name
-        - email
-        - provider
-      properties:
-        id:
-          type: string
-          title: oid of event user
-        cid:
-          type: string
-          title: cid of event user
-        verified:
-          type: boolean
-          title: event user is verified
-        name:
-          type: string
-          title: event user name
-        email:
-          type: string
-          title: event user email
-          format: email
-          x-go-type: Email
-        mobile:
-          type: string
-          title: event user mobile
-        role:
-          type: string
-          title: event user role
-        provider:
-          type: string
-          title: event user provider
-          enum:
-            - system
-            - firebase
-            - google
-            - facebook
-          default: system
-
-    ApiEvent:
-      type: object
-      title: api event
-      required:
-        - method
-        - resource
-        - resource_id
-        - action
-      properties:
-        method:
-          type: string
-          title: method of request
-          enum:
-            - get
-            - post
-            - put
-            - delete
-        resource:
-          type: string
-          title: resource of request
-        resource_id:
-          type: string
-          title: resource id of request
-        action:
-          type: string
-          title: action of request
-        resource_data:
-          type: object
-          title: resource data
-          additionalProperties: true
-        comm_context:
-          type: object
-          title: comm context
-          $ref: "#/components/schemas/CommContext"
-        error:
-          type: string
-          title: error of request
-
-    PurchaseEvent:
-      type: object
-      title: purchase event
-      required:
-        - kind
-        - payment
-      properties:
-        pid:
-          type: string
-          title: product id
-        kind:
-          type: string
-          title: purchase kind
-        kid:
-          type: string
-          title: purchase kind id
-        payment:
-          type: string
-          title: product type
-          $ref: "#/components/schemas/PaymentOption"
 
     CommContext:
       type: object
@@ -10731,25 +9277,9 @@ components:
           title: lender contact info
           $ref: "#/components/schemas/ContactInfo"
         deposit:
-          type: object
-          title: deposit relevant to context
-          required:
-            - original
-            - applied
-            - difference
-          properties:
-            original:
-              type: string
-              title: deposit original formatted value in pounds
-            applied:
-              type: string
-              title: deposit applied formatted value in pounds
-            difference:
-              type: string
-              title: deposit value formatted difference from original in pounds
+          $ref: "#/components/schemas/DepositContext"
         bank_account:
           type: object
-          title: bank account info
           $ref: "#/components/schemas/BankAccount"
         cta_url:
           type: string
@@ -10771,59 +9301,59 @@ components:
           title: reference
           description: optional comm context reference
 
+    DepositContext:
+      type: object
+      title: deposit relevant to context
+      required:
+        - original
+        - applied
+        - difference
+      properties:
+        original:
+          type: string
+          title: deposit original formatted value in pounds
+        applied:
+          type: string
+          title: deposit applied formatted value in pounds
+        difference:
+          type: string
+          title: deposit value formatted difference from original in pounds
+
     Training:
       type: object
       title: training
+      allOf:
+        - $ref: "#/components/schemas/BaseId"
+        - $ref: "#/components/schemas/TrainingInput"
+        - type: object
+          required:
+            - result
+          properties:
+            result:
+              type: string
+              title: training result
+              $ref: "#/components/schemas/TrainingState"
+
+    TrainingInput:
+      type: object
+      title: training input
       required:
         - categories
       properties:
-        id:
-          type: string
-          title: id
-          readOnly: true
-        cid:
-          type: string
-          title: company id
-          readOnly: true
-        eid:
-          type: string
-          title: enterprise id
-          readOnly: true
-        bid:
-          type: string
-          title: branch id
-          readOnly: true
-        aid:
-          type: string
-          title: author id
-          readOnly: true
-        oid:
-          type: string
-          title: owner id
-          readOnly: true
         categories:
           type: array
           title: training categories
           items:
-            $ref: "#/components/schemas/Category"
+            $ref: "#/components/schemas/TrainingCategory"
         quizzes:
           type: array
           title: quizzes
           items:
             $ref: "#/components/schemas/Quiz"
-        result:
-          type: string
-          title: training result
-          $ref: "#/components/schemas/Result"
-        metadata:
-          type: object
-          title: metadata
-          $ref: "#/components/schemas/Metadata"
-          readOnly: true
 
-    Result:
+    TrainingState:
       type: string
-      title: training result
+      title: training result state
       enum:
         - "MISSING"
         - "PASSED"
@@ -10832,7 +9362,7 @@ components:
       default: "MISSING"
       readOnly: true
 
-    Category:
+    TrainingCategory:
       type: object
       title: training category
       required:
@@ -10863,7 +9393,7 @@ components:
         result:
           type: string
           title: quiz result
-          $ref: "#/components/schemas/Result"
+          $ref: "#/components/schemas/TrainingState"
 
     Quiz:
       type: object
@@ -10875,7 +9405,7 @@ components:
       properties:
         category:
           type: string
-          $ref: "#/components/schemas/Category"
+          $ref: "#/components/schemas/TrainingCategory"
         question:
           type: string
           title: question
@@ -10923,58 +9453,9 @@ components:
           type: string
           title: fca number
 
-    Transaction:
-      type: object
-      title: transaction
-      description: transaction record from lender
-      required:
-        - id
-        - lender
-        - xid
-        - payout_type
-        - payout_date
-        - amount
-        - vat
-        - fee
-      properties:
-        id:
-          type: string
-          title: transaction id
-        lender:
-          type: string
-          $ref: "#/components/schemas/FinanceProvider"
-        xid:
-          type: string
-          title: transaction external id
-        xref:
-          type: string
-          title: transaction external reference
-        account_name:
-          type: string
-          title: account name (trade)
-        payout_type:
-          type: string
-          title: payout type
-          enum:
-            - "paid_to_kanda"
-            - "paid_from_kanda"
-        payout_date:
-          type: string
-          title: payout date (in format YYYY-mm-dd)
-        amount:
-          $ref: "#/components/schemas/Pence"
-        vat:
-          $ref: "#/components/schemas/Pence"
-        fee:
-          $ref: "#/components/schemas/Pence"
-        note:
-          type: string
-          title: payout note
-        metadata:
-          $ref: "#/components/schemas/Metadata"
-
     BaseId:
       type: object
+      title: base id
       required:
         - id
         - metadata
@@ -11011,11 +9492,12 @@ components:
           $ref: "#/components/schemas/Metadata"
 
     Audit:
+      type: object
+      title: audit
+      description: audit of resource
       allOf:
         - $ref: "#/components/schemas/BaseId"
         - type: object
-          title: audit
-          description: audit of resource
           required:
             - resources
             - resource_id
@@ -11138,15 +9620,15 @@ components:
 
     Error:
       type: object
+      title: error
       required:
+        - code
         - message
       properties:
         code:
           type: integer
           format: int32
           title: code
-          readOnly: true
         message:
           type: string
           title: message
-          readOnly: true
