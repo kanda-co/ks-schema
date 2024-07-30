@@ -3382,6 +3382,34 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/job/{id}/export-remittance-pdf:
+    post:
+      operationId: exportRemittancePDF
+      summary: export existing job remittance in pdf
+      tags:
+        - Job
+      parameters:
+        - name: id
+          in: path
+          description: job id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: exported existing job remittance in pdf
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Document"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/job/all/export-payouts:
     post:
       operationId: exportJobPayouts
