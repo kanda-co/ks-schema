@@ -1855,6 +1855,41 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/introduction/{id}/amend-job-details:
+    post:
+      operationId: postIntroductionAmendJobDetails
+      summary: amend existing introduction job details (converted but not applied job)
+      tags:
+        - Introduction
+      parameters:
+        - name: id
+          in: path
+          description: introduction id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: amend existing introduction with new job details (converted but not applied job)
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/JobDetails"
+      responses:
+        200:
+          description: amended introduction with job details (require trader approval)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Introduction"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/introduction/{id}/trader:
     post:
       operationId: postIntroductionTrader
@@ -1914,6 +1949,41 @@ paths:
       responses:
         200:
           description: agreed and signed existing introduction
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Introduction"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/introduction/{id}/trader-approve-amended:
+    post:
+      operationId: postIntroductionTraderApproveAmended
+      summary: trader to agree, sign and approve for amended introduction
+      tags:
+        - Introduction
+      parameters:
+        - name: id
+          in: path
+          description: introduction id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: trader agreement, signature and approval of amended introduction
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Signature"
+      responses:
+        200:
+          description: agreed, signed, and approved amended introduction
           content:
             application/json:
               schema:
@@ -6255,6 +6325,7 @@ components:
 
     Metadata:
       type: object
+      title: metadata
       required:
         - liveness
         - created_at
@@ -6274,6 +6345,18 @@ components:
           format: date-time
           title: updated at
           readOnly: true
+
+    Metarefs:
+      type: object
+      title: metarefs
+      required:
+        - references
+      properties:
+        references:
+          type: array
+          title: references
+          items:
+            type: string
 
     Address:
       type: object
@@ -8382,6 +8465,8 @@ components:
           type: object
           title: redirect urls
           $ref: "#/components/schemas/RedirectURLs"
+        metarefs:
+          $ref: "#/components/schemas/Metarefs"
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
@@ -9119,9 +9204,11 @@ components:
         - "consumer_is_accepted"
         - "consumer_is_declined"
         - "job_details_provided"
+        - "job_details_amended"
         - "trader_sent"
         - "trader_viewed"
         - "trader_agreed"
+        - "trader_agreed_amended"
         - "trader_contact_provided"
         - "trader_details_provided"
         - "trader_rejected"
@@ -9164,6 +9251,8 @@ components:
         reference:
           type: string
           title: job unique reference
+        metarefs:
+          $ref: "#/components/schemas/Metarefs"
         description:
           type: string
           title: job description

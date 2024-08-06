@@ -95,7 +95,7 @@ ts-widget:
 	echo "import { servers } from './servers';" >> ks-component-ts/src/generated/index.ts
 	echo "export { Widget, servers };" >> ks-component-ts/src/generated/index.ts
 	npx prettier --write ks-component-ts/src/generated/widget
-	cd ks-component-ts && yarn && yarn build
+	cd ks-component-ts && yarn --ignore-scripts && yarn build
 
 search-index:
 	@echo Resetting Search Indexes...
