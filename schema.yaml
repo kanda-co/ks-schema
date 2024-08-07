@@ -1547,6 +1547,30 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/enterprise/all/export-daily-report:
+    post:
+      operationId: exportEnterpriseDailyReport
+      summary: export enterprise daily report
+      tags:
+        - Enterprise
+      parameters:
+        - $ref: "#/components/parameters/datetime_from"
+        - $ref: "#/components/parameters/datetime_to"
+      responses:
+        200:
+          description: exported enterprise daily report
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/introduction:
     get:
       operationId: getIntroductions
@@ -5738,6 +5762,22 @@ components:
         title: query filter
         description: query filter in colon path+value pairs, with comma separated filters
         minLength: 1
+
+    datetime_from:
+      name: datetime_from
+      in: query
+      schema:
+        type: string
+        title: datetime at
+        pattern: "^[0-9]{4}-(0[0-9]|10|11|12)-([0-2][0-9]|30|31) ([0-1][0-9]|20|21|22|23):([0-5][0-9]:[0-5][0-9])$"
+
+    datetime_to:
+      name: datetime_to
+      in: query
+      schema:
+        type: string
+        title: datetime to
+        pattern: "^[0-9]{4}-(0[0-9]|10|11|12)-([0-2][0-9]|30|31) ([0-1][0-9]|20|21|22|23):([0-5][0-9]:[0-5][0-9])$"
 
     tier:
       name: tier
