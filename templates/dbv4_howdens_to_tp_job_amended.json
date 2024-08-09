@@ -1,0 +1,48 @@
+{
+  "subject": "Approval requested for amendments to your job from your Howdens Partner Designer - {{sender.contact_name}}",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "{{sender.contact_name}} haa made some changes to the job you have previously approved. We need you to approve these changes before we can send the new quote to your customer. You won't need to provide any more company information as we have your previously provided information on record."
+        }
+      ]
+    },
+    {
+      "type": "compact_rows",
+      "rows": [
+        {
+          "text": "<b>1.</b> View and approve the amended job details"
+        },
+        {
+          "text": "<b>2.</b> Your customer applies for finance"
+        },
+        {
+          "text": "<b>3.</b> Howdens deliver the goods"
+        },
+        {
+          "text": "<b>4.</b> You get paid"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Click below to view the invoice and approve the amendments."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}

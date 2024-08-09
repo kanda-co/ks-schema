@@ -37,6 +37,7 @@ const (
 	DBV4_HOWDENS_TO_TP_APPLICATION_ACCEPTED      TName = "DBV4_HOWDENS_TO_TP_APPLICATION_ACCEPTED"
 	DBV4_HOWDENS_TO_TP_GOODS_DELIVERED           TName = "DBV4_HOWDENS_TO_TP_GOODS_DELIVERED"
 	DBV4_HOWDENS_TO_TP_INTRO                     TName = "DBV4_HOWDENS_TO_TP_INTRO"
+	DBV4_HOWDENS_TO_TP_JOB_AMENDED               TName = "DBV4_HOWDENS_TO_TP_JOB_AMENDED"
 	DBV4_LENDER_SATNOTE_REVIEW                   TName = "DBV4_LENDER_SATNOTE_REVIEW"
 	DBV4_STAFF_AUDIT_NOTIFICATION                TName = "DBV4_STAFF_AUDIT_NOTIFICATION"
 	DBV4_TP_2ND_LINE_REJECTED                    TName = "DBV4_TP_2ND_LINE_REJECTED"
@@ -1195,6 +1196,54 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Click below to see more and approve this invoice in 2 minutes."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}`,
+	"DBV4_HOWDENS_TO_TP_JOB_AMENDED": `{
+  "subject": "Approval requested for amendments to your job from your Howdens Partner Designer - {{sender.contact_name}}",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "{{sender.contact_name}} haa made some changes to the job you have previously approved. We need you to approve these changes before we can send the new quote to your customer. You won't need to provide any more company information as we have your previously provided information on record."
+        }
+      ]
+    },
+    {
+      "type": "compact_rows",
+      "rows": [
+        {
+          "text": "<b>1.</b> View and approve the amended job details"
+        },
+        {
+          "text": "<b>2.</b> Your customer applies for finance"
+        },
+        {
+          "text": "<b>3.</b> Howdens deliver the goods"
+        },
+        {
+          "text": "<b>4.</b> You get paid"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Click below to view the invoice and approve the amendments."
         }
       ]
     },
