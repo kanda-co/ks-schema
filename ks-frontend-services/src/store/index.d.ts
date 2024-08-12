@@ -411,6 +411,17 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         chainedRequest: boolean;
         isLoading: boolean;
     };
+    exportEnterpriseDailyReport: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").ExportCSV>;
+        raw?: {} | {}[];
+        error?: import("../types").ExtractedError;
+        isSubmitting: boolean;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+    };
     infoSession: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoSession>;
@@ -1063,6 +1074,17 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         chainedRequest: boolean;
         isLoading: boolean;
     };
+    exportEnterpriseDailyReport: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").ExportCSV>;
+        raw?: {} | {}[];
+        error?: import("../types").ExtractedError;
+        isSubmitting: boolean;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+    };
     infoSession: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoSession>;
@@ -1358,6 +1380,7 @@ export declare function createSelectors<State extends AuthSlice, Pages>(): {
     postCompanyReferrals: import("./types").Selectors<import("..").Referral, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Referral>>>;
     exportFcaApproved: import("./types").Selectors<import("..").ExportCSV, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").ExportCSV>>>;
     importFcaApproved: import("./types").Selectors<import("..").ExportCSV, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").ExportCSV>>>;
+    exportEnterpriseDailyReport: import("./types").Selectors<import("..").ExportCSV, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").ExportCSV>>>;
     infoSession: import("./types").Selectors<import("..").InfoSession, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoSession>>>;
     infoGetCache: import("./types").Selectors<import("..").Cache, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Cache>>>;
     infoPutCache: import("./types").Selectors<import("..").Cache, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Cache>>>;

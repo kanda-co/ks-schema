@@ -1,4 +1,10 @@
-import React, { ChangeEvent, FunctionComponent, useState } from "react";
+import React, {
+  ChangeEvent,
+  FunctionComponent,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { useFormContext } from "react-hook-form";
 import type { SearchResultsProps } from "../types";
 import useSearch from "../useSearch";
@@ -26,11 +32,13 @@ const Container: FunctionComponent<ContainerProps> = function ({
   children,
 }) {
   const [query, setQuery] = useState("");
-  const { setValue } = useFormContext();
+  const { setValue, getValues } = useFormContext();
   const { results, isLoading, searchWords } = useSearch(query);
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target?.value as string);
+    if (companySearchName)
+      setValue(companySearchName, e.target?.value as string);
   };
 
   const showButton = !!(
@@ -43,6 +51,15 @@ const Container: FunctionComponent<ContainerProps> = function ({
     if (noCompanyCallback) noCompanyCallback(query);
     setValue(companySearchName as string, query);
   };
+
+  const initRef = useRef<boolean>(false);
+  useEffect(() => {
+    if (!companySearchName || initRef.current) return;
+    const value = getValues(companySearchName);
+    initRef.current = true;
+    if (!value) return;
+    setQuery(value);
+  }, [getValues, companySearchName]);
 
   return children({
     results,

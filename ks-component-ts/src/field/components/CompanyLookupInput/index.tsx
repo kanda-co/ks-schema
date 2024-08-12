@@ -36,6 +36,7 @@ const CompanyLookupInput: FunctionComponent<CompanyLookupInputProps> =
       companySelected,
       searchInputProps,
       searchResultsProps,
+      isDesktop,
       noCompanyCallback,
     } = useCompanyLookupInputProps({
       noCompanyCallback: initialNoCompanyCallback,
@@ -79,12 +80,12 @@ const CompanyLookupInput: FunctionComponent<CompanyLookupInputProps> =
             <div className={CLASS_NAMES.inputWrapper}>
               <Input
                 {...FIELDS.search}
-                name={companySearchName}
+                name={isDesktop ? companySearchName : "placeholder"}
                 label={label}
                 placeholder={placeholder}
                 {...searchInputProps}
               />
-              <BreakPoints desktop={soleTraderButton as JSX.Element} />
+              {soleTraderButton}
             </div>
             <SearchResults
               {...searchResultsProps}
@@ -99,3 +100,25 @@ const CompanyLookupInput: FunctionComponent<CompanyLookupInputProps> =
   };
 
 export default CompanyLookupInput;
+
+// {/* <BreakPoints
+//                 desktop={
+//                   <Input
+//                     {...FIELDS.search}
+//                     name={companySearchName}
+//                     label={label}
+//                     placeholder={placeholder}
+//                     {...searchInputProps}
+//                   />
+//                 }
+//                 mobile={
+//                   <button
+//                     id="company-search"
+//                     role="button"
+//                     className=""
+//                     {...mobileButtonProps}
+//                   >
+//                     {label}
+//                   </button>
+//                 }
+//               /> */}

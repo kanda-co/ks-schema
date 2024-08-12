@@ -5,6 +5,7 @@ import InputUncontrolled, {
 } from "~/field/components/Input/InputUncontrolled";
 import { DefaultFormFieldProps } from "~/field/types";
 import FormTheme from "~/components/FormTheme";
+import { useFormContext } from "react-hook-form";
 
 export interface HeaderSearchProps
   extends DefaultFormFieldProps<InputUncontrolledProps> {
@@ -12,6 +13,7 @@ export interface HeaderSearchProps
   className?: string;
   help?: boolean;
   hideNumber?: boolean;
+  searchName?: string;
 }
 
 const HeaderSearch: FunctionComponent<HeaderSearchProps> = function ({
@@ -19,6 +21,7 @@ const HeaderSearch: FunctionComponent<HeaderSearchProps> = function ({
   help = false,
   hideNumber = true,
   className,
+  searchName = "search",
   ...inputProps
 }) {
   return (
@@ -31,7 +34,7 @@ const HeaderSearch: FunctionComponent<HeaderSearchProps> = function ({
       <div className="w-full -ml-4">
         <FormTheme variant="clean">
           <InputUncontrolled
-            name="search"
+            name={searchName}
             icon="search"
             iconVariant="search"
             {...inputProps}

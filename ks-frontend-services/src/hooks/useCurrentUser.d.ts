@@ -56,6 +56,7 @@ export declare const createCurrentUserHook: <State extends AuthSlice, Dispatch e
     postCompanyReferrals: import("../store/types").Selectors<import("..").Referral, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Referral>>>;
     exportFcaApproved: import("../store/types").Selectors<import("..").ExportCSV, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").ExportCSV>>>;
     importFcaApproved: import("../store/types").Selectors<import("..").ExportCSV, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").ExportCSV>>>;
+    exportEnterpriseDailyReport: import("../store/types").Selectors<import("..").ExportCSV, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").ExportCSV>>>;
     infoSession: import("../store/types").Selectors<import("..").InfoSession, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoSession>>>;
     infoGetCache: import("../store/types").Selectors<import("..").Cache, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Cache>>>;
     infoPutCache: import("../store/types").Selectors<import("..").Cache, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Cache>>>;

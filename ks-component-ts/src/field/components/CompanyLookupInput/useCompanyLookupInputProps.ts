@@ -10,6 +10,7 @@ import {
 import { CompanyLookupInputProps } from "./types";
 import { InputProps } from "~/field/components/Input";
 import { SearchResultsProps } from "~/field/components/CompanyLookupInput/SearchResults/types";
+import { StringIndexedObject } from "~/types";
 
 export type CompanyLookupInputArgs = Omit<
   CompanyLookupInputProps,
@@ -22,7 +23,9 @@ export interface CompanyLookupInputPropsHook {
   handleUnSelect?: () => void;
   searchInputProps?: InputProps;
   searchResultsProps?: SearchResultsProps;
+  mobileButtonProps?: StringIndexedObject;
   noCompanyCallback?: (name?: string) => void;
+  isDesktop: boolean;
 }
 
 export default function useCompanyLookupInputProps({
@@ -134,6 +137,15 @@ export default function useCompanyLookupInputProps({
   }, [isDesktop, modalId, showModal]);
 
   /**
+   * Handles focus
+   */
+  const handleMobileButtonClick = useCallback(() => {
+    if (!isDesktop) {
+      showModal(modalId);
+    }
+  }, [isDesktop, modalId, showModal]);
+
+  /**
    * Handles click
    */
   const handleClick = useCallback(() => {
@@ -160,6 +172,11 @@ export default function useCompanyLookupInputProps({
     error,
     onFocus: handleFocus,
     onClick: handleClick,
+  };
+
+  const mobileButtonProps = {
+    onFocus: handleFocus,
+    onClick: handleMobileButtonClick,
   };
 
   const searchResultsProps = { modalId, handleSelect };
@@ -208,6 +225,8 @@ export default function useCompanyLookupInputProps({
     handleUnSelect,
     searchInputProps: searchInputProps as InputProps,
     searchResultsProps: searchResultsProps as SearchResultsProps,
+    mobileButtonProps,
     noCompanyCallback: inputCallback,
+    isDesktop,
   };
 }

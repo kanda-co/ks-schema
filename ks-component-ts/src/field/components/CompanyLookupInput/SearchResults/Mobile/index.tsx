@@ -14,13 +14,19 @@ export type MobileProps = SearchResultsProps;
 const Mobile: FunctionComponent<MobileProps> = function ({
   modalId = "",
   handleSelect,
+  companySearchName,
   ...rest
 }) {
+  console.log({ companySearchName });
   return (
     <ModalContainer id={modalId}>
       {({ handleClose }) => (
         <>
-          <Container handleClose={handleClose} {...rest}>
+          <Container
+            handleClose={handleClose}
+            companySearchName={companySearchName}
+            {...rest}
+          >
             {({
               handleSearch,
               results,
@@ -37,6 +43,7 @@ const Mobile: FunctionComponent<MobileProps> = function ({
                       id={modalId}
                       handleClose={handleClose}
                       handleSearch={handleSearch}
+                      companySearchName={companySearchName}
                     />
                     {showButton && (
                       <Button.Link

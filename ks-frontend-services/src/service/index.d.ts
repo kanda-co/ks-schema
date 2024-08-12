@@ -200,6 +200,10 @@ declare const enterprise: {
         key: string;
         method: import("../generated/operations/postEnterpriseBranches").PostEnterpriseBranchesRequestFunction;
     };
+    exportEnterpriseDailyReport: {
+        key: string;
+        method: import("../generated/operations/exportEnterpriseDailyReport").ExportEnterpriseDailyReportRequestFunction;
+    };
 };
 declare const event: {
     postEvent: {
@@ -400,6 +404,10 @@ declare const introduction: {
         key: string;
         method: import("../generated/operations/postIntroductionJobDetails").PostIntroductionJobDetailsRequestFunction;
     };
+    postIntroductionAmendJobDetails: {
+        key: string;
+        method: import("../generated/operations/postIntroductionAmendJobDetails").PostIntroductionAmendJobDetailsRequestFunction;
+    };
     postIntroductionTrader: {
         key: string;
         method: import("../generated/operations/postIntroductionTrader").PostIntroductionTraderRequestFunction;
@@ -407,6 +415,10 @@ declare const introduction: {
     postIntroductionTraderSignature: {
         key: string;
         method: import("../generated/operations/postIntroductionTraderSignature").PostIntroductionTraderSignatureRequestFunction;
+    };
+    postIntroductionTraderApproveAmended: {
+        key: string;
+        method: import("../generated/operations/postIntroductionTraderApproveAmended").PostIntroductionTraderApproveAmendedRequestFunction;
     };
     postIntroductionTraderDetails: {
         key: string;
@@ -1102,6 +1114,10 @@ declare const services: {
             key: string;
             method: import("../generated/operations/postEnterpriseBranches").PostEnterpriseBranchesRequestFunction;
         };
+        exportEnterpriseDailyReport: {
+            key: string;
+            method: import("../generated/operations/exportEnterpriseDailyReport").ExportEnterpriseDailyReportRequestFunction;
+        };
     };
     event: {
         postEvent: {
@@ -1302,6 +1318,10 @@ declare const services: {
             key: string;
             method: import("../generated/operations/postIntroductionJobDetails").PostIntroductionJobDetailsRequestFunction;
         };
+        postIntroductionAmendJobDetails: {
+            key: string;
+            method: import("../generated/operations/postIntroductionAmendJobDetails").PostIntroductionAmendJobDetailsRequestFunction;
+        };
         postIntroductionTrader: {
             key: string;
             method: import("../generated/operations/postIntroductionTrader").PostIntroductionTraderRequestFunction;
@@ -1309,6 +1329,10 @@ declare const services: {
         postIntroductionTraderSignature: {
             key: string;
             method: import("../generated/operations/postIntroductionTraderSignature").PostIntroductionTraderSignatureRequestFunction;
+        };
+        postIntroductionTraderApproveAmended: {
+            key: string;
+            method: import("../generated/operations/postIntroductionTraderApproveAmended").PostIntroductionTraderApproveAmendedRequestFunction;
         };
         postIntroductionTraderDetails: {
             key: string;
