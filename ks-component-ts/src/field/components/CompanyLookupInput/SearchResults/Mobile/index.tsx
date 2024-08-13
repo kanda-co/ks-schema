@@ -17,7 +17,6 @@ const Mobile: FunctionComponent<MobileProps> = function ({
   companySearchName,
   ...rest
 }) {
-  console.log({ companySearchName });
   return (
     <ModalContainer id={modalId}>
       {({ handleClose }) => (
