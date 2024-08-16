@@ -351,6 +351,24 @@ func (cc CommContext) RenderTemplate() (CommContext, error) {
 		cc.Sender.TradingName = &defaultTradingName
 	}
 
+	// NOTE: if subdomain is set, look for branded template
+	// if existed use it otherwise fallback to original core one
+	subdomain, subdomainOK := Lift(cc.Subdomain)
+	if subdomainOK {
+		branded := strings.SplitN(cc.TemplateName.String(), "_", 2)
+		if len(branded) == 2 {
+			brandedTName := fmt.Sprintf(
+				"%v_%v_%v",
+				branded[0],
+				strings.ToUpper(subdomain),
+				branded[1],
+			)
+			if tname, ok := TemplateM[brandedTName]; ok {
+				cc.TemplateName = tname
+			}
+		}
+	}
+
 	template, err := cc.ToJSON()
 	if err != nil {
 		return cc, err

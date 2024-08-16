@@ -42,6 +42,15 @@ func main() {
 	fmt.Println(")")
 	fmt.Println()
 
+	fmt.Println("var TemplateM = map[string]TName{")
+	for _, path := range paths {
+		bits := strings.Split(path, "/")
+		fname := strings.ToUpper(strings.Split(bits[len(bits)-1], ".")[0])
+		fmt.Printf("	\"%v\": %v,\n", fname, fname)
+	}
+	fmt.Println("}")
+	fmt.Println()
+
 	fmt.Println("func(tn TName) String() string {")
 	fmt.Println("	return string(tn)")
 	fmt.Println("}")
