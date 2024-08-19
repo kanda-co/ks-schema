@@ -10336,6 +10336,7 @@ components:
         - monitor
         - onboarding
         - payment
+        - introduction
       properties:
         company:
           type: array
@@ -10373,6 +10374,12 @@ components:
           description: relevant payments
           items:
             $ref: "#/components/schemas/Payment"
+        introduction:
+          type: array
+          title: relevant introductions
+          description: relevant introductions
+          items:
+            $ref: "#/components/schemas/Introduction"
 
     SearchIndex:
       type: string

@@ -62,7 +62,7 @@ import React from "react";
 import Field, { type FieldProps, type ValidatedFieldProps, type WidgetArrayWrapperProps, type ArrayWrapperChildrenArgs, type WidgetArrayInputProps } from "~/field";`)
 	for name, ref := range doc.Components.Schemas {
 		// write to individual module for Schema Form Fields
-		if name == "InfoSearch" || name == "SearchHits" {
+		if name == "InfoSearch" || name == "SearchHits" || name == "InfoEntity" {
 			continue
 		}
 		var moduleDef, exports = renderModule(name, ref.Value)
