@@ -147,28 +147,28 @@ func getKandaFormWidget(schema *openapi3.Schema) string {
 }
 
 func renderModule(name string, schema *openapi3.Schema) (string, string) {
-	moduleDefs := []string{}
+	moduleDefs := []string{renderField(name, schema, nil, false)}
 	exports := []string{}
-	components := renderField(name, schema, nil, false)
-	r := regexp.MustCompile(`export function (?P<Form>.*?)\(`)
-	formFields := r.FindAllStringSubmatch(components, -1)
-	formIndex := r.SubexpIndex("Form")
-	formDef := []string{
-		fmt.Sprintf("export function %sForm(props: any) {", name),
-		"return (<>",
-	}
+	// components := renderField(name, schema, nil, false)
+	// r := regexp.MustCompile(`export function (?P<Form>.*?)\(`)
+	// formFields := r.FindAllStringSubmatch(components, -1)
+	// formIndex := r.SubexpIndex("Form")
+	// formDef := []string{
+	// 	fmt.Sprintf("export function %sForm(props: any) {", name),
+	// 	"return (<>",
+	// }
 
-	for _, formField := range formFields {
-		def := formField[formIndex]
-		if strings.HasSuffix(def, "ArrayWrapper") || strings.HasSuffix(def, "ArrayInput") || strings.HasSuffix(def, "ArraySelect") {
-			continue
-		}
-		formDef = append(formDef, fmt.Sprintf(`<%s {...props} />`, def))
-	}
-	formDef = append(formDef, []string{"</>);", "}"}...)
-	moduleDefs = append(moduleDefs, strings.Join(formDef, "\n"))
-	moduleDefs = append(moduleDefs, components)
-	sort.Strings(moduleDefs)
+	// for _, formField := range formFields {
+	// 	def := formField[formIndex]
+	// 	if strings.HasSuffix(def, "ArrayWrapper") || strings.HasSuffix(def, "ArrayInput") || strings.HasSuffix(def, "ArraySelect") {
+	// 		continue
+	// 	}
+	// 	formDef = append(formDef, fmt.Sprintf(`<%s {...props} />`, def))
+	// }
+	// formDef = append(formDef, []string{"</>);", "}"}...)
+	// moduleDefs = append(moduleDefs, strings.Join(formDef, "\n"))
+	// moduleDefs = append(moduleDefs, components)
+	// sort.Strings(moduleDefs)
 	moduleDefs = unique(strings.Split(strings.Join(moduleDefs, "\n\n"), "\n\n"))
 	moduleDef := strings.Join(moduleDefs, "\n\n")
 
@@ -209,8 +209,15 @@ func renderModule(name string, schema *openapi3.Schema) (string, string) {
 func renderDefaultExports(defaultExports []string) string {
 	exports := []string{"\n"}
 
+	exported := []string{}
+	for _, export := range defaultExports {
+		if strings.TrimSpace(export) != "," && strings.TrimSpace(export) != "" {
+			exported = append(exported, export)
+		}
+	}
+
 	exports = append(exports, "const Widget = {")
-	exports = append(exports, strings.Join(defaultExports, ",\n"))
+	exports = append(exports, strings.Join(exported, ",\n"))
 	exports = append(exports, "};\n\n")
 	exports = append(exports, "export default Widget;")
 
