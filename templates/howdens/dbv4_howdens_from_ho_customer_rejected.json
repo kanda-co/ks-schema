@@ -1,5 +1,5 @@
 {
-  "subject": "{{extras.customer.contact_name}} does not want to check their eligibility ",
+  "subject": "{{extras.customer.contact_name}}'s finance application was declined",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "Your end user {{extras.customer.contact_name}} has declined your invitation to check their eligibility for finance on Kanda. Please get in touch with the end user if you have any questions."
+          "text": "Unfortunately, {{extras.customer.contact_name}}'s finance application has not been approved. We have informed them of this, and suggested they reach out to you and their builder to discuss the option to continue with their order without finance."
         }
       ]
     },

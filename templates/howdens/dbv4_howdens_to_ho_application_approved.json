@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "{{extras.branch.contact_name}} has been notified that your finance application is approved. They'll get in touch with you soon to schedule delivery of your goods."
+          "text": "{{extras.branch.trading_name}} has been notified that your finance application is approved. They'll get in touch with you soon to schedule delivery of your goods."
         }
       ]
     },

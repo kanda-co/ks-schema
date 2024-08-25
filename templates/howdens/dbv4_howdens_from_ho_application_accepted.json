@@ -13,7 +13,7 @@
           "text": "{{extras.customer.contact_name}} has signed their credit agreement and the finance for this order is now in place. The 14 day cooling off period has now started, you will be able to mark this order as delivered in your Kanda dashboard in 14 days time - we will send you a reminder email to notify you when this can be done."
         },
         {
-          "text": "If they are paying a deposit, {{extras.trader.contact_name}} and {{extras.customer.contact_name}} need to arrange this payment directly."
+          "text": "If they are paying a deposit, {{extras.trader.trading_name}} and {{extras.customer.contact_name}} need to arrange this payment directly."
         }
       ]
     },

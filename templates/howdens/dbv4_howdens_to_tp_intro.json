@@ -1,10 +1,10 @@
 {
-  "subject": "Approval requested from {{extras.branch.contact_name}}",
+  "subject": "Approval requested from {{extras.branch.trading_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.trader.contact_name}},"
+      "text": "Hi {{extras.trader.trading_name}},"
     },
     {
       "type": "text",

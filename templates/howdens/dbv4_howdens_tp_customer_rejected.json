@@ -1,16 +1,16 @@
 {
-  "subject": "You can now complete your finance application for your Howdens goods purchase",
+  "subject": "{{extras.customer.contact_name}}'s finance application was declined",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.customer.contact_name}},"
+      "text": "Hi {{extras.trader.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "You can now complete your purchase of your Howdens goods from {{extras.trader.trading_name}} via finance. Click below to choose which finance option you want to apply for and complete the application. You'll receive a decision in a few minutes and we'll keep both your builder and Howdens updated."
+          "text": "Unfortunately, {{extras.customer.contact_name}}'s finance application has not been approved. We have informed them of this, and suggested they reach out to you and Howdens to discuss the option to continue with their order without finance."
         }
       ]
     },
@@ -22,11 +22,6 @@
           "subtext": "For finance queries please email Kanda at <a href=\"mailto:howdens@kanda.co.uk\">howdens@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
         }
       ]
-    },
-    {
-      "type": "button",
-      "text": "View on Kanda",
-      "url": "{{cta_url}}"
     }
   ]
 }
