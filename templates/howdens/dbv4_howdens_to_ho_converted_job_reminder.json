@@ -1,5 +1,5 @@
 {
-  "subject": "Remember to check your eligibility to finance your Howdens kitchen",
+  "subject": "You need to complete the finance application for your Howdens order",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "Howdens have partnered with Kanda to allow you apply for finance for your new Howdens kitchen purchase. We noticed you haven't checked if you're eligible for finance yet. Click below to complete a short eligibility checker and set your budget."
+          "text": "We noticed that you currently haven't completed the finance application for the purchase of your Howdens goods from {{extras.trader.contact_name}}. Click below to choose which finance option you want to apply for and complete the application. You'll receive a decision in a few minutes and we'll keep both your builder and Howdens updated."
         }
       ]
     },
