@@ -10833,6 +10833,28 @@ components:
           title: product type
           $ref: "#/components/schemas/PaymentOption"
 
+    CommExtras:
+      type: object
+      title: comm extra context
+      description: comm extra context to be used in dynamic templates
+      required:
+        - branch
+        - customer
+        - trader
+      properties:
+        branch:
+          type: object
+          title: branch contact info
+          $ref: "#/components/schemas/ContactInfo"
+        customer:
+          type: object
+          title: customer contact info
+          $ref: "#/components/schemas/ContactInfo"
+        trader:
+          type: object
+          title: trader contact info
+          $ref: "#/components/schemas/ContactInfo"
+
     CommContext:
       type: object
       title: comm context
@@ -10912,6 +10934,11 @@ components:
           type: string
           title: subdomain
           description: subdomain of enterprise to drive branded template, fallback to core one
+        extras:
+          type: object
+          title: comm extra context
+          description: comm extra context for dynamic tempalte
+          $ref: "#/components/schemas/CommExtras"
 
     Training:
       type: object
