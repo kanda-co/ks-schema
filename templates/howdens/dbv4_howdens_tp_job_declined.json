@@ -1,0 +1,32 @@
+{
+  "subject": "{{extras.customer.contact_name}}}} has declined their Howdens order on Kanda",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{extras.trader.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "{{extras.customer.contact_name}} has declined their Howdens order on Kanda - if this was a mistake, please instruct your Howdens depot to send them a new application."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "Have a Question?",
+          "subtext": "For finance queries please email Kanda at <a href=\"mailto:howdens@kanda.co.uk\">howdens@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}

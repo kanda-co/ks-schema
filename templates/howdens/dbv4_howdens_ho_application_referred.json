@@ -1,0 +1,28 @@
+{
+  "subject": "You need to provide supporting documents for your finance application",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Your finance application has been reviewed by the lender and they've asked that you submit some extra documents. You will have received an email from <strong>{{lender.contact_email}}</strong>. You can follow the link in that email to submit your documents or email it back to them. If you can't find their email, please check your spam folder"
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "Have a Question?",
+          "subtext": "For finance queries please email Kanda at <a href=\"mailto:howdens@kanda.co.uk\">howdens@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+        }
+      ]
+    }
+  ],
+  "sms": "Hey {{receiver.contact_name}}, good news! The lender has accepted your application in principal. They just need a few documents. Check your email for more info. Kanda!"
+}
