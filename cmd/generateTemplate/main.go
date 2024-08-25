@@ -33,11 +33,11 @@ func main() {
 	fmt.Println("type TName string")
 	fmt.Println()
 	fmt.Println("const (")
-	fmt.Println("	")
+	fmt.Println("\t")
 	for _, path := range paths {
 		bits := strings.Split(path, "/")
 		fname := strings.ToUpper(strings.Split(bits[len(bits)-1], ".")[0])
-		fmt.Printf("	%v TName = \"%v\"\n", fname, fname)
+		fmt.Printf("\t%v TName = \"%v\"\n", fname, fname)
 	}
 	fmt.Println(")")
 	fmt.Println()
@@ -46,21 +46,21 @@ func main() {
 	for _, path := range paths {
 		bits := strings.Split(path, "/")
 		fname := strings.ToUpper(strings.Split(bits[len(bits)-1], ".")[0])
-		fmt.Printf("	\"%v\": %v,\n", fname, fname)
+		fmt.Printf("\t\"%v\": %v,\n", fname, fname)
 	}
 	fmt.Println("}")
 	fmt.Println()
 
-	fmt.Println("func(tn TName) String() string {")
-	fmt.Println("	return string(tn)")
+	fmt.Println("func (tn TName) String() string {")
+	fmt.Println("\treturn string(tn)")
 	fmt.Println("}")
 	fmt.Println()
 
-	fmt.Println("func(tn TName) Render() string {")
-	fmt.Println("	if tm, ok := TMap[tn]; ok {")
-	fmt.Println("		return tm")
-	fmt.Println("	}")
-	fmt.Println("	panic(\"template name not in template map\")")
+	fmt.Println("func (tn TName) Render() string {")
+	fmt.Println("\tif tm, ok := TMap[tn]; ok {")
+	fmt.Println("\t\treturn tm")
+	fmt.Println("\t}")
+	fmt.Println("\tpanic(\"template name not in template map\")")
 	fmt.Println("}")
 	fmt.Println()
 
@@ -72,7 +72,7 @@ func main() {
 		}
 		bits := strings.Split(path, "/")
 		fname := strings.ToUpper(strings.Split(bits[len(bits)-1], ".")[0])
-		fmt.Printf("	\"%v\": `%v`,\n", fname, strings.TrimSpace(string(b)))
+		fmt.Printf("\t%v: `%v`,\n", fname, strings.TrimSpace(string(b)))
 	}
 	fmt.Println("}")
 }

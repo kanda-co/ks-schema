@@ -3,199 +3,196 @@ package schema
 type TName string
 
 const (
-	
-	 TName = ""
-	DBV4_HO_AIP_HOWDENS TName = "DBV4_HO_AIP_HOWDENS"
-	DBV4_HO_AIP_PREAPPROVED TName = "DBV4_HO_AIP_PREAPPROVED"
-	DBV4_HO_APPLICATION_ACCEPTED_DEPOSIT_CHANGED TName = "DBV4_HO_APPLICATION_ACCEPTED_DEPOSIT_CHANGED"
-	DBV4_HO_APPLICATION_APPROVED TName = "DBV4_HO_APPLICATION_APPROVED"
-	DBV4_HO_APPLICATION_CANCELLED TName = "DBV4_HO_APPLICATION_CANCELLED"
-	DBV4_HO_APPLICATION_PAY_DEPOSI_CASH TName = "DBV4_HO_APPLICATION_PAY_DEPOSI_CASH"
-	DBV4_HO_APPLICATION_PAY_DEPOSIT TName = "DBV4_HO_APPLICATION_PAY_DEPOSIT"
-	DBV4_HO_APPLICATION_REFERRED TName = "DBV4_HO_APPLICATION_REFERRED"
-	DBV4_HO_APPLICATION_REJECTED TName = "DBV4_HO_APPLICATION_REJECTED"
-	DBV4_HO_APPLICATION_SAT_NOTE_SENT TName = "DBV4_HO_APPLICATION_SAT_NOTE_SENT"
-	DBV4_HO_APPLICATION_SAT_NOTE_SENT_REMINDER TName = "DBV4_HO_APPLICATION_SAT_NOTE_SENT_REMINDER"
-	DBV4_HO_APPLICATION_SAT_NOTE_SIGNED TName = "DBV4_HO_APPLICATION_SAT_NOTE_SIGNED"
-	DBV4_HO_APPLICATION_SIGN_DOCUMENTS TName = "DBV4_HO_APPLICATION_SIGN_DOCUMENTS"
-	DBV4_HO_CONTINUE_CHECKOUT TName = "DBV4_HO_CONTINUE_CHECKOUT"
-	DBV4_HO_INITIAL TName = "DBV4_HO_INITIAL"
-	DBV4_HO_JOB_DECLINED TName = "DBV4_HO_JOB_DECLINED"
-	DBV4_HO_JOB_STARTED TName = "DBV4_HO_JOB_STARTED"
-	DBV4_HO_LEAD_DETAILS_PROVIDED_TP_ASSIGNED TName = "DBV4_HO_LEAD_DETAILS_PROVIDED_TP_ASSIGNED"
-	DBV4_HO_LEAD_POSTED TName = "DBV4_HO_LEAD_POSTED"
-	DBV4_HO_QUOTE_POSTED TName = "DBV4_HO_QUOTE_POSTED"
-	DBV4_HO_SAT_NOTE_LENDER_REVIEW TName = "DBV4_HO_SAT_NOTE_LENDER_REVIEW"
-	DBV4_HO_SAT_NOTE_LENDER_REVIEW_7K TName = "DBV4_HO_SAT_NOTE_LENDER_REVIEW_7K"
-	DBV4_HO_SUBMIT_APPLICATION TName = "DBV4_HO_SUBMIT_APPLICATION"
-	DBV4_HOWDENS_FROM_HO_APPLICATION_ACCEPTED TName = "DBV4_HOWDENS_FROM_HO_APPLICATION_ACCEPTED"
-	DBV4_HOWDENS_FROM_HO_APPLICATION_CANCELLED TName = "DBV4_HOWDENS_FROM_HO_APPLICATION_CANCELLED"
-	DBV4_HOWDENS_FROM_HO_APPLICATION_REFERRED TName = "DBV4_HOWDENS_FROM_HO_APPLICATION_REFERRED"
+	DBV4_HO_AIP_HOWDENS                              TName = "DBV4_HO_AIP_HOWDENS"
+	DBV4_HO_AIP_PREAPPROVED                          TName = "DBV4_HO_AIP_PREAPPROVED"
+	DBV4_HO_APPLICATION_ACCEPTED_DEPOSIT_CHANGED     TName = "DBV4_HO_APPLICATION_ACCEPTED_DEPOSIT_CHANGED"
+	DBV4_HO_APPLICATION_APPROVED                     TName = "DBV4_HO_APPLICATION_APPROVED"
+	DBV4_HO_APPLICATION_CANCELLED                    TName = "DBV4_HO_APPLICATION_CANCELLED"
+	DBV4_HO_APPLICATION_PAY_DEPOSI_CASH              TName = "DBV4_HO_APPLICATION_PAY_DEPOSI_CASH"
+	DBV4_HO_APPLICATION_PAY_DEPOSIT                  TName = "DBV4_HO_APPLICATION_PAY_DEPOSIT"
+	DBV4_HO_APPLICATION_REFERRED                     TName = "DBV4_HO_APPLICATION_REFERRED"
+	DBV4_HO_APPLICATION_REJECTED                     TName = "DBV4_HO_APPLICATION_REJECTED"
+	DBV4_HO_APPLICATION_SAT_NOTE_SENT                TName = "DBV4_HO_APPLICATION_SAT_NOTE_SENT"
+	DBV4_HO_APPLICATION_SAT_NOTE_SENT_REMINDER       TName = "DBV4_HO_APPLICATION_SAT_NOTE_SENT_REMINDER"
+	DBV4_HO_APPLICATION_SAT_NOTE_SIGNED              TName = "DBV4_HO_APPLICATION_SAT_NOTE_SIGNED"
+	DBV4_HO_APPLICATION_SIGN_DOCUMENTS               TName = "DBV4_HO_APPLICATION_SIGN_DOCUMENTS"
+	DBV4_HO_CONTINUE_CHECKOUT                        TName = "DBV4_HO_CONTINUE_CHECKOUT"
+	DBV4_HO_INITIAL                                  TName = "DBV4_HO_INITIAL"
+	DBV4_HO_JOB_DECLINED                             TName = "DBV4_HO_JOB_DECLINED"
+	DBV4_HO_JOB_STARTED                              TName = "DBV4_HO_JOB_STARTED"
+	DBV4_HO_LEAD_DETAILS_PROVIDED_TP_ASSIGNED        TName = "DBV4_HO_LEAD_DETAILS_PROVIDED_TP_ASSIGNED"
+	DBV4_HO_LEAD_POSTED                              TName = "DBV4_HO_LEAD_POSTED"
+	DBV4_HO_QUOTE_POSTED                             TName = "DBV4_HO_QUOTE_POSTED"
+	DBV4_HO_SAT_NOTE_LENDER_REVIEW                   TName = "DBV4_HO_SAT_NOTE_LENDER_REVIEW"
+	DBV4_HO_SAT_NOTE_LENDER_REVIEW_7K                TName = "DBV4_HO_SAT_NOTE_LENDER_REVIEW_7K"
+	DBV4_HO_SUBMIT_APPLICATION                       TName = "DBV4_HO_SUBMIT_APPLICATION"
+	DBV4_HOWDENS_FROM_HO_APPLICATION_ACCEPTED        TName = "DBV4_HOWDENS_FROM_HO_APPLICATION_ACCEPTED"
+	DBV4_HOWDENS_FROM_HO_APPLICATION_CANCELLED       TName = "DBV4_HOWDENS_FROM_HO_APPLICATION_CANCELLED"
+	DBV4_HOWDENS_FROM_HO_APPLICATION_REFERRED        TName = "DBV4_HOWDENS_FROM_HO_APPLICATION_REFERRED"
 	DBV4_HOWDENS_FROM_HO_COOLING_OFF_PERIOD_COMPLETE TName = "DBV4_HOWDENS_FROM_HO_COOLING_OFF_PERIOD_COMPLETE"
-	DBV4_HOWDENS_FROM_HO_CUSTOMER_REJECTED TName = "DBV4_HOWDENS_FROM_HO_CUSTOMER_REJECTED"
-	DBV4_HOWDENS_FROM_HO_INTRO_COMPLETED TName = "DBV4_HOWDENS_FROM_HO_INTRO_COMPLETED"
-	DBV4_HOWDENS_FROM_HO_INTRO_DECLINED TName = "DBV4_HOWDENS_FROM_HO_INTRO_DECLINED"
-	DBV4_HOWDENS_FROM_HO_INTRO_REJECTED TName = "DBV4_HOWDENS_FROM_HO_INTRO_REJECTED"
-	DBV4_HOWDENS_FROM_HO_INTRO_SENT TName = "DBV4_HOWDENS_FROM_HO_INTRO_SENT"
-	DBV4_HOWDENS_FROM_HO_JOB_DECLINED TName = "DBV4_HOWDENS_FROM_HO_JOB_DECLINED"
-	DBV4_HOWDENS_FROM_TP_INTRO_COMPLETED TName = "DBV4_HOWDENS_FROM_TP_INTRO_COMPLETED"
-	DBV4_HOWDENS_FROM_TP_INTRO_REJECTED TName = "DBV4_HOWDENS_FROM_TP_INTRO_REJECTED"
-	DBV4_HOWDENS_HO_APPLICATION_CANCELLED TName = "DBV4_HOWDENS_HO_APPLICATION_CANCELLED"
-	DBV4_HOWDENS_HO_APPLICATION_REFERRED TName = "DBV4_HOWDENS_HO_APPLICATION_REFERRED"
-	DBV4_HOWDENS_HO_APPLICATION_REJECTED TName = "DBV4_HOWDENS_HO_APPLICATION_REJECTED"
-	DBV4_HOWDENS_HO_APPLICATION_SIGN_DOCUMENTS TName = "DBV4_HOWDENS_HO_APPLICATION_SIGN_DOCUMENTS"
-	DBV4_HOWDENS_HO_JOB_DECLINED TName = "DBV4_HOWDENS_HO_JOB_DECLINED"
-	DBV4_HOWDENS_TO_HO_APPLICATION_APPROVED TName = "DBV4_HOWDENS_TO_HO_APPLICATION_APPROVED"
-	DBV4_HOWDENS_TO_HO_CONVERTED_JOB TName = "DBV4_HOWDENS_TO_HO_CONVERTED_JOB"
-	DBV4_HOWDENS_TO_HO_CONVERTED_JOB_REMINDER TName = "DBV4_HOWDENS_TO_HO_CONVERTED_JOB_REMINDER"
-	DBV4_HOWDENS_TO_HO_INTRO TName = "DBV4_HOWDENS_TO_HO_INTRO"
-	DBV4_HOWDENS_TO_HO_INTRO_BUDGET_REMINDER TName = "DBV4_HOWDENS_TO_HO_INTRO_BUDGET_REMINDER"
-	DBV4_HOWDENS_TO_HO_INTRO_COMPLETED TName = "DBV4_HOWDENS_TO_HO_INTRO_COMPLETED"
-	DBV4_HOWDENS_TO_TP_APPLICATION_ACCEPTED TName = "DBV4_HOWDENS_TO_TP_APPLICATION_ACCEPTED"
-	DBV4_HOWDENS_TO_TP_GOODS_DELIVERED TName = "DBV4_HOWDENS_TO_TP_GOODS_DELIVERED"
-	DBV4_HOWDENS_TO_TP_INTRO TName = "DBV4_HOWDENS_TO_TP_INTRO"
-	DBV4_HOWDENS_TO_TP_JOB_AMENDED TName = "DBV4_HOWDENS_TO_TP_JOB_AMENDED"
-	DBV4_HOWDENS_TP_APPLICATION_CANCELLED TName = "DBV4_HOWDENS_TP_APPLICATION_CANCELLED"
-	DBV4_HOWDENS_TP_CUSTOMER_REFERRED TName = "DBV4_HOWDENS_TP_CUSTOMER_REFERRED"
-	DBV4_HOWDENS_TP_CUSTOMER_REJECTED TName = "DBV4_HOWDENS_TP_CUSTOMER_REJECTED"
-	DBV4_HOWDENS_TP_JOB_DECLINED TName = "DBV4_HOWDENS_TP_JOB_DECLINED"
-	DBV4_LENDER_SATNOTE_REVIEW TName = "DBV4_LENDER_SATNOTE_REVIEW"
-	DBV4_STAFF_AUDIT_NOTIFICATION TName = "DBV4_STAFF_AUDIT_NOTIFICATION"
-	DBV4_TP_2ND_LINE_REJECTED TName = "DBV4_TP_2ND_LINE_REJECTED"
-	DBV4_TP_ACCOUNT_APPROVED TName = "DBV4_TP_ACCOUNT_APPROVED"
-	DBV4_TP_APPLICATION_ACCEPTED TName = "DBV4_TP_APPLICATION_ACCEPTED"
-	DBV4_TP_APPLICATION_ACCEPTED_DEPOSIT_CHANGED TName = "DBV4_TP_APPLICATION_ACCEPTED_DEPOSIT_CHANGED"
-	DBV4_TP_APPLICATION_CANCELLED TName = "DBV4_TP_APPLICATION_CANCELLED"
-	DBV4_TP_APPLICATION_PENDING TName = "DBV4_TP_APPLICATION_PENDING"
-	DBV4_TP_CUSTOMER_REFERRED TName = "DBV4_TP_CUSTOMER_REFERRED"
-	DBV4_TP_CUSTOMER_REJECTED TName = "DBV4_TP_CUSTOMER_REJECTED"
-	DBV4_TP_JOB_DECLINED TName = "DBV4_TP_JOB_DECLINED"
-	DBV4_TP_JOB_PAID_OUT TName = "DBV4_TP_JOB_PAID_OUT"
-	DBV4_TP_JOB_SENT TName = "DBV4_TP_JOB_SENT"
-	DBV4_TP_LEAD_DETAILS_PROVIDED TName = "DBV4_TP_LEAD_DETAILS_PROVIDED"
-	DBV4_TP_LEAD_JOB_REQUESTED TName = "DBV4_TP_LEAD_JOB_REQUESTED"
-	DBV4_TP_LEAD_REQUESTED TName = "DBV4_TP_LEAD_REQUESTED"
-	DBV4_TP_SAT_NOTE_APPROVED TName = "DBV4_TP_SAT_NOTE_APPROVED"
-	DBV4_TP_SAT_NOTE_DELAYED TName = "DBV4_TP_SAT_NOTE_DELAYED"
-	DBV4_TP_SAT_NOTE_LENDER_REVIEW TName = "DBV4_TP_SAT_NOTE_LENDER_REVIEW"
-	DBV4_TP_SAT_NOTE_LENDER_REVIEWED TName = "DBV4_TP_SAT_NOTE_LENDER_REVIEWED"
-	DBV4_TP_SAT_NOTE_SIGNED TName = "DBV4_TP_SAT_NOTE_SIGNED"
-	DBV4_TP_SAT_NOTE_VIEWED TName = "DBV4_TP_SAT_NOTE_VIEWED"
-	DBV4_TP_SIGN_DOCUMENTS TName = "DBV4_TP_SIGN_DOCUMENTS"
-	DBV4_USER_CLAIM_ACCOUNT TName = "DBV4_USER_CLAIM_ACCOUNT"
-	DBV4_USER_CONSENT TName = "DBV4_USER_CONSENT"
-	DBV4_USER_DEV_CLAIM_ACCOUNT TName = "DBV4_USER_DEV_CLAIM_ACCOUNT"
-	DBV4_USER_ID_CHECKS_DECLINED TName = "DBV4_USER_ID_CHECKS_DECLINED"
-	DBV4_USER_ID_CHECKS_VERIFIED TName = "DBV4_USER_ID_CHECKS_VERIFIED"
-	DBV4_USER_KANDA_REFEREE_INVITE TName = "DBV4_USER_KANDA_REFEREE_INVITE"
-	DBV4_USER_LEGACY_MIGRATION TName = "DBV4_USER_LEGACY_MIGRATION"
-	DBV4_USER_REFEREE_INVITE TName = "DBV4_USER_REFEREE_INVITE"
-	DBV4_USER_RESET_PASSWORD TName = "DBV4_USER_RESET_PASSWORD"
-	DBV4_USER_SIGNUP TName = "DBV4_USER_SIGNUP"
-	DBV4_USER_VERIFY_DIRECTOR TName = "DBV4_USER_VERIFY_DIRECTOR"
-	DBV4_USER_VERIFY_DIRECTOR_REMINDER TName = "DBV4_USER_VERIFY_DIRECTOR_REMINDER"
-	DBV4_USER_VERIFY_EMAIL TName = "DBV4_USER_VERIFY_EMAIL"
+	DBV4_HOWDENS_FROM_HO_CUSTOMER_REJECTED           TName = "DBV4_HOWDENS_FROM_HO_CUSTOMER_REJECTED"
+	DBV4_HOWDENS_FROM_HO_INTRO_COMPLETED             TName = "DBV4_HOWDENS_FROM_HO_INTRO_COMPLETED"
+	DBV4_HOWDENS_FROM_HO_INTRO_DECLINED              TName = "DBV4_HOWDENS_FROM_HO_INTRO_DECLINED"
+	DBV4_HOWDENS_FROM_HO_INTRO_REJECTED              TName = "DBV4_HOWDENS_FROM_HO_INTRO_REJECTED"
+	DBV4_HOWDENS_FROM_HO_INTRO_SENT                  TName = "DBV4_HOWDENS_FROM_HO_INTRO_SENT"
+	DBV4_HOWDENS_FROM_HO_JOB_DECLINED                TName = "DBV4_HOWDENS_FROM_HO_JOB_DECLINED"
+	DBV4_HOWDENS_FROM_TP_INTRO_COMPLETED             TName = "DBV4_HOWDENS_FROM_TP_INTRO_COMPLETED"
+	DBV4_HOWDENS_FROM_TP_INTRO_REJECTED              TName = "DBV4_HOWDENS_FROM_TP_INTRO_REJECTED"
+	DBV4_HOWDENS_HO_APPLICATION_CANCELLED            TName = "DBV4_HOWDENS_HO_APPLICATION_CANCELLED"
+	DBV4_HOWDENS_HO_APPLICATION_REFERRED             TName = "DBV4_HOWDENS_HO_APPLICATION_REFERRED"
+	DBV4_HOWDENS_HO_APPLICATION_REJECTED             TName = "DBV4_HOWDENS_HO_APPLICATION_REJECTED"
+	DBV4_HOWDENS_HO_APPLICATION_SIGN_DOCUMENTS       TName = "DBV4_HOWDENS_HO_APPLICATION_SIGN_DOCUMENTS"
+	DBV4_HOWDENS_HO_JOB_DECLINED                     TName = "DBV4_HOWDENS_HO_JOB_DECLINED"
+	DBV4_HOWDENS_TO_HO_APPLICATION_APPROVED          TName = "DBV4_HOWDENS_TO_HO_APPLICATION_APPROVED"
+	DBV4_HOWDENS_TO_HO_CONVERTED_JOB                 TName = "DBV4_HOWDENS_TO_HO_CONVERTED_JOB"
+	DBV4_HOWDENS_TO_HO_CONVERTED_JOB_REMINDER        TName = "DBV4_HOWDENS_TO_HO_CONVERTED_JOB_REMINDER"
+	DBV4_HOWDENS_TO_HO_INTRO                         TName = "DBV4_HOWDENS_TO_HO_INTRO"
+	DBV4_HOWDENS_TO_HO_INTRO_BUDGET_REMINDER         TName = "DBV4_HOWDENS_TO_HO_INTRO_BUDGET_REMINDER"
+	DBV4_HOWDENS_TO_HO_INTRO_COMPLETED               TName = "DBV4_HOWDENS_TO_HO_INTRO_COMPLETED"
+	DBV4_HOWDENS_TO_TP_APPLICATION_ACCEPTED          TName = "DBV4_HOWDENS_TO_TP_APPLICATION_ACCEPTED"
+	DBV4_HOWDENS_TO_TP_GOODS_DELIVERED               TName = "DBV4_HOWDENS_TO_TP_GOODS_DELIVERED"
+	DBV4_HOWDENS_TO_TP_INTRO                         TName = "DBV4_HOWDENS_TO_TP_INTRO"
+	DBV4_HOWDENS_TO_TP_JOB_AMENDED                   TName = "DBV4_HOWDENS_TO_TP_JOB_AMENDED"
+	DBV4_HOWDENS_TP_APPLICATION_CANCELLED            TName = "DBV4_HOWDENS_TP_APPLICATION_CANCELLED"
+	DBV4_HOWDENS_TP_CUSTOMER_REFERRED                TName = "DBV4_HOWDENS_TP_CUSTOMER_REFERRED"
+	DBV4_HOWDENS_TP_CUSTOMER_REJECTED                TName = "DBV4_HOWDENS_TP_CUSTOMER_REJECTED"
+	DBV4_HOWDENS_TP_JOB_DECLINED                     TName = "DBV4_HOWDENS_TP_JOB_DECLINED"
+	DBV4_LENDER_SATNOTE_REVIEW                       TName = "DBV4_LENDER_SATNOTE_REVIEW"
+	DBV4_STAFF_AUDIT_NOTIFICATION                    TName = "DBV4_STAFF_AUDIT_NOTIFICATION"
+	DBV4_TP_2ND_LINE_REJECTED                        TName = "DBV4_TP_2ND_LINE_REJECTED"
+	DBV4_TP_ACCOUNT_APPROVED                         TName = "DBV4_TP_ACCOUNT_APPROVED"
+	DBV4_TP_APPLICATION_ACCEPTED                     TName = "DBV4_TP_APPLICATION_ACCEPTED"
+	DBV4_TP_APPLICATION_ACCEPTED_DEPOSIT_CHANGED     TName = "DBV4_TP_APPLICATION_ACCEPTED_DEPOSIT_CHANGED"
+	DBV4_TP_APPLICATION_CANCELLED                    TName = "DBV4_TP_APPLICATION_CANCELLED"
+	DBV4_TP_APPLICATION_PENDING                      TName = "DBV4_TP_APPLICATION_PENDING"
+	DBV4_TP_CUSTOMER_REFERRED                        TName = "DBV4_TP_CUSTOMER_REFERRED"
+	DBV4_TP_CUSTOMER_REJECTED                        TName = "DBV4_TP_CUSTOMER_REJECTED"
+	DBV4_TP_JOB_DECLINED                             TName = "DBV4_TP_JOB_DECLINED"
+	DBV4_TP_JOB_PAID_OUT                             TName = "DBV4_TP_JOB_PAID_OUT"
+	DBV4_TP_JOB_SENT                                 TName = "DBV4_TP_JOB_SENT"
+	DBV4_TP_LEAD_DETAILS_PROVIDED                    TName = "DBV4_TP_LEAD_DETAILS_PROVIDED"
+	DBV4_TP_LEAD_JOB_REQUESTED                       TName = "DBV4_TP_LEAD_JOB_REQUESTED"
+	DBV4_TP_LEAD_REQUESTED                           TName = "DBV4_TP_LEAD_REQUESTED"
+	DBV4_TP_SAT_NOTE_APPROVED                        TName = "DBV4_TP_SAT_NOTE_APPROVED"
+	DBV4_TP_SAT_NOTE_DELAYED                         TName = "DBV4_TP_SAT_NOTE_DELAYED"
+	DBV4_TP_SAT_NOTE_LENDER_REVIEW                   TName = "DBV4_TP_SAT_NOTE_LENDER_REVIEW"
+	DBV4_TP_SAT_NOTE_LENDER_REVIEWED                 TName = "DBV4_TP_SAT_NOTE_LENDER_REVIEWED"
+	DBV4_TP_SAT_NOTE_SIGNED                          TName = "DBV4_TP_SAT_NOTE_SIGNED"
+	DBV4_TP_SAT_NOTE_VIEWED                          TName = "DBV4_TP_SAT_NOTE_VIEWED"
+	DBV4_TP_SIGN_DOCUMENTS                           TName = "DBV4_TP_SIGN_DOCUMENTS"
+	DBV4_USER_CLAIM_ACCOUNT                          TName = "DBV4_USER_CLAIM_ACCOUNT"
+	DBV4_USER_CONSENT                                TName = "DBV4_USER_CONSENT"
+	DBV4_USER_DEV_CLAIM_ACCOUNT                      TName = "DBV4_USER_DEV_CLAIM_ACCOUNT"
+	DBV4_USER_ID_CHECKS_DECLINED                     TName = "DBV4_USER_ID_CHECKS_DECLINED"
+	DBV4_USER_ID_CHECKS_VERIFIED                     TName = "DBV4_USER_ID_CHECKS_VERIFIED"
+	DBV4_USER_KANDA_REFEREE_INVITE                   TName = "DBV4_USER_KANDA_REFEREE_INVITE"
+	DBV4_USER_LEGACY_MIGRATION                       TName = "DBV4_USER_LEGACY_MIGRATION"
+	DBV4_USER_REFEREE_INVITE                         TName = "DBV4_USER_REFEREE_INVITE"
+	DBV4_USER_RESET_PASSWORD                         TName = "DBV4_USER_RESET_PASSWORD"
+	DBV4_USER_SIGNUP                                 TName = "DBV4_USER_SIGNUP"
+	DBV4_USER_VERIFY_DIRECTOR                        TName = "DBV4_USER_VERIFY_DIRECTOR"
+	DBV4_USER_VERIFY_DIRECTOR_REMINDER               TName = "DBV4_USER_VERIFY_DIRECTOR_REMINDER"
+	DBV4_USER_VERIFY_EMAIL                           TName = "DBV4_USER_VERIFY_EMAIL"
 )
 
 var TemplateM = map[string]TName{
-	"": ,
-	"DBV4_HO_AIP_HOWDENS": DBV4_HO_AIP_HOWDENS,
-	"DBV4_HO_AIP_PREAPPROVED": DBV4_HO_AIP_PREAPPROVED,
-	"DBV4_HO_APPLICATION_ACCEPTED_DEPOSIT_CHANGED": DBV4_HO_APPLICATION_ACCEPTED_DEPOSIT_CHANGED,
-	"DBV4_HO_APPLICATION_APPROVED": DBV4_HO_APPLICATION_APPROVED,
-	"DBV4_HO_APPLICATION_CANCELLED": DBV4_HO_APPLICATION_CANCELLED,
-	"DBV4_HO_APPLICATION_PAY_DEPOSI_CASH": DBV4_HO_APPLICATION_PAY_DEPOSI_CASH,
-	"DBV4_HO_APPLICATION_PAY_DEPOSIT": DBV4_HO_APPLICATION_PAY_DEPOSIT,
-	"DBV4_HO_APPLICATION_REFERRED": DBV4_HO_APPLICATION_REFERRED,
-	"DBV4_HO_APPLICATION_REJECTED": DBV4_HO_APPLICATION_REJECTED,
-	"DBV4_HO_APPLICATION_SAT_NOTE_SENT": DBV4_HO_APPLICATION_SAT_NOTE_SENT,
-	"DBV4_HO_APPLICATION_SAT_NOTE_SENT_REMINDER": DBV4_HO_APPLICATION_SAT_NOTE_SENT_REMINDER,
-	"DBV4_HO_APPLICATION_SAT_NOTE_SIGNED": DBV4_HO_APPLICATION_SAT_NOTE_SIGNED,
-	"DBV4_HO_APPLICATION_SIGN_DOCUMENTS": DBV4_HO_APPLICATION_SIGN_DOCUMENTS,
-	"DBV4_HO_CONTINUE_CHECKOUT": DBV4_HO_CONTINUE_CHECKOUT,
-	"DBV4_HO_INITIAL": DBV4_HO_INITIAL,
-	"DBV4_HO_JOB_DECLINED": DBV4_HO_JOB_DECLINED,
-	"DBV4_HO_JOB_STARTED": DBV4_HO_JOB_STARTED,
-	"DBV4_HO_LEAD_DETAILS_PROVIDED_TP_ASSIGNED": DBV4_HO_LEAD_DETAILS_PROVIDED_TP_ASSIGNED,
-	"DBV4_HO_LEAD_POSTED": DBV4_HO_LEAD_POSTED,
-	"DBV4_HO_QUOTE_POSTED": DBV4_HO_QUOTE_POSTED,
-	"DBV4_HO_SAT_NOTE_LENDER_REVIEW": DBV4_HO_SAT_NOTE_LENDER_REVIEW,
-	"DBV4_HO_SAT_NOTE_LENDER_REVIEW_7K": DBV4_HO_SAT_NOTE_LENDER_REVIEW_7K,
-	"DBV4_HO_SUBMIT_APPLICATION": DBV4_HO_SUBMIT_APPLICATION,
-	"DBV4_HOWDENS_FROM_HO_APPLICATION_ACCEPTED": DBV4_HOWDENS_FROM_HO_APPLICATION_ACCEPTED,
-	"DBV4_HOWDENS_FROM_HO_APPLICATION_CANCELLED": DBV4_HOWDENS_FROM_HO_APPLICATION_CANCELLED,
-	"DBV4_HOWDENS_FROM_HO_APPLICATION_REFERRED": DBV4_HOWDENS_FROM_HO_APPLICATION_REFERRED,
+	"DBV4_HO_AIP_HOWDENS":                              DBV4_HO_AIP_HOWDENS,
+	"DBV4_HO_AIP_PREAPPROVED":                          DBV4_HO_AIP_PREAPPROVED,
+	"DBV4_HO_APPLICATION_ACCEPTED_DEPOSIT_CHANGED":     DBV4_HO_APPLICATION_ACCEPTED_DEPOSIT_CHANGED,
+	"DBV4_HO_APPLICATION_APPROVED":                     DBV4_HO_APPLICATION_APPROVED,
+	"DBV4_HO_APPLICATION_CANCELLED":                    DBV4_HO_APPLICATION_CANCELLED,
+	"DBV4_HO_APPLICATION_PAY_DEPOSI_CASH":              DBV4_HO_APPLICATION_PAY_DEPOSI_CASH,
+	"DBV4_HO_APPLICATION_PAY_DEPOSIT":                  DBV4_HO_APPLICATION_PAY_DEPOSIT,
+	"DBV4_HO_APPLICATION_REFERRED":                     DBV4_HO_APPLICATION_REFERRED,
+	"DBV4_HO_APPLICATION_REJECTED":                     DBV4_HO_APPLICATION_REJECTED,
+	"DBV4_HO_APPLICATION_SAT_NOTE_SENT":                DBV4_HO_APPLICATION_SAT_NOTE_SENT,
+	"DBV4_HO_APPLICATION_SAT_NOTE_SENT_REMINDER":       DBV4_HO_APPLICATION_SAT_NOTE_SENT_REMINDER,
+	"DBV4_HO_APPLICATION_SAT_NOTE_SIGNED":              DBV4_HO_APPLICATION_SAT_NOTE_SIGNED,
+	"DBV4_HO_APPLICATION_SIGN_DOCUMENTS":               DBV4_HO_APPLICATION_SIGN_DOCUMENTS,
+	"DBV4_HO_CONTINUE_CHECKOUT":                        DBV4_HO_CONTINUE_CHECKOUT,
+	"DBV4_HO_INITIAL":                                  DBV4_HO_INITIAL,
+	"DBV4_HO_JOB_DECLINED":                             DBV4_HO_JOB_DECLINED,
+	"DBV4_HO_JOB_STARTED":                              DBV4_HO_JOB_STARTED,
+	"DBV4_HO_LEAD_DETAILS_PROVIDED_TP_ASSIGNED":        DBV4_HO_LEAD_DETAILS_PROVIDED_TP_ASSIGNED,
+	"DBV4_HO_LEAD_POSTED":                              DBV4_HO_LEAD_POSTED,
+	"DBV4_HO_QUOTE_POSTED":                             DBV4_HO_QUOTE_POSTED,
+	"DBV4_HO_SAT_NOTE_LENDER_REVIEW":                   DBV4_HO_SAT_NOTE_LENDER_REVIEW,
+	"DBV4_HO_SAT_NOTE_LENDER_REVIEW_7K":                DBV4_HO_SAT_NOTE_LENDER_REVIEW_7K,
+	"DBV4_HO_SUBMIT_APPLICATION":                       DBV4_HO_SUBMIT_APPLICATION,
+	"DBV4_HOWDENS_FROM_HO_APPLICATION_ACCEPTED":        DBV4_HOWDENS_FROM_HO_APPLICATION_ACCEPTED,
+	"DBV4_HOWDENS_FROM_HO_APPLICATION_CANCELLED":       DBV4_HOWDENS_FROM_HO_APPLICATION_CANCELLED,
+	"DBV4_HOWDENS_FROM_HO_APPLICATION_REFERRED":        DBV4_HOWDENS_FROM_HO_APPLICATION_REFERRED,
 	"DBV4_HOWDENS_FROM_HO_COOLING_OFF_PERIOD_COMPLETE": DBV4_HOWDENS_FROM_HO_COOLING_OFF_PERIOD_COMPLETE,
-	"DBV4_HOWDENS_FROM_HO_CUSTOMER_REJECTED": DBV4_HOWDENS_FROM_HO_CUSTOMER_REJECTED,
-	"DBV4_HOWDENS_FROM_HO_INTRO_COMPLETED": DBV4_HOWDENS_FROM_HO_INTRO_COMPLETED,
-	"DBV4_HOWDENS_FROM_HO_INTRO_DECLINED": DBV4_HOWDENS_FROM_HO_INTRO_DECLINED,
-	"DBV4_HOWDENS_FROM_HO_INTRO_REJECTED": DBV4_HOWDENS_FROM_HO_INTRO_REJECTED,
-	"DBV4_HOWDENS_FROM_HO_INTRO_SENT": DBV4_HOWDENS_FROM_HO_INTRO_SENT,
-	"DBV4_HOWDENS_FROM_HO_JOB_DECLINED": DBV4_HOWDENS_FROM_HO_JOB_DECLINED,
-	"DBV4_HOWDENS_FROM_TP_INTRO_COMPLETED": DBV4_HOWDENS_FROM_TP_INTRO_COMPLETED,
-	"DBV4_HOWDENS_FROM_TP_INTRO_REJECTED": DBV4_HOWDENS_FROM_TP_INTRO_REJECTED,
-	"DBV4_HOWDENS_HO_APPLICATION_CANCELLED": DBV4_HOWDENS_HO_APPLICATION_CANCELLED,
-	"DBV4_HOWDENS_HO_APPLICATION_REFERRED": DBV4_HOWDENS_HO_APPLICATION_REFERRED,
-	"DBV4_HOWDENS_HO_APPLICATION_REJECTED": DBV4_HOWDENS_HO_APPLICATION_REJECTED,
-	"DBV4_HOWDENS_HO_APPLICATION_SIGN_DOCUMENTS": DBV4_HOWDENS_HO_APPLICATION_SIGN_DOCUMENTS,
-	"DBV4_HOWDENS_HO_JOB_DECLINED": DBV4_HOWDENS_HO_JOB_DECLINED,
-	"DBV4_HOWDENS_TO_HO_APPLICATION_APPROVED": DBV4_HOWDENS_TO_HO_APPLICATION_APPROVED,
-	"DBV4_HOWDENS_TO_HO_CONVERTED_JOB": DBV4_HOWDENS_TO_HO_CONVERTED_JOB,
-	"DBV4_HOWDENS_TO_HO_CONVERTED_JOB_REMINDER": DBV4_HOWDENS_TO_HO_CONVERTED_JOB_REMINDER,
-	"DBV4_HOWDENS_TO_HO_INTRO": DBV4_HOWDENS_TO_HO_INTRO,
-	"DBV4_HOWDENS_TO_HO_INTRO_BUDGET_REMINDER": DBV4_HOWDENS_TO_HO_INTRO_BUDGET_REMINDER,
-	"DBV4_HOWDENS_TO_HO_INTRO_COMPLETED": DBV4_HOWDENS_TO_HO_INTRO_COMPLETED,
-	"DBV4_HOWDENS_TO_TP_APPLICATION_ACCEPTED": DBV4_HOWDENS_TO_TP_APPLICATION_ACCEPTED,
-	"DBV4_HOWDENS_TO_TP_GOODS_DELIVERED": DBV4_HOWDENS_TO_TP_GOODS_DELIVERED,
-	"DBV4_HOWDENS_TO_TP_INTRO": DBV4_HOWDENS_TO_TP_INTRO,
-	"DBV4_HOWDENS_TO_TP_JOB_AMENDED": DBV4_HOWDENS_TO_TP_JOB_AMENDED,
-	"DBV4_HOWDENS_TP_APPLICATION_CANCELLED": DBV4_HOWDENS_TP_APPLICATION_CANCELLED,
-	"DBV4_HOWDENS_TP_CUSTOMER_REFERRED": DBV4_HOWDENS_TP_CUSTOMER_REFERRED,
-	"DBV4_HOWDENS_TP_CUSTOMER_REJECTED": DBV4_HOWDENS_TP_CUSTOMER_REJECTED,
-	"DBV4_HOWDENS_TP_JOB_DECLINED": DBV4_HOWDENS_TP_JOB_DECLINED,
-	"DBV4_LENDER_SATNOTE_REVIEW": DBV4_LENDER_SATNOTE_REVIEW,
-	"DBV4_STAFF_AUDIT_NOTIFICATION": DBV4_STAFF_AUDIT_NOTIFICATION,
-	"DBV4_TP_2ND_LINE_REJECTED": DBV4_TP_2ND_LINE_REJECTED,
-	"DBV4_TP_ACCOUNT_APPROVED": DBV4_TP_ACCOUNT_APPROVED,
-	"DBV4_TP_APPLICATION_ACCEPTED": DBV4_TP_APPLICATION_ACCEPTED,
-	"DBV4_TP_APPLICATION_ACCEPTED_DEPOSIT_CHANGED": DBV4_TP_APPLICATION_ACCEPTED_DEPOSIT_CHANGED,
-	"DBV4_TP_APPLICATION_CANCELLED": DBV4_TP_APPLICATION_CANCELLED,
-	"DBV4_TP_APPLICATION_PENDING": DBV4_TP_APPLICATION_PENDING,
-	"DBV4_TP_CUSTOMER_REFERRED": DBV4_TP_CUSTOMER_REFERRED,
-	"DBV4_TP_CUSTOMER_REJECTED": DBV4_TP_CUSTOMER_REJECTED,
-	"DBV4_TP_JOB_DECLINED": DBV4_TP_JOB_DECLINED,
-	"DBV4_TP_JOB_PAID_OUT": DBV4_TP_JOB_PAID_OUT,
-	"DBV4_TP_JOB_SENT": DBV4_TP_JOB_SENT,
-	"DBV4_TP_LEAD_DETAILS_PROVIDED": DBV4_TP_LEAD_DETAILS_PROVIDED,
-	"DBV4_TP_LEAD_JOB_REQUESTED": DBV4_TP_LEAD_JOB_REQUESTED,
-	"DBV4_TP_LEAD_REQUESTED": DBV4_TP_LEAD_REQUESTED,
-	"DBV4_TP_SAT_NOTE_APPROVED": DBV4_TP_SAT_NOTE_APPROVED,
-	"DBV4_TP_SAT_NOTE_DELAYED": DBV4_TP_SAT_NOTE_DELAYED,
-	"DBV4_TP_SAT_NOTE_LENDER_REVIEW": DBV4_TP_SAT_NOTE_LENDER_REVIEW,
-	"DBV4_TP_SAT_NOTE_LENDER_REVIEWED": DBV4_TP_SAT_NOTE_LENDER_REVIEWED,
-	"DBV4_TP_SAT_NOTE_SIGNED": DBV4_TP_SAT_NOTE_SIGNED,
-	"DBV4_TP_SAT_NOTE_VIEWED": DBV4_TP_SAT_NOTE_VIEWED,
-	"DBV4_TP_SIGN_DOCUMENTS": DBV4_TP_SIGN_DOCUMENTS,
-	"DBV4_USER_CLAIM_ACCOUNT": DBV4_USER_CLAIM_ACCOUNT,
-	"DBV4_USER_CONSENT": DBV4_USER_CONSENT,
-	"DBV4_USER_DEV_CLAIM_ACCOUNT": DBV4_USER_DEV_CLAIM_ACCOUNT,
-	"DBV4_USER_ID_CHECKS_DECLINED": DBV4_USER_ID_CHECKS_DECLINED,
-	"DBV4_USER_ID_CHECKS_VERIFIED": DBV4_USER_ID_CHECKS_VERIFIED,
-	"DBV4_USER_KANDA_REFEREE_INVITE": DBV4_USER_KANDA_REFEREE_INVITE,
-	"DBV4_USER_LEGACY_MIGRATION": DBV4_USER_LEGACY_MIGRATION,
-	"DBV4_USER_REFEREE_INVITE": DBV4_USER_REFEREE_INVITE,
-	"DBV4_USER_RESET_PASSWORD": DBV4_USER_RESET_PASSWORD,
-	"DBV4_USER_SIGNUP": DBV4_USER_SIGNUP,
-	"DBV4_USER_VERIFY_DIRECTOR": DBV4_USER_VERIFY_DIRECTOR,
-	"DBV4_USER_VERIFY_DIRECTOR_REMINDER": DBV4_USER_VERIFY_DIRECTOR_REMINDER,
-	"DBV4_USER_VERIFY_EMAIL": DBV4_USER_VERIFY_EMAIL,
+	"DBV4_HOWDENS_FROM_HO_CUSTOMER_REJECTED":           DBV4_HOWDENS_FROM_HO_CUSTOMER_REJECTED,
+	"DBV4_HOWDENS_FROM_HO_INTRO_COMPLETED":             DBV4_HOWDENS_FROM_HO_INTRO_COMPLETED,
+	"DBV4_HOWDENS_FROM_HO_INTRO_DECLINED":              DBV4_HOWDENS_FROM_HO_INTRO_DECLINED,
+	"DBV4_HOWDENS_FROM_HO_INTRO_REJECTED":              DBV4_HOWDENS_FROM_HO_INTRO_REJECTED,
+	"DBV4_HOWDENS_FROM_HO_INTRO_SENT":                  DBV4_HOWDENS_FROM_HO_INTRO_SENT,
+	"DBV4_HOWDENS_FROM_HO_JOB_DECLINED":                DBV4_HOWDENS_FROM_HO_JOB_DECLINED,
+	"DBV4_HOWDENS_FROM_TP_INTRO_COMPLETED":             DBV4_HOWDENS_FROM_TP_INTRO_COMPLETED,
+	"DBV4_HOWDENS_FROM_TP_INTRO_REJECTED":              DBV4_HOWDENS_FROM_TP_INTRO_REJECTED,
+	"DBV4_HOWDENS_HO_APPLICATION_CANCELLED":            DBV4_HOWDENS_HO_APPLICATION_CANCELLED,
+	"DBV4_HOWDENS_HO_APPLICATION_REFERRED":             DBV4_HOWDENS_HO_APPLICATION_REFERRED,
+	"DBV4_HOWDENS_HO_APPLICATION_REJECTED":             DBV4_HOWDENS_HO_APPLICATION_REJECTED,
+	"DBV4_HOWDENS_HO_APPLICATION_SIGN_DOCUMENTS":       DBV4_HOWDENS_HO_APPLICATION_SIGN_DOCUMENTS,
+	"DBV4_HOWDENS_HO_JOB_DECLINED":                     DBV4_HOWDENS_HO_JOB_DECLINED,
+	"DBV4_HOWDENS_TO_HO_APPLICATION_APPROVED":          DBV4_HOWDENS_TO_HO_APPLICATION_APPROVED,
+	"DBV4_HOWDENS_TO_HO_CONVERTED_JOB":                 DBV4_HOWDENS_TO_HO_CONVERTED_JOB,
+	"DBV4_HOWDENS_TO_HO_CONVERTED_JOB_REMINDER":        DBV4_HOWDENS_TO_HO_CONVERTED_JOB_REMINDER,
+	"DBV4_HOWDENS_TO_HO_INTRO":                         DBV4_HOWDENS_TO_HO_INTRO,
+	"DBV4_HOWDENS_TO_HO_INTRO_BUDGET_REMINDER":         DBV4_HOWDENS_TO_HO_INTRO_BUDGET_REMINDER,
+	"DBV4_HOWDENS_TO_HO_INTRO_COMPLETED":               DBV4_HOWDENS_TO_HO_INTRO_COMPLETED,
+	"DBV4_HOWDENS_TO_TP_APPLICATION_ACCEPTED":          DBV4_HOWDENS_TO_TP_APPLICATION_ACCEPTED,
+	"DBV4_HOWDENS_TO_TP_GOODS_DELIVERED":               DBV4_HOWDENS_TO_TP_GOODS_DELIVERED,
+	"DBV4_HOWDENS_TO_TP_INTRO":                         DBV4_HOWDENS_TO_TP_INTRO,
+	"DBV4_HOWDENS_TO_TP_JOB_AMENDED":                   DBV4_HOWDENS_TO_TP_JOB_AMENDED,
+	"DBV4_HOWDENS_TP_APPLICATION_CANCELLED":            DBV4_HOWDENS_TP_APPLICATION_CANCELLED,
+	"DBV4_HOWDENS_TP_CUSTOMER_REFERRED":                DBV4_HOWDENS_TP_CUSTOMER_REFERRED,
+	"DBV4_HOWDENS_TP_CUSTOMER_REJECTED":                DBV4_HOWDENS_TP_CUSTOMER_REJECTED,
+	"DBV4_HOWDENS_TP_JOB_DECLINED":                     DBV4_HOWDENS_TP_JOB_DECLINED,
+	"DBV4_LENDER_SATNOTE_REVIEW":                       DBV4_LENDER_SATNOTE_REVIEW,
+	"DBV4_STAFF_AUDIT_NOTIFICATION":                    DBV4_STAFF_AUDIT_NOTIFICATION,
+	"DBV4_TP_2ND_LINE_REJECTED":                        DBV4_TP_2ND_LINE_REJECTED,
+	"DBV4_TP_ACCOUNT_APPROVED":                         DBV4_TP_ACCOUNT_APPROVED,
+	"DBV4_TP_APPLICATION_ACCEPTED":                     DBV4_TP_APPLICATION_ACCEPTED,
+	"DBV4_TP_APPLICATION_ACCEPTED_DEPOSIT_CHANGED":     DBV4_TP_APPLICATION_ACCEPTED_DEPOSIT_CHANGED,
+	"DBV4_TP_APPLICATION_CANCELLED":                    DBV4_TP_APPLICATION_CANCELLED,
+	"DBV4_TP_APPLICATION_PENDING":                      DBV4_TP_APPLICATION_PENDING,
+	"DBV4_TP_CUSTOMER_REFERRED":                        DBV4_TP_CUSTOMER_REFERRED,
+	"DBV4_TP_CUSTOMER_REJECTED":                        DBV4_TP_CUSTOMER_REJECTED,
+	"DBV4_TP_JOB_DECLINED":                             DBV4_TP_JOB_DECLINED,
+	"DBV4_TP_JOB_PAID_OUT":                             DBV4_TP_JOB_PAID_OUT,
+	"DBV4_TP_JOB_SENT":                                 DBV4_TP_JOB_SENT,
+	"DBV4_TP_LEAD_DETAILS_PROVIDED":                    DBV4_TP_LEAD_DETAILS_PROVIDED,
+	"DBV4_TP_LEAD_JOB_REQUESTED":                       DBV4_TP_LEAD_JOB_REQUESTED,
+	"DBV4_TP_LEAD_REQUESTED":                           DBV4_TP_LEAD_REQUESTED,
+	"DBV4_TP_SAT_NOTE_APPROVED":                        DBV4_TP_SAT_NOTE_APPROVED,
+	"DBV4_TP_SAT_NOTE_DELAYED":                         DBV4_TP_SAT_NOTE_DELAYED,
+	"DBV4_TP_SAT_NOTE_LENDER_REVIEW":                   DBV4_TP_SAT_NOTE_LENDER_REVIEW,
+	"DBV4_TP_SAT_NOTE_LENDER_REVIEWED":                 DBV4_TP_SAT_NOTE_LENDER_REVIEWED,
+	"DBV4_TP_SAT_NOTE_SIGNED":                          DBV4_TP_SAT_NOTE_SIGNED,
+	"DBV4_TP_SAT_NOTE_VIEWED":                          DBV4_TP_SAT_NOTE_VIEWED,
+	"DBV4_TP_SIGN_DOCUMENTS":                           DBV4_TP_SIGN_DOCUMENTS,
+	"DBV4_USER_CLAIM_ACCOUNT":                          DBV4_USER_CLAIM_ACCOUNT,
+	"DBV4_USER_CONSENT":                                DBV4_USER_CONSENT,
+	"DBV4_USER_DEV_CLAIM_ACCOUNT":                      DBV4_USER_DEV_CLAIM_ACCOUNT,
+	"DBV4_USER_ID_CHECKS_DECLINED":                     DBV4_USER_ID_CHECKS_DECLINED,
+	"DBV4_USER_ID_CHECKS_VERIFIED":                     DBV4_USER_ID_CHECKS_VERIFIED,
+	"DBV4_USER_KANDA_REFEREE_INVITE":                   DBV4_USER_KANDA_REFEREE_INVITE,
+	"DBV4_USER_LEGACY_MIGRATION":                       DBV4_USER_LEGACY_MIGRATION,
+	"DBV4_USER_REFEREE_INVITE":                         DBV4_USER_REFEREE_INVITE,
+	"DBV4_USER_RESET_PASSWORD":                         DBV4_USER_RESET_PASSWORD,
+	"DBV4_USER_SIGNUP":                                 DBV4_USER_SIGNUP,
+	"DBV4_USER_VERIFY_DIRECTOR":                        DBV4_USER_VERIFY_DIRECTOR,
+	"DBV4_USER_VERIFY_DIRECTOR_REMINDER":               DBV4_USER_VERIFY_DIRECTOR_REMINDER,
+	"DBV4_USER_VERIFY_EMAIL":                           DBV4_USER_VERIFY_EMAIL,
 }
 
-func(tn TName) String() string {
+func (tn TName) String() string {
 	return string(tn)
 }
 
-func(tn TName) Render() string {
+func (tn TName) Render() string {
 	if tm, ok := TMap[tn]; ok {
 		return tm
 	}
@@ -203,8 +200,7 @@ func(tn TName) Render() string {
 }
 
 var TMap = map[TName]string{
-	"": `   Bud1            †                                                           e n sdsclbo                                           h o w d e n sdsclbool                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       @      €                                        @      €                                          @      €                                          @                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   E   †                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       DSDB                                 `      À                                               @      €                                          @      €                                          @                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          `,
-	"DBV4_HO_AIP_HOWDENS": `{
+	DBV4_HO_AIP_HOWDENS: `{
   "subject": "{{receiver.contact_name}}, see if you can get finance for a new kitchen from Howdens with Kanda",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -230,7 +226,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HO_AIP_PREAPPROVED": `{
+	DBV4_HO_AIP_PREAPPROVED: `{
   "subject": "{{receiver.contact_name}}, you have been pre-approved for finance with Kanda",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -262,7 +258,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HO_APPLICATION_ACCEPTED_DEPOSIT_CHANGED": `{
+	DBV4_HO_APPLICATION_ACCEPTED_DEPOSIT_CHANGED: `{
   "subject": "Pay your deposit - Your finance application has been approved with a higher deposit value",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -298,7 +294,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HO_APPLICATION_APPROVED": `{
+	DBV4_HO_APPLICATION_APPROVED: `{
   "subject": "Your finance application has been approved! Sign your loan agreement now",
   "flow_type": "{{flow_type}}",
   "header": [
@@ -330,7 +326,7 @@ var TMap = map[TName]string{
   ],
   "sms": "Great News! Your finance application has been approved and you're ready to start the work!"
 }`,
-	"DBV4_HO_APPLICATION_CANCELLED": `{
+	DBV4_HO_APPLICATION_CANCELLED: `{
   "subject": "Your finance application has been cancelled",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -362,7 +358,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HO_APPLICATION_PAY_DEPOSI_CASH": `{
+	DBV4_HO_APPLICATION_PAY_DEPOSI_CASH: `{
   "subject": "You have signed your agreement documents, now you need to pay your deposit",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -392,7 +388,7 @@ var TMap = map[TName]string{
   ],
   "sms": "Your finance agreement has been signed and you just need to pay your deposit. Check your emails for more info. Kanda!"
 }`,
-	"DBV4_HO_APPLICATION_PAY_DEPOSIT": `{
+	DBV4_HO_APPLICATION_PAY_DEPOSIT: `{
   "subject": "You have signed your agreement documents, now you need to pay your deposit",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -422,7 +418,7 @@ var TMap = map[TName]string{
   ],
   "sms": "Your finance agreement has been signed and you just need to pay your deposit. Check your emails for more info. Kanda!"
 }`,
-	"DBV4_HO_APPLICATION_REFERRED": `{
+	DBV4_HO_APPLICATION_REFERRED: `{
   "subject": "You need to provide supporting documents for your finance application",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -455,7 +451,7 @@ var TMap = map[TName]string{
   ],
   "sms": "Hey {{receiver.contact_name}}, good news! The lender has accepted your application in principal. They just need a few documents. Check your email for more info. Kanda!"
 }`,
-	"DBV4_HO_APPLICATION_REJECTED": `{
+	DBV4_HO_APPLICATION_REJECTED: `{
   "subject": "There has been an update on your application",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -488,7 +484,7 @@ var TMap = map[TName]string{
   ],
   "sms": "There has been an update to your finance application Kanda. Check your emails for more info."
 }`,
-	"DBV4_HO_APPLICATION_SAT_NOTE_SENT": `{
+	DBV4_HO_APPLICATION_SAT_NOTE_SENT: `{
   "subject": "Sign off on {{sender.contact_name}}'s job on Kanda",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -525,7 +521,7 @@ var TMap = map[TName]string{
   ],
   "sms": "{{sender.contact_name}} has told Kanda the works are completed. Check your email for next steps. Kanda!"
 }`,
-	"DBV4_HO_APPLICATION_SAT_NOTE_SENT_REMINDER": `{
+	DBV4_HO_APPLICATION_SAT_NOTE_SENT_REMINDER: `{
   "subject": "Please confirm your job by {{sender.contact_name}} is complete (24 hours left)",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -562,7 +558,7 @@ var TMap = map[TName]string{
   ],
   "sms": "{{sender.contact_name}} has told Kanda the works are completed. Check your email for next steps. Kanda!"
 }`,
-	"DBV4_HO_APPLICATION_SAT_NOTE_SIGNED": `{
+	DBV4_HO_APPLICATION_SAT_NOTE_SIGNED: `{
   "subject": "You have signed off on {{sender.contact_name}}'s job",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -611,7 +607,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HO_APPLICATION_SIGN_DOCUMENTS": `{
+	DBV4_HO_APPLICATION_SIGN_DOCUMENTS: `{
   "subject": "Your finance application has been approved! Sign your loan agreement now",
   "flow_type": "{{flow_type}}",
   "header": [
@@ -648,7 +644,7 @@ var TMap = map[TName]string{
   ],
   "sms": "Great News! You've been approved for finance and all you need to do is sign your credit agreement! Check your emails now! Kanda."
 }`,
-	"DBV4_HO_CONTINUE_CHECKOUT": `{
+	DBV4_HO_CONTINUE_CHECKOUT: `{
   "subject": "View your job from {{sender.contact_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -675,7 +671,7 @@ var TMap = map[TName]string{
   ],
   "sms": "Hey {{receiver.contact_name}}! You've just been sent a link to view your job from {{sender.contact_name}} on Kanda. Check your emails for more information."
 }`,
-	"DBV4_HO_INITIAL": `{
+	DBV4_HO_INITIAL: `{
   "subject": "{{sender.contact_name}} has sent you a quote on Kanda",
   "flow_type": "{{flow_type}}",
   "preheader": "Follow this email to view your quote and begin the process of getting approved for finance",
@@ -748,7 +744,7 @@ var TMap = map[TName]string{
   "suppress_signoff": true,
   "sms": "Hey {{receiver.contact_name}}! You've just been sent a job on Kanda from {{sender.contact_name}}. Check your emails for more information."
 }`,
-	"DBV4_HO_JOB_DECLINED": `{
+	DBV4_HO_JOB_DECLINED: `{
   "subject": "You have declinded your job on Kanda",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -766,7 +762,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HO_JOB_STARTED": `{
+	DBV4_HO_JOB_STARTED: `{
   "subject": "Your job on Kanda is ready to start",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -806,7 +802,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HO_LEAD_DETAILS_PROVIDED_TP_ASSIGNED": `{
+	DBV4_HO_LEAD_DETAILS_PROVIDED_TP_ASSIGNED: `{
   "subject": "{{sender.contact_name}} is interested in quoting for your job. Here are their details!",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -918,7 +914,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HO_LEAD_POSTED": `{
+	DBV4_HO_LEAD_POSTED: `{
   "subject": "{{receiver.contact_name}}, your job has been successfully posted to Kanda",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -950,7 +946,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HO_QUOTE_POSTED": `{
+	DBV4_HO_QUOTE_POSTED: `{
   "subject": "{{receiver.contact_name}}, your job has been successfully posted to Kanda",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -982,7 +978,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HO_SAT_NOTE_LENDER_REVIEW": `{
+	DBV4_HO_SAT_NOTE_LENDER_REVIEW: `{
   "subject": "Our lender will be calling you soon to perform a welcome call",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1005,7 +1001,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HO_SAT_NOTE_LENDER_REVIEW_7K": `{
+	DBV4_HO_SAT_NOTE_LENDER_REVIEW_7K: `{
   "subject": "Our lender will be calling you soon to perform a welcome call",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1028,7 +1024,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HO_SUBMIT_APPLICATION": `{
+	DBV4_HO_SUBMIT_APPLICATION: `{
   "subject": "{{receiver.contact_name}}, please submit your finance application",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1061,7 +1057,7 @@ var TMap = map[TName]string{
   ],
   "sms": "Hey {{receiver.contact_name}}! Don't forget to complete your finance application on Kanda now."
 }`,
-	"DBV4_HOWDENS_FROM_HO_APPLICATION_ACCEPTED": `{
+	DBV4_HOWDENS_FROM_HO_APPLICATION_ACCEPTED: `{
   "subject": "{{extras.customer.contact_name}}'s finance application has been approved",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1096,7 +1092,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HOWDENS_FROM_HO_APPLICATION_CANCELLED": `{
+	DBV4_HOWDENS_FROM_HO_APPLICATION_CANCELLED: `{
   "subject": "{{extras.customer.contact_name}}'s finance application has been cancelled",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1123,7 +1119,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HOWDENS_FROM_HO_APPLICATION_REFERRED": `{
+	DBV4_HOWDENS_FROM_HO_APPLICATION_REFERRED: `{
   "subject": "{{extras.customer.contact_name}} needs to provide supporting information",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1158,7 +1154,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HOWDENS_FROM_HO_COOLING_OFF_PERIOD_COMPLETE": `{
+	DBV4_HOWDENS_FROM_HO_COOLING_OFF_PERIOD_COMPLETE: `{
   "subject": "{{extras.customer.contact_name}}'s order can now be delivered",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1185,7 +1181,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HOWDENS_FROM_HO_CUSTOMER_REJECTED": `{
+	DBV4_HOWDENS_FROM_HO_CUSTOMER_REJECTED: `{
   "subject": "{{extras.customer.contact_name}}'s finance application was declined",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1212,7 +1208,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HOWDENS_FROM_HO_INTRO_COMPLETED": `{
+	DBV4_HOWDENS_FROM_HO_INTRO_COMPLETED: `{
   "subject": "{{extras.customer.contact_name}} has completed their eligibility check for finance",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1247,7 +1243,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HOWDENS_FROM_HO_INTRO_DECLINED": `{
+	DBV4_HOWDENS_FROM_HO_INTRO_DECLINED: `{
   "subject": "{{extras.customer.contact_name}} is not eligible to apply for finance with Kanda",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1277,7 +1273,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HOWDENS_FROM_HO_INTRO_REJECTED": `{
+	DBV4_HOWDENS_FROM_HO_INTRO_REJECTED: `{
   "subject": "{{extras.customer.contact_name}} does not want to check their eligibility ",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1304,7 +1300,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HOWDENS_FROM_HO_INTRO_SENT": `{
+	DBV4_HOWDENS_FROM_HO_INTRO_SENT: `{
   "subject": "Finance Introduction sent to {{extras.customer.contact_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1336,7 +1332,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HOWDENS_FROM_HO_JOB_DECLINED": `{
+	DBV4_HOWDENS_FROM_HO_JOB_DECLINED: `{
   "subject": "{{extras.customer.contact_name}}}} has declined their Howdens order on Kanda",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1368,7 +1364,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HOWDENS_FROM_TP_INTRO_COMPLETED": `{
+	DBV4_HOWDENS_FROM_TP_INTRO_COMPLETED: `{
   "subject": "{{extras.customer.contact_name}}'s order has been approved by their builder",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1403,7 +1399,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HOWDENS_FROM_TP_INTRO_REJECTED": `{
+	DBV4_HOWDENS_FROM_TP_INTRO_REJECTED: `{
   "subject": "{{extras.customer.contact_name}}'s builder has rejected their order",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1430,7 +1426,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HOWDENS_HO_APPLICATION_CANCELLED": `{
+	DBV4_HOWDENS_HO_APPLICATION_CANCELLED: `{
   "subject": "Your finance application has been cancelled",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1457,7 +1453,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HOWDENS_HO_APPLICATION_REFERRED": `{
+	DBV4_HOWDENS_HO_APPLICATION_REFERRED: `{
   "subject": "You need to provide supporting documents for your finance application",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1485,7 +1481,7 @@ var TMap = map[TName]string{
   ],
   "sms": "Hey {{receiver.contact_name}}, good news! The lender has accepted your application in principal. They just need a few documents. Check your email for more info. Kanda!"
 }`,
-	"DBV4_HOWDENS_HO_APPLICATION_REJECTED": `{
+	DBV4_HOWDENS_HO_APPLICATION_REJECTED: `{
   "subject": "There has been an update on your application",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1522,7 +1518,7 @@ var TMap = map[TName]string{
   ],
   "sms": "There has been an update to your finance application Kanda. Check your emails for more info."
 }`,
-	"DBV4_HOWDENS_HO_APPLICATION_SIGN_DOCUMENTS": `{
+	DBV4_HOWDENS_HO_APPLICATION_SIGN_DOCUMENTS: `{
   "subject": "Your finance application has been approved! Sign your loan agreement now",
   "flow_type": "{{flow_type}}",
   "header": [
@@ -1559,7 +1555,7 @@ var TMap = map[TName]string{
   ],
   "sms": "Great News! You've been approved for finance and all you need to do is sign your credit agreement! Check your emails now! Kanda."
 }`,
-	"DBV4_HOWDENS_HO_JOB_DECLINED": `{
+	DBV4_HOWDENS_HO_JOB_DECLINED: `{
   "subject": "You have declinded your Howdens order on Kanda",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1586,7 +1582,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HOWDENS_TO_HO_APPLICATION_APPROVED": `{
+	DBV4_HOWDENS_TO_HO_APPLICATION_APPROVED: `{
   "subject": "You've been accepted for finance for your Howdens order!",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1622,7 +1618,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HOWDENS_TO_HO_CONVERTED_JOB": `{
+	DBV4_HOWDENS_TO_HO_CONVERTED_JOB: `{
   "subject": "You can now complete your finance application for your Howdens goods purchase",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1654,7 +1650,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HOWDENS_TO_HO_CONVERTED_JOB_REMINDER": `{
+	DBV4_HOWDENS_TO_HO_CONVERTED_JOB_REMINDER: `{
   "subject": "You need to complete the finance application for your Howdens order",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1686,7 +1682,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HOWDENS_TO_HO_INTRO": `{
+	DBV4_HOWDENS_TO_HO_INTRO: `{
   "subject": "Check your eligibility to finance your Howdens kitchen",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1718,7 +1714,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HOWDENS_TO_HO_INTRO_BUDGET_REMINDER": `{
+	DBV4_HOWDENS_TO_HO_INTRO_BUDGET_REMINDER: `{
   "subject": "Remember to check your eligibility to finance your Howdens kitchen",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1750,7 +1746,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HOWDENS_TO_HO_INTRO_COMPLETED": `{
+	DBV4_HOWDENS_TO_HO_INTRO_COMPLETED: `{
   "subject": "You have completed your eligibility check to finance your Howdens products",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1782,7 +1778,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HOWDENS_TO_TP_APPLICATION_ACCEPTED": `{
+	DBV4_HOWDENS_TO_TP_APPLICATION_ACCEPTED: `{
   "subject": "Your customer has been accepted for finance",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1812,7 +1808,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HOWDENS_TO_TP_GOODS_DELIVERED": `{
+	DBV4_HOWDENS_TO_TP_GOODS_DELIVERED: `{
   "subject": "Your Howdens Partner Designer - {{sender.contact_name}} - has marked their order delivered",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1830,7 +1826,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HOWDENS_TO_TP_INTRO": `{
+	DBV4_HOWDENS_TO_TP_INTRO: `{
   "subject": "Approval requested from {{extras.branch.trading_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1887,7 +1883,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HOWDENS_TO_TP_JOB_AMENDED": `{
+	DBV4_HOWDENS_TO_TP_JOB_AMENDED: `{
   "subject": "Approval requested for amendments to your job from your Howdens Partner Designer - {{sender.contact_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1935,7 +1931,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HOWDENS_TP_APPLICATION_CANCELLED": `{
+	DBV4_HOWDENS_TP_APPLICATION_CANCELLED: `{
   "subject": "{{extras.customer.contact_name}}'s finance application has been cancelled",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1962,7 +1958,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HOWDENS_TP_CUSTOMER_REFERRED": `{
+	DBV4_HOWDENS_TP_CUSTOMER_REFERRED: `{
   "subject": "{{extras.customer.contact_name}} needs to provide supporting information",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -1992,7 +1988,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HOWDENS_TP_CUSTOMER_REJECTED": `{
+	DBV4_HOWDENS_TP_CUSTOMER_REJECTED: `{
   "subject": "{{extras.customer.contact_name}}'s finance application was declined",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -2019,7 +2015,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_HOWDENS_TP_JOB_DECLINED": `{
+	DBV4_HOWDENS_TP_JOB_DECLINED: `{
   "subject": "{{extras.customer.contact_name}}}} has declined their Howdens order on Kanda",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -2046,7 +2042,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_LENDER_SATNOTE_REVIEW": `{
+	DBV4_LENDER_SATNOTE_REVIEW: `{
   "subject": "Signed sat note for {{sender.contact_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -2113,7 +2109,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_STAFF_AUDIT_NOTIFICATION": `{
+	DBV4_STAFF_AUDIT_NOTIFICATION: `{
   "subject": "New update on company in onboarding",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -2139,7 +2135,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_TP_2ND_LINE_REJECTED": `{
+	DBV4_TP_2ND_LINE_REJECTED: `{
   "subject": "{{sender.contact_name}} has been declined for finance from our alternative lender",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -2171,7 +2167,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_TP_ACCOUNT_APPROVED": `{
+	DBV4_TP_ACCOUNT_APPROVED: `{
   "subject": "Congratulations {{receiver.contact_name}}, your Kanda account is approved!",
   "flow_type": "{{flow_type}}",
   "banner": {
@@ -2248,7 +2244,7 @@ var TMap = map[TName]string{
   ],
   "suppress_signoff": true
 }`,
-	"DBV4_TP_APPLICATION_ACCEPTED": `{
+	DBV4_TP_APPLICATION_ACCEPTED: `{
   "subject": "{{sender.contact_name}}'s finance application has been approved! The job is ready to start.",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -2280,7 +2276,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_TP_APPLICATION_ACCEPTED_DEPOSIT_CHANGED": `{
+	DBV4_TP_APPLICATION_ACCEPTED_DEPOSIT_CHANGED: `{
   "subject": "{{sender.contact_name}}'s finance application has been approved with a new deposit value.",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -2312,7 +2308,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_TP_APPLICATION_CANCELLED": `{
+	DBV4_TP_APPLICATION_CANCELLED: `{
   "subject": "{{sender.contact_name}}'s finance application has been cancelled",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -2344,7 +2340,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_TP_APPLICATION_PENDING": `{
+	DBV4_TP_APPLICATION_PENDING: `{
   "subject": "{{sender.contact_name}}'s finance application is pending approval! Don't start the job just yet.",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -2380,7 +2376,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_TP_CUSTOMER_REFERRED": `{
+	DBV4_TP_CUSTOMER_REFERRED: `{
   "subject": "{{sender.contact_name}} needs to provide supporting information",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -2406,7 +2402,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_TP_CUSTOMER_REJECTED": `{
+	DBV4_TP_CUSTOMER_REJECTED: `{
   "subject": "{{sender.contact_name}}'s finance application was declined",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -2429,7 +2425,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_TP_JOB_DECLINED": `{
+	DBV4_TP_JOB_DECLINED: `{
   "subject": "{{sender.contact_name}}}} has declined your job on Kanda",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -2452,7 +2448,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_TP_JOB_PAID_OUT": `{
+	DBV4_TP_JOB_PAID_OUT: `{
   "subject": "{{sender.contact_name}}'s job has now been paid out!",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -2484,7 +2480,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_TP_JOB_SENT": `{
+	DBV4_TP_JOB_SENT: `{
   "subject": "You've just sent a job to {{sender.contact_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -2510,7 +2506,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_TP_LEAD_DETAILS_PROVIDED": `{
+	DBV4_TP_LEAD_DETAILS_PROVIDED: `{
   "subject": "Here are the details for the job you accepted on Kanda",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -2622,7 +2618,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_TP_LEAD_JOB_REQUESTED": `{
+	DBV4_TP_LEAD_JOB_REQUESTED: `{
   "subject": "A customer has requested a quote",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -2690,7 +2686,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_TP_LEAD_REQUESTED": `{
+	DBV4_TP_LEAD_REQUESTED: `{
   "subject": "A customer has requested a quote",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -2758,7 +2754,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_TP_SAT_NOTE_APPROVED": `{
+	DBV4_TP_SAT_NOTE_APPROVED: `{
   "subject": "{{sender.contact_name}}'s satisfaction note has been approved by Kanda",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -2790,7 +2786,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_TP_SAT_NOTE_DELAYED": `{
+	DBV4_TP_SAT_NOTE_DELAYED: `{
   "subject": "{{sender.contact_name}}'s satisfaction note is taking longer than usual to process",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -2822,7 +2818,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_TP_SAT_NOTE_LENDER_REVIEW": `{
+	DBV4_TP_SAT_NOTE_LENDER_REVIEW: `{
   "subject": "The satisfaction note signed by {{sender.contact_name}} has gone to the lender",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -2854,7 +2850,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_TP_SAT_NOTE_LENDER_REVIEWED": `{
+	DBV4_TP_SAT_NOTE_LENDER_REVIEWED: `{
   "subject": "The welcome call with {{sender.contact_name}} has been completed",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -2886,7 +2882,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_TP_SAT_NOTE_SIGNED": `{
+	DBV4_TP_SAT_NOTE_SIGNED: `{
   "subject": "{{sender.contact_name}} has signed the satisfaction note for your job",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -2918,7 +2914,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_TP_SAT_NOTE_VIEWED": `{
+	DBV4_TP_SAT_NOTE_VIEWED: `{
   "subject": "{{sender.contact_name}} has viewed the satisfaction note for your job",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -2950,7 +2946,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_TP_SIGN_DOCUMENTS": `{
+	DBV4_TP_SIGN_DOCUMENTS: `{
   "subject": "{{sender.contact_name}} needs to sign their credit agreement",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -2976,7 +2972,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_USER_CLAIM_ACCOUNT": `{
+	DBV4_USER_CLAIM_ACCOUNT: `{
   "subject": "You have been invited to join {{sender.contact_name}}'s team on Kanda",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -2999,7 +2995,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_USER_CONSENT": `{
+	DBV4_USER_CONSENT: `{
   "subject": "We need your consent to move your loan over to our new provider",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -3069,7 +3065,7 @@ var TMap = map[TName]string{
   ],
   "sms": "Please check your email for an important update about your job from {{sender.contact_name}}."
 }`,
-	"DBV4_USER_DEV_CLAIM_ACCOUNT": `{
+	DBV4_USER_DEV_CLAIM_ACCOUNT: `{
   "subject": "You have been invited to join {{sender.contact_name}}'s team on Kanda as a developer",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -3109,7 +3105,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_USER_ID_CHECKS_DECLINED": `{
+	DBV4_USER_ID_CHECKS_DECLINED: `{
   "subject": "Your ID check has been declined",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -3127,7 +3123,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_USER_ID_CHECKS_VERIFIED": `{
+	DBV4_USER_ID_CHECKS_VERIFIED: `{
   "subject": "Your ID check has been verified",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -3145,7 +3141,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_USER_KANDA_REFEREE_INVITE": `{
+	DBV4_USER_KANDA_REFEREE_INVITE: `{
   "subject": "{{sender.contact_name}} sent you Â£50",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -3174,7 +3170,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_USER_LEGACY_MIGRATION": `{
+	DBV4_USER_LEGACY_MIGRATION: `{
   "subject": "Claim your new Kanda account",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -3203,7 +3199,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_USER_REFEREE_INVITE": `{
+	DBV4_USER_REFEREE_INVITE: `{
   "subject": "You have been invited to join Kanda by {{sender.contact_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -3226,7 +3222,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_USER_RESET_PASSWORD": `{
+	DBV4_USER_RESET_PASSWORD: `{
   "subject": "Reset your password on Kanda",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -3249,7 +3245,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_USER_SIGNUP": `{
+	DBV4_USER_SIGNUP: `{
   "subject": "Welcome to Kanda - verify your email to activate your account",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -3272,7 +3268,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_USER_VERIFY_DIRECTOR": `{
+	DBV4_USER_VERIFY_DIRECTOR: `{
   "subject": "Kanda: Verify you are a director/owner of {{sender.trading_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -3295,7 +3291,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_USER_VERIFY_DIRECTOR_REMINDER": `{
+	DBV4_USER_VERIFY_DIRECTOR_REMINDER: `{
   "subject": "Reminder: ID check required to complete Kanda set up for {{sender.trading_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
@@ -3324,7 +3320,7 @@ var TMap = map[TName]string{
     }
   ]
 }`,
-	"DBV4_USER_VERIFY_EMAIL": `{
+	DBV4_USER_VERIFY_EMAIL: `{
   "subject": "Here's your link to continue to Kanda",
   "flow_type": "{{flow_type}}",
   "body": [
