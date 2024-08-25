@@ -1,16 +1,16 @@
 {
-  "subject": "Approval requested from your Howdens Partner Designer - {{sender.contact_name}}",
+  "subject": "Approval requested from {{extras.branch.trading_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{receiver.contact_name}},"
+      "text": "Hi {{extras.trader.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "Howdens have partnered with Kanda to allow end users to finance their kitchen goods purchase from you. Your Partner Designer at Howdens is requesting you approve this invoice pricing so your end user can apply to finance it. "
+          "text": "Howdens have partnered with Kanda to allow end users to finance their kitchen goods purchase from you. Your Partner Designer at Howdens is requesting you approve this invoice pricing so your end user can apply to finance it."
         }
       ]
     },
@@ -36,6 +36,15 @@
       "rows": [
         {
           "text": "Click below to see more and approve this invoice in 2 minutes."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "Have a Question?",
+          "subtext": "For finance queries please email Kanda at <a href=\"mailto:howdens@kanda.co.uk\">howdens@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
         }
       ]
     },

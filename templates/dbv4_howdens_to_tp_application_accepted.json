@@ -1,16 +1,28 @@
 {
-  "subject": "Your customer has been approved for finance for their purchase of goods from your Howdens Partner Designer - {{sender.contact_name}}",
+  "subject": "Your customer has been accepted for finance",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{receiver.contact_name}},"
+      "text": "Hi {{extras.trader.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "Your customer has been approved for finance for their purchase of goods from Howdens. They have selected a deposit of {{deposit.applied}}, so you will need to collect this along with the finance payment we will make to clear your Howdens account balance."
+          "text": "Your customer has been accepted for finance for their Howdens purchase, they have selected a deposit amount of {{deposit.applied}}, so you will need to collect this directly from your customer."
+        },
+        {
+          "text": "{{extras.branch.trading_name}} will now process the order, we will update you once the goods are marked as delivered to the customers address."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "Have a Question?",
+          "subtext": "For finance queries please email Kanda at <a href=\"mailto:howdens@kanda.co.uk\">howdens@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
         }
       ]
     }

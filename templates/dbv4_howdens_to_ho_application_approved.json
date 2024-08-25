@@ -1,5 +1,5 @@
 {
-  "subject": "Remember to check your eligibility to finance your Howdens kitchen",
+  "subject": "You've been accepted for finance for your Howdens order!",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -10,13 +10,17 @@
       "type": "text",
       "rows": [
         {
-          "text": "Howdens have partnered with Kanda to allow you apply for finance for your new Howdens kitchen purchase. We noticed you haven't checked if you're eligible for finance yet. Click below to complete a short eligibility checker and set your budget."
+          "text": "{{extras.branch.trading_name}} has been notified that your finance application is approved. They'll get in touch with you soon to schedule delivery of your goods."
         }
       ]
     },
     {
       "type": "statements",
       "rows": [
+        {
+          "text": "After the job",
+          "subtext": "When some or all of your order has been delivered, we'll ask you if everything is ok. After you sign off on the delivery we'll get your tradesperson paid."
+        },
         {
           "text": "Have a Question?",
           "subtext": "For finance queries please email Kanda at <a href=\"mailto:howdens@kanda.co.uk\">howdens@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."

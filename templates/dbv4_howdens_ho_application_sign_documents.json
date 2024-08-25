@@ -1,16 +1,20 @@
 {
-  "subject": "Remember to check your eligibility to finance your Howdens kitchen",
+  "subject": "Your finance application has been approved! Sign your loan agreement now",
   "flow_type": "{{flow_type}}",
-  "body": [
+  "header": [
     {
-      "type": "heading",
-      "text": "Hi {{extras.customer.contact_name}},"
-    },
+      "type": "affirmative_header",
+      "text": "Congratulations {{receiver.contact_name}}! Your finance application has been approved!",
+      "icon": "rocket",
+      "border": true
+    }
+  ],
+  "body": [
     {
       "type": "text",
       "rows": [
         {
-          "text": "Howdens have partnered with Kanda to allow you apply for finance for your new Howdens kitchen purchase. We noticed you haven't checked if you're eligible for finance yet. Click below to complete a short eligibility checker and set your budget."
+          "text": "Great news, the lender has approved your application and all that you need to do now is sign the credit agreement. You can do this by following the instructions in the email from the lender."
         }
       ]
     },
@@ -28,5 +32,6 @@
       "text": "View on Kanda",
       "url": "{{cta_url}}"
     }
-  ]
+  ],
+  "sms": "Great News! You've been approved for finance and all you need to do is sign your credit agreement! Check your emails now! Kanda."
 }

@@ -1,16 +1,16 @@
 {
-  "subject": "Remember to check your eligibility to finance your Howdens kitchen",
+  "subject": "{{extras.customer.contact_name}}}} has declined their Howdens order on Kanda",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.customer.contact_name}},"
+      "text": "Hi {{extras.branch.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "Howdens have partnered with Kanda to allow you apply for finance for your new Howdens kitchen purchase. We noticed you haven't checked if you're eligible for finance yet. Click below to complete a short eligibility checker and set your budget."
+          "text": "{{extras.customer.contact_name}} has declined their Howdens order on Kanda - if this was a mistake, please confirm with the end user and their builder before sending a new credit introduction."
         }
       ]
     },

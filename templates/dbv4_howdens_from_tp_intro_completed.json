@@ -1,24 +1,28 @@
 {
-  "subject": "{{reference}} has been approved by {{sender.contact_name}} - we've now sent it to the end user",
+  "subject": "{{extras.customer.contact_name}}'s order has been approved by their builder",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{receiver.contact_name}},"
+      "text": "Hi {{extras.branch.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "{{sender.contact_name}} has approved invoice ({{reference}}) to be sent to their end user to apply for finance. We've now emailed a link to the end user to apply for finance in minutes."
+          "text": "{{extras.customer.contact_name}}'s order has been approved by their builder. We have now emailed a link to the end user to apply for finance in minutes."
+        },
+        {
+          "text": "Once they complete an application we'll let you know, you can follow the applications progress on your Kanda dashboard."
         }
       ]
     },
     {
-      "type": "text",
+      "type": "statements",
       "rows": [
         {
-          "text": "Once the end user has completed their application, we'll let you know. You can follow their application progress on your Kanda dashboard. "
+          "text": "Have a Question?",
+          "subtext": "For finance queries please email Kanda at <a href=\"mailto:howdens@kanda.co.uk\">howdens@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
         }
       ]
     },
