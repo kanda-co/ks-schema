@@ -1,0 +1,30 @@
+{
+  "subject": "{{extras.customer.contact_name}} needs to provide supporting information",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{extras.trader.trading_name}} - {{extras.customer.contact_name}}'s application is taking longer than usual"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "The lender has requested some more information from {{extras.customer.contact_name}}. This usually happens when the lender wishes to verify some information on the customers finance application. The lender will have emailed them directly informing them of what they need to provide. Until the documents are received the finance application can't progress."
+        },
+        {
+          "text": "It can take up to 24 hours for the lender to review this information once it's been submitted, but do give your customer a nudge if you haven't had an update from Kanda within 2 days."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "Have a Question?",
+          "subtext": "For finance queries please email Kanda at <a href=\"mailto:howdens@kanda.co.uk\">howdens@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+        }
+      ]
+    }
+  ]
+}

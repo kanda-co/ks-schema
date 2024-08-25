@@ -1,0 +1,35 @@
+{
+  "subject": "{{extras.customer.contact_name}}'s finance application has been approved",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Great News!"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "{{extras.customer.contact_name}} has signed their credit agreement and the finance for this order is now in place. The 14 day cooling off period has now started, you will be able to mark this order as delivered in your Kanda dashboard in 14 days time - we will send you a reminder email to notify you when this can be done."
+        },
+        {
+          "text": "If they are paying a deposit, {{extras.trader.trading_name}} and {{extras.customer.contact_name}} need to arrange this payment directly."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "Have a Question?",
+          "subtext": "For finance queries please email Kanda at <a href=\"mailto:howdens@kanda.co.uk\">howdens@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}

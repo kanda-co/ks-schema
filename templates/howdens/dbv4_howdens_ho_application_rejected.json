@@ -1,0 +1,37 @@
+{
+  "subject": "There has been an update on your application",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{extras.customer.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "The lender has sent Kanda an update about your application, click the link below to see what it is."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "What happens now?",
+          "subtext": "{{extras.trader.trading_name}} and your Howdens depot have been notified of any changes to your finance application status so they are up to date. "
+        },
+        {
+          "text": "Have a Question?",
+          "subtext": "For finance queries please email Kanda at <a href=\"mailto:howdens@kanda.co.uk\">howdens@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "Check my update",
+      "url": "{{cta_url}}"
+    }
+  ],
+  "sms": "There has been an update to your finance application Kanda. Check your emails for more info."
+}
