@@ -1,0 +1,30 @@
+{
+  "subject": "{{extras.customer.contact_name}} is not eligible to apply for finance with Kanda",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{extras.branch.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "{{extras.customer.contact_name}} has completed their eligibility check on Kanda. Unfortunately, they are not eligible to apply for credit at this time."
+        },
+        {
+          "text": "Please speak to {{extras.customer.contact_name}} and their builder to discuss alternative payment options."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "Have a Question?",
+          "subtext": "For finance queries please email Kanda at <a href=\"mailto:howdens@kanda.co.uk\">howdens@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
+        }
+      ]
+    }
+  ]
+}

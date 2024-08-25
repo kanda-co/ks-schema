@@ -1,0 +1,32 @@
+{
+  "subject": "You have completed your eligibility check to finance your Howdens products",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{extras.customer.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "You have completed your eligibility check for finance for your Howdens products. Once you have finalised your design, we will send your order to your tradesperson to confirm it is correct. Howdens will be in touch shortly to also confirm your order with you."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "Have a Question?",
+          "subtext": "For finance queries please email Kanda at <a href=\"mailto:howdens@kanda.co.uk\">howdens@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}

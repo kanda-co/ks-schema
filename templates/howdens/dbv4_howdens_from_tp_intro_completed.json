@@ -1,0 +1,35 @@
+{
+  "subject": "{{extras.customer.contact_name}}'s order has been approved by their builder",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{extras.branch.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "{{extras.customer.contact_name}}'s order has been approved by their builder. We have now emailed a link to the end user to apply for finance in minutes."
+        },
+        {
+          "text": "Once they complete an application we’ll let you know, you can follow the applications progress on your Kanda dashboard."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "Have a Question?",
+          "subtext": "For finance queries please email Kanda at <a href=\"mailto:howdens@kanda.co.uk\">howdens@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}
