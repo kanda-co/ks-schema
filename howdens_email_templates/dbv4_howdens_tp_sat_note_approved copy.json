@@ -1,0 +1,27 @@
+{
+  "subject": "{{extras.customer.contact_name}} has confirmed delivery of their Howdens order",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{extras.trader.trading_name}}"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Your customer has signed the delivery note confirming the receipt of their Howdens order. You will receive full payment for the order directly into your bank account within 3 working days. You are required to pay your Howdens Trade Account as normal."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "Have a Question?",
+          "subtext": "For finance queries please email Kanda at <a href=\"mailto:howdens@kanda.co.uk\">howdens@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "{{extras.customer.contact_name}}'s order has now been paid out to their builder",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{extras.branch.trading_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "We've processed payment to {{extras.customer.contact_name}}'s builder. They should now pay off their Howdens trade account as usual."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "Have a Question?",
+          "subtext": "For finance queries please email Kanda at <a href=\"mailto:howdens@kanda.co.uk\">howdens@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
+        }
+      ]
+    }
+  ]
+}
