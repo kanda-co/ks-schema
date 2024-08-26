@@ -21,6 +21,9 @@ func main() {
 		if info.IsDir() {
 			return nil
 		}
+		if !strings.HasSuffix(info.Name(), ".json") {
+			return nil
+		}
 		paths = append(paths, path)
 		return nil
 	})
