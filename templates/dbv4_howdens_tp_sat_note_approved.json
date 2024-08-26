@@ -1,16 +1,16 @@
 {
-  "subject": "{{extras.customer.contact_name}}'s finance application has been cancelled",
+  "subject": "{{extras.customer.contact_name}} has confirmed delivery of their Howdens order",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.trader.trading_name}} - Unfortunately, your customers application has been cancelled."
+      "text": "Hi {{extras.trader.trading_name}}"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "{{extras.customer.contact_name}} asked either the lender or Kanda to cancel their finance application. They can still apply again if this was a mistake. To apply again you'll need Howdens to send them a new credit introduction."
+          "text": "Your customer has signed the delivery note confirming the receipt of their Howdens order. You will receive full payment for the order directly into your bank account within 3 working days. You are required to pay your Howdens Trade Account as normal."
         }
       ]
     },

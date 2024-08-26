@@ -1,5 +1,5 @@
 {
-  "subject": "Check your eligibility to finance your Howdens purchase",
+  "subject": "Please confirm delivery of your goods from Howdens with Kanda",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -10,13 +10,17 @@
       "type": "text",
       "rows": [
         {
-          "text": "Howdens have partnered with Kanda to allow you to apply for finance for your new Howdens purchase. Before you can apply for finance you'll need to first check if you're eligible. Click below to complete a short eligibility checker and set your budget."
+          "text": "{{extras.branch.trading_name}} have let us know they have delivered some or all of your order. Please let us know if everything is in order by signing the delivery note."
         }
       ]
     },
     {
       "type": "statements",
       "rows": [
+        {
+          "text": "Sign a delivery note",
+          "subtext": "f you're satisfied with the goods, you'll need to sign a delivery note for us. Follow the link below to do this. Dependent on the timescale of bespoke products (such as solid work surfaces and paint to order kitchens), delivery may be in stages. Confirming delivery is indicative of receiving the initial delivery only."
+        },
         {
           "text": "Have a Question?",
           "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
@@ -28,5 +32,6 @@
       "text": "View on Kanda",
       "url": "{{cta_url}}"
     }
-  ]
+  ],
+  "sms": "{{extras.branch.trading_name}} has told Kanda the works are completed. Check your email for next steps. Kanda!"
 }

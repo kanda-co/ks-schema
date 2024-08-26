@@ -1,5 +1,5 @@
 {
-  "subject": "{{extras.customer.contact_name}} is not eligible to apply for finance with Kanda",
+  "subject": "{{extras.customer.contact_name}}'s order has now been paid out to their builder",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -10,10 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "{{extras.customer.contact_name}} has completed their eligibility check on Kanda. Unfortunately, they are not eligible to apply for credit at this time."
-        },
-        {
-          "text": "Please speak to {{extras.customer.contact_name}} and their builder to discuss alternative payment options."
+          "text": "We've processed payment to {{extras.customer.contact_name}}'s builder. They should now pay off their Howdens trade account as usual."
         }
       ]
     },

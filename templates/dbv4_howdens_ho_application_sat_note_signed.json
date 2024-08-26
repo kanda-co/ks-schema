@@ -1,5 +1,5 @@
 {
-  "subject": "Check your eligibility to finance your Howdens purchase",
+  "subject": "You have signed off on your delivery from {{extras.branch.trading_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -10,7 +10,19 @@
       "type": "text",
       "rows": [
         {
-          "text": "Howdens have partnered with Kanda to allow you to apply for finance for your new Howdens purchase. Before you can apply for finance you'll need to first check if you're eligible. Click below to complete a short eligibility checker and set your budget."
+          "text": "Thank you for signing the delivery note. Our team may try to call you over the next few days to verify the information before we pay your builder."
+        },
+        {
+          "text": "If you don't hear from Kanda then rest assured we're happy to pay the builder out based on your delivery note. You'll receive an email from your lender shortly advising you of your first repayment date."
+        },
+        {
+          "text": "If you need to change any of your details then please contact the lender directly:"
+        },
+        {
+          "text": "<strong>Telephone:</strong> {{lender.contact_phone}}"
+        },
+        {
+          "text": "<strong>Email:</strong> {{lender.contact_email}}"
         }
       ]
     },
