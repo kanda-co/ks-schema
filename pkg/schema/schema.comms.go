@@ -210,7 +210,7 @@ func (in Company) ToContact() *ContactInfo {
 }
 
 func (in UserType) ToContact() *ContactInfo {
-	return New(ContactInfo{
+	cInfo := ContactInfo{
 		ContactAddress: IfValueOr(
 			in.DirectorInfo == nil,
 			nil,
@@ -223,7 +223,9 @@ func (in UserType) ToContact() *ContactInfo {
 			),
 		),
 		ContactPhone: in.Mobile,
-	})
+	}
+	cInfo.TradingName = cInfo.ContactName
+	return New(cInfo)
 }
 
 func (in Enterprise) ToContact() *ContactInfo {
@@ -236,13 +238,13 @@ func (in Enterprise) ToContact() *ContactInfo {
 }
 
 func (in EnterpriseUserType) ToContact() *ContactInfo {
-	return New(
-		ContactInfo{
-			ContactEmail: New(in.Email),
-			ContactName:  New(in.Name),
-			ContactPhone: in.Mobile,
-		},
-	)
+	cInfo := ContactInfo{
+		ContactEmail: New(in.Email),
+		ContactName:  New(in.Name),
+		ContactPhone: in.Mobile,
+	}
+	cInfo.TradingName = cInfo.ContactName
+	return New(cInfo)
 }
 
 func (in Introduction) ToContact() *ContactInfo {
@@ -260,6 +262,7 @@ func (in Trader) ToContact() *ContactInfo {
 		ContactEmail:   New(in.ContactEmail),
 		ContactName:    New(in.ContactName),
 		ContactPhone:   New(in.ContactMobile),
+		TradingName:    New(in.TradingName),
 	})
 }
 
