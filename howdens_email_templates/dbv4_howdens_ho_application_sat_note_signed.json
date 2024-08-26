@@ -1,0 +1,44 @@
+{
+  "subject": "You have signed off on your delivery from {{extras.branch.trading_name}}",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{extras.customer.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Thank you for signing the delivery note. Our team may try to call you over the next few days to verify the information before we pay your builder."
+        },
+        {
+          "text": "If you don't hear from Kanda then rest assured we're happy to pay the builder out based on your delivery note. You'll receive an email from your lender shortly advising you of your first repayment date."
+        },
+        {
+          "text": "If you need to change any of your details then please contact the lender directly:"
+        },
+        {
+          "text": "<strong>Telephone:</strong> {{lender.contact_phone}}"
+        },
+        {
+          "text": "<strong>Email:</strong> {{lender.contact_email}}"
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "Have a Question?",
+          "subtext": "For finance queries please email Kanda at <a href=\"mailto:howdens@kanda.co.uk\">howdens@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}
