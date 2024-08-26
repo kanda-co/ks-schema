@@ -1,16 +1,16 @@
 {
-  "subject": "{{extras.customer.contact_name}}'s order has been delivered",
+  "subject": "{{extras.customer.contact_name}} has confirmed delivery of their Howdens order",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.trader.trading_name}},"
+      "text": "Hi {{extras.trader.trading_name}}"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "We've been notified by Howdens that the order for {{extras.customer.contact_name}} has been delivered. We've sent your customer a delivery note to confirm receipt of the goods. Once that is signed, you'll get paid in full within 3 working days."
+          "text": "Your customer has signed the delivery note confirming the receipt of their Howdens order. You will receive full payment for the order directly into your bank account within 3 working days. You are required to pay your Howdens Trade Account as normal."
         }
       ]
     },

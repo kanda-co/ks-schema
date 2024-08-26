@@ -1,0 +1,27 @@
+{
+  "subject": "{{extras.customer.contact_name}}'s order has now been paid out!",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{extras.trader.trading_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "We've processed payment on the order delivered for {{extras.customer.contact_name}}. You should receive the payment from Kanda within a few hours."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "What do I need to do?",
+          "subtext": "You are required to pay your Howdens Trade Account as normal. Get in touch with us if you haven't received payment within 4 hours of this email. Contact us at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call <a href=\"tel:03308083911\">0330 808 3911</a>"
+        }
+      ]
+    }
+  ]
+}
