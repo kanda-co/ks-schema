@@ -58,7 +58,9 @@ gen-backend:
 	mkdir -p pkg/schema
 	go run github.com/deepmap/oapi-codegen/cmd/oapi-codegen@v1.11.0 -generate types,client,server,spec -package schema schema.yaml > pkg/schema/schema.gen.go
 	go run ./cmd/generateTemplate > pkg/schema/schema.templates.gen.go
+	go run ./cmd/generateFields > pkg/schema/schema.fields.gen.go
 	go fmt ./pkg/schema/schema.templates.gen.go
+	go fmt ./pkg/schema/schema.fields.gen.go
 
 build-frontend: gen-frontend widget ts-widget
 	@echo Build frontend...
