@@ -5725,6 +5725,7 @@ paths:
               - housekeeping_check_audit_action
               - housekeeping_check_financed_cooloff
               - housekeeping_run_propensio_payouts
+              - housekeeping_run_tracking_csv
       responses:
         200:
           description: runner has been completed
