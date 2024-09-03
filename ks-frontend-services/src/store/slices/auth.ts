@@ -54,7 +54,7 @@ export const infoGhost = createAsyncThunk(
 );
 
 const initialState: AuthState = {
-  isLoading: false,
+  isLoading: true,
   user: null,
   firebaseUser: null,
 };
@@ -74,11 +74,18 @@ const authSlice = createSlice({
         ...state,
         user,
         firebaseUser,
+        isLoading: false,
       };
     },
+    userNotLoggedIn: (state) => ({
+      ...state,
+      user: null,
+      firebaseUser: null,
+      isLoading: false,
+    }),
   },
 });
 
-export const { userLoggedIn, logout } = authSlice.actions;
+export const { userLoggedIn, userNotLoggedIn, logout } = authSlice.actions;
 
 export default authSlice.reducer;

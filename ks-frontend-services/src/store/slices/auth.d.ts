@@ -28,6 +28,6 @@ export declare const infoGhost: import("@reduxjs/toolkit").AsyncThunk<void, stri
 export declare const userLoggedIn: import("@reduxjs/toolkit").ActionCreatorWithOptionalPayload<{
     user: AuthUser;
     firebaseUser: User;
-}, "auth/userLoggedIn">, logout: import("@reduxjs/toolkit").ActionCreatorWithoutPayload<"auth/logout">;
+}, "auth/userLoggedIn">, userNotLoggedIn: import("@reduxjs/toolkit").ActionCreatorWithoutPayload<"auth/userNotLoggedIn">, logout: import("@reduxjs/toolkit").ActionCreatorWithoutPayload<"auth/logout">;
 declare const _default: import("redux").Reducer<AuthState, import("redux").AnyAction>;
 export default _default;

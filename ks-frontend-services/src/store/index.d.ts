@@ -413,7 +413,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
     };
     exportEnterpriseDailyReport: {
         ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").ExportCSV>;
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").ExportJSON>;
         raw?: {} | {}[];
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
@@ -1076,7 +1076,7 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
     };
     exportEnterpriseDailyReport: {
         ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").ExportCSV>;
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").ExportJSON>;
         raw?: {} | {}[];
         error?: import("../types").ExtractedError;
         isSubmitting: boolean;
@@ -1380,7 +1380,7 @@ export declare function createSelectors<State extends AuthSlice, Pages>(): {
     postCompanyReferrals: import("./types").Selectors<import("..").Referral, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Referral>>>;
     exportFcaApproved: import("./types").Selectors<import("..").ExportCSV, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").ExportCSV>>>;
     importFcaApproved: import("./types").Selectors<import("..").ExportCSV, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").ExportCSV>>>;
-    exportEnterpriseDailyReport: import("./types").Selectors<import("..").ExportCSV, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").ExportCSV>>>;
+    exportEnterpriseDailyReport: import("./types").Selectors<import("..").ExportJSON, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").ExportJSON>>>;
     infoSession: import("./types").Selectors<import("..").InfoSession, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoSession>>>;
     infoGetCache: import("./types").Selectors<import("..").Cache, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Cache>>>;
     infoPutCache: import("./types").Selectors<import("..").Cache, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Cache>>>;

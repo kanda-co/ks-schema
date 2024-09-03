@@ -29,7 +29,7 @@ import { clearOriginalUser, getOriginalUser, isGhosted } from './ghost';
 import type { StringIndexedObject } from '../types';
 import type { RoutedApp, ValidAction } from './types';
 import { createAppSlice } from '../store/slices/app';
-import { userLoggedIn } from '../store/slices/auth';
+import { userLoggedIn, userNotLoggedIn } from '../store/slices/auth';
 import services from '../service';
 import { handleResponse, type Response } from '../handlers';
 import { AuthUser, InfoGhost } from '../generated/components/schemas';
@@ -341,6 +341,10 @@ async function userIsLoggedIn<P extends StringIndexedObject>(
     const firebaseUser = FirebaseAuthService.auth.currentUser;
 
     store.dispatch(userLoggedIn({ user, firebaseUser }));
+  }
+
+  if (!isUserLoggedIn) {
+    store.dispatch(userNotLoggedIn());
   }
 
   const requiredRoles = page.requiredRoles || [];
