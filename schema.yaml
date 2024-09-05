@@ -9182,6 +9182,9 @@ components:
           type: string
           title: contact mobile
           x-kanda-form-widget: PhoneNumberInput
+        reference:
+          type: string
+          title: trader reference
 
     TraderDetails:
       type: object

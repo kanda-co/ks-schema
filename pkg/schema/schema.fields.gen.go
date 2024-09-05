@@ -1071,6 +1071,7 @@ func GetFields(name string) []string {
 			"contact_email",
 			"contact_mobile",
 			"contact_name",
+			"reference",
 			"trading_address",
 			"trading_name",
 			"trading_type",
