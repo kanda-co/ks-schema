@@ -8138,6 +8138,7 @@ components:
           enum:
             - enterprise-admin
             - enterprise-user
+            - enterprise-trainee
           title: enterprise role
           x-kanda-form-widget: Select
         name:
