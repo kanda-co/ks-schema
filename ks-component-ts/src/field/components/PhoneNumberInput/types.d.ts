@@ -6,7 +6,11 @@ export interface PhoneNumberInputOption {
   value: string;
 }
 
-export interface PhoneNumberInputUncontrolledProps {
+export interface PhoneNumberInputUncontrolledProps
+  extends Pick<
+    InputHTMLAttributes<HTMLInputElement>,
+    "autoComplete" | "autoFocus" | "disabled"
+  > {
   /**
    * Name of the input required for form to work
    */

@@ -13,6 +13,9 @@ export type PhoneNumberInputUncontrolledArgs = Omit<
   | "phoneNumberProps"
   | "forwardRef"
   | "options"
+  | "autoComplete"
+  | "autoFocus"
+  | "disabled"
 >;
 
 export interface PhoneNumberInputUncontrolledHook {

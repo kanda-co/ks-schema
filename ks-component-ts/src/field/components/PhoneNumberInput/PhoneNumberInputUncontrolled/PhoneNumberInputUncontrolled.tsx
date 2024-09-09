@@ -17,6 +17,7 @@ const PhoneNumberInputUncontrolled: FunctionComponent<PhoneNumberInputUncontroll
     isLoading,
     phoneNumberProps,
     countryCodeName,
+    ...rest
   }) {
     const { classNames, skeletonClasses, code } =
       usePhoneNumberInputUncontrolled({
@@ -48,6 +49,7 @@ const PhoneNumberInputUncontrolled: FunctionComponent<PhoneNumberInputUncontroll
               name={name}
               placeholder={placeholder as string}
               {...phoneNumberProps}
+              {...rest}
             />
           </>
         )}
