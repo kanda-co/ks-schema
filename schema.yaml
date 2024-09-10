@@ -8786,6 +8786,7 @@ components:
         - underfloor_heating
         - verandas
         - wall_insulation_and_cladding
+        - water_softeners
         - windows
         - windows_and_doors
         - other
