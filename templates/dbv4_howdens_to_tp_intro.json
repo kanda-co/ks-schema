@@ -4,13 +4,16 @@
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.trader.trading_name}},"
+      "text": "Hello {{extras.trader.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "Howdens have partnered with Kanda to allow end users to finance their kitchen goods purchase from you. Your Partner Designer at Howdens is requesting you approve this invoice pricing so your end user can apply to finance it."
+          "text": "Howdens have partnered with Kanda to allow homeowners to finance the purchase of Howdens products from you. Please review and approve the pricing on this invoice to {{extras.customer.contact_name}} so that they can apply for finance."
+        },
+        {
+          "text": "Here's how it works:"
         }
       ]
     },
@@ -24,7 +27,7 @@
           "text": "<b>2.</b> Your customer applies for finance"
         },
         {
-          "text": "<b>3.</b> Howdens deliver the goods"
+          "text": "<b>3.</b> Howdens deliver the products"
         },
         {
           "text": "<b>4.</b> You get paid"

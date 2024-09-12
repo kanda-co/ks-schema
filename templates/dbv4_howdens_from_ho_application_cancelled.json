@@ -4,13 +4,16 @@
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.trader.trading_name}} - Unfortunately, your customers application has been cancelled."
+      "text": "Hello {{extras.branch.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "{{extras.customer.contact_name}} asked either the lender or Kanda to cancel their finance application. They can still apply again if this was a mistake. To apply again you'll need Howdens to send them a new credit introduction."
+          "text": "{{extras.customer.contact_name}} has cancelled their finance application, please contact them and their tradesperson to arrange an alternative payment method."
+        },
+        {
+          "text": "If the application was cancelled in error, you will need to send out a new credit introduction."
         }
       ]
     },
@@ -19,7 +22,7 @@
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
         }
       ]
     }

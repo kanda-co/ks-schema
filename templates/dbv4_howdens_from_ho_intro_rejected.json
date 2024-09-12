@@ -4,13 +4,13 @@
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.branch.trading_name}},"
+      "text": "Hello {{extras.branch.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "Your end user {{extras.customer.contact_name}} has declined your invitation to check their eligibility for finance on Kanda. Please get in touch with the end user if you have any questions."
+          "text": "Your homeowner {{extras.customer.contact_name}} has declined your invitation to check their eligibility for finance on Kanda. Please get in touch with the homeowner if you have any questions."
         }
       ]
     },

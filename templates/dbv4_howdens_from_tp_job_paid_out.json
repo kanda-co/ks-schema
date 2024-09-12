@@ -1,16 +1,16 @@
 {
-  "subject": "{{extras.customer.contact_name}}'s order has now been paid out to their builder",
+  "subject": "{{extras.customer.contact_name}}'s order has now been paid out to their tradesperson",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.branch.trading_name}},"
+      "text": "Hello {{extras.branch.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "We've processed payment to {{extras.customer.contact_name}}'s builder. They should now pay off their Howdens trade account as usual."
+          "text": "We've processed payment to {{extras.customer.contact_name}}'s tradesperson."
         }
       ]
     },

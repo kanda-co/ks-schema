@@ -1,16 +1,19 @@
 {
-  "subject": "{{extras.customer.contact_name}}'s finance application has been cancelled",
+  "subject": "{{extras.customer.contact_name}}'s finance application for their Howdens order has been cancelled",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.trader.trading_name}} - Unfortunately, your customers application has been cancelled."
+      "text": "Hello {{extras.trader.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "{{extras.customer.contact_name}} asked either the lender or Kanda to cancel their finance application. They can still apply again if this was a mistake. To apply again they'll need Howdens to send them a new credit introduction."
+          "text": "{{extras.customer.contact_name}} has cancelled their finance application. Please contact them to arrange an alternative payment method."
+        },
+        {
+          "text": "If this was a mistake, Howdens will need to send them a new application."
         }
       ]
     },

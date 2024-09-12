@@ -1,16 +1,19 @@
 {
-  "subject": "Your finance application has been cancelled",
+  "subject": "Your finance application for your Howdens products has been cancelled",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.customer.contact_name}},"
+      "text": "Hello {{extras.customer.contact_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "Your finance application has been cancelled due to your request to either the lender or Kanda to cancel your finance application. You can still apply again if this was a mistake. To apply again, you'll need to request a new credit introduction from {{extras.branch.trading_name}}."
+          "text": "Your request to cancel your finance application has been processed. Please contact your tradesperson to arrange an alternative payment method if you would like to proceed with your Howdens order."
+        },
+        {
+          "text": "If this was a mistake, please contact Howdens to request a new link so that you can re-apply."
         }
       ]
     },

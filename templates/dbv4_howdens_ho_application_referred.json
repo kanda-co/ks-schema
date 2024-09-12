@@ -1,16 +1,16 @@
 {
-  "subject": "You need to provide supporting documents for your finance application",
+  "subject": "Supporting documentation required for your finance application for your Howdens purchase",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{receiver.contact_name}},"
+      "text": "Hello {{receiver.contact_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "Your finance application has been reviewed by the lender and they've asked that you submit some extra documents. You will have received an email from <strong>{{lender.contact_email}}</strong>. You can follow the link in that email to submit your documents or email it back to them. If you can't find their email, please check your spam folder"
+          "text": "Your finance application has been reviewed by the lender and they require some additional information / documents from you. You will have received an email from <strong>{{lender.contact_email}}</strong>. Please follow the link in the email to submit your documents or email them to the lender. We recommend checking your spam folder if you have not received this."
         }
       ]
     },

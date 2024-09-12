@@ -4,13 +4,13 @@
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.customer.contact_name}}"
+      "text": "Hello {{extras.customer.contact_name}}"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "You've signed the delivery note and will now receive a welcome call from our lender, Propensio. Your builder may not get paid on time if you don't complete this welcome call."
+          "text": "You've signed the delivery note and will now receive a welcome call from the lender, Propensio."
         }
       ]
     },
