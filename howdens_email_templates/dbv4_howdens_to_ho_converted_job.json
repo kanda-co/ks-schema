@@ -1,16 +1,16 @@
 {
-  "subject": "You can now complete your finance application for your Howdens goods purchase",
+  "subject": "You can now complete a finance application for your Howdens products",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.customer.contact_name}},"
+      "text": "Hello {{extras.customer.contact_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "You can now complete your purchase of your Howdens goods from {{extras.trader.trading_name}} via finance. Click below to choose which finance option you want to apply for and complete the application. You'll receive a decision in a few minutes and we'll keep both your builder and Howdens updated."
+          "text": "You can now complete your purchase of your Howdens products from {{extras.trader.trading_name}} via finance. Click below to choose which finance option you want to apply for and complete the application. You'll receive a decision in a few minutes and we'll keep both your tradesperson and Howdens updated."
         }
       ]
     },

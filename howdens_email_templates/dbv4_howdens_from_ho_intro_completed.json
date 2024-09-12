@@ -4,7 +4,7 @@
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.branch.trading_name}},"
+      "text": "Hello {{extras.branch.trading_name}},"
     },
     {
       "type": "text",
@@ -13,7 +13,7 @@
           "text": "{{extras.customer.contact_name}} has completed their eligibility check on Kanda."
         },
         {
-          "text": "Once you have finalised their design, you will need to convert their Introduction into a Job to send the order to their tradesperson to confirm."
+          "text": "Once you have finalised their design, you will need to convert their Introduction into a Job to send the order to their tradesperson to confirm. Please also use the email template provided by Marketing to send an order breakdown to {{extras.customer.contact_name}} to provide them with more detail."
         }
       ]
     },

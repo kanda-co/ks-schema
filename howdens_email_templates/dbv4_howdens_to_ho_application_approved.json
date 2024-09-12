@@ -1,16 +1,19 @@
 {
-  "subject": "You've been accepted for finance for your Howdens order!",
+  "subject": "Your finance application for your Howdens order has been approved!",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.customer.contact_name}},"
+      "text": "Hello {{extras.customer.contact_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "{{extras.branch.trading_name}} has been notified that your finance application is approved. They'll get in touch with you soon to schedule delivery of your goods."
+          "text": "Your finance application has been approved. You selected a deposit amount of {{deposit.applied}} and will need to arrange this payment with your tradesperson directly."
+        },
+        {
+          "text": "We will contact you soon to confirm you are satisfied with the initial delivery*"
         }
       ]
     },
@@ -18,12 +21,16 @@
       "type": "statements",
       "rows": [
         {
-          "text": "After delivery",
-          "subtext": "When some or all of your order has been delivered, we'll ask you if everything is ok. After you sign off on the delivery we'll get your tradesperson paid."
-        },
-        {
           "text": "Have a Question?",
           "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "*Dependent on the timescale of bespoke products (such as Template & Fit solid work surfaces and Paint to Order kitchens), delivery may be in stages."
         }
       ]
     },

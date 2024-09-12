@@ -4,13 +4,13 @@
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.branch.trading_name}},"
+      "text": "Hello {{extras.branch.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "A finance introduction has been sent to {{extras.customer.contact_name}}; you can track the progress of this introduction and see which staff member sent it by looking in your Kanda dashboard."
+          "text": "A finance introduction has been sent to {{extras.customer.contact_name}}; you can track the progress of this introduction by logging in to your Kanda dashboard."
         }
       ]
     },
