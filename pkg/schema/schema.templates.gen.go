@@ -1079,16 +1079,19 @@ var TMap = map[TName]string{
   "body": [
     {
       "type": "heading",
-      "text": "Great News!"
+      "text": "Hello {{extras.branch.trading_name}}"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "{{extras.customer.contact_name}} has signed their credit agreement and the finance for this order is now in place. The 14 day cooling off period has now started, you will be able to mark this order as delivered in your Kanda dashboard in 14 days time - we will send you a reminder email to notify you when this can be done."
+          "text": "Great news! {{extras.customer.contact_name}} has signed their credit agreement and the finance for this order is now in place."
         },
         {
-          "text": "If they are paying a deposit, {{extras.trader.trading_name}} and {{extras.customer.contact_name}} need to arrange this payment directly."
+          "text": "The 14-day cooling off period has now begun. We will send you a reminder once it has ended so that you can deliver the order and mark it as delivered on the Kanda dashboard."
+        },
+        {
+          "text": "If {{extras.customer.contact_name}} is paying a deposit, their tradesperson will need to collect this directly and they have been sent an email to remind them to do so."
         }
       ]
     },
@@ -1114,13 +1117,16 @@ var TMap = map[TName]string{
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.trader.trading_name}} - Unfortunately, your customers application has been cancelled."
+      "text": "Hello {{extras.branch.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "{{extras.customer.contact_name}} asked either the lender or Kanda to cancel their finance application. They can still apply again if this was a mistake. To apply again you'll need Howdens to send them a new credit introduction."
+          "text": "{{extras.customer.contact_name}} has cancelled their finance application, please contact them and their tradesperson to arrange an alternative payment method."
+        },
+        {
+          "text": "If the application was cancelled in error, you will need to send out a new credit introduction."
         }
       ]
     },
@@ -1129,7 +1135,7 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
         }
       ]
     }
@@ -1141,7 +1147,7 @@ var TMap = map[TName]string{
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.branch.trading_name}} - {{extras.customer.contact_name}}'s application is taking longer than usual"
+      "text": "Hello {{extras.branch.trading_name}} - {{extras.customer.contact_name}}'s application is taking longer than usual"
     },
     {
       "type": "text",
@@ -1171,18 +1177,27 @@ var TMap = map[TName]string{
   ]
 }`,
 	DBV4_HOWDENS_FROM_HO_COOLING_OFF_PERIOD_COMPLETE: `{
-  "subject": "{{extras.customer.contact_name}}'s order can now be delivered",
+  "subject": "{{extras.trader.trading_name}}'s order for {{extras.customer.contact_name}} can now be delivered",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.depot.trading_name}},"
+      "text": "Hello {{extras.depot.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "{{extras.customer.contact_name}}'s {End User}'s 14 day cooling off period has now ended so you can now process their order for delivery."
+          "text": "{{extras.customer.contact_name}}'s 14 day cooling off period has now ended so you can now process their order for delivery. Remember to add ZZF01 at £0 value onto each K8 sales order going out on finance."
+        },
+        {
+          "text": "Once you have made the initial delivery*, you will need to login to your Kanda dashboard to mark the order as delivered. "
+        },
+        {
+          "text": "{{extras.trader.trading_name}} will receive payment into their bank account within 3 working days of the order being marked as delivered. They will then need to pay their Howdens Trade Account off as normal."
+        },
+        {
+          "text": "*Dependent on the timescale of bespoke products (such as Template & Fit solid work surfaces and Paint to Order kitchens), delivery may be in stages."
         }
       ]
     },
@@ -1203,13 +1218,13 @@ var TMap = map[TName]string{
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.branch.trading_name}},"
+      "text": "Hello {{extras.branch.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "Unfortunately, {{extras.customer.contact_name}}'s finance application has not been approved. We have informed them of this, and suggested they reach out to you and their builder to discuss the option to continue with their order without finance."
+          "text": "{{extras.customer.contact_name}}'s finance application has been declined and they have notified. Please contact {{extras.customer.contact_name}} and {{extras.trader.trading_name}} to arrange an alternative payment method. "
         }
       ]
     },
@@ -1230,7 +1245,7 @@ var TMap = map[TName]string{
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.branch.trading_name}},"
+      "text": "Hello {{extras.branch.trading_name}},"
     },
     {
       "type": "text",
@@ -1239,7 +1254,7 @@ var TMap = map[TName]string{
           "text": "{{extras.customer.contact_name}} has completed their eligibility check on Kanda."
         },
         {
-          "text": "Once you have finalised their design, you will need to convert their Introduction into a Job to send the order to their tradesperson to confirm."
+          "text": "Once you have finalised their design, you will need to convert their Introduction into a Job to send the order to their tradesperson to confirm. Please also use the email template provided by Marketing to send an order breakdown to {{extras.customer.contact_name}} to provide them with more detail."
         }
       ]
     },
@@ -1265,7 +1280,7 @@ var TMap = map[TName]string{
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.branch.trading_name}},"
+      "text": "Hello {{extras.branch.trading_name}},"
     },
     {
       "type": "text",
@@ -1295,13 +1310,13 @@ var TMap = map[TName]string{
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.branch.trading_name}},"
+      "text": "Hello {{extras.branch.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "Your end user {{extras.customer.contact_name}} has declined your invitation to check their eligibility for finance on Kanda. Please get in touch with the end user if you have any questions."
+          "text": "Your homeowner {{extras.customer.contact_name}} has declined your invitation to check their eligibility for finance on Kanda. Please get in touch with the homeowner if you have any questions."
         }
       ]
     },
@@ -1322,13 +1337,13 @@ var TMap = map[TName]string{
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.branch.trading_name}},"
+      "text": "Hello {{extras.branch.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "A finance introduction has been sent to {{extras.customer.contact_name}}; you can track the progress of this introduction and see which staff member sent it by looking in your Kanda dashboard."
+          "text": "A finance introduction has been sent to {{extras.customer.contact_name}}; you can track the progress of this introduction by logging in to your Kanda dashboard."
         }
       ]
     },
@@ -1349,18 +1364,18 @@ var TMap = map[TName]string{
   ]
 }`,
 	DBV4_HOWDENS_FROM_HO_JOB_DECLINED: `{
-  "subject": "{{extras.customer.contact_name}}}} has declined their Howdens order on Kanda",
+  "subject": "{{extras.customer.contact_name}}}} has declined their Howdens order",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.branch.trading_name}},"
+      "text": "Hello {{extras.branch.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "{{extras.customer.contact_name}} has declined their Howdens order on Kanda - if this was a mistake, please confirm with the end user and their builder before sending a new credit introduction."
+          "text": "{{extras.customer.contact_name}} has declined their Howdens order on Kanda, please contact them and their tradesperson to find out more. If this was done in error, a new Introduction will need to be sent."
         }
       ]
     },
@@ -1386,7 +1401,7 @@ var TMap = map[TName]string{
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.branch.trading_name}}"
+      "text": "Hello {{extras.branch.trading_name}}"
     },
     {
       "type": "text",
@@ -1408,21 +1423,21 @@ var TMap = map[TName]string{
   ]
 }`,
 	DBV4_HOWDENS_FROM_TP_INTRO_COMPLETED: `{
-  "subject": "{{extras.customer.contact_name}}'s order has been approved by their builder",
+  "subject": "{{extras.customer.contact_name}}'s order has been approved by their tradesperson",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.branch.trading_name}},"
+      "text": "Hello {{extras.branch.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "{{extras.customer.contact_name}}'s order has been approved by their builder. We have now emailed a link to the end user to apply for finance in minutes."
+          "text": "{{extras.customer.contact_name}}'s order has been approved by their tradesperson. {{extras.customer.contact_name}} has now been sent a link to proceed with their finance application."
         },
         {
-          "text": "Once they complete an application we'll let you know, you can follow the applications progress on your Kanda dashboard."
+          "text": "You can follow their progress by logging in to your Kanda dashboard."
         }
       ]
     },
@@ -1443,18 +1458,18 @@ var TMap = map[TName]string{
   ]
 }`,
 	DBV4_HOWDENS_FROM_TP_INTRO_REJECTED: `{
-  "subject": "{{extras.customer.contact_name}}'s builder has rejected their order",
+  "subject": "{{extras.customer.contact_name}}'s tradesperson has rejected their order",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.branch.trading_name}},"
+      "text": "Hello {{extras.branch.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "{{extras.customer.contact_name}}'s builder has rejected their order. Please contact them directly to understand more."
+          "text": "{{extras.customer.contact_name}}'s tradesperson has rejected their order. Please contact them directly to find out more."
         }
       ]
     },
@@ -1470,18 +1485,18 @@ var TMap = map[TName]string{
   ]
 }`,
 	DBV4_HOWDENS_FROM_TP_JOB_PAID_OUT: `{
-  "subject": "{{extras.customer.contact_name}}'s order has now been paid out to their builder",
+  "subject": "{{extras.customer.contact_name}}'s order has now been paid out to their tradesperson",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.branch.trading_name}},"
+      "text": "Hello {{extras.branch.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "We've processed payment to {{extras.customer.contact_name}}'s builder. They should now pay off their Howdens trade account as usual."
+          "text": "We've processed payment to {{extras.customer.contact_name}}'s tradesperson."
         }
       ]
     },
@@ -1497,18 +1512,21 @@ var TMap = map[TName]string{
   ]
 }`,
 	DBV4_HOWDENS_HO_APPLICATION_CANCELLED: `{
-  "subject": "Your finance application has been cancelled",
+  "subject": "Your finance application for your Howdens products has been cancelled",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.customer.contact_name}},"
+      "text": "Hello {{extras.customer.contact_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "Your finance application has been cancelled due to your request to either the lender or Kanda to cancel your finance application. You can still apply again if this was a mistake. To apply again, you'll need to request a new credit introduction from {{extras.branch.trading_name}}."
+          "text": "Your request to cancel your finance application has been processed. Please contact your tradesperson to arrange an alternative payment method if you would like to proceed with your Howdens order."
+        },
+        {
+          "text": "If this was a mistake, please contact Howdens to request a new link so that you can re-apply."
         }
       ]
     },
@@ -1524,18 +1542,18 @@ var TMap = map[TName]string{
   ]
 }`,
 	DBV4_HOWDENS_HO_APPLICATION_REFERRED: `{
-  "subject": "You need to provide supporting documents for your finance application",
+  "subject": "Supporting documentation required for your finance application for your Howdens purchase",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{receiver.contact_name}},"
+      "text": "Hello {{receiver.contact_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "Your finance application has been reviewed by the lender and they've asked that you submit some extra documents. You will have received an email from <strong>{{lender.contact_email}}</strong>. You can follow the link in that email to submit your documents or email it back to them. If you can't find their email, please check your spam folder"
+          "text": "Your finance application has been reviewed by the lender and they require some additional information / documents from you. You will have received an email from <strong>{{lender.contact_email}}</strong>. Please follow the link in the email to submit your documents or email them to the lender. We recommend checking your spam folder if you have not received this."
         }
       ]
     },
@@ -1552,28 +1570,24 @@ var TMap = map[TName]string{
   "sms": "Hey {{receiver.contact_name}}, good news! The lender has accepted your application in principal. They just need a few documents. Check your email for more info. Kanda!"
 }`,
 	DBV4_HOWDENS_HO_APPLICATION_REJECTED: `{
-  "subject": "There has been an update on your application",
+  "subject": "Your finance application for your Howdens order has been declined",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.customer.contact_name}},"
+      "text": "Hello {{extras.customer.contact_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "The lender has sent Kanda an update about your application, click the link below to see what it is."
+          "text": "Your finance application has been declined. Please contact your tradesperson to arrange an alternative payment method. "
         }
       ]
     },
     {
       "type": "statements",
       "rows": [
-        {
-          "text": "What happens now?",
-          "subtext": "{{extras.trader.trading_name}} and your Howdens depot have been notified of any changes to your finance application status so they are up to date. "
-        },
         {
           "text": "Have a Question?",
           "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
@@ -1585,32 +1599,33 @@ var TMap = map[TName]string{
       "text": "Check my update",
       "url": "{{cta_url}}"
     }
-  ],
-  "sms": "There has been an update to your finance application Kanda. Check your emails for more info."
+  ]
 }`,
 	DBV4_HOWDENS_HO_APPLICATION_SAT_NOTE_SENT: `{
-  "subject": "Please confirm delivery of your goods from Howdens with Kanda",
+  "subject": "Please confirm delivery of your Howdens products",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.customer.contact_name}},"
+      "text": "Hello {{extras.customer.contact_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "{{extras.branch.trading_name}} have let us know they have delivered some or all of your order. Please let us know if everything is in order by signing the delivery note."
+          "text": "{{extras.branch.trading_name}} have made the initial delivery* of your products. Please confirm by signing the delivery note via the link below. "
+        },
+        {
+          "text": "You will receive an email from the lender advising you of your first repayment date."
+        },
+        {
+          "text": "*Dependent on the timescale of bespoke products (such as Template & Fit solid work surfaces and paint to order kitchens), delivery may be in stages. Confirming delivery is indicative of receiving the initial delivery only."
         }
       ]
     },
     {
       "type": "statements",
       "rows": [
-        {
-          "text": "Sign a delivery note",
-          "subtext": "f you're satisfied with the goods, you'll need to sign a delivery note for us. Follow the link below to do this. Dependent on the timescale of bespoke products (such as solid work surfaces and paint to order kitchens), delivery may be in stages. Confirming delivery is indicative of receiving the initial delivery only."
-        },
         {
           "text": "Have a Question?",
           "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
@@ -1626,28 +1641,30 @@ var TMap = map[TName]string{
   "sms": "{{extras.branch.trading_name}} has told Kanda the works are completed. Check your email for next steps. Kanda!"
 }`,
 	DBV4_HOWDENS_HO_APPLICATION_SAT_NOTE_SENT_REMINDER: `{
-  "subject": "Please confirm your order from {{extras.branch.trading_name}} has arrived (24 hours left)",
+  "subject": "Please confirm delivery of your Howdens products",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.customer.contact_name}},"
+      "text": "Hello {{extras.customer.contact_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "{{extras.branch.trading_name}} have let us know they have delivered some or all of your order. Please let us know if everything is in order by signing the delivery note."
+          "text": "{{extras.branch.trading_name}} have made the initial delivery* of your products. Please confirm by signing the delivery note via the link below. "
+        },
+        {
+          "text": "You will  receive an email from the lender advising you of your first repayment date."
+        },
+        {
+          "text": "*Dependent on the timescale of bespoke products (such as Template & Fit solid work surfaces and paint to order kitchens), delivery may be in stages. Confirming delivery is indicative of receiving the initial delivery only."
         }
       ]
     },
     {
       "type": "statements",
       "rows": [
-        {
-          "text": "Sign a delivery note",
-          "subtext": "f you're satisfied with the goods, you'll need to sign a delivery note for us. Follow the link below to do this. Dependent on the timescale of bespoke products (such as solid work surfaces and paint to order kitchens), delivery may be in stages. Confirming delivery is indicative of receiving the initial delivery only."
-        },
         {
           "text": "Have a Question?",
           "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
@@ -1663,21 +1680,18 @@ var TMap = map[TName]string{
   "sms": "{{extras.branch.trading_name}} has told Kanda the works are completed. Check your email for next steps. Kanda!"
 }`,
 	DBV4_HOWDENS_HO_APPLICATION_SAT_NOTE_SIGNED: `{
-  "subject": "You have signed off on your delivery from {{extras.branch.trading_name}}",
+  "subject": "You have signed for delivery of your Howdens products",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.customer.contact_name}},"
+      "text": "Hello {{extras.customer.contact_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "Thank you for signing the delivery note. Our team may try to call you over the next few days to verify the information before we pay your builder."
-        },
-        {
-          "text": "If you don't hear from Kanda then rest assured we're happy to pay the builder out based on your delivery note. You'll receive an email from your lender shortly advising you of your first repayment date."
+          "text": "Thank you for signing the delivery note for your Howdens products. Our team may try to call you over the next few days to follow up on your experience."
         },
         {
           "text": "If you need to change any of your details then please contact the lender directly:"
@@ -1749,13 +1763,13 @@ var TMap = map[TName]string{
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.customer.contact_name}},"
+      "text": "Hello {{extras.customer.contact_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "You have declined your order from {{extras.branch.trading_name}} on Kanda - if this was a mistake, please reach out to them and have them send you out a new application link."
+          "text": "You have declined your order from {{extras.branch.trading_name}} on Kanda - if this was a mistake, please contact them to issue a new application link."
         }
       ]
     },
@@ -1776,13 +1790,13 @@ var TMap = map[TName]string{
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.customer.contact_name}}"
+      "text": "Hello {{extras.customer.contact_name}}"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "You've signed the delivery note and will now receive a welcome call from our lender, Propensio. Your builder may not get paid on time if you don't complete this welcome call."
+          "text": "You've signed the delivery note and will now receive a welcome call from the lender, Propensio."
         }
       ]
     },
@@ -1803,18 +1817,21 @@ var TMap = map[TName]string{
   ]
 }`,
 	DBV4_HOWDENS_TO_HO_APPLICATION_APPROVED: `{
-  "subject": "You've been accepted for finance for your Howdens order!",
+  "subject": "Your finance application for your Howdens order has been approved!",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.customer.contact_name}},"
+      "text": "Hello {{extras.customer.contact_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "{{extras.branch.trading_name}} has been notified that your finance application is approved. They'll get in touch with you soon to schedule delivery of your goods."
+          "text": "Your finance application has been approved. You selected a deposit amount of {{deposit.applied}} and will need to arrange this payment with your tradesperson directly."
+        },
+        {
+          "text": "We will contact you soon to confirm you are satisfied with the initial delivery*"
         }
       ]
     },
@@ -1822,12 +1839,16 @@ var TMap = map[TName]string{
       "type": "statements",
       "rows": [
         {
-          "text": "After delivery",
-          "subtext": "When some or all of your order has been delivered, we'll ask you if everything is ok. After you sign off on the delivery we'll get your tradesperson paid."
-        },
-        {
           "text": "Have a Question?",
           "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "*Dependent on the timescale of bespoke products (such as Template & Fit solid work surfaces and Paint to Order kitchens), delivery may be in stages."
         }
       ]
     },
@@ -1839,18 +1860,18 @@ var TMap = map[TName]string{
   ]
 }`,
 	DBV4_HOWDENS_TO_HO_CONVERTED_JOB: `{
-  "subject": "You can now complete your finance application for your Howdens goods purchase",
+  "subject": "You can now complete a finance application for your Howdens products",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.customer.contact_name}},"
+      "text": "Hello {{extras.customer.contact_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "You can now complete your purchase of your Howdens goods from {{extras.trader.trading_name}} via finance. Click below to choose which finance option you want to apply for and complete the application. You'll receive a decision in a few minutes and we'll keep both your builder and Howdens updated."
+          "text": "You can now complete your purchase of your Howdens products from {{extras.trader.trading_name}} via finance. Click below to choose which finance option you want to apply for and complete the application. You'll receive a decision in a few minutes and we'll keep both your tradesperson and Howdens updated."
         }
       ]
     },
@@ -1871,18 +1892,18 @@ var TMap = map[TName]string{
   ]
 }`,
 	DBV4_HOWDENS_TO_HO_CONVERTED_JOB_REMINDER: `{
-  "subject": "You need to complete the finance application for your Howdens order",
+  "subject": "You need to complete the finance application for your Howdens products",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.customer.contact_name}},"
+      "text": "Hello {{extras.customer.contact_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "We noticed that you currently haven't completed the finance application for the purchase of your Howdens goods from {{extras.trader.trading_name}}. Click below to choose which finance option you want to apply for and complete the application. You'll receive a decision in a few minutes and we'll keep both your builder and Howdens updated."
+          "text": "We noticed that you haven't completed the finance application for the purchase of your Howdens products from {{extras.trader.trading_name}}."
         }
       ]
     },
@@ -1903,18 +1924,18 @@ var TMap = map[TName]string{
   ]
 }`,
 	DBV4_HOWDENS_TO_HO_INTRO: `{
-  "subject": "Check your eligibility to finance your Howdens purchase",
+  "subject": "Check your eligibility to finance your Howdens products",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.customer.contact_name}},"
+      "text": "Hello {{extras.customer.contact_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "Howdens have partnered with Kanda to allow you to apply for finance for your new Howdens purchase. Before you can apply for finance you'll need to first check if you're eligible. Click below to complete a short eligibility checker and set your budget."
+          "text": "Howdens have partnered with Kanda to allow you to apply for finance for your Howdens  products. Before you can apply for finance you'll need to first check if you're eligible. Click below to complete a short eligibility checker and set your budget."
         }
       ]
     },
@@ -1935,18 +1956,18 @@ var TMap = map[TName]string{
   ]
 }`,
 	DBV4_HOWDENS_TO_HO_INTRO_BUDGET_REMINDER: `{
-  "subject": "Remember to check your eligibility to finance your Howdens kitchen",
+  "subject": "Reminder to check your eligibility to finance your Howdens kitchen",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.customer.contact_name}},"
+      "text": "Hello {{extras.customer.contact_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "Howdens have partnered with Kanda to allow you apply for finance for your new Howdens kitchen purchase. We noticed you haven't checked if you're eligible for finance yet. Click below to complete a short eligibility checker and set your budget."
+          "text": "Howdens have partnered with Kanda to allow you apply for finance for your Howdens  products. We noticed you haven't checked if you're eligible for finance yet. Click below to complete a short eligibility checker and set your budget."
         }
       ]
     },
@@ -1972,13 +1993,13 @@ var TMap = map[TName]string{
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.customer.contact_name}},"
+      "text": "Hello {{extras.customer.contact_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "You have completed your eligibility check for finance for your Howdens products. Once you have finalised your design, we will send your order to your tradesperson to confirm it is correct. Howdens will be in touch shortly to also confirm your order with you."
+          "text": "You have completed your eligibility check for finance for your Howdens products. Howdens will be in touch shortly to continue the design process. Once your design has been finalised, your order will be confirmed by your tradesperson and you will be able to apply for finance."
         }
       ]
     },
@@ -2004,16 +2025,19 @@ var TMap = map[TName]string{
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.trader.trading_name}},"
+      "text": "Hello {{extras.trader.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "Your customer has been accepted for finance for their Howdens purchase, they have selected a deposit amount of {{deposit.applied}}, so you will need to collect this directly from your customer."
+          "text": "Your customer's finance application has been approved. As they have selected a deposit amount of {{deposit.applied}}, you will need to arrange this payment with them directly."
         },
         {
-          "text": "{{extras.branch.trading_name}} will now process the order, we will update you once the goods are marked as delivered to the customers address."
+          "text": "Howdens will now process the order. Upon initial delivery*, you will receive the finance payment into your bank account within 3 working days."
+        },
+        {
+          "text": "*Dependent on the timescale of bespoke products (such as Template & Fit solid work surfaces and Paint to Order kitchens), delivery may be in stages."
         }
       ]
     },
@@ -2029,18 +2053,21 @@ var TMap = map[TName]string{
   ]
 }`,
 	DBV4_HOWDENS_TO_TP_GOODS_DELIVERED: `{
-  "subject": "{{extras.customer.contact_name}}'s order has been delivered",
+  "subject": "{{extras.customer.contact_name}}'s Howdens order has been delivered",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.trader.trading_name}},"
+      "text": "Hello {{extras.trader.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "We've been notified by Howdens that the order for {{extras.customer.contact_name}} has been delivered. We've sent your customer a delivery note to confirm receipt of the goods. Once that is signed, you'll get paid in full within 3 working days."
+          "text": "Howdens have made the initial delivery* of {{extras.customer.contact_name}}'s order. We are processing payment so you will receive the finance value into your bank account within 3 working days. Once received you will need to pay your Howdens Trade Account off as normal."
+        },
+        {
+          "text": "*Dependent on the timescale of bespoke products (such as Template & Fit solid work surfaces and Paint to Order kitchens), delivery may be in stages."
         }
       ]
     },
@@ -2061,13 +2088,16 @@ var TMap = map[TName]string{
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.trader.trading_name}},"
+      "text": "Hello {{extras.trader.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "Howdens have partnered with Kanda to allow end users to finance their kitchen goods purchase from you. Your Partner Designer at Howdens is requesting you approve this invoice pricing so your end user can apply to finance it."
+          "text": "Howdens have partnered with Kanda to allow homeowners to finance the purchase of Howdens products from you. Please review and approve the pricing on this invoice to {{extras.customer.contact_name}} so that they can apply for finance."
+        },
+        {
+          "text": "Here's how it works:"
         }
       ]
     },
@@ -2081,7 +2111,7 @@ var TMap = map[TName]string{
           "text": "<b>2.</b> Your customer applies for finance"
         },
         {
-          "text": "<b>3.</b> Howdens deliver the goods"
+          "text": "<b>3.</b> Howdens deliver the products"
         },
         {
           "text": "<b>4.</b> You get paid"
@@ -2161,18 +2191,21 @@ var TMap = map[TName]string{
   ]
 }`,
 	DBV4_HOWDENS_TP_APPLICATION_CANCELLED: `{
-  "subject": "{{extras.customer.contact_name}}'s finance application has been cancelled",
+  "subject": "{{extras.customer.contact_name}}'s finance application for their Howdens order has been cancelled",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.trader.trading_name}} - Unfortunately, your customers application has been cancelled."
+      "text": "Hello {{extras.trader.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "{{extras.customer.contact_name}} asked either the lender or Kanda to cancel their finance application. They can still apply again if this was a mistake. To apply again they'll need Howdens to send them a new credit introduction."
+          "text": "{{extras.customer.contact_name}} has cancelled their finance application. Please contact them to arrange an alternative payment method."
+        },
+        {
+          "text": "If this was a mistake, Howdens will need to send them a new application."
         }
       ]
     },
@@ -2193,7 +2226,7 @@ var TMap = map[TName]string{
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.trader.trading_name}} - {{extras.customer.contact_name}}'s application is taking longer than usual"
+      "text": "Hello {{extras.trader.trading_name}} - {{extras.customer.contact_name}}'s application is taking longer than usual"
     },
     {
       "type": "text",
@@ -2218,18 +2251,18 @@ var TMap = map[TName]string{
   ]
 }`,
 	DBV4_HOWDENS_TP_CUSTOMER_REJECTED: `{
-  "subject": "{{extras.customer.contact_name}}'s finance application was declined",
+  "subject": "{{extras.customer.contact_name}}'s  finance application for their Howdens order has been declined",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.trader.trading_name}},"
+      "text": "Hello {{extras.trader.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "Unfortunately, {{extras.customer.contact_name}}'s finance application has not been approved. We have informed them of this, and suggested they reach out to you and Howdens to discuss the option to continue with their order without finance."
+          "text": "{{extras.customer.contact_name}}'s finance application has been declined and they have been notified. Please contact {{extras.customer.contact_name}} to arrange an alternative payment method."
         }
       ]
     },
@@ -2250,13 +2283,13 @@ var TMap = map[TName]string{
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.trader.trading_name}},"
+      "text": "Hello {{extras.trader.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "{{extras.customer.contact_name}} has declined their Howdens order on Kanda - if this was a mistake, please instruct your Howdens depot to send them a new application."
+          "text": "{{extras.customer.contact_name}} has declined their Howdens order on Kanda, please contact them to find out more. If the order was declined in error, Howdens will need to create a new order."
         }
       ]
     },
@@ -2277,7 +2310,7 @@ var TMap = map[TName]string{
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.trader.trading_name}},"
+      "text": "Hello {{extras.trader.trading_name}},"
     },
     {
       "type": "text",
@@ -2304,7 +2337,7 @@ var TMap = map[TName]string{
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.trader.trading_name}}"
+      "text": "Hello {{extras.trader.trading_name}}"
     },
     {
       "type": "text",

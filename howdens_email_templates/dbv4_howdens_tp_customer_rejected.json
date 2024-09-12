@@ -1,16 +1,16 @@
 {
-  "subject": "{{extras.customer.contact_name}}'s finance application was declined",
+  "subject": "{{extras.customer.contact_name}}'s  finance application for their Howdens order has been declined",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.trader.trading_name}},"
+      "text": "Hello {{extras.trader.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "Unfortunately, {{extras.customer.contact_name}}'s finance application has not been approved. We have informed them of this, and suggested they reach out to you and Howdens to discuss the option to continue with their order without finance."
+          "text": "{{extras.customer.contact_name}}'s finance application has been declined and they have been notified. Please contact {{extras.customer.contact_name}} to arrange an alternative payment method."
         }
       ]
     },

@@ -4,13 +4,13 @@
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.customer.contact_name}},"
+      "text": "Hello {{extras.customer.contact_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "You have declined your order from {{extras.branch.trading_name}} on Kanda - if this was a mistake, please reach out to them and have them send you out a new application link."
+          "text": "You have declined your order from {{extras.branch.trading_name}} on Kanda - if this was a mistake, please contact them to issue a new application link."
         }
       ]
     },

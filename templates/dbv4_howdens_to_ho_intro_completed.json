@@ -4,13 +4,13 @@
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.customer.contact_name}},"
+      "text": "Hello {{extras.customer.contact_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "You have completed your eligibility check for finance for your Howdens products. Once you have finalised your design, we will send your order to your tradesperson to confirm it is correct. Howdens will be in touch shortly to also confirm your order with you."
+          "text": "You have completed your eligibility check for finance for your Howdens products. Howdens will be in touch shortly to continue the design process. Once your design has been finalised, your order will be confirmed by your tradesperson and you will be able to apply for finance."
         }
       ]
     },

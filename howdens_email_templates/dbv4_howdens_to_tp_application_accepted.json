@@ -4,16 +4,19 @@
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.trader.trading_name}},"
+      "text": "Hello {{extras.trader.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "Your customer has been accepted for finance for their Howdens purchase, they have selected a deposit amount of {{deposit.applied}}, so you will need to collect this directly from your customer."
+          "text": "Your customer's finance application has been approved. As they have selected a deposit amount of {{deposit.applied}}, you will need to arrange this payment with them directly."
         },
         {
-          "text": "{{extras.branch.trading_name}} will now process the order, we will update you once the goods are marked as delivered to the customers address."
+          "text": "Howdens will now process the order. Upon initial delivery*, you will receive the finance payment into your bank account within 3 working days."
+        },
+        {
+          "text": "*Dependent on the timescale of bespoke products (such as Template & Fit solid work surfaces and Paint to Order kitchens), delivery may be in stages."
         }
       ]
     },

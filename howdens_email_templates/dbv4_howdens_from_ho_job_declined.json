@@ -1,16 +1,16 @@
 {
-  "subject": "{{extras.customer.contact_name}}}} has declined their Howdens order on Kanda",
+  "subject": "{{extras.customer.contact_name}}}} has declined their Howdens order",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.branch.trading_name}},"
+      "text": "Hello {{extras.branch.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "{{extras.customer.contact_name}} has declined their Howdens order on Kanda - if this was a mistake, please confirm with the end user and their builder before sending a new credit introduction."
+          "text": "{{extras.customer.contact_name}} has declined their Howdens order on Kanda, please contact them and their tradesperson to find out more. If this was done in error, a new Introduction will need to be sent."
         }
       ]
     },

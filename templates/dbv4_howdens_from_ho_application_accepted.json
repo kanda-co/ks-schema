@@ -4,16 +4,19 @@
   "body": [
     {
       "type": "heading",
-      "text": "Great News!"
+      "text": "Hello {{extras.branch.trading_name}}"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "{{extras.customer.contact_name}} has signed their credit agreement and the finance for this order is now in place. The 14 day cooling off period has now started, you will be able to mark this order as delivered in your Kanda dashboard in 14 days time - we will send you a reminder email to notify you when this can be done."
+          "text": "Great news! {{extras.customer.contact_name}} has signed their credit agreement and the finance for this order is now in place."
         },
         {
-          "text": "If they are paying a deposit, {{extras.trader.trading_name}} and {{extras.customer.contact_name}} need to arrange this payment directly."
+          "text": "The 14-day cooling off period has now begun. We will send you a reminder once it has ended so that you can deliver the order and mark it as delivered on the Kanda dashboard."
+        },
+        {
+          "text": "If {{extras.customer.contact_name}} is paying a deposit, their tradesperson will need to collect this directly and they have been sent an email to remind them to do so."
         }
       ]
     },

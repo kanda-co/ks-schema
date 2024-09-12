@@ -1,16 +1,19 @@
 {
-  "subject": "{{extras.customer.contact_name}}'s order has been delivered",
+  "subject": "{{extras.customer.contact_name}}'s Howdens order has been delivered",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.trader.trading_name}},"
+      "text": "Hello {{extras.trader.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "We've been notified by Howdens that the order for {{extras.customer.contact_name}} has been delivered. We've sent your customer a delivery note to confirm receipt of the goods. Once that is signed, you'll get paid in full within 3 working days."
+          "text": "Howdens have made the initial delivery* of {{extras.customer.contact_name}}'s order. We are processing payment so you will receive the finance value into your bank account within 3 working days. Once received you will need to pay your Howdens Trade Account off as normal."
+        },
+        {
+          "text": "*Dependent on the timescale of bespoke products (such as Template & Fit solid work surfaces and Paint to Order kitchens), delivery may be in stages."
         }
       ]
     },

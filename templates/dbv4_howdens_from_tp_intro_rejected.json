@@ -1,16 +1,16 @@
 {
-  "subject": "{{extras.customer.contact_name}}'s builder has rejected their order",
+  "subject": "{{extras.customer.contact_name}}'s tradesperson has rejected their order",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.branch.trading_name}},"
+      "text": "Hello {{extras.branch.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "{{extras.customer.contact_name}}'s builder has rejected their order. Please contact them directly to understand more."
+          "text": "{{extras.customer.contact_name}}'s tradesperson has rejected their order. Please contact them directly to find out more."
         }
       ]
     },

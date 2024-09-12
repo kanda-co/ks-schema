@@ -1,19 +1,16 @@
 {
-  "subject": "You have signed off on your delivery from {{extras.branch.trading_name}}",
+  "subject": "You have signed for delivery of your Howdens products",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.customer.contact_name}},"
+      "text": "Hello {{extras.customer.contact_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "Thank you for signing the delivery note. Our team may try to call you over the next few days to verify the information before we pay your builder."
-        },
-        {
-          "text": "If you don't hear from Kanda then rest assured we're happy to pay the builder out based on your delivery note. You'll receive an email from your lender shortly advising you of your first repayment date."
+          "text": "Thank you for signing the delivery note for your Howdens products. Our team may try to call you over the next few days to follow up on your experience."
         },
         {
           "text": "If you need to change any of your details then please contact the lender directly:"

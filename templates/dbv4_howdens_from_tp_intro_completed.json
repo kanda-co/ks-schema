@@ -1,19 +1,19 @@
 {
-  "subject": "{{extras.customer.contact_name}}'s order has been approved by their builder",
+  "subject": "{{extras.customer.contact_name}}'s order has been approved by their tradesperson",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.branch.trading_name}},"
+      "text": "Hello {{extras.branch.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "{{extras.customer.contact_name}}'s order has been approved by their builder. We have now emailed a link to the end user to apply for finance in minutes."
+          "text": "{{extras.customer.contact_name}}'s order has been approved by their tradesperson. {{extras.customer.contact_name}} has now been sent a link to proceed with their finance application."
         },
         {
-          "text": "Once they complete an application we'll let you know, you can follow the applications progress on your Kanda dashboard."
+          "text": "You can follow their progress by logging in to your Kanda dashboard."
         }
       ]
     },

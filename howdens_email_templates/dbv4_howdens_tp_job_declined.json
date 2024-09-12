@@ -4,13 +4,13 @@
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.trader.trading_name}},"
+      "text": "Hello {{extras.trader.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "{{extras.customer.contact_name}} has declined their Howdens order on Kanda - if this was a mistake, please instruct your Howdens depot to send them a new application."
+          "text": "{{extras.customer.contact_name}} has declined their Howdens order on Kanda, please contact them to find out more. If the order was declined in error, Howdens will need to create a new order."
         }
       ]
     },
