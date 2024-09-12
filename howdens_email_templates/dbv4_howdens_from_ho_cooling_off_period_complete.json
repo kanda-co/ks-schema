@@ -1,16 +1,25 @@
 {
-  "subject": "{{extras.customer.contact_name}}'s order can now be delivered",
+  "subject": "{{extras.trader.trading_name}}'s order for {{extras.customer.contact_name}} can now be delivered",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{extras.depot.trading_name}},"
+      "text": "Hello {{extras.depot.trading_name}},"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "{{extras.customer.contact_name}}'s {End User}'s 14 day cooling off period has now ended so you can now process their order for delivery."
+          "text": "{{extras.customer.contact_name}}'s 14 day cooling off period has now ended so you can now process their order for delivery. Remember to add ZZF01 at £0 value onto each K8 sales order going out on finance."
+        },
+        {
+          "text": "Once you have made the initial delivery*, you will need to login to your Kanda dashboard to mark the order as delivered. "
+        },
+        {
+          "text": "{{extras.trader.trading_name}} will receive payment into their bank account within 3 working days of the order being marked as delivered. They will then need to pay their Howdens Trade Account off as normal."
+        },
+        {
+          "text": "*Dependent on the timescale of bespoke products (such as Template & Fit solid work surfaces and Paint to Order kitchens), delivery may be in stages."
         }
       ]
     },
