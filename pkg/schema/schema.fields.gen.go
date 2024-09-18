@@ -63,7 +63,6 @@ func GetFields(name string) []string {
 			"authorisation_url",
 			"bid",
 			"branches",
-			"campaigns",
 			"cid",
 			"departments",
 			"disabled",

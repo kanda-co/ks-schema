@@ -311,6 +311,30 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/campaign:
+    get:
+      operationId: infoCampaign
+      summary: query campaigns
+      tags:
+        - InfoCampaign
+      parameters:
+        - $ref: "#/components/parameters/q"
+      responses:
+        200:
+          description: got campaigns info
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Campaign"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/info/example-job:
     put:
       operationId: infoExampleJob
@@ -5943,12 +5967,6 @@ components:
         authorisation_url:
           type: string
           title: authorisation url
-          readOnly: true
-        campaigns:
-          type: array
-          title: campaigns
-          items:
-            $ref: "#/components/schemas/Campaign"
           readOnly: true
 
     EnterpriseUserRole:
