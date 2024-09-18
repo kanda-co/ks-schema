@@ -5944,6 +5944,12 @@ components:
           type: string
           title: authorisation url
           readOnly: true
+        campaigns:
+          type: array
+          title: campaigns
+          items:
+            $ref: "#/components/schemas/Campaign"
+          readOnly: true
 
     EnterpriseUserRole:
       type: object
@@ -10946,6 +10952,66 @@ components:
           title: comm extra context
           description: comm extra context for dynamic tempalte
           $ref: "#/components/schemas/CommExtras"
+
+    Campaign:
+      type: object
+      title: campaign
+      required:
+        - id
+        - sid
+        - event_name
+        - referrer
+        - gclid
+        - metadata
+      properties:
+        id:
+          type: string
+          title: id
+        sid:
+          type: string
+          title: session id
+        cid:
+          type: string
+          title: company id
+          readOnly: true
+        eid:
+          type: string
+          title: enterprise id
+          readOnly: true
+        bid:
+          type: string
+          title: branch id
+          readOnly: true
+        aid:
+          type: string
+          title: author id
+          readOnly: true
+        oid:
+          type: string
+          title: owner id
+          readOnly: true
+        event_name:
+          type: string
+          $ref: "#/components/schemas/CampaignEvent"
+        referrer:
+          type: string
+          title: URL referrer
+        gclid:
+          type: string
+          title: google click id
+        utm:
+          $ref: "#/components/schemas/UTM"
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+
+    CampaignEvent:
+      type: string
+      title: campaign event
+      enum:
+        - "page_viewed"
+        - "user_signed_up"
+        - "account_registered"
+        - "account_subscribed"
 
     Training:
       type: object
