@@ -2186,12 +2186,6 @@ paths:
             type: string
             minLength: 1
       responses:
-        200:
-          description: resent notification to relevant party based on current state
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Introduction"
         default:
           description: unexpected error
           content:
