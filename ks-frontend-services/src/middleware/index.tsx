@@ -413,7 +413,8 @@ export function createMiddleware<State, P extends StringIndexedObject>(
       // If not, log the user out
       TE.orElse(() =>
         handleIO(() => {
-          window.location.href = unauthorizedRedirectRoute;
+          const search = window.location.search;
+          window.location.href = `${unauthorizedRedirectRoute}${search}`;
         }),
       ),
     )();
