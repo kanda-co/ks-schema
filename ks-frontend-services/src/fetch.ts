@@ -69,6 +69,10 @@ export const cleanHeaders = (
     };
   }, {});
 
+export const addReferrerHeader = (): HeadersInit => ({
+  ...(window?.location?.href ? { referrer: window.location.href } : {}),
+});
+
 /**
  * Build the needed headers for API requests, including any needed auth
  * @param init
@@ -82,6 +86,7 @@ const buildRequestHeaders = (
   ...init,
   headers: {
     ...cleanHeaders(init.headers || {}),
+    ...addReferrerHeader(),
     ...(token ? buildAuth(token) : {}),
     ...(ids ? buildIds(ids) : {}),
   },
