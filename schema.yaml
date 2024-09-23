@@ -311,6 +311,30 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/campaign:
+    get:
+      operationId: infoCampaign
+      summary: query campaigns
+      tags:
+        - InfoCampaign
+      parameters:
+        - $ref: "#/components/parameters/q"
+      responses:
+        200:
+          description: got campaigns info
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Campaign"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/info/example-job:
     put:
       operationId: infoExampleJob
@@ -10940,6 +10964,66 @@ components:
           title: comm extra context
           description: comm extra context for dynamic tempalte
           $ref: "#/components/schemas/CommExtras"
+
+    Campaign:
+      type: object
+      title: campaign
+      required:
+        - id
+        - sid
+        - event_name
+        - referrer
+        - gclid
+        - metadata
+      properties:
+        id:
+          type: string
+          title: id
+        sid:
+          type: string
+          title: session id
+        cid:
+          type: string
+          title: company id
+          readOnly: true
+        eid:
+          type: string
+          title: enterprise id
+          readOnly: true
+        bid:
+          type: string
+          title: branch id
+          readOnly: true
+        aid:
+          type: string
+          title: author id
+          readOnly: true
+        oid:
+          type: string
+          title: owner id
+          readOnly: true
+        event_name:
+          type: string
+          $ref: "#/components/schemas/CampaignEvent"
+        referrer:
+          type: string
+          title: URL referrer
+        gclid:
+          type: string
+          title: google click id
+        utm:
+          $ref: "#/components/schemas/UTM"
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+
+    CampaignEvent:
+      type: string
+      title: campaign event
+      enum:
+        - "page_viewed"
+        - "user_signed_up"
+        - "account_registered"
+        - "account_subscribed"
 
     Training:
       type: object
