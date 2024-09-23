@@ -17,6 +17,7 @@ export declare const buildIds: (ids: Ids) => IdHeaders;
  */
 export declare const buildAuth: (token: string) => AuthenticationHeaders;
 export declare const cleanHeaders: (headers: StringIndexedObject) => StringIndexedObject;
+export declare const addReferrerHeader: () => HeadersInit;
 export declare const getIds: (amplitude?: BrowserClient) => Ids;
 export declare const formatTrackingBody: (inputUrl: string, options: StringIndexedObject) => StringIndexedObject;
 export declare const originalFetch: () => any;

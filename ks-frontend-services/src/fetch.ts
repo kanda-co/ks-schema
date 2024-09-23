@@ -70,7 +70,9 @@ export const cleanHeaders = (
   }, {});
 
 export const addReferrerHeader = (): HeadersInit => ({
-  ...(window?.location?.href ? { referrer: window.location.href } : {}),
+  ...(window?.location?.href
+    ? { 'x-kanda-referer': window.location.href }
+    : {}),
 });
 
 /**
@@ -174,12 +176,10 @@ const interceptedFetch = async (
   amplitude?.track('api-attempted', trackingBody);
   amplitude?.flush();
 
+  const headers = buildRequestHeaders(options, token, ids);
+
   return originalFetch()
-    .apply(currentWindow, [
-      url,
-      buildRequestHeaders(options, token, ids),
-      ...args,
-    ])
+    .apply(currentWindow, [url, headers, ...args])
     .then(async (data) => {
       if (data.status === 403) {
         if (APP_ENV === 'qa')
