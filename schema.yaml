@@ -5736,6 +5736,7 @@ paths:
               - dbv3_user_company_setup_reminder
               - dbv3_user_verify_director_reminder
               - dbv3_user_send_referrals
+              - housekeeping_introduction_reminder
               - housekeeping_check_referral_expiry
               - housekeeping_check_lender_rate
               - housekeeping_check_lender_update
