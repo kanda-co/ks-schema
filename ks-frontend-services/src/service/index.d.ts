@@ -247,6 +247,12 @@ declare const infoCache: {
         method: import("../generated/operations/infoDeleteCache").InfoDeleteCacheRequestFunction;
     };
 };
+declare const infoCampaign: {
+    infoCampaign: {
+        key: string;
+        method: import("../generated/operations/infoCampaign").InfoCampaignRequestFunction;
+    };
+};
 declare const infoCompany: {
     infoCompany: {
         key: string;
@@ -1161,6 +1167,12 @@ declare const services: {
             method: import("../generated/operations/infoDeleteCache").InfoDeleteCacheRequestFunction;
         };
     };
+    infoCampaign: {
+        infoCampaign: {
+            key: string;
+            method: import("../generated/operations/infoCampaign").InfoCampaignRequestFunction;
+        };
+    };
     infoCompany: {
         infoCompany: {
             key: string;
@@ -1824,5 +1836,5 @@ declare const services: {
         };
     };
 };
-export { adhoc, audit, authUser, company, credit, document, enterprise, event, infoAuth, infoCache, infoCompany, infoCustomer, infoDirector, infoEnterpriseRole, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoLead, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoRelation, infoSearch, infoStats, infoValidation, introduction, job, lead, monitor, onboarding, partner, payment, rate, subscription, task, tradeSummary, training, transaction, webhook, address, contract, payouts, pdf, personalGuarantee, sheets, subsSheet, };
+export { adhoc, audit, authUser, company, credit, document, enterprise, event, infoAuth, infoCache, infoCampaign, infoCompany, infoCustomer, infoDirector, infoEnterpriseRole, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoLead, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoRelation, infoSearch, infoStats, infoValidation, introduction, job, lead, monitor, onboarding, partner, payment, rate, subscription, task, tradeSummary, training, transaction, webhook, address, contract, payouts, pdf, personalGuarantee, sheets, subsSheet, };
 export default services;

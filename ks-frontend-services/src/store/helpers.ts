@@ -142,9 +142,11 @@ const handleInfoSearchSuccess = async <
     // We have to cast here because it calling it without doing so, results in a type error
     // because typescript infers the type as Company[] & Job[] & Monitor[] etc
     const fetchedAction = slices[key].actions
-      .fetched as ActionCreatorWithOptionalPayload<typeof fetchedData>;
+      .fetched as ActionCreatorWithOptionalPayload<
+      HandlerPayload<typeof fetchedData>
+    >;
 
-    thunkAPI.dispatch(fetchedAction(fetchedData));
+    thunkAPI.dispatch(fetchedAction({ data: fetchedData }));
   });
 };
 
@@ -205,9 +207,11 @@ const handleInfoEntity = async <
     // We have to cast here because it calling it without doing so, results in a type error
     // because typescript infers the type as Company[] & Job[] & Monitor[] etc
     const fetchedAction = slices[key].actions
-      .fetched as ActionCreatorWithOptionalPayload<typeof fetchedData>;
+      .fetched as ActionCreatorWithOptionalPayload<
+      HandlerPayload<typeof fetchedData>
+    >;
 
-    thunkAPI.dispatch(fetchedAction(fetchedData));
+    thunkAPI.dispatch(fetchedAction({ data: fetchedData }));
   });
 
   return;
@@ -224,6 +228,22 @@ export const checkMethodIsGet = (key: string): boolean => {
   return operation?.method === 'get';
 };
 
+// Checks if operation is a DELETE operation by finding the
+// generated operation from the redux key. If the operation
+// can't be found, the name is checked for if it starts
+// with 'get', else if it is found the method is checked
+export const checkMethodIsDelete = (key: string): boolean => {
+  const operationName = key.split('.').slice(-1)[0];
+  const operation = operations?.[operationName];
+  if (!operation) return operationName.startsWith('delete');
+  return operation?.method === 'delete';
+};
+
+export type HandlerPayload<T> = {
+  data: T;
+  isDelete?: boolean;
+};
+
 // Creates an asyncThunkAction for a given service
 // This will do the following when the action is called:
 // 1. If InfoEntity, place the data in the relevant stores based on the Response
@@ -235,9 +255,16 @@ export const createAsyncThunkAction = <
   Args extends StringIndexedObject<any> | undefined = undefined,
 >(
   service: NewService<Entity, Args>,
-): AsyncThunk<Entity, AsyncThunkActionArgs<Args, Entity>, {}> => {
+): AsyncThunk<
+  HandlerPayload<Entity>,
+  AsyncThunkActionArgs<Args, Entity>,
+  {}
+> => {
   const { key, method } = service;
-  return createAsyncThunk<Entity, AsyncThunkActionArgs<Args, Entity>>(
+  return createAsyncThunk<
+    HandlerPayload<Entity>,
+    AsyncThunkActionArgs<Args, Entity>
+  >(
     key,
     async <T>(
       args: AsyncThunkActionArgs<Args, Entity> | void,
@@ -255,7 +282,7 @@ export const createAsyncThunkAction = <
           method,
           thunkAPI,
         );
-        return [] as any;
+        return { data: [] as any };
       }
 
       if (key === INFO_SEARCH_KEY) {
@@ -294,17 +321,18 @@ export const createAsyncThunkAction = <
             if (onSuccess) {
               onSuccess(item);
             }
-            return item;
+            return { data: item };
           }
         } else if (fetchedList) {
           const items = Object.values(entities);
           if (onSuccess) {
             onSuccess(items as unknown as Entity);
           }
-          return items;
+          return { data: items };
         }
       }
 
+      const isDelete = checkMethodIsDelete(key);
       const payload = method(finalMethodArgs);
 
       try {
@@ -319,7 +347,7 @@ export const createAsyncThunkAction = <
             thunkAPI,
           );
 
-        return data;
+        return { data, isDelete };
       } catch (error) {
         const extractedError = extractError(error);
 
@@ -350,6 +378,30 @@ export const createAsyncThunkAction = <
   );
 };
 
+export const getResult = <State extends GeneratedState<Entity>, Entity>(
+  nextState: State,
+  data: Entity | Entity[],
+  isDelete: boolean,
+  entityAdapter: EntityAdapter<Entity>,
+): State => {
+  const isArray = isArrayOfValue<Entity>(data);
+  if (!isDelete) {
+    const result = isArray
+      ? entityAdapter.upsertMany(nextState, data)
+      : entityAdapter.upsertOne(nextState, data);
+    return result;
+  }
+  if (!isArray) {
+    const id = (data as any)?.id as string | undefined;
+    if (!id) return entityAdapter.upsertOne(nextState, data);
+    return entityAdapter.removeOne(nextState, id);
+  }
+  const ids = (data as any).map((data) => data?.id).filter(Boolean) as string[];
+  if (!ids || ids.length === 0)
+    return entityAdapter.upsertMany(nextState, data);
+  return entityAdapter.removeMany(nextState, ids);
+};
+
 /**
  * This function is passed to the reducers that are defined for the async thunk actions
  * in the generated slices. It takes an entityAdapter and returns a function that
@@ -359,13 +411,17 @@ export const createResponseHandler =
   <State extends GeneratedState<Entity>, Entity>(
     entityAdapter: EntityAdapter<Entity>,
   ) =>
-  (state: State, action: PayloadAction<Entity | Entity[]>) => {
-    const { payload } = action;
+  (state: State, action: PayloadAction<HandlerPayload<Entity | Entity[]>>) => {
+    const {
+      payload: { data, isDelete },
+    } = action;
 
-    const isArray = isArrayOfValue<Entity>(payload);
-    const hasId = entityContainsId<Entity>(isArray ? payload[0] : payload);
+    const deleteAction = Boolean(isDelete);
 
-    const items = isArray ? payload : [payload];
+    const isArray = isArrayOfValue<Entity>(data);
+    const hasId = entityContainsId<Entity>(isArray ? data[0] : data);
+
+    const items = isArray ? data : [data];
 
     if (!items.length) {
       return {
@@ -380,10 +436,7 @@ export const createResponseHandler =
     const nextState = { ...state };
 
     if (hasId) {
-      const result = isArray
-        ? entityAdapter.upsertMany(nextState, payload)
-        : entityAdapter.upsertOne(nextState, payload);
-
+      const result = getResult(nextState, data, deleteAction, entityAdapter);
       return {
         ...result,
         error: undefined,
@@ -396,11 +449,11 @@ export const createResponseHandler =
     }
 
     if (!isArray) {
-      const result = entityAdapter.upsertOne(nextState, payload);
+      const result = entityAdapter.upsertOne(nextState, data);
       return {
         ...result,
         error: undefined,
-        raw: payload,
+        raw: data,
         chainedRequest: false,
         hasFetched: true,
         fetchedList: !state.fetchedList ? isArray : true,
@@ -412,7 +465,7 @@ export const createResponseHandler =
     return {
       ...nextState,
       error: undefined,
-      raw: payload,
+      raw: data,
       chainedRequest: false,
       hasFetched: true,
       fetchedList: !state.fetchedList ? isArray : true,
@@ -426,7 +479,7 @@ export const createResponseHandler =
  */
 export const createVoidResponseHandler =
   <State extends GeneratedState>() =>
-  (state: State, action: PayloadAction<void>) => {
+  (state: State, action: PayloadAction<HandlerPayload<void>>) => {
     return {
       ...state,
       error: undefined,

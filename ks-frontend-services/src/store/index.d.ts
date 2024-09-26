@@ -466,6 +466,17 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         chainedRequest: boolean;
         isLoading: boolean;
     };
+    infoCampaign: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").Campaign>;
+        raw?: {} | {}[];
+        error?: import("../types").ExtractedError;
+        isSubmitting: boolean;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+    };
     infoCustomer: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Customer>;
@@ -1129,6 +1140,17 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         chainedRequest: boolean;
         isLoading: boolean;
     };
+    infoCampaign: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").Campaign>;
+        raw?: {} | {}[];
+        error?: import("../types").ExtractedError;
+        isSubmitting: boolean;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+    };
     infoCustomer: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Customer>;
@@ -1385,6 +1407,7 @@ export declare function createSelectors<State extends AuthSlice, Pages>(): {
     infoGetCache: import("./types").Selectors<import("..").Cache, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Cache>>>;
     infoPutCache: import("./types").Selectors<import("..").Cache, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Cache>>>;
     infoDeleteCache: import("./types").Selectors<import("..").Cache, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Cache>>>;
+    infoCampaign: import("./types").Selectors<import("..").Campaign, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Campaign>>>;
     infoCustomer: import("./types").Selectors<import("..").Customer, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Customer>>>;
     infoDirector: import("./types").Selectors<import("..").OwnerReport, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").OwnerReport>>>;
     infoEnterpriseRole: import("./types").Selectors<import("..").EnterpriseUserRole, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").EnterpriseUserRole>>>;

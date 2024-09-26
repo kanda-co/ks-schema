@@ -61,6 +61,7 @@ export declare const createCurrentUserHook: <State extends AuthSlice, Dispatch e
     infoGetCache: import("../store/types").Selectors<import("..").Cache, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Cache>>>;
     infoPutCache: import("../store/types").Selectors<import("..").Cache, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Cache>>>;
     infoDeleteCache: import("../store/types").Selectors<import("..").Cache, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Cache>>>;
+    infoCampaign: import("../store/types").Selectors<import("..").Campaign, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Campaign>>>;
     infoCustomer: import("../store/types").Selectors<import("..").Customer, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Customer>>>;
     infoDirector: import("../store/types").Selectors<import("..").OwnerReport, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").OwnerReport>>>;
     infoEnterpriseRole: import("../store/types").Selectors<import("..").EnterpriseUserRole, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").EnterpriseUserRole>>>;

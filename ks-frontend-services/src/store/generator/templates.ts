@@ -168,6 +168,7 @@ import {
 import { createSlice } from "../../toolkit";
 import { type ${entityName}, services } from "../../../";
 import {
+  HandlerPayload,
   createAsyncThunkAction,
   createResponseHandler,
   ${includeVoidResponse ? 'createVoidResponseHandler,' : ''}
@@ -235,7 +236,7 @@ export const ${camelCaseEntityName}Slice = createSlice({
       ...state,
       isLoading: true,
     }),
-    fetched: (state: ${entityName}State, action: PayloadAction<${entityName}[]>) => ({
+    fetched: (state: ${entityName}State, action: PayloadAction<HandlerPayload<${entityName}[]>>) => ({
 	    ...state,
 	    ...${handleResponseName(entityName)}(state, action),
             // Don't set fetchedList when using this action, as it's used

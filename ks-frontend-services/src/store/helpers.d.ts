@@ -10,14 +10,20 @@ export declare const formatById: <T>(data: T[]) => StringIndexedObject<T>;
 export declare const isArrayOfValue: <Entity>(data: Entity | Entity[]) => data is Entity[];
 export declare const entityContainsId: <Entity>(data: Entity) => data is EntityWithId<Entity>;
 export declare const checkMethodIsGet: (key: string) => boolean;
-export declare const createAsyncThunkAction: <Entity extends void | StringIndexedObject<any>, Args extends StringIndexedObject<any> = undefined>(service: NewService<Entity, Args>) => AsyncThunk<Entity, AsyncThunkActionArgs<Args, Entity>, {}>;
+export declare const checkMethodIsDelete: (key: string) => boolean;
+export type HandlerPayload<T> = {
+    data: T;
+    isDelete?: boolean;
+};
+export declare const createAsyncThunkAction: <Entity extends void | StringIndexedObject<any>, Args extends StringIndexedObject<any> = undefined>(service: NewService<Entity, Args>) => AsyncThunk<HandlerPayload<Entity>, AsyncThunkActionArgs<Args, Entity>, {}>;
+export declare const getResult: <State extends GeneratedState<Entity>, Entity>(nextState: State, data: Entity | Entity[], isDelete: boolean, entityAdapter: EntityAdapter<Entity>) => State;
 /**
  * This function is passed to the reducers that are defined for the async thunk actions
  * in the generated slices. It takes an entityAdapter and returns a function that
  * takes the state and action and returns the new state.
  */
 export declare const createResponseHandler: <State extends GeneratedState<Entity>, Entity>(entityAdapter: EntityAdapter<Entity>) => (state: State, action: {
-    payload: Entity | Entity[];
+    payload: HandlerPayload<Entity | Entity[]>;
     type: string;
 }) => (State & {
     error: any;
@@ -51,7 +57,7 @@ export declare const createResponseHandler: <State extends GeneratedState<Entity
 /**
  * As above, this function is passed to a reducer, but it handles a void response
  */
-export declare const createVoidResponseHandler: <State extends GeneratedState<unknown>>() => (state: State, action: PayloadAction<void>) => State & {
+export declare const createVoidResponseHandler: <State extends GeneratedState<unknown>>() => (state: State, action: PayloadAction<HandlerPayload<void>>) => State & {
     error: any;
     chainedRequest: boolean;
     fetchedList: boolean;
