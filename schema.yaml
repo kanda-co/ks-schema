@@ -6380,6 +6380,8 @@ components:
     InfoIntroductionStats:
       type: object
       title: info introduction stats
+      required:
+        - report
       properties:
         report:
           type: object
@@ -6391,6 +6393,18 @@ components:
     IntroductionStats:
       type: object
       title: introduction stats
+      required:
+        - branch_code
+        - introductions_sent
+        - introductions_completed
+        - order_details_added
+        - tradesperson_approved
+        - finance_applications
+        - approve_applications
+        - potential_revenue
+        - total_revenue
+        - average_order_value
+        - approval_rate
       properties:
         branch_code:
           type: string
