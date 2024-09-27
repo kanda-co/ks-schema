@@ -1003,6 +1003,29 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/introduction-stats:
+    get:
+      operationId: infoIntroductionStats
+      summary: kanda staff or trade admin or get their introduction stats
+      tags:
+        - InfoIntroductionStats
+      parameters:
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
+      responses:
+        200:
+          description: info introduction stats for requested admin
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoIntroductionStats"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/partner:
     get:
       operationId: getPartners
@@ -6352,6 +6375,45 @@ components:
         jobs_average_value_of_approved:
           type: object
           title: average value of jobs approved
+          $ref: "#/components/schemas/Pence"
+
+    InfoIntroductionStats:
+      type: object
+      title: info introduction stats
+      properties:
+        report:
+          type: object
+          title: info introduction stats report
+          additionalProperties:
+            type: object
+            $ref: "#/components/schemas/IntroductionStats"
+
+    IntroductionStats:
+      type: object
+      title: introduction stats
+      properties:
+        branch_code:
+          type: string
+          title: branch code
+        introductions_sent:
+          $ref: "#/components/schemas/Pence"
+        introductions_completed:
+          $ref: "#/components/schemas/Pence"
+        order_details_added:
+          $ref: "#/components/schemas/Pence"
+        tradesperson_approved:
+          $ref: "#/components/schemas/Pence"
+        finance_applications:
+          $ref: "#/components/schemas/Pence"
+        approve_applications:
+          $ref: "#/components/schemas/Pence"
+        potential_revenue:
+          $ref: "#/components/schemas/Pence"
+        total_revenue:
+          $ref: "#/components/schemas/Pence"
+        average_order_value:
+          $ref: "#/components/schemas/Pence"
+        approval_rate:
           $ref: "#/components/schemas/Pence"
 
     InfoIP:

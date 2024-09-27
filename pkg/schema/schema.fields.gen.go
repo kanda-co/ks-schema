@@ -538,6 +538,9 @@ func GetFields(name string) []string {
 		"InfoIP": []string{
 			"ipv4",
 		},
+		"InfoIntroductionStats": []string{
+			"report",
+		},
 		"InfoLead": []string{
 			"contact_info",
 			"flow_type",
@@ -657,6 +660,19 @@ func GetFields(name string) []string {
 		},
 		"IntroductionStateRequest": []string{
 			"state",
+		},
+		"IntroductionStats": []string{
+			"approval_rate",
+			"approve_applications",
+			"average_order_value",
+			"branch_code",
+			"finance_applications",
+			"introductions_completed",
+			"introductions_sent",
+			"order_details_added",
+			"potential_revenue",
+			"total_revenue",
+			"tradesperson_approved",
 		},
 		"Job": []string{
 			"aid",
