@@ -1,5 +1,5 @@
 import { createGetter } from './helpers';
-import { RequestFunction } from '@openapi-io-ts/runtime';
+import { RequestFunction } from '@kanda-libs/openapi-io-ts-runtime';
 
 export const API_KEY = process.env.REACT_APP_GET_ADDRESS_API_KEY || '';
 

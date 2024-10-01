@@ -62,7 +62,7 @@ export type {
 export type {
   RequestFunction,
   RequestFunctionArgs,
-} from '@openapi-io-ts/runtime';
+} from '@kanda-libs/openapi-io-ts-runtime';
 
 export type { KeyedMutator } from 'swr';
 

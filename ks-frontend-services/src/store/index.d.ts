@@ -136,6 +136,17 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         chainedRequest: boolean;
         isLoading: boolean;
     };
+    infoIntroductionStats: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoIntroductionStats>;
+        raw?: {} | {}[];
+        error?: import("../types").ExtractedError;
+        isSubmitting: boolean;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+    };
     infoLead: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoLead>;
@@ -810,6 +821,17 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         chainedRequest: boolean;
         isLoading: boolean;
     };
+    infoIntroductionStats: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoIntroductionStats>;
+        raw?: {} | {}[];
+        error?: import("../types").ExtractedError;
+        isSubmitting: boolean;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+    };
     infoLead: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoLead>;
@@ -1377,6 +1399,7 @@ export declare function createSelectors<State extends AuthSlice, Pages>(): {
     infoEntity: import("./types").Selectors<import("..").InfoEntity, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoEntity>>>;
     infoGhost: import("./types").Selectors<import("..").InfoGhost, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoGhost>>>;
     infoIP: import("./types").Selectors<import("..").InfoIP, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoIP>>>;
+    infoIntroductionStats: import("./types").Selectors<import("..").InfoIntroductionStats, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoIntroductionStats>>>;
     infoLead: import("./types").Selectors<import("..").InfoLead, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoLead>>>;
     infoOnboarding: import("./types").Selectors<import("..").InfoOnboarding, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoOnboarding>>>;
     infoQuery: import("./types").Selectors<import("..").InfoQuery, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoQuery>>>;

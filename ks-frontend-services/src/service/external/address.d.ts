@@ -1,4 +1,4 @@
-import { RequestFunction } from '@openapi-io-ts/runtime';
+import { RequestFunction } from '@kanda-libs/openapi-io-ts-runtime';
 export declare const API_KEY: string;
 export interface FindRequest {
     params: {

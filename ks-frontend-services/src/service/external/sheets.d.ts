@@ -1,4 +1,4 @@
-import { RequestFunction } from '@openapi-io-ts/runtime';
+import { RequestFunction } from '@kanda-libs/openapi-io-ts-runtime';
 import { StringIndexedObject } from '../../types';
 export declare const BASE_URL: string;
 export interface ReadRequest {

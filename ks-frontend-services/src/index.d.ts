@@ -25,6 +25,6 @@ export { mapUrlsIfGhosted } from './middleware/ghost';
 export { createAction } from './middleware/helpers';
 export type { Payload, PathKey, AsyncThunkReturnType, ThunkAPI, SharedAsyncThunkActionArgs, AsyncThunkActionArgs, } from './store/types';
 export type { Service, ServiceParams, ServiceMethod, ServiceSubmit, ServiceMethodReturnParams, NewService, } from './types';
-export type { RequestFunction, RequestFunctionArgs, } from '@openapi-io-ts/runtime';
+export type { RequestFunction, RequestFunctionArgs, } from '@kanda-libs/openapi-io-ts-runtime';
 export type { KeyedMutator } from 'swr';
 export type { FormattedPayoutCompanyData, PayoutCreditFees, FormattedPayoutCreditData, FormattedPayoutJobData, PayoutData, PayoutsResponse, } from './service/external';

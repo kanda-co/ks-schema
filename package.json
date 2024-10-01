@@ -25,8 +25,8 @@
   },
   "homepage": "https://github.com/kanda-co/ks-schema#readme",
   "dependencies": {
-    "@openapi-io-ts/cli": "^0.5.0",
-    "@openapi-io-ts/runtime": "^0.3.1",
+    "@kanda-libs/openapi-io-ts-cli": "^1.0.1",
+    "@kanda-libs/openapi-io-ts-runtime": "^1.0.1",
     "axios": "^0.26.1",
     "form-data": "^4.0.0",
     "fp-ts": "^2.12.0",

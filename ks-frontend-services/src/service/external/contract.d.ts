@@ -1,4 +1,4 @@
-import { RequestFunction } from '@openapi-io-ts/runtime';
+import { RequestFunction } from '@kanda-libs/openapi-io-ts-runtime';
 import { Company } from '../../generated/components/schemas';
 import type { Guarantor } from './subsSheet';
 export declare const BASE_URL: string;

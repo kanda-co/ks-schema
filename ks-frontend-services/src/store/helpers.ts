@@ -5,7 +5,7 @@ import type {
   EntityAdapter,
 } from '@reduxjs/toolkit';
 import { createAsyncThunk, createSelector } from './toolkit';
-import type { RequestFunction } from '@openapi-io-ts/runtime';
+import type { RequestFunction } from '@kanda-libs/openapi-io-ts-runtime';
 import * as T from 'io-ts';
 import { pipe } from 'fp-ts/lib/function';
 import { fold } from 'fp-ts/lib/Either';

@@ -1,5 +1,4 @@
 import { useState, useCallback } from 'react';
-import { RequestFunction } from '@openapi-io-ts/runtime';
 import {
   Amplitude,
   getEventWindowProperties,

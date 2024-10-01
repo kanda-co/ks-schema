@@ -307,6 +307,12 @@ declare const infoIP: {
         method: import("../generated/operations/infoIP").InfoIPRequestFunction;
     };
 };
+declare const infoIntroductionStats: {
+    infoIntroductionStats: {
+        key: string;
+        method: import("../generated/operations/infoIntroductionStats").InfoIntroductionStatsRequestFunction;
+    };
+};
 declare const infoLead: {
     infoLead: {
         key: string;
@@ -844,7 +850,7 @@ declare const webhook: {
 declare const address: {
     find: {
         key: string;
-        method: (request: import("./external/address").FindRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+        method: (request: import("./external/address").FindRequest) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<{
             body: import("./external/address").FindResponse;
         }, import("./external/address").FindResponse>;
     };
@@ -852,7 +858,7 @@ declare const address: {
 declare const contract: {
     generate: {
         key: string;
-        method: ({ body, }: import("./external/contract").ContractGenerateRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+        method: ({ body, }: import("./external/contract").ContractGenerateRequest) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<{
             body: import("./external/contract").ContractResponse;
         }, import("./external/contract").ContractResponse>;
     };
@@ -860,7 +866,7 @@ declare const contract: {
 declare const payouts: {
     payouts: {
         key: string;
-        method: () => import("@openapi-io-ts/runtime").RequestFunction<{
+        method: () => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<{
             body: externalServices.PayoutsResponse;
         }, externalServices.PayoutsResponse>;
     };
@@ -868,19 +874,19 @@ declare const payouts: {
 declare const pdf: {
     compress: {
         key: string;
-        method: ({ body: { content, mimetype }, }: import("./external/pdf").CompressRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+        method: ({ body: { content, mimetype }, }: import("./external/pdf").CompressRequest) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<{
             body: import("./external/pdf").FindResponse;
         }, import("./external/pdf").FindResponse>;
     };
     create: {
         key: string;
-        method: ({ body, }: import("./external/pdf").CreateRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+        method: ({ body, }: import("./external/pdf").CreateRequest) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<{
             body: import("./external/pdf").CreateRequest;
         }, import("./external/pdf").CreateRequest>;
     };
     satnote: {
         key: string;
-        method: ({ body: { job, credit, satNote, acceptedTerms }, }: import("./external/pdf").SatNoteRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+        method: ({ body: { job, credit, satNote, acceptedTerms }, }: import("./external/pdf").SatNoteRequest) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<{
             body: import("./external/pdf").FindResponse;
         }, import("./external/pdf").FindResponse>;
     };
@@ -888,7 +894,7 @@ declare const pdf: {
 declare const personalGuarantee: {
     generate: {
         key: string;
-        method: ({ body, }: import("./external/personalGuarantee").PersonalGuaranteeGenerateRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+        method: ({ body, }: import("./external/personalGuarantee").PersonalGuaranteeGenerateRequest) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<{
             body: externalServices.PersonalGuaranteeResponse;
         }, externalServices.PersonalGuaranteeResponse>;
     };
@@ -896,7 +902,7 @@ declare const personalGuarantee: {
 declare const sheets: {
     read: {
         key: string;
-        method: ({ params, }: import("./external/sheets").ReadRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+        method: ({ params, }: import("./external/sheets").ReadRequest) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<{
             body: import("./external/sheets").ReadResponse;
         }, import("./external/sheets").ReadResponse>;
     };
@@ -904,13 +910,13 @@ declare const sheets: {
 declare const subsSheet: {
     write: {
         key: string;
-        method: ({ body, }: import("./external/subsSheet").WriteRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+        method: ({ body, }: import("./external/subsSheet").WriteRequest) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<{
             body: import("./external/subsSheet").SubSheetResponse;
         }, import("./external/subsSheet").SubSheetResponse>;
     };
     update: {
         key: string;
-        method: ({ body, }: import("./external/subsSheet").UpdateRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+        method: ({ body, }: import("./external/subsSheet").UpdateRequest) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<{
             body: import("./external/subsSheet").SubSheetResponse;
         }, import("./external/subsSheet").SubSheetResponse>;
     };
@@ -1225,6 +1231,12 @@ declare const services: {
         infoIP: {
             key: string;
             method: import("../generated/operations/infoIP").InfoIPRequestFunction;
+        };
+    };
+    infoIntroductionStats: {
+        infoIntroductionStats: {
+            key: string;
+            method: import("../generated/operations/infoIntroductionStats").InfoIntroductionStatsRequestFunction;
         };
     };
     infoLead: {
@@ -1764,7 +1776,7 @@ declare const services: {
     address: {
         find: {
             key: string;
-            method: (request: import("./external/address").FindRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+            method: (request: import("./external/address").FindRequest) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<{
                 body: import("./external/address").FindResponse;
             }, import("./external/address").FindResponse>;
         };
@@ -1772,7 +1784,7 @@ declare const services: {
     contract: {
         generate: {
             key: string;
-            method: ({ body, }: import("./external/contract").ContractGenerateRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+            method: ({ body, }: import("./external/contract").ContractGenerateRequest) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<{
                 body: import("./external/contract").ContractResponse;
             }, import("./external/contract").ContractResponse>;
         };
@@ -1780,7 +1792,7 @@ declare const services: {
     payouts: {
         payouts: {
             key: string;
-            method: () => import("@openapi-io-ts/runtime").RequestFunction<{
+            method: () => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<{
                 body: externalServices.PayoutsResponse;
             }, externalServices.PayoutsResponse>;
         };
@@ -1788,19 +1800,19 @@ declare const services: {
     pdf: {
         compress: {
             key: string;
-            method: ({ body: { content, mimetype }, }: import("./external/pdf").CompressRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+            method: ({ body: { content, mimetype }, }: import("./external/pdf").CompressRequest) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<{
                 body: import("./external/pdf").FindResponse;
             }, import("./external/pdf").FindResponse>;
         };
         create: {
             key: string;
-            method: ({ body, }: import("./external/pdf").CreateRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+            method: ({ body, }: import("./external/pdf").CreateRequest) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<{
                 body: import("./external/pdf").CreateRequest;
             }, import("./external/pdf").CreateRequest>;
         };
         satnote: {
             key: string;
-            method: ({ body: { job, credit, satNote, acceptedTerms }, }: import("./external/pdf").SatNoteRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+            method: ({ body: { job, credit, satNote, acceptedTerms }, }: import("./external/pdf").SatNoteRequest) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<{
                 body: import("./external/pdf").FindResponse;
             }, import("./external/pdf").FindResponse>;
         };
@@ -1808,7 +1820,7 @@ declare const services: {
     personalGuarantee: {
         generate: {
             key: string;
-            method: ({ body, }: import("./external/personalGuarantee").PersonalGuaranteeGenerateRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+            method: ({ body, }: import("./external/personalGuarantee").PersonalGuaranteeGenerateRequest) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<{
                 body: externalServices.PersonalGuaranteeResponse;
             }, externalServices.PersonalGuaranteeResponse>;
         };
@@ -1816,7 +1828,7 @@ declare const services: {
     sheets: {
         read: {
             key: string;
-            method: ({ params, }: import("./external/sheets").ReadRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+            method: ({ params, }: import("./external/sheets").ReadRequest) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<{
                 body: import("./external/sheets").ReadResponse;
             }, import("./external/sheets").ReadResponse>;
         };
@@ -1824,17 +1836,17 @@ declare const services: {
     subsSheet: {
         write: {
             key: string;
-            method: ({ body, }: import("./external/subsSheet").WriteRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+            method: ({ body, }: import("./external/subsSheet").WriteRequest) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<{
                 body: import("./external/subsSheet").SubSheetResponse;
             }, import("./external/subsSheet").SubSheetResponse>;
         };
         update: {
             key: string;
-            method: ({ body, }: import("./external/subsSheet").UpdateRequest) => import("@openapi-io-ts/runtime").RequestFunction<{
+            method: ({ body, }: import("./external/subsSheet").UpdateRequest) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<{
                 body: import("./external/subsSheet").SubSheetResponse;
             }, import("./external/subsSheet").SubSheetResponse>;
         };
     };
 };
-export { adhoc, audit, authUser, company, credit, document, enterprise, event, infoAuth, infoCache, infoCampaign, infoCompany, infoCustomer, infoDirector, infoEnterpriseRole, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoLead, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoRelation, infoSearch, infoStats, infoValidation, introduction, job, lead, monitor, onboarding, partner, payment, rate, subscription, task, tradeSummary, training, transaction, webhook, address, contract, payouts, pdf, personalGuarantee, sheets, subsSheet, };
+export { adhoc, audit, authUser, company, credit, document, enterprise, event, infoAuth, infoCache, infoCampaign, infoCompany, infoCustomer, infoDirector, infoEnterpriseRole, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoIntroductionStats, infoLead, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoRelation, infoSearch, infoStats, infoValidation, introduction, job, lead, monitor, onboarding, partner, payment, rate, subscription, task, tradeSummary, training, transaction, webhook, address, contract, payouts, pdf, personalGuarantee, sheets, subsSheet, };
 export default services;

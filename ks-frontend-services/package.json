@@ -24,7 +24,7 @@
     "src/**/*.d.ts"
   ],
   "dependencies": {
-    "@openapi-io-ts/runtime": "^0.3.1",
+    "@kanda-libs/openapi-io-ts-runtime": "^1.0.1",
     "@stripe/stripe-js": "^1.35.0",
     "append-query": "^2.1.1",
     "firebase": "9.18.0",
