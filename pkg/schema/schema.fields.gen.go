@@ -657,6 +657,8 @@ func GetFields(name string) []string {
 			"trader",
 			"trader_details",
 			"trader_signature",
+			"xid",
+			"xref",
 		},
 		"IntroductionStateRequest": []string{
 			"state",

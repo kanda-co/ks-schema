@@ -9221,6 +9221,14 @@ components:
         flow_type:
           title: flow type
           $ref: "#/components/schemas/FlowType"
+        xid:
+          type: string
+          title: external reference id
+          readOnly: true
+        xref:
+          type: string
+          title: external reference
+          readOnly: true
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
