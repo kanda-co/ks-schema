@@ -6402,6 +6402,8 @@ components:
         - finance_applications
         - approve_applications
         - potential_revenue
+        - job_revenue
+        - average_job_value
         - total_revenue
         - average_order_value
         - approval_rate
@@ -6422,6 +6424,10 @@ components:
         approve_applications:
           $ref: "#/components/schemas/Pence"
         potential_revenue:
+          $ref: "#/components/schemas/Pence"
+        job_revenue:
+          $ref: "#/components/schemas/Pence"
+        average_job_value:
           $ref: "#/components/schemas/Pence"
         total_revenue:
           $ref: "#/components/schemas/Pence"

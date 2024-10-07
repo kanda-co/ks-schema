@@ -666,11 +666,13 @@ func GetFields(name string) []string {
 		"IntroductionStats": []string{
 			"approval_rate",
 			"approve_applications",
+			"average_job_value",
 			"average_order_value",
 			"branch_code",
 			"finance_applications",
 			"introductions_completed",
 			"introductions_sent",
+			"job_revenue",
 			"order_details_added",
 			"potential_revenue",
 			"total_revenue",
