@@ -669,6 +669,7 @@ func GetFields(name string) []string {
 			"average_job_value",
 			"average_order_value",
 			"branch_code",
+			"branch_name",
 			"finance_applications",
 			"introductions_completed",
 			"introductions_sent",

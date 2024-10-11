@@ -6395,6 +6395,7 @@ components:
       title: introduction stats
       required:
         - branch_code
+        - branch_name
         - introductions_sent
         - introductions_completed
         - order_details_added
@@ -6411,6 +6412,9 @@ components:
         branch_code:
           type: string
           title: branch code
+        branch_name:
+          type: string
+          title: branch name
         introductions_sent:
           $ref: "#/components/schemas/Pence"
         introductions_completed:
