@@ -8865,35 +8865,44 @@ components:
         - ev_charger
         - fencing
         - fireplaces
+        - fitted_furniture
         - flooring_excluding_carpets
         - garage_doors
         - garden_buildings
         - gates
         - glass_splash_backs
         - granite_worktops
+        - home_lifts
         - home_study
         - hot_tubs_and_spas
+        - insulation_roof_foil_wrap_only
         - kitchens_fitted
         - kitchens_supply_only
         - landscaping
         - loft_boarding
         - loft_conversion
+        - media_walls
         - painting_and_decorating
         - patios
         - plastering
+        - rendering
         - resin_driveways
+        - roofing
         - roofing_excl_flat_roofs
         - roofline
-        - rendering
         - security_lighting
+        - stair_lifts
         - staircases
         - tiling
+        - under_stair_storage
         - underfloor_heating
+        - upvc_doors
         - verandas
         - wall_insulation_and_cladding
         - water_softeners
         - windows
         - windows_and_doors
+        - wardrobes
         - other
 
     CheckoutOption:
