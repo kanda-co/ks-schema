@@ -3,7 +3,7 @@ package schema
 func GetFields(name string) []string {
 	var fields = map[string][]string{
 		"ActionRemark": []string{
-			"action",
+			"archive",
 			"remark",
 		},
 		"Address": []string{

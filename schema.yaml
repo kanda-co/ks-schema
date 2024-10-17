@@ -9405,10 +9405,10 @@ components:
       type: object
       title: action with remark
       required:
-        - action
+        - archive
         - remark
       properties:
-        action:
+        archive:
           type: string
           $ref: "#/components/schemas/Archived"
         remark:
