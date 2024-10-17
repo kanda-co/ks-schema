@@ -2216,6 +2216,41 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/introduction/{id}/action:
+    post:
+      operationId: actionIntroduction
+      summary: action to archive or unarchive existing introduction with remark
+      tags:
+        - Introduction
+      parameters:
+        - name: id
+          in: path
+          description: introduction id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: action to archive or unarchive existing introduction with remark
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ActionRemark"
+      responses:
+        200:
+          description: action to archive or unarchive existing introduction with remark
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Introduction"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/company:
     get:
       operationId: getCompanies
@@ -9212,6 +9247,10 @@ components:
         archived:
           type: string
           $ref: "#/components/schemas/Archived"
+        remark:
+          type: string
+          title: remark
+          readOnly: true
         consumer:
           $ref: "#/components/schemas/Customer"
         consumer_signature:
@@ -9361,6 +9400,20 @@ components:
       enum:
         - "no"
         - "yes"
+
+    ActionRemark:
+      type: object
+      title: action with remark
+      required:
+        - action
+        - remark
+      properties:
+        action:
+          type: string
+          $ref: "#/components/schemas/Archived"
+        remark:
+          type: string
+          title: remark
 
     IntroductionState:
       type: string

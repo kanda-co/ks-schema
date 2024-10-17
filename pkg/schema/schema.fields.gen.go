@@ -2,6 +2,10 @@ package schema
 
 func GetFields(name string) []string {
 	var fields = map[string][]string{
+		"ActionRemark": []string{
+			"action",
+			"remark",
+		},
 		"Address": []string{
 			"building_name",
 			"building_number",
@@ -652,6 +656,7 @@ func GetFields(name string) []string {
 			"job_details",
 			"metadata",
 			"oid",
+			"remark",
 			"states",
 			"tid",
 			"trader",
