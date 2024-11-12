@@ -3,9 +3,11 @@ package main
 import (
 	"context"
 	"fmt"
+	"slices"
 	"sort"
 
 	"github.com/getkin/kin-openapi/openapi3"
+	"github.com/iancoleman/strcase"
 )
 
 // MapKeys return all keys of type A
@@ -84,5 +86,29 @@ func main() {
 	fmt.Println("\texisted, ok := fields[name]")
 	fmt.Println("\tif ok { return existed }")
 	fmt.Println("\treturn []string{}")
+	fmt.Println("}")
+	fmt.Println()
+
+	fmt.Println("func GetAllWorkTypes() []WorkType {")
+	fmt.Println("\treturn []WorkType{")
+	worktypes := doc.Components.Schemas["WorkType"]
+	worktypeEnums := []string{}
+	for _, worktype := range worktypes.Value.Enum {
+		worktypeEnums = append(worktypeEnums, fmt.Sprintf("%v", worktype))
+	}
+	slices.Sort(worktypeEnums)
+	for _, worktypeEnum := range worktypeEnums {
+		fmt.Printf("\t\tWorkType%v,\n", strcase.ToCamel(worktypeEnum))
+	}
+	fmt.Println("\t}")
+	fmt.Println("}")
+	fmt.Println()
+
+	fmt.Println("func GetAllWorkTypeStrings() []string {")
+	fmt.Println("\treturn []string{")
+	for _, worktypeEnum := range worktypeEnums {
+		fmt.Printf("\t\t\"%v\",\n", worktypeEnum)
+	}
+	fmt.Println("\t}")
 	fmt.Println("}")
 }

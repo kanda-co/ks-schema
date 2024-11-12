@@ -546,6 +546,34 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/work-type:
+    get:
+      operationId: infoWorkType
+      summary: request available finance rates as per work type
+      tags:
+        - InfoWorkType
+      parameters:
+        - in: query
+          name: work_type
+          schema:
+            type: string
+          description: query matching work type
+      responses:
+        200:
+          description: got available finance rates for API company
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/InfoWorkType"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/info/legacy-redirect:
     put:
       operationId: infoLegacyRedirect
@@ -11551,6 +11579,31 @@ components:
         - "action_taken"
         - "action_to_follow_up"
         - "action_resolved"
+
+    InfoWorkType:
+      type: object
+      title: info work type
+      description: info for lender work type configurations
+      required:
+        - product
+        - work_type
+        - rates
+      properties:
+        product:
+          type: string
+          title: product
+        work_type:
+          title: work type
+          description: work type
+          $ref: "#/components/schemas/WorkType"
+        primary:
+          type: string
+          $ref: "#/components/schemas/FinanceProvider"
+        rates:
+          type: array
+          title: rates
+          items:
+            $ref: "#/components/schemas/FinanceRate"
 
     Error:
       type: object
