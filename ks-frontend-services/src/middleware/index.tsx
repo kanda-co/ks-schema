@@ -301,14 +301,14 @@ function routeChangeProvider<State, P extends StringIndexedObject>(
 }
 
 export async function getUser(): Promise<AuthUser> {
-  const response = await services.authUser.me.method()();
+  const response = await services.authUser.me.method()()();
   const user = await handleResponse<AuthUser>(response as Response<AuthUser>);
 
   return user as AuthUser;
 }
 
 export async function ghostUser(email: string): Promise<InfoGhost> {
-  const response = await services.infoGhost.infoGhost.method({
+  const response = await services.infoGhost.infoGhost.method()({
     body: { email },
   })();
   const infoGhost = await handleResponse<InfoGhost>(

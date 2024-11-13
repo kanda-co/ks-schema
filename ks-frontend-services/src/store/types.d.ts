@@ -46,6 +46,10 @@ export interface AsyncThunkActionError {
   message?: string;
 }
 
+export type OperationArgs = {
+  useDevHeader?: boolean;
+};
+
 export type SharedAsyncThunkActionArgs<
   Entity extends StringIndexedObject | undefined | void,
 > = {
@@ -53,6 +57,7 @@ export type SharedAsyncThunkActionArgs<
   preventLoadingState?: boolean;
   forceReload?: boolean;
   chainedRequest?: boolean;
+  useDevHeader?: boolean;
   onSuccess?: (data: Entity) => void;
   onError?: (error: AsyncThunkActionError) => void;
 };

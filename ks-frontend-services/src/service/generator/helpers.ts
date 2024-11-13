@@ -18,7 +18,7 @@ function formatServiceMethod(
     .map(
       (method) => `    ${method}: {
       key: '${operationName}.${method}',
-      method: ${methodKey}.${method},
+      method: (operationArgs?: OperationArgs) => ${methodKey}(serverFunctions(operationArgs)).${method},
     },`,
     )
     .join('\n');
@@ -35,7 +35,7 @@ export function formatServiceDefinitionLine(operationKey: string): string {
 
   const methodKey = `${operationName}Methods`;
 
-  let formattedOperation = `const ${methodKey} = operations['${operationKey}'](serverFunctions);`;
+  let formattedOperation = `const ${methodKey} = operations['${operationKey}'];`;
 
   formattedOperation += '\n';
 

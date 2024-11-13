@@ -1,4 +1,5 @@
 import { RequestFunction } from '@kanda-libs/openapi-io-ts-runtime';
+import { OperationArgs } from './store/types';
 
 declare var process: {
   env: {
@@ -41,7 +42,7 @@ export interface NewService<
   Args extends StringIndexedObject | undefined = undefined,
 > {
   key: string;
-  method: RequestFunction<Args, Value>;
+  method: (operationArgs: OperationArgs) => RequestFunction<Args, Value>;
 }
 
 export interface ServiceMethodReturnParams<T> {

@@ -1,16 +1,17 @@
 import * as operations from './generated/operations';
 import type { StringIndexedObject } from './types';
 import type { ExtractedError } from './types';
+import { OperationArgs } from './store/types';
 /**
  * Call fetch, including the baseUrl and attaching headers including authentication
  * @param baseURL
  */
-export declare const fetchRequestAdapter: (baseURL: string, requireAuth?: boolean) => (url: string, init: StringIndexedObject) => Promise<Response>;
+export declare const fetchRequestAdapter: (baseURL: string, requireAuth?: boolean, operationArgs?: OperationArgs) => (url: string, init: StringIndexedObject) => Promise<Response>;
 /**
  * Build request functions for operations using baseUrl
  * @param baseURL
  */
-export declare const requestFunctions: (baseURL: string) => operations.OperationRequestFunctionMap;
+export declare const requestFunctions: (baseURL: string, operationArgs?: OperationArgs) => operations.OperationRequestFunctionMap;
 /**
  * Returns a string array of operation keys that we want to define services for.
  * This excludes some generic operations that have no corresponding services
