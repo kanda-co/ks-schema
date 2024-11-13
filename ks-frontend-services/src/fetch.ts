@@ -80,10 +80,10 @@ export const addDevHeader = (devHeader: boolean): HeadersInit => {
   const subdomain = window.location.hostname.split('.')[0];
   const dev = devHeader || subdomain.includes('dev');
   return dev
-    ? {}
-    : {
+    ? {
         'x-kanda-env': 'dev',
-      };
+      }
+    : {};
 };
 
 /**
