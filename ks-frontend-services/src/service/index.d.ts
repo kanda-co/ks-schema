@@ -1,850 +1,855 @@
 import * as externalServices from './external';
+import { OperationArgs } from '../store/types';
 declare const adhoc: {
     actionAdhoc: {
         key: string;
-        method: import("../generated/operations/actionAdhoc").ActionAdhocRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/actionAdhoc").ActionAdhocRequestFunction;
     };
 };
 declare const audit: {
     getAudits: {
         key: string;
-        method: import("../generated/operations/getAudits").GetAuditsRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getAudits").GetAuditsRequestFunction;
     };
     postAudit: {
         key: string;
-        method: import("../generated/operations/postAudit").PostAuditRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postAudit").PostAuditRequestFunction;
     };
     getAudit: {
         key: string;
-        method: import("../generated/operations/getAudit").GetAuditRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getAudit").GetAuditRequestFunction;
     };
 };
 declare const authUser: {
     me: {
         key: string;
-        method: import("../generated/operations/me").MeRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/me").MeRequestFunction;
     };
     postMe: {
         key: string;
-        method: import("../generated/operations/postMe").PostMeRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postMe").PostMeRequestFunction;
     };
     putMe: {
         key: string;
-        method: import("../generated/operations/putMe").PutMeRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/putMe").PutMeRequestFunction;
     };
 };
 declare const company: {
     getCompanies: {
         key: string;
-        method: import("../generated/operations/getCompanies").GetCompaniesRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getCompanies").GetCompaniesRequestFunction;
     };
     postCompany: {
         key: string;
-        method: import("../generated/operations/postCompany").PostCompanyRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postCompany").PostCompanyRequestFunction;
     };
     getCompany: {
         key: string;
-        method: import("../generated/operations/getCompany").GetCompanyRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getCompany").GetCompanyRequestFunction;
     };
     putCompany: {
         key: string;
-        method: import("../generated/operations/putCompany").PutCompanyRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/putCompany").PutCompanyRequestFunction;
     };
     deleteCompany: {
         key: string;
-        method: import("../generated/operations/deleteCompany").DeleteCompanyRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteCompany").DeleteCompanyRequestFunction;
     };
     postCompanyBilling: {
         key: string;
-        method: import("../generated/operations/postCompanyBilling").PostCompanyBillingRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postCompanyBilling").PostCompanyBillingRequestFunction;
     };
     postCompanyBillingSuccess: {
         key: string;
-        method: import("../generated/operations/postCompanyBillingSuccess").PostCompanyBillingSuccessRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postCompanyBillingSuccess").PostCompanyBillingSuccessRequestFunction;
     };
     getCompanyDirectorVerification: {
         key: string;
-        method: import("../generated/operations/getCompanyDirectorVerification").GetCompanyDirectorVerificationRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getCompanyDirectorVerification").GetCompanyDirectorVerificationRequestFunction;
     };
     postCompanyDirectorVerification: {
         key: string;
-        method: import("../generated/operations/postCompanyDirectorVerification").PostCompanyDirectorVerificationRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postCompanyDirectorVerification").PostCompanyDirectorVerificationRequestFunction;
     };
     directorCompany: {
         key: string;
-        method: import("../generated/operations/directorCompany").DirectorCompanyRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/directorCompany").DirectorCompanyRequestFunction;
     };
     getCompanyReferrals: {
         key: string;
-        method: import("../generated/operations/getCompanyReferrals").GetCompanyReferralsRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getCompanyReferrals").GetCompanyReferralsRequestFunction;
     };
     postCompanyReferrals: {
         key: string;
-        method: import("../generated/operations/postCompanyReferrals").PostCompanyReferralsRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postCompanyReferrals").PostCompanyReferralsRequestFunction;
     };
     approveCompany: {
         key: string;
-        method: import("../generated/operations/approveCompany").ApproveCompanyRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/approveCompany").ApproveCompanyRequestFunction;
     };
     declineCompany: {
         key: string;
-        method: import("../generated/operations/declineCompany").DeclineCompanyRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/declineCompany").DeclineCompanyRequestFunction;
     };
     exportFcaApproved: {
         key: string;
-        method: import("../generated/operations/exportFcaApproved").ExportFcaApprovedRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/exportFcaApproved").ExportFcaApprovedRequestFunction;
     };
     importFcaApproved: {
         key: string;
-        method: import("../generated/operations/importFcaApproved").ImportFcaApprovedRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/importFcaApproved").ImportFcaApprovedRequestFunction;
     };
 };
 declare const credit: {
     infoCredit: {
         key: string;
-        method: import("../generated/operations/infoCredit").InfoCreditRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoCredit").InfoCreditRequestFunction;
     };
     getCredits: {
         key: string;
-        method: import("../generated/operations/getCredits").GetCreditsRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getCredits").GetCreditsRequestFunction;
     };
     postCredit: {
         key: string;
-        method: import("../generated/operations/postCredit").PostCreditRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postCredit").PostCreditRequestFunction;
     };
     getCredit: {
         key: string;
-        method: import("../generated/operations/getCredit").GetCreditRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getCredit").GetCreditRequestFunction;
     };
     putCredit: {
         key: string;
-        method: import("../generated/operations/putCredit").PutCreditRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/putCredit").PutCreditRequestFunction;
     };
     deleteCredit: {
         key: string;
-        method: import("../generated/operations/deleteCredit").DeleteCreditRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteCredit").DeleteCreditRequestFunction;
     };
     quoteCredit: {
         key: string;
-        method: import("../generated/operations/quoteCredit").QuoteCreditRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/quoteCredit").QuoteCreditRequestFunction;
     };
     applyCredit: {
         key: string;
-        method: import("../generated/operations/applyCredit").ApplyCreditRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/applyCredit").ApplyCreditRequestFunction;
     };
     checkCredit: {
         key: string;
-        method: import("../generated/operations/checkCredit").CheckCreditRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/checkCredit").CheckCreditRequestFunction;
     };
     signCredit: {
         key: string;
-        method: import("../generated/operations/signCredit").SignCreditRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/signCredit").SignCreditRequestFunction;
     };
     migrateCredit: {
         key: string;
-        method: import("../generated/operations/migrateCredit").MigrateCreditRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/migrateCredit").MigrateCreditRequestFunction;
     };
     consentMigrateCredit: {
         key: string;
-        method: import("../generated/operations/consentMigrateCredit").ConsentMigrateCreditRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/consentMigrateCredit").ConsentMigrateCreditRequestFunction;
     };
 };
 declare const document: {
     getDocuments: {
         key: string;
-        method: import("../generated/operations/getDocuments").GetDocumentsRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getDocuments").GetDocumentsRequestFunction;
     };
     postDocument: {
         key: string;
-        method: import("../generated/operations/postDocument").PostDocumentRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postDocument").PostDocumentRequestFunction;
     };
     getDocument: {
         key: string;
-        method: import("../generated/operations/getDocument").GetDocumentRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getDocument").GetDocumentRequestFunction;
     };
     putDocument: {
         key: string;
-        method: import("../generated/operations/putDocument").PutDocumentRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/putDocument").PutDocumentRequestFunction;
     };
     deleteDocument: {
         key: string;
-        method: import("../generated/operations/deleteDocument").DeleteDocumentRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteDocument").DeleteDocumentRequestFunction;
     };
 };
 declare const enterprise: {
     getEnterprises: {
         key: string;
-        method: import("../generated/operations/getEnterprises").GetEnterprisesRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getEnterprises").GetEnterprisesRequestFunction;
     };
     postEnterprise: {
         key: string;
-        method: import("../generated/operations/postEnterprise").PostEnterpriseRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postEnterprise").PostEnterpriseRequestFunction;
     };
     getEnterprise: {
         key: string;
-        method: import("../generated/operations/getEnterprise").GetEnterpriseRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getEnterprise").GetEnterpriseRequestFunction;
     };
     putEnterprise: {
         key: string;
-        method: import("../generated/operations/putEnterprise").PutEnterpriseRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/putEnterprise").PutEnterpriseRequestFunction;
     };
     deleteEnterprise: {
         key: string;
-        method: import("../generated/operations/deleteEnterprise").DeleteEnterpriseRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteEnterprise").DeleteEnterpriseRequestFunction;
     };
     getEnterpriseBranches: {
         key: string;
-        method: import("../generated/operations/getEnterpriseBranches").GetEnterpriseBranchesRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getEnterpriseBranches").GetEnterpriseBranchesRequestFunction;
     };
     postEnterpriseBranches: {
         key: string;
-        method: import("../generated/operations/postEnterpriseBranches").PostEnterpriseBranchesRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postEnterpriseBranches").PostEnterpriseBranchesRequestFunction;
     };
     exportEnterpriseDailyReport: {
         key: string;
-        method: import("../generated/operations/exportEnterpriseDailyReport").ExportEnterpriseDailyReportRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/exportEnterpriseDailyReport").ExportEnterpriseDailyReportRequestFunction;
     };
 };
 declare const event: {
     postEvent: {
         key: string;
-        method: import("../generated/operations/postEvent").PostEventRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postEvent").PostEventRequestFunction;
     };
 };
 declare const infoAuth: {
     infoAuth: {
         key: string;
-        method: import("../generated/operations/infoAuth").InfoAuthRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoAuth").InfoAuthRequestFunction;
     };
     infoVerify: {
         key: string;
-        method: import("../generated/operations/infoVerify").InfoVerifyRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoVerify").InfoVerifyRequestFunction;
     };
     infoPassword: {
         key: string;
-        method: import("../generated/operations/infoPassword").InfoPasswordRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoPassword").InfoPasswordRequestFunction;
     };
     infoSession: {
         key: string;
-        method: import("../generated/operations/infoSession").InfoSessionRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoSession").InfoSessionRequestFunction;
     };
     infoClaimAccount: {
         key: string;
-        method: import("../generated/operations/infoClaimAccount").InfoClaimAccountRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoClaimAccount").InfoClaimAccountRequestFunction;
     };
 };
 declare const infoCache: {
     infoGetCache: {
         key: string;
-        method: import("../generated/operations/infoGetCache").InfoGetCacheRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoGetCache").InfoGetCacheRequestFunction;
     };
     infoPutCache: {
         key: string;
-        method: import("../generated/operations/infoPutCache").InfoPutCacheRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoPutCache").InfoPutCacheRequestFunction;
     };
     infoDeleteCache: {
         key: string;
-        method: import("../generated/operations/infoDeleteCache").InfoDeleteCacheRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoDeleteCache").InfoDeleteCacheRequestFunction;
     };
 };
 declare const infoCampaign: {
     infoCampaign: {
         key: string;
-        method: import("../generated/operations/infoCampaign").InfoCampaignRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoCampaign").InfoCampaignRequestFunction;
     };
 };
 declare const infoCompany: {
     infoCompany: {
         key: string;
-        method: import("../generated/operations/infoCompany").InfoCompanyRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoCompany").InfoCompanyRequestFunction;
     };
 };
 declare const infoCustomer: {
     infoCustomer: {
         key: string;
-        method: import("../generated/operations/infoCustomer").InfoCustomerRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoCustomer").InfoCustomerRequestFunction;
     };
 };
 declare const infoDirector: {
     infoDirector: {
         key: string;
-        method: import("../generated/operations/infoDirector").InfoDirectorRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoDirector").InfoDirectorRequestFunction;
     };
 };
 declare const infoEnterpriseRole: {
     infoEnterpriseRole: {
         key: string;
-        method: import("../generated/operations/infoEnterpriseRole").InfoEnterpriseRoleRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoEnterpriseRole").InfoEnterpriseRoleRequestFunction;
     };
 };
 declare const infoEnterprise: {
     infoEnterprise: {
         key: string;
-        method: import("../generated/operations/infoEnterprise").InfoEnterpriseRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoEnterprise").InfoEnterpriseRequestFunction;
     };
 };
 declare const infoEntity: {
     getInfoEntity: {
         key: string;
-        method: import("../generated/operations/getInfoEntity").GetInfoEntityRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getInfoEntity").GetInfoEntityRequestFunction;
     };
 };
 declare const infoGhost: {
     infoGhost: {
         key: string;
-        method: import("../generated/operations/infoGhost").InfoGhostRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoGhost").InfoGhostRequestFunction;
     };
 };
 declare const infoHealth: {
     infoHealth: {
         key: string;
-        method: import("../generated/operations/infoHealth").InfoHealthRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoHealth").InfoHealthRequestFunction;
     };
 };
 declare const infoIP: {
     infoIP: {
         key: string;
-        method: import("../generated/operations/infoIP").InfoIPRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoIP").InfoIPRequestFunction;
     };
 };
 declare const infoIntroductionStats: {
     infoIntroductionStats: {
         key: string;
-        method: import("../generated/operations/infoIntroductionStats").InfoIntroductionStatsRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoIntroductionStats").InfoIntroductionStatsRequestFunction;
     };
 };
 declare const infoLead: {
     infoLead: {
         key: string;
-        method: import("../generated/operations/infoLead").InfoLeadRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoLead").InfoLeadRequestFunction;
     };
 };
 declare const infoOnboarding: {
     infoOnboarding: {
         key: string;
-        method: import("../generated/operations/infoOnboarding").InfoOnboardingRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoOnboarding").InfoOnboardingRequestFunction;
     };
 };
 declare const infoPartner: {
     infoPartnerBranding: {
         key: string;
-        method: import("../generated/operations/infoPartnerBranding").InfoPartnerBrandingRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoPartnerBranding").InfoPartnerBrandingRequestFunction;
     };
 };
 declare const infoQuery: {
     infoQuery: {
         key: string;
-        method: import("../generated/operations/infoQuery").InfoQueryRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoQuery").InfoQueryRequestFunction;
     };
 };
 declare const infoRedirect: {
     infoLegacyRedirect: {
         key: string;
-        method: import("../generated/operations/infoLegacyRedirect").InfoLegacyRedirectRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoLegacyRedirect").InfoLegacyRedirectRequestFunction;
     };
     infoCheckoutRedirect: {
         key: string;
-        method: import("../generated/operations/infoCheckoutRedirect").InfoCheckoutRedirectRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoCheckoutRedirect").InfoCheckoutRedirectRequestFunction;
     };
 };
 declare const infoRelation: {
     infoRelation: {
         key: string;
-        method: import("../generated/operations/infoRelation").InfoRelationRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoRelation").InfoRelationRequestFunction;
     };
 };
 declare const infoSearch: {
     infoSearch: {
         key: string;
-        method: import("../generated/operations/infoSearch").InfoSearchRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoSearch").InfoSearchRequestFunction;
     };
 };
 declare const infoStats: {
     infoStats: {
         key: string;
-        method: import("../generated/operations/infoStats").InfoStatsRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoStats").InfoStatsRequestFunction;
     };
     putInfoStats: {
         key: string;
-        method: import("../generated/operations/putInfoStats").PutInfoStatsRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/putInfoStats").PutInfoStatsRequestFunction;
     };
 };
 declare const infoValidation: {
     infoValidateEmail: {
         key: string;
-        method: import("../generated/operations/infoValidateEmail").InfoValidateEmailRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoValidateEmail").InfoValidateEmailRequestFunction;
     };
 };
 declare const introduction: {
     getIntroductions: {
         key: string;
-        method: import("../generated/operations/getIntroductions").GetIntroductionsRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getIntroductions").GetIntroductionsRequestFunction;
     };
     postIntroduction: {
         key: string;
-        method: import("../generated/operations/postIntroduction").PostIntroductionRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postIntroduction").PostIntroductionRequestFunction;
     };
     getIntroduction: {
         key: string;
-        method: import("../generated/operations/getIntroduction").GetIntroductionRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getIntroduction").GetIntroductionRequestFunction;
     };
     putIntroduction: {
         key: string;
-        method: import("../generated/operations/putIntroduction").PutIntroductionRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/putIntroduction").PutIntroductionRequestFunction;
     };
     deleteIntroduction: {
         key: string;
-        method: import("../generated/operations/deleteIntroduction").DeleteIntroductionRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteIntroduction").DeleteIntroductionRequestFunction;
     };
     postIntroductionConsumerSignature: {
         key: string;
-        method: import("../generated/operations/postIntroductionConsumerSignature").PostIntroductionConsumerSignatureRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postIntroductionConsumerSignature").PostIntroductionConsumerSignatureRequestFunction;
     };
     postIntroductionConsumerDetails: {
         key: string;
-        method: import("../generated/operations/postIntroductionConsumerDetails").PostIntroductionConsumerDetailsRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postIntroductionConsumerDetails").PostIntroductionConsumerDetailsRequestFunction;
     };
     postIntroductionConsumerBudgets: {
         key: string;
-        method: import("../generated/operations/postIntroductionConsumerBudgets").PostIntroductionConsumerBudgetsRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postIntroductionConsumerBudgets").PostIntroductionConsumerBudgetsRequestFunction;
     };
     postIntroductionConsumerApply: {
         key: string;
-        method: import("../generated/operations/postIntroductionConsumerApply").PostIntroductionConsumerApplyRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postIntroductionConsumerApply").PostIntroductionConsumerApplyRequestFunction;
     };
     postIntroductionJobDetails: {
         key: string;
-        method: import("../generated/operations/postIntroductionJobDetails").PostIntroductionJobDetailsRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postIntroductionJobDetails").PostIntroductionJobDetailsRequestFunction;
     };
     postIntroductionAmendJobDetails: {
         key: string;
-        method: import("../generated/operations/postIntroductionAmendJobDetails").PostIntroductionAmendJobDetailsRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postIntroductionAmendJobDetails").PostIntroductionAmendJobDetailsRequestFunction;
     };
     postIntroductionTrader: {
         key: string;
-        method: import("../generated/operations/postIntroductionTrader").PostIntroductionTraderRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postIntroductionTrader").PostIntroductionTraderRequestFunction;
     };
     postIntroductionTraderSignature: {
         key: string;
-        method: import("../generated/operations/postIntroductionTraderSignature").PostIntroductionTraderSignatureRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postIntroductionTraderSignature").PostIntroductionTraderSignatureRequestFunction;
     };
     postIntroductionTraderApproveAmended: {
         key: string;
-        method: import("../generated/operations/postIntroductionTraderApproveAmended").PostIntroductionTraderApproveAmendedRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postIntroductionTraderApproveAmended").PostIntroductionTraderApproveAmendedRequestFunction;
     };
     postIntroductionTraderDetails: {
         key: string;
-        method: import("../generated/operations/postIntroductionTraderDetails").PostIntroductionTraderDetailsRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postIntroductionTraderDetails").PostIntroductionTraderDetailsRequestFunction;
     };
     postIntroductionRejectJob: {
         key: string;
-        method: import("../generated/operations/postIntroductionRejectJob").PostIntroductionRejectJobRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postIntroductionRejectJob").PostIntroductionRejectJobRequestFunction;
     };
     submitIntroductionState: {
         key: string;
-        method: import("../generated/operations/submitIntroductionState").SubmitIntroductionStateRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/submitIntroductionState").SubmitIntroductionStateRequestFunction;
     };
     postIntroductionConvertJob: {
         key: string;
-        method: import("../generated/operations/postIntroductionConvertJob").PostIntroductionConvertJobRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postIntroductionConvertJob").PostIntroductionConvertJobRequestFunction;
     };
     postIntroductionNotification: {
         key: string;
-        method: import("../generated/operations/postIntroductionNotification").PostIntroductionNotificationRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postIntroductionNotification").PostIntroductionNotificationRequestFunction;
+    };
+    actionIntroduction: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/actionIntroduction").ActionIntroductionRequestFunction;
     };
 };
 declare const job: {
     infoExampleJob: {
         key: string;
-        method: import("../generated/operations/infoExampleJob").InfoExampleJobRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoExampleJob").InfoExampleJobRequestFunction;
     };
     getJobs: {
         key: string;
-        method: import("../generated/operations/getJobs").GetJobsRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getJobs").GetJobsRequestFunction;
     };
     postJob: {
         key: string;
-        method: import("../generated/operations/postJob").PostJobRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postJob").PostJobRequestFunction;
     };
     getJob: {
         key: string;
-        method: import("../generated/operations/getJob").GetJobRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getJob").GetJobRequestFunction;
     };
     putJob: {
         key: string;
-        method: import("../generated/operations/putJob").PutJobRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/putJob").PutJobRequestFunction;
     };
     deleteJob: {
         key: string;
-        method: import("../generated/operations/deleteJob").DeleteJobRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteJob").DeleteJobRequestFunction;
     };
     sendJob: {
         key: string;
-        method: import("../generated/operations/sendJob").SendJobRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/sendJob").SendJobRequestFunction;
     };
     resendJob: {
         key: string;
-        method: import("../generated/operations/resendJob").ResendJobRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/resendJob").ResendJobRequestFunction;
     };
     checkJob: {
         key: string;
-        method: import("../generated/operations/checkJob").CheckJobRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/checkJob").CheckJobRequestFunction;
     };
     completeJob: {
         key: string;
-        method: import("../generated/operations/completeJob").CompleteJobRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/completeJob").CompleteJobRequestFunction;
     };
     archiveJob: {
         key: string;
-        method: import("../generated/operations/archiveJob").ArchiveJobRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/archiveJob").ArchiveJobRequestFunction;
     };
     unarchiveJob: {
         key: string;
-        method: import("../generated/operations/unarchiveJob").UnarchiveJobRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/unarchiveJob").UnarchiveJobRequestFunction;
     };
     quoteJob: {
         key: string;
-        method: import("../generated/operations/quoteJob").QuoteJobRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/quoteJob").QuoteJobRequestFunction;
     };
     applyJob: {
         key: string;
-        method: import("../generated/operations/applyJob").ApplyJobRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/applyJob").ApplyJobRequestFunction;
     };
     reapplyJob: {
         key: string;
-        method: import("../generated/operations/reapplyJob").ReapplyJobRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/reapplyJob").ReapplyJobRequestFunction;
     };
     payJob: {
         key: string;
-        method: import("../generated/operations/payJob").PayJobRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/payJob").PayJobRequestFunction;
     };
     viewJobSatNote: {
         key: string;
-        method: import("../generated/operations/viewJobSatNote").ViewJobSatNoteRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/viewJobSatNote").ViewJobSatNoteRequestFunction;
     };
     signJobSatNote: {
         key: string;
-        method: import("../generated/operations/signJobSatNote").SignJobSatNoteRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/signJobSatNote").SignJobSatNoteRequestFunction;
     };
     approveJobSatNote: {
         key: string;
-        method: import("../generated/operations/approveJobSatNote").ApproveJobSatNoteRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/approveJobSatNote").ApproveJobSatNoteRequestFunction;
     };
     lenderReviewJobSatNote: {
         key: string;
-        method: import("../generated/operations/lenderReviewJobSatNote").LenderReviewJobSatNoteRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/lenderReviewJobSatNote").LenderReviewJobSatNoteRequestFunction;
     };
     delayJobSatNote: {
         key: string;
-        method: import("../generated/operations/delayJobSatNote").DelayJobSatNoteRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/delayJobSatNote").DelayJobSatNoteRequestFunction;
     };
     payoutJob: {
         key: string;
-        method: import("../generated/operations/payoutJob").PayoutJobRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/payoutJob").PayoutJobRequestFunction;
     };
     payoutsJob: {
         key: string;
-        method: import("../generated/operations/payoutsJob").PayoutsJobRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/payoutsJob").PayoutsJobRequestFunction;
     };
     overrideJob: {
         key: string;
-        method: import("../generated/operations/overrideJob").OverrideJobRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/overrideJob").OverrideJobRequestFunction;
     };
     jobCheckoutLink: {
         key: string;
-        method: import("../generated/operations/jobCheckoutLink").JobCheckoutLinkRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/jobCheckoutLink").JobCheckoutLinkRequestFunction;
     };
     jobCompanyInfo: {
         key: string;
-        method: import("../generated/operations/jobCompanyInfo").JobCompanyInfoRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/jobCompanyInfo").JobCompanyInfoRequestFunction;
     };
     exportJobPayouts: {
         key: string;
-        method: import("../generated/operations/exportJobPayouts").ExportJobPayoutsRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/exportJobPayouts").ExportJobPayoutsRequestFunction;
     };
 };
 declare const lead: {
     getLeads: {
         key: string;
-        method: import("../generated/operations/getLeads").GetLeadsRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getLeads").GetLeadsRequestFunction;
     };
     postLead: {
         key: string;
-        method: import("../generated/operations/postLead").PostLeadRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postLead").PostLeadRequestFunction;
     };
     getLead: {
         key: string;
-        method: import("../generated/operations/getLead").GetLeadRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getLead").GetLeadRequestFunction;
     };
     putLead: {
         key: string;
-        method: import("../generated/operations/putLead").PutLeadRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/putLead").PutLeadRequestFunction;
     };
     deleteLead: {
         key: string;
-        method: import("../generated/operations/deleteLead").DeleteLeadRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteLead").DeleteLeadRequestFunction;
     };
     applyInviteLead: {
         key: string;
-        method: import("../generated/operations/applyInviteLead").ApplyInviteLeadRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/applyInviteLead").ApplyInviteLeadRequestFunction;
     };
     budgetLead: {
         key: string;
-        method: import("../generated/operations/budgetLead").BudgetLeadRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/budgetLead").BudgetLeadRequestFunction;
     };
     quoteLead: {
         key: string;
-        method: import("../generated/operations/quoteLead").QuoteLeadRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/quoteLead").QuoteLeadRequestFunction;
     };
     sendLeadJob: {
         key: string;
-        method: import("../generated/operations/sendLeadJob").SendLeadJobRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/sendLeadJob").SendLeadJobRequestFunction;
     };
     tradeLead: {
         key: string;
-        method: import("../generated/operations/tradeLead").TradeLeadRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/tradeLead").TradeLeadRequestFunction;
     };
     tradeQuoteApprovalLead: {
         key: string;
-        method: import("../generated/operations/tradeQuoteApprovalLead").TradeQuoteApprovalLeadRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/tradeQuoteApprovalLead").TradeQuoteApprovalLeadRequestFunction;
     };
     matchTradesLead: {
         key: string;
-        method: import("../generated/operations/matchTradesLead").MatchTradesLeadRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/matchTradesLead").MatchTradesLeadRequestFunction;
     };
     connectTradesLead: {
         key: string;
-        method: import("../generated/operations/connectTradesLead").ConnectTradesLeadRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/connectTradesLead").ConnectTradesLeadRequestFunction;
     };
     acceptedJobSummaryLead: {
         key: string;
-        method: import("../generated/operations/acceptedJobSummaryLead").AcceptedJobSummaryLeadRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/acceptedJobSummaryLead").AcceptedJobSummaryLeadRequestFunction;
     };
     referLead: {
         key: string;
-        method: import("../generated/operations/referLead").ReferLeadRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/referLead").ReferLeadRequestFunction;
     };
 };
 declare const monitor: {
     getMonitors: {
         key: string;
-        method: import("../generated/operations/getMonitors").GetMonitorsRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getMonitors").GetMonitorsRequestFunction;
     };
     postMonitor: {
         key: string;
-        method: import("../generated/operations/postMonitor").PostMonitorRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postMonitor").PostMonitorRequestFunction;
     };
     getMonitor: {
         key: string;
-        method: import("../generated/operations/getMonitor").GetMonitorRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getMonitor").GetMonitorRequestFunction;
     };
     putMonitor: {
         key: string;
-        method: import("../generated/operations/putMonitor").PutMonitorRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/putMonitor").PutMonitorRequestFunction;
     };
     deleteMonitor: {
         key: string;
-        method: import("../generated/operations/deleteMonitor").DeleteMonitorRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteMonitor").DeleteMonitorRequestFunction;
     };
     postMonitorFlag: {
         key: string;
-        method: import("../generated/operations/postMonitorFlag").PostMonitorFlagRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postMonitorFlag").PostMonitorFlagRequestFunction;
     };
 };
 declare const onboarding: {
     getOnboardings: {
         key: string;
-        method: import("../generated/operations/getOnboardings").GetOnboardingsRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getOnboardings").GetOnboardingsRequestFunction;
     };
     postOnboarding: {
         key: string;
-        method: import("../generated/operations/postOnboarding").PostOnboardingRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postOnboarding").PostOnboardingRequestFunction;
     };
     getOnboarding: {
         key: string;
-        method: import("../generated/operations/getOnboarding").GetOnboardingRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getOnboarding").GetOnboardingRequestFunction;
     };
     putOnboarding: {
         key: string;
-        method: import("../generated/operations/putOnboarding").PutOnboardingRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/putOnboarding").PutOnboardingRequestFunction;
     };
     deleteOnboarding: {
         key: string;
-        method: import("../generated/operations/deleteOnboarding").DeleteOnboardingRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteOnboarding").DeleteOnboardingRequestFunction;
     };
     postOnboardingDecision: {
         key: string;
-        method: import("../generated/operations/postOnboardingDecision").PostOnboardingDecisionRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postOnboardingDecision").PostOnboardingDecisionRequestFunction;
     };
 };
 declare const partner: {
     getPartners: {
         key: string;
-        method: import("../generated/operations/getPartners").GetPartnersRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getPartners").GetPartnersRequestFunction;
     };
     postPartner: {
         key: string;
-        method: import("../generated/operations/postPartner").PostPartnerRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postPartner").PostPartnerRequestFunction;
     };
     getPartner: {
         key: string;
-        method: import("../generated/operations/getPartner").GetPartnerRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getPartner").GetPartnerRequestFunction;
     };
     putPartner: {
         key: string;
-        method: import("../generated/operations/putPartner").PutPartnerRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/putPartner").PutPartnerRequestFunction;
     };
     deletePartner: {
         key: string;
-        method: import("../generated/operations/deletePartner").DeletePartnerRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/deletePartner").DeletePartnerRequestFunction;
     };
     postPartnerReferrals: {
         key: string;
-        method: import("../generated/operations/postPartnerReferrals").PostPartnerReferralsRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postPartnerReferrals").PostPartnerReferralsRequestFunction;
     };
 };
 declare const payment: {
     getPayments: {
         key: string;
-        method: import("../generated/operations/getPayments").GetPaymentsRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getPayments").GetPaymentsRequestFunction;
     };
     postPayment: {
         key: string;
-        method: import("../generated/operations/postPayment").PostPaymentRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postPayment").PostPaymentRequestFunction;
     };
     getPayment: {
         key: string;
-        method: import("../generated/operations/getPayment").GetPaymentRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getPayment").GetPaymentRequestFunction;
     };
     putPayment: {
         key: string;
-        method: import("../generated/operations/putPayment").PutPaymentRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/putPayment").PutPaymentRequestFunction;
     };
     deletePayment: {
         key: string;
-        method: import("../generated/operations/deletePayment").DeletePaymentRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/deletePayment").DeletePaymentRequestFunction;
     };
     markPayment: {
         key: string;
-        method: import("../generated/operations/markPayment").MarkPaymentRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/markPayment").MarkPaymentRequestFunction;
     };
 };
 declare const rate: {
     infoRate: {
         key: string;
-        method: import("../generated/operations/infoRate").InfoRateRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoRate").InfoRateRequestFunction;
     };
     getRates: {
         key: string;
-        method: import("../generated/operations/getRates").GetRatesRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getRates").GetRatesRequestFunction;
     };
     postRate: {
         key: string;
-        method: import("../generated/operations/postRate").PostRateRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postRate").PostRateRequestFunction;
     };
     getRate: {
         key: string;
-        method: import("../generated/operations/getRate").GetRateRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getRate").GetRateRequestFunction;
     };
     putRate: {
         key: string;
-        method: import("../generated/operations/putRate").PutRateRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/putRate").PutRateRequestFunction;
     };
     deleteRate: {
         key: string;
-        method: import("../generated/operations/deleteRate").DeleteRateRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteRate").DeleteRateRequestFunction;
     };
 };
 declare const subscription: {
     getSubscriptions: {
         key: string;
-        method: import("../generated/operations/getSubscriptions").GetSubscriptionsRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getSubscriptions").GetSubscriptionsRequestFunction;
     };
     postSubscription: {
         key: string;
-        method: import("../generated/operations/postSubscription").PostSubscriptionRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postSubscription").PostSubscriptionRequestFunction;
     };
     getSubscription: {
         key: string;
-        method: import("../generated/operations/getSubscription").GetSubscriptionRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getSubscription").GetSubscriptionRequestFunction;
     };
     putSubscription: {
         key: string;
-        method: import("../generated/operations/putSubscription").PutSubscriptionRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/putSubscription").PutSubscriptionRequestFunction;
     };
     deleteSubscription: {
         key: string;
-        method: import("../generated/operations/deleteSubscription").DeleteSubscriptionRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteSubscription").DeleteSubscriptionRequestFunction;
     };
     pendingSubscription: {
         key: string;
-        method: import("../generated/operations/pendingSubscription").PendingSubscriptionRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/pendingSubscription").PendingSubscriptionRequestFunction;
     };
 };
 declare const task: {
     runner: {
         key: string;
-        method: import("../generated/operations/runner").RunnerRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/runner").RunnerRequestFunction;
     };
 };
 declare const tradeSummary: {
     infoTradeSummary: {
         key: string;
-        method: import("../generated/operations/infoTradeSummary").InfoTradeSummaryRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoTradeSummary").InfoTradeSummaryRequestFunction;
     };
 };
 declare const training: {
     getTrainings: {
         key: string;
-        method: import("../generated/operations/getTrainings").GetTrainingsRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getTrainings").GetTrainingsRequestFunction;
     };
     postTraining: {
         key: string;
-        method: import("../generated/operations/postTraining").PostTrainingRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postTraining").PostTrainingRequestFunction;
     };
     getTraining: {
         key: string;
-        method: import("../generated/operations/getTraining").GetTrainingRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getTraining").GetTrainingRequestFunction;
     };
     putTraining: {
         key: string;
-        method: import("../generated/operations/putTraining").PutTrainingRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/putTraining").PutTrainingRequestFunction;
     };
     deleteTraining: {
         key: string;
-        method: import("../generated/operations/deleteTraining").DeleteTrainingRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteTraining").DeleteTrainingRequestFunction;
     };
 };
 declare const transaction: {
     getTransactions: {
         key: string;
-        method: import("../generated/operations/getTransactions").GetTransactionsRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getTransactions").GetTransactionsRequestFunction;
     };
     postTransaction: {
         key: string;
-        method: import("../generated/operations/postTransaction").PostTransactionRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postTransaction").PostTransactionRequestFunction;
     };
     getTransaction: {
         key: string;
-        method: import("../generated/operations/getTransaction").GetTransactionRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getTransaction").GetTransactionRequestFunction;
     };
     putTransaction: {
         key: string;
-        method: import("../generated/operations/putTransaction").PutTransactionRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/putTransaction").PutTransactionRequestFunction;
     };
     deleteTransaction: {
         key: string;
-        method: import("../generated/operations/deleteTransaction").DeleteTransactionRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteTransaction").DeleteTransactionRequestFunction;
     };
 };
 declare const webhook: {
     providerCheckWebhook: {
         key: string;
-        method: import("../generated/operations/providerCheckWebhook").ProviderCheckWebhookRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/providerCheckWebhook").ProviderCheckWebhookRequestFunction;
     };
     providerWebhook: {
         key: string;
-        method: import("../generated/operations/providerWebhook").ProviderWebhookRequestFunction;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/providerWebhook").ProviderWebhookRequestFunction;
     };
 };
 declare const address: {
@@ -928,849 +933,853 @@ declare const services: {
     adhoc: {
         actionAdhoc: {
             key: string;
-            method: import("../generated/operations/actionAdhoc").ActionAdhocRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/actionAdhoc").ActionAdhocRequestFunction;
         };
     };
     audit: {
         getAudits: {
             key: string;
-            method: import("../generated/operations/getAudits").GetAuditsRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getAudits").GetAuditsRequestFunction;
         };
         postAudit: {
             key: string;
-            method: import("../generated/operations/postAudit").PostAuditRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postAudit").PostAuditRequestFunction;
         };
         getAudit: {
             key: string;
-            method: import("../generated/operations/getAudit").GetAuditRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getAudit").GetAuditRequestFunction;
         };
     };
     authUser: {
         me: {
             key: string;
-            method: import("../generated/operations/me").MeRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/me").MeRequestFunction;
         };
         postMe: {
             key: string;
-            method: import("../generated/operations/postMe").PostMeRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postMe").PostMeRequestFunction;
         };
         putMe: {
             key: string;
-            method: import("../generated/operations/putMe").PutMeRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/putMe").PutMeRequestFunction;
         };
     };
     company: {
         getCompanies: {
             key: string;
-            method: import("../generated/operations/getCompanies").GetCompaniesRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getCompanies").GetCompaniesRequestFunction;
         };
         postCompany: {
             key: string;
-            method: import("../generated/operations/postCompany").PostCompanyRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postCompany").PostCompanyRequestFunction;
         };
         getCompany: {
             key: string;
-            method: import("../generated/operations/getCompany").GetCompanyRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getCompany").GetCompanyRequestFunction;
         };
         putCompany: {
             key: string;
-            method: import("../generated/operations/putCompany").PutCompanyRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/putCompany").PutCompanyRequestFunction;
         };
         deleteCompany: {
             key: string;
-            method: import("../generated/operations/deleteCompany").DeleteCompanyRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteCompany").DeleteCompanyRequestFunction;
         };
         postCompanyBilling: {
             key: string;
-            method: import("../generated/operations/postCompanyBilling").PostCompanyBillingRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postCompanyBilling").PostCompanyBillingRequestFunction;
         };
         postCompanyBillingSuccess: {
             key: string;
-            method: import("../generated/operations/postCompanyBillingSuccess").PostCompanyBillingSuccessRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postCompanyBillingSuccess").PostCompanyBillingSuccessRequestFunction;
         };
         getCompanyDirectorVerification: {
             key: string;
-            method: import("../generated/operations/getCompanyDirectorVerification").GetCompanyDirectorVerificationRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getCompanyDirectorVerification").GetCompanyDirectorVerificationRequestFunction;
         };
         postCompanyDirectorVerification: {
             key: string;
-            method: import("../generated/operations/postCompanyDirectorVerification").PostCompanyDirectorVerificationRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postCompanyDirectorVerification").PostCompanyDirectorVerificationRequestFunction;
         };
         directorCompany: {
             key: string;
-            method: import("../generated/operations/directorCompany").DirectorCompanyRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/directorCompany").DirectorCompanyRequestFunction;
         };
         getCompanyReferrals: {
             key: string;
-            method: import("../generated/operations/getCompanyReferrals").GetCompanyReferralsRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getCompanyReferrals").GetCompanyReferralsRequestFunction;
         };
         postCompanyReferrals: {
             key: string;
-            method: import("../generated/operations/postCompanyReferrals").PostCompanyReferralsRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postCompanyReferrals").PostCompanyReferralsRequestFunction;
         };
         approveCompany: {
             key: string;
-            method: import("../generated/operations/approveCompany").ApproveCompanyRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/approveCompany").ApproveCompanyRequestFunction;
         };
         declineCompany: {
             key: string;
-            method: import("../generated/operations/declineCompany").DeclineCompanyRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/declineCompany").DeclineCompanyRequestFunction;
         };
         exportFcaApproved: {
             key: string;
-            method: import("../generated/operations/exportFcaApproved").ExportFcaApprovedRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/exportFcaApproved").ExportFcaApprovedRequestFunction;
         };
         importFcaApproved: {
             key: string;
-            method: import("../generated/operations/importFcaApproved").ImportFcaApprovedRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/importFcaApproved").ImportFcaApprovedRequestFunction;
         };
     };
     credit: {
         infoCredit: {
             key: string;
-            method: import("../generated/operations/infoCredit").InfoCreditRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoCredit").InfoCreditRequestFunction;
         };
         getCredits: {
             key: string;
-            method: import("../generated/operations/getCredits").GetCreditsRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getCredits").GetCreditsRequestFunction;
         };
         postCredit: {
             key: string;
-            method: import("../generated/operations/postCredit").PostCreditRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postCredit").PostCreditRequestFunction;
         };
         getCredit: {
             key: string;
-            method: import("../generated/operations/getCredit").GetCreditRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getCredit").GetCreditRequestFunction;
         };
         putCredit: {
             key: string;
-            method: import("../generated/operations/putCredit").PutCreditRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/putCredit").PutCreditRequestFunction;
         };
         deleteCredit: {
             key: string;
-            method: import("../generated/operations/deleteCredit").DeleteCreditRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteCredit").DeleteCreditRequestFunction;
         };
         quoteCredit: {
             key: string;
-            method: import("../generated/operations/quoteCredit").QuoteCreditRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/quoteCredit").QuoteCreditRequestFunction;
         };
         applyCredit: {
             key: string;
-            method: import("../generated/operations/applyCredit").ApplyCreditRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/applyCredit").ApplyCreditRequestFunction;
         };
         checkCredit: {
             key: string;
-            method: import("../generated/operations/checkCredit").CheckCreditRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/checkCredit").CheckCreditRequestFunction;
         };
         signCredit: {
             key: string;
-            method: import("../generated/operations/signCredit").SignCreditRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/signCredit").SignCreditRequestFunction;
         };
         migrateCredit: {
             key: string;
-            method: import("../generated/operations/migrateCredit").MigrateCreditRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/migrateCredit").MigrateCreditRequestFunction;
         };
         consentMigrateCredit: {
             key: string;
-            method: import("../generated/operations/consentMigrateCredit").ConsentMigrateCreditRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/consentMigrateCredit").ConsentMigrateCreditRequestFunction;
         };
     };
     document: {
         getDocuments: {
             key: string;
-            method: import("../generated/operations/getDocuments").GetDocumentsRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getDocuments").GetDocumentsRequestFunction;
         };
         postDocument: {
             key: string;
-            method: import("../generated/operations/postDocument").PostDocumentRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postDocument").PostDocumentRequestFunction;
         };
         getDocument: {
             key: string;
-            method: import("../generated/operations/getDocument").GetDocumentRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getDocument").GetDocumentRequestFunction;
         };
         putDocument: {
             key: string;
-            method: import("../generated/operations/putDocument").PutDocumentRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/putDocument").PutDocumentRequestFunction;
         };
         deleteDocument: {
             key: string;
-            method: import("../generated/operations/deleteDocument").DeleteDocumentRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteDocument").DeleteDocumentRequestFunction;
         };
     };
     enterprise: {
         getEnterprises: {
             key: string;
-            method: import("../generated/operations/getEnterprises").GetEnterprisesRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getEnterprises").GetEnterprisesRequestFunction;
         };
         postEnterprise: {
             key: string;
-            method: import("../generated/operations/postEnterprise").PostEnterpriseRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postEnterprise").PostEnterpriseRequestFunction;
         };
         getEnterprise: {
             key: string;
-            method: import("../generated/operations/getEnterprise").GetEnterpriseRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getEnterprise").GetEnterpriseRequestFunction;
         };
         putEnterprise: {
             key: string;
-            method: import("../generated/operations/putEnterprise").PutEnterpriseRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/putEnterprise").PutEnterpriseRequestFunction;
         };
         deleteEnterprise: {
             key: string;
-            method: import("../generated/operations/deleteEnterprise").DeleteEnterpriseRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteEnterprise").DeleteEnterpriseRequestFunction;
         };
         getEnterpriseBranches: {
             key: string;
-            method: import("../generated/operations/getEnterpriseBranches").GetEnterpriseBranchesRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getEnterpriseBranches").GetEnterpriseBranchesRequestFunction;
         };
         postEnterpriseBranches: {
             key: string;
-            method: import("../generated/operations/postEnterpriseBranches").PostEnterpriseBranchesRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postEnterpriseBranches").PostEnterpriseBranchesRequestFunction;
         };
         exportEnterpriseDailyReport: {
             key: string;
-            method: import("../generated/operations/exportEnterpriseDailyReport").ExportEnterpriseDailyReportRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/exportEnterpriseDailyReport").ExportEnterpriseDailyReportRequestFunction;
         };
     };
     event: {
         postEvent: {
             key: string;
-            method: import("../generated/operations/postEvent").PostEventRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postEvent").PostEventRequestFunction;
         };
     };
     infoAuth: {
         infoAuth: {
             key: string;
-            method: import("../generated/operations/infoAuth").InfoAuthRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoAuth").InfoAuthRequestFunction;
         };
         infoVerify: {
             key: string;
-            method: import("../generated/operations/infoVerify").InfoVerifyRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoVerify").InfoVerifyRequestFunction;
         };
         infoPassword: {
             key: string;
-            method: import("../generated/operations/infoPassword").InfoPasswordRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoPassword").InfoPasswordRequestFunction;
         };
         infoSession: {
             key: string;
-            method: import("../generated/operations/infoSession").InfoSessionRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoSession").InfoSessionRequestFunction;
         };
         infoClaimAccount: {
             key: string;
-            method: import("../generated/operations/infoClaimAccount").InfoClaimAccountRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoClaimAccount").InfoClaimAccountRequestFunction;
         };
     };
     infoCache: {
         infoGetCache: {
             key: string;
-            method: import("../generated/operations/infoGetCache").InfoGetCacheRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoGetCache").InfoGetCacheRequestFunction;
         };
         infoPutCache: {
             key: string;
-            method: import("../generated/operations/infoPutCache").InfoPutCacheRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoPutCache").InfoPutCacheRequestFunction;
         };
         infoDeleteCache: {
             key: string;
-            method: import("../generated/operations/infoDeleteCache").InfoDeleteCacheRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoDeleteCache").InfoDeleteCacheRequestFunction;
         };
     };
     infoCampaign: {
         infoCampaign: {
             key: string;
-            method: import("../generated/operations/infoCampaign").InfoCampaignRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoCampaign").InfoCampaignRequestFunction;
         };
     };
     infoCompany: {
         infoCompany: {
             key: string;
-            method: import("../generated/operations/infoCompany").InfoCompanyRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoCompany").InfoCompanyRequestFunction;
         };
     };
     infoCustomer: {
         infoCustomer: {
             key: string;
-            method: import("../generated/operations/infoCustomer").InfoCustomerRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoCustomer").InfoCustomerRequestFunction;
         };
     };
     infoDirector: {
         infoDirector: {
             key: string;
-            method: import("../generated/operations/infoDirector").InfoDirectorRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoDirector").InfoDirectorRequestFunction;
         };
     };
     infoEnterpriseRole: {
         infoEnterpriseRole: {
             key: string;
-            method: import("../generated/operations/infoEnterpriseRole").InfoEnterpriseRoleRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoEnterpriseRole").InfoEnterpriseRoleRequestFunction;
         };
     };
     infoEnterprise: {
         infoEnterprise: {
             key: string;
-            method: import("../generated/operations/infoEnterprise").InfoEnterpriseRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoEnterprise").InfoEnterpriseRequestFunction;
         };
     };
     infoEntity: {
         getInfoEntity: {
             key: string;
-            method: import("../generated/operations/getInfoEntity").GetInfoEntityRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getInfoEntity").GetInfoEntityRequestFunction;
         };
     };
     infoGhost: {
         infoGhost: {
             key: string;
-            method: import("../generated/operations/infoGhost").InfoGhostRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoGhost").InfoGhostRequestFunction;
         };
     };
     infoHealth: {
         infoHealth: {
             key: string;
-            method: import("../generated/operations/infoHealth").InfoHealthRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoHealth").InfoHealthRequestFunction;
         };
     };
     infoIP: {
         infoIP: {
             key: string;
-            method: import("../generated/operations/infoIP").InfoIPRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoIP").InfoIPRequestFunction;
         };
     };
     infoIntroductionStats: {
         infoIntroductionStats: {
             key: string;
-            method: import("../generated/operations/infoIntroductionStats").InfoIntroductionStatsRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoIntroductionStats").InfoIntroductionStatsRequestFunction;
         };
     };
     infoLead: {
         infoLead: {
             key: string;
-            method: import("../generated/operations/infoLead").InfoLeadRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoLead").InfoLeadRequestFunction;
         };
     };
     infoOnboarding: {
         infoOnboarding: {
             key: string;
-            method: import("../generated/operations/infoOnboarding").InfoOnboardingRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoOnboarding").InfoOnboardingRequestFunction;
         };
     };
     infoPartner: {
         infoPartnerBranding: {
             key: string;
-            method: import("../generated/operations/infoPartnerBranding").InfoPartnerBrandingRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoPartnerBranding").InfoPartnerBrandingRequestFunction;
         };
     };
     infoQuery: {
         infoQuery: {
             key: string;
-            method: import("../generated/operations/infoQuery").InfoQueryRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoQuery").InfoQueryRequestFunction;
         };
     };
     infoRedirect: {
         infoLegacyRedirect: {
             key: string;
-            method: import("../generated/operations/infoLegacyRedirect").InfoLegacyRedirectRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoLegacyRedirect").InfoLegacyRedirectRequestFunction;
         };
         infoCheckoutRedirect: {
             key: string;
-            method: import("../generated/operations/infoCheckoutRedirect").InfoCheckoutRedirectRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoCheckoutRedirect").InfoCheckoutRedirectRequestFunction;
         };
     };
     infoRelation: {
         infoRelation: {
             key: string;
-            method: import("../generated/operations/infoRelation").InfoRelationRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoRelation").InfoRelationRequestFunction;
         };
     };
     infoSearch: {
         infoSearch: {
             key: string;
-            method: import("../generated/operations/infoSearch").InfoSearchRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoSearch").InfoSearchRequestFunction;
         };
     };
     infoStats: {
         infoStats: {
             key: string;
-            method: import("../generated/operations/infoStats").InfoStatsRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoStats").InfoStatsRequestFunction;
         };
         putInfoStats: {
             key: string;
-            method: import("../generated/operations/putInfoStats").PutInfoStatsRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/putInfoStats").PutInfoStatsRequestFunction;
         };
     };
     infoValidation: {
         infoValidateEmail: {
             key: string;
-            method: import("../generated/operations/infoValidateEmail").InfoValidateEmailRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoValidateEmail").InfoValidateEmailRequestFunction;
         };
     };
     introduction: {
         getIntroductions: {
             key: string;
-            method: import("../generated/operations/getIntroductions").GetIntroductionsRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getIntroductions").GetIntroductionsRequestFunction;
         };
         postIntroduction: {
             key: string;
-            method: import("../generated/operations/postIntroduction").PostIntroductionRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postIntroduction").PostIntroductionRequestFunction;
         };
         getIntroduction: {
             key: string;
-            method: import("../generated/operations/getIntroduction").GetIntroductionRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getIntroduction").GetIntroductionRequestFunction;
         };
         putIntroduction: {
             key: string;
-            method: import("../generated/operations/putIntroduction").PutIntroductionRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/putIntroduction").PutIntroductionRequestFunction;
         };
         deleteIntroduction: {
             key: string;
-            method: import("../generated/operations/deleteIntroduction").DeleteIntroductionRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteIntroduction").DeleteIntroductionRequestFunction;
         };
         postIntroductionConsumerSignature: {
             key: string;
-            method: import("../generated/operations/postIntroductionConsumerSignature").PostIntroductionConsumerSignatureRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postIntroductionConsumerSignature").PostIntroductionConsumerSignatureRequestFunction;
         };
         postIntroductionConsumerDetails: {
             key: string;
-            method: import("../generated/operations/postIntroductionConsumerDetails").PostIntroductionConsumerDetailsRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postIntroductionConsumerDetails").PostIntroductionConsumerDetailsRequestFunction;
         };
         postIntroductionConsumerBudgets: {
             key: string;
-            method: import("../generated/operations/postIntroductionConsumerBudgets").PostIntroductionConsumerBudgetsRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postIntroductionConsumerBudgets").PostIntroductionConsumerBudgetsRequestFunction;
         };
         postIntroductionConsumerApply: {
             key: string;
-            method: import("../generated/operations/postIntroductionConsumerApply").PostIntroductionConsumerApplyRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postIntroductionConsumerApply").PostIntroductionConsumerApplyRequestFunction;
         };
         postIntroductionJobDetails: {
             key: string;
-            method: import("../generated/operations/postIntroductionJobDetails").PostIntroductionJobDetailsRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postIntroductionJobDetails").PostIntroductionJobDetailsRequestFunction;
         };
         postIntroductionAmendJobDetails: {
             key: string;
-            method: import("../generated/operations/postIntroductionAmendJobDetails").PostIntroductionAmendJobDetailsRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postIntroductionAmendJobDetails").PostIntroductionAmendJobDetailsRequestFunction;
         };
         postIntroductionTrader: {
             key: string;
-            method: import("../generated/operations/postIntroductionTrader").PostIntroductionTraderRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postIntroductionTrader").PostIntroductionTraderRequestFunction;
         };
         postIntroductionTraderSignature: {
             key: string;
-            method: import("../generated/operations/postIntroductionTraderSignature").PostIntroductionTraderSignatureRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postIntroductionTraderSignature").PostIntroductionTraderSignatureRequestFunction;
         };
         postIntroductionTraderApproveAmended: {
             key: string;
-            method: import("../generated/operations/postIntroductionTraderApproveAmended").PostIntroductionTraderApproveAmendedRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postIntroductionTraderApproveAmended").PostIntroductionTraderApproveAmendedRequestFunction;
         };
         postIntroductionTraderDetails: {
             key: string;
-            method: import("../generated/operations/postIntroductionTraderDetails").PostIntroductionTraderDetailsRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postIntroductionTraderDetails").PostIntroductionTraderDetailsRequestFunction;
         };
         postIntroductionRejectJob: {
             key: string;
-            method: import("../generated/operations/postIntroductionRejectJob").PostIntroductionRejectJobRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postIntroductionRejectJob").PostIntroductionRejectJobRequestFunction;
         };
         submitIntroductionState: {
             key: string;
-            method: import("../generated/operations/submitIntroductionState").SubmitIntroductionStateRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/submitIntroductionState").SubmitIntroductionStateRequestFunction;
         };
         postIntroductionConvertJob: {
             key: string;
-            method: import("../generated/operations/postIntroductionConvertJob").PostIntroductionConvertJobRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postIntroductionConvertJob").PostIntroductionConvertJobRequestFunction;
         };
         postIntroductionNotification: {
             key: string;
-            method: import("../generated/operations/postIntroductionNotification").PostIntroductionNotificationRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postIntroductionNotification").PostIntroductionNotificationRequestFunction;
+        };
+        actionIntroduction: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/actionIntroduction").ActionIntroductionRequestFunction;
         };
     };
     job: {
         infoExampleJob: {
             key: string;
-            method: import("../generated/operations/infoExampleJob").InfoExampleJobRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoExampleJob").InfoExampleJobRequestFunction;
         };
         getJobs: {
             key: string;
-            method: import("../generated/operations/getJobs").GetJobsRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getJobs").GetJobsRequestFunction;
         };
         postJob: {
             key: string;
-            method: import("../generated/operations/postJob").PostJobRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postJob").PostJobRequestFunction;
         };
         getJob: {
             key: string;
-            method: import("../generated/operations/getJob").GetJobRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getJob").GetJobRequestFunction;
         };
         putJob: {
             key: string;
-            method: import("../generated/operations/putJob").PutJobRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/putJob").PutJobRequestFunction;
         };
         deleteJob: {
             key: string;
-            method: import("../generated/operations/deleteJob").DeleteJobRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteJob").DeleteJobRequestFunction;
         };
         sendJob: {
             key: string;
-            method: import("../generated/operations/sendJob").SendJobRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/sendJob").SendJobRequestFunction;
         };
         resendJob: {
             key: string;
-            method: import("../generated/operations/resendJob").ResendJobRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/resendJob").ResendJobRequestFunction;
         };
         checkJob: {
             key: string;
-            method: import("../generated/operations/checkJob").CheckJobRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/checkJob").CheckJobRequestFunction;
         };
         completeJob: {
             key: string;
-            method: import("../generated/operations/completeJob").CompleteJobRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/completeJob").CompleteJobRequestFunction;
         };
         archiveJob: {
             key: string;
-            method: import("../generated/operations/archiveJob").ArchiveJobRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/archiveJob").ArchiveJobRequestFunction;
         };
         unarchiveJob: {
             key: string;
-            method: import("../generated/operations/unarchiveJob").UnarchiveJobRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/unarchiveJob").UnarchiveJobRequestFunction;
         };
         quoteJob: {
             key: string;
-            method: import("../generated/operations/quoteJob").QuoteJobRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/quoteJob").QuoteJobRequestFunction;
         };
         applyJob: {
             key: string;
-            method: import("../generated/operations/applyJob").ApplyJobRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/applyJob").ApplyJobRequestFunction;
         };
         reapplyJob: {
             key: string;
-            method: import("../generated/operations/reapplyJob").ReapplyJobRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/reapplyJob").ReapplyJobRequestFunction;
         };
         payJob: {
             key: string;
-            method: import("../generated/operations/payJob").PayJobRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/payJob").PayJobRequestFunction;
         };
         viewJobSatNote: {
             key: string;
-            method: import("../generated/operations/viewJobSatNote").ViewJobSatNoteRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/viewJobSatNote").ViewJobSatNoteRequestFunction;
         };
         signJobSatNote: {
             key: string;
-            method: import("../generated/operations/signJobSatNote").SignJobSatNoteRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/signJobSatNote").SignJobSatNoteRequestFunction;
         };
         approveJobSatNote: {
             key: string;
-            method: import("../generated/operations/approveJobSatNote").ApproveJobSatNoteRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/approveJobSatNote").ApproveJobSatNoteRequestFunction;
         };
         lenderReviewJobSatNote: {
             key: string;
-            method: import("../generated/operations/lenderReviewJobSatNote").LenderReviewJobSatNoteRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/lenderReviewJobSatNote").LenderReviewJobSatNoteRequestFunction;
         };
         delayJobSatNote: {
             key: string;
-            method: import("../generated/operations/delayJobSatNote").DelayJobSatNoteRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/delayJobSatNote").DelayJobSatNoteRequestFunction;
         };
         payoutJob: {
             key: string;
-            method: import("../generated/operations/payoutJob").PayoutJobRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/payoutJob").PayoutJobRequestFunction;
         };
         payoutsJob: {
             key: string;
-            method: import("../generated/operations/payoutsJob").PayoutsJobRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/payoutsJob").PayoutsJobRequestFunction;
         };
         overrideJob: {
             key: string;
-            method: import("../generated/operations/overrideJob").OverrideJobRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/overrideJob").OverrideJobRequestFunction;
         };
         jobCheckoutLink: {
             key: string;
-            method: import("../generated/operations/jobCheckoutLink").JobCheckoutLinkRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/jobCheckoutLink").JobCheckoutLinkRequestFunction;
         };
         jobCompanyInfo: {
             key: string;
-            method: import("../generated/operations/jobCompanyInfo").JobCompanyInfoRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/jobCompanyInfo").JobCompanyInfoRequestFunction;
         };
         exportJobPayouts: {
             key: string;
-            method: import("../generated/operations/exportJobPayouts").ExportJobPayoutsRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/exportJobPayouts").ExportJobPayoutsRequestFunction;
         };
     };
     lead: {
         getLeads: {
             key: string;
-            method: import("../generated/operations/getLeads").GetLeadsRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getLeads").GetLeadsRequestFunction;
         };
         postLead: {
             key: string;
-            method: import("../generated/operations/postLead").PostLeadRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postLead").PostLeadRequestFunction;
         };
         getLead: {
             key: string;
-            method: import("../generated/operations/getLead").GetLeadRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getLead").GetLeadRequestFunction;
         };
         putLead: {
             key: string;
-            method: import("../generated/operations/putLead").PutLeadRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/putLead").PutLeadRequestFunction;
         };
         deleteLead: {
             key: string;
-            method: import("../generated/operations/deleteLead").DeleteLeadRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteLead").DeleteLeadRequestFunction;
         };
         applyInviteLead: {
             key: string;
-            method: import("../generated/operations/applyInviteLead").ApplyInviteLeadRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/applyInviteLead").ApplyInviteLeadRequestFunction;
         };
         budgetLead: {
             key: string;
-            method: import("../generated/operations/budgetLead").BudgetLeadRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/budgetLead").BudgetLeadRequestFunction;
         };
         quoteLead: {
             key: string;
-            method: import("../generated/operations/quoteLead").QuoteLeadRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/quoteLead").QuoteLeadRequestFunction;
         };
         sendLeadJob: {
             key: string;
-            method: import("../generated/operations/sendLeadJob").SendLeadJobRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/sendLeadJob").SendLeadJobRequestFunction;
         };
         tradeLead: {
             key: string;
-            method: import("../generated/operations/tradeLead").TradeLeadRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/tradeLead").TradeLeadRequestFunction;
         };
         tradeQuoteApprovalLead: {
             key: string;
-            method: import("../generated/operations/tradeQuoteApprovalLead").TradeQuoteApprovalLeadRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/tradeQuoteApprovalLead").TradeQuoteApprovalLeadRequestFunction;
         };
         matchTradesLead: {
             key: string;
-            method: import("../generated/operations/matchTradesLead").MatchTradesLeadRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/matchTradesLead").MatchTradesLeadRequestFunction;
         };
         connectTradesLead: {
             key: string;
-            method: import("../generated/operations/connectTradesLead").ConnectTradesLeadRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/connectTradesLead").ConnectTradesLeadRequestFunction;
         };
         acceptedJobSummaryLead: {
             key: string;
-            method: import("../generated/operations/acceptedJobSummaryLead").AcceptedJobSummaryLeadRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/acceptedJobSummaryLead").AcceptedJobSummaryLeadRequestFunction;
         };
         referLead: {
             key: string;
-            method: import("../generated/operations/referLead").ReferLeadRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/referLead").ReferLeadRequestFunction;
         };
     };
     monitor: {
         getMonitors: {
             key: string;
-            method: import("../generated/operations/getMonitors").GetMonitorsRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getMonitors").GetMonitorsRequestFunction;
         };
         postMonitor: {
             key: string;
-            method: import("../generated/operations/postMonitor").PostMonitorRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postMonitor").PostMonitorRequestFunction;
         };
         getMonitor: {
             key: string;
-            method: import("../generated/operations/getMonitor").GetMonitorRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getMonitor").GetMonitorRequestFunction;
         };
         putMonitor: {
             key: string;
-            method: import("../generated/operations/putMonitor").PutMonitorRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/putMonitor").PutMonitorRequestFunction;
         };
         deleteMonitor: {
             key: string;
-            method: import("../generated/operations/deleteMonitor").DeleteMonitorRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteMonitor").DeleteMonitorRequestFunction;
         };
         postMonitorFlag: {
             key: string;
-            method: import("../generated/operations/postMonitorFlag").PostMonitorFlagRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postMonitorFlag").PostMonitorFlagRequestFunction;
         };
     };
     onboarding: {
         getOnboardings: {
             key: string;
-            method: import("../generated/operations/getOnboardings").GetOnboardingsRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getOnboardings").GetOnboardingsRequestFunction;
         };
         postOnboarding: {
             key: string;
-            method: import("../generated/operations/postOnboarding").PostOnboardingRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postOnboarding").PostOnboardingRequestFunction;
         };
         getOnboarding: {
             key: string;
-            method: import("../generated/operations/getOnboarding").GetOnboardingRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getOnboarding").GetOnboardingRequestFunction;
         };
         putOnboarding: {
             key: string;
-            method: import("../generated/operations/putOnboarding").PutOnboardingRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/putOnboarding").PutOnboardingRequestFunction;
         };
         deleteOnboarding: {
             key: string;
-            method: import("../generated/operations/deleteOnboarding").DeleteOnboardingRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteOnboarding").DeleteOnboardingRequestFunction;
         };
         postOnboardingDecision: {
             key: string;
-            method: import("../generated/operations/postOnboardingDecision").PostOnboardingDecisionRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postOnboardingDecision").PostOnboardingDecisionRequestFunction;
         };
     };
     partner: {
         getPartners: {
             key: string;
-            method: import("../generated/operations/getPartners").GetPartnersRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getPartners").GetPartnersRequestFunction;
         };
         postPartner: {
             key: string;
-            method: import("../generated/operations/postPartner").PostPartnerRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postPartner").PostPartnerRequestFunction;
         };
         getPartner: {
             key: string;
-            method: import("../generated/operations/getPartner").GetPartnerRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getPartner").GetPartnerRequestFunction;
         };
         putPartner: {
             key: string;
-            method: import("../generated/operations/putPartner").PutPartnerRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/putPartner").PutPartnerRequestFunction;
         };
         deletePartner: {
             key: string;
-            method: import("../generated/operations/deletePartner").DeletePartnerRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/deletePartner").DeletePartnerRequestFunction;
         };
         postPartnerReferrals: {
             key: string;
-            method: import("../generated/operations/postPartnerReferrals").PostPartnerReferralsRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postPartnerReferrals").PostPartnerReferralsRequestFunction;
         };
     };
     payment: {
         getPayments: {
             key: string;
-            method: import("../generated/operations/getPayments").GetPaymentsRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getPayments").GetPaymentsRequestFunction;
         };
         postPayment: {
             key: string;
-            method: import("../generated/operations/postPayment").PostPaymentRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postPayment").PostPaymentRequestFunction;
         };
         getPayment: {
             key: string;
-            method: import("../generated/operations/getPayment").GetPaymentRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getPayment").GetPaymentRequestFunction;
         };
         putPayment: {
             key: string;
-            method: import("../generated/operations/putPayment").PutPaymentRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/putPayment").PutPaymentRequestFunction;
         };
         deletePayment: {
             key: string;
-            method: import("../generated/operations/deletePayment").DeletePaymentRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/deletePayment").DeletePaymentRequestFunction;
         };
         markPayment: {
             key: string;
-            method: import("../generated/operations/markPayment").MarkPaymentRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/markPayment").MarkPaymentRequestFunction;
         };
     };
     rate: {
         infoRate: {
             key: string;
-            method: import("../generated/operations/infoRate").InfoRateRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoRate").InfoRateRequestFunction;
         };
         getRates: {
             key: string;
-            method: import("../generated/operations/getRates").GetRatesRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getRates").GetRatesRequestFunction;
         };
         postRate: {
             key: string;
-            method: import("../generated/operations/postRate").PostRateRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postRate").PostRateRequestFunction;
         };
         getRate: {
             key: string;
-            method: import("../generated/operations/getRate").GetRateRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getRate").GetRateRequestFunction;
         };
         putRate: {
             key: string;
-            method: import("../generated/operations/putRate").PutRateRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/putRate").PutRateRequestFunction;
         };
         deleteRate: {
             key: string;
-            method: import("../generated/operations/deleteRate").DeleteRateRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteRate").DeleteRateRequestFunction;
         };
     };
     subscription: {
         getSubscriptions: {
             key: string;
-            method: import("../generated/operations/getSubscriptions").GetSubscriptionsRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getSubscriptions").GetSubscriptionsRequestFunction;
         };
         postSubscription: {
             key: string;
-            method: import("../generated/operations/postSubscription").PostSubscriptionRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postSubscription").PostSubscriptionRequestFunction;
         };
         getSubscription: {
             key: string;
-            method: import("../generated/operations/getSubscription").GetSubscriptionRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getSubscription").GetSubscriptionRequestFunction;
         };
         putSubscription: {
             key: string;
-            method: import("../generated/operations/putSubscription").PutSubscriptionRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/putSubscription").PutSubscriptionRequestFunction;
         };
         deleteSubscription: {
             key: string;
-            method: import("../generated/operations/deleteSubscription").DeleteSubscriptionRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteSubscription").DeleteSubscriptionRequestFunction;
         };
         pendingSubscription: {
             key: string;
-            method: import("../generated/operations/pendingSubscription").PendingSubscriptionRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/pendingSubscription").PendingSubscriptionRequestFunction;
         };
     };
     task: {
         runner: {
             key: string;
-            method: import("../generated/operations/runner").RunnerRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/runner").RunnerRequestFunction;
         };
     };
     tradeSummary: {
         infoTradeSummary: {
             key: string;
-            method: import("../generated/operations/infoTradeSummary").InfoTradeSummaryRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoTradeSummary").InfoTradeSummaryRequestFunction;
         };
     };
     training: {
         getTrainings: {
             key: string;
-            method: import("../generated/operations/getTrainings").GetTrainingsRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getTrainings").GetTrainingsRequestFunction;
         };
         postTraining: {
             key: string;
-            method: import("../generated/operations/postTraining").PostTrainingRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postTraining").PostTrainingRequestFunction;
         };
         getTraining: {
             key: string;
-            method: import("../generated/operations/getTraining").GetTrainingRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getTraining").GetTrainingRequestFunction;
         };
         putTraining: {
             key: string;
-            method: import("../generated/operations/putTraining").PutTrainingRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/putTraining").PutTrainingRequestFunction;
         };
         deleteTraining: {
             key: string;
-            method: import("../generated/operations/deleteTraining").DeleteTrainingRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteTraining").DeleteTrainingRequestFunction;
         };
     };
     transaction: {
         getTransactions: {
             key: string;
-            method: import("../generated/operations/getTransactions").GetTransactionsRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getTransactions").GetTransactionsRequestFunction;
         };
         postTransaction: {
             key: string;
-            method: import("../generated/operations/postTransaction").PostTransactionRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postTransaction").PostTransactionRequestFunction;
         };
         getTransaction: {
             key: string;
-            method: import("../generated/operations/getTransaction").GetTransactionRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getTransaction").GetTransactionRequestFunction;
         };
         putTransaction: {
             key: string;
-            method: import("../generated/operations/putTransaction").PutTransactionRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/putTransaction").PutTransactionRequestFunction;
         };
         deleteTransaction: {
             key: string;
-            method: import("../generated/operations/deleteTransaction").DeleteTransactionRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteTransaction").DeleteTransactionRequestFunction;
         };
     };
     webhook: {
         providerCheckWebhook: {
             key: string;
-            method: import("../generated/operations/providerCheckWebhook").ProviderCheckWebhookRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/providerCheckWebhook").ProviderCheckWebhookRequestFunction;
         };
         providerWebhook: {
             key: string;
-            method: import("../generated/operations/providerWebhook").ProviderWebhookRequestFunction;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/providerWebhook").ProviderWebhookRequestFunction;
         };
     };
     address: {

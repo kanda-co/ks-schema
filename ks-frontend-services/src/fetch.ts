@@ -8,6 +8,7 @@ import {
   amplitude,
 } from '@kanda-libs/ks-amplitude-provider';
 import { APP_ENV } from './config';
+import { OperationArgs } from './store/types';
 
 interface Request extends StringIndexedObject {
   headers: StringIndexedObject & AuthenticationHeaders;
@@ -75,6 +76,16 @@ export const addReferrerHeader = (): HeadersInit => ({
     : {}),
 });
 
+export const addDevHeader = (devHeader: boolean): HeadersInit => {
+  const subdomain = window.location.hostname.split('.')[0];
+  const dev = devHeader || subdomain.includes('dev');
+  return dev
+    ? {}
+    : {
+        'x-kanda-env': 'dev',
+      };
+};
+
 /**
  * Build the needed headers for API requests, including any needed auth
  * @param init
@@ -84,11 +95,13 @@ const buildRequestHeaders = (
   init: StringIndexedObject,
   token?: string,
   ids?: Ids,
+  devHeader?: boolean,
 ): Request => ({
   ...init,
   headers: {
     ...cleanHeaders(init.headers || {}),
     ...addReferrerHeader(),
+    ...addDevHeader(devHeader),
     ...(token ? buildAuth(token) : {}),
     ...(ids ? buildIds(ids) : {}),
   },
@@ -163,6 +176,7 @@ export const originalFetch = () => fetch.bind(currentWindow);
 const interceptedFetch = async (
   url: string,
   options: StringIndexedObject,
+  operationArgs: OperationArgs = {},
   ...args
 ) => {
   const id = FirebaseAuthService?.auth?.currentUser?.uid;
@@ -173,10 +187,12 @@ const interceptedFetch = async (
   const trackingBody = formatTrackingBody(url, options);
   const ids = getIds(amplitude);
 
+  const devHeader = operationArgs?.useDevHeader;
+
   amplitude?.track('api-attempted', trackingBody);
   amplitude?.flush();
 
-  const headers = buildRequestHeaders(options, token, ids);
+  const headers = buildRequestHeaders(options, token, ids, devHeader);
 
   return originalFetch()
     .apply(currentWindow, [url, headers, ...args])

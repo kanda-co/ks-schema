@@ -1,6 +1,7 @@
 import * as operations from '../generated/operations';
 import { servers } from '../generated/servers';
 import { requestFunctions } from '../helpers';
+import { OperationArgs } from '../store/types';
 
 const dns = {
   production: servers[0],
@@ -10,4 +11,6 @@ const dns = {
 };
 
 const server = dns[process.env.REACT_APP_ENV || process.env.NEXT_PUBLIC_ENV || 'dev'];
-const serverFunctions = requestFunctions(server);
+const serverFunctions = (operationArgs: OperationArgs) =>
+  requestFunctions(server, operationArgs);
+

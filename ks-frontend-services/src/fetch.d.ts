@@ -1,5 +1,6 @@
 import type { BrowserClient } from '@amplitude/analytics-types';
 import { AuthenticationHeaders, StringIndexedObject } from './types';
+import { OperationArgs } from './store/types';
 interface IdHeaders {
     'kanda-device-id'?: string;
     'kanda-session-id'?: string;
@@ -18,6 +19,7 @@ export declare const buildIds: (ids: Ids) => IdHeaders;
 export declare const buildAuth: (token: string) => AuthenticationHeaders;
 export declare const cleanHeaders: (headers: StringIndexedObject) => StringIndexedObject;
 export declare const addReferrerHeader: () => HeadersInit;
+export declare const addDevHeader: (devHeader: boolean) => HeadersInit;
 export declare const getIds: (amplitude?: BrowserClient) => Ids;
 export declare const formatTrackingBody: (inputUrl: string, options: StringIndexedObject) => StringIndexedObject;
 export declare const originalFetch: () => any;
@@ -28,5 +30,5 @@ export declare const originalFetch: () => any;
  * @param options
  * @param args
  */
-declare const interceptedFetch: (url: string, options: StringIndexedObject, ...args: any[]) => Promise<any>;
+declare const interceptedFetch: (url: string, options: StringIndexedObject, operationArgs?: OperationArgs, ...args: any[]) => Promise<any>;
 export default interceptedFetch;

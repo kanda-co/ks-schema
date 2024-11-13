@@ -18,6 +18,7 @@ import type {
   ThunkAPI,
   Selectors,
   GeneratedState,
+  OperationArgs,
 } from './types';
 import {
   getHasVisitedCurrentPagePreviously,
@@ -170,7 +171,7 @@ const handleInfoEntity = async <
   Args extends StringIndexedObject<any> | undefined = undefined,
 >(
   args: { params: GetInfoEntityRequestParameters; forceReload?: boolean },
-  method: RequestFunction<Args, Entity>,
+  method: (operationArgs?: OperationArgs) => RequestFunction<Args, Entity>,
   thunkAPI: ThunkAPI,
 ) => {
   const state = thunkAPI.getState();
@@ -192,7 +193,6 @@ const handleInfoEntity = async <
 
   infoEntityKeys.forEach((key) => {
     const fetchingAction = slices[key].actions.fetching();
-
     thunkAPI.dispatch(fetchingAction);
   });
 
@@ -294,6 +294,7 @@ export const createAsyncThunkAction = <
         preventLoadingState,
         forceReload = false,
         chainedRequest = false,
+        useDevHeader,
         onSuccess,
         onError,
         ...methodArgs
@@ -310,7 +311,14 @@ export const createAsyncThunkAction = <
         thunkAPI.dispatch(chainedRequestAction());
       }
 
-      const finalMethodArgs = methodArgs as unknown as Args;
+      const finalMethodArgs = {
+        ...methodArgs,
+      } as unknown as Args;
+
+      const operationArgs = {
+        useDevHeader: Boolean(useDevHeader),
+      };
+
       const isGet = checkMethodIsGet(key);
 
       if (isGet && !forceReload) {
@@ -333,7 +341,7 @@ export const createAsyncThunkAction = <
       }
 
       const isDelete = checkMethodIsDelete(key);
-      const payload = method(finalMethodArgs);
+      const payload = method(operationArgs)(finalMethodArgs);
 
       try {
         const data = await handlePayload(payload as unknown as Payload<Entity>);

@@ -3,6 +3,7 @@ import type { StringIndexedObject } from './types';
 import fetch, { originalFetch } from './fetch';
 import { RECAPTCHA_SITE_KEY } from './config';
 import type { ExtractedError } from './types';
+import { OperationArgs } from './store/types';
 
 const handleProtectedRequest = async (
   init: StringIndexedObject,
@@ -33,16 +34,24 @@ const handleProtectedRequest = async (
  * Call fetch, including the baseUrl and attaching headers including authentication
  * @param baseURL
  */
-export const fetchRequestAdapter = (baseURL: string, requireAuth = true) => {
+export const fetchRequestAdapter = (
+  baseURL: string,
+  requireAuth = true,
+  operationArgs: OperationArgs = {},
+) => {
   const fetchToUse = requireAuth ? fetch : originalFetch();
   return async (url: string, init: StringIndexedObject): Promise<Response> => {
     const protectedRequest = Object.keys(init.headers || {}).includes(
       'x_kanda_protected',
     );
     if (protectedRequest)
-      return fetchToUse(`${baseURL}${url}`, await handleProtectedRequest(init));
+      return fetchToUse(
+        `${baseURL}${url}`,
+        await handleProtectedRequest(init),
+        operationArgs,
+      );
 
-    return fetchToUse(`${baseURL}${url}`, init);
+    return fetchToUse(`${baseURL}${url}`, init, operationArgs);
   };
 };
 
@@ -50,8 +59,13 @@ export const fetchRequestAdapter = (baseURL: string, requireAuth = true) => {
  * Build request functions for operations using baseUrl
  * @param baseURL
  */
-export const requestFunctions = (baseURL: string) =>
-  operations.requestFunctionsBuilder(fetchRequestAdapter(baseURL));
+export const requestFunctions = (
+  baseURL: string,
+  operationArgs?: OperationArgs,
+) =>
+  operations.requestFunctionsBuilder(
+    fetchRequestAdapter(baseURL, true, operationArgs),
+  );
 
 /**
  * Returns a string array of operation keys that we want to define services for.
