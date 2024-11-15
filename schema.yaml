@@ -8907,66 +8907,105 @@ components:
       title: work type
       x-kanda-form-widget: FilterableSelect
       enum:
+        - aesthetics
         - air_conditioning
+        - air_source_heat_pumps
         - alarm_systems
+        - appliances
         - artificial_grass
         - bathrooms_supply_and_fitted
         - bathrooms_supply_only
+        - battery_storage
         - bedrooms_furnitue_custom
         - blinds_awnings_shutters
         - boiler_swap
+        - car_body_shop
+        - car_detailing_and_alloys
         - carpentry
+        - catering
         - cctv
         - central_heating_system
+        - computer_builder
         - conservatory
         - conservatory_roof
         - decking
+        - dental
         - door_canopy
+        - door_internal
         - doors
         - driveways
         - electrical_installation
+        - electronics
+        - entertainers
         - ev_charger
+        - events
+        - experiences
         - fencing
         - fireplaces
         - fitted_furniture
         - flooring_excluding_carpets
+        - flowers
+        - full_events_package
+        - furniture
         - garage_doors
         - garden_buildings
         - gates
         - glass_splash_backs
         - granite_worktops
+        - graphic_designer
+        - ground_source_heat_pumps
+        - high_end_clothing
         - home_lifts
+        - home_removals
         - home_study
         - hot_tubs_and_spas
         - insulation_roof_foil_wrap_only
+        - jewllery
         - kitchens_fitted
         - kitchens_supply_only
         - landscaping
         - loft_boarding
         - loft_conversion
         - media_walls
+        - medical_assessments
+        - memberships
+        - mobillity_and_mobility_scooters
+        - network_engineer
+        - number_plates
+        - other
         - painting_and_decorating
         - patios
+        - personal_security
+        - photography
+        - planners
         - plastering
+        - porch
         - rendering
         - resin_driveways
         - roofing
         - roofing_excl_flat_roofs
         - roofline
         - security_lighting
+        - solar_pv_panels
+        - sports equipment
         - stair_lifts
         - staircases
+        - technology_repair
         - tiling
+        - tool sales
+        - tyres
         - under_stair_storage
         - underfloor_heating
         - upvc_doors
+        - vehicle_wrapping
+        - venues
         - verandas
         - wall_insulation_and_cladding
+        - wardrobes
         - water_softeners
+        - website_builder
         - windows
         - windows_and_doors
-        - wardrobes
-        - other
 
     CheckoutOption:
       type: string
