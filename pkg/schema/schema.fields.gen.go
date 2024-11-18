@@ -371,7 +371,7 @@ func GetFields(name string) []string {
 			"retired_details",
 			"self_employed_details",
 		},
-		"Enrollment": []string{
+		"Enrolment": []string{
 			"aid",
 			"bid",
 			"cid",
