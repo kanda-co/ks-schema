@@ -5675,6 +5675,68 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/enrollment/{id}:
+    get:
+      operationId: getEnrollment
+      summary: get existing enrollment
+      tags:
+        - Enrollment
+      parameters:
+        - name: id
+          in: path
+          description: enrollment id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing enrollment
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enrollment"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: putEnrollment
+      summary: put existing enrollment
+      tags:
+        - Enrollment
+      parameters:
+        - name: id
+          in: path
+          description: enrollment id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: put existing enrollment
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Enrollment"
+      responses:
+        200:
+          description: put existing enrollment
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enrollment"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/webhook/{provider}:
     get:
       operationId: providerCheckWebhook
@@ -11643,6 +11705,48 @@ components:
           title: rates
           items:
             $ref: "#/components/schemas/FinanceRate"
+
+    RateKeys:
+      type: array
+      title: rate keys
+      items:
+        type: string
+
+    RateRequest:
+      type: object
+      title: rate request
+      required:
+        - requester
+        - to_add
+        - to_remove
+        - added
+        - removed
+      properties:
+        requester:
+          type: string
+          title: requester id or email
+        to_add:
+          $ref: "#/components/schemas/RateKeys"
+        to_remove:
+          $ref: "#/components/schemas/RateKeys"
+        added:
+          $ref: "#/components/schemas/RateKeys"
+        removed:
+          $ref: "#/components/schemas/RateKeys"
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+
+    Enrollment:
+      allOf:
+        - $ref: "#/components/schemas/BaseId"
+        - type: object
+          title: enrollment
+          description: enrollment of resource
+          required:
+            - rate_request
+          properties:
+            rate_request:
+              $ref: "#/components/schemas/RateRequest"
 
     Error:
       type: object

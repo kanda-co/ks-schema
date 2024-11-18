@@ -371,6 +371,17 @@ func GetFields(name string) []string {
 			"retired_details",
 			"self_employed_details",
 		},
+		"Enrollment": []string{
+			"aid",
+			"bid",
+			"cid",
+			"eid",
+			"id",
+			"metadata",
+			"oid",
+			"rate_request",
+			"tid",
+		},
 		"Enterprise": []string{
 			"aid",
 			"bid",
@@ -967,6 +978,14 @@ func GetFields(name string) []string {
 			"finance_rates",
 			"id",
 			"metadata",
+		},
+		"RateRequest": []string{
+			"added",
+			"metadata",
+			"removed",
+			"requester",
+			"to_add",
+			"to_remove",
 		},
 		"RedirectURLs": []string{
 			"checkout_url",
