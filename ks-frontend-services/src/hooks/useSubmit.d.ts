@@ -1,9 +1,8 @@
-import { NewService, ServiceMethodReturnParams, StringIndexedObject } from '../types';
-import { OperationArgs } from '../store/types';
-export interface Hook<Entity, Args> {
-    submit: (args: Args, operationArgs?: OperationArgs) => Promise<ServiceMethodReturnParams<Entity>>;
+import { Service, ServiceSubmit, StringIndexedObject } from '../types';
+export interface Hook<Value, Params, Body> {
+    submit: ServiceSubmit<Value, Params, Body>;
     error?: string;
-    data?: Entity;
+    data?: StringIndexedObject;
     isSubmitting?: boolean;
 }
 /**
@@ -11,4 +10,4 @@ export interface Hook<Entity, Args> {
  * @param service ServiceMethod
  * @param formatResponse
  */
-export default function useSubmit<Entity extends StringIndexedObject | undefined | void, Args extends StringIndexedObject<any> | undefined = undefined>(service: NewService<Entity, Args>, formatResponse?: boolean): Hook<Entity, Args>;
+export default function useSubmit<Value, Params, Body>(service: Service<Value, Params, Body>, formatResponse?: boolean): Hook<Value, Params, Body>;
