@@ -5675,6 +5675,68 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/enrolment/{id}:
+    get:
+      operationId: getEnrolment
+      summary: get existing enrolment
+      tags:
+        - Enrolment
+      parameters:
+        - name: id
+          in: path
+          description: enrolment id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing enrolment
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enrolment"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: putEnrolment
+      summary: put existing enrolment
+      tags:
+        - Enrolment
+      parameters:
+        - name: id
+          in: path
+          description: enrolment id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: put existing enrolment
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Enrolment"
+      responses:
+        200:
+          description: put existing enrolment
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enrolment"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/webhook/{provider}:
     get:
       operationId: providerCheckWebhook
@@ -8907,11 +8969,14 @@ components:
       title: work type
       x-kanda-form-widget: FilterableSelect
       enum:
+        # home improvements
         - air_conditioning
+        - air_source_heat_pumps
         - alarm_systems
         - artificial_grass
         - bathrooms_supply_and_fitted
         - bathrooms_supply_only
+        - battery_storage
         - bedrooms_furnitue_custom
         - blinds_awnings_shutters
         - boiler_swap
@@ -8922,6 +8987,7 @@ components:
         - conservatory_roof
         - decking
         - door_canopy
+        - door_internal
         - doors
         - driveways
         - electrical_installation
@@ -8935,6 +9001,7 @@ components:
         - gates
         - glass_splash_backs
         - granite_worktops
+        - ground_source_heat_pumps
         - home_lifts
         - home_study
         - hot_tubs_and_spas
@@ -8945,15 +9012,18 @@ components:
         - loft_boarding
         - loft_conversion
         - media_walls
+        - other
         - painting_and_decorating
         - patios
         - plastering
+        - porch
         - rendering
         - resin_driveways
         - roofing
         - roofing_excl_flat_roofs
         - roofline
         - security_lighting
+        - solar_pv_panels
         - stair_lifts
         - staircases
         - tiling
@@ -8962,11 +9032,44 @@ components:
         - upvc_doors
         - verandas
         - wall_insulation_and_cladding
+        - wardrobes
         - water_softeners
         - windows
         - windows_and_doors
-        - wardrobes
-        - other
+        # non-home improvements
+        - aesthetics
+        - appliances
+        - car_body_shop
+        - car_detailing_and_alloys
+        - catering
+        - computer_builder
+        - dental
+        - electronics
+        - entertainers
+        - events
+        - experiences
+        - flowers
+        - full_events_package
+        - furniture
+        - graphic_designer
+        - high_end_clothing
+        - home_removals
+        - jewllery
+        - medical_assessments
+        - memberships
+        - mobillity_and_mobility_scooters
+        - network_engineer
+        - number_plates
+        - personal_security
+        - photography
+        - planners
+        - sports equipment
+        - technology_repair
+        - tool sales
+        - tyres
+        - vehicle_wrapping
+        - venues
+        - website_builder
 
     CheckoutOption:
       type: string
@@ -11604,6 +11707,48 @@ components:
           title: rates
           items:
             $ref: "#/components/schemas/FinanceRate"
+
+    RateKeys:
+      type: array
+      title: rate keys
+      items:
+        type: string
+
+    RateRequest:
+      type: object
+      title: rate request
+      required:
+        - requester
+        - to_add
+        - to_remove
+        - added
+        - removed
+      properties:
+        requester:
+          type: string
+          title: requester id or email
+        to_add:
+          $ref: "#/components/schemas/RateKeys"
+        to_remove:
+          $ref: "#/components/schemas/RateKeys"
+        added:
+          $ref: "#/components/schemas/RateKeys"
+        removed:
+          $ref: "#/components/schemas/RateKeys"
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+
+    Enrolment:
+      allOf:
+        - $ref: "#/components/schemas/BaseId"
+        - type: object
+          title: enrolment
+          description: enrolment of resource
+          required:
+            - rate_request
+          properties:
+            rate_request:
+              $ref: "#/components/schemas/RateRequest"
 
     Error:
       type: object
