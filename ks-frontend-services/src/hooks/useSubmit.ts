@@ -1,20 +1,20 @@
 import { useCallback, useState } from 'react';
 
 import {
-  Service,
-  ServiceMethod,
-  ServiceMethodReturn,
+  NewService,
   ServiceMethodReturnParams,
-  ServiceParams,
-  ServiceSubmit,
   StringIndexedObject,
 } from '../types';
-import { handleResponse, Response } from '../handlers';
+import { OperationArgs, Payload } from '../store/types';
+import { handlePayload } from '../store/helpers';
 
-export interface Hook<Value, Params, Body> {
-  submit: ServiceSubmit<Value, Params, Body>;
+export interface Hook<Entity, Args> {
+  submit: (
+    args: Args,
+    operationArgs?: OperationArgs,
+  ) => Promise<ServiceMethodReturnParams<Entity>>;
   error?: string;
-  data?: StringIndexedObject;
+  data?: Entity;
   isSubmitting?: boolean;
 }
 
@@ -23,24 +23,27 @@ export interface Hook<Value, Params, Body> {
  * @param service ServiceMethod
  * @param formatResponse
  */
-export default function useSubmit<Value, Params, Body>(
-  service: Service<Value, Params, Body>,
+export default function useSubmit<
+  Entity extends StringIndexedObject | undefined | void,
+  Args extends StringIndexedObject<any> | undefined = undefined,
+>(
+  service: NewService<Entity, Args>,
   formatResponse = true,
-): Hook<Value, Params, Body> {
+): Hook<Entity, Args> {
   const [error, setError] = useState<string>();
-  const [data, setData] = useState<StringIndexedObject>();
+  const [data, setData] = useState<Entity>();
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const { method } = service;
 
   /**
    * Calls the method and handles loading / error states
    */
   const submit = useCallback(
-    async ({
-      body = {} as Body,
-      params = {} as Params,
-    }: Partial<ServiceParams<Params, Body>>): Promise<
-      ServiceMethodReturnParams<Value>
-    > => {
+    async (
+      args: Args,
+      operationArgs?: OperationArgs,
+    ): Promise<ServiceMethodReturnParams<Entity>> => {
       if (!service || !service.method) {
         const errorLabel = 'No such method exists';
         setError(errorLabel);
@@ -50,29 +53,11 @@ export default function useSubmit<Value, Params, Body>(
       setError(null);
       setIsSubmitting(true);
 
-      /**
-       * This is needed because both body and params are marked as required at
-       * the service level for each individual request interface. But some may
-       * have no params, body or both.
-       */
-      const args = {
-        body,
-        params,
-      };
-
-      const method = service.method as unknown as (
-        args: Partial<ServiceParams<Params, Body>>,
-      ) => ServiceMethodReturn<Value>;
-
-      const response = formatResponse
-        ? await (method(args) as unknown as Function)()
-        : await method(args);
+      const payload = method(operationArgs)(args);
 
       try {
-        const result = formatResponse
-          ? await handleResponse(response as Response)
-          : response;
-        setData(result as Value);
+        const result = await handlePayload(payload as Payload<Entity>);
+        setData(result as Entity);
         return { data: result };
       } catch (e) {
         setError(e);
@@ -81,11 +66,11 @@ export default function useSubmit<Value, Params, Body>(
         setIsSubmitting(false);
       }
     },
-    [service?.method],
+    [method],
   );
 
   return {
-    submit: submit as unknown as ServiceSubmit<Value, Params, Body>,
+    submit,
     error,
     data,
     isSubmitting,

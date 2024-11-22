@@ -27,13 +27,7 @@ export default function useCurrentUser(
     FirebaseAuthService.logout.bind(FirebaseAuthService),
   );
 
-  const { submit: me } = useSubmit(
-    services.authUser.me as unknown as Service<
-      AuthUser,
-      StringIndexedObject,
-      StringIndexedObject
-    >,
-  );
+  const { submit: me } = useSubmit(services.authUser.me);
 
   function revalidate(): Promise<void> {
     return new Promise<void>((resolve) => {
@@ -55,7 +49,7 @@ export default function useCurrentUser(
 
   useEffect(() => {
     if (fetchUserDetails && isUserLoggedIn && !userDetails) {
-      me({}).then(({ data, error }) => {
+      me(undefined).then(({ data, error }) => {
         if (!error) {
           setUserDetails(data);
         }
