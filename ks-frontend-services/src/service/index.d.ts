@@ -376,12 +376,6 @@ declare const infoValidation: {
         method: (operationArgs?: OperationArgs) => import("../generated/operations/infoValidateEmail").InfoValidateEmailRequestFunction;
     };
 };
-declare const infoWorkType: {
-    infoWorkType: {
-        key: string;
-        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoWorkType").InfoWorkTypeRequestFunction;
-    };
-};
 declare const introduction: {
     getIntroductions: {
         key: string;
@@ -886,20 +880,20 @@ declare const pdf: {
     compress: {
         key: string;
         method: ({ body: { content, mimetype }, }: import("./external/pdf").CompressRequest) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<{
-            body: import("./external/pdf").FindResponse;
-        }, import("./external/pdf").FindResponse>;
+            body: import("./external/pdf").CompressRequest;
+        }, import("../types").StringIndexedObject<any>>;
     };
     create: {
         key: string;
         method: ({ body, }: import("./external/pdf").CreateRequest) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<{
             body: import("./external/pdf").CreateRequest;
-        }, import("./external/pdf").CreateRequest>;
+        }, import("../types").StringIndexedObject<any>>;
     };
     satnote: {
         key: string;
         method: ({ body: { job, credit, satNote, acceptedTerms }, }: import("./external/pdf").SatNoteRequest) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<{
-            body: import("./external/pdf").FindResponse;
-        }, import("./external/pdf").FindResponse>;
+            body: import("./external/pdf").SatNoteRequest;
+        }, import("../types").StringIndexedObject<any>>;
     };
 };
 declare const personalGuarantee: {
@@ -1310,12 +1304,6 @@ declare const services: {
         infoValidateEmail: {
             key: string;
             method: (operationArgs?: OperationArgs) => import("../generated/operations/infoValidateEmail").InfoValidateEmailRequestFunction;
-        };
-    };
-    infoWorkType: {
-        infoWorkType: {
-            key: string;
-            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoWorkType").InfoWorkTypeRequestFunction;
         };
     };
     introduction: {
@@ -1822,20 +1810,20 @@ declare const services: {
         compress: {
             key: string;
             method: ({ body: { content, mimetype }, }: import("./external/pdf").CompressRequest) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<{
-                body: import("./external/pdf").FindResponse;
-            }, import("./external/pdf").FindResponse>;
+                body: import("./external/pdf").CompressRequest;
+            }, import("../types").StringIndexedObject<any>>;
         };
         create: {
             key: string;
             method: ({ body, }: import("./external/pdf").CreateRequest) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<{
                 body: import("./external/pdf").CreateRequest;
-            }, import("./external/pdf").CreateRequest>;
+            }, import("../types").StringIndexedObject<any>>;
         };
         satnote: {
             key: string;
             method: ({ body: { job, credit, satNote, acceptedTerms }, }: import("./external/pdf").SatNoteRequest) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<{
-                body: import("./external/pdf").FindResponse;
-            }, import("./external/pdf").FindResponse>;
+                body: import("./external/pdf").SatNoteRequest;
+            }, import("../types").StringIndexedObject<any>>;
         };
     };
     personalGuarantee: {
@@ -1869,5 +1857,5 @@ declare const services: {
         };
     };
 };
-export { adhoc, audit, authUser, company, credit, document, enterprise, event, infoAuth, infoCache, infoCampaign, infoCompany, infoCustomer, infoDirector, infoEnterpriseRole, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoIntroductionStats, infoLead, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoRelation, infoSearch, infoStats, infoValidation, infoWorkType, introduction, job, lead, monitor, onboarding, partner, payment, rate, subscription, task, tradeSummary, training, transaction, webhook, address, contract, payouts, pdf, personalGuarantee, sheets, subsSheet, };
+export { adhoc, audit, authUser, company, credit, document, enterprise, event, infoAuth, infoCache, infoCampaign, infoCompany, infoCustomer, infoDirector, infoEnterpriseRole, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoIntroductionStats, infoLead, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoRelation, infoSearch, infoStats, infoValidation, introduction, job, lead, monitor, onboarding, partner, payment, rate, subscription, task, tradeSummary, training, transaction, webhook, address, contract, payouts, pdf, personalGuarantee, sheets, subsSheet, };
 export default services;

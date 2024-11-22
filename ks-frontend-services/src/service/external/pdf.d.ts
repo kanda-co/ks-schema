@@ -30,20 +30,20 @@ declare const _default: {
     compress: {
         key: string;
         method: ({ body: { content, mimetype }, }: CompressRequest) => RequestFunction<{
-            body: FindResponse;
-        }, FindResponse>;
+            body: CompressRequest;
+        }, StringIndexedObject>;
     };
     create: {
         key: string;
         method: ({ body, }: CreateRequest) => RequestFunction<{
             body: CreateRequest;
-        }, CreateRequest>;
+        }, StringIndexedObject<any>>;
     };
     satnote: {
         key: string;
         method: ({ body: { job, credit, satNote, acceptedTerms }, }: SatNoteRequest) => RequestFunction<{
-            body: FindResponse;
-        }, FindResponse>;
+            body: SatNoteRequest;
+        }, StringIndexedObject>;
     };
 };
 export default _default;
