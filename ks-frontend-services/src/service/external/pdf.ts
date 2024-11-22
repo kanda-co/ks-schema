@@ -54,8 +54,8 @@ export default {
     method: ({
       body: { content, mimetype },
     }: CompressRequest): RequestFunction<
-      { body: FindResponse },
-      FindResponse
+      { body: CompressRequest },
+      StringIndexedObject
     > =>
       pdfPoster(`/kspdf-compress`, {
         content,
@@ -68,14 +68,17 @@ export default {
       body,
     }: CreateRequest): RequestFunction<
       { body: CreateRequest },
-      CreateRequest
+      StringIndexedObject
     > => pdfPoster(`/kspdf-create`, body),
   },
   satnote: {
     key: '/satnote',
     method: ({
       body: { job, credit, satNote, acceptedTerms },
-    }: SatNoteRequest): RequestFunction<{ body: FindResponse }, FindResponse> =>
+    }: SatNoteRequest): RequestFunction<
+      { body: SatNoteRequest },
+      StringIndexedObject
+    > =>
       pdfPoster(`/kspdf-satnote`, {
         job,
         credit,
