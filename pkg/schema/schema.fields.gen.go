@@ -324,6 +324,7 @@ func GetFields(name string) []string {
 			"title",
 		},
 		"CustomerOptions": []string{
+			"agree_commission_terms",
 			"checkout_option",
 			"deposit_value",
 			"finance_option",

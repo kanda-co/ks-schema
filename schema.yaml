@@ -8775,6 +8775,10 @@ components:
           type: object
           $ref: "#/components/schemas/Money"
           title: deposit value in pence
+        agree_commission_terms:
+          type: object
+          title: agree to our commission terms and conditions
+          $ref: "#/components/schemas/Signature"
 
     SatNoteTimeline:
       type: object
