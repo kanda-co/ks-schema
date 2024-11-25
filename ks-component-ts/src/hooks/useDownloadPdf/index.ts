@@ -8,6 +8,9 @@ import {
 import { useCallback, useState } from "react";
 import { isJobCustom } from "./helpers";
 import { downloadBase64 } from "../../helpers";
+import { GetJobRequestFunction } from "~/generated/operations/getJob";
+import { GetDocumentRequestFunction } from "~/generated/operations/getDocument";
+import { JobCompanyInfoRequestFunction } from "~/generated/operations/jobCompanyInfo";
 
 export interface DownloadPdfHook {
   downloadPdf: (id: string) => void;
@@ -15,9 +18,26 @@ export interface DownloadPdfHook {
 }
 
 export default function useDownloadPdf(): DownloadPdfHook {
-  const { submit: getJob } = useSubmit(services.job.getJob);
-  const { submit: getDocument } = useSubmit(services.document.getDocument);
-  const { submit: jobCompanyInfo } = useSubmit(services.job.jobCompanyInfo);
+  const { submit: getJob } = useSubmit({
+    key: services.job.getJob.key,
+    method: (
+      services.job.getJob.method as unknown as () => GetJobRequestFunction
+    )(),
+  });
+  const { submit: getDocument } = useSubmit({
+    key: services.document.getDocument.key,
+    method: (
+      services.document.getDocument
+        .method as unknown as () => GetDocumentRequestFunction
+    )(),
+  });
+  const { submit: jobCompanyInfo } = useSubmit({
+    key: services.job.jobCompanyInfo.key,
+    method: (
+      services.job.jobCompanyInfo
+        .method as unknown as () => JobCompanyInfoRequestFunction
+    )(),
+  });
 
   const { showError } = useToast();
   const { createPdf } = useQuoteDownload();
@@ -25,7 +45,7 @@ export default function useDownloadPdf(): DownloadPdfHook {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const customDownload = useCallback(
-    (job: Job) => {
+    (job) => {
       const id = job?.job_items[0]?.quote_document?.id;
       if (!id) {
         setIsSubmitting(false);

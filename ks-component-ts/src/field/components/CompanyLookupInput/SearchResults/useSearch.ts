@@ -7,6 +7,7 @@ import {
 } from "@kanda-libs/ks-frontend-services";
 import usePreviousValue from "~/hooks/usePreviousValue";
 import { DEBOUNCE_INTERVAL, SKELETON_DATA } from "./constants";
+import { InfoCompanyRequestFunction } from "~/generated/operations/infoCompany";
 
 export interface SearchHook {
   results: InfoCompany[];
@@ -20,10 +21,16 @@ const useSearch = (query = ""): SearchHook => {
   const { previousValue: previousQuery, hasChanged: queryHasChanged } =
     usePreviousValue(debouncedQuery);
 
+  const service = {
+    key: services.infoCompany.infoCompany.key,
+    method: (
+      services.infoCompany.infoCompany
+        .method as unknown as () => InfoCompanyRequestFunction
+    )(),
+  };
+
   const { data, isValidating, mutate } = useLoadData(
-    (debouncedQuery &&
-      services.infoCompany
-        .infoCompany) as typeof services.infoCompany.infoCompany,
+    debouncedQuery ? service : false,
     { shouldRetryOnError: false },
     {
       params: {

@@ -13,6 +13,7 @@ import {
   useSubmit,
 } from "@kanda-libs/ks-frontend-services";
 import { StringIndexedObject } from "~/types";
+import { InfoIPRequestFunction } from "~/generated/operations/infoIP";
 
 export interface Hook {
   Handle: HandleComponent;
@@ -28,8 +29,15 @@ export default function useFingerprintBooleanInputUncontrolled(
 
   const { setValue } = useFormContext();
 
+  const service = {
+    key: services.infoCompany.infoCompany.key,
+    method: (
+      services.infoIP.infoIP.method as unknown as () => InfoIPRequestFunction
+    )(),
+  };
+
   const { submit: getIp } = useSubmit(
-    services.infoIP.infoIP as unknown as Service<
+    service as unknown as Service<
       InfoIP,
       StringIndexedObject,
       StringIndexedObject

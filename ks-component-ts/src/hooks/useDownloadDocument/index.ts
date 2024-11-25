@@ -2,6 +2,7 @@ import { useToast } from "@kanda-libs/ks-design-library";
 import { services, useSubmit } from "@kanda-libs/ks-frontend-services";
 import { useCallback } from "react";
 import { downloadBase64 } from "../../helpers";
+import { GetDocumentRequestFunction } from "~/generated/operations/getDocument";
 
 export interface DownloadDocumentHook {
   downloadDocument: (id: string) => void;
@@ -9,9 +10,15 @@ export interface DownloadDocumentHook {
 }
 
 export default function useDownloadDocument(): DownloadDocumentHook {
-  const { submit: getDocument, isSubmitting = false } = useSubmit(
-    services.document.getDocument
-  );
+  const service = {
+    key: services.document.getDocument.key,
+    method: (
+      services.document.getDocument
+        .method as unknown as () => GetDocumentRequestFunction
+    )(),
+  };
+
+  const { submit: getDocument, isSubmitting = false } = useSubmit(service);
 
   const { showError } = useToast();
 
