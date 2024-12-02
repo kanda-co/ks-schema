@@ -170,7 +170,11 @@ const handleInfoEntity = async <
   Entity extends StringIndexedObject | undefined | void,
   Args extends StringIndexedObject<any> | undefined = undefined,
 >(
-  args: { params: GetInfoEntityRequestParameters; forceReload?: boolean },
+  inputArgs: {
+    params: GetInfoEntityRequestParameters;
+    forceReload?: boolean;
+    useDevHeader?: boolean;
+  },
   method: (operationArgs?: OperationArgs) => RequestFunction<Args, Entity>,
   thunkAPI: ThunkAPI,
 ) => {
@@ -178,9 +182,13 @@ const handleInfoEntity = async <
   const hasVisitedEntityPagePreviously =
     getHasVisitedCurrentPagePreviously(state);
 
+  const { forceReload, useDevHeader, ...args } = inputArgs;
+
   const reducer = state[args.params.kind] as GeneratedState<Entity>;
 
-  const { forceReload } = args;
+  const operationArgs = {
+    useDevHeader: Boolean(useDevHeader),
+  };
 
   const item = reducer.entities[args.params.id];
 
@@ -196,7 +204,7 @@ const handleInfoEntity = async <
     thunkAPI.dispatch(fetchingAction);
   });
 
-  const payload = method(args as unknown as Args);
+  const payload = method(operationArgs)(args as unknown as Args);
 
   const data = await handlePayload(payload as unknown as Payload<InfoEntity>);
 

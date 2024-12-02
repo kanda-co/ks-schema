@@ -172,6 +172,16 @@ declare const document: {
         method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteDocument").DeleteDocumentRequestFunction;
     };
 };
+declare const enrolment: {
+    getEnrolment: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getEnrolment").GetEnrolmentRequestFunction;
+    };
+    putEnrolment: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/putEnrolment").PutEnrolmentRequestFunction;
+    };
+};
 declare const enterprise: {
     getEnterprises: {
         key: string;
@@ -374,6 +384,12 @@ declare const infoValidation: {
     infoValidateEmail: {
         key: string;
         method: (operationArgs?: OperationArgs) => import("../generated/operations/infoValidateEmail").InfoValidateEmailRequestFunction;
+    };
+};
+declare const infoWorkType: {
+    infoWorkType: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoWorkType").InfoWorkTypeRequestFunction;
     };
 };
 declare const introduction: {
@@ -1102,6 +1118,16 @@ declare const services: {
             method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteDocument").DeleteDocumentRequestFunction;
         };
     };
+    enrolment: {
+        getEnrolment: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getEnrolment").GetEnrolmentRequestFunction;
+        };
+        putEnrolment: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/putEnrolment").PutEnrolmentRequestFunction;
+        };
+    };
     enterprise: {
         getEnterprises: {
             key: string;
@@ -1304,6 +1330,12 @@ declare const services: {
         infoValidateEmail: {
             key: string;
             method: (operationArgs?: OperationArgs) => import("../generated/operations/infoValidateEmail").InfoValidateEmailRequestFunction;
+        };
+    };
+    infoWorkType: {
+        infoWorkType: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoWorkType").InfoWorkTypeRequestFunction;
         };
     };
     introduction: {
@@ -1857,5 +1889,5 @@ declare const services: {
         };
     };
 };
-export { adhoc, audit, authUser, company, credit, document, enterprise, event, infoAuth, infoCache, infoCampaign, infoCompany, infoCustomer, infoDirector, infoEnterpriseRole, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoIntroductionStats, infoLead, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoRelation, infoSearch, infoStats, infoValidation, introduction, job, lead, monitor, onboarding, partner, payment, rate, subscription, task, tradeSummary, training, transaction, webhook, address, contract, payouts, pdf, personalGuarantee, sheets, subsSheet, };
+export { adhoc, audit, authUser, company, credit, document, enrolment, enterprise, event, infoAuth, infoCache, infoCampaign, infoCompany, infoCustomer, infoDirector, infoEnterpriseRole, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoIntroductionStats, infoLead, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoRelation, infoSearch, infoStats, infoValidation, infoWorkType, introduction, job, lead, monitor, onboarding, partner, payment, rate, subscription, task, tradeSummary, training, transaction, webhook, address, contract, payouts, pdf, personalGuarantee, sheets, subsSheet, };
 export default services;

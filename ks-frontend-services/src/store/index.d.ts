@@ -59,6 +59,17 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         isLoading: boolean;
         isSubmitting: boolean;
     };
+    enrolment: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").Enrolment>;
+        raw?: {} | {}[];
+        error?: import("../types").ExtractedError;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+        isSubmitting: boolean;
+    };
     enterprise: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Enterprise>;
@@ -205,6 +216,17 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
     infoStats: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoStats>;
+        raw?: {} | {}[];
+        error?: import("../types").ExtractedError;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+        isSubmitting: boolean;
+    };
+    infoWorkType: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoWorkType>;
         raw?: {} | {}[];
         error?: import("../types").ExtractedError;
         hasFetched: boolean;
@@ -744,6 +766,17 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         isLoading: boolean;
         isSubmitting: boolean;
     };
+    enrolment: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").Enrolment>;
+        raw?: {} | {}[];
+        error?: import("../types").ExtractedError;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+        isSubmitting: boolean;
+    };
     enterprise: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Enterprise>;
@@ -890,6 +923,17 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
     infoStats: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoStats>;
+        raw?: {} | {}[];
+        error?: import("../types").ExtractedError;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+        isSubmitting: boolean;
+    };
+    infoWorkType: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").InfoWorkType>;
         raw?: {} | {}[];
         error?: import("../types").ExtractedError;
         hasFetched: boolean;
@@ -1392,6 +1436,7 @@ export declare function createSelectors<State extends AuthSlice, Pages>(): {
     company: import("./types").Selectors<import("..").Company, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Company>>>;
     credit: import("./types").Selectors<import("..").Credit, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Credit>>>;
     document: import("./types").Selectors<import("..").Document, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Document>>>;
+    enrolment: import("./types").Selectors<import("..").Enrolment, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Enrolment>>>;
     enterprise: import("./types").Selectors<import("..").Enterprise, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Enterprise>>>;
     event: import("./types").Selectors<import("..").Event, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Event>>>;
     infoAuth: import("./types").Selectors<import("..").InfoAuth, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoAuth>>>;
@@ -1406,6 +1451,7 @@ export declare function createSelectors<State extends AuthSlice, Pages>(): {
     infoRelation: import("./types").Selectors<import("..").InfoRelation, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoRelation>>>;
     infoSearch: import("./types").Selectors<import("..").InfoSearch, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoSearch>>>;
     infoStats: import("./types").Selectors<import("..").InfoStats, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoStats>>>;
+    infoWorkType: import("./types").Selectors<import("..").InfoWorkType, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoWorkType>>>;
     introduction: import("./types").Selectors<import("..").Introduction, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Introduction>>>;
     job: import("./types").Selectors<import("..").Job, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Job>>>;
     lead: import("./types").Selectors<import("..").Lead, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Lead>>>;

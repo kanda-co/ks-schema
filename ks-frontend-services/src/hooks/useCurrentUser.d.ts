@@ -24,6 +24,7 @@ export declare const createCurrentUserHook: <State extends AuthSlice, Dispatch e
     company: import("../store/types").Selectors<import("..").Company, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Company>>>;
     credit: import("../store/types").Selectors<import("..").Credit, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Credit>>>;
     document: import("../store/types").Selectors<import("..").Document, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Document>>>;
+    enrolment: import("../store/types").Selectors<import("..").Enrolment, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Enrolment>>>;
     enterprise: import("../store/types").Selectors<import("..").Enterprise, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Enterprise>>>;
     event: import("../store/types").Selectors<import("..").Event, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Event>>>;
     infoAuth: import("../store/types").Selectors<import("..").InfoAuth, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoAuth>>>;
@@ -38,6 +39,7 @@ export declare const createCurrentUserHook: <State extends AuthSlice, Dispatch e
     infoRelation: import("../store/types").Selectors<import("..").InfoRelation, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoRelation>>>;
     infoSearch: import("../store/types").Selectors<import("..").InfoSearch, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoSearch>>>;
     infoStats: import("../store/types").Selectors<import("..").InfoStats, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoStats>>>;
+    infoWorkType: import("../store/types").Selectors<import("..").InfoWorkType, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoWorkType>>>;
     introduction: import("../store/types").Selectors<import("..").Introduction, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Introduction>>>;
     job: import("../store/types").Selectors<import("..").Job, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Job>>>;
     lead: import("../store/types").Selectors<import("..").Lead, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Lead>>>;
