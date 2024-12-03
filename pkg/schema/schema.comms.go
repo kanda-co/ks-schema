@@ -18,10 +18,10 @@ var (
 var (
 	mLenderInfo = map[FinanceProvider]ContactInfo{
 		Allium: {
-			ContactEmail: NewEmail("service@alliummoney.co.uk"),
-			ContactName:  New("Allium Money"),
-			ContactPhone: New("03330164057"),
-			TradingName:  New("Allium Money"),
+			ContactEmail: NewEmail("customersupport@tandem.co.uk"),
+			ContactName:  New("Tandem Bank"),
+			ContactPhone: New("01290 211 495"),
+			TradingName:  New("Tandem Bank"),
 		},
 		Demo: {
 			ContactEmail: NewEmail("demo@example.co.uk"),

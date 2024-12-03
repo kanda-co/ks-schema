@@ -1,5 +1,5 @@
 {
-  "subject": "You need to provide supporting documents for your finance application",
+  "subject": "There is an update regarding your recent loan application",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "Your finance application has been reviewed by the lender and they've asked that you submit some extra documents. You will have received an email from <strong>{{lender.contact_email}}</strong>. You can follow the link in that email to submit your documents or email it back to them. Click the button below to find out more. Please check your spam folder"
+          "text": "Your finance application is currently being reviewed by our lender, <strong>{{lender.contact_name}}</strong>. You will have, or shortly will, receive an email from their underwriters with instructions of any steps needed to proceed with your application. If supporting documents are needed for your application, instructions for submitting these will also be provided within the email. If you have yet to receive an email, please check your junk/spam folder."
         }
       ]
     },
@@ -29,5 +29,5 @@
       "url": "{{cta_url}}"
     }
   ],
-  "sms": "Hey {{receiver.contact_name}}, good news! The lender has accepted your application in principal. They just need a few documents. Check your email for more info. Kanda!"
+  "sms": "Hey {{receiver.contact_name}}! Your application is currently being reviewed by our lender. Check your email for more info. Kanda!"
 }
