@@ -78,7 +78,7 @@ export default function useRangeInputProps(
 
   const step = useMemo(
     () => Math.ceil((parseInt(max, 10) - parseInt(min, 10)) / numSteps),
-    []
+    [max, min, numSteps]
   );
 
   const maxInput = useMemo(() => {
@@ -111,32 +111,41 @@ export default function useRangeInputProps(
       const increment = rawDiff * step;
       return String(Math.min(parseInt(min, 10) + increment, parseInt(max, 10)));
     },
-    [maxInput, step, max]
+    [step, max, min]
   );
 
   const currentLabel = useMemo(() => {
     if (!value) return undefined;
     return `${prefix}${formatter(value)}${suffix}`;
-  }, [value]);
+  }, [formatter, value, prefix, suffix]);
 
-  const maxLabel = `${prefix}${formatter(String(max))}${suffix}`;
-  const minLabel = `${prefix}${formatter(String(min))}${suffix}`;
+  const maxLabel = useMemo(
+    () => `${prefix}${formatter(String(max))}${suffix}`,
+    [prefix, formatter, max, suffix]
+  );
+  const minLabel = useMemo(
+    () => `${prefix}${formatter(String(min))}${suffix}`,
+    [prefix, formatter, min, suffix]
+  );
 
-  const classNames = {
-    ...CLASS_NAMES,
-    container: clsx(
-      CLASS_NAMES.container,
-      error ? "border-red-200" : "border-neutral-100"
-    ),
-    minLowerLabel: clsx(
-      CLASS_NAMES.lowerLabel,
-      highlightLabel === "min" && CLASS_NAMES.highlightedLowerLabel
-    ),
-    maxLowerLabel: clsx(
-      CLASS_NAMES.lowerLabel,
-      highlightLabel === "max" && CLASS_NAMES.highlightedLowerLabel
-    ),
-  };
+  const classNames = useMemo(
+    () => ({
+      ...CLASS_NAMES,
+      container: clsx(
+        CLASS_NAMES.container,
+        error ? "border-red-200" : "border-neutral-100"
+      ),
+      minLowerLabel: clsx(
+        CLASS_NAMES.lowerLabel,
+        highlightLabel === "min" && CLASS_NAMES.highlightedLowerLabel
+      ),
+      maxLowerLabel: clsx(
+        CLASS_NAMES.lowerLabel,
+        highlightLabel === "max" && CLASS_NAMES.highlightedLowerLabel
+      ),
+    }),
+    [error, highlightLabel]
+  );
 
   const onSliderChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -197,7 +206,7 @@ export default function useRangeInputProps(
     if (!initRef.current) return;
     const newValue = tieStepsTo === "max" ? tieMax(rawValue) : tieMin(rawValue);
     setValue(name, newValue);
-  }, [rawValue, tieStepsTo, setValue]);
+  }, [rawValue, tieStepsTo, setValue, tieMax, tieMin, name]);
 
   return {
     ref,

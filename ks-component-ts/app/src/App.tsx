@@ -13,7 +13,7 @@ import {
   FormTheme,
 } from "@kanda-libs/ks-component-ts";
 import { StringIndexedObject } from "~/types";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Button } from "@kanda-libs/ks-design-library";
 
 if (!(Window.prototype as StringIndexedObject).setImmediate) {
@@ -22,50 +22,21 @@ if (!(Window.prototype as StringIndexedObject).setImmediate) {
   };
 }
 
-const capitalise = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
+interface FormValues {
+  range: string;
+}
 
 function App() {
-  const form = useForm({
+  const form = useForm<FormValues>({
     mode: "onBlur",
+    defaultValues: {
+      range: "65432",
+    },
   });
 
-  const { watch, setValue } = form;
-  const { range1, range2 } = watch();
-
-  const onSubmit = (data: StringIndexedObject) => console.log({ data });
-  const [query, setQuery] = useState("");
-
-  const validateRange = (
-    value: string | number | boolean | undefined
-  ): boolean => {
-    const v = `${value}`;
-    const test = parseInt(v, 10);
-    if (test < 50000) return false;
-    return true;
-  };
-
-  const validation: ValidationItems = {
-    validate: {
-      value: (value: string | number | boolean | undefined) =>
-        validateRange(value),
-      message: "Must be between over £500",
-    },
-  };
-
-  const formatter = (value: string) => {
-    const pounds = new Intl.NumberFormat("en-BG", {
-      style: "currency",
-      currency: "GBP",
-    }).format(parseInt(value) / 100);
-    return pounds;
-  };
-
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  useEffect(() => {
-    const n = 200000 - parseInt(range1, 10);
-    setValue("range2", String(n));
-  }, [range1]);
+  const onSubmit = useCallback((values: StringIndexedObject<FormValues>) => {
+    console.log({ values });
+  }, []);
 
   return (
     <div style={{ maxWidth: 500 }}>
@@ -76,15 +47,7 @@ function App() {
           onSubmit={onSubmit}
           className="flex flex-col p-6 bg-neutral-100"
         >
-          <FormTheme variant="inline">
-            <Widget.JobCustomerPhone className="bg-neutral-000 mb-10" />
-          </FormTheme>
-          <FormTheme variant="default">
-            <Widget.JobCustomerPhone
-              className="bg-neutral-000"
-              name="defaultphone"
-            />
-          </FormTheme>
+          <Field.RangeInput name="range" min="50001" max="100000" />
           <Button.Text
             submit
             label="submit"
