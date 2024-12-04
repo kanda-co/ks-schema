@@ -558,6 +558,11 @@ paths:
           schema:
             type: string
           description: query matching work type
+        - in: query
+          name: job_id
+          schema:
+            type: string
+          description: query matching job id
       responses:
         200:
           description: got available finance rates for API company
