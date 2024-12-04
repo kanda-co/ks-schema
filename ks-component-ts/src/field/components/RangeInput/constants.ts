@@ -14,3 +14,9 @@ export const CLASS_NAMES = {
   rangeWrapper: "flex flex-row relative",
   cap: "w-2.5 h-2.5 bg-green-600 rounded-full border border-neutral-000 absolute z-0 top-[5px] first:left-0 last:right-0",
 };
+
+export const BASE_INPUT_PROPS = {
+  min: "0",
+  max: "100",
+  step: "1",
+};

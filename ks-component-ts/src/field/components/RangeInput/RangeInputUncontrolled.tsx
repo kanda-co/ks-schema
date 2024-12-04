@@ -4,6 +4,8 @@ import { DefaultFormFieldProps } from "~/field/types";
 import useRangeInputProps from "./useRangeInputProps";
 import { defaultFormatter } from "./helpers";
 
+export type TieStepsTo = "min" | "max";
+
 export interface RangeInputUncontrolledProps
   extends InputHTMLAttributes<HTMLInputElement> {
   min?: string;
@@ -14,6 +16,7 @@ export interface RangeInputUncontrolledProps
   highlightLabel?: "min" | "max";
   showCurrentValueLabel?: boolean;
   suffix?: string;
+  tieStepsTo?: TieStepsTo;
 }
 
 const RangeInputUncontrolled: FunctionComponent<
@@ -30,22 +33,34 @@ const RangeInputUncontrolled: FunctionComponent<
   prefix = "",
   suffix = "",
   name = "",
+  tieStepsTo = "max",
   highlightLabel,
   showCurrentValueLabel = true,
   ...restProps
 }) {
-  const { ref, inputProps, minLabel, maxLabel, currentLabel, classNames } =
-    useRangeInputProps(
-      name,
-      min,
-      max,
-      steps,
-      formatter,
-      prefix,
-      suffix,
-      error,
-      highlightLabel
-    );
+  const {
+    ref,
+    inputProps,
+    minLabel,
+    maxLabel,
+    currentLabel,
+    classNames,
+    sliderName,
+    onSliderChange,
+    rawValue,
+    value,
+  } = useRangeInputProps(
+    name,
+    min,
+    max,
+    steps,
+    tieStepsTo,
+    formatter,
+    prefix,
+    suffix,
+    error,
+    highlightLabel
+  );
 
   return (
     <div className={classNames.container}>
@@ -66,11 +81,22 @@ const RangeInputUncontrolled: FunctionComponent<
                 type="range"
                 ref={forwardRef}
                 onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
-                  if (onChange) onChange(e);
+                  onSliderChange(e);
                 }}
-                name={name}
+                name={sliderName}
                 {...restProps}
                 {...inputProps}
+                value={rawValue}
+              />
+              <input
+                name={name}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  if (onChange) onChange(e);
+                }}
+                style={{
+                  display: "none",
+                }}
+                value={value}
               />
               <div className={classNames.cap} />
             </div>

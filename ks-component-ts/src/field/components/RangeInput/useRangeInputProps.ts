@@ -1,11 +1,15 @@
-import { useEffect, useMemo, useRef } from "react";
-import { useWatch } from "react-hook-form";
+import { useCallback, useEffect, useMemo, useRef } from "react";
+import { useFormContext, useWatch } from "react-hook-form";
 import clsx from "clsx";
 
 import { BG_COLOR, CLASS_NAMES } from "./constants";
 
 import { ErrorMessage } from "~/field/types";
-import { RangeInputUncontrolledProps } from "./RangeInputUncontrolled";
+import {
+  RangeInputUncontrolledProps,
+  TieStepsTo,
+} from "./RangeInputUncontrolled";
+import { chainStateK } from "fp-ts/lib/FromState";
 
 interface RangeClassNames {
   container: string;
@@ -33,6 +37,10 @@ export interface Hook {
   minLabel: string;
   currentLabel?: string;
   classNames: RangeClassNames;
+  onSliderChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  sliderName: string;
+  rawValue: string;
+  value: string;
 }
 
 export default function useRangeInputProps(
@@ -40,25 +48,71 @@ export default function useRangeInputProps(
   min: string,
   max: string,
   steps: string,
+  tieStepsTo: TieStepsTo,
   formatter: (input: string) => string,
   prefix: string,
   suffix: string,
   error?: string | ErrorMessage,
   highlightLabel?: RangeInputUncontrolledProps["highlightLabel"]
 ): Hook {
-  const value = useWatch({ name });
+  const sliderName = useMemo(() => `${name}__slider`, [name]);
+  const [value, rawValue] = useWatch({ name: [name, sliderName] });
+  const {
+    setValue,
+    formState: { defaultValues },
+  } = useFormContext();
+
+  const initialValue = useMemo(
+    () => defaultValues?.[name],
+    [defaultValues, name]
+  );
 
   const ref = useRef<HTMLInputElement>(null);
 
-  const step = String(
-    Math.ceil((parseInt(max, 10) - parseInt(min, 10)) / parseInt(steps, 10))
+  const diff = useMemo(() => parseInt(max, 10) - parseInt(min, 10), [max, min]);
+
+  const numSteps = useMemo(
+    () => Math.min(diff, parseInt(steps, 10)),
+    [diff, steps]
   );
 
-  const inputProps = {
-    min,
-    max,
-    step,
-  };
+  const step = useMemo(
+    () => Math.ceil((parseInt(max, 10) - parseInt(min, 10)) / numSteps),
+    []
+  );
+
+  const maxInput = useMemo(() => {
+    if (diff < 0) return "1";
+    if (diff > 100) return "100";
+    return String(diff);
+  }, [diff]);
+
+  const inputProps = useMemo(
+    () => ({
+      min: "0",
+      max: maxInput,
+      step: "1",
+    }),
+    [maxInput]
+  );
+
+  const tieMax = useCallback(
+    (rawInputValue: string) => {
+      const rawDiff = parseInt(maxInput, 10) - parseInt(rawInputValue, 10);
+      const increment = rawDiff * step;
+      return String(Math.max(parseInt(max, 10) - increment, parseInt(min, 10)));
+    },
+    [maxInput, step, max, min]
+  );
+
+  const tieMin = useCallback(
+    (rawInputValue: string) => {
+      const rawDiff = parseInt(rawInputValue, 10);
+      const increment = rawDiff * step;
+      return String(Math.min(parseInt(min, 10) + increment, parseInt(max, 10)));
+    },
+    [maxInput, step, max]
+  );
 
   const currentLabel = useMemo(() => {
     if (!value) return undefined;
@@ -84,6 +138,37 @@ export default function useRangeInputProps(
     ),
   };
 
+  const onSliderChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const sliderValue = e.target.value;
+      setValue(sliderName, sliderValue);
+    },
+    [setValue, sliderName]
+  );
+
+  const getInitialSliderValue = useCallback(() => {
+    if (maxInput === "1") return maxInput;
+    if (!initialValue) return String(Math.ceil(parseInt(maxInput, 10) / 2));
+    const parsedMin = parseInt(min, 10);
+    const parsedMax = parseInt(max, 10);
+    const parsedVal = parseInt(initialValue, 10);
+    if (parsedVal >= parsedMax) {
+      setValue(name, String(parsedMax));
+      return "100";
+    }
+    if (parsedVal <= parsedMin) {
+      setValue(name, String(parsedMin));
+      return "0";
+    }
+    if (tieStepsTo === "max") {
+      const initDiff = (parseInt(max, 10) - parseInt(initialValue, 10)) / step;
+      return String(Math.round(parseInt(maxInput, 10) - initDiff));
+    }
+    return String(
+      Math.round((parseInt(initialValue, 10) - parseInt(min, 10)) / step)
+    );
+  }, [initialValue, maxInput, setValue, name, min, max, step]);
+
   useEffect(() => {
     if (!ref.current) return;
     const inputArr = Array.from(ref.current.children).filter(
@@ -98,6 +183,22 @@ export default function useRangeInputProps(
     input.style.background = BG_COLOR.replaceAll("$PCT", String(pct));
   }, [value, min, max]);
 
+  const initRef = useRef<boolean>(false);
+  useEffect(() => {
+    if (initRef.current) return;
+    const initValue = getInitialSliderValue();
+    setValue(sliderName, initValue);
+    setTimeout(() => {
+      initRef.current = true;
+    }, 10);
+  }, [setValue, sliderName, getInitialSliderValue]);
+
+  useEffect(() => {
+    if (!initRef.current) return;
+    const newValue = tieStepsTo === "max" ? tieMax(rawValue) : tieMin(rawValue);
+    setValue(name, newValue);
+  }, [rawValue, tieStepsTo, setValue]);
+
   return {
     ref,
     inputProps,
@@ -105,5 +206,9 @@ export default function useRangeInputProps(
     minLabel,
     currentLabel,
     classNames,
+    onSliderChange,
+    sliderName,
+    value: value || "",
+    rawValue: rawValue || "0",
   };
 }
