@@ -81,6 +81,7 @@ const (
 	DBV4_TP_LEAD_DETAILS_PROVIDED                      TName = "DBV4_TP_LEAD_DETAILS_PROVIDED"
 	DBV4_TP_LEAD_JOB_REQUESTED                         TName = "DBV4_TP_LEAD_JOB_REQUESTED"
 	DBV4_TP_LEAD_REQUESTED                             TName = "DBV4_TP_LEAD_REQUESTED"
+	DBV4_TP_PREMIUM_CREDIT_SIGNED                      TName = "DBV4_TP_PREMIUM_CREDIT_SIGNED"
 	DBV4_TP_SAT_NOTE_APPROVED                          TName = "DBV4_TP_SAT_NOTE_APPROVED"
 	DBV4_TP_SAT_NOTE_DELAYED                           TName = "DBV4_TP_SAT_NOTE_DELAYED"
 	DBV4_TP_SAT_NOTE_LENDER_REVIEW                     TName = "DBV4_TP_SAT_NOTE_LENDER_REVIEW"
@@ -182,6 +183,7 @@ var TemplateM = map[string]TName{
 	"DBV4_TP_LEAD_DETAILS_PROVIDED":                      DBV4_TP_LEAD_DETAILS_PROVIDED,
 	"DBV4_TP_LEAD_JOB_REQUESTED":                         DBV4_TP_LEAD_JOB_REQUESTED,
 	"DBV4_TP_LEAD_REQUESTED":                             DBV4_TP_LEAD_REQUESTED,
+	"DBV4_TP_PREMIUM_CREDIT_SIGNED":                      DBV4_TP_PREMIUM_CREDIT_SIGNED,
 	"DBV4_TP_SAT_NOTE_APPROVED":                          DBV4_TP_SAT_NOTE_APPROVED,
 	"DBV4_TP_SAT_NOTE_DELAYED":                           DBV4_TP_SAT_NOTE_DELAYED,
 	"DBV4_TP_SAT_NOTE_LENDER_REVIEW":                     DBV4_TP_SAT_NOTE_LENDER_REVIEW,
@@ -3067,6 +3069,49 @@ var TMap = map[TName]string{
       "type": "button",
       "text": "View lead details",
       "url": "{{cta_url}}"
+    }
+  ]
+}`,
+	DBV4_TP_PREMIUM_CREDIT_SIGNED: `{
+  "subject": "Information about Your Kanda subscription through Premium Credit",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Thank you for subscribing to Kanda! We want to provide you with important information about how your subscription payments will be processed:"
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "Payment Processor",
+          "subtext": "Your payment will be managed by our partner, <strong>Premium Credit</strong>. You'll see a direct debit set up under their name."
+        },
+        {
+          "text": "Payment Schedule",
+          "subtext": "Your first payment will be taken in <strong>3-7 days</strong>. After that, payments will be automatically processed every <strong>30 days</strong>."
+        },
+        {
+          "text": "Subscription Period",
+          "subtext": "Your subscription will run for <strong>12 months</strong>, with payments stopping automatically after 12 installments."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "If you have any questions about your payments or subscription, feel free to reach out to our support team at <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>."
+        }
+      ]
     }
   ]
 }`,
