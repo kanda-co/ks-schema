@@ -438,13 +438,9 @@ function createRouterComponent<State, P extends StringIndexedObject>(
 
     const Page = useMemo(() => createPage(Wrapper), [Wrapper]);
 
-    const Rt = Router as unknown as FunctionComponent<
-      { children: ReactNode } & GuardProviderProps
-    >;
+    const Rt = Router as unknown as FunctionComponent<{ children: ReactNode }>;
 
-    const Sw = Switch as unknown as FunctionComponent<
-      { children: ReactNode } & GuardProviderProps
-    >;
+    const Sw = Switch as unknown as FunctionComponent<{ children: ReactNode }>;
 
     return (
       <Rt>
