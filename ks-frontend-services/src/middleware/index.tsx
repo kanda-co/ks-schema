@@ -433,24 +433,30 @@ function createRouterComponent<State, P extends StringIndexedObject>(
     // This package doesn't include correct typings for children,
     // probably due to it using an older version of react
     const Provider = GuardProvider as FunctionComponent<
-      { children: JSX.Element } & GuardProviderProps
+      { children: JSX.Element | JSX.Element[] } & GuardProviderProps
     >;
 
     const Page = useMemo(() => createPage(Wrapper), [Wrapper]);
 
     return (
       <Router>
-        <Provider
-          guards={[
-            createMiddleware<State, P>(store, pages, unauthorizedRedirectRoute),
-          ]}
-          error={notFoundPage}
-        >
-          <Switch>
-            <GuardedRoute path="/*" component={Page} meta={{ Wrapper }} />
-          </Switch>
-        </Provider>
-        {additionaChildren}
+        <>
+          <Provider
+            guards={[
+              createMiddleware<State, P>(
+                store,
+                pages,
+                unauthorizedRedirectRoute,
+              ),
+            ]}
+            error={notFoundPage}
+          >
+            <Switch>
+              <GuardedRoute path="/*" component={Page} meta={{ Wrapper }} />
+            </Switch>
+          </Provider>
+          {additionaChildren}
+        </>
       </Router>
     );
   };
