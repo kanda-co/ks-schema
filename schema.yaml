@@ -7717,6 +7717,7 @@ components:
       title: busienss sector
       enum:
         - "Home improvement"
+        - "Renewables"
         - "Retail"
         - "IT and technology Services"
         - "Automotive services"
