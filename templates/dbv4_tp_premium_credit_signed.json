@@ -1,0 +1,43 @@
+{
+  "subject": "Information about Your Kanda subscription through Premium Credit",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Thank you for subscribing to Kanda! We want to provide you with important information about how your subscription payments will be processed:"
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "Payment Processor",
+          "subtext": "Your payment will be managed by our partner, <strong>Premium Credit</strong>. You'll see a direct debit set up under their name."
+        },
+        {
+          "text": "Payment Schedule",
+          "subtext": "Your first payment will be taken in <strong>3-7 days</strong>. After that, payments will be automatically processed every <strong>30 days</strong>."
+        },
+        {
+          "text": "Subscription Period",
+          "subtext": "Your subscription will run for <strong>12 months</strong>, with payments stopping automatically after 12 installments."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "If you have any questions about your payments or subscription, feel free to reach out to our support team at <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>."
+        }
+      ]
+    }
+  ]
+}
