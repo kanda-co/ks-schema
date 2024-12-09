@@ -1,4 +1,4 @@
-import { FunctionComponent, useMemo } from 'react';
+import { FunctionComponent, ReactNode, useMemo } from 'react';
 import type { AnyAction } from '@reduxjs/toolkit';
 import * as TE from 'fp-ts/lib/TaskEither';
 import { pipe } from 'fp-ts/lib/function';
@@ -433,31 +433,33 @@ function createRouterComponent<State, P extends StringIndexedObject>(
     // This package doesn't include correct typings for children,
     // probably due to it using an older version of react
     const Provider = GuardProvider as FunctionComponent<
-      { children: JSX.Element | JSX.Element[] } & GuardProviderProps
+      { children: ReactNode } & GuardProviderProps
     >;
 
     const Page = useMemo(() => createPage(Wrapper), [Wrapper]);
 
+    const Rt = Router as unknown as FunctionComponent<
+      { children: ReactNode } & GuardProviderProps
+    >;
+
+    const Sw = Switch as unknown as FunctionComponent<
+      { children: ReactNode } & GuardProviderProps
+    >;
+
     return (
-      <Router>
-        <>
-          <Provider
-            guards={[
-              createMiddleware<State, P>(
-                store,
-                pages,
-                unauthorizedRedirectRoute,
-              ),
-            ]}
-            error={notFoundPage}
-          >
-            <Switch>
-              <GuardedRoute path="/*" component={Page} meta={{ Wrapper }} />
-            </Switch>
-          </Provider>
-          {additionaChildren}
-        </>
-      </Router>
+      <Rt>
+        <Provider
+          guards={[
+            createMiddleware<State, P>(store, pages, unauthorizedRedirectRoute),
+          ]}
+          error={notFoundPage}
+        >
+          <Sw>
+            <GuardedRoute path="/*" component={Page} meta={{ Wrapper }} />
+          </Sw>
+        </Provider>
+        {additionaChildren}
+      </Rt>
     );
   };
 }
