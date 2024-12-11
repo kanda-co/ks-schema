@@ -89,6 +89,7 @@ const (
 	DBV4_TP_SAT_NOTE_SIGNED                            TName = "DBV4_TP_SAT_NOTE_SIGNED"
 	DBV4_TP_SAT_NOTE_VIEWED                            TName = "DBV4_TP_SAT_NOTE_VIEWED"
 	DBV4_TP_SIGN_DOCUMENTS                             TName = "DBV4_TP_SIGN_DOCUMENTS"
+	DBV4_TP_SUBSCRIPTION_REMINDER                      TName = "DBV4_TP_SUBSCRIPTION_REMINDER"
 	DBV4_USER_CLAIM_ACCOUNT                            TName = "DBV4_USER_CLAIM_ACCOUNT"
 	DBV4_USER_CONSENT                                  TName = "DBV4_USER_CONSENT"
 	DBV4_USER_DEV_CLAIM_ACCOUNT                        TName = "DBV4_USER_DEV_CLAIM_ACCOUNT"
@@ -191,6 +192,7 @@ var TemplateM = map[string]TName{
 	"DBV4_TP_SAT_NOTE_SIGNED":                            DBV4_TP_SAT_NOTE_SIGNED,
 	"DBV4_TP_SAT_NOTE_VIEWED":                            DBV4_TP_SAT_NOTE_VIEWED,
 	"DBV4_TP_SIGN_DOCUMENTS":                             DBV4_TP_SIGN_DOCUMENTS,
+	"DBV4_TP_SUBSCRIPTION_REMINDER":                      DBV4_TP_SUBSCRIPTION_REMINDER,
 	"DBV4_USER_CLAIM_ACCOUNT":                            DBV4_USER_CLAIM_ACCOUNT,
 	"DBV4_USER_CONSENT":                                  DBV4_USER_CONSENT,
 	"DBV4_USER_DEV_CLAIM_ACCOUNT":                        DBV4_USER_DEV_CLAIM_ACCOUNT,
@@ -2512,7 +2514,7 @@ var TMap = map[TName]string{
     },
     {
       "type": "button",
-      "text": "Book welcome call",
+      "text": "Book Training Call",
       "url": "https://calendly.com/kanda-sales/welcome-call"
     },
     {
@@ -3097,7 +3099,7 @@ var TMap = map[TName]string{
         },
         {
           "text": "Payment Schedule",
-          "subtext": "Your first payment will be taken in <strong>3-7 days</strong>. After that, payments will be automatically processed every <strong>30 days</strong>."
+          "subtext": "Your first payment will be taken in <strong>1-3 days</strong>. After that, payments will be automatically processed <strong>on the 28th of each month</strong>."
         },
         {
           "text": "Subscription Period",
@@ -3330,6 +3332,27 @@ var TMap = map[TName]string{
       "type": "button",
       "text": "View on Kanda",
       "url": "{{cta_url}}"
+    }
+  ]
+}`,
+	DBV4_TP_SUBSCRIPTION_REMINDER: `{
+  "subject": "Your Kanda subscription will renew soon",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "I'm writing to inform you that your Kanda subscription renewal is coming up on {{extra.renewal_date}}. In the lead up, our team will give you a call to discuss if you'd like to renew and gather any feedback you might have."
+        },
+        {
+          "text": "In the meantime, if you have any questions, please feel free to reach out to our support team at <a href=\"mailto:sales@kanda.co.uk\">sales@kanda.co.uk</a>."
+        }
+      ]
     }
   ]
 }`,
