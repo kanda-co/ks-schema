@@ -3347,7 +3347,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "I'm writing to inform you that your Kanda subscription renewal is coming up on {{extra.renewal_date}}. In the lead up, our team will give you a call to discuss if you'd like to renew and gather any feedback you might have."
+          "text": "I'm writing to inform you that your Kanda subscription renewal is coming up on ((renewal_date)). In the lead up, our team will give you a call to discuss if you'd like to renew and gather any feedback you might have."
         },
         {
           "text": "In the meantime, if you have any questions, please feel free to reach out to our support team at <a href=\"mailto:sales@kanda.co.uk\">sales@kanda.co.uk</a>."
