@@ -563,6 +563,12 @@ paths:
           schema:
             type: string
           description: query matching job id
+        - in: query
+          name: ignore_rate_filter
+          schema:
+            type: string
+          description: >
+            with any non-blank value, to ignore company custom rates and return all available rates
       responses:
         200:
           description: got available finance rates for API company
