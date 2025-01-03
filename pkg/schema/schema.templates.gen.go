@@ -1944,8 +1944,48 @@ var TMap = map[TName]string{
       ]
     },
     {
+      "type": "button",
+      "text": "Check your eligibility",
+      "url": "{{cta_url}}"
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "heading",
+      "text": "Key Features of Paying with Finance:"
+    },
+    {
       "type": "statements",
       "rows": [
+        {
+          "text": "Affordable Monthly Repayments",
+          "subtext": "Spread the cost of your kitchen with a fixed interest rate of 12.9% APR, subject to eligibility."
+        },
+        {
+          "text": "Flexible Deposit Options",
+          "subtext": "Borrow up to 100% of the kitchen cost or pay a deposit, depending on your preference."
+        },
+        {
+          "text": "No Repayments Before Delivery",
+          "subtext": "Start repayments 30 days after your initial kitchen delivery."
+        },
+        {
+          "text": "Eligibility Checker",
+          "subtext": "Check your eligibility with a soft search that won’t affect your credit score."
+        },
+        {
+          "text": "Overpayment Flexibility",
+          "subtext": "Make additional payments at any time without penalty to reduce your loan balance and interest."
+        },
+        {
+          "text": "Early Settlement Option",
+          "subtext": "Settle your loan early with no extra fees, ensuring flexibility for your circumstances."
+        },
+        {
+          "text": "Consumer Protection",
+          "subtext": "Enjoy equal liability protection under the Consumer Credit Act for added peace of mind."
+        },
         {
           "text": "Have a Question?",
           "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
@@ -1954,7 +1994,7 @@ var TMap = map[TName]string{
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "Check your eligibility",
       "url": "{{cta_url}}"
     }
   ]
