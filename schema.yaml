@@ -7650,11 +7650,22 @@ components:
           $ref: "#/components/schemas/BusinessConfig"
         tier_config:
           $ref: "#/components/schemas/TierConfig"
+        training_status:
+          type: string
+          $ref: "#/components/schemas/CompanyTraining"
         metadata:
           type: object
           $ref: "#/components/schemas/Metadata"
           title: metadata
           readOnly: true
+
+    CompanyTraining:
+      type: string
+      title: company training status
+      enum:
+        - training_required
+        - training_scheduled
+        - training_done
 
     CompanyType:
       type: string
