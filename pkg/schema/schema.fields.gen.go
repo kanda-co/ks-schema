@@ -199,6 +199,7 @@ func GetFields(name string) []string {
 			"solar_company_info",
 			"sole_trader_info",
 			"tier_config",
+			"training_status",
 			"users",
 			"welcome_pack",
 		},
