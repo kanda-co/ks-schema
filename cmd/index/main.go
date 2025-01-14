@@ -93,7 +93,11 @@ func main() {
 
 	ctx := context.Background()
 	loader := openapi3.Loader{Context: ctx}
-	doc, _ := loader.LoadFromFile(*in)
+	doc, err := loader.LoadFromFile(*in)
+	if err != nil {
+		fmt.Println("ERROR:", err.Error())
+		return
+	}
 	_ = doc.Validate(ctx)
 
 	index := map[string][]string{}

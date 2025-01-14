@@ -5773,6 +5773,489 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/enquiry:
+    get:
+      operationId: getEnquiries
+      summary: get all enquiries
+      tags:
+        - Enquiry
+      parameters:
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
+      responses:
+        200:
+          description: got all enquiries
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Enquiry"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    post:
+      operationId: postEnquiry
+      summary: post new enquiry for consumer and send comms
+      tags:
+        - Enquiry
+      requestBody:
+        description: post new enquiry
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Enquiry"
+      responses:
+        200:
+          description: posted new enquiry for consumer and comms sent
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enquiry"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/enquiry/{id}:
+    get:
+      operationId: getEnquiry
+      summary: get existing enquiry
+      tags:
+        - Enquiry
+      parameters:
+        - name: id
+          in: path
+          description: enquiry id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing enquiry
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enquiry"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: putEnquiry
+      summary: put existing enquiry
+      tags:
+        - Enquiry
+      parameters:
+        - name: id
+          in: path
+          description: enquiry id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: put existing enquiry
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Enquiry"
+      responses:
+        200:
+          description: put existing enquiry
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enquiry"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      operationId: deleteEnquiry
+      summary: delete existing enquiry
+      tags:
+        - Enquiry
+      parameters:
+        - name: id
+          in: path
+          description: enquiry id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: deleted existing enquiry
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enquiry"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/enquiry/{id}/consumer:
+    post:
+      operationId: postEnquiryConsumer
+      summary: post enquiry consumer
+      tags:
+        - Enquiry
+      parameters:
+        - name: id
+          in: path
+          description: enquiry id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: post enquiry with consumer info
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Customer"
+      responses:
+        200:
+          description: posted enquiry with consumer info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enquiry"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/enquiry/{id}/consumer-signature:
+    post:
+      operationId: postEnquiryConsumerSignature
+      summary: post enquiry consumer signature
+      tags:
+        - Enquiry
+      parameters:
+        - name: id
+          in: path
+          description: enquiry id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: post enquiry with consumer signature
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Signature"
+      responses:
+        200:
+          description: posted enquiry with consumer signature
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enquiry"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/enquiry/{id}/job-info:
+    post:
+      operationId: postEnquiryJobInfo
+      summary: post enquiry job info
+      tags:
+        - Enquiry
+      parameters:
+        - name: id
+          in: path
+          description: enquiry id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: post enquiry with job info
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/JobInfo"
+      responses:
+        200:
+          description: posted enquiry with job info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enquiry"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/enquiry/{id}/interest-in-credit:
+    post:
+      operationId: postEnquiryInterestInCredit
+      summary: post enquiry interest in credit
+      tags:
+        - Enquiry
+      parameters:
+        - name: id
+          in: path
+          description: enquiry id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: post enquiry with interest in credit
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InterestInCredit"
+      responses:
+        200:
+          description: posted enquiry with interest in credit
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enquiry"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/enquiry/{id}/budget:
+    post:
+      operationId: postEnquiryBudget
+      summary: post enquiry budget
+      tags:
+        - Enquiry
+      parameters:
+        - name: id
+          in: path
+          description: enquiry id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: post enquiry with budget
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Money"
+      responses:
+        200:
+          description: posted enquiry with budget
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enquiry"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/enquiry/{id}/submit:
+    post:
+      operationId: postEnquirySubmit
+      summary: post enquiry submit
+      tags:
+        - Enquiry
+      parameters:
+        - name: id
+          in: path
+          description: enquiry id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: posted enquiry with submission
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enquiry"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/tag:
+    get:
+      operationId: getTags
+      summary: get all tags
+      tags:
+        - Tag
+      parameters:
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
+      responses:
+        200:
+          description: got all tags
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Tag"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    post:
+      operationId: postTag
+      summary: post new tag for a resource
+      tags:
+        - Tag
+      requestBody:
+        description: post new tag
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Tag"
+      responses:
+        200:
+          description: posted new tag
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Tag"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/tag/{id}:
+    get:
+      operationId: getTag
+      summary: get existing tag
+      tags:
+        - Tag
+      parameters:
+        - name: id
+          in: path
+          description: tag id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got existing tag
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Tag"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: putTag
+      summary: put existing tag
+      tags:
+        - Tag
+      parameters:
+        - name: id
+          in: path
+          description: tag id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: put existing tag
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Tag"
+      responses:
+        200:
+          description: put existing tag
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Tag"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      operationId: deleteTag
+      summary: delete existing tag
+      tags:
+        - Tag
+      parameters:
+        - name: id
+          in: path
+          description: tag id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: deleted existing tag
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Tag"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/webhook/{provider}:
     get:
       operationId: providerCheckWebhook
@@ -11802,6 +12285,121 @@ components:
           properties:
             rate_request:
               $ref: "#/components/schemas/RateRequest"
+
+    Tag:
+      allOf:
+        - $ref: "#/components/schemas/BaseId"
+        - type: object
+          title: tag resource
+          description: tag for shortened URL
+          required:
+            - name
+            - source
+          properties:
+            name:
+              type: string
+              title: shortened URL name
+              minLength: 1
+            source:
+              type: string
+              title: shortened URL source
+              minLength: 1
+            xurl:
+              type: string
+              title: external redirect URL
+
+    Enquiry:
+      allOf:
+        - $ref: "#/components/schemas/BaseId"
+        - type: object
+          title: enquiry
+          description: enquiry of resource
+          required:
+            - name
+            - source
+            - current_state
+            - states
+            - archived
+          properties:
+            name:
+              type: string
+              title: shortened URL name
+            source:
+              type: string
+              title: shortened URL source
+            enquiry_info:
+              $ref: "#/components/schemas/EnquiryInfo"
+            current_state:
+              type: string
+              $ref: "#/components/schemas/EnquiryState"
+            states:
+              type: array
+              title: enquiry states
+              items:
+                $ref: "#/components/schemas/EnquiryState"
+            archived:
+              type: string
+              $ref: "#/components/schemas/Archived"
+
+    EnquiryInfo:
+      type: object
+      title: enquiry info
+      description: enquiry info
+      required:
+        - consumer
+        - consumer_signature
+      properties:
+        consumer:
+          $ref: "#/components/schemas/Customer"
+        consumer_signature:
+          $ref: "#/components/schemas/ConsumerSignature"
+        job_info:
+          $ref: "#/components/schemas/JobInfo"
+        interest_in_credit:
+          type: string
+          $ref: "#/components/schemas/InterestInCredit"
+        budget:
+          $ref: "#/components/schemas/Money"
+
+    JobInfo:
+      type: object
+      title: job info
+      required:
+        - job_items
+        - work_type
+      properties:
+        quote:
+          $ref: "#/components/schemas/Document"
+        job_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/JobItem"
+          title: job items
+          minLength: 1
+        work_type:
+          type: string
+          $ref: "#/components/schemas/WorkType"
+
+    InterestInCredit:
+      type: string
+      title: interest in credit
+      enum:
+        - "yes"
+        - "no"
+
+    EnquiryState:
+      type: string
+      title: enquiry state
+      enum:
+        - "contact_only"
+        - "contact_agreed"
+        - "ask_for_quote"
+        - "quoted"
+        - "submitted"
+        - "converted_to_job"
+        - "unreachable"
+        - "not_interested"
+        - "other_reason"
 
     Error:
       type: object
