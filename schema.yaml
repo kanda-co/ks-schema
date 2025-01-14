@@ -12339,10 +12339,13 @@ components:
       type: object
       title: info tag
       description: info tag
+      required:
+        - name
       properties:
         name:
           type: string
           title: info tag name
+          minLength: 1
         xurl:
           type: string
           title: external redirect URL
