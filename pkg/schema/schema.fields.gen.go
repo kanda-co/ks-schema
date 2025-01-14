@@ -666,6 +666,10 @@ func GetFields(name string) []string {
 			"jobs_sent",
 			"jobs_total_revenue_of_approved",
 		},
+		"InfoTag": []string{
+			"name",
+			"xurl",
+		},
 		"InfoTrade": []string{
 			"address",
 			"lat_lng",

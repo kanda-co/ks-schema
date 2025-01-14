@@ -1065,6 +1065,33 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/tag:
+    put:
+      operationId: putInfoTag
+      summary: generate enquiry redirect URL from info tag
+      tags:
+        - InfoTag
+      requestBody:
+        description: info tag
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InfoTag"
+      responses:
+        200:
+          description: generated enquiry redirect URL from info tag
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoTag"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/partner:
     get:
       operationId: getPartners
@@ -12308,6 +12335,18 @@ components:
               type: string
               title: external redirect URL
 
+    InfoTag:
+      type: object
+      title: info tag
+      description: info tag
+      properties:
+        name:
+          type: string
+          title: info tag name
+        xurl:
+          type: string
+          title: external redirect URL
+
     Enquiry:
       allOf:
         - $ref: "#/components/schemas/BaseId"
@@ -12391,6 +12430,7 @@ components:
       type: string
       title: enquiry state
       enum:
+        - "viewed"
         - "contact_only"
         - "contact_agreed"
         - "ask_for_quote"
