@@ -389,12 +389,20 @@ func GetFields(name string) []string {
 			"states",
 			"tid",
 		},
+		"EnquiryBody": []string{
+			"enquiry_info",
+			"name",
+			"source",
+		},
 		"EnquiryInfo": []string{
 			"budget",
 			"consumer",
 			"consumer_signature",
 			"interest_in_credit",
 			"job_info",
+		},
+		"EnquiryStateRequest": []string{
+			"state",
 		},
 		"Enrolment": []string{
 			"aid",
@@ -1150,6 +1158,11 @@ func GetFields(name string) []string {
 			"oid",
 			"source",
 			"tid",
+			"xurl",
+		},
+		"TagBody": []string{
+			"name",
+			"source",
 			"xurl",
 		},
 		"Tally": []string{

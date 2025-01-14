@@ -5836,7 +5836,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Enquiry"
+              $ref: "#/components/schemas/EnquiryBody"
       responses:
         200:
           description: posted new enquiry for consumer and comms sent
@@ -5898,7 +5898,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Enquiry"
+              $ref: "#/components/schemas/EnquiryBody"
       responses:
         200:
           description: put existing enquiry
@@ -6143,6 +6143,125 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/enquiry/{id}/state:
+    post:
+      operationId: postEnquiryState
+      summary: post enquiry state
+      tags:
+        - Enquiry
+      parameters:
+        - name: id
+          in: path
+          description: enquiry id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: post enquiry with state
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EnquiryStateRequest"
+      responses:
+        200:
+          description: posted enquiry with state
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enquiry"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/enquiry/{id}/convert-job:
+    post:
+      operationId: postEnquiryConvertJob
+      summary: convert existing enquiry details to a job in draft
+      tags:
+        - Enquiry
+      parameters:
+        - name: id
+          in: path
+          description: enquiry id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: converted existing enquiry
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enquiry"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/enquiry/{id}/archive:
+    post:
+      operationId: postEnquiryArchive
+      summary: post enquiry to archive
+      tags:
+        - Enquiry
+      parameters:
+        - name: id
+          in: path
+          description: enquiry id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: posted enquiry with archived
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enquiry"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/enquiry/{id}/unarchive:
+    post:
+      operationId: postEnquiryUnarchive
+      summary: post enquiry to unarchive
+      tags:
+        - Enquiry
+      parameters:
+        - name: id
+          in: path
+          description: enquiry id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: posted enquiry with unarchived
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enquiry"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/tag:
     get:
       operationId: getTags
@@ -6179,7 +6298,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Tag"
+              $ref: "#/components/schemas/TagBody"
       responses:
         200:
           description: posted new tag
@@ -6241,7 +6360,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Tag"
+              $ref: "#/components/schemas/TagBody"
       responses:
         200:
           description: put existing tag
@@ -12316,24 +12435,27 @@ components:
     Tag:
       allOf:
         - $ref: "#/components/schemas/BaseId"
-        - type: object
-          title: tag resource
-          description: tag for shortened URL
-          required:
-            - name
-            - source
-          properties:
-            name:
-              type: string
-              title: shortened URL name
-              minLength: 1
-            source:
-              type: string
-              title: shortened URL source
-              minLength: 1
-            xurl:
-              type: string
-              title: external redirect URL
+        - $ref: "#/components/schemas/TagBody"
+
+    TagBody:
+      type: object
+      title: tag resource
+      description: tag for shortened URL
+      required:
+        - name
+        - source
+      properties:
+        name:
+          type: string
+          title: shortened URL name
+          minLength: 1
+        source:
+          type: string
+          title: shortened URL source
+          minLength: 1
+        xurl:
+          type: string
+          title: external redirect URL
 
     InfoTag:
       type: object
@@ -12382,6 +12504,24 @@ components:
             archived:
               type: string
               $ref: "#/components/schemas/Archived"
+
+    EnquiryBody:
+      type: object
+      title: enquiry body
+      description: enquiry body
+      required:
+        - name
+        - source
+        - archived
+      properties:
+        name:
+          type: string
+          title: shortened URL name
+        source:
+          type: string
+          title: shortened URL source
+        enquiry_info:
+          $ref: "#/components/schemas/EnquiryInfo"
 
     EnquiryInfo:
       type: object
@@ -12443,6 +12583,16 @@ components:
         - "unreachable"
         - "not_interested"
         - "other_reason"
+
+    EnquiryStateRequest:
+      type: object
+      title: enquiry state request
+      required:
+        - state
+      properties:
+        state:
+          type: string
+          $ref: "#/components/schemas/EnquiryState"
 
     Error:
       type: object
