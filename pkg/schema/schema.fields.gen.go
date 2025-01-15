@@ -568,6 +568,11 @@ func GetFields(name string) []string {
 			"metadata",
 			"sole_trader",
 		},
+		"InfoEnquiry": []string{
+			"branding",
+			"contact_info",
+			"enquiry",
+		},
 		"InfoEntity": []string{
 			"company",
 			"credit",
@@ -693,6 +698,9 @@ func GetFields(name string) []string {
 			"product",
 			"rates",
 			"work_type",
+		},
+		"InterestInCreditRequest": []string{
+			"interest_in_credit",
 		},
 		"Introduction": []string{
 			"aid",

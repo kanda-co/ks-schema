@@ -1092,6 +1092,32 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/enquiry:
+    get:
+      operationId: getInfoEnquiry
+      summary: get enquiry with its branding
+      tags:
+        - InfoEnquiry
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+          description: enquiry id
+      responses:
+        200:
+          description: got enquiry with its branding
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoEnquiry"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/partner:
     get:
       operationId: getPartners
@@ -5995,7 +6021,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Signature"
+              $ref: "#/components/schemas/ConsumerSignature"
       responses:
         200:
           description: posted enquiry with consumer signature
@@ -6065,7 +6091,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/InterestInCredit"
+              $ref: "#/components/schemas/InterestInCreditRequest"
       responses:
         200:
           description: posted enquiry with interest in credit
@@ -12569,6 +12595,16 @@ components:
         - "yes"
         - "no"
 
+    InterestInCreditRequest:
+      type: object
+      title: interest in credit request
+      required:
+        - interest_in_credit
+      properties:
+        interest_in_credit:
+          type: string
+          $ref: "#/components/schemas/InterestInCredit"
+
     EnquiryState:
       type: string
       title: enquiry state
@@ -12593,6 +12629,26 @@ components:
         state:
           type: string
           $ref: "#/components/schemas/EnquiryState"
+
+    InfoEnquiry:
+      type: object
+      title: info enquiry
+      description: info enquiry with its branding
+      required:
+        - enquiry
+        - contact_info
+      properties:
+        enquiry:
+          $ref: "#/components/schemas/Enquiry"
+        contact_info:
+          type: object
+          title: enquiry contact info
+          $ref: "#/components/schemas/ContactInfo"
+        branding:
+          type: object
+          title: branding
+          description: enquiry branding
+          $ref: "#/components/schemas/Branding"
 
     Error:
       type: object
