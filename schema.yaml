@@ -1101,6 +1101,7 @@ paths:
       parameters:
         - in: query
           name: id
+          required: true
           schema:
             type: string
           description: enquiry id
