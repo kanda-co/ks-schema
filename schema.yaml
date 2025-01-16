@@ -9694,6 +9694,7 @@ components:
         - central_heating_system
         - conservatory
         - conservatory_roof
+        - damp_proofing
         - decking
         - door_canopy
         - door_internal
