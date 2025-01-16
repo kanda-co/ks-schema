@@ -6127,7 +6127,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Money"
+              $ref: "#/components/schemas/MaxBudget"
       responses:
         200:
           description: posted enquiry with budget
@@ -10304,6 +10304,17 @@ components:
         max:
           $ref: "#/components/schemas/Money"
 
+    MaxBudget:
+      type: object
+      title: max budget
+      required:
+        - max
+      properties:
+        min:
+          $ref: "#/components/schemas/Money"
+        max:
+          $ref: "#/components/schemas/Money"
+
     JobDetails:
       type: object
       title: job details
@@ -12569,7 +12580,12 @@ components:
           type: string
           $ref: "#/components/schemas/InterestInCredit"
         budget:
-          $ref: "#/components/schemas/Money"
+          $ref: "#/components/schemas/MaxBudget"
+        consumer_preferences:
+          type: object
+          title: consumer preferences
+          additionalProperties:
+            type: string
 
     JobInfo:
       type: object

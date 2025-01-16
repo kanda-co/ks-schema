@@ -397,6 +397,7 @@ func GetFields(name string) []string {
 		"EnquiryInfo": []string{
 			"budget",
 			"consumer",
+			"consumer_preferences",
 			"consumer_signature",
 			"interest_in_credit",
 			"job_info",
@@ -909,6 +910,10 @@ func GetFields(name string) []string {
 			"company_number",
 			"trading_address",
 			"vat_number",
+		},
+		"MaxBudget": []string{
+			"max",
+			"min",
 		},
 		"Metadata": []string{
 			"created_at",
