@@ -573,6 +573,8 @@ func GetFields(name string) []string {
 			"branding",
 			"contact_info",
 			"enquiry",
+			"info_work_types",
+			"work_types",
 		},
 		"InfoEntity": []string{
 			"company",

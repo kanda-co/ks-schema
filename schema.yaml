@@ -12695,6 +12695,8 @@ components:
       required:
         - enquiry
         - contact_info
+        - work_types
+        - info_work_types
       properties:
         enquiry:
           $ref: "#/components/schemas/Enquiry"
@@ -12702,6 +12704,16 @@ components:
           type: object
           title: enquiry contact info
           $ref: "#/components/schemas/ContactInfo"
+        work_types:
+          type: array
+          title: supported work types
+          items:
+            $ref: "#/components/schemas/WorkType"
+        info_work_types:
+          type: array
+          title: info of work types
+          items:
+            $ref: "#/components/schemas/InfoWorkType"
         branding:
           type: object
           title: branding
