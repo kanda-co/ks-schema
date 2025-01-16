@@ -1015,6 +1015,7 @@ func GetFields(name string) []string {
 			"payment_method",
 			"provider",
 		},
+		"PreferenceMap": []string{},
 		"PurchaseEvent": []string{
 			"kid",
 			"kind",

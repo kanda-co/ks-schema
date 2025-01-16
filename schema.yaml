@@ -6037,6 +6037,41 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/enquiry/{id}/consumer-preferences:
+    post:
+      operationId: postEnquiryConsumerPreferences
+      summary: post enquiry consumer preferences
+      tags:
+        - Enquiry
+      parameters:
+        - name: id
+          in: path
+          description: enquiry id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: post enquiry with consumer preferences
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PreferenceMap"
+      responses:
+        200:
+          description: posted enquiry with consumer preferences
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enquiry"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/enquiry/{id}/job-info:
     post:
       operationId: postEnquiryJobInfo
@@ -12583,9 +12618,13 @@ components:
           $ref: "#/components/schemas/MaxBudget"
         consumer_preferences:
           type: object
-          title: consumer preferences
-          additionalProperties:
-            type: string
+          $ref: "#/components/schemas/PreferenceMap"
+
+    PreferenceMap:
+      type: object
+      title: preference map
+      additionalProperties:
+        type: string
 
     JobInfo:
       type: object
@@ -12632,6 +12671,7 @@ components:
         - "contact_agreed"
         - "ask_for_quote"
         - "quoted"
+        - "preferences_set"
         - "submitted"
         - "converted_to_job"
         - "unreachable"
