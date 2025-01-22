@@ -1065,6 +1065,36 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/introduction-lead:
+    put:
+      operationId: infoIntroductionLead
+      summary: consumer lead to submit an introduction
+      tags:
+        - InfoIntroductionLead
+      parameters:
+        - $ref: "#/components/parameters/format"
+        - $ref: "#/components/parameters/q"
+      requestBody:
+        description: info introduction lead
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InfoIntroductionLead"
+      responses:
+        200:
+          description: consumer lead submitted and converted to introduction
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Introduction"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/info/tag:
     put:
       operationId: putInfoTag
@@ -2248,6 +2278,41 @@ paths:
       responses:
         200:
           description: submitted existing introduction with new state
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Introduction"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/introduction/{id}/lead-state:
+    post:
+      operationId: postIntroductionLeadState
+      summary: submit existing introduction with new lead state
+      tags:
+        - Introduction
+      parameters:
+        - name: id
+          in: path
+          description: introduction id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: submit existing introduction with new lead state
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LeadState"
+      responses:
+        200:
+          description: submitted existing introduction with new lead state
           content:
             application/json:
               schema:
@@ -7293,6 +7358,20 @@ components:
         approval_rate:
           $ref: "#/components/schemas/Pence"
 
+    InfoIntroductionLead:
+      type: object
+      title: info introduction lead
+      description: info introduction consumer lead submission
+      required:
+        - branch_code
+        - consumer
+      properties:
+        branch_code:
+          type: string
+          title: enterprise branch code
+        consumer:
+          $ref: "#/components/schemas/Customer"
+
     InfoIP:
       type: object
       required:
@@ -10152,6 +10231,9 @@ components:
           title: all states
           items:
             $ref: "#/components/schemas/IntroductionState"
+        lead_state:
+          type: string
+          $ref: "#/components/schemas/LeadState"
         flow_type:
           title: flow type
           $ref: "#/components/schemas/FlowType"
@@ -10168,6 +10250,16 @@ components:
           $ref: "#/components/schemas/Metadata"
           title: metadata
           readOnly: true
+
+    LeadState:
+      type: string
+      title: lead state
+      enum:
+        - "lead_internal"
+        - "lead_submitted"
+        - "lead_contacted"
+        - "lead_accepted"
+        - "lead_rejected"
 
     ConsumerSignature:
       type: object

@@ -594,6 +594,10 @@ func GetFields(name string) []string {
 		"InfoIP": []string{
 			"ipv4",
 		},
+		"InfoIntroductionLead": []string{
+			"branch_code",
+			"consumer",
+		},
 		"InfoIntroductionStats": []string{
 			"report",
 		},
@@ -719,6 +723,7 @@ func GetFields(name string) []string {
 			"flow_type",
 			"id",
 			"job_details",
+			"lead_state",
 			"metadata",
 			"oid",
 			"remark",
