@@ -11457,10 +11457,12 @@ components:
         - "audit"
         - "company"
         - "credit"
+        - "enquiry"
         - "enterprise"
         - "introduction"
         - "job"
         - "onboarding"
+        - "tag"
         - "transaction"
 
     InfoSearch:
@@ -11518,6 +11520,9 @@ components:
         - credit
         - credit_hits
         - credit_returned
+        - enquiry
+        - enquiry_hits
+        - enquiry_returned
         - enterprise
         - enterprise_hits
         - enterprise_returned
@@ -11530,6 +11535,9 @@ components:
         - onboarding
         - onboarding_hits
         - onboarding_returned
+        - tag
+        - tag_hits
+        - tag_returned
         - transaction
         - transaction_hits
         - transaction_returned
@@ -11576,6 +11584,20 @@ components:
           type: integer
           format: int64
           title: matching credits returned
+        enquiry:
+          type: array
+          title: matching enquiries
+          description: matching enquiries
+          items:
+            $ref: "#/components/schemas/Enquiry"
+        enquiry_hits:
+          type: integer
+          format: int64
+          title: matching enquiries hits
+        enquiry_returned:
+          type: integer
+          format: int64
+          title: matching enquiries returned
         enterprise:
           type: array
           title: matching enterprises
@@ -11632,6 +11654,20 @@ components:
           type: integer
           format: int64
           title: matching onboardings returned
+        tag:
+          type: array
+          title: matching tags
+          description: matching tags
+          items:
+            $ref: "#/components/schemas/Tag"
+        tag_hits:
+          type: integer
+          format: int64
+          title: matching tags hits
+        tag_returned:
+          type: integer
+          format: int64
+          title: matching tags returned
         transaction:
           type: array
           title: matching transactions
