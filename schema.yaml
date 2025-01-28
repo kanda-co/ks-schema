@@ -6072,6 +6072,41 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/enquiry/{id}/quote:
+    post:
+      operationId: postEnquiryQuote
+      summary: post enquiry quote
+      tags:
+        - Enquiry
+      parameters:
+        - name: id
+          in: path
+          description: enquiry id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: post enquiry with quote
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Document"
+      responses:
+        200:
+          description: posted enquiry with quote and job info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enquiry"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/enquiry/{id}/job-info:
     post:
       operationId: postEnquiryJobInfo
@@ -12645,6 +12680,8 @@ components:
           $ref: "#/components/schemas/Customer"
         consumer_signature:
           $ref: "#/components/schemas/ConsumerSignature"
+        quote:
+          $ref: "#/components/schemas/Document"
         job_info:
           $ref: "#/components/schemas/JobInfo"
         interest_in_credit:
@@ -12669,8 +12706,6 @@ components:
         - job_items
         - work_type
       properties:
-        quote:
-          $ref: "#/components/schemas/Document"
         job_items:
           type: array
           items:

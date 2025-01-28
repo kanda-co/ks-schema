@@ -401,6 +401,7 @@ func GetFields(name string) []string {
 			"consumer_signature",
 			"interest_in_credit",
 			"job_info",
+			"quote",
 		},
 		"EnquiryStateRequest": []string{
 			"state",
@@ -809,7 +810,6 @@ func GetFields(name string) []string {
 		},
 		"JobInfo": []string{
 			"job_items",
-			"quote",
 			"work_type",
 		},
 		"JobItem": []string{
