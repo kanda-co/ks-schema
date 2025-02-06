@@ -17,6 +17,8 @@ const (
 	DBV4_HO_APPLICATION_SAT_NOTE_SIGNED                TName = "DBV4_HO_APPLICATION_SAT_NOTE_SIGNED"
 	DBV4_HO_APPLICATION_SIGN_DOCUMENTS                 TName = "DBV4_HO_APPLICATION_SIGN_DOCUMENTS"
 	DBV4_HO_CONTINUE_CHECKOUT                          TName = "DBV4_HO_CONTINUE_CHECKOUT"
+	DBV4_HO_ENQUIRY                                    TName = "DBV4_HO_ENQUIRY"
+	DBV4_HO_ENQUIRY_QUOTE                              TName = "DBV4_HO_ENQUIRY_QUOTE"
 	DBV4_HO_INITIAL                                    TName = "DBV4_HO_INITIAL"
 	DBV4_HO_JOB_DECLINED                               TName = "DBV4_HO_JOB_DECLINED"
 	DBV4_HO_JOB_STARTED                                TName = "DBV4_HO_JOB_STARTED"
@@ -75,6 +77,8 @@ const (
 	DBV4_TP_APPLICATION_PENDING                        TName = "DBV4_TP_APPLICATION_PENDING"
 	DBV4_TP_CUSTOMER_REFERRED                          TName = "DBV4_TP_CUSTOMER_REFERRED"
 	DBV4_TP_CUSTOMER_REJECTED                          TName = "DBV4_TP_CUSTOMER_REJECTED"
+	DBV4_TP_ENQUIRY                                    TName = "DBV4_TP_ENQUIRY"
+	DBV4_TP_ENQUIRY_QUOTE                              TName = "DBV4_TP_ENQUIRY_QUOTE"
 	DBV4_TP_JOB_DECLINED                               TName = "DBV4_TP_JOB_DECLINED"
 	DBV4_TP_JOB_PAID_OUT                               TName = "DBV4_TP_JOB_PAID_OUT"
 	DBV4_TP_JOB_SENT                                   TName = "DBV4_TP_JOB_SENT"
@@ -120,6 +124,8 @@ var TemplateM = map[string]TName{
 	"DBV4_HO_APPLICATION_SAT_NOTE_SIGNED":                DBV4_HO_APPLICATION_SAT_NOTE_SIGNED,
 	"DBV4_HO_APPLICATION_SIGN_DOCUMENTS":                 DBV4_HO_APPLICATION_SIGN_DOCUMENTS,
 	"DBV4_HO_CONTINUE_CHECKOUT":                          DBV4_HO_CONTINUE_CHECKOUT,
+	"DBV4_HO_ENQUIRY":                                    DBV4_HO_ENQUIRY,
+	"DBV4_HO_ENQUIRY_QUOTE":                              DBV4_HO_ENQUIRY_QUOTE,
 	"DBV4_HO_INITIAL":                                    DBV4_HO_INITIAL,
 	"DBV4_HO_JOB_DECLINED":                               DBV4_HO_JOB_DECLINED,
 	"DBV4_HO_JOB_STARTED":                                DBV4_HO_JOB_STARTED,
@@ -178,6 +184,8 @@ var TemplateM = map[string]TName{
 	"DBV4_TP_APPLICATION_PENDING":                        DBV4_TP_APPLICATION_PENDING,
 	"DBV4_TP_CUSTOMER_REFERRED":                          DBV4_TP_CUSTOMER_REFERRED,
 	"DBV4_TP_CUSTOMER_REJECTED":                          DBV4_TP_CUSTOMER_REJECTED,
+	"DBV4_TP_ENQUIRY":                                    DBV4_TP_ENQUIRY,
+	"DBV4_TP_ENQUIRY_QUOTE":                              DBV4_TP_ENQUIRY_QUOTE,
 	"DBV4_TP_JOB_DECLINED":                               DBV4_TP_JOB_DECLINED,
 	"DBV4_TP_JOB_PAID_OUT":                               DBV4_TP_JOB_PAID_OUT,
 	"DBV4_TP_JOB_SENT":                                   DBV4_TP_JOB_SENT,
@@ -690,6 +698,64 @@ var TMap = map[TName]string{
     }
   ],
   "sms": "Hey {{receiver.contact_name}}! You've just been sent a link to view your job from {{sender.contact_name}} on Kanda. Check your emails for more information."
+}`,
+	DBV4_HO_ENQUIRY: `{
+  "subject": "Your quote enquiry with {{sender.contact_name}}",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Thanks for your enquiry about getting some work done with {{sender.contact_name}}."
+        },
+        {
+          "text": "{{message}}"
+        },
+        {
+          "text": "If you'd like to return to your enquiry, follow the below link."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}`,
+	DBV4_HO_ENQUIRY_QUOTE: `{
+  "subject": "Your finance enquiry with {{sender.contact_name}}",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Thanks for your enquiry about finance for your purchase from {{sender.contact_name}}."
+        },
+        {
+          "text": "{{message}}"
+        },
+        {
+          "text": "If you'd like to return to your enquiry, follow the below link."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
 }`,
 	DBV4_HO_INITIAL: `{
   "subject": "{{sender.contact_name}} has sent you a quote on Kanda",
@@ -2775,6 +2841,64 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Unfortunately, {{sender.contact_name}}'s finance application has not been approved. We have informed them of this, and suggested they reach out to you to discuss the option to continue with the work without finance."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}`,
+	DBV4_TP_ENQUIRY: `{
+  "subject": "Kanda lead from {{sender.contact_name}}",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "You have a new update on your lead from {{sender.contact_name}}."
+        },
+        {
+          "text": "{{message}}"
+        },
+        {
+          "text": "Follow the below link below to view the enquiry details on your dashboard."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}`,
+	DBV4_TP_ENQUIRY_QUOTE: `{
+  "subject": "Kanda finance request from {{sender.contact_name}}",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "{{sender.contact_name}} has requested finance on a quote you have sent them."
+        },
+        {
+          "text": "{{message}}"
+        },
+        {
+          "text": "Follow the below link below to confirm the quote details on your dashboard and allow your customer to apply for finance."
         }
       ]
     },

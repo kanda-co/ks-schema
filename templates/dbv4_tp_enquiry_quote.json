@@ -1,0 +1,29 @@
+{
+  "subject": "Kanda finance request from {{sender.contact_name}}",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "{{sender.contact_name}} has requested finance on a quote you have sent them."
+        },
+        {
+          "text": "{{message}}"
+        },
+        {
+          "text": "Follow the below link below to confirm the quote details on your dashboard and allow your customer to apply for finance."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}

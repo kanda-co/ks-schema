@@ -1,0 +1,29 @@
+{
+  "subject": "Your quote enquiry with {{sender.contact_name}}",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Thanks for your enquiry about getting some work done with {{sender.contact_name}}."
+        },
+        {
+          "text": "{{message}}"
+        },
+        {
+          "text": "If you'd like to return to your enquiry, follow the below link."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}

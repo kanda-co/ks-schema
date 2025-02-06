@@ -1,0 +1,29 @@
+{
+  "subject": "Kanda lead from {{sender.contact_name}}",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "You have a new update on your lead from {{sender.contact_name}}."
+        },
+        {
+          "text": "{{message}}"
+        },
+        {
+          "text": "Follow the below link below to view the enquiry details on your dashboard."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}
