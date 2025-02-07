@@ -85,6 +85,7 @@ const (
 	DBV4_TP_LEAD_DETAILS_PROVIDED                      TName = "DBV4_TP_LEAD_DETAILS_PROVIDED"
 	DBV4_TP_LEAD_JOB_REQUESTED                         TName = "DBV4_TP_LEAD_JOB_REQUESTED"
 	DBV4_TP_LEAD_REQUESTED                             TName = "DBV4_TP_LEAD_REQUESTED"
+	DBV4_TP_ONBOARDING_SUMMARY                         TName = "DBV4_TP_ONBOARDING_SUMMARY"
 	DBV4_TP_PREMIUM_CREDIT_SIGNED                      TName = "DBV4_TP_PREMIUM_CREDIT_SIGNED"
 	DBV4_TP_SAT_NOTE_APPROVED                          TName = "DBV4_TP_SAT_NOTE_APPROVED"
 	DBV4_TP_SAT_NOTE_DELAYED                           TName = "DBV4_TP_SAT_NOTE_DELAYED"
@@ -192,6 +193,7 @@ var TemplateM = map[string]TName{
 	"DBV4_TP_LEAD_DETAILS_PROVIDED":                      DBV4_TP_LEAD_DETAILS_PROVIDED,
 	"DBV4_TP_LEAD_JOB_REQUESTED":                         DBV4_TP_LEAD_JOB_REQUESTED,
 	"DBV4_TP_LEAD_REQUESTED":                             DBV4_TP_LEAD_REQUESTED,
+	"DBV4_TP_ONBOARDING_SUMMARY":                         DBV4_TP_ONBOARDING_SUMMARY,
 	"DBV4_TP_PREMIUM_CREDIT_SIGNED":                      DBV4_TP_PREMIUM_CREDIT_SIGNED,
 	"DBV4_TP_SAT_NOTE_APPROVED":                          DBV4_TP_SAT_NOTE_APPROVED,
 	"DBV4_TP_SAT_NOTE_DELAYED":                           DBV4_TP_SAT_NOTE_DELAYED,
@@ -3234,6 +3236,32 @@ var TMap = map[TName]string{
     {
       "type": "button",
       "text": "View lead details",
+      "url": "{{cta_url}}"
+    }
+  ]
+}`,
+	DBV4_TP_ONBOARDING_SUMMARY: `{
+  "subject": "Your Kanda Onboarding Summary",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Your company is currently progressing through Kanda's onboarding process. "
+        },
+        {
+          "text": "{{message}}"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "Go to Kanda",
       "url": "{{cta_url}}"
     }
   ]

@@ -1,0 +1,26 @@
+{
+  "subject": "Your Kanda Onboarding Summary",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Your company is currently progressing through Kanda's onboarding process. "
+        },
+        {
+          "text": "{{message}}"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "Go to Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}
