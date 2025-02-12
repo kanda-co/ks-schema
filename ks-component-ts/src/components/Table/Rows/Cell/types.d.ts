@@ -1,14 +1,10 @@
 import type { FunctionComponent } from "react";
 import type { Cell } from "react-table";
 import { StringIndexedObject } from "~/types";
+import { TableRenderComponent } from "../../types";
 
 export interface CellColumn {
-  renderComponent?: {
-    component?: FunctionComponent;
-    props?: StringIndexedObject;
-    optionalProps?: string[];
-    value?: string;
-  };
+  renderComponent?: TableRenderComponent;
   subAccessors?: string[];
 }
 

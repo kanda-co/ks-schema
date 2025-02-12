@@ -51,13 +51,17 @@ export default function useCellProps({
       }
     : {};
 
+  const renderClassName = renderComponent?.removeOverflowRestriction
+    ? CLASS_NAMES.renderNoOverflow
+    : CLASS_NAMES.render;
+
   const classNames = {
     cell: clsx(
       compact ? CLASS_NAMES.cell.compact : CLASS_NAMES.cell.base,
       index === 0 ? "" : CLASS_NAMES.cell.padding
     ),
     container: CLASS_NAMES.container,
-    render: isLoading ? CLASS_NAMES.renderLoading : CLASS_NAMES.render,
+    render: isLoading ? CLASS_NAMES.renderLoading : renderClassName,
   };
 
   return {

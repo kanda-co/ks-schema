@@ -17,6 +17,14 @@ export interface TableAction {
   payload: [direction: string, id: number];
 }
 
+export interface TableRenderComponent {
+  component?: FunctionComponent<any>;
+  value?: string;
+  props?: StringIndexedObject;
+  optionalProps?: string[];
+  removeOverflowRestriction?: boolean;
+}
+
 export interface TableHeaderColumn {
   id: DraggableId;
   render: (label: string) => string;
@@ -37,12 +45,7 @@ export interface TableHeaderColumn {
   width?: number;
   minWidth?: number;
   maxWidth?: number;
-  renderComponent?: {
-    component?: FunctionComponent<any>;
-    value?: string;
-    props?: StringIndexedObject;
-    optionalProps?: string[];
-  };
+  renderComponent?: TableRenderComponent;
 }
 
 export interface TableProps {
