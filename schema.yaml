@@ -2499,6 +2499,15 @@ paths:
             type: string
             minLength: 1
         - $ref: "#/components/parameters/tier"
+        - name: provider
+          in: query
+          description: billing provider
+          schema:
+            type: string
+            enum:
+              - stripe
+              - premium_credit
+              - iwoca
       responses:
         200:
           description: posted company billing redirect urls
@@ -2535,6 +2544,7 @@ paths:
             enum:
               - stripe
               - premium_credit
+              - iwoca
         - $ref: "#/components/parameters/tier"
       responses:
         200:
@@ -6517,6 +6527,7 @@ paths:
               - etika
               - gocardless
               - humm
+              - iwoca
               - novuna
               - omni
               - stripe
