@@ -6559,6 +6559,7 @@ paths:
               - etika
               - gocardless
               - humm
+              - iwoca
               - novuna
               - omni
               - stripe
