@@ -79,6 +79,7 @@ const (
 	DBV4_TP_CUSTOMER_REJECTED                          TName = "DBV4_TP_CUSTOMER_REJECTED"
 	DBV4_TP_ENQUIRY                                    TName = "DBV4_TP_ENQUIRY"
 	DBV4_TP_ENQUIRY_QUOTE                              TName = "DBV4_TP_ENQUIRY_QUOTE"
+	DBV4_TP_IWOCA_APPROVED                             TName = "DBV4_TP_IWOCA_APPROVED"
 	DBV4_TP_JOB_DECLINED                               TName = "DBV4_TP_JOB_DECLINED"
 	DBV4_TP_JOB_PAID_OUT                               TName = "DBV4_TP_JOB_PAID_OUT"
 	DBV4_TP_JOB_SENT                                   TName = "DBV4_TP_JOB_SENT"
@@ -187,6 +188,7 @@ var TemplateM = map[string]TName{
 	"DBV4_TP_CUSTOMER_REJECTED":                          DBV4_TP_CUSTOMER_REJECTED,
 	"DBV4_TP_ENQUIRY":                                    DBV4_TP_ENQUIRY,
 	"DBV4_TP_ENQUIRY_QUOTE":                              DBV4_TP_ENQUIRY_QUOTE,
+	"DBV4_TP_IWOCA_APPROVED":                             DBV4_TP_IWOCA_APPROVED,
 	"DBV4_TP_JOB_DECLINED":                               DBV4_TP_JOB_DECLINED,
 	"DBV4_TP_JOB_PAID_OUT":                               DBV4_TP_JOB_PAID_OUT,
 	"DBV4_TP_JOB_SENT":                                   DBV4_TP_JOB_SENT,
@@ -2908,6 +2910,49 @@ var TMap = map[TName]string{
       "type": "button",
       "text": "View on Kanda",
       "url": "{{cta_url}}"
+    }
+  ]
+}`,
+	DBV4_TP_IWOCA_APPROVED: `{
+  "subject": "Information about Your Kanda subscription through iwoca",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Thank you for subscribing to Kanda! We want to provide you with important information about how your subscription payments will be processed:"
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "Payment Processor",
+          "subtext": "Your payment will be managed by our partner, <strong>iwoca</strong>. You'll see a direct debit set up under their name."
+        },
+        {
+          "text": "Payment Schedule",
+          "subtext": "Your first payment will be taken in <strong>30 days</strong>. After that, payments will be automatically processed <strong>on the same day of each month</strong>."
+        },
+        {
+          "text": "Subscription Period",
+          "subtext": "Your subscription will run for <strong>12 months</strong>, with payments stopping automatically after 12 installments."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "If you have any questions about your payments or subscription, feel free to reach out to our support team at <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>."
+        }
+      ]
     }
   ]
 }`,
