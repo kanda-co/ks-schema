@@ -6659,6 +6659,7 @@ paths:
               - dbv3_user_verify_director_reminder
               - dbv3_user_send_referrals
               - housekeeping_billing_reminder
+              - housekeeping_billing_dropoff
               - housekeeping_check_audit_action
               - housekeeping_check_financed_cooloff
               - housekeeping_check_lender_rate
