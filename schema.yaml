@@ -6666,6 +6666,7 @@ paths:
               - housekeeping_check_lender_update
               - housekeeping_check_referral_expiry
               - housekeeping_check_trade_summary
+              - housekeeping_insurance_upsell
               - housekeeping_introduction_reminder
               - housekeeping_onboarding_summary_nudge
               - housekeeping_onboarding_summary_reminder
