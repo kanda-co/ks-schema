@@ -9875,6 +9875,7 @@ components:
       enum:
         - apply_for_finance
         - pay_on_card
+        - pay_by_bank
         - decline_job
         - pay_on_completion
 
@@ -9975,6 +9976,7 @@ components:
           enum:
             - cash
             - card
+            - bank
             - loan
             - external
           default: cash
