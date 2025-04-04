@@ -634,6 +634,7 @@ func GetFields(name string) []string {
 		},
 		"InfoOnboarding": []string{
 			"cid",
+			"company_report",
 			"current_approval",
 			"current_stage",
 			"id",
@@ -1018,6 +1019,25 @@ func GetFields(name string) []string {
 			"provider",
 		},
 		"PreferenceMap": []string{},
+		"Prospect": []string{
+			"aid",
+			"bid",
+			"cid",
+			"company_info",
+			"company_type",
+			"contact_info",
+			"current_state",
+			"eid",
+			"id",
+			"metadata",
+			"oid",
+			"tid",
+		},
+		"ProspectBody": []string{
+			"company_info",
+			"company_type",
+			"contact_info",
+		},
 		"PurchaseEvent": []string{
 			"kid",
 			"kind",
