@@ -655,7 +655,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "Great news, the lender has approved your application and that you need to do now is sign the credit agreement. You can do this by clicking the button below or following the instructions in the email from the lender."
+          "text": "Great news, the lender has approved your application and all that you need to do now is sign the credit agreement. You can do this by clicking the button below to return to Kanda and continue from there."
         },
         {
           "text": "If you have any questions email <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a> so we can assist you."
