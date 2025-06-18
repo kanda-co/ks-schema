@@ -9797,6 +9797,7 @@ components:
         - fireplaces
         - fitted_furniture
         - flooring_excluding_carpets
+        - foundations
         - garage_doors
         - garden_buildings
         - gates
