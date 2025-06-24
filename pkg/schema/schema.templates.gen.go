@@ -780,13 +780,13 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "{{sender.contact_name}} has sent you a quote on Kanda. Click below to view the quote and get pre-approved for finance."
+          "text": "{{sender.contact_name}} has sent you a quote on Kanda. Click below to view the quote and get apply for finance."
         }
       ]
     },
     {
       "type": "button",
-      "text": "Get pre-approved",
+      "text": "View Quote",
       "url": "{{cta_url}}"
     },
     {
