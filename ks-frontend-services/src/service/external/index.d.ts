@@ -5,6 +5,8 @@ export { default as payouts } from './payouts';
 export { default as subsSheet } from './subsSheet';
 export { default as contract } from './contract';
 export { default as personalGuarantee } from './personalGuarantee';
+export { default as contractv2 } from './contractv2';
+export * from './contractv2';
 export type { FormattedPayoutCompanyData, PayoutCreditFees, FormattedPayoutCreditData, FormattedPayoutJobData, PayoutData, PayoutsResponse, } from './payouts';
 export type { Guarantor } from './subsSheet';
 export type { Fingerprint, Contract } from './contract';

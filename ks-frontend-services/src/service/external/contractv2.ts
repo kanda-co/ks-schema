@@ -1,19 +1,31 @@
 import { RequestFunction } from '@kanda-libs/openapi-io-ts-runtime';
-import { StringIndexedObject } from '../../types';
 import { createPoster } from './helpers';
 import { Company } from '../../generated/components/schemas';
+
+// export const BASE_URL =
+//   process.env.REACT_APP_FIREBASE_FUNCTION_V2_SERVICE_URL ||
+//   'https://{{SERVICE}}-m2hpzurfja-ew.a.run.app';
+
+// const pdfServicePoster = <T>(
+//   url: string,
+//   body: ContractRequestBody,
+// ): RequestFunction<ContractRequestBody, T> =>
+//   createPoster(BASE_URL.replace('{{SERVICE}}', url))(
+//     '',
+//     body,
+//   ) as unknown as RequestFunction<ContractRequestBody, T>;
 
 export const BASE_URL =
   process.env.REACT_APP_FIREBASE_FUNCTION_SERVICE_URL ||
   'https://europe-west1-basic-garden-241310.cloudfunctions.net';
 
-const pdfServicePoster = <TIn, TOut>(
+const pdfServicePoster = <T>(
   url: string,
-  body: StringIndexedObject = {},
-): RequestFunction<{ body: TIn }, TOut> =>
+  body: ContractRequestBody,
+): RequestFunction<ContractRequestBody, T> =>
   createPoster(BASE_URL)(url, body) as unknown as RequestFunction<
-    { body: TIn },
-    TOut
+    ContractRequestBody,
+    T
   >;
 
 export type PdfComponentType = 'altText' | 'section' | 'bulletList';
@@ -115,7 +127,7 @@ export type PdfComponent =
   | PdfComponentSpacer
   | PdfComponentHeading;
 
-export interface ContractRequestBody {
+export interface ContractRequestBodyBody {
   currentDate: string;
   fingerprint?: string;
   companyName?: string;
@@ -126,27 +138,31 @@ export interface ContractRequestBody {
   signeeEmail?: string;
 }
 
+export interface ContractRequestBody {
+  body: ContractRequestBodyBody;
+}
+
 export interface ContractPdfResponse {
   base64: string;
 }
 
-export interface ContractPdfResponse {
+export interface ContractTermsResponse {
   contract: PdfComponent[];
 }
 
 export default {
   contractpdf: {
     key: '/generate-contract-v2-pdf',
-    method: (
-      body: ContractRequestBody,
-    ): RequestFunction<{ body: ContractRequestBody }, ContractPdfResponse> =>
+    method: ({
+      body,
+    }): RequestFunction<ContractRequestBody, ContractPdfResponse> =>
       pdfServicePoster(`/kspdf-contract-v2-pdf`, body),
   },
   contractterms: {
     key: '/generate-contract-v2-terms',
-    method: (
-      body: ContractRequestBody,
-    ): RequestFunction<{ body: ContractRequestBody }, ContractPdfResponse> =>
+    method: ({
+      body,
+    }): RequestFunction<ContractRequestBody, ContractTermsResponse> =>
       pdfServicePoster(`/kspdf-contract-v2-terms`, body),
   },
 };

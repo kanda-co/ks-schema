@@ -172,7 +172,81 @@ declare const document: {
         method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteDocument").DeleteDocumentRequestFunction;
     };
 };
+declare const enquiry: {
+    getEnquiries: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getEnquiries").GetEnquiriesRequestFunction;
+    };
+    postEnquiry: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postEnquiry").PostEnquiryRequestFunction;
+    };
+    getEnquiry: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getEnquiry").GetEnquiryRequestFunction;
+    };
+    putEnquiry: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/putEnquiry").PutEnquiryRequestFunction;
+    };
+    deleteEnquiry: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteEnquiry").DeleteEnquiryRequestFunction;
+    };
+    postEnquiryConsumer: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postEnquiryConsumer").PostEnquiryConsumerRequestFunction;
+    };
+    postEnquiryConsumerSignature: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postEnquiryConsumerSignature").PostEnquiryConsumerSignatureRequestFunction;
+    };
+    postEnquiryConsumerPreferences: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postEnquiryConsumerPreferences").PostEnquiryConsumerPreferencesRequestFunction;
+    };
+    postEnquiryQuote: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postEnquiryQuote").PostEnquiryQuoteRequestFunction;
+    };
+    postEnquiryJobInfo: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postEnquiryJobInfo").PostEnquiryJobInfoRequestFunction;
+    };
+    postEnquiryInterestInCredit: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postEnquiryInterestInCredit").PostEnquiryInterestInCreditRequestFunction;
+    };
+    postEnquiryBudget: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postEnquiryBudget").PostEnquiryBudgetRequestFunction;
+    };
+    postEnquirySubmit: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postEnquirySubmit").PostEnquirySubmitRequestFunction;
+    };
+    postEnquiryState: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postEnquiryState").PostEnquiryStateRequestFunction;
+    };
+    postEnquiryConvertJob: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postEnquiryConvertJob").PostEnquiryConvertJobRequestFunction;
+    };
+    postEnquiryArchive: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postEnquiryArchive").PostEnquiryArchiveRequestFunction;
+    };
+    postEnquiryUnarchive: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postEnquiryUnarchive").PostEnquiryUnarchiveRequestFunction;
+    };
+};
 declare const enrolment: {
+    getEnrolments: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getEnrolments").GetEnrolmentsRequestFunction;
+    };
     getEnrolment: {
         key: string;
         method: (operationArgs?: OperationArgs) => import("../generated/operations/getEnrolment").GetEnrolmentRequestFunction;
@@ -282,6 +356,12 @@ declare const infoDirector: {
         method: (operationArgs?: OperationArgs) => import("../generated/operations/infoDirector").InfoDirectorRequestFunction;
     };
 };
+declare const infoEnquiry: {
+    getInfoEnquiry: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getInfoEnquiry").GetInfoEnquiryRequestFunction;
+    };
+};
 declare const infoEnterpriseRole: {
     infoEnterpriseRole: {
         key: string;
@@ -378,6 +458,12 @@ declare const infoStats: {
     putInfoStats: {
         key: string;
         method: (operationArgs?: OperationArgs) => import("../generated/operations/putInfoStats").PutInfoStatsRequestFunction;
+    };
+};
+declare const infoTag: {
+    putInfoTag: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/putInfoTag").PutInfoTagRequestFunction;
     };
 };
 declare const infoValidation: {
@@ -802,6 +888,28 @@ declare const subscription: {
         method: (operationArgs?: OperationArgs) => import("../generated/operations/pendingSubscription").PendingSubscriptionRequestFunction;
     };
 };
+declare const tag: {
+    getTags: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getTags").GetTagsRequestFunction;
+    };
+    postTag: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postTag").PostTagRequestFunction;
+    };
+    getTag: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getTag").GetTagRequestFunction;
+    };
+    putTag: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/putTag").PutTagRequestFunction;
+    };
+    deleteTag: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteTag").DeleteTagRequestFunction;
+    };
+};
 declare const task: {
     runner: {
         key: string;
@@ -868,6 +976,7 @@ declare const webhook: {
         method: (operationArgs?: OperationArgs) => import("../generated/operations/providerWebhook").ProviderWebhookRequestFunction;
     };
 };
+declare const BASE_URL: string;
 declare const address: {
     find: {
         key: string;
@@ -882,6 +991,20 @@ declare const contract: {
         method: ({ body, }: import("./external/contract").ContractGenerateRequest) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<{
             body: import("./external/contract").ContractResponse;
         }, import("./external/contract").ContractResponse>;
+    };
+};
+declare const contractv2: {
+    contractpdf: {
+        key: string;
+        method: ({ body, }: {
+            body: any;
+        }) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<externalServices.ContractRequestBody, externalServices.ContractPdfResponse>;
+    };
+    contractterms: {
+        key: string;
+        method: ({ body, }: {
+            body: any;
+        }) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<externalServices.ContractRequestBody, externalServices.ContractTermsResponse>;
     };
 };
 declare const payouts: {
@@ -1118,7 +1241,81 @@ declare const services: {
             method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteDocument").DeleteDocumentRequestFunction;
         };
     };
+    enquiry: {
+        getEnquiries: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getEnquiries").GetEnquiriesRequestFunction;
+        };
+        postEnquiry: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postEnquiry").PostEnquiryRequestFunction;
+        };
+        getEnquiry: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getEnquiry").GetEnquiryRequestFunction;
+        };
+        putEnquiry: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/putEnquiry").PutEnquiryRequestFunction;
+        };
+        deleteEnquiry: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteEnquiry").DeleteEnquiryRequestFunction;
+        };
+        postEnquiryConsumer: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postEnquiryConsumer").PostEnquiryConsumerRequestFunction;
+        };
+        postEnquiryConsumerSignature: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postEnquiryConsumerSignature").PostEnquiryConsumerSignatureRequestFunction;
+        };
+        postEnquiryConsumerPreferences: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postEnquiryConsumerPreferences").PostEnquiryConsumerPreferencesRequestFunction;
+        };
+        postEnquiryQuote: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postEnquiryQuote").PostEnquiryQuoteRequestFunction;
+        };
+        postEnquiryJobInfo: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postEnquiryJobInfo").PostEnquiryJobInfoRequestFunction;
+        };
+        postEnquiryInterestInCredit: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postEnquiryInterestInCredit").PostEnquiryInterestInCreditRequestFunction;
+        };
+        postEnquiryBudget: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postEnquiryBudget").PostEnquiryBudgetRequestFunction;
+        };
+        postEnquirySubmit: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postEnquirySubmit").PostEnquirySubmitRequestFunction;
+        };
+        postEnquiryState: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postEnquiryState").PostEnquiryStateRequestFunction;
+        };
+        postEnquiryConvertJob: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postEnquiryConvertJob").PostEnquiryConvertJobRequestFunction;
+        };
+        postEnquiryArchive: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postEnquiryArchive").PostEnquiryArchiveRequestFunction;
+        };
+        postEnquiryUnarchive: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postEnquiryUnarchive").PostEnquiryUnarchiveRequestFunction;
+        };
+    };
     enrolment: {
+        getEnrolments: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getEnrolments").GetEnrolmentsRequestFunction;
+        };
         getEnrolment: {
             key: string;
             method: (operationArgs?: OperationArgs) => import("../generated/operations/getEnrolment").GetEnrolmentRequestFunction;
@@ -1228,6 +1425,12 @@ declare const services: {
             method: (operationArgs?: OperationArgs) => import("../generated/operations/infoDirector").InfoDirectorRequestFunction;
         };
     };
+    infoEnquiry: {
+        getInfoEnquiry: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getInfoEnquiry").GetInfoEnquiryRequestFunction;
+        };
+    };
     infoEnterpriseRole: {
         infoEnterpriseRole: {
             key: string;
@@ -1324,6 +1527,12 @@ declare const services: {
         putInfoStats: {
             key: string;
             method: (operationArgs?: OperationArgs) => import("../generated/operations/putInfoStats").PutInfoStatsRequestFunction;
+        };
+    };
+    infoTag: {
+        putInfoTag: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/putInfoTag").PutInfoTagRequestFunction;
         };
     };
     infoValidation: {
@@ -1748,6 +1957,28 @@ declare const services: {
             method: (operationArgs?: OperationArgs) => import("../generated/operations/pendingSubscription").PendingSubscriptionRequestFunction;
         };
     };
+    tag: {
+        getTags: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getTags").GetTagsRequestFunction;
+        };
+        postTag: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postTag").PostTagRequestFunction;
+        };
+        getTag: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getTag").GetTagRequestFunction;
+        };
+        putTag: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/putTag").PutTagRequestFunction;
+        };
+        deleteTag: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteTag").DeleteTagRequestFunction;
+        };
+    };
     task: {
         runner: {
             key: string;
@@ -1814,6 +2045,7 @@ declare const services: {
             method: (operationArgs?: OperationArgs) => import("../generated/operations/providerWebhook").ProviderWebhookRequestFunction;
         };
     };
+    BASE_URL: string;
     address: {
         find: {
             key: string;
@@ -1828,6 +2060,20 @@ declare const services: {
             method: ({ body, }: import("./external/contract").ContractGenerateRequest) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<{
                 body: import("./external/contract").ContractResponse;
             }, import("./external/contract").ContractResponse>;
+        };
+    };
+    contractv2: {
+        contractpdf: {
+            key: string;
+            method: ({ body, }: {
+                body: any;
+            }) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<externalServices.ContractRequestBody, externalServices.ContractPdfResponse>;
+        };
+        contractterms: {
+            key: string;
+            method: ({ body, }: {
+                body: any;
+            }) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<externalServices.ContractRequestBody, externalServices.ContractTermsResponse>;
         };
     };
     payouts: {
@@ -1889,5 +2135,5 @@ declare const services: {
         };
     };
 };
-export { adhoc, audit, authUser, company, credit, document, enrolment, enterprise, event, infoAuth, infoCache, infoCampaign, infoCompany, infoCustomer, infoDirector, infoEnterpriseRole, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoIntroductionStats, infoLead, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoRelation, infoSearch, infoStats, infoValidation, infoWorkType, introduction, job, lead, monitor, onboarding, partner, payment, rate, subscription, task, tradeSummary, training, transaction, webhook, address, contract, payouts, pdf, personalGuarantee, sheets, subsSheet, };
+export { adhoc, audit, authUser, company, credit, document, enquiry, enrolment, enterprise, event, infoAuth, infoCache, infoCampaign, infoCompany, infoCustomer, infoDirector, infoEnquiry, infoEnterpriseRole, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoIntroductionStats, infoLead, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoRelation, infoSearch, infoStats, infoTag, infoValidation, infoWorkType, introduction, job, lead, monitor, onboarding, partner, payment, rate, subscription, tag, task, tradeSummary, training, transaction, webhook, BASE_URL, address, contract, contractv2, payouts, pdf, personalGuarantee, sheets, subsSheet, };
 export default services;
