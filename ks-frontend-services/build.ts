@@ -1,7 +1,7 @@
 import { build, type BuildFailure, type LogLevel } from 'esbuild';
 import { nodeExternalsPlugin } from 'esbuild-node-externals';
 import { exec } from 'child_process';
-import packageConfig from './package.json' assert { type: 'json' };
+// import packageConfig from './package.json' with { type: 'json' };
 
 const handleYalcPublish = () => {
   // @ts-ignore
@@ -15,7 +15,7 @@ const shared = {
   bundle: true,
   entryPoints: [entryFile],
   // Treat all dependencies in package.json as externals to keep bundle size to a minimum
-  external: Object.keys(packageConfig.dependencies),
+  // external: Object.keys(packageConfig.dependencies),
   plugins: [nodeExternalsPlugin()],
   logLevel: 'info' as LogLevel,
   minify: false,

@@ -4,13 +4,14 @@
   "license": "private",
   "scripts": {
     "clean-incorrect-imports": "grep -rlw \"./src\" -e \"DateFromISOString\" | xargs -I@ sed -i.bak \"s/\\/DateFromISOString//g\" @ && rm -rf **/*.bak",
-    "generate-service-module": "ts-node --experimental-specifier-resolution=node ./src/service/generator/",
-    "generate-store": "mkdir -p ./src/store/slices/generated && ts-node --require ts-node/register --experimental-specifier-resolution=node ./src/store/generator/ && prettier --write ./src/store/",
+    "generate-service-module": "node --experimental-specifier-resolution=node --loader ts-node/esm src/service/generator",
+    "generate-store": "mkdir -p ./src/store/slices/generated && node --experimental-specifier-resolution=node --loader ts-node/esm ./src/store/generator/ && prettier --write ./src/store/",
     "clean": "rimraf dist",
     "remove:nodemodules": "rimraf yarn.lock && rimraf node_modules",
     "build:deploy": "yarn remove:nodemodules && yarn && yarn build",
     "build:types": "tsc src/index.ts --declaration --emitDeclarationOnly --jsx react-jsx --esModuleInterop",
-    "build": "yarn && yarn clean && yarn generate-service-module && yarn generate-store && yarn build:types && ts-node ./build.ts",
+    "build:runner": "node --loader ts-node/esm ./build.ts",
+    "build": "yarn && yarn clean && yarn generate-service-module && yarn generate-store && yarn build:types && yarn build:runner",
     "watch": "yarn && yarn clean && DEV_WATCH=true yarn build",
     "app:dev": "yarn --cwd ./app && yarn --cwd ./app yalc:link && yarn --cwd ./app dev --force --host",
     "test:app": "yarn clean && yarn && yarn build && yalc publish && yarn --cwd ./app yalc:update && yarn --cwd ./app && yarn --cwd ./app dev --force"
