@@ -84,6 +84,105 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/profile:
+    get:
+      operationId: getUserProfile
+      summary: get user profile
+      tags:
+        - UserProfile
+      responses:
+        200:
+          description: got user profile
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfile"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/info/profile-device-registration:
+    post:
+      operationId: postProfileDeviceRegistration
+      summary: register new info device registration to user profile
+      tags:
+        - UserProfile
+      requestBody:
+        description: register new info device registration to user profile
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NewDeviceRegistrationRequest"
+      responses:
+        200:
+          description: registered new info device registration to user profile
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfile"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      operationId: putProfileDeviceRegistration
+      summary: update existing info device registration to user profile
+      tags:
+        - UserProfile
+      requestBody:
+        description: update new info device registration to user profile
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateDeviceRegistrationRequest"
+      responses:
+        200:
+          description: updated existing info device registration to user profile
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfile"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      operationId: deleteProfileDeviceRegistration
+      summary: delete info device registration by id from user profile
+      tags:
+        - UserProfile
+      requestBody:
+        description: delete info device registration from user profile
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+      responses:
+        200:
+          description: deleted info device registration from user profile
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfile"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/info/health:
     get:
       operationId: infoHealth
@@ -6890,6 +6989,80 @@ components:
           type: string
           title: authorisation url
           readOnly: true
+
+    UserProfile:
+      allOf:
+        - $ref: "#/components/schemas/BaseId"
+        - type: object
+          title: user profile
+          required:
+            - device_registrations
+          properties:
+            device_registrations:
+              type: array
+              title: device registrations
+              items:
+                $ref: "#/components/schemas/DeviceRegistration"
+
+    DeviceRegistration:
+      type: object
+      title: device registration
+      required:
+        - id
+        - name
+        - token
+        - registered_at
+      properties:
+        id:
+          type: string
+          title: device registration id
+        name:
+          type: string
+          title: device name
+        token:
+          type: string
+          title: device registration token
+        registered_at:
+          type: string
+          title: device token registered at
+          format: date-time
+
+    NewDeviceRegistrationRequest:
+      type: object
+      title: new device registration request
+      required:
+        - name
+        - token
+      properties:
+        name:
+          type: string
+          title: device name
+          minLength: 1
+        token:
+          type: string
+          title: device registration token
+          minLength: 1
+
+    UpdateDeviceRegistrationRequest:
+      type: object
+      title: update device registration request
+      required:
+        - id
+        - name
+        - token
+      properties:
+        id:
+          type: string
+          title: device registration id
+          minLength: 1
+        name:
+          type: string
+          title: device name
+          minLength: 1
+        token:
+          type: string
+          title: device registration token
+          minLength: 1
 
     EnterpriseUserRole:
       type: object

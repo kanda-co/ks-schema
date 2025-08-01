@@ -116,6 +116,7 @@ func main() {
 			"Onboarding",
 			"Tag",
 			"Transaction",
+			"UserProfile",
 			// "Cache",
 			// "Consent",
 			// "Document",

@@ -2,9 +2,11 @@ package main
 
 import (
 	"context"
+	"flag"
 	"fmt"
 	"slices"
 	"sort"
+	"strings"
 
 	"github.com/getkin/kin-openapi/openapi3"
 	"github.com/iancoleman/strcase"
@@ -20,9 +22,15 @@ func MapKeys[A comparable, B any](m map[A]B) []A {
 }
 
 func main() {
+	var (
+		source string
+	)
+	flag.StringVar(&source, "source", "./schema.yaml", "source schema")
+	flag.Parse()
+
 	ctx := context.Background()
 	loader := openapi3.Loader{Context: ctx}
-	doc, _ := loader.LoadFromFile("./schema.yaml")
+	doc, _ := loader.LoadFromFile(source)
 	_ = doc.Validate(ctx)
 
 	fmt.Println("package schema")
@@ -36,6 +44,9 @@ func main() {
 	for _, name := range components {
 		ref := doc.Components.Schemas[name]
 		if ref.Value.Type != "object" && len(ref.Value.AllOf) == 0 {
+			continue
+		}
+		if strings.HasSuffix(name, "Request") {
 			continue
 		}
 

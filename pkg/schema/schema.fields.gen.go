@@ -330,6 +330,12 @@ func GetFields(name string) []string {
 			"deposit_value",
 			"finance_option",
 		},
+		"DeviceRegistration": []string{
+			"id",
+			"name",
+			"registered_at",
+			"token",
+		},
 		"DirectorInfo": []string{
 			"date_of_birth",
 			"home_address",
@@ -402,9 +408,6 @@ func GetFields(name string) []string {
 			"interest_in_credit",
 			"job_info",
 			"quote",
-		},
-		"EnquiryStateRequest": []string{
-			"state",
 		},
 		"Enrolment": []string{
 			"aid",
@@ -704,9 +707,6 @@ func GetFields(name string) []string {
 			"rates",
 			"work_type",
 		},
-		"InterestInCreditRequest": []string{
-			"interest_in_credit",
-		},
 		"Introduction": []string{
 			"aid",
 			"archived",
@@ -731,9 +731,6 @@ func GetFields(name string) []string {
 			"trader_signature",
 			"xid",
 			"xref",
-		},
-		"IntroductionStateRequest": []string{
-			"state",
 		},
 		"IntroductionStats": []string{
 			"approval_rate",
@@ -1038,14 +1035,6 @@ func GetFields(name string) []string {
 			"id",
 			"metadata",
 		},
-		"RateRequest": []string{
-			"added",
-			"metadata",
-			"removed",
-			"requester",
-			"to_add",
-			"to_remove",
-		},
 		"RedirectURLs": []string{
 			"checkout_url",
 			"failure_url",
@@ -1276,6 +1265,17 @@ func GetFields(name string) []string {
 			"provider",
 			"role",
 			"verified",
+		},
+		"UserProfile": []string{
+			"aid",
+			"bid",
+			"cid",
+			"device_registrations",
+			"eid",
+			"id",
+			"metadata",
+			"oid",
+			"tid",
 		},
 		"UserType": []string{
 			"comm_preferences",
