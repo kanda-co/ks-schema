@@ -257,6 +257,33 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/info/kagent:
+    post:
+      operationId: infoKagent
+      summary: info kagent to establish AI conversation
+      tags:
+        - InfoKagent
+      requestBody:
+        description: info kagent chat content
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/KagentChatRequest"
+      responses:
+        200:
+          description: info kagent chat response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/KagentChat"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/info/trade-summary:
     get:
       operationId: infoTradeSummary
@@ -8794,6 +8821,90 @@ components:
           type: number
           format: float
           title: longitude
+
+    KagentChatRequest:
+      type: object
+      title: kagent chat request
+      required:
+        - messages
+      properties:
+        id:
+          type: string
+          title: kagent chat id
+        messages:
+          type: array
+          title: kagent chat messages
+          items:
+            $ref: "#/components/schemas/KagentMessage"
+
+    KagentChat:
+      allOf:
+        - $ref: "#/components/schemas/BaseId"
+        - type: object
+          title: kagent chat
+          description: kagent chat object
+          required:
+            - messages
+            - finished
+            - trade_summaries
+          properties:
+            messages:
+              type: array
+              title: kagent chat messages
+              items:
+                $ref: "#/components/schemas/KagentMessage"
+            finished:
+              type: boolean
+              title: kagent finished chat?
+            trade_summaries:
+              type: array
+              title: kagent trade summaries
+              items:
+                $ref: "#/components/schemas/TradeSummary"
+            visitor_info:
+              $ref: "#/components/schemas/KagentVisitorInfo"
+
+    KagentVisitorInfo:
+      type: object
+      title: kagent visitor info
+      description: kagent visitor info object
+      required:
+        - summary
+        - postcode
+        - work_type
+        - contact_name
+      properties:
+        summary:
+          type: string
+          title: summary
+        postcode:
+          type: string
+          title: postcode
+        work_type:
+          type: string
+          $ref: "#/components/schemas/WorkType"
+        contact_name:
+          type: string
+          title: contact name
+
+    KagentMessage:
+      type: object
+      title: kagent message
+      description: kagent message object
+      required:
+        - role
+        - content
+      properties:
+        role:
+          type: string
+          title: role
+        content:
+          type: string
+          title: content
+        messaged_at:
+          type: string
+          title: messaged_at
+          format: date-time
 
     InfoTrade:
       type: object
