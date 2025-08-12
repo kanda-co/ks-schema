@@ -3471,6 +3471,35 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/job/{id}/switch-deposit:
+    post:
+      operationId: jobSwitchDeposit
+      summary: >
+        customer to switch deposit payment method between Card and Open Banking
+      tags:
+        - Job
+      parameters:
+        - name: id
+          in: path
+          description: job id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got updated job with switched deposit payment
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/job/{id}/viewSatNote:
     post:
       operationId: viewJobSatNote
