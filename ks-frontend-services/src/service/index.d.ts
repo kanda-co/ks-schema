@@ -404,6 +404,12 @@ declare const infoIntroductionStats: {
         method: (operationArgs?: OperationArgs) => import("../generated/operations/infoIntroductionStats").InfoIntroductionStatsRequestFunction;
     };
 };
+declare const infoKagent: {
+    infoKagent: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/infoKagent").InfoKagentRequestFunction;
+    };
+};
 declare const infoLead: {
     infoLead: {
         key: string;
@@ -624,6 +630,10 @@ declare const job: {
     payJob: {
         key: string;
         method: (operationArgs?: OperationArgs) => import("../generated/operations/payJob").PayJobRequestFunction;
+    };
+    jobSwitchDeposit: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/jobSwitchDeposit").JobSwitchDepositRequestFunction;
     };
     viewJobSatNote: {
         key: string;
@@ -966,6 +976,24 @@ declare const transaction: {
         method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteTransaction").DeleteTransactionRequestFunction;
     };
 };
+declare const userProfile: {
+    getUserProfile: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getUserProfile").GetUserProfileRequestFunction;
+    };
+    postProfileDeviceRegistration: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postProfileDeviceRegistration").PostProfileDeviceRegistrationRequestFunction;
+    };
+    putProfileDeviceRegistration: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/putProfileDeviceRegistration").PutProfileDeviceRegistrationRequestFunction;
+    };
+    deleteProfileDeviceRegistration: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteProfileDeviceRegistration").DeleteProfileDeviceRegistrationRequestFunction;
+    };
+};
 declare const webhook: {
     providerCheckWebhook: {
         key: string;
@@ -976,7 +1004,6 @@ declare const webhook: {
         method: (operationArgs?: OperationArgs) => import("../generated/operations/providerWebhook").ProviderWebhookRequestFunction;
     };
 };
-declare const BASE_URL: string;
 declare const address: {
     find: {
         key: string;
@@ -1041,6 +1068,20 @@ declare const personalGuarantee: {
         method: ({ body, }: import("./external/personalGuarantee").PersonalGuaranteeGenerateRequest) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<{
             body: externalServices.PersonalGuaranteeResponse;
         }, externalServices.PersonalGuaranteeResponse>;
+    };
+};
+declare const satnotev2: {
+    credit: {
+        key: string;
+        method: ({ body, }: {
+            body: any;
+        }) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<externalServices.SatNoteCreditRequestBody, externalServices.SatNotePdfResponse>;
+    };
+    openbanking: {
+        key: string;
+        method: ({ body, }: {
+            body: any;
+        }) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<externalServices.SatNoteOpenBankingRequestBody, externalServices.SatNotePdfResponse>;
     };
 };
 declare const sheets: {
@@ -1473,6 +1514,12 @@ declare const services: {
             method: (operationArgs?: OperationArgs) => import("../generated/operations/infoIntroductionStats").InfoIntroductionStatsRequestFunction;
         };
     };
+    infoKagent: {
+        infoKagent: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/infoKagent").InfoKagentRequestFunction;
+        };
+    };
     infoLead: {
         infoLead: {
             key: string;
@@ -1693,6 +1740,10 @@ declare const services: {
         payJob: {
             key: string;
             method: (operationArgs?: OperationArgs) => import("../generated/operations/payJob").PayJobRequestFunction;
+        };
+        jobSwitchDeposit: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/jobSwitchDeposit").JobSwitchDepositRequestFunction;
         };
         viewJobSatNote: {
             key: string;
@@ -2035,6 +2086,24 @@ declare const services: {
             method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteTransaction").DeleteTransactionRequestFunction;
         };
     };
+    userProfile: {
+        getUserProfile: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getUserProfile").GetUserProfileRequestFunction;
+        };
+        postProfileDeviceRegistration: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postProfileDeviceRegistration").PostProfileDeviceRegistrationRequestFunction;
+        };
+        putProfileDeviceRegistration: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/putProfileDeviceRegistration").PutProfileDeviceRegistrationRequestFunction;
+        };
+        deleteProfileDeviceRegistration: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteProfileDeviceRegistration").DeleteProfileDeviceRegistrationRequestFunction;
+        };
+    };
     webhook: {
         providerCheckWebhook: {
             key: string;
@@ -2045,7 +2114,6 @@ declare const services: {
             method: (operationArgs?: OperationArgs) => import("../generated/operations/providerWebhook").ProviderWebhookRequestFunction;
         };
     };
-    BASE_URL: string;
     address: {
         find: {
             key: string;
@@ -2112,6 +2180,20 @@ declare const services: {
             }, externalServices.PersonalGuaranteeResponse>;
         };
     };
+    satnotev2: {
+        credit: {
+            key: string;
+            method: ({ body, }: {
+                body: any;
+            }) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<externalServices.SatNoteCreditRequestBody, externalServices.SatNotePdfResponse>;
+        };
+        openbanking: {
+            key: string;
+            method: ({ body, }: {
+                body: any;
+            }) => import("@kanda-libs/openapi-io-ts-runtime").RequestFunction<externalServices.SatNoteOpenBankingRequestBody, externalServices.SatNotePdfResponse>;
+        };
+    };
     sheets: {
         read: {
             key: string;
@@ -2135,5 +2217,5 @@ declare const services: {
         };
     };
 };
-export { adhoc, audit, authUser, company, credit, document, enquiry, enrolment, enterprise, event, infoAuth, infoCache, infoCampaign, infoCompany, infoCustomer, infoDirector, infoEnquiry, infoEnterpriseRole, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoIntroductionStats, infoLead, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoRelation, infoSearch, infoStats, infoTag, infoValidation, infoWorkType, introduction, job, lead, monitor, onboarding, partner, payment, rate, subscription, tag, task, tradeSummary, training, transaction, webhook, BASE_URL, address, contract, contractv2, payouts, pdf, personalGuarantee, sheets, subsSheet, };
+export { adhoc, audit, authUser, company, credit, document, enquiry, enrolment, enterprise, event, infoAuth, infoCache, infoCampaign, infoCompany, infoCustomer, infoDirector, infoEnquiry, infoEnterpriseRole, infoEnterprise, infoEntity, infoGhost, infoHealth, infoIP, infoIntroductionStats, infoKagent, infoLead, infoOnboarding, infoPartner, infoQuery, infoRedirect, infoRelation, infoSearch, infoStats, infoTag, infoValidation, infoWorkType, introduction, job, lead, monitor, onboarding, partner, payment, rate, subscription, tag, task, tradeSummary, training, transaction, userProfile, webhook, address, contract, contractv2, payouts, pdf, personalGuarantee, satnotev2, sheets, subsSheet, };
 export default services;

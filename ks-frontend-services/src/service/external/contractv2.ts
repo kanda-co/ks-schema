@@ -2,20 +2,7 @@ import { RequestFunction } from '@kanda-libs/openapi-io-ts-runtime';
 import { createPoster } from './helpers';
 import { Company } from '../../generated/components/schemas';
 
-// export const BASE_URL =
-//   process.env.REACT_APP_FIREBASE_FUNCTION_V2_SERVICE_URL ||
-//   'https://{{SERVICE}}-m2hpzurfja-ew.a.run.app';
-
-// const pdfServicePoster = <T>(
-//   url: string,
-//   body: ContractRequestBody,
-// ): RequestFunction<ContractRequestBody, T> =>
-//   createPoster(BASE_URL.replace('{{SERVICE}}', url))(
-//     '',
-//     body,
-//   ) as unknown as RequestFunction<ContractRequestBody, T>;
-
-export const BASE_URL =
+const BASE_URL =
   process.env.REACT_APP_FIREBASE_FUNCTION_SERVICE_URL ||
   'https://europe-west1-basic-garden-241310.cloudfunctions.net';
 

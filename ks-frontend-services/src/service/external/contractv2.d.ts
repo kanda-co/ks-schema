@@ -1,6 +1,5 @@
 import { RequestFunction } from '@kanda-libs/openapi-io-ts-runtime';
 import { Company } from '../../generated/components/schemas';
-export declare const BASE_URL: string;
 export type PdfComponentType = 'altText' | 'section' | 'bulletList';
 export type PdfBulletListType = 'capitalAlpha' | 'alpha' | 'number' | 'dot' | 'disc' | 'dash' | 'roman' | 'blank';
 export interface PdfComponentSpacerI {

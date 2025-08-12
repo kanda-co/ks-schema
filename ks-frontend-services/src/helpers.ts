@@ -50,7 +50,6 @@ export const fetchRequestAdapter = (
         await handleProtectedRequest(init),
         operationArgs,
       );
-
     return fetchToUse(`${baseURL}${url}`, init, operationArgs);
   };
 };

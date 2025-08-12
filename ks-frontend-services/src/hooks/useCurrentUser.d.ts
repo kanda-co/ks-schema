@@ -56,6 +56,7 @@ export declare const createCurrentUserHook: <State extends AuthSlice, Dispatch e
     tradeSummary: import("../store/types").Selectors<import("..").TradeSummary, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").TradeSummary>>>;
     training: import("../store/types").Selectors<import("..").Training, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Training>>>;
     transaction: import("../store/types").Selectors<import("..").Transaction, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Transaction>>>;
+    userProfile: import("../store/types").Selectors<import("..").UserProfile, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").UserProfile>>>;
     postCompanyBilling: import("../store/types").Selectors<import("..").RedirectURLs, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").RedirectURLs>>>;
     getCompanyDirectorVerification: import("../store/types").Selectors<import("..").InfoCompany, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoCompany>>>;
     postCompanyDirectorVerification: import("../store/types").Selectors<import("..").InfoCompany, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoCompany>>>;
@@ -74,6 +75,7 @@ export declare const createCurrentUserHook: <State extends AuthSlice, Dispatch e
     infoEnterpriseRole: import("../store/types").Selectors<import("..").EnterpriseUserRole, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").EnterpriseUserRole>>>;
     infoEnterprise: import("../store/types").Selectors<import("..").Enterprise, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Enterprise>>>;
     infoHealth: import("../store/types").Selectors<import("..").Error, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Error>>>;
+    infoKagent: import("../store/types").Selectors<import("..").KagentChat, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").KagentChat>>>;
     infoPartnerBranding: import("../store/types").Selectors<import("..").InfoPartnerBranding, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoPartnerBranding>>>;
     infoLegacyRedirect: import("../store/types").Selectors<import("..").InfoLegacyRedirect, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoLegacyRedirect>>>;
     infoCheckoutRedirect: import("../store/types").Selectors<import("..").InfoCheckoutRedirect, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoCheckoutRedirect>>>;

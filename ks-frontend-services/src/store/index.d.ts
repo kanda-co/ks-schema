@@ -411,6 +411,17 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         isLoading: boolean;
         isSubmitting: boolean;
     };
+    userProfile: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").UserProfile>;
+        raw?: {} | {}[];
+        error?: import("../types").ExtractedError;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+        isSubmitting: boolean;
+    };
     postCompanyBilling: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").RedirectURLs>;
@@ -601,6 +612,17 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
     infoHealth: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Error>;
+        raw?: {} | {}[];
+        error?: import("../types").ExtractedError;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+        isSubmitting: boolean;
+    };
+    infoKagent: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").KagentChat>;
         raw?: {} | {}[];
         error?: import("../types").ExtractedError;
         hasFetched: boolean;
@@ -1162,6 +1184,17 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         isLoading: boolean;
         isSubmitting: boolean;
     };
+    userProfile: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").UserProfile>;
+        raw?: {} | {}[];
+        error?: import("../types").ExtractedError;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+        isSubmitting: boolean;
+    };
     postCompanyBilling: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").RedirectURLs>;
@@ -1352,6 +1385,17 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
     infoHealth: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").Error>;
+        raw?: {} | {}[];
+        error?: import("../types").ExtractedError;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+        isSubmitting: boolean;
+    };
+    infoKagent: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").KagentChat>;
         raw?: {} | {}[];
         error?: import("../types").ExtractedError;
         hasFetched: boolean;
@@ -1556,6 +1600,7 @@ export declare function createSelectors<State extends AuthSlice, Pages>(): {
     tradeSummary: import("./types").Selectors<import("..").TradeSummary, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").TradeSummary>>>;
     training: import("./types").Selectors<import("..").Training, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Training>>>;
     transaction: import("./types").Selectors<import("..").Transaction, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Transaction>>>;
+    userProfile: import("./types").Selectors<import("..").UserProfile, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").UserProfile>>>;
     postCompanyBilling: import("./types").Selectors<import("..").RedirectURLs, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").RedirectURLs>>>;
     getCompanyDirectorVerification: import("./types").Selectors<import("..").InfoCompany, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoCompany>>>;
     postCompanyDirectorVerification: import("./types").Selectors<import("..").InfoCompany, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoCompany>>>;
@@ -1574,6 +1619,7 @@ export declare function createSelectors<State extends AuthSlice, Pages>(): {
     infoEnterpriseRole: import("./types").Selectors<import("..").EnterpriseUserRole, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").EnterpriseUserRole>>>;
     infoEnterprise: import("./types").Selectors<import("..").Enterprise, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Enterprise>>>;
     infoHealth: import("./types").Selectors<import("..").Error, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Error>>>;
+    infoKagent: import("./types").Selectors<import("..").KagentChat, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").KagentChat>>>;
     infoPartnerBranding: import("./types").Selectors<import("..").InfoPartnerBranding, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoPartnerBranding>>>;
     infoLegacyRedirect: import("./types").Selectors<import("..").InfoLegacyRedirect, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoLegacyRedirect>>>;
     infoCheckoutRedirect: import("./types").Selectors<import("..").InfoCheckoutRedirect, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoCheckoutRedirect>>>;

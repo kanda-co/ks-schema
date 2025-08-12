@@ -6,7 +6,9 @@ export { default as subsSheet } from './subsSheet';
 export { default as contract } from './contract';
 export { default as personalGuarantee } from './personalGuarantee';
 export { default as contractv2 } from './contractv2';
+export { default as satnotev2 } from './satnotev2';
 export * from './contractv2';
+export * from './satnotev2';
 
 export type {
   FormattedPayoutCompanyData,
