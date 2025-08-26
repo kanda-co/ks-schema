@@ -168,7 +168,7 @@ paths:
         content:
           application/json:
             schema:
-              type: string
+              $ref: "#/components/schemas/DeleteDeviceRegistrationRequest"
       responses:
         200:
           description: deleted info device registration from user profile
@@ -7120,6 +7120,17 @@ components:
           title: device registration token
           minLength: 1
 
+    DeleteDeviceRegistrationRequest:
+      type: object
+      title: delete device registration request
+      required:
+        - id
+      properties:
+        id:
+          type: string
+          title: device registration id
+          minLength: 1
+
     EnterpriseUserRole:
       type: object
       required:
@@ -9981,6 +9992,9 @@ components:
           type: object
           title: sat note generated document with e-signature
           $ref: "#/components/schemas/Document"
+        remark:
+          type: string
+          title: sat note remark
 
     JobItem:
       type: object

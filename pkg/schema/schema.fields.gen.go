@@ -1100,6 +1100,7 @@ func GetFields(name string) []string {
 			"q_pressure",
 			"q_rate",
 			"q_saving",
+			"remark",
 			"signature",
 		},
 		"SatNoteTimeline": []string{
