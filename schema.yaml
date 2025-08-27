@@ -96,7 +96,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UserProfile"
+                $ref: "#/components/schemas/Profile"
         default:
           description: unexpected error
           content:
@@ -123,7 +123,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UserProfile"
+                $ref: "#/components/schemas/Profile"
         default:
           description: unexpected error
           content:
@@ -149,7 +149,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UserProfile"
+                $ref: "#/components/schemas/Profile"
         default:
           description: unexpected error
           content:
@@ -175,7 +175,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UserProfile"
+                $ref: "#/components/schemas/Profile"
         default:
           description: unexpected error
           content:
@@ -7046,7 +7046,7 @@ components:
           title: authorisation url
           readOnly: true
 
-    UserProfile:
+    Profile:
       allOf:
         - $ref: "#/components/schemas/BaseId"
         - type: object
