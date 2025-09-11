@@ -22,6 +22,7 @@ const (
 	DBV4_HO_INITIAL                                    TName = "DBV4_HO_INITIAL"
 	DBV4_HO_JOB_DECLINED                               TName = "DBV4_HO_JOB_DECLINED"
 	DBV4_HO_JOB_STARTED                                TName = "DBV4_HO_JOB_STARTED"
+	DBV4_HO_JOB_STARTED_OPEN_BANKING                   TName = "DBV4_HO_JOB_STARTED_OPEN_BANKING"
 	DBV4_HO_LEAD_DETAILS_PROVIDED_TP_ASSIGNED          TName = "DBV4_HO_LEAD_DETAILS_PROVIDED_TP_ASSIGNED"
 	DBV4_HO_LEAD_POSTED                                TName = "DBV4_HO_LEAD_POSTED"
 	DBV4_HO_QUOTE_POSTED                               TName = "DBV4_HO_QUOTE_POSTED"
@@ -73,6 +74,7 @@ const (
 	DBV4_TP_ACCOUNT_APPROVED                           TName = "DBV4_TP_ACCOUNT_APPROVED"
 	DBV4_TP_APPLICATION_ACCEPTED                       TName = "DBV4_TP_APPLICATION_ACCEPTED"
 	DBV4_TP_APPLICATION_ACCEPTED_DEPOSIT_CHANGED       TName = "DBV4_TP_APPLICATION_ACCEPTED_DEPOSIT_CHANGED"
+	DBV4_TP_APPLICATION_ACCEPTED_OPEN_BANKING          TName = "DBV4_TP_APPLICATION_ACCEPTED_OPEN_BANKING"
 	DBV4_TP_APPLICATION_CANCELLED                      TName = "DBV4_TP_APPLICATION_CANCELLED"
 	DBV4_TP_APPLICATION_PENDING                        TName = "DBV4_TP_APPLICATION_PENDING"
 	DBV4_TP_CUSTOMER_REFERRED                          TName = "DBV4_TP_CUSTOMER_REFERRED"
@@ -131,6 +133,7 @@ var TemplateM = map[string]TName{
 	"DBV4_HO_INITIAL":                                    DBV4_HO_INITIAL,
 	"DBV4_HO_JOB_DECLINED":                               DBV4_HO_JOB_DECLINED,
 	"DBV4_HO_JOB_STARTED":                                DBV4_HO_JOB_STARTED,
+	"DBV4_HO_JOB_STARTED_OPEN_BANKING":                   DBV4_HO_JOB_STARTED_OPEN_BANKING,
 	"DBV4_HO_LEAD_DETAILS_PROVIDED_TP_ASSIGNED":          DBV4_HO_LEAD_DETAILS_PROVIDED_TP_ASSIGNED,
 	"DBV4_HO_LEAD_POSTED":                                DBV4_HO_LEAD_POSTED,
 	"DBV4_HO_QUOTE_POSTED":                               DBV4_HO_QUOTE_POSTED,
@@ -182,6 +185,7 @@ var TemplateM = map[string]TName{
 	"DBV4_TP_ACCOUNT_APPROVED":                           DBV4_TP_ACCOUNT_APPROVED,
 	"DBV4_TP_APPLICATION_ACCEPTED":                       DBV4_TP_APPLICATION_ACCEPTED,
 	"DBV4_TP_APPLICATION_ACCEPTED_DEPOSIT_CHANGED":       DBV4_TP_APPLICATION_ACCEPTED_DEPOSIT_CHANGED,
+	"DBV4_TP_APPLICATION_ACCEPTED_OPEN_BANKING":          DBV4_TP_APPLICATION_ACCEPTED_OPEN_BANKING,
 	"DBV4_TP_APPLICATION_CANCELLED":                      DBV4_TP_APPLICATION_CANCELLED,
 	"DBV4_TP_APPLICATION_PENDING":                        DBV4_TP_APPLICATION_PENDING,
 	"DBV4_TP_CUSTOMER_REFERRED":                          DBV4_TP_CUSTOMER_REFERRED,
@@ -874,6 +878,46 @@ var TMap = map[TName]string{
         {
           "text": "What happens now?",
           "subtext": "{{sender.contact_name}} has been notified that your finance application is approved. They'll get in touch with you soon to schedule and start the work."
+        },
+        {
+          "text": "After the job",
+          "subtext": "When the work's done, we'll ask you if everything is in order. After you sign off on the work we'll get {{sender.contact_name}} paid."
+        },
+        {
+          "text": "Questions? Let us know!",
+          "subtext": "We're here for you all the way. If you have any questions about the loan, or the job itself, please reach out to us."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}`,
+	DBV4_HO_JOB_STARTED_OPEN_BANKING: `{
+  "subject": "Your job on Kanda is ready to start",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "Your job on Kanda is ready to be started."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "What happens now?",
+          "subtext": "{{sender.contact_name}} has been notified that you have made the payment to Kanda to secure the job. They'll get in touch with you soon to schedule and start the work."
         },
         {
           "text": "After the job",
@@ -2618,7 +2662,7 @@ var TMap = map[TName]string{
           "text": "Congratulations! I'm so happy to let you know that your application has been approved and you're now officially able to use Kanda."
         },
         {
-          "text": "My team and I want to personally welcome you to the platform, use the button below to book a welcome call."
+          "text": "My team and I want to personally welcome you to the platform! If you have not already booked a training call, you can use the button below to schedule a call to get trained on Kanda's system. Otherwise, start using Kanda now to win more work!."
         }
       ]
     },
@@ -2728,6 +2772,38 @@ var TMap = map[TName]string{
         {
           "text": "What is the new deposit?",
           "subtext": "Your customer choose a deposit amount of {{deposit.applied}}, which is {{deposit.difference}} more than you asked for. You'll need to collect this difference directly from your customer if you haven't already. If something isn't right let us know by emailing <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}`,
+	DBV4_TP_APPLICATION_ACCEPTED_OPEN_BANKING: `{
+  "subject": "{{sender.contact_name}} has paid for the job via Open Banking! The job is ready to start.",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Great news! The job is ready to start."
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "{{sender.contact_name}} has made a payment via Open Banking to secure the job with you. You can now begin the work when you'd like, and we will pay you once the job is complete. Remember, the job has to be completed within 6 months of this email being sent to you."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "Was this a mistake?",
+          "subtext": "If something isn't right let us know by emailing <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>"
         }
       ]
     },

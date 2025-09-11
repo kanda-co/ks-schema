@@ -1,0 +1,32 @@
+{
+  "subject": "{{sender.contact_name}} has paid for the job via Open Banking! The job is ready to start.",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Great news! The job is ready to start."
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "{{sender.contact_name}} has made a payment via Open Banking to secure the job with you. You can now begin the work when you'd like, and we will pay you once the job is complete. Remember, the job has to be completed within 6 months of this email being sent to you."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "Was this a mistake?",
+          "subtext": "If something isn't right let us know by emailing <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View on Kanda",
+      "url": "{{cta_url}}"
+    }
+  ]
+}
