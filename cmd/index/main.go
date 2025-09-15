@@ -116,7 +116,7 @@ func main() {
 			"Onboarding",
 			"Tag",
 			"Transaction",
-			"UserProfile",
+			"Profile",
 			// "Cache",
 			// "Consent",
 			// "Document",
@@ -173,7 +173,14 @@ func main() {
 			if resp.StatusCode > 299 {
 				body, _ := io.ReadAll(resp.Body)
 				defer resp.Body.Close()
-				panic(fmt.Errorf("reset with endpoint '%v' error - %s '%v'", endpoint, resp.Status, string(body)))
+				panic(
+					fmt.Errorf(
+						"reset with endpoint '%v' error - %s '%v'",
+						endpoint,
+						resp.Status,
+						string(body),
+					),
+				)
 			}
 			fmt.Println("[RESET]", endpoint)
 
@@ -191,7 +198,14 @@ func main() {
 			if resp.StatusCode > 299 {
 				body, _ := io.ReadAll(resp.Body)
 				defer resp.Body.Close()
-				panic(fmt.Errorf("index with endpoint '%v' error - %s '%v'", endpoint, resp.Status, string(body)))
+				panic(
+					fmt.Errorf(
+						"index with endpoint '%v' error - %s '%v'",
+						endpoint,
+						resp.Status,
+						string(body),
+					),
+				)
 			}
 			fmt.Println("[INDEX]", endpoint)
 		}
@@ -215,7 +229,14 @@ func main() {
 		if resp.StatusCode > 299 {
 			body, _ := io.ReadAll(resp.Body)
 			defer resp.Body.Close()
-			panic(fmt.Errorf("maxTotalHits with endpoint '%v' error - %s '%v'", endpoint, resp.Status, string(body)))
+			panic(
+				fmt.Errorf(
+					"maxTotalHits with endpoint '%v' error - %s '%v'",
+					endpoint,
+					resp.Status,
+					string(body),
+				),
+			)
 		}
 		fmt.Println("[MaxTotalHits]", endpoint)
 
