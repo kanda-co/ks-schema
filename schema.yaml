@@ -7690,10 +7690,6 @@ components:
           items:
             $ref: "#/components/schemas/UserType"
           readOnly: true
-        hide_openbanking:
-          type: boolean
-          title: hide open banking
-          readOnly: true
         metadata:
           type: object
           title: metadata
@@ -9672,6 +9668,10 @@ components:
           type: object
           title: job company contact info
           $ref: "#/components/schemas/ContactInfo"
+        hide_openbanking:
+          type: boolean
+          title: hide open banking
+          readOnly: true
 
     Job:
       type: object

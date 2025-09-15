@@ -569,7 +569,6 @@ func GetFields(name string) []string {
 		},
 		"InfoCompany": []string{
 			"directors",
-			"hide_openbanking",
 			"id",
 			"limited_company",
 			"metadata",
@@ -792,6 +791,7 @@ func GetFields(name string) []string {
 			"company_logo",
 			"company_name",
 			"contact_info",
+			"hide_openbanking",
 			"id",
 			"vat_number",
 		},
