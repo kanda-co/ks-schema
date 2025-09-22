@@ -1,4 +1,4 @@
-import { Auth, User, GoogleAuthProvider, FacebookAuthProvider } from 'firebase/auth';
+import { Auth, User, GoogleAuthProvider, FacebookAuthProvider, OAuthProvider } from 'firebase/auth';
 import './config';
 import { StringIndexedObject } from '../types';
 interface AugmentedCurrentUser extends User {
@@ -12,6 +12,7 @@ declare class FirebaseAuthService {
     providers: {
         google: GoogleAuthProvider;
         facebook: FacebookAuthProvider;
+        apple: OAuthProvider;
     };
     constructor();
     /**
@@ -44,6 +45,10 @@ declare class FirebaseAuthService {
      * Allows the user to login with a Google account using the popup flow
      */
     signInWithGooglePopup: () => Promise<void>;
+    /**
+     * Allows the user to login with a Google account using the popup flow
+     */
+    signInWithApplePopup: () => Promise<void>;
     /**
      * Allows the user to login with a Facebook account
      */

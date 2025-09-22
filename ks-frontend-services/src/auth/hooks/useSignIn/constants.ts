@@ -4,6 +4,7 @@ const SIGN_IN_TYPE_EMAIL = 'email';
 const SIGN_IN_TYPE_GOOGLE = 'google';
 const SIGN_IN_TYPE_GOOGLE_POPUP = 'googlePopup';
 const SIGN_IN_TYPE_FACEBOOK = 'facebook';
+const SIGN_IN_TYPE_APPLE = 'apple';
 
 export const SIGN_IN_METHODS = {
   [SIGN_IN_TYPE_EMAIL]:
@@ -14,4 +15,6 @@ export const SIGN_IN_METHODS = {
     FirebaseAuthService.signInWithGooglePopup.bind(FirebaseAuthService),
   [SIGN_IN_TYPE_FACEBOOK]:
     FirebaseAuthService.signInWithFacebook.bind(FirebaseAuthService),
+  [SIGN_IN_TYPE_APPLE]:
+    FirebaseAuthService.signInWithApplePopup.bind(FirebaseAuthService),
 };

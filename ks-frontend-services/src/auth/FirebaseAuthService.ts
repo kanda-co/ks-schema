@@ -22,6 +22,7 @@ import {
   FacebookAuthProvider,
   reauthenticateWithCredential,
   EmailAuthProvider,
+  OAuthProvider,
 } from 'firebase/auth';
 import './config';
 import { StringIndexedObject } from '../types';
@@ -42,6 +43,7 @@ class FirebaseAuthService {
   public providers: {
     google: GoogleAuthProvider;
     facebook: FacebookAuthProvider;
+    apple: OAuthProvider;
   };
 
   constructor() {
@@ -49,12 +51,16 @@ class FirebaseAuthService {
 
     const google = new GoogleAuthProvider();
     const facebook = new FacebookAuthProvider();
+    const apple = new OAuthProvider('apple.com');
 
     facebook.addScope('email');
+    apple.addScope('email');
+    apple.addScope('name');
 
     this.providers = {
       google,
       facebook,
+      apple,
     };
   }
 
@@ -133,6 +139,14 @@ class FirebaseAuthService {
   signInWithGooglePopup = async () => {
     await this.setPersistence();
     await signInWithPopup(this.auth, this.providers.google);
+  };
+
+  /**
+   * Allows the user to login with a Google account using the popup flow
+   */
+  signInWithApplePopup = async () => {
+    await this.setPersistence();
+    await signInWithPopup(this.auth, this.providers.apple);
   };
 
   /**

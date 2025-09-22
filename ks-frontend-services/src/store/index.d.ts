@@ -411,17 +411,6 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         isLoading: boolean;
         isSubmitting: boolean;
     };
-    userProfile: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").UserProfile>;
-        raw?: {} | {}[];
-        error?: import("../types").ExtractedError;
-        hasFetched: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-        isSubmitting: boolean;
-    };
     postCompanyBilling: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").RedirectURLs>;
@@ -766,6 +755,50 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
     acceptedJobSummaryLead: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").LeadJobSummary>;
+        raw?: {} | {}[];
+        error?: import("../types").ExtractedError;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+        isSubmitting: boolean;
+    };
+    getUserProfile: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").Profile>;
+        raw?: {} | {}[];
+        error?: import("../types").ExtractedError;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+        isSubmitting: boolean;
+    };
+    postProfileDeviceRegistration: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").Profile>;
+        raw?: {} | {}[];
+        error?: import("../types").ExtractedError;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+        isSubmitting: boolean;
+    };
+    putProfileDeviceRegistration: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").Profile>;
+        raw?: {} | {}[];
+        error?: import("../types").ExtractedError;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+        isSubmitting: boolean;
+    };
+    deleteProfileDeviceRegistration: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").Profile>;
         raw?: {} | {}[];
         error?: import("../types").ExtractedError;
         hasFetched: boolean;
@@ -1184,17 +1217,6 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         isLoading: boolean;
         isSubmitting: boolean;
     };
-    userProfile: {
-        ids: import("@reduxjs/toolkit").EntityId[];
-        entities: import("@reduxjs/toolkit").Dictionary<import("..").UserProfile>;
-        raw?: {} | {}[];
-        error?: import("../types").ExtractedError;
-        hasFetched: boolean;
-        fetchedList: boolean;
-        chainedRequest: boolean;
-        isLoading: boolean;
-        isSubmitting: boolean;
-    };
     postCompanyBilling: {
         ids: import("@reduxjs/toolkit").EntityId[];
         entities: import("@reduxjs/toolkit").Dictionary<import("..").RedirectURLs>;
@@ -1547,6 +1569,50 @@ export declare function createStore<PageKeys extends string, ExtraState = {}>(ex
         isLoading: boolean;
         isSubmitting: boolean;
     };
+    getUserProfile: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").Profile>;
+        raw?: {} | {}[];
+        error?: import("../types").ExtractedError;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+        isSubmitting: boolean;
+    };
+    postProfileDeviceRegistration: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").Profile>;
+        raw?: {} | {}[];
+        error?: import("../types").ExtractedError;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+        isSubmitting: boolean;
+    };
+    putProfileDeviceRegistration: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").Profile>;
+        raw?: {} | {}[];
+        error?: import("../types").ExtractedError;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+        isSubmitting: boolean;
+    };
+    deleteProfileDeviceRegistration: {
+        ids: import("@reduxjs/toolkit").EntityId[];
+        entities: import("@reduxjs/toolkit").Dictionary<import("..").Profile>;
+        raw?: {} | {}[];
+        error?: import("../types").ExtractedError;
+        hasFetched: boolean;
+        fetchedList: boolean;
+        chainedRequest: boolean;
+        isLoading: boolean;
+        isSubmitting: boolean;
+    };
     app: import("./slices/app").AppState<PageKeys>;
     auth: AuthState;
 }, import("redux").AnyAction, undefined>]>>;
@@ -1600,7 +1666,6 @@ export declare function createSelectors<State extends AuthSlice, Pages>(): {
     tradeSummary: import("./types").Selectors<import("..").TradeSummary, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").TradeSummary>>>;
     training: import("./types").Selectors<import("..").Training, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Training>>>;
     transaction: import("./types").Selectors<import("..").Transaction, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Transaction>>>;
-    userProfile: import("./types").Selectors<import("..").UserProfile, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").UserProfile>>>;
     postCompanyBilling: import("./types").Selectors<import("..").RedirectURLs, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").RedirectURLs>>>;
     getCompanyDirectorVerification: import("./types").Selectors<import("..").InfoCompany, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoCompany>>>;
     postCompanyDirectorVerification: import("./types").Selectors<import("..").InfoCompany, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").InfoCompany>>>;
@@ -1633,5 +1698,9 @@ export declare function createSelectors<State extends AuthSlice, Pages>(): {
     matchTradesLead: import("./types").Selectors<import("..").TradeSummary, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").TradeSummary>>>;
     connectTradesLead: import("./types").Selectors<import("..").TradeSummary, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").TradeSummary>>>;
     acceptedJobSummaryLead: import("./types").Selectors<import("..").LeadJobSummary, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").LeadJobSummary>>>;
+    getUserProfile: import("./types").Selectors<import("..").Profile, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Profile>>>;
+    postProfileDeviceRegistration: import("./types").Selectors<import("..").Profile, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Profile>>>;
+    putProfileDeviceRegistration: import("./types").Selectors<import("..").Profile, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Profile>>>;
+    deleteProfileDeviceRegistration: import("./types").Selectors<import("..").Profile, import("../types").StringIndexedObject<import("./types").GeneratedState<import("..").Profile>>>;
 };
 export {};

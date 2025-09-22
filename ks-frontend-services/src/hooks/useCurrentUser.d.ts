@@ -56,7 +56,6 @@ export declare const createCurrentUserHook: <State extends AuthSlice, Dispatch e
     tradeSummary: import("../store/types").Selectors<import("..").TradeSummary, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").TradeSummary>>>;
     training: import("../store/types").Selectors<import("..").Training, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Training>>>;
     transaction: import("../store/types").Selectors<import("..").Transaction, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Transaction>>>;
-    userProfile: import("../store/types").Selectors<import("..").UserProfile, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").UserProfile>>>;
     postCompanyBilling: import("../store/types").Selectors<import("..").RedirectURLs, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").RedirectURLs>>>;
     getCompanyDirectorVerification: import("../store/types").Selectors<import("..").InfoCompany, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoCompany>>>;
     postCompanyDirectorVerification: import("../store/types").Selectors<import("..").InfoCompany, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").InfoCompany>>>;
@@ -89,4 +88,8 @@ export declare const createCurrentUserHook: <State extends AuthSlice, Dispatch e
     matchTradesLead: import("../store/types").Selectors<import("..").TradeSummary, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").TradeSummary>>>;
     connectTradesLead: import("../store/types").Selectors<import("..").TradeSummary, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").TradeSummary>>>;
     acceptedJobSummaryLead: import("../store/types").Selectors<import("..").LeadJobSummary, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").LeadJobSummary>>>;
+    getUserProfile: import("../store/types").Selectors<import("..").Profile, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Profile>>>;
+    postProfileDeviceRegistration: import("../store/types").Selectors<import("..").Profile, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Profile>>>;
+    putProfileDeviceRegistration: import("../store/types").Selectors<import("..").Profile, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Profile>>>;
+    deleteProfileDeviceRegistration: import("../store/types").Selectors<import("..").Profile, import("../types").StringIndexedObject<import("../store/types").GeneratedState<import("..").Profile>>>;
 }) => (() => CurrentUserHook);

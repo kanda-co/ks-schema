@@ -3,4 +3,5 @@ export declare const SIGN_IN_METHODS: {
     google: any;
     googlePopup: any;
     facebook: any;
+    apple: any;
 };
