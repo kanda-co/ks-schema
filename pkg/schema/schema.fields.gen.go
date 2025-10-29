@@ -328,6 +328,7 @@ func GetFields(name string) []string {
 		"CustomerOptions": []string{
 			"agree_commission_terms",
 			"checkout_option",
+			"declined_reason",
 			"deposit_value",
 			"finance_option",
 		},
@@ -755,6 +756,7 @@ func GetFields(name string) []string {
 			"bid",
 			"checkout_options",
 			"cid",
+			"current_step",
 			"customer",
 			"customer_options",
 			"deposit_type",
@@ -779,6 +781,7 @@ func GetFields(name string) []string {
 			"sat_note",
 			"sat_note_timeline",
 			"status",
+			"steps",
 			"tid",
 			"title",
 			"total",
@@ -826,6 +829,11 @@ func GetFields(name string) []string {
 			"action",
 			"customer_options",
 			"xref",
+		},
+		"JobStep": []string{
+			"appended_at",
+			"name",
+			"text",
 		},
 		"KagentChat": []string{
 			"aid",
