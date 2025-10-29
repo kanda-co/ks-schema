@@ -6798,6 +6798,7 @@ paths:
           - housekeeping_onboarding_summary_reminder
           - housekeeping_run_propensio_payouts
           - housekeeping_run_tracking_csv
+          - housekeeping_run_trade_monitoring
       responses:
         200:
           description: runner has been completed
