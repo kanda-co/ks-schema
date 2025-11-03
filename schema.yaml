@@ -3368,6 +3368,42 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/job/{id}/step:
+    post:
+      operationId: stepJob
+      summary: >
+        step job in checkout journey, only allowed when job status is sent and finance not applied
+      tags:
+      - Job
+      parameters:
+      - name: id
+        in: path
+        description: job id
+        required: true
+        schema:
+          type: string
+          minLength: 1
+      requestBody:
+        description: job step with optional details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/JobStep"
+      responses:
+        200:
+          description: got existing job with step advanced
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/job/{id}/quote:
     post:
       operationId: quoteJob
@@ -9927,6 +9963,7 @@ components:
           type: string
           format: date-time
           title: visited at
+          readOnly: true
 
     CheckoutStep:
       type: string
@@ -9936,6 +9973,7 @@ components:
       - "checkout_quote_accepted"
       - "checkout_quote_changes_requested"
       - "checkout_quote_changes_amended"
+      - "checkout_quote_changes_rejected"
       - "checkout_quote_declined"
       - "checkout_quote_payment_selected"
       - "checkout_quote_finalised"
