@@ -7470,12 +7470,15 @@ components:
           readOnly: true
         jobs_sent:
           type: integer
+          format: int32
           title: number of jobs sent
         jobs_applied_for_finance:
           type: integer
+          format: int32
           title: number of jobs applied for finance
         jobs_approved_for_finance:
           type: integer
+          format: int32
           title: number of jobs approved for finance
         jobs_total_revenue_of_approved:
           type: object
