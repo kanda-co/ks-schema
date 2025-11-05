@@ -7582,10 +7582,10 @@ components:
 
     Pence:
       type: integer
-      format: int32
+      format: int64
       title: amount / number in pence
       minimum: 0
-      maximum: 2147483647
+      maximum: 9223372036854775807
       x-kanda-form-widget: NumberInput
 
     Metadata:
