@@ -6892,6 +6892,7 @@ paths:
           - housekeeping_onboarding_summary_reminder
           - housekeeping_run_propensio_payouts
           - housekeeping_run_tracking_csv
+          - housekeeping_run_trade_monitoring
       responses:
         200:
           description: runner has been completed
@@ -7563,12 +7564,15 @@ components:
           readOnly: true
         jobs_sent:
           type: integer
+          format: int32
           title: number of jobs sent
         jobs_applied_for_finance:
           type: integer
+          format: int32
           title: number of jobs applied for finance
         jobs_approved_for_finance:
           type: integer
+          format: int32
           title: number of jobs approved for finance
         jobs_total_revenue_of_approved:
           type: object
@@ -7672,10 +7676,10 @@ components:
 
     Pence:
       type: integer
-      format: int32
+      format: int64
       title: amount / number in pence
       minimum: 0
-      maximum: 2147483647
+      maximum: 9223372036854775807
       x-kanda-form-widget: NumberInput
 
     Metadata:
