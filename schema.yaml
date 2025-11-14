@@ -10272,6 +10272,7 @@ components:
       - roofline
       - security_lighting
       - solar_pv_panels
+      - spray_foam_removal
       - stair_lifts
       - staircases
       - tiling
