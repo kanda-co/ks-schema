@@ -803,6 +803,12 @@ input[type="number"]::-webkit-inner-spin-button,
   line-height: 20px;
 }
 
+.text-16-18-em {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 18px;
+}
+
 .text-16-18 {
   font-weight: 400;
   font-size: 16px;
@@ -3054,6 +3060,12 @@ input[type="number"]::-webkit-inner-spin-button,
 
 .opacity-95 {
   opacity: 0.95;
+}
+
+.shadow-lg {
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .shadow-card {

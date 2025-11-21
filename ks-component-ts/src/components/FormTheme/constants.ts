@@ -366,6 +366,31 @@ const PERCENTAGE_INCREMENT_THEME = {
   },
 };
 
+const CHECKOUT_THEME = {
+  fieldWrapper: "Default" as FieldWrapperType,
+  baseClasses:
+    "rounded-lg flex w-full bg-neutral-000 border-2 border-neutral-300 caret-turquoise-300 shadow-lg",
+  inputClasses: "text-16-18-em text-neutral-900 placeholder-neutral-600",
+  focusClasses: "border-solid focus:border-turquoise-300",
+  focusWithinClasses:
+    "border-solid focus-within:outline-none focus-within:border-turquoise-300",
+  paddingClasses: "px-3 py-4",
+  skeletonClasses: "w-2/6",
+  chevronClasses:
+    "appearance-none bg-select-chevron focus:bg-select-chevron-active bg-no-repeat bg-right-2 invalid:text-neutral-400 overflow-hidden !pr-7",
+  themeIconVariant: "dark",
+  makeErrorClasses: (error?: string) =>
+    error ? "border-solid border border-red-200" : "",
+  wrapperClasses: {
+    baseContainer: "flex flex-col mb-5 text-left",
+    error: "mt-2 text-12-18 text-red-200",
+    warning: "mt-2 text-12-18 text-neutral-700",
+    label: "text-12-18-em text-neutral-700",
+    helperText: "whitespace-nowrap text-12-18 text-neutral-500",
+  },
+  buttonClasses: "mt-2 mr-2",
+};
+
 enum Variants {
   DEFAULT = "default",
   BORDERED = "bordered",
@@ -385,6 +410,7 @@ enum Variants {
   STREAMLINE = "streamline",
   STREAMLINE_INLINE = "streamline-inline",
   PERCENTAGE_INCREMENT = "percentage-increment",
+  CHECKOUT = "checkout",
 }
 
 export const VARIANTS: StringIndexedObject<string> = {
@@ -406,6 +432,7 @@ export const VARIANTS: StringIndexedObject<string> = {
   STREAMLINE: Variants.STREAMLINE,
   STREAMLINE_INLINE: Variants.STREAMLINE_INLINE,
   PERCENTAGE_INCREMENT: Variants.PERCENTAGE_INCREMENT,
+  CHECKOUT: Variants.CHECKOUT,
 };
 
 export const FORM_THEME_VARIANTS: StringIndexedObject<Theme> = {
@@ -427,4 +454,5 @@ export const FORM_THEME_VARIANTS: StringIndexedObject<Theme> = {
   [VARIANTS.STREAMLINE]: STREAMLINE_THEME,
   [VARIANTS.STREAMLINE_INLINE]: STREAMLINE_INLINE_THEME,
   [VARIANTS.PERCENTAGE_INCREMENT]: PERCENTAGE_INCREMENT_THEME,
+  [VARIANTS.CHECKOUT]: CHECKOUT_THEME,
 };
