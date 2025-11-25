@@ -2861,6 +2861,64 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/company/{id}/suspend:
+    post:
+      operationId: suspendCompany
+      summary: >
+        kanda staff to suspend the company and all its users
+      tags:
+      - Company
+      parameters:
+      - name: id
+        in: path
+        description: company id
+        required: true
+        schema:
+          type: string
+          minLength: 1
+      responses:
+        200:
+          description: got suspendd company
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Company"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/company/{id}/reactivate:
+    post:
+      operationId: reactivateCompany
+      summary: >
+        kanda staff to reactivate the company and all its users
+      tags:
+      - Company
+      parameters:
+      - name: id
+        in: path
+        description: company id
+        required: true
+        schema:
+          type: string
+          minLength: 1
+      responses:
+        200:
+          description: got reactivated company
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Company"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/company/{id}/approve:
     post:
       operationId: approveCompany
@@ -3299,6 +3357,42 @@ paths:
       responses:
         200:
           description: unarchived existing already archived job
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/job/{id}/step:
+    post:
+      operationId: stepJob
+      summary: >
+        step job in checkout journey, only allowed when job status is sent and finance not applied
+      tags:
+      - Job
+      parameters:
+      - name: id
+        in: path
+        description: job id
+        required: true
+        schema:
+          type: string
+          minLength: 1
+      requestBody:
+        description: job step with optional details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/JobStep"
+      responses:
+        200:
+          description: got existing job with step advanced
           content:
             application/json:
               schema:
@@ -9826,6 +9920,15 @@ components:
           title: job documents
           items:
             $ref: "#/components/schemas/Document"
+        current_step:
+          type: string
+          title: current job step
+          $ref: "#/components/schemas/JobStep"
+        steps:
+          type: array
+          title: job steps
+          items:
+            $ref: "#/components/schemas/JobStep"
         xid:
           type: string
           title: external reference id
@@ -9845,6 +9948,40 @@ components:
           $ref: "#/components/schemas/Metadata"
           title: metadata
           readOnly: true
+
+    JobStep:
+      type: object
+      title: job step
+      required:
+      - name
+      - appended_at
+      properties:
+        name:
+          type: string
+          title: checkout step
+          $ref: "#/components/schemas/CheckoutStep"
+        text:
+          type: string
+          title: text
+        appended_at:
+          type: string
+          format: date-time
+          title: visited at
+          readOnly: true
+
+    CheckoutStep:
+      type: string
+      title: checkout step
+      enum:
+      - "checkout_quote_viewed"
+      - "checkout_quote_accepted"
+      - "checkout_quote_changes_requested"
+      - "checkout_quote_changes_amended"
+      - "checkout_quote_changes_rejected"
+      - "checkout_quote_declined"
+      - "checkout_quote_payment_selected"
+      - "checkout_quote_finalised"
+      - "checkout_quote_completed"
 
     FlowType:
       type: string
@@ -9877,6 +10014,9 @@ components:
           type: object
           title: agree to our commission terms and conditions
           $ref: "#/components/schemas/Signature"
+        declined_reason:
+          type: string
+          title: declined reason
 
     SatNoteTimeline:
       type: object
