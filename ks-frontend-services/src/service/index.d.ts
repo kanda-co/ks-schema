@@ -83,6 +83,14 @@ declare const company: {
         key: string;
         method: (operationArgs?: OperationArgs) => import("../generated/operations/postCompanyReferrals").PostCompanyReferralsRequestFunction;
     };
+    suspendCompany: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/suspendCompany").SuspendCompanyRequestFunction;
+    };
+    reactivateCompany: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/reactivateCompany").ReactivateCompanyRequestFunction;
+    };
     approveCompany: {
         key: string;
         method: (operationArgs?: OperationArgs) => import("../generated/operations/approveCompany").ApproveCompanyRequestFunction;
@@ -614,6 +622,10 @@ declare const job: {
     unarchiveJob: {
         key: string;
         method: (operationArgs?: OperationArgs) => import("../generated/operations/unarchiveJob").UnarchiveJobRequestFunction;
+    };
+    stepJob: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/stepJob").StepJobRequestFunction;
     };
     quoteJob: {
         key: string;
@@ -1193,6 +1205,14 @@ declare const services: {
             key: string;
             method: (operationArgs?: OperationArgs) => import("../generated/operations/postCompanyReferrals").PostCompanyReferralsRequestFunction;
         };
+        suspendCompany: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/suspendCompany").SuspendCompanyRequestFunction;
+        };
+        reactivateCompany: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/reactivateCompany").ReactivateCompanyRequestFunction;
+        };
         approveCompany: {
             key: string;
             method: (operationArgs?: OperationArgs) => import("../generated/operations/approveCompany").ApproveCompanyRequestFunction;
@@ -1724,6 +1744,10 @@ declare const services: {
         unarchiveJob: {
             key: string;
             method: (operationArgs?: OperationArgs) => import("../generated/operations/unarchiveJob").UnarchiveJobRequestFunction;
+        };
+        stepJob: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/stepJob").StepJobRequestFunction;
         };
         quoteJob: {
             key: string;
