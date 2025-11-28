@@ -20,6 +20,7 @@ const (
 	DBV4_HO_ENQUIRY                                    TName = "DBV4_HO_ENQUIRY"
 	DBV4_HO_ENQUIRY_QUOTE                              TName = "DBV4_HO_ENQUIRY_QUOTE"
 	DBV4_HO_INITIAL                                    TName = "DBV4_HO_INITIAL"
+	DBV4_HO_JOB_CHANGES_AMENDED                        TName = "DBV4_HO_JOB_CHANGES_AMENDED"
 	DBV4_HO_JOB_DECLINED                               TName = "DBV4_HO_JOB_DECLINED"
 	DBV4_HO_JOB_STARTED                                TName = "DBV4_HO_JOB_STARTED"
 	DBV4_HO_JOB_STARTED_OPEN_BANKING                   TName = "DBV4_HO_JOB_STARTED_OPEN_BANKING"
@@ -82,6 +83,7 @@ const (
 	DBV4_TP_ENQUIRY                                    TName = "DBV4_TP_ENQUIRY"
 	DBV4_TP_ENQUIRY_QUOTE                              TName = "DBV4_TP_ENQUIRY_QUOTE"
 	DBV4_TP_IWOCA_APPROVED                             TName = "DBV4_TP_IWOCA_APPROVED"
+	DBV4_TP_JOB_CHANGES_REQUESTED                      TName = "DBV4_TP_JOB_CHANGES_REQUESTED"
 	DBV4_TP_JOB_DECLINED                               TName = "DBV4_TP_JOB_DECLINED"
 	DBV4_TP_JOB_PAID_OUT                               TName = "DBV4_TP_JOB_PAID_OUT"
 	DBV4_TP_JOB_SENT                                   TName = "DBV4_TP_JOB_SENT"
@@ -131,6 +133,7 @@ var TemplateM = map[string]TName{
 	"DBV4_HO_ENQUIRY":                                    DBV4_HO_ENQUIRY,
 	"DBV4_HO_ENQUIRY_QUOTE":                              DBV4_HO_ENQUIRY_QUOTE,
 	"DBV4_HO_INITIAL":                                    DBV4_HO_INITIAL,
+	"DBV4_HO_JOB_CHANGES_AMENDED":                        DBV4_HO_JOB_CHANGES_AMENDED,
 	"DBV4_HO_JOB_DECLINED":                               DBV4_HO_JOB_DECLINED,
 	"DBV4_HO_JOB_STARTED":                                DBV4_HO_JOB_STARTED,
 	"DBV4_HO_JOB_STARTED_OPEN_BANKING":                   DBV4_HO_JOB_STARTED_OPEN_BANKING,
@@ -193,6 +196,7 @@ var TemplateM = map[string]TName{
 	"DBV4_TP_ENQUIRY":                                    DBV4_TP_ENQUIRY,
 	"DBV4_TP_ENQUIRY_QUOTE":                              DBV4_TP_ENQUIRY_QUOTE,
 	"DBV4_TP_IWOCA_APPROVED":                             DBV4_TP_IWOCA_APPROVED,
+	"DBV4_TP_JOB_CHANGES_REQUESTED":                      DBV4_TP_JOB_CHANGES_REQUESTED,
 	"DBV4_TP_JOB_DECLINED":                               DBV4_TP_JOB_DECLINED,
 	"DBV4_TP_JOB_PAID_OUT":                               DBV4_TP_JOB_PAID_OUT,
 	"DBV4_TP_JOB_SENT":                                   DBV4_TP_JOB_SENT,
@@ -837,6 +841,30 @@ var TMap = map[TName]string{
   ],
   "suppress_signoff": true,
   "sms": "Hey {{receiver.contact_name}}! You've just been sent a job on Kanda from {{sender.contact_name}}. Check your emails for more information."
+}`,
+	DBV4_HO_JOB_CHANGES_AMENDED: `{
+  "subject": "{{sender.contact_name}} has made some amendments to the quote they sent you",
+  "flow_type": "{{flow_type}}",
+  "preheader": "Follow this email to view the amendments to your quote",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "{{sender.contact_name}} have made some amendments to the quote they sent to you. To see your updated quote and decide if you would like to accept it and see the payment options available, please follow the link below"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View Quote",
+      "url": "{{cta_url}}"
+    }
+  ]
 }`,
 	DBV4_HO_JOB_DECLINED: `{
   "subject": "You have declinded your job on Kanda",
@@ -3029,6 +3057,35 @@ var TMap = map[TName]string{
           "text": "If you have any questions about your payments or subscription, feel free to reach out to our support team at <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>."
         }
       ]
+    }
+  ]
+}`,
+	DBV4_TP_JOB_CHANGES_REQUESTED: `{
+  "subject": "{{sender.contact_name}} has requested some changes to their quote from you",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "{{sender.contact_name}} has viewed the quote you have sent them, and has requested some changes be made. They have requested that:"
+        },
+        {
+          "text": "{{message}}"
+        },
+        {
+          "text": "To make these amendments you can either follow the link below, or you can log into your Kanda account, navigate to the quote, and click the 'Edit Quote' button."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "Edit Quote",
+      "url": "{{cta_url}}"
     }
   ]
 }`,
