@@ -1,0 +1,24 @@
+{
+  "subject": "{{sender.contact_name}} has made some amendments to the quote they sent you",
+  "flow_type": "{{flow_type}}",
+  "preheader": "Follow this email to view the amendments to your quote",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "{{sender.contact_name}} have made some amendments to the quote they sent to you. To see your updated quote and decide if you would like to accept it and see the payment options available, please follow the link below"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View Quote",
+      "url": "{{cta_url}}"
+    }
+  ]
+}

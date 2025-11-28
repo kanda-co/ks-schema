@@ -1,0 +1,29 @@
+{
+  "subject": "{{sender.contact_name}} has requested some changes to their quote from you",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "{{sender.contact_name}} has viewed the quote you have sent them, and has requested some changes be made. They have requested that:"
+        },
+        {
+          "text": "{{message}}"
+        },
+        {
+          "text": "To make these amendments you can either follow the link below, or you can log into your Kanda account, navigate to the quote, and click the 'Edit Quote' button."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "Edit Quote",
+      "url": "{{cta_url}}"
+    }
+  ]
+}
