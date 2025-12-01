@@ -68,6 +68,8 @@ build-frontend: gen-frontend widget ts-widget
 	echo "import * as JSONSchema from './schema.json';" >> frontend/generated/index.ts
 	echo "import { servers } from './servers';" >> frontend/generated/index.ts
 	echo "export { JSONSchema, Widget, servers };" >> frontend/generated/index.ts
+	echo "export * from "./components/parameters";" >> frontend/generated/index.ts
+	echo "export * from "./components/schemas";" >> frontend/generated/index.ts
 	npm run build
 
 build: gen-backend build-frontend
