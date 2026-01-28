@@ -1247,6 +1247,7 @@ func GetFields(name string) []string {
 			"contact_info",
 			"distance",
 			"id",
+			"landing_url",
 			"lat_lng",
 			"trading_type",
 			"work_types",
