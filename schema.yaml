@@ -6782,6 +6782,7 @@ paths:
           - stripe
           - veriff
           - fca
+          - kanda
       responses:
         200:
           description: provider webhook accepted
@@ -6815,6 +6816,7 @@ paths:
           - stripe
           - veriff
           - fca
+          - kanda
       responses:
         200:
           description: provider webhook accepted
