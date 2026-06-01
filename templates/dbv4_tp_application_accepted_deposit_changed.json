@@ -19,14 +19,17 @@
       "rows": [
         {
           "text": "What is the new deposit?",
-          "subtext": "Your customer choose a deposit amount of {{deposit.applied}}, which is {{deposit.difference}} more than you asked for. You'll need to collect this difference directly from your customer if you haven't already. If something isn't right let us know by emailing <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>."
+          "subtext": "Your customer choose a deposit amount of {{deposit.applied}}, which is {{deposit.difference}} more than you asked for. You'll need to collect this difference directly from your customer if you haven't already. If something isn't right let us know by reaching out to us using the contact information below."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
+    },
+    {
+      "type": "help"
     }
   ]
 }

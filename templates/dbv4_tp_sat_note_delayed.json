@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "{{sender.contact_name}} has signed the satisfaction note, however, it's taking Kanda longer than usual to verify the document. This can happen if we can't get hold of the customer or they have raised an issue about the works. We'll get in touch with you if there is a problem; if you don't hear from us then we're just trying to contact your customer."
+          "text": "{{sender.contact_name}} has signed the satisfaction note, however, it's taking Ideal4Finance longer than usual to verify the document. This can happen if we can't get hold of the customer or they have raised an issue about the works. We'll get in touch with you if there is a problem; if you don't hear from us then we're just trying to contact your customer."
         }
       ]
     },
@@ -25,7 +25,7 @@
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]

@@ -1,5 +1,5 @@
 {
-  "subject": "{{extras.customer.contact_name}} is not eligible to apply for finance with Kanda",
+  "subject": "{{extras.customer.contact_name}} is not eligible to apply for finance with Ideal4Finance",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "{{extras.customer.contact_name}} has completed their eligibility check on Kanda. Unfortunately, they are not eligible to apply for credit at this time."
+          "text": "{{extras.customer.contact_name}} has completed their eligibility check on Ideal4Finance. Unfortunately, they are not eligible to apply for credit at this time."
         },
         {
           "text": "Please speak to {{extras.customer.contact_name}} and their builder to discuss alternative payment options."
@@ -22,7 +22,7 @@
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
         }
       ]
     }

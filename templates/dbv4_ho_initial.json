@@ -1,12 +1,12 @@
 {
-  "subject": "{{sender.contact_name}} has sent you a quote on Kanda",
+  "subject": "{{sender.contact_name}} has sent you a quote on Ideal4Finance",
   "flow_type": "{{flow_type}}",
   "preheader": "Follow this email to view your quote and begin the process of getting approved for finance",
   "banner": {
     "type": "trustpilot",
-    "score": "4.7",
-    "reviews": "273",
-    "url": "https://uk.trustpilot.com/review/getkanda.com"
+    "score": "4.5",
+    "reviews": "752",
+    "url": "https://uk.trustpilot.com/review/www.ideal4finance.com"
   },
   "body": [
     {
@@ -17,7 +17,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "{{sender.contact_name}} has sent you a quote on Kanda. Click below to view the quote and get apply for finance."
+          "text": "{{sender.contact_name}} has sent you a quote on Ideal4Finance. Click below to view the quote and get apply for finance."
         }
       ]
     },
@@ -31,7 +31,7 @@
     },
     {
       "type": "heading",
-      "text": "Kanda makes it easy to get tradespeople on finance. Flexible plans, quick approval."
+      "text": "Ideal4Finance makes it easy to get tradespeople on finance. Flexible plans, quick approval."
     },
     {
       "type": "text",
@@ -61,13 +61,13 @@
     {
       "type": "trustpilot",
       "title": "5,000+ jobs financed and counting",
-      "review": "Applying for the finance was very straight forward. And I got a quick decision that I had been accepted for the finance.",
-      "reviewer": "Rodney T"
+      "review": "Great customer service, quick application process and Elliott called to check I was happy with the products the finance was covering.",
+      "reviewer": "PB"
     },
     {
       "type": "help"
     }
   ],
   "suppress_signoff": true,
-  "sms": "Hey {{receiver.contact_name}}! You've just been sent a job on Kanda from {{sender.contact_name}}. Check your emails for more information."
+  "sms": "Hey {{receiver.contact_name}}! You've just been sent a job on Ideal4Finance from {{sender.contact_name}}. Check your emails for more information."
 }

@@ -241,7 +241,7 @@ func (tn TName) Render() string {
 
 var TMap = map[TName]string{
 	DBV4_HO_AIP_HOWDENS: `{
-  "subject": "{{receiver.contact_name}}, see if you can get finance for a new kitchen from Howdens with Kanda",
+  "subject": "{{receiver.contact_name}}, see if you can get finance for a new kitchen from Howdens with Ideal4Finance",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -267,7 +267,7 @@ var TMap = map[TName]string{
   ]
 }`,
 	DBV4_HO_AIP_PREAPPROVED: `{
-  "subject": "{{receiver.contact_name}}, you have been pre-approved for finance with Kanda",
+  "subject": "{{receiver.contact_name}}, you have been pre-approved for finance with Ideal4Finance",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -287,7 +287,7 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Questions? Let us know!",
-          "subtext": "We're here for you all the way. If you have any questions about the loan, or the job itself, please reach out to us at <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk</a>."
+          "subtext": "We're here for you all the way. If you have any questions about the loan, or the job itself, please reach out to us using the contact information below."
         }
       ]
     },
@@ -295,6 +295,9 @@ var TMap = map[TName]string{
       "type": "button",
       "text": "Submit job",
       "url": "{{cta_url}}"
+    },
+    {
+      "type": "help"
     }
   ]
 }`,
@@ -323,14 +326,17 @@ var TMap = map[TName]string{
         },
         {
           "text": "How do I make the payment?",
-          "subtext": "Speak to {{sender.contact_name}}, as they will collect the full deposit from you. If something isn't right let us know by emailing <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>."
+          "subtext": "Speak to {{sender.contact_name}}, as they will collect the full deposit from you. If something isn't right let us know by reaching out to us using the contact information below."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
+    },
+    {
+      "type": "help"
     }
   ]
 }`,
@@ -378,7 +384,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "Your finance application has been cancelled due to your request to either the lender or Kanda to cancel your finance application. You can still apply again if this was a mistake. To apply again, you'll need to request a new quote from {{sender.contact_name}}."
+          "text": "Your finance application has been cancelled due to your request to either the lender or Ideal4Finance to cancel your finance application. You can still apply again if this was a mistake. To apply again, you'll need to request a new quote from {{sender.contact_name}}."
         }
       ]
     },
@@ -387,14 +393,17 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Was this a mistake?",
-          "subtext": "If something isn't right let us know by emailing <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>"
+          "subtext": "If something isn't right let us know by reaching out to us using the contact information below."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
+    },
+    {
+      "type": "help"
     }
   ]
 }`,
@@ -422,11 +431,11 @@ var TMap = map[TName]string{
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ],
-  "sms": "Your finance agreement has been signed and you just need to pay your deposit. Check your emails for more info. Kanda!"
+  "sms": "Your finance agreement has been signed and you just need to pay your deposit. Check your emails for more info. Ideal4Finance!"
 }`,
 	DBV4_HO_APPLICATION_PAY_DEPOSIT: `{
   "subject": "You have signed your agreement documents, now you need to pay your deposit",
@@ -452,11 +461,11 @@ var TMap = map[TName]string{
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ],
-  "sms": "Your finance agreement has been signed and you just need to pay your deposit. Check your emails for more info. Kanda!"
+  "sms": "Your finance agreement has been signed and you just need to pay your deposit. Check your emails for more info. Ideal4Finance!"
 }`,
 	DBV4_HO_APPLICATION_REFERRED: `{
   "subject": "There is an update regarding your recent loan application",
@@ -479,17 +488,20 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Questions? Let us know",
-          "subtext": "We're here for you all the way. If you have any questions about the loan, or the job itself, please reach out to us by emailing <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>"
+          "subtext": "We're here for you all the way. If you have any questions about the loan, or the job itself, please reach out to us using the contact information below."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
+    },
+    {
+      "type": "help"
     }
   ],
-  "sms": "Hey {{receiver.contact_name}}! Your application is currently being reviewed by our lender. Check your email for more info. Kanda!"
+  "sms": "Hey {{receiver.contact_name}}! Your application is currently being reviewed by our lender. Check your email for more info. Ideal4Finance!"
 }`,
 	DBV4_HO_APPLICATION_REJECTED: `{
   "subject": "There has been an update on your application",
@@ -503,7 +515,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "The lender has sent Kanda an update about your application, click the link below to see what it is."
+          "text": "The lender has sent Ideal4Finance an update about your application, click the link below to see what it is."
         }
       ]
     },
@@ -522,10 +534,10 @@ var TMap = map[TName]string{
       "url": "{{cta_url}}"
     }
   ],
-  "sms": "There has been an update to your finance application Kanda. Check your emails for more info."
+  "sms": "There has been an update to your finance application Ideal4Finance. Check your emails for more info."
 }`,
 	DBV4_HO_APPLICATION_SAT_NOTE_SENT: `{
-  "subject": "Sign off on {{sender.contact_name}}'s job on Kanda",
+  "subject": "Sign off on {{sender.contact_name}}'s job on Ideal4Finance",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -549,17 +561,20 @@ var TMap = map[TName]string{
         },
         {
           "text": "Questions? Let us know",
-          "subtext": "We're here for you all the way. If you have any questions about the loan, or the job itself, please reach out to us by emailing <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>"
+          "subtext": "We're here for you all the way. If you have any questions about the loan, or the job itself, please reach out to us using the contact information below."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
+    },
+    {
+      "type": "help"
     }
   ],
-  "sms": "{{sender.contact_name}} has told Kanda the works are completed. Check your email for next steps. Kanda!"
+  "sms": "{{sender.contact_name}} has told Ideal4Finance the works are completed. Check your email for next steps. Ideal4Finance!"
 }`,
 	DBV4_HO_APPLICATION_SAT_NOTE_SENT_REMINDER: `{
   "subject": "Please confirm your job by {{sender.contact_name}} is complete (24 hours left)",
@@ -586,17 +601,20 @@ var TMap = map[TName]string{
         },
         {
           "text": "Questions? Let us know",
-          "subtext": "We're here for you all the way. If you have any questions about the loan, or the job itself, please reach out to us by emailing <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>"
+          "subtext": "We're here for you all the way. If you have any questions about the loan, or the job itself, please reach out to us using the contact information below."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
+    },
+    {
+      "type": "help"
     }
   ],
-  "sms": "{{sender.contact_name}} has told Kanda the works are completed. Check your email for next steps. Kanda!"
+  "sms": "{{sender.contact_name}} has told Ideal4Finance the works are completed. Check your email for next steps. Ideal4Finance!"
 }`,
 	DBV4_HO_APPLICATION_SAT_NOTE_SIGNED: `{
   "subject": "You have signed off on {{sender.contact_name}}'s job",
@@ -613,7 +631,7 @@ var TMap = map[TName]string{
           "text": "Thank you for signing the satisfaction note. Our team may try to call you over the next few days to verify the infromation before we pay the tradesperson. "
         },
         {
-          "text": "If you don't hear from Kanda then rest assured we're happy to pay the tradesperson out based on your satisfaction note. You'll receive an email from your lender shortly advising you of your first repayment date."
+          "text": "If you don't hear from Ideal4Finance then rest assured we're happy to pay the tradesperson out based on your satisfaction note. You'll receive an email from your lender shortly advising you of your first repayment date."
         }
       ]
     },
@@ -636,14 +654,17 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Need help with the installation?",
-          "subtext": "If you have any questions about the work, feel free to reach out to us on <a href=\"tel:0330 818 7491\">0330 818 7491</a> or email us at <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>"
+          "subtext": "If you have any questions about the work, feel free to reach out to us using the contact information below."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
+    },
+    {
+      "type": "help"
     }
   ]
 }`,
@@ -663,10 +684,10 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "Great news, the lender has approved your application and all that you need to do now is sign the credit agreement. You can do this by clicking the button below to return to Kanda and continue from there."
+          "text": "Great news, the lender has approved your application and all that you need to do now is sign the credit agreement. You can do this by clicking the button below to return to Ideal4Finance and continue from there."
         },
         {
-          "text": "If you have any questions email <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a> so we can assist you."
+          "text": "If you have any questions reach out to us using the contact information below so we can assist you."
         }
       ]
     },
@@ -678,11 +699,14 @@ var TMap = map[TName]string{
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
+    },
+    {
+      "type": "help"
     }
   ],
-  "sms": "Great News! You've been approved for finance and all you need to do is sign your credit agreement! Check your emails now! Kanda."
+  "sms": "Great News! You've been approved for finance and all you need to do is sign your credit agreement! Check your emails now! Ideal4Finance."
 }`,
 	DBV4_HO_CONTINUE_CHECKOUT: `{
   "subject": "View your job from {{sender.contact_name}}",
@@ -709,7 +733,7 @@ var TMap = map[TName]string{
       "url": "{{cta_url}}"
     }
   ],
-  "sms": "Hey {{receiver.contact_name}}! You've just been sent a link to view your job from {{sender.contact_name}} on Kanda. Check your emails for more information."
+  "sms": "Hey {{receiver.contact_name}}! You've just been sent a link to view your job from {{sender.contact_name}} on Ideal4Finance. Check your emails for more information."
 }`,
 	DBV4_HO_ENQUIRY: `{
   "subject": "Your quote enquiry with {{sender.contact_name}}",
@@ -735,7 +759,7 @@ var TMap = map[TName]string{
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
@@ -764,20 +788,20 @@ var TMap = map[TName]string{
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
 }`,
 	DBV4_HO_INITIAL: `{
-  "subject": "{{sender.contact_name}} has sent you a quote on Kanda",
+  "subject": "{{sender.contact_name}} has sent you a quote on Ideal4Finance",
   "flow_type": "{{flow_type}}",
   "preheader": "Follow this email to view your quote and begin the process of getting approved for finance",
   "banner": {
     "type": "trustpilot",
-    "score": "4.7",
-    "reviews": "273",
-    "url": "https://uk.trustpilot.com/review/getkanda.com"
+    "score": "4.5",
+    "reviews": "752",
+    "url": "https://uk.trustpilot.com/review/www.ideal4finance.com"
   },
   "body": [
     {
@@ -788,7 +812,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "{{sender.contact_name}} has sent you a quote on Kanda. Click below to view the quote and get apply for finance."
+          "text": "{{sender.contact_name}} has sent you a quote on Ideal4Finance. Click below to view the quote and get apply for finance."
         }
       ]
     },
@@ -802,7 +826,7 @@ var TMap = map[TName]string{
     },
     {
       "type": "heading",
-      "text": "Kanda makes it easy to get tradespeople on finance. Flexible plans, quick approval."
+      "text": "Ideal4Finance makes it easy to get tradespeople on finance. Flexible plans, quick approval."
     },
     {
       "type": "text",
@@ -832,15 +856,15 @@ var TMap = map[TName]string{
     {
       "type": "trustpilot",
       "title": "5,000+ jobs financed and counting",
-      "review": "Applying for the finance was very straight forward. And I got a quick decision that I had been accepted for the finance.",
-      "reviewer": "Rodney T"
+      "review": "Great customer service, quick application process and Elliott called to check I was happy with the products the finance was covering.",
+      "reviewer": "PB"
     },
     {
       "type": "help"
     }
   ],
   "suppress_signoff": true,
-  "sms": "Hey {{receiver.contact_name}}! You've just been sent a job on Kanda from {{sender.contact_name}}. Check your emails for more information."
+  "sms": "Hey {{receiver.contact_name}}! You've just been sent a job on Ideal4Finance from {{sender.contact_name}}. Check your emails for more information."
 }`,
 	DBV4_HO_JOB_CHANGES_AMENDED: `{
   "subject": "{{sender.contact_name}} has made some amendments to the quote they sent you",
@@ -867,7 +891,7 @@ var TMap = map[TName]string{
   ]
 }`,
 	DBV4_HO_JOB_DECLINED: `{
-  "subject": "You have declinded your job on Kanda",
+  "subject": "You have declinded your job on Ideal4Finance",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -878,14 +902,14 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "You have declined your job from {{sender.contact_name}} on Kanda - if this was a mistake, please reach out to them and have them send you out a new job."
+          "text": "You have declined your job from {{sender.contact_name}} on Ideal4Finance - if this was a mistake, please reach out to them and have them send you out a new job."
         }
       ]
     }
   ]
 }`,
 	DBV4_HO_JOB_STARTED: `{
-  "subject": "Your job on Kanda is ready to start",
+  "subject": "Your job on Ideal4Finance is ready to start",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -896,7 +920,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "Your job on Kanda is ready to be started."
+          "text": "Your job on Ideal4Finance is ready to be started."
         }
       ]
     },
@@ -919,13 +943,13 @@ var TMap = map[TName]string{
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
 }`,
 	DBV4_HO_JOB_STARTED_OPEN_BANKING: `{
-  "subject": "Your job on Kanda is ready to start",
+  "subject": "Your job on Ideal4Finance is ready to start",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -936,7 +960,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "Your job on Kanda is ready to be started."
+          "text": "Your job on Ideal4Finance is ready to be started."
         }
       ]
     },
@@ -945,7 +969,7 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "What happens now?",
-          "subtext": "{{sender.contact_name}} has been notified that you have made the payment to Kanda to secure the job. They'll get in touch with you soon to schedule and start the work."
+          "subtext": "{{sender.contact_name}} has been notified that you have made the payment to Ideal4Finance to secure the job. They'll get in touch with you soon to schedule and start the work."
         },
         {
           "text": "After the job",
@@ -959,7 +983,7 @@ var TMap = map[TName]string{
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
@@ -1065,24 +1089,24 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "What are the next steps?",
-          "subtext": "The tradesperson should contact you to arrange a quote. Once you've spoke (& they've seen the work) they will send you a quote via Kanda. You'll then be able to pay for it using the loan you've been pre-approved for."
+          "subtext": "The tradesperson should contact you to arrange a quote. Once you've spoke (& they've seen the work) they will send you a quote via Ideal4Finance. You'll then be able to pay for it using the loan you've been pre-approved for."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
 }`,
 	DBV4_HO_LEAD_POSTED: `{
-  "subject": "{{receiver.contact_name}}, your job has been successfully posted to Kanda",
+  "subject": "{{receiver.contact_name}}, your job has been successfully posted to Ideal4Finance",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{receiver.contact_name}} - Your job has successfully been posted to Kanda."
+      "text": "Hi {{receiver.contact_name}} - Your job has successfully been posted to Ideal4Finance."
     },
     {
       "type": "text",
@@ -1097,7 +1121,7 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Questions? Let us know!",
-          "subtext": "We're here for you all the way. If you have any questions about the loan, or the job itself, please reach out to us at <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk</a>."
+          "subtext": "We're here for you all the way. If you have any questions about the loan, or the job itself, please reach out to us using the contact information below."
         }
       ]
     },
@@ -1105,16 +1129,19 @@ var TMap = map[TName]string{
       "type": "button",
       "text": "See job",
       "url": "{{cta_url}}"
+    },
+    {
+      "type": "help"
     }
   ]
 }`,
 	DBV4_HO_QUOTE_POSTED: `{
-  "subject": "{{receiver.contact_name}}, your job has been successfully posted to Kanda",
+  "subject": "{{receiver.contact_name}}, your job has been successfully posted to Ideal4Finance",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Hi {{receiver.contact_name}} - Your job has succesfully been posted to Kanda."
+      "text": "Hi {{receiver.contact_name}} - Your job has succesfully been posted to Ideal4Finance."
     },
     {
       "type": "text",
@@ -1129,7 +1156,7 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Questions? Let us know!",
-          "subtext": "We're here for you all the way. If you have any questions about your finance agreement, or the job itself, please reach out to us at <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk</a>."
+          "subtext": "We're here for you all the way. If you have any questions about your finance agreement, or the job itself, please reach out to us using the contact information below."
         }
       ]
     },
@@ -1137,6 +1164,9 @@ var TMap = map[TName]string{
       "type": "button",
       "text": "See job",
       "url": "{{cta_url}}"
+    },
+    {
+      "type": "help"
     }
   ]
 }`,
@@ -1158,7 +1188,7 @@ var TMap = map[TName]string{
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
@@ -1181,7 +1211,7 @@ var TMap = map[TName]string{
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
@@ -1198,13 +1228,13 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "You started a finance application on Kanda but you haven't completed it. If you'd still like to apply for finance then click below to continue. It only takes a few minutes."
+          "text": "You started a finance application on Ideal4Finance but you haven't completed it. If you'd still like to apply for finance then click below to continue. It only takes a few minutes."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     },
     {
@@ -1217,7 +1247,7 @@ var TMap = map[TName]string{
       ]
     }
   ],
-  "sms": "Hey {{receiver.contact_name}}! Don't forget to complete your finance application on Kanda now."
+  "sms": "Hey {{receiver.contact_name}}! Don't forget to complete your finance application on Ideal4Finance now."
 }`,
 	DBV4_HOWDENS_FROM_HO_APPLICATION_ACCEPTED: `{
   "subject": "{{extras.customer.contact_name}}'s finance application has been approved",
@@ -1234,7 +1264,7 @@ var TMap = map[TName]string{
           "text": "Great news! {{extras.customer.contact_name}} has signed their credit agreement and the finance for this order is now in place."
         },
         {
-          "text": "The 14-day cooling off period has now begun. We will send you a reminder once it has ended so that you can deliver the order and mark it as delivered on the Kanda dashboard."
+          "text": "The 14-day cooling off period has now begun. We will send you a reminder once it has ended so that you can deliver the order and mark it as delivered on the Ideal4Finance dashboard."
         },
         {
           "text": "If {{extras.customer.contact_name}} is paying a deposit, their tradesperson will need to collect this directly and they have been sent an email to remind them to do so."
@@ -1246,13 +1276,13 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
@@ -1281,7 +1311,7 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
         }
       ]
     }
@@ -1302,7 +1332,7 @@ var TMap = map[TName]string{
           "text": "The lender has requested some more information from {{extras.customer.contact_name}}. This usually happens when the lender wishes to verify some information on the customers finance application. The lender will have emailed them directly informing them of what they need to provide. Until the documents are received the finance application can't progress."
         },
         {
-          "text": "It can take up to 24 hours for the lender to review this information once it's been submitted, but do give your customer a nudge if you haven't had an update from Kanda within 2 days."
+          "text": "It can take up to 24 hours for the lender to review this information once it's been submitted, but do give your customer a nudge if you haven't had an update from Ideal4Finance within 2 days."
         }
       ]
     },
@@ -1311,13 +1341,13 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
@@ -1337,7 +1367,7 @@ var TMap = map[TName]string{
           "text": "{{extras.customer.contact_name}}'s 14 day cooling off period has now ended so you can now process their order for delivery. Remember to add ZZF01 at £0 value onto each K8 sales order going out on finance."
         },
         {
-          "text": "Once you have made the initial delivery*, you will need to login to your Kanda dashboard to mark the order as delivered. "
+          "text": "Once you have made the initial delivery*, you will need to login to your Ideal4Finance dashboard to mark the order as delivered. "
         },
         {
           "text": "{{extras.trader.trading_name}} will receive payment into their bank account within 3 working days of the order being marked as delivered. They will then need to pay their Howdens Trade Account off as normal."
@@ -1352,7 +1382,7 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
         }
       ]
     }
@@ -1379,7 +1409,7 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
         }
       ]
     }
@@ -1397,7 +1427,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "{{extras.customer.contact_name}} has completed their eligibility check on Kanda."
+          "text": "{{extras.customer.contact_name}} has completed their eligibility check on Ideal4Finance."
         },
         {
           "text": "Once you have finalised their design, you will need to convert their Introduction into a Job to send the order to their tradesperson to confirm. Please also use the email template provided by Marketing to send an order breakdown to {{extras.customer.contact_name}} to provide them with more detail."
@@ -1409,19 +1439,19 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
 }`,
 	DBV4_HOWDENS_FROM_HO_INTRO_DECLINED: `{
-  "subject": "{{extras.customer.contact_name}} is not eligible to apply for finance with Kanda",
+  "subject": "{{extras.customer.contact_name}} is not eligible to apply for finance with Ideal4Finance",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -1432,7 +1462,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "{{extras.customer.contact_name}} has completed their eligibility check on Kanda. Unfortunately, they are not eligible to apply for credit at this time."
+          "text": "{{extras.customer.contact_name}} has completed their eligibility check on Ideal4Finance. Unfortunately, they are not eligible to apply for credit at this time."
         },
         {
           "text": "Please speak to {{extras.customer.contact_name}} and their builder to discuss alternative payment options."
@@ -1444,7 +1474,7 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
         }
       ]
     }
@@ -1462,7 +1492,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "Your homeowner {{extras.customer.contact_name}} has declined your invitation to check their eligibility for finance on Kanda. Please get in touch with the homeowner if you have any questions."
+          "text": "Your homeowner {{extras.customer.contact_name}} has declined your invitation to check their eligibility for finance on Ideal4Finance. Please get in touch with the homeowner if you have any questions."
         }
       ]
     },
@@ -1471,7 +1501,7 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
         }
       ]
     }
@@ -1489,7 +1519,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "A finance introduction has been sent to {{extras.customer.contact_name}}; you can track the progress of this introduction by logging in to your Kanda dashboard."
+          "text": "A finance introduction has been sent to {{extras.customer.contact_name}}; you can track the progress of this introduction by logging in to your Ideal4Finance dashboard."
         }
       ]
     },
@@ -1498,13 +1528,13 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
@@ -1521,7 +1551,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "{{extras.customer.contact_name}} has declined their Howdens order on Kanda, please contact them and their tradesperson to find out more. If this was done in error, a new Introduction will need to be sent."
+          "text": "{{extras.customer.contact_name}} has declined their Howdens order on Ideal4Finance, please contact them and their tradesperson to find out more. If this was done in error, a new Introduction will need to be sent."
         }
       ]
     },
@@ -1530,13 +1560,13 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
@@ -1562,7 +1592,7 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
         }
       ]
     }
@@ -1583,7 +1613,7 @@ var TMap = map[TName]string{
           "text": "{{extras.customer.contact_name}}'s order has been approved by their tradesperson. {{extras.customer.contact_name}} has now been sent a link to proceed with their finance application."
         },
         {
-          "text": "You can follow their progress by logging in to your Kanda dashboard."
+          "text": "You can follow their progress by logging in to your Ideal4Finance dashboard."
         }
       ]
     },
@@ -1592,13 +1622,13 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
@@ -1624,7 +1654,7 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
         }
       ]
     }
@@ -1651,7 +1681,7 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
         }
       ]
     }
@@ -1681,7 +1711,7 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
         }
       ]
     }
@@ -1708,12 +1738,12 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
         }
       ]
     }
   ],
-  "sms": "Hey {{receiver.contact_name}}, good news! The lender has accepted your application in principal. They just need a few documents. Check your email for more info. Kanda!"
+  "sms": "Hey {{receiver.contact_name}}, good news! The lender has accepted your application in principal. They just need a few documents. Check your email for more info. Ideal4Finance!"
 }`,
 	DBV4_HOWDENS_HO_APPLICATION_REJECTED: `{
   "subject": "Your finance application for your Howdens order has been declined",
@@ -1736,7 +1766,7 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
         }
       ]
     },
@@ -1774,17 +1804,17 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ],
-  "sms": "{{extras.branch.trading_name}} has told Kanda the works are completed. Check your email for next steps. Kanda!"
+  "sms": "{{extras.branch.trading_name}} has told Ideal4Finance the works are completed. Check your email for next steps. Ideal4Finance!"
 }`,
 	DBV4_HOWDENS_HO_APPLICATION_SAT_NOTE_SENT_REMINDER: `{
   "subject": "Please confirm delivery of your Howdens products",
@@ -1813,17 +1843,17 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ],
-  "sms": "{{extras.branch.trading_name}} has told Kanda the works are completed. Check your email for next steps. Kanda!"
+  "sms": "{{extras.branch.trading_name}} has told Ideal4Finance the works are completed. Check your email for next steps. Ideal4Finance!"
 }`,
 	DBV4_HOWDENS_HO_APPLICATION_SAT_NOTE_SIGNED: `{
   "subject": "You have signed for delivery of your Howdens products",
@@ -1855,13 +1885,13 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
@@ -1891,20 +1921,20 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ],
-  "sms": "Great News! You've been approved for finance and all you need to do is sign your credit agreement! Check your emails now! Kanda."
+  "sms": "Great News! You've been approved for finance and all you need to do is sign your credit agreement! Check your emails now! Ideal4Finance."
 }`,
 	DBV4_HOWDENS_HO_JOB_DECLINED: `{
-  "subject": "You have declinded your Howdens order on Kanda",
+  "subject": "You have declinded your Howdens order on Ideal4Finance",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -1915,7 +1945,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "You have declined your order from {{extras.branch.trading_name}} on Kanda - if this was a mistake, please contact them to issue a new application link."
+          "text": "You have declined your order from {{extras.branch.trading_name}} on Ideal4Finance - if this was a mistake, please contact them to issue a new application link."
         }
       ]
     },
@@ -1924,7 +1954,7 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
         }
       ]
     }
@@ -1951,13 +1981,13 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
@@ -1986,7 +2016,7 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
         }
       ]
     },
@@ -2000,7 +2030,7 @@ var TMap = map[TName]string{
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
@@ -2026,13 +2056,13 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
@@ -2058,13 +2088,13 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
@@ -2081,7 +2111,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "Howdens have partnered with Kanda to allow you to apply for finance for your Howdens  products. Before you can apply for finance you'll need to first check if you're eligible. Click below to complete a short eligibility checker and set your budget."
+          "text": "Howdens have partnered with Ideal4Finance to allow you to apply for finance for your Howdens  products. Before you can apply for finance you'll need to first check if you're eligible. Click below to complete a short eligibility checker and set your budget."
         }
       ]
     },
@@ -2130,7 +2160,7 @@ var TMap = map[TName]string{
         },
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
         }
       ]
     },
@@ -2153,7 +2183,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "Howdens have partnered with Kanda to allow you apply for finance for your Howdens  products. We noticed you haven't checked if you're eligible for finance yet. Click below to complete a short eligibility checker and set your budget."
+          "text": "Howdens have partnered with Ideal4Finance to allow you apply for finance for your Howdens  products. We noticed you haven't checked if you're eligible for finance yet. Click below to complete a short eligibility checker and set your budget."
         }
       ]
     },
@@ -2162,13 +2192,13 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
@@ -2194,13 +2224,13 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
@@ -2232,7 +2262,7 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
         }
       ]
     }
@@ -2262,7 +2292,7 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
         }
       ]
     }
@@ -2280,7 +2310,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "Howdens have partnered with Kanda to allow homeowners to finance the purchase of Howdens products from you. Please review and approve the pricing on this invoice to {{extras.customer.contact_name}} so that they can apply for finance."
+          "text": "Howdens have partnered with Ideal4Finance to allow homeowners to finance the purchase of Howdens products from you. Please review and approve the pricing on this invoice to {{extras.customer.contact_name}} so that they can apply for finance."
         },
         {
           "text": "Here's how it works:"
@@ -2317,13 +2347,13 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
@@ -2371,7 +2401,7 @@ var TMap = map[TName]string{
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
@@ -2400,7 +2430,7 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
         }
       ]
     }
@@ -2421,7 +2451,7 @@ var TMap = map[TName]string{
           "text": "The lender has requested some more information from {{extras.customer.contact_name}}. This usually happens when the lender wishes to verify some information on the customers finance application. The lender will have emailed them directly informing them of what they need to provide. Until the documents are received the finance application can't progress."
         },
         {
-          "text": "It can take up to 24 hours for the lender to review this information once it's been submitted, but do give your customer a nudge if you haven't had an update from Kanda within 2 days."
+          "text": "It can take up to 24 hours for the lender to review this information once it's been submitted, but do give your customer a nudge if you haven't had an update from Ideal4Finance within 2 days."
         }
       ]
     },
@@ -2430,7 +2460,7 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
         }
       ]
     }
@@ -2457,14 +2487,14 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
         }
       ]
     }
   ]
 }`,
 	DBV4_HOWDENS_TP_JOB_DECLINED: `{
-  "subject": "{{extras.customer.contact_name}}}} has declined their Howdens order on Kanda",
+  "subject": "{{extras.customer.contact_name}}}} has declined their Howdens order on Ideal4Finance",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -2475,7 +2505,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "{{extras.customer.contact_name}} has declined their Howdens order on Kanda, please contact them to find out more. If the order was declined in error, Howdens will need to create a new order."
+          "text": "{{extras.customer.contact_name}} has declined their Howdens order on Ideal4Finance, please contact them to find out more. If the order was declined in error, Howdens will need to create a new order."
         }
       ]
     },
@@ -2484,7 +2514,7 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
         }
       ]
     }
@@ -2502,7 +2532,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "We've processed payment on the order delivered for {{extras.customer.contact_name}}. You should receive the payment from Kanda within a few hours."
+          "text": "We've processed payment on the order delivered for {{extras.customer.contact_name}}. You should receive the payment from Ideal4Finance within a few hours."
         }
       ]
     },
@@ -2538,7 +2568,7 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
         }
       ]
     }
@@ -2585,7 +2615,7 @@ var TMap = map[TName]string{
           "type": "row",
           "content": [
             {
-              "text": "Kanda job ID:",
+              "text": "Ideal4Finance job ID:",
               "colspan": "1"
             },
             {
@@ -2598,7 +2628,7 @@ var TMap = map[TName]string{
           "type": "row",
           "content": [
             {
-              "text": "Kanda loan ID:",
+              "text": "Ideal4Finance loan ID:",
               "colspan": "1"
             },
             {
@@ -2664,19 +2694,19 @@ var TMap = map[TName]string{
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
 }`,
 	DBV4_TP_ACCOUNT_APPROVED: `{
-  "subject": "Congratulations {{receiver.contact_name}}, your Kanda account is approved!",
+  "subject": "Congratulations {{receiver.contact_name}}, your Ideal4Finance account is approved!",
   "flow_type": "{{flow_type}}",
   "banner": {
     "type": "trustpilot",
-    "score": "4.7",
-    "reviews": "273",
-    "url": "https://uk.trustpilot.com/review/getkanda.com"
+    "score": "4.5",
+    "reviews": "752",
+    "url": "https://uk.trustpilot.com/review/www.ideal4finance.com"
   },
   "body": [
     {
@@ -2687,10 +2717,10 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "Congratulations! I'm so happy to let you know that your application has been approved and you're now officially able to use Kanda."
+          "text": "Congratulations! I'm so happy to let you know that your application has been approved and you're now officially able to use Ideal4Finance."
         },
         {
-          "text": "My team and I want to personally welcome you to the platform! If you have not already booked a training call, you can use the button below to schedule a call to get trained on Kanda's system. Otherwise, start using Kanda now to win more work!."
+          "text": "My team and I want to personally welcome you to the platform! If you have not already booked a training call, you can use the button below to schedule a call to get trained on Ideal4Finance's system. Otherwise, start using Ideal4Finance now to win more work!."
         }
       ]
     },
@@ -2707,13 +2737,13 @@ var TMap = map[TName]string{
     },
     {
       "type": "heading",
-      "text": "Win better work with Kanda, by offering finance in 5 minutes."
+      "text": "Win better work with Ideal4Finance, by offering finance in 5 minutes."
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "Ever lost a job on price or felt stuck waiting around for that last payment from the customer. No more! With Kanda you’re able to compete on price and guarantee next day payment when the job is complete."
+          "text": "Ever lost a job on price or felt stuck waiting around for that last payment from the customer. No more! With Ideal4Finance you’re able to compete on price and guarantee next day payment when the job is complete."
         }
       ]
     },
@@ -2737,8 +2767,8 @@ var TMap = map[TName]string{
     {
       "type": "trustpilot",
       "title": "5,000+ jobs financed and counting",
-      "review": "Applying for the finance was very straight forward. And I got a quick decision that I had been accepted for the finance.",
-      "reviewer": "Rodney T"
+      "review": "Great customer service, quick application process and Elliott called to check I was happy with the products the finance was covering.",
+      "reviewer": "PB"
     },
     {
       "type": "help"
@@ -2767,14 +2797,17 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Was this a mistake?",
-          "subtext": "If something isn't right let us know by emailing <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>"
+          "subtext": "If something isn't right let us know by reaching out to us using the contact information below."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
+    },
+    {
+      "type": "help"
     }
   ]
 }`,
@@ -2799,14 +2832,17 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "What is the new deposit?",
-          "subtext": "Your customer choose a deposit amount of {{deposit.applied}}, which is {{deposit.difference}} more than you asked for. You'll need to collect this difference directly from your customer if you haven't already. If something isn't right let us know by emailing <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>."
+          "subtext": "Your customer choose a deposit amount of {{deposit.applied}}, which is {{deposit.difference}} more than you asked for. You'll need to collect this difference directly from your customer if you haven't already. If something isn't right let us know by reaching out to us using the contact information below."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
+    },
+    {
+      "type": "help"
     }
   ]
 }`,
@@ -2831,14 +2867,17 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Was this a mistake?",
-          "subtext": "If something isn't right let us know by emailing <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>"
+          "subtext": "If something isn't right let us know by reaching out to us using the contact information below."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
+    },
+    {
+      "type": "help"
     }
   ]
 }`,
@@ -2854,7 +2893,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "{{sender.contact_name}} asked either the lender or Kanda to cancel their finance application. They can still apply again if this was a mistake. To apply again you'll need to send them a new quote from your dashboard."
+          "text": "{{sender.contact_name}} asked either the lender or Ideal4Finance to cancel their finance application. They can still apply again if this was a mistake. To apply again you'll need to send them a new quote from your dashboard."
         }
       ]
     },
@@ -2863,14 +2902,17 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "Was this a mistake?",
-          "subtext": "If something isn't right let us know by emailing <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>"
+          "subtext": "If something isn't right let us know by reaching out to us using the contact information below."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
+    },
+    {
+      "type": "help"
     }
   ]
 }`,
@@ -2899,14 +2941,17 @@ var TMap = map[TName]string{
         },
         {
           "text": "I have a question",
-          "subtext": "If you need to reach out to us, you can email us directly at <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>"
+          "subtext": "If you need to reach out to us, you can reach out to us using the contact information below."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
+    },
+    {
+      "type": "help"
     }
   ]
 }`,
@@ -2925,13 +2970,13 @@ var TMap = map[TName]string{
           "text": "The lender has requested some more information from {{sender.contact_name}}. This usually happens when the lender wishes to verify some information on the customers finance application. The lender will have emailed them directly informing them of what they need to provide. Until the documents are received the finance application can't progress."
         },
         {
-          "text": "It can take up to 24 hours for the lender to review this information once it's been submitted, but do give your customer a nudge if you haven't had an update from Kanda within 2 days."
+          "text": "It can take up to 24 hours for the lender to review this information once it's been submitted, but do give your customer a nudge if you haven't had an update from Ideal4Finance within 2 days."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
@@ -2954,13 +2999,13 @@ var TMap = map[TName]string{
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
 }`,
 	DBV4_TP_ENQUIRY: `{
-  "subject": "Kanda lead from {{sender.contact_name}}",
+  "subject": "Ideal4Finance lead from {{sender.contact_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -2983,13 +3028,13 @@ var TMap = map[TName]string{
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
 }`,
 	DBV4_TP_ENQUIRY_QUOTE: `{
-  "subject": "Kanda finance request from {{sender.contact_name}}",
+  "subject": "Ideal4Finance finance request from {{sender.contact_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -3012,13 +3057,13 @@ var TMap = map[TName]string{
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
 }`,
 	DBV4_TP_IWOCA_APPROVED: `{
-  "subject": "Information about Your Kanda subscription through iwoca",
+  "subject": "Information about Your Ideal4Finance subscription through iwoca",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -3029,7 +3074,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "Thank you for subscribing to Kanda! We want to provide you with important information about how your subscription payments will be processed:"
+          "text": "Thank you for subscribing to Ideal4Finance! We want to provide you with important information about how your subscription payments will be processed:"
         }
       ]
     },
@@ -3054,9 +3099,12 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "If you have any questions about your payments or subscription, feel free to reach out to our support team at <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>."
+          "text": "If you have any questions about your payments or subscription, feel free to reach out to us using the contact information below."
         }
       ]
+    },
+    {
+      "type": "help"
     }
   ]
 }`,
@@ -3078,7 +3126,7 @@ var TMap = map[TName]string{
           "text": "{{message}}"
         },
         {
-          "text": "To make these amendments you can either follow the link below, or you can log into your Kanda account, navigate to the quote, and click the 'Edit Quote' button."
+          "text": "To make these amendments you can either follow the link below, or you can log into your Ideal4Finance account, navigate to the quote, and click the 'Edit Quote' button."
         }
       ]
     },
@@ -3090,7 +3138,7 @@ var TMap = map[TName]string{
   ]
 }`,
 	DBV4_TP_JOB_DECLINED: `{
-  "subject": "{{sender.contact_name}}}} has declined your job on Kanda",
+  "subject": "{{sender.contact_name}}}} has declined your job on Ideal4Finance",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -3101,13 +3149,13 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "{{sender.contact_name}}}} has declined your job on Kanda - if this was a mistake, please send them out a new job. You can do this easily by following the below link, duplicating the job and sending it to them"
+          "text": "{{sender.contact_name}}}} has declined your job on Ideal4Finance - if this was a mistake, please send them out a new job. You can do this easily by following the below link, duplicating the job and sending it to them"
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
@@ -3124,7 +3172,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "We've processed payment on the job you completed for {{sender.contact_name}}. You should receive the payment from Kanda within a few hours. "
+          "text": "We've processed payment on the job you completed for {{sender.contact_name}}. You should receive the payment from Ideal4Finance within a few hours. "
         }
       ]
     },
@@ -3133,14 +3181,17 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "What do I need to do?",
-          "subtext": "Nothing, just sit tight. Get in touch with us if you haven't received payment within 4 hours of this email. Contact us at <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>"
+          "subtext": "Nothing, just sit tight. Get in touch with us if you haven't received payment within 24 hours of this email. Reach out to us using the contact information below."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
+    },
+    {
+      "type": "help"
     }
   ]
 }`,
@@ -3165,13 +3216,13 @@ var TMap = map[TName]string{
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
 }`,
 	DBV4_TP_LEAD_DETAILS_PROVIDED: `{
-  "subject": "Here are the details for the job you accepted on Kanda",
+  "subject": "Here are the details for the job you accepted on Ideal4Finance",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -3182,7 +3233,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "Here are the details for the job you have requested to quote for on Kanda:"
+          "text": "Here are the details for the job you have requested to quote for on Ideal4Finance:"
         }
       ]
     },
@@ -3277,7 +3328,7 @@ var TMap = map[TName]string{
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
@@ -3294,7 +3345,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "A customer has requested a quote from you via Kanda. The customer has been pre-approved for finance and is looking for the following works to be completed."
+          "text": "A customer has requested a quote from you via Ideal4Finance. The customer has been pre-approved for finance and is looking for the following works to be completed."
         }
       ]
     },
@@ -3362,7 +3413,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "A customer has requested a quote from you via Kanda. The customer has been pre-approved for finance and is looking for the following works to be completed."
+          "text": "A customer has requested a quote from you via Ideal4Finance. The customer has been pre-approved for finance and is looking for the following works to be completed."
         }
       ]
     },
@@ -3419,7 +3470,7 @@ var TMap = map[TName]string{
   ]
 }`,
 	DBV4_TP_ONBOARDING_SUMMARY: `{
-  "subject": "Your Kanda Onboarding Summary",
+  "subject": "Your Ideal4Finance Onboarding Summary",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -3430,7 +3481,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "Your company is currently progressing through Kanda's onboarding process. "
+          "text": "Your company is currently progressing through Ideal4Finance's onboarding process. "
         },
         {
           "text": "{{message}}"
@@ -3439,13 +3490,13 @@ var TMap = map[TName]string{
     },
     {
       "type": "button",
-      "text": "Go to Kanda",
+      "text": "Go to Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
 }`,
 	DBV4_TP_PREMIUM_CREDIT_SIGNED: `{
-  "subject": "Information about Your Kanda subscription through Premium Credit",
+  "subject": "Information about Your Ideal4Finance subscription through Premium Credit",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -3456,7 +3507,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "Thank you for subscribing to Kanda! We want to provide you with important information about how your subscription payments will be processed:"
+          "text": "Thank you for subscribing to Ideal4Finance! We want to provide you with important information about how your subscription payments will be processed:"
         }
       ]
     },
@@ -3481,14 +3532,17 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "If you have any questions about your payments or subscription, feel free to reach out to our support team at <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>."
+          "text": "If you have any questions about your payments or subscription, feel free to reach out to our support team using the contact information below."
         }
       ]
+    },
+    {
+      "type": "help"
     }
   ]
 }`,
 	DBV4_TP_SAT_NOTE_APPROVED: `{
-  "subject": "{{sender.contact_name}}'s satisfaction note has been approved by Kanda",
+  "subject": "{{sender.contact_name}}'s satisfaction note has been approved by Ideal4Finance",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -3499,7 +3553,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "{{sender.contact_name}} has signed the satisfaction note and Kanda has approved it. We'll process your payment within 48 hours."
+          "text": "{{sender.contact_name}} has signed the satisfaction note and Ideal4Finance has approved it. We'll process your payment within 48 hours."
         }
       ]
     },
@@ -3514,7 +3568,7 @@ var TMap = map[TName]string{
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
@@ -3531,7 +3585,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "{{sender.contact_name}} has signed the satisfaction note, however, it's taking Kanda longer than usual to verify the document. This can happen if we can't get hold of the customer or they have raised an issue about the works. We'll get in touch with you if there is a problem; if you don't hear from us then we're just trying to contact your customer."
+          "text": "{{sender.contact_name}} has signed the satisfaction note, however, it's taking Ideal4Finance longer than usual to verify the document. This can happen if we can't get hold of the customer or they have raised an issue about the works. We'll get in touch with you if there is a problem; if you don't hear from us then we're just trying to contact your customer."
         }
       ]
     },
@@ -3546,7 +3600,7 @@ var TMap = map[TName]string{
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
@@ -3578,7 +3632,7 @@ var TMap = map[TName]string{
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
@@ -3610,7 +3664,7 @@ var TMap = map[TName]string{
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
@@ -3642,7 +3696,7 @@ var TMap = map[TName]string{
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
@@ -3674,7 +3728,7 @@ var TMap = map[TName]string{
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
@@ -3691,22 +3745,22 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "Great news! {{sender.contact_name}}'s application has been approved by the lender - all they need to do is sign their credit documents. They can access these by following the link sent to them by both Kanda and the lender. "
+          "text": "Great news! {{sender.contact_name}}'s application has been approved by the lender - all they need to do is sign their credit documents. They can access these by following the link sent to them by both Ideal4Finance and the lender. "
         },
         {
-          "text": "Kanda will update you once the documents have been signed so that you know what the next steps are. We've told the customer what to do."
+          "text": "Ideal4Finance will update you once the documents have been signed so that you know what the next steps are. We've told the customer what to do."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
 }`,
 	DBV4_TP_SUBSCRIPTION_REMINDER: `{
-  "subject": "Your Kanda subscription will renew soon",
+  "subject": "Your Ideal4Finance subscription will renew soon",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -3717,7 +3771,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "I'm writing to inform you that your Kanda subscription renewal is coming up on ((renewal_date)). In the lead up, our team will give you a call to discuss if you'd like to renew and gather any feedback you might have."
+          "text": "I'm writing to inform you that your Ideal4Finance subscription renewal is coming up on ((renewal_date)). In the lead up, our team will give you a call to discuss if you'd like to renew and gather any feedback you might have."
         },
         {
           "text": "In the meantime, if you have any questions, please feel free to reach out to our support team at <a href=\"mailto:sales@kanda.co.uk\">sales@kanda.co.uk</a>."
@@ -3727,7 +3781,7 @@ var TMap = map[TName]string{
   ]
 }`,
 	DBV4_USER_CLAIM_ACCOUNT: `{
-  "subject": "You have been invited to join {{sender.contact_name}}'s team on Kanda",
+  "subject": "You have been invited to join {{sender.contact_name}}'s team on Ideal4Finance",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -3738,7 +3792,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "You have been invited to join {{sender.contact_name}}'s team on Kanda. Follow the link below to claim your free account."
+          "text": "You have been invited to join {{sender.contact_name}}'s team on Ideal4Finance. Follow the link below to claim your free account."
         }
       ]
     },
@@ -3761,7 +3815,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "Unfortunately, Kanda has stopped its commercial relationship with the lender - Omni Capital - who has underwritten your loan. Due to this Omni Capital is not paying out funds to Kanda and therefore, your service provider in a normal timeframe. This means we're unable to fulfill your order with them and pay your tradesperson."
+          "text": "Unfortunately, Ideal4Finance has stopped its commercial relationship with the lender - Omni Capital - who has underwritten your loan. Due to this Omni Capital is not paying out funds to Ideal4Finance and therefore, your service provider in a normal timeframe. This means we're unable to fulfill your order with them and pay your tradesperson."
         },
         {
           "text": "We do not believe Omni Capital to be in trouble at this time or for this to cause a risk to you, however, since we can't guarantee payment to your service provider on time we can't fulfil your order with them. This means you'll need to find another method of payment."
@@ -3804,7 +3858,7 @@ var TMap = map[TName]string{
           "text": "To reapply for the new loan term above please click the button below to consent to this - we will take care of the rest. You'll hear from the lender that your application has been submitted and whether it has been approved or not. If it has you'll need to sign a new finance agreement (online). We'll then cancel your agreement with omni capital. <b>Propensio will perform a soft credit check on you.</b>"
         },
         {
-          "text": "<b>If you have any questions before consenting please email <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk</a></b>"
+          "text": "<b>If you have any questions before consenting please by reaching out to us using the contact information below.</b>"
         },
         {
           "text": "Click the button below to give consent (consent given on click). "
@@ -3815,12 +3869,15 @@ var TMap = map[TName]string{
       "type": "button",
       "text": "Provide consent",
       "url": "{{cta_url}}"
+    },
+    {
+      "type": "help"
     }
   ],
   "sms": "Please check your email for an important update about your job from {{sender.contact_name}}."
 }`,
 	DBV4_USER_DEV_CLAIM_ACCOUNT: `{
-  "subject": "You have been invited to join {{sender.contact_name}}'s team on Kanda as a developer",
+  "subject": "You have been invited to join {{sender.contact_name}}'s team on Ideal4Finance as a developer",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -3831,7 +3888,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "You have been invited as a developer to join {{sender.contact_name}}'s team on Kanda. Follow the link below to claim your account and get integration instructions for the following:"
+          "text": "You have been invited as a developer to join {{sender.contact_name}}'s team on Ideal4Finance. Follow the link below to claim your account and get integration instructions for the following:"
         }
       ]
     },
@@ -3844,7 +3901,7 @@ var TMap = map[TName]string{
         },
         {
           "text": "Adding a finance calculator",
-          "subtext": "There is an iframe code snippet that you'll be able to include on your website. This will show your customers a finance calculator so they can see what their monthly costs would be with Kanda"
+          "subtext": "There is an iframe code snippet that you'll be able to include on your website. This will show your customers a finance calculator so they can see what their monthly costs would be with Ideal4Finance"
         },
         {
           "text": "API and plugin integrations",
@@ -3871,9 +3928,12 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "Thank you for completing your identity checks with Kanda. Unfortunately, your ID has been declined. If you believe this was a mistake, please contact Kanda at <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk</a>"
+          "text": "Thank you for completing your identity checks with Ideal4Finance. Unfortunately, your ID has been declined. If you believe this was a mistake, please by reach out to us using the contact information below."
         }
       ]
+    },
+    {
+      "type": "help"
     }
   ]
 }`,
@@ -3889,7 +3949,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "Thank you for completing your identity checks with Kanda. Your ID has been verified."
+          "text": "Thank you for completing your identity checks with Ideal4Finance. Your ID has been verified."
         }
       ]
     }
@@ -3907,36 +3967,36 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "<b>{{sender.contact_name}}</b> uses Kanda to grow their business by offering their clients financing options. They want to help you grow your business, so they've sent you £50-off your yearly subscription to Kanda."
+          "text": "<b>{{sender.contact_name}}</b> uses Ideal4Finance to grow their business by offering their clients financing options. They want to help you grow your business, so they've sent you £50-off your yearly subscription to Ideal4Finance."
         },
         {
-          "text": "With Kanda you can offer your customers finance options like 0% finance and BNPL. We're a proven method of closing more customers and increasing the amount they spend with businesses."
+          "text": "With Ideal4Finance you can offer your customers finance options like 0% finance and BNPL. We're a proven method of closing more customers and increasing the amount they spend with businesses."
         },
         {
-          "text": "Click below to join <b>{{sender.contact_name}}</b> and 1000s of other businesses growing with Kanda"
+          "text": "Click below to join <b>{{sender.contact_name}}</b> and 1000s of other businesses growing with Ideal4Finance"
         }
       ]
     },
     {
       "type": "button",
-      "text": "Join Kanda Now",
+      "text": "Join Ideal4Finance Now",
       "url": "{{cta_url}}"
     }
   ]
 }`,
 	DBV4_USER_LEGACY_MIGRATION: `{
-  "subject": "Claim your new Kanda account",
+  "subject": "Claim your new Ideal4Finance account",
   "flow_type": "{{flow_type}}",
   "body": [
     {
       "type": "heading",
-      "text": "Time to claim your new Kanda dashboard"
+      "text": "Time to claim your new Ideal4Finance dashboard"
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "Welcome back to Kanda! To claim your new dashboard account, please follow the link below."
+          "text": "Welcome back to Ideal4Finance! To claim your new dashboard account, please follow the link below."
         },
         {
           "text": "In your new account you'll be able to build quotes and offer 11.9% APR over up to 10 years. Plus, we removed the fee for 11.9% APR up to 7 years."
@@ -3954,7 +4014,7 @@ var TMap = map[TName]string{
   ]
 }`,
 	DBV4_USER_REFEREE_INVITE: `{
-  "subject": "You have been invited to join Kanda by {{sender.contact_name}}",
+  "subject": "You have been invited to join Ideal4Finance by {{sender.contact_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -3965,19 +4025,19 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "You have been invited to join Kanda by {{sender.contact_name}}. Follow the link below to sign up and claim your account."
+          "text": "You have been invited to join Ideal4Finance by {{sender.contact_name}}. Follow the link below to sign up and claim your account."
         }
       ]
     },
     {
       "type": "button",
-      "text": "Sign up on Kanda",
+      "text": "Sign up on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
 }`,
 	DBV4_USER_RESET_PASSWORD: `{
-  "subject": "Reset your password on Kanda",
+  "subject": "Reset your password on Ideal4Finance",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -3988,7 +4048,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "A password reset has been requested for your account. If this was you, please follow the below link. If this was not you, please don't follow the link and contact Kanda at <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk</a>."
+          "text": "A password reset has been requested for your account. If this was you, please follow the below link. If this was not you, please don't follow the link and contact Ideal4Finance using the contact information below."
         }
       ]
     },
@@ -3996,11 +4056,14 @@ var TMap = map[TName]string{
       "type": "button",
       "text": "Reset your password",
       "url": "{{cta_url}}"
+    },
+    {
+      "type": "help"
     }
   ]
 }`,
 	DBV4_USER_SIGNUP: `{
-  "subject": "Welcome to Kanda - verify your email to activate your account",
+  "subject": "Welcome to Ideal4Finance - verify your email to activate your account",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -4011,7 +4074,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "Welcome to Kanda! Please follow the link below to confirm your email and activate your account."
+          "text": "Welcome to Ideal4Finance! Please follow the link below to confirm your email and activate your account."
         }
       ]
     },
@@ -4023,7 +4086,7 @@ var TMap = map[TName]string{
   ]
 }`,
 	DBV4_USER_VERIFY_DIRECTOR: `{
-  "subject": "Kanda: Verify you are a director/owner of {{sender.trading_name}}",
+  "subject": "Ideal4Finance: Verify you are a director/owner of {{sender.trading_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -4034,19 +4097,19 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "Someone has signed {{sender.trading_name}} up for Kanda and registered you as a director/owner - please follow the link below to verify your identity."
+          "text": "Someone has signed {{sender.trading_name}} up for Ideal4Finance and registered you as a director/owner - please follow the link below to verify your identity."
         }
       ]
     },
     {
       "type": "button",
-      "text": "Verify on Kanda",
+      "text": "Verify on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
 }`,
 	DBV4_USER_VERIFY_DIRECTOR_REMINDER: `{
-  "subject": "Reminder: ID check required to complete Kanda set up for {{sender.trading_name}}",
+  "subject": "Reminder: ID check required to complete Ideal4Finance set up for {{sender.trading_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -4057,7 +4120,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "{{sender.trading_name}} has been signed up to offer finance with Kanda."
+          "text": "{{sender.trading_name}} has been signed up to offer finance with Ideal4Finance."
         },
         {
           "text": "As a director of the company you need to complete a 2 minute ID check. You'll need your passport or drivers license."
@@ -4069,13 +4132,13 @@ var TMap = map[TName]string{
     },
     {
       "type": "button",
-      "text": "Verify on Kanda",
+      "text": "Verify on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]
 }`,
 	DBV4_USER_VERIFY_EMAIL: `{
-  "subject": "Here's your link to continue to Kanda",
+  "subject": "Here's your link to continue to Ideal4Finance",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -4086,17 +4149,20 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "Here's your new link to sign in to Kanda. Click the button below to continue."
+          "text": "Here's your new link to sign in to Ideal4Finance. Click the button below to continue."
         },
         {
-          "text": "Didn't ask for a new link or didn't follow an expired link? Email Kanda at <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk</a> to secure your account."
+          "text": "Didn't ask for a new link or didn't follow an expired link? Email Ideal4Finance using the contact information below to secure your account."
         }
       ]
     },
     {
       "type": "button",
-      "text": "Continue to Kanda",
+      "text": "Continue to Ideal4Finance",
       "url": "{{cta_url}}"
+    },
+    {
+      "type": "help"
     }
   ]
 }`,

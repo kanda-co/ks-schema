@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "Unfortunately, Kanda has stopped its commercial relationship with the lender - Omni Capital - who has underwritten your loan. Due to this Omni Capital is not paying out funds to Kanda and therefore, your service provider in a normal timeframe. This means we're unable to fulfill your order with them and pay your tradesperson."
+          "text": "Unfortunately, Ideal4Finance has stopped its commercial relationship with the lender - Omni Capital - who has underwritten your loan. Due to this Omni Capital is not paying out funds to Ideal4Finance and therefore, your service provider in a normal timeframe. This means we're unable to fulfill your order with them and pay your tradesperson."
         },
         {
           "text": "We do not believe Omni Capital to be in trouble at this time or for this to cause a risk to you, however, since we can't guarantee payment to your service provider on time we can't fulfil your order with them. This means you'll need to find another method of payment."
@@ -53,7 +53,7 @@
           "text": "To reapply for the new loan term above please click the button below to consent to this - we will take care of the rest. You'll hear from the lender that your application has been submitted and whether it has been approved or not. If it has you'll need to sign a new finance agreement (online). We'll then cancel your agreement with omni capital. <b>Propensio will perform a soft credit check on you.</b>"
         },
         {
-          "text": "<b>If you have any questions before consenting please email <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk</a></b>"
+          "text": "<b>If you have any questions before consenting please by reaching out to us using the contact information below.</b>"
         },
         {
           "text": "Click the button below to give consent (consent given on click). "
@@ -64,6 +64,9 @@
       "type": "button",
       "text": "Provide consent",
       "url": "{{cta_url}}"
+    },
+    {
+      "type": "help"
     }
   ],
   "sms": "Please check your email for an important update about your job from {{sender.contact_name}}."

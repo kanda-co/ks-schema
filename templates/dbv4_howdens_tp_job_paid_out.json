@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "We've processed payment on the order delivered for {{extras.customer.contact_name}}. You should receive the payment from Kanda within a few hours."
+          "text": "We've processed payment on the order delivered for {{extras.customer.contact_name}}. You should receive the payment from Ideal4Finance within a few hours."
         }
       ]
     },

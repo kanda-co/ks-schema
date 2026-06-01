@@ -1,5 +1,5 @@
 {
-  "subject": "{{extras.customer.contact_name}}}} has declined their Howdens order on Kanda",
+  "subject": "{{extras.customer.contact_name}}}} has declined their Howdens order on Ideal4Finance",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "{{extras.customer.contact_name}} has declined their Howdens order on Kanda, please contact them to find out more. If the order was declined in error, Howdens will need to create a new order."
+          "text": "{{extras.customer.contact_name}} has declined their Howdens order on Ideal4Finance, please contact them to find out more. If the order was declined in error, Howdens will need to create a new order."
         }
       ]
     },
@@ -19,7 +19,7 @@
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>. For order queries, please email <a href=\"mailto:{{extras.branch.contact_email}}\">{{extras.branch.contact_email}}</a> or call <a href=\"tel:{{extras.branch.contact_phone}}\">{{extras.branch.contact_phone}}</a>."
         }
       ]
     }

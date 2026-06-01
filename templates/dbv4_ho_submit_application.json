@@ -10,13 +10,13 @@
       "type": "text",
       "rows": [
         {
-          "text": "You started a finance application on Kanda but you haven't completed it. If you'd still like to apply for finance then click below to continue. It only takes a few minutes."
+          "text": "You started a finance application on Ideal4Finance but you haven't completed it. If you'd still like to apply for finance then click below to continue. It only takes a few minutes."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     },
     {
@@ -29,5 +29,5 @@
       ]
     }
   ],
-  "sms": "Hey {{receiver.contact_name}}! Don't forget to complete your finance application on Kanda now."
+  "sms": "Hey {{receiver.contact_name}}! Don't forget to complete your finance application on Ideal4Finance now."
 }

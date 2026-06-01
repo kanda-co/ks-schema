@@ -1,5 +1,5 @@
 {
-  "subject": "{{sender.contact_name}}'s satisfaction note has been approved by Kanda",
+  "subject": "{{sender.contact_name}}'s satisfaction note has been approved by Ideal4Finance",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "{{sender.contact_name}} has signed the satisfaction note and Kanda has approved it. We'll process your payment within 48 hours."
+          "text": "{{sender.contact_name}} has signed the satisfaction note and Ideal4Finance has approved it. We'll process your payment within 48 hours."
         }
       ]
     },
@@ -25,7 +25,7 @@
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]

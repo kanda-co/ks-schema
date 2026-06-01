@@ -1,11 +1,11 @@
 {
-  "subject": "Congratulations {{receiver.contact_name}}, your Kanda account is approved!",
+  "subject": "Congratulations {{receiver.contact_name}}, your Ideal4Finance account is approved!",
   "flow_type": "{{flow_type}}",
   "banner": {
     "type": "trustpilot",
-    "score": "4.7",
-    "reviews": "273",
-    "url": "https://uk.trustpilot.com/review/getkanda.com"
+    "score": "4.5",
+    "reviews": "752",
+    "url": "https://uk.trustpilot.com/review/www.ideal4finance.com"
   },
   "body": [
     {
@@ -16,10 +16,10 @@
       "type": "text",
       "rows": [
         {
-          "text": "Congratulations! I'm so happy to let you know that your application has been approved and you're now officially able to use Kanda."
+          "text": "Congratulations! I'm so happy to let you know that your application has been approved and you're now officially able to use Ideal4Finance."
         },
         {
-          "text": "My team and I want to personally welcome you to the platform! If you have not already booked a training call, you can use the button below to schedule a call to get trained on Kanda's system. Otherwise, start using Kanda now to win more work!."
+          "text": "My team and I want to personally welcome you to the platform! If you have not already booked a training call, you can use the button below to schedule a call to get trained on Ideal4Finance's system. Otherwise, start using Ideal4Finance now to win more work!."
         }
       ]
     },
@@ -36,13 +36,13 @@
     },
     {
       "type": "heading",
-      "text": "Win better work with Kanda, by offering finance in 5 minutes."
+      "text": "Win better work with Ideal4Finance, by offering finance in 5 minutes."
     },
     {
       "type": "text",
       "rows": [
         {
-          "text": "Ever lost a job on price or felt stuck waiting around for that last payment from the customer. No more! With Kanda you’re able to compete on price and guarantee next day payment when the job is complete."
+          "text": "Ever lost a job on price or felt stuck waiting around for that last payment from the customer. No more! With Ideal4Finance you’re able to compete on price and guarantee next day payment when the job is complete."
         }
       ]
     },
@@ -66,8 +66,8 @@
     {
       "type": "trustpilot",
       "title": "5,000+ jobs financed and counting",
-      "review": "Applying for the finance was very straight forward. And I got a quick decision that I had been accepted for the finance.",
-      "reviewer": "Rodney T"
+      "review": "Great customer service, quick application process and Elliott called to check I was happy with the products the finance was covering.",
+      "reviewer": "PB"
     },
     {
       "type": "help"

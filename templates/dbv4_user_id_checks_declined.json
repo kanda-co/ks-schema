@@ -10,9 +10,12 @@
       "type": "text",
       "rows": [
         {
-          "text": "Thank you for completing your identity checks with Kanda. Unfortunately, your ID has been declined. If you believe this was a mistake, please contact Kanda at <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk</a>"
+          "text": "Thank you for completing your identity checks with Ideal4Finance. Unfortunately, your ID has been declined. If you believe this was a mistake, please by reach out to us using the contact information below."
         }
       ]
+    },
+    {
+      "type": "help"
     }
   ]
 }

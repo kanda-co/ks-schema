@@ -1,5 +1,5 @@
 {
-  "subject": "Here's your link to continue to Kanda",
+  "subject": "Here's your link to continue to Ideal4Finance",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -10,17 +10,20 @@
       "type": "text",
       "rows": [
         {
-          "text": "Here's your new link to sign in to Kanda. Click the button below to continue."
+          "text": "Here's your new link to sign in to Ideal4Finance. Click the button below to continue."
         },
         {
-          "text": "Didn't ask for a new link or didn't follow an expired link? Email Kanda at <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk</a> to secure your account."
+          "text": "Didn't ask for a new link or didn't follow an expired link? Email Ideal4Finance using the contact information below to secure your account."
         }
       ]
     },
     {
       "type": "button",
-      "text": "Continue to Kanda",
+      "text": "Continue to Ideal4Finance",
       "url": "{{cta_url}}"
+    },
+    {
+      "type": "help"
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "subject": "{{receiver.contact_name}}, see if you can get finance for a new kitchen from Howdens with Kanda",
+  "subject": "{{receiver.contact_name}}, see if you can get finance for a new kitchen from Howdens with Ideal4Finance",
   "flow_type": "{{flow_type}}",
   "body": [
     {

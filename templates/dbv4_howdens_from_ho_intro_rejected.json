@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "Your homeowner {{extras.customer.contact_name}} has declined your invitation to check their eligibility for finance on Kanda. Please get in touch with the homeowner if you have any questions."
+          "text": "Your homeowner {{extras.customer.contact_name}} has declined your invitation to check their eligibility for finance on Ideal4Finance. Please get in touch with the homeowner if you have any questions."
         }
       ]
     },
@@ -19,7 +19,7 @@
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
         }
       ]
     }

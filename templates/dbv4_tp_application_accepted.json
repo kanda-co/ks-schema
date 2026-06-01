@@ -19,14 +19,17 @@
       "rows": [
         {
           "text": "Was this a mistake?",
-          "subtext": "If something isn't right let us know by emailing <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>"
+          "subtext": "If something isn't right let us know by reaching out to us using the contact information below."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
+    },
+    {
+      "type": "help"
     }
   ]
 }

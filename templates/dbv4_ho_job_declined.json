@@ -1,5 +1,5 @@
 {
-  "subject": "You have declinded your job on Kanda",
+  "subject": "You have declinded your job on Ideal4Finance",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "You have declined your job from {{sender.contact_name}} on Kanda - if this was a mistake, please reach out to them and have them send you out a new job."
+          "text": "You have declined your job from {{sender.contact_name}} on Ideal4Finance - if this was a mistake, please reach out to them and have them send you out a new job."
         }
       ]
     }

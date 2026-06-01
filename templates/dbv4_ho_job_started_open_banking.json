@@ -1,5 +1,5 @@
 {
-  "subject": "Your job on Kanda is ready to start",
+  "subject": "Your job on Ideal4Finance is ready to start",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "Your job on Kanda is ready to be started."
+          "text": "Your job on Ideal4Finance is ready to be started."
         }
       ]
     },
@@ -19,7 +19,7 @@
       "rows": [
         {
           "text": "What happens now?",
-          "subtext": "{{sender.contact_name}} has been notified that you have made the payment to Kanda to secure the job. They'll get in touch with you soon to schedule and start the work."
+          "subtext": "{{sender.contact_name}} has been notified that you have made the payment to Ideal4Finance to secure the job. They'll get in touch with you soon to schedule and start the work."
         },
         {
           "text": "After the job",
@@ -33,7 +33,7 @@
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]

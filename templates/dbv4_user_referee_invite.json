@@ -1,5 +1,5 @@
 {
-  "subject": "You have been invited to join Kanda by {{sender.contact_name}}",
+  "subject": "You have been invited to join Ideal4Finance by {{sender.contact_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -10,13 +10,13 @@
       "type": "text",
       "rows": [
         {
-          "text": "You have been invited to join Kanda by {{sender.contact_name}}. Follow the link below to sign up and claim your account."
+          "text": "You have been invited to join Ideal4Finance by {{sender.contact_name}}. Follow the link below to sign up and claim your account."
         }
       ]
     },
     {
       "type": "button",
-      "text": "Sign up on Kanda",
+      "text": "Sign up on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]

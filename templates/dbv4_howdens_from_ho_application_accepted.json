@@ -13,7 +13,7 @@
           "text": "Great news! {{extras.customer.contact_name}} has signed their credit agreement and the finance for this order is now in place."
         },
         {
-          "text": "The 14-day cooling off period has now begun. We will send you a reminder once it has ended so that you can deliver the order and mark it as delivered on the Kanda dashboard."
+          "text": "The 14-day cooling off period has now begun. We will send you a reminder once it has ended so that you can deliver the order and mark it as delivered on the Ideal4Finance dashboard."
         },
         {
           "text": "If {{extras.customer.contact_name}} is paying a deposit, their tradesperson will need to collect this directly and they have been sent an email to remind them to do so."
@@ -25,13 +25,13 @@
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]

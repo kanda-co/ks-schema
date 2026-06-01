@@ -23,14 +23,17 @@
         },
         {
           "text": "I have a question",
-          "subtext": "If you need to reach out to us, you can email us directly at <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>"
+          "subtext": "If you need to reach out to us, you can reach out to us using the contact information below."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
+    },
+    {
+      "type": "help"
     }
   ]
 }

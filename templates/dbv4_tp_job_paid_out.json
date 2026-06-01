@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "We've processed payment on the job you completed for {{sender.contact_name}}. You should receive the payment from Kanda within a few hours. "
+          "text": "We've processed payment on the job you completed for {{sender.contact_name}}. You should receive the payment from Ideal4Finance within a few hours. "
         }
       ]
     },
@@ -19,14 +19,17 @@
       "rows": [
         {
           "text": "What do I need to do?",
-          "subtext": "Nothing, just sit tight. Get in touch with us if you haven't received payment within 4 hours of this email. Contact us at <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>"
+          "subtext": "Nothing, just sit tight. Get in touch with us if you haven't received payment within 24 hours of this email. Reach out to us using the contact information below."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
+    },
+    {
+      "type": "help"
     }
   ]
 }

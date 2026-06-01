@@ -1,5 +1,5 @@
 {
-  "subject": "You have been invited to join {{sender.contact_name}}'s team on Kanda as a developer",
+  "subject": "You have been invited to join {{sender.contact_name}}'s team on Ideal4Finance as a developer",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "You have been invited as a developer to join {{sender.contact_name}}'s team on Kanda. Follow the link below to claim your account and get integration instructions for the following:"
+          "text": "You have been invited as a developer to join {{sender.contact_name}}'s team on Ideal4Finance. Follow the link below to claim your account and get integration instructions for the following:"
         }
       ]
     },
@@ -23,7 +23,7 @@
         },
         {
           "text": "Adding a finance calculator",
-          "subtext": "There is an iframe code snippet that you'll be able to include on your website. This will show your customers a finance calculator so they can see what their monthly costs would be with Kanda"
+          "subtext": "There is an iframe code snippet that you'll be able to include on your website. This will show your customers a finance calculator so they can see what their monthly costs would be with Ideal4Finance"
         },
         {
           "text": "API and plugin integrations",

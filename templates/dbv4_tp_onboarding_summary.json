@@ -1,5 +1,5 @@
 {
-  "subject": "Your Kanda Onboarding Summary",
+  "subject": "Your Ideal4Finance Onboarding Summary",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "Your company is currently progressing through Kanda's onboarding process. "
+          "text": "Your company is currently progressing through Ideal4Finance's onboarding process. "
         },
         {
           "text": "{{message}}"
@@ -19,7 +19,7 @@
     },
     {
       "type": "button",
-      "text": "Go to Kanda",
+      "text": "Go to Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]

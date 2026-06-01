@@ -1,5 +1,5 @@
 {
-  "subject": "Welcome to Kanda - verify your email to activate your account",
+  "subject": "Welcome to Ideal4Finance - verify your email to activate your account",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "Welcome to Kanda! Please follow the link below to confirm your email and activate your account."
+          "text": "Welcome to Ideal4Finance! Please follow the link below to confirm your email and activate your account."
         }
       ]
     },

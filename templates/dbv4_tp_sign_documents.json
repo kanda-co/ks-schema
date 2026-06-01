@@ -10,16 +10,16 @@
       "type": "text",
       "rows": [
         {
-          "text": "Great news! {{sender.contact_name}}'s application has been approved by the lender - all they need to do is sign their credit documents. They can access these by following the link sent to them by both Kanda and the lender. "
+          "text": "Great news! {{sender.contact_name}}'s application has been approved by the lender - all they need to do is sign their credit documents. They can access these by following the link sent to them by both Ideal4Finance and the lender. "
         },
         {
-          "text": "Kanda will update you once the documents have been signed so that you know what the next steps are. We've told the customer what to do."
+          "text": "Ideal4Finance will update you once the documents have been signed so that you know what the next steps are. We've told the customer what to do."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]

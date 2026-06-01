@@ -1,5 +1,5 @@
 {
-  "subject": "Reminder: ID check required to complete Kanda set up for {{sender.trading_name}}",
+  "subject": "Reminder: ID check required to complete Ideal4Finance set up for {{sender.trading_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "{{sender.trading_name}} has been signed up to offer finance with Kanda."
+          "text": "{{sender.trading_name}} has been signed up to offer finance with Ideal4Finance."
         },
         {
           "text": "As a director of the company you need to complete a 2 minute ID check. You'll need your passport or drivers license."
@@ -22,7 +22,7 @@
     },
     {
       "type": "button",
-      "text": "Verify on Kanda",
+      "text": "Verify on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]

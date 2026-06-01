@@ -1,5 +1,5 @@
 {
-  "subject": "Kanda lead from {{sender.contact_name}}",
+  "subject": "Ideal4Finance lead from {{sender.contact_name}}",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -22,7 +22,7 @@
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]

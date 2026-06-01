@@ -23,14 +23,17 @@
         },
         {
           "text": "How do I make the payment?",
-          "subtext": "Speak to {{sender.contact_name}}, as they will collect the full deposit from you. If something isn't right let us know by emailing <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>."
+          "subtext": "Speak to {{sender.contact_name}}, as they will collect the full deposit from you. If something isn't right let us know by reaching out to us using the contact information below."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
+    },
+    {
+      "type": "help"
     }
   ]
 }

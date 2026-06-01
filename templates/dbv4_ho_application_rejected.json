@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "The lender has sent Kanda an update about your application, click the link below to see what it is."
+          "text": "The lender has sent Ideal4Finance an update about your application, click the link below to see what it is."
         }
       ]
     },
@@ -29,5 +29,5 @@
       "url": "{{cta_url}}"
     }
   ],
-  "sms": "There has been an update to your finance application Kanda. Check your emails for more info."
+  "sms": "There has been an update to your finance application Ideal4Finance. Check your emails for more info."
 }

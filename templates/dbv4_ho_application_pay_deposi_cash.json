@@ -22,9 +22,9 @@
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ],
-  "sms": "Your finance agreement has been signed and you just need to pay your deposit. Check your emails for more info. Kanda!"
+  "sms": "Your finance agreement has been signed and you just need to pay your deposit. Check your emails for more info. Ideal4Finance!"
 }

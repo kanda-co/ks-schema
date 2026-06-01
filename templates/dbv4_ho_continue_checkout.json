@@ -23,5 +23,5 @@
       "url": "{{cta_url}}"
     }
   ],
-  "sms": "Hey {{receiver.contact_name}}! You've just been sent a link to view your job from {{sender.contact_name}} on Kanda. Check your emails for more information."
+  "sms": "Hey {{receiver.contact_name}}! You've just been sent a link to view your job from {{sender.contact_name}} on Ideal4Finance. Check your emails for more information."
 }

@@ -99,13 +99,13 @@
       "rows": [
         {
           "text": "What are the next steps?",
-          "subtext": "The tradesperson should contact you to arrange a quote. Once you've spoke (& they've seen the work) they will send you a quote via Kanda. You'll then be able to pay for it using the loan you've been pre-approved for."
+          "subtext": "The tradesperson should contact you to arrange a quote. Once you've spoke (& they've seen the work) they will send you a quote via Ideal4Finance. You'll then be able to pay for it using the loan you've been pre-approved for."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]

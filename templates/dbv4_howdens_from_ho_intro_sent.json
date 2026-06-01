@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "A finance introduction has been sent to {{extras.customer.contact_name}}; you can track the progress of this introduction by logging in to your Kanda dashboard."
+          "text": "A finance introduction has been sent to {{extras.customer.contact_name}}; you can track the progress of this introduction by logging in to your Ideal4Finance dashboard."
         }
       ]
     },
@@ -19,13 +19,13 @@
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]

@@ -1,5 +1,5 @@
 {
-  "subject": "Here are the details for the job you accepted on Kanda",
+  "subject": "Here are the details for the job you accepted on Ideal4Finance",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "Here are the details for the job you have requested to quote for on Kanda:"
+          "text": "Here are the details for the job you have requested to quote for on Ideal4Finance:"
         }
       ]
     },
@@ -105,7 +105,7 @@
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]

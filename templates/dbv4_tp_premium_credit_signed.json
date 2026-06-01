@@ -1,5 +1,5 @@
 {
-  "subject": "Information about Your Kanda subscription through Premium Credit",
+  "subject": "Information about Your Ideal4Finance subscription through Premium Credit",
   "flow_type": "{{flow_type}}",
   "body": [
     {
@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "Thank you for subscribing to Kanda! We want to provide you with important information about how your subscription payments will be processed:"
+          "text": "Thank you for subscribing to Ideal4Finance! We want to provide you with important information about how your subscription payments will be processed:"
         }
       ]
     },
@@ -35,9 +35,12 @@
       "type": "text",
       "rows": [
         {
-          "text": "If you have any questions about your payments or subscription, feel free to reach out to our support team at <a href=\"mailto:help@kanda.co.uk\">help@kanda.co.uk.</a>."
+          "text": "If you have any questions about your payments or subscription, feel free to reach out to our support team using the contact information below."
         }
       ]
+    },
+    {
+      "type": "help"
     }
   ]
 }

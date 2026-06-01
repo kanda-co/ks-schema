@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "{{extras.customer.contact_name}} has completed their eligibility check on Kanda."
+          "text": "{{extras.customer.contact_name}} has completed their eligibility check on Ideal4Finance."
         },
         {
           "text": "Once you have finalised their design, you will need to convert their Introduction into a Job to send the order to their tradesperson to confirm. Please also use the email template provided by Marketing to send an order breakdown to {{extras.customer.contact_name}} to provide them with more detail."
@@ -22,13 +22,13 @@
       "rows": [
         {
           "text": "Have a Question?",
-          "subtext": "For finance queries please email Kanda at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
+          "subtext": "For finance queries please email Ideal4Finance at <a href=\"mailto:support@kanda.co.uk\">support@kanda.co.uk</a> or call us on <a href=\"tel:03308083911\">0330 808 3911</a>."
         }
       ]
     },
     {
       "type": "button",
-      "text": "View on Kanda",
+      "text": "View on Ideal4Finance",
       "url": "{{cta_url}}"
     }
   ]

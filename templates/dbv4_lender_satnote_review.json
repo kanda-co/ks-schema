@@ -39,7 +39,7 @@
           "type": "row",
           "content": [
             {
-              "text": "Kanda job ID:",
+              "text": "Ideal4Finance job ID:",
               "colspan": "1"
             },
             {
@@ -52,7 +52,7 @@
           "type": "row",
           "content": [
             {
-              "text": "Kanda loan ID:",
+              "text": "Ideal4Finance loan ID:",
               "colspan": "1"
             },
             {
