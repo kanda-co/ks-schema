@@ -1113,6 +1113,7 @@ func GetFields(name string) []string {
 			"verifications",
 		},
 		"SatNote": []string{
+			"address",
 			"certificate",
 			"q_advice",
 			"q_application",
