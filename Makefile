@@ -20,7 +20,7 @@ production:
 
 clean-frontend:
 	@echo Cleaning frontend client built artefact...
-	rm -rf dist/ frontend/generated
+	rm -rf dist/ frontend
 	rm -rf ks-frontend-sevices/dist ks-frontend-sevices/src/generated
 	rm -rf ks-component-ts/dist ks-component-ts/src/generated
 
@@ -64,10 +64,11 @@ gen-backend:
 build-frontend: gen-frontend widget ts-widget
 	@echo Build frontend...
 	npx openapi2schema -i schema.yaml > frontend/generated/schema.json
-	echo "import * as Widget from './widget';" >> frontend/generated/index.ts
+# 	echo "import * as Widget from './widget';" >> frontend/generated/index.ts
 	echo "import * as JSONSchema from './schema.json';" >> frontend/generated/index.ts
 	echo "import { servers } from './servers';" >> frontend/generated/index.ts
-	echo "export { JSONSchema, Widget, servers };" >> frontend/generated/index.ts
+# 	echo "export { JSONSchema, Widget, servers };" >> frontend/generated/index.ts
+	echo "export { JSONSchema, servers };" >> frontend/generated/index.ts
 	echo "export * from './components/parameters';" >> frontend/generated/index.ts
 	echo "export * from './components/schemas';" >> frontend/generated/index.ts
 	npm run build

@@ -11249,6 +11249,8 @@ components:
         - humm
         - novuna
         - omni
+        - omni_re
+        - omni_lv
         - propensio
       default: omni
 
