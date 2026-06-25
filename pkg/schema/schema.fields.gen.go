@@ -509,6 +509,8 @@ func GetFields(name string) []string {
 		"ExportJSON": []string{},
 		"FinanceDetails": []string{
 			"bankrupcy_or_iva_in_last_5_years",
+			"expect_significant_income_change",
+			"expect_significant_income_change_reason",
 			"expenditures",
 			"incomes",
 		},

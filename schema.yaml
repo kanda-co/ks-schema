@@ -11633,6 +11633,15 @@ components:
           title: expenditures
           items:
             $ref: "#/components/schemas/Expenditure"
+        expect_significant_income_change:
+          type: string
+          title: expect significant income change
+          enum:
+            - "yes"
+            - "no"
+        expect_significant_income_change_reason:
+          type: string
+          title: expect significant income change reason
 
     Income:
       type: object
