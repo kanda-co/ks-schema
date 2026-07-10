@@ -3093,6 +3093,33 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /api/company/staff-onboard:
+    post:
+      operationId: postCompanyStaffOnboard
+      summary: kanda staff to create a fully set-up verified company directly, bypassing onboarding
+      tags:
+        - Company
+      requestBody:
+        description: staff direct company onboarding
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Company"
+      responses:
+        200:
+          description: created verified company
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Company"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /api/job:
     get:
       operationId: getJobs
@@ -5592,6 +5619,126 @@ paths:
       responses:
         200:
           description: deleted existing rate
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Rate"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/company/{id}/rate:
+    get:
+      operationId: getCompanyRate
+      summary: kanda staff to get a company's custom rate table
+      tags:
+        - Rate
+      parameters:
+        - name: id
+          in: path
+          description: company id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: got company custom rate table
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Rate"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      operationId: postCompanyRate
+      summary: kanda staff to create a company's custom rate table
+      tags:
+        - Rate
+      parameters:
+        - name: id
+          in: path
+          description: company id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: company custom rate table
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Rate"
+      responses:
+        200:
+          description: created company custom rate table
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Rate"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      operationId: putCompanyRate
+      summary: kanda staff to update a company's custom rate table
+      tags:
+        - Rate
+      parameters:
+        - name: id
+          in: path
+          description: company id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      requestBody:
+        description: company custom rate table
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Rate"
+      responses:
+        200:
+          description: updated company custom rate table
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Rate"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      operationId: deleteCompanyRate
+      summary: kanda staff to delete a company's custom rate table
+      tags:
+        - Rate
+      parameters:
+        - name: id
+          in: path
+          description: company id
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        200:
+          description: deleted company custom rate table
           content:
             application/json:
               schema:
