@@ -3093,7 +3093,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-  /api/company/staff-onboard:
+  /api/company-staff-onboard:
     post:
       operationId: postCompanyStaffOnboard
       summary: kanda staff to create a fully set-up verified company directly, bypassing onboarding
@@ -5630,7 +5630,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-  /api/company/{id}/rate:
+  /api/company-rate/{id}:
     get:
       operationId: getCompanyRate
       summary: kanda staff to get a company's custom rate table
