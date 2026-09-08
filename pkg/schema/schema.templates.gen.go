@@ -3553,7 +3553,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "{{sender.contact_name}} has signed the satisfaction note and Ideal4Finance has approved it. We'll process your payment within 48 hours."
+          "text": "{{sender.contact_name}} has signed the satisfaction note and Ideal4Finance has approved it. We'll process your payment within 3-6 working days."
         }
       ]
     },
@@ -3562,7 +3562,7 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "What do I need to do?",
-          "subtext": "Nothing, just sit tight. You'll receive payment within 48 hours (excluding weekends)."
+          "subtext": "Nothing, just sit tight. You'll receive payment within 3-6 working days (excluding weekends)."
         }
       ]
     },
@@ -3617,7 +3617,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "{{sender.contact_name}} has signed the satisfaction note and now needs to complete their welcome call with the lender. Once completed you’ll be paid within 48 hours. We’ve told them to look out for a call today."
+          "text": "{{sender.contact_name}} has signed the satisfaction note and now needs to complete their welcome call with the lender. Once completed you'll be paid within 3-6 working days. We've told them to look out for a call today."
         }
       ]
     },
@@ -3681,7 +3681,7 @@ var TMap = map[TName]string{
       "type": "text",
       "rows": [
         {
-          "text": "{{sender.contact_name}} has signed the satisfaction note! We'll process your now review the satisfaction note within 24-48 hours."
+          "text": "{{sender.contact_name}} has signed the satisfaction note! We'll now aim to review the satisfaction note within 24-48 hours."
         }
       ]
     },
@@ -3690,7 +3690,7 @@ var TMap = map[TName]string{
       "rows": [
         {
           "text": "What do I need to do?",
-          "subtext": "Nothing, just sit tight. You'll receive an update within 24-48 hours (excluding weekends)."
+          "subtext": "Nothing, just sit tight. You'll typically receive an update within 24-48 hours (excluding weekends)."
         }
       ]
     },

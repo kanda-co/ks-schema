@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "{{sender.contact_name}} has signed the satisfaction note and now needs to complete their welcome call with the lender. Once completed you’ll be paid within 48 hours. We’ve told them to look out for a call today."
+          "text": "{{sender.contact_name}} has signed the satisfaction note and now needs to complete their welcome call with the lender. Once completed you'll be paid within 3-6 working days. We've told them to look out for a call today."
         }
       ]
     },

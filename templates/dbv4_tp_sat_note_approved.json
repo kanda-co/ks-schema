@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "{{sender.contact_name}} has signed the satisfaction note and Ideal4Finance has approved it. We'll process your payment within 48 hours."
+          "text": "{{sender.contact_name}} has signed the satisfaction note and Ideal4Finance has approved it. We'll process your payment within 3-6 working days."
         }
       ]
     },
@@ -19,7 +19,7 @@
       "rows": [
         {
           "text": "What do I need to do?",
-          "subtext": "Nothing, just sit tight. You'll receive payment within 48 hours (excluding weekends)."
+          "subtext": "Nothing, just sit tight. You'll receive payment within 3-6 working days (excluding weekends)."
         }
       ]
     },

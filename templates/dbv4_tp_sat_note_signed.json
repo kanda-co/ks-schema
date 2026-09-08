@@ -10,7 +10,7 @@
       "type": "text",
       "rows": [
         {
-          "text": "{{sender.contact_name}} has signed the satisfaction note! We'll process your now review the satisfaction note within 24-48 hours."
+          "text": "{{sender.contact_name}} has signed the satisfaction note! We'll now aim to review the satisfaction note within 24-48 hours."
         }
       ]
     },
@@ -19,7 +19,7 @@
       "rows": [
         {
           "text": "What do I need to do?",
-          "subtext": "Nothing, just sit tight. You'll receive an update within 24-48 hours (excluding weekends)."
+          "subtext": "Nothing, just sit tight. You'll typically receive an update within 24-48 hours (excluding weekends)."
         }
       ]
     },
