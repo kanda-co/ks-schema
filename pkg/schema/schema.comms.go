@@ -9,10 +9,10 @@ import (
 )
 
 var (
-	defaultTradingName  = "Kanda"
-	defaultContactName  = "Kanda"
-	defaultContactPhone = "03308187491"
-	defaultContactEmail = Email("help@kanda.co.uk")
+	defaultTradingName  = "Ideal4Finance"
+	defaultContactName  = "Ideal4Finance"
+	defaultContactPhone = "02038412820"
+	defaultContactEmail = Email("loans@ideal4finance.co.uk")
 )
 
 var (
