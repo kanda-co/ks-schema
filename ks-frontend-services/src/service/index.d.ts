@@ -91,6 +91,10 @@ declare const company: {
         key: string;
         method: (operationArgs?: OperationArgs) => import("../generated/operations/reactivateCompany").ReactivateCompanyRequestFunction;
     };
+    cancelCompany: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/cancelCompany").CancelCompanyRequestFunction;
+    };
     approveCompany: {
         key: string;
         method: (operationArgs?: OperationArgs) => import("../generated/operations/approveCompany").ApproveCompanyRequestFunction;
@@ -106,6 +110,10 @@ declare const company: {
     importFcaApproved: {
         key: string;
         method: (operationArgs?: OperationArgs) => import("../generated/operations/importFcaApproved").ImportFcaApprovedRequestFunction;
+    };
+    postCompanyStaffOnboard: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postCompanyStaffOnboard").PostCompanyStaffOnboardRequestFunction;
     };
 };
 declare const credit: {
@@ -883,6 +891,22 @@ declare const rate: {
         key: string;
         method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteRate").DeleteRateRequestFunction;
     };
+    getCompanyRate: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/getCompanyRate").GetCompanyRateRequestFunction;
+    };
+    postCompanyRate: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/postCompanyRate").PostCompanyRateRequestFunction;
+    };
+    putCompanyRate: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/putCompanyRate").PutCompanyRateRequestFunction;
+    };
+    deleteCompanyRate: {
+        key: string;
+        method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteCompanyRate").DeleteCompanyRateRequestFunction;
+    };
 };
 declare const subscription: {
     getSubscriptions: {
@@ -1213,6 +1237,10 @@ declare const services: {
             key: string;
             method: (operationArgs?: OperationArgs) => import("../generated/operations/reactivateCompany").ReactivateCompanyRequestFunction;
         };
+        cancelCompany: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/cancelCompany").CancelCompanyRequestFunction;
+        };
         approveCompany: {
             key: string;
             method: (operationArgs?: OperationArgs) => import("../generated/operations/approveCompany").ApproveCompanyRequestFunction;
@@ -1228,6 +1256,10 @@ declare const services: {
         importFcaApproved: {
             key: string;
             method: (operationArgs?: OperationArgs) => import("../generated/operations/importFcaApproved").ImportFcaApprovedRequestFunction;
+        };
+        postCompanyStaffOnboard: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postCompanyStaffOnboard").PostCompanyStaffOnboardRequestFunction;
         };
     };
     credit: {
@@ -2004,6 +2036,22 @@ declare const services: {
         deleteRate: {
             key: string;
             method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteRate").DeleteRateRequestFunction;
+        };
+        getCompanyRate: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/getCompanyRate").GetCompanyRateRequestFunction;
+        };
+        postCompanyRate: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/postCompanyRate").PostCompanyRateRequestFunction;
+        };
+        putCompanyRate: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/putCompanyRate").PutCompanyRateRequestFunction;
+        };
+        deleteCompanyRate: {
+            key: string;
+            method: (operationArgs?: OperationArgs) => import("../generated/operations/deleteCompanyRate").DeleteCompanyRateRequestFunction;
         };
     };
     subscription: {

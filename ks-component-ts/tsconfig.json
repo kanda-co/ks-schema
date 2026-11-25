@@ -2,6 +2,8 @@
   "compilerOptions": {
     "sourceMap": true,
     "declaration": true,
+    "emitDeclarationOnly": true,
+    "declarationDir": "./dist",
     "module": "esnext",
     "target": "es2018",
     "moduleResolution": "node",
@@ -15,6 +17,7 @@
     "noUnusedParameters": false,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "rootDir": "./src",
     "baseUrl": "./src/",
     "typeRoots": ["./src/@types", "./node_modules/@types"],
     "paths": {

@@ -1,5 +1,5 @@
 export const HIGHLIGHT_PROPS = {
-  highlightClassName: "text-turquoise-300 bg-transparent",
+  highlightClassName: "text-purple-200 bg-transparent",
   autoEscape: true,
 };
 

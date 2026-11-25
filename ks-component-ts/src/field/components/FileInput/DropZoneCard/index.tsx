@@ -28,7 +28,7 @@ const DropZoneCard: FunctionComponent<DropZoneCardProps> = function ({
       small,
       hasLabel,
       centerPlaceholder: jobPdfInput ? true : centerPlaceholder,
-    }
+    },
   );
 
   return (
@@ -51,7 +51,7 @@ const DropZoneCard: FunctionComponent<DropZoneCardProps> = function ({
           <div className={classNames.center}>
             {compressing ? (
               <div className="flex flex-col">
-                <LoadingSpinner stroke="green-500" className="mx-auto mb-3" />
+                <LoadingSpinner stroke="purple-400" className="mx-auto mb-3" />
                 <p>Processing file</p>
               </div>
             ) : (

@@ -17,7 +17,7 @@ export const CLASS_NAMES = {
     button:
       "bg-neutral-500 ml-4 rounded-full w-5 h-5 flex justify-center items-center",
     progress:
-      "absolute bg-turquoise-300 h-full opacity-10 z-0 transition-width transition-slowest ease",
+      "absolute bg-purple-200 h-full opacity-10 z-0 transition-width transition-slowest ease",
   },
   small: {
     container:
@@ -26,7 +26,7 @@ export const CLASS_NAMES = {
     button:
       "bg-neutral-500 ml-4 rounded-full w-4 h-4 flex justify-center items-center",
     progress:
-      "absolute bg-turquoise-300 h-full opacity-10 z-0 transition-width transition-slowest ease",
+      "absolute bg-purple-200 h-full opacity-10 z-0 transition-width transition-slowest ease",
   },
 };
 
@@ -34,7 +34,7 @@ export const ICONS = {
   default: {
     document: {
       icon: "file",
-      stroke: "turquoise-300",
+      stroke: "purple-200",
       size: 24,
       className: "mr-4 min-w-6",
     },
@@ -54,7 +54,7 @@ export const ICONS = {
   small: {
     document: {
       icon: "file",
-      stroke: "turquoise-300",
+      stroke: "purple-200",
       size: 20,
       className: "mr-3",
     },

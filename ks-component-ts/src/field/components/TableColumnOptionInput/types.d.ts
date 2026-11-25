@@ -21,7 +21,7 @@ export interface ContainerChildrenArgs {
   name: string;
   innerRef: MutableRefObject<HTMLElement>;
   draggableProps: DraggableProvidedDraggableProps;
-  dragHandleProps: ?DragHandleProps;
+  dragHandleProps?: DragHandleProps;
   classNames: {
     container: string;
     text: string;

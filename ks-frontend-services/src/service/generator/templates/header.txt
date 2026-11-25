@@ -10,7 +10,9 @@ const dns = {
   test: servers[1],
 };
 
-const server = dns[process.env.REACT_APP_ENV || process.env.NEXT_PUBLIC_ENV || 'dev'];
+const server = process.env.REACT_APP_HUB_URL_OVERRIDE ??
+  dns[process.env.REACT_APP_ENV || process.env.NEXT_PUBLIC_ENV || 'dev'];
+  
 const serverFunctions = (operationArgs: OperationArgs) =>
   requestFunctions(server, operationArgs);
 

@@ -36,7 +36,7 @@ export default function useDropZoneCardProps({
     inputClasses,
     "border overflow-hidden mt-3",
     !small && !hasLabel ? "rounded-2xl" : "",
-    isDragActive ? "border-turquoise-300" : "border-dashed border-neutral-300"
+    isDragActive ? "border-purple-200" : "border-dashed border-neutral-300",
   );
 
   const error = wrapperClasses?.error;
@@ -47,7 +47,7 @@ export default function useDropZoneCardProps({
 
   const center = clsx(
     CLASS_NAMES.center,
-    centerPlaceholder ? "mx-auto" : "w-full"
+    centerPlaceholder ? "mx-auto" : "w-full",
   );
 
   const skeletons = small ? SKELETONS.small : SKELETONS.default;

@@ -172,15 +172,15 @@ textarea {
 
 @layer components {
   .bg-gradient-a {
-    @apply bg-gradient-to-r ring-2 ring-transparent from-lavender-200 to-turquoise-300;
+    @apply bg-gradient-to-r ring-2 ring-transparent from-lavender-200 to-purple-200;
   }
 
   .bg-gradient-b {
-    @apply bg-gradient-to-r ring-2 ring-transparent from-turquoise-200 to-turquoise-300;
+    @apply bg-gradient-to-r ring-2 ring-transparent from-purple-100 to-purple-200;
   }
 
   .bg-gradient-b-big {
-    @apply bg-gradient-to-r ring-2 ring-transparent from-turquoise-300 via-turquoise-200 to-turquoise-300;
+    @apply bg-gradient-to-r ring-2 ring-transparent from-purple-200 via-purple-100 to-purple-200;
   }
 }
 

@@ -30,9 +30,9 @@ export const SCORE_COLORS = [
   "neutral-200",
   "red-200",
   "orange-200",
-  "turquoise-300",
-  "turquoise-300",
-  "turquoise-400",
+  "purple-200",
+  "purple-200",
+  "purple-300",
 ];
 
 export const PASSWORD_REGEX = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
@@ -47,6 +47,6 @@ export const SCORE_TO_TEXT_CLASS: StringIndexedObject<string> = {
   "neutral-200": "text-neutral-200",
   "red-200": "text-red-200",
   "orange-200": "text-orange-200",
-  "turquoise-300": "text-turquoise-300",
-  "turquoise-400": "text-turquoise-400",
+  "purple-200": "text-purple-200",
+  "purple-300": "text-purple-300",
 };

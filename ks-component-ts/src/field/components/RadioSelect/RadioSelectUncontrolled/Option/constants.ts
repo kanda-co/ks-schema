@@ -58,7 +58,7 @@ export const VARIANTS: StringIndexedObject<VariantProps> = {
     skeletonWrapper: "mx-2 w-full",
     handleContainer: "my-auto",
     selected: {
-      option: "overflow-hidden border border-turquoise-300 cursor-pointer",
+      option: "overflow-hidden border border-purple-200 cursor-pointer",
       container: "bg-neutral-000 flex flex-full w-full p-4 text-neutral-800",
     },
     notSelected: {
@@ -79,7 +79,7 @@ export const VARIANTS: StringIndexedObject<VariantProps> = {
     skeletonWrapper: "mx-2 w-full",
     handleContainer: "my-auto",
     selected: {
-      option: "overflow-hidden border border-turquoise-300 cursor-pointer",
+      option: "overflow-hidden border border-purple-200 cursor-pointer",
       container:
         "bg-neutral-000 flex flex-full w-full px-4 py-3.5 text-neutral-800",
     },
@@ -127,7 +127,7 @@ export const VARIANTS: StringIndexedObject<VariantProps> = {
     selected: {
       option: "border-neutral-000 overflow-hidden cursor-pointer",
       container:
-        "bg-neutral-000 flex flex-full w-full py-2 text-turquoise-300 font-bold",
+        "bg-neutral-000 flex flex-full w-full py-2 text-purple-200 font-bold",
     },
     notSelected: {
       option: "border-neutral-000 overflow-hidden cursor-pointer",
@@ -149,7 +149,7 @@ export const VARIANTS: StringIndexedObject<VariantProps> = {
     selected: {
       option: "border-neutral-000 overflow-hidden cursor-pointer",
       container:
-        "bg-neutral-000 flex flex-full w-full text-turquoise-300 font-bold",
+        "bg-neutral-000 flex flex-full w-full text-purple-200 font-bold",
     },
     notSelected: {
       option: "border-neutral-000 overflow-hidden cursor-pointer",
@@ -171,7 +171,7 @@ export const VARIANTS: StringIndexedObject<VariantProps> = {
     selected: {
       option: "border-neutral-000 overflow-hidden cursor-pointer",
       container:
-        "bg-neutral-000 px-3 py-2.25 flex flex-full w-full text-turquoise-300 font-bold rounded hover:bg-neutral-100",
+        "bg-neutral-000 px-3 py-2.25 flex flex-full w-full text-purple-200 font-bold rounded hover:bg-neutral-100",
     },
     notSelected: {
       option: "border-neutral-000 overflow-hidden cursor-pointer",
@@ -193,15 +193,14 @@ export const VARIANTS: StringIndexedObject<VariantProps> = {
     handleContainer: "hidden",
     selected: {
       option:
-        "overflow-hidden border border-turquoise-300 cursor-pointer bg-turquoise-100 -ml-px first:ml-0",
-      container:
-        "bg-turquoise-100 flex flex-full w-full p-1.5 text-turquoise-300",
+        "overflow-hidden border border-purple-200 cursor-pointer bg-purple-50 -ml-px first:ml-0",
+      container: "bg-purple-50 flex flex-full w-full p-1.5 text-purple-200",
     },
     notSelected: {
       option:
         "overflow-hidden border border-neutral-300 cursor-pointer border-l-0 first:border-l",
       container:
-        "bg-neutral-000 flex flex-full w-full p-1.5 text-neutral-600 hover:text-turquoise-300",
+        "bg-neutral-000 flex flex-full w-full p-1.5 text-neutral-600 hover:text-purple-200",
     },
     warning,
     warningNotSelected,
@@ -218,9 +217,8 @@ export const VARIANTS: StringIndexedObject<VariantProps> = {
     handleContainer: "hidden",
     selected: {
       option:
-        "overflow-hidden border border-turquoise-300 cursor-pointer bg-turquoise-100 -ml-px first:ml-0",
-      container:
-        "bg-turquoise-100 flex flex-full w-full p-2.5 text-turquoise-300",
+        "overflow-hidden border border-purple-200 cursor-pointer bg-purple-50 -ml-px first:ml-0",
+      container: "bg-purple-50 flex flex-full w-full p-2.5 text-purple-200",
     },
     notSelected: {
       option:
@@ -242,9 +240,9 @@ export const VARIANTS: StringIndexedObject<VariantProps> = {
     skeletonWrapper: "w-10 -mt-0.5",
     handleContainer: "hidden",
     selected: {
-      option: "border border-turquoise-300 cursor-pointer bg-turquoise-100",
+      option: "border border-purple-200 cursor-pointer bg-purple-50",
       container:
-        "rounded bg-turquoise-100 flex flex-full w-full px-4 py-2 text-turquoise-300",
+        "rounded bg-purple-50 flex flex-full w-full px-4 py-2 text-purple-200",
     },
     notSelected: {
       option: "border border-neutral-300 cursor-pointer",
@@ -271,9 +269,9 @@ export const VARIANTS: StringIndexedObject<VariantProps> = {
     skeletonWrapper: "w-10 -mt-0.5",
     handleContainer: "my-auto mr-1.5",
     selected: {
-      option: "border border-turquoise-300 cursor-pointer bg-turquoise-100",
+      option: "border border-purple-200 cursor-pointer bg-purple-50",
       container:
-        "rounded bg-turquoise-100 flex flex-full w-full px-2.5 py-2.25 md:py-1.5 text-neutral-900",
+        "rounded bg-purple-50 flex flex-full w-full px-2.5 py-2.25 md:py-1.5 text-neutral-900",
     },
     notSelected: {
       option: "border border-neutral-300 cursor-pointer",
@@ -295,9 +293,9 @@ export const CLASS_NAMES_MULTIPLE: VariantProps = {
   span: "flex text-left flex-1 select-none text-style-g-em my-auto mr-4",
   skeletonWrapper: "flex-row w-full",
   selected: {
-    option: "overflow-hidden border border-turquoise-300 cursor-pointer",
+    option: "overflow-hidden border border-purple-200 cursor-pointer",
     container:
-      "bg-turquoise-100 flex flex-full w-full p-4 text-turquoise-300 flex-row-reverse",
+      "bg-purple-50 flex flex-full w-full p-4 text-purple-200 flex-row-reverse",
   },
   notSelected: {
     option: "overflow-hidden border border-neutral-300 cursor-pointer",

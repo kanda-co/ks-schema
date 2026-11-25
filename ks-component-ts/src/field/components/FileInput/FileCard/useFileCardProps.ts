@@ -19,7 +19,7 @@ export default function useFileCardProps({
   useEffect(() => {
     if (fileProgress && fileProgress.current) {
       (fileProgress.current as StringIndexedObject)[file?.name || ""] = (
-        value: number
+        value: number,
       ) => setProgress(value);
     }
   }, [file, fileProgress]);
@@ -38,8 +38,8 @@ export default function useFileCardProps({
   const wrapper = clsx(
     baseClasses,
     inputClasses,
-    "border-solid border overflow-hidden border-turquoise-300 relative",
-    !small && !hasLabel ? "rounded-2xl" : ""
+    "border-solid border overflow-hidden border-purple-200 relative",
+    !small && !hasLabel ? "rounded-2xl" : "",
   );
 
   const otherClassNames = small ? CLASS_NAMES.small : CLASS_NAMES.default;

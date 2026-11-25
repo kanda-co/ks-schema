@@ -10,11 +10,11 @@ export const CLASS_NAMES = {
 
 export const DRAGGING_PROPS = {
   color: {
-    dragging: "turquoise-300",
+    dragging: "purple-200",
     static: "neutral-500",
   },
   background: {
-    dragging: "bg-turquoise-100",
+    dragging: "bg-purple-50",
     static: "bg-neutral-000",
   },
 };

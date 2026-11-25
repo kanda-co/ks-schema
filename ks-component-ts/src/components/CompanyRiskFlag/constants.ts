@@ -7,5 +7,5 @@ export const COMPANY_RISK_YELLOW = "text-yellow";
 export const COMPANY_RISK_FLAG_STROKES: StringIndexedObject<string> = {
   red: "red-200",
   yellow: "yellow",
-  green: "green-500",
+  green: "purple-400",
 };

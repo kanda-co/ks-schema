@@ -2,14 +2,13 @@ import { FieldWrapperType, StringIndexedObject, Theme } from "~/types";
 
 export const DEFAULT_THEME = {
   fieldWrapper: "Default" as FieldWrapperType,
-  baseClasses:
-    "rounded-lg flex w-full bg-neutral-100 border caret-turquoise-300",
+  baseClasses: "rounded-lg flex w-full bg-neutral-100 border caret-purple-200",
   inputClasses:
     "text-style-g text-neutral-900 placeholder-neutral-600 text-base md:text-sm",
   focusClasses:
-    "border-solid border-transparent focus:outline-none focus:border-turquoise-300 focus:bg-neutral-000",
+    "border-solid border-transparent focus:outline-none focus:border-purple-200 focus:bg-neutral-000",
   focusWithinClasses:
-    "border-solid border-transparent focus-within:outline-none focus-within:border-turquoise-300 focus-within:bg-neutral-000",
+    "border-solid border-transparent focus-within:outline-none focus-within:border-purple-200 focus-within:bg-neutral-000",
   paddingClasses: "px-4 py-3.25",
   skeletonClasses: "w-2/6",
   placeholderClasses: "px-4 pt-1",
@@ -27,13 +26,13 @@ export const DEFAULT_THEME = {
 export const BORDERED_THEME = {
   fieldWrapper: "Default" as FieldWrapperType,
   baseClasses:
-    "rounded-lg flex w-full bg-neutral-000 border border-neutral-300 caret-turquoise-300",
+    "rounded-lg flex w-full bg-neutral-000 border border-neutral-300 caret-purple-200",
   inputClasses:
     "text-style-g text-neutral-900 placeholder-neutral-600 text-base md:text-sm",
   focusClasses:
-    "border-solid focus:outline-none focus:border-turquoise-300 focus:bg-neutral-000",
+    "border-solid focus:outline-none focus:border-purple-200 focus:bg-neutral-000",
   focusWithinClasses:
-    "border-solid focus-within:outline-none focus-within:border-turquoise-300 focus-within:bg-neutral-000",
+    "border-solid focus-within:outline-none focus-within:border-purple-200 focus-within:bg-neutral-000",
   paddingClasses: "px-4 py-3.25",
   skeletonClasses: "w-2/6",
   placeholderClasses: "px-4 pt-1",
@@ -50,14 +49,13 @@ export const BORDERED_THEME = {
 
 export const DEFAULT_WHITE_THEME = {
   fieldWrapper: "Default" as FieldWrapperType,
-  baseClasses:
-    "rounded-lg flex w-full bg-neutral-000 border caret-turquoise-300",
+  baseClasses: "rounded-lg flex w-full bg-neutral-000 border caret-purple-200",
   inputClasses:
     "text-style-g text-neutral-900 placeholder-neutral-600 text-base md:text-sm",
   focusClasses:
-    "focus:px-2 border-solid border-transparent focus:outline-none focus:border-turquoise-300 focus:bg-neutral-000",
+    "focus:px-2 border-solid border-transparent focus:outline-none focus:border-purple-200 focus:bg-neutral-000",
   focusWithinClasses:
-    "focus-within:px-2 border-solid border-transparent focus-within:outline-none focus-within:border-turquoise-300 focus-within:bg-neutral-000",
+    "focus-within:px-2 border-solid border-transparent focus-within:outline-none focus-within:border-purple-200 focus-within:bg-neutral-000",
   paddingClasses: "py-2",
   skeletonClasses: "w-2/6",
   makeErrorClasses: (error?: string) =>
@@ -72,13 +70,12 @@ export const DEFAULT_WHITE_THEME = {
 
 const EMPHASIZED_THEME = {
   fieldWrapper: "Default" as FieldWrapperType,
-  baseClasses:
-    "rounded-lg flex w-full bg-neutral-100 border caret-turquoise-300",
+  baseClasses: "rounded-lg flex w-full bg-neutral-100 border caret-purple-200",
   inputClasses: "text-style-f text-neutral-900 placeholder-neutral-400",
   focusClasses:
-    "focus:outline-none border-solid border-transparent focus:border-turquoise-300 focus:bg-neutral-000",
+    "focus:outline-none border-solid border-transparent focus:border-purple-200 focus:bg-neutral-000",
   focusWithinClasses:
-    "focus-within:outline-none border-solid border-transparent focus-within:border-turquoise-300 focus-within:bg-neutral-000",
+    "focus-within:outline-none border-solid border-transparent focus-within:border-purple-200 focus-within:bg-neutral-000",
   paddingClasses: "px-4 py-3.25",
   skeletonClasses: "w-2/6",
   placeholderClasses: "px-4 pt-1",
@@ -95,7 +92,7 @@ const EMPHASIZED_THEME = {
 const CLEAN_THEME = {
   fieldWrapper: "Simple" as FieldWrapperType,
   baseClasses:
-    "rounded-lg text-16-18 md:text-14-22 flex w-full text-neutral-900 placeholder-neutral-400 mb-1 caret-turquoise-300 text-left",
+    "rounded-lg text-16-18 md:text-14-22 flex w-full text-neutral-900 placeholder-neutral-400 mb-1 caret-purple-200 text-left",
   focusClasses: "focus:outline-none",
   focusWithinClasses: "focus-within:outline-none",
   paddingClasses: "py-3.25",
@@ -106,12 +103,12 @@ const CLEAN_THEME = {
 
 const NARROW_THEME = {
   fieldWrapper: "Default" as FieldWrapperType,
-  baseClasses: "rounded-lg flex w-full border caret-turquoise-300",
+  baseClasses: "rounded-lg flex w-full border caret-purple-200",
   inputClasses: "text-style-f text-neutral-800 placeholder-neutral-400",
   focusClasses:
-    "focus:px-2 focus:outline-none border-solid border-transparent focus:border-turquoise-300 focus:border focus:bg-neutral-000",
+    "focus:px-2 focus:outline-none border-solid border-transparent focus:border-purple-200 focus:border focus:bg-neutral-000",
   focusWithinClasses:
-    "focus-within:px-2 focus-within:outline-none border-solid border-transparent focus-within:border-turquoise-300 focus-within:border focus-within:bg-neutral-000",
+    "focus-within:px-2 focus-within:outline-none border-solid border-transparent focus-within:border-purple-200 focus-within:border focus-within:bg-neutral-000",
   paddingClasses: "py-1",
   skeletonClasses: "w-2/6",
   makeErrorClasses: (error?: string) =>
@@ -128,10 +125,10 @@ const NARROW_THEME = {
 
 const NARROW_UNFOCUS_THEME = {
   fieldWrapper: "Default" as FieldWrapperType,
-  baseClasses: "rounded-lg flex w-full border caret-turquoise-300",
+  baseClasses: "rounded-lg flex w-full border caret-purple-200",
   inputClasses: "text-style-f text-neutral-800 placeholder-neutral-400",
   focusClasses:
-    "focus:px-2 focus:outline-none border-solid border-transparent focus:border-turquoise-300 focus:border focus:bg-neutral-000",
+    "focus:px-2 focus:outline-none border-solid border-transparent focus:border-purple-200 focus:border focus:bg-neutral-000",
   paddingClasses: "py-1",
   skeletonClasses: "w-2/6",
   makeErrorClasses: (error?: string) =>
@@ -148,7 +145,7 @@ const NARROW_UNFOCUS_THEME = {
 
 const LARGE_THEME = {
   fieldWrapper: "Default" as FieldWrapperType,
-  baseClasses: "flex w-full caret-turquoise-300 text-left",
+  baseClasses: "flex w-full caret-purple-200 text-left",
   inputClasses: "text-32-40-em text-neutral-700 placeholder-neutral-300",
   focusClasses: "focus:outline-none",
   paddingClasses: "",
@@ -164,7 +161,7 @@ const LARGE_THEME = {
 
 const MEDIUM_THEME = {
   fieldWrapper: "Default" as FieldWrapperType,
-  baseClasses: "flex w-full caret-turquoise-300 text-left",
+  baseClasses: "flex w-full caret-purple-200 text-left",
   inputClasses: "text-28-32-em text-neutral-700 placeholder-neutral-300",
   focusClasses: "focus:outline-none",
   paddingClasses: "",
@@ -196,12 +193,11 @@ const INLINE_THEME = {
 
 const FILLED_THEME = {
   fieldWrapper: "Default" as FieldWrapperType,
-  baseClasses:
-    "rounded-lg flex w-full bg-neutral-000 border caret-turquoise-300",
+  baseClasses: "rounded-lg flex w-full bg-neutral-000 border caret-purple-200",
   inputClasses:
     "text-style-g text-neutral-900 placeholder-neutral-600 text-base md:text-sm",
   focusClasses:
-    "border-solid border-transparent focus:outline-none focus:border-turquoise-300 focus:bg-neutral-000",
+    "border-solid border-transparent focus:outline-none focus:border-purple-200 focus:bg-neutral-000",
   paddingClasses: "px-4 py-3.25",
   skeletonClasses: "w-2/6",
   makeErrorClasses: (error?: string) =>
@@ -221,7 +217,7 @@ const OUTLINE_NARROW_THEME = {
     "rounded-lg flex w-full bg-neutral-000 caret-lavender-300 border border-neutral-300 text-left",
   inputClasses: "text-style-h text-neutral-900 placeholder-neutral-500",
   focusClasses:
-    "border-solid border-transparent focus:outline-none focus:border-turquoise-300 focus:bg-neutral-000",
+    "border-solid border-transparent focus:outline-none focus:border-purple-200 focus:bg-neutral-000",
   paddingClasses: "px-3 py-2",
   skeletonClasses: "w-2/6",
   makeErrorClasses: (error?: string) =>
@@ -236,12 +232,11 @@ const OUTLINE_NARROW_THEME = {
 
 const CUSTOMER_CHECKOUT_THEME = {
   fieldWrapper: "Default" as FieldWrapperType,
-  baseClasses:
-    "rounded-lg flex w-full bg-neutral-100 border caret-turquoise-300",
+  baseClasses: "rounded-lg flex w-full bg-neutral-100 border caret-purple-200",
   inputClasses:
     "text-style-g text-neutral-900 placeholder-neutral-600 text-base md:text-sm",
   focusClasses:
-    "border-solid border-transparent focus:outline-none focus:border-turquoise-300 focus:bg-neutral-000",
+    "border-solid border-transparent focus:outline-none focus:border-purple-200 focus:bg-neutral-000",
   paddingClasses: "px-4 py-3.25",
   skeletonClasses: "w-2/6",
   makeErrorClasses: (error?: string) =>
@@ -257,12 +252,11 @@ const CUSTOMER_CHECKOUT_THEME = {
 const GROUP_DEFAULT_THEME = {
   themeWrapper: "flex flex-col w-full mb: Theme-6",
   fieldWrapper: "Default" as FieldWrapperType,
-  baseClasses:
-    "rounded-lg flex w-full bg-neutral-100 border caret-turquoise-300",
+  baseClasses: "rounded-lg flex w-full bg-neutral-100 border caret-purple-200",
   inputClasses:
     "text-style-g text-neutral-900 placeholder-neutral-600 text-base md:text-sm",
   focusClasses:
-    "border-solid border-transparent focus:outline-none focus:border-turquoise-300 focus:bg-neutral-000",
+    "border-solid border-transparent focus:outline-none focus:border-purple-200 focus:bg-neutral-000",
 
   skeletonClasses: "w-2/6",
   paddingClasses: "px-4 py-3.25",
@@ -280,7 +274,7 @@ const GROUP_DEFAULT_THEME = {
 const POPOVER_SELECT_THEME = {
   fieldWrapper: "Simple" as FieldWrapperType,
   baseClasses:
-    "rounded-lg text-style-g flex w-full text-neutral-900 placeholder-neutral-400 mb-1 caret-turquoise-300 text-left",
+    "rounded-lg text-style-g flex w-full text-neutral-900 placeholder-neutral-400 mb-1 caret-purple-200 text-left",
   focusClasses: "focus:outline-none",
   paddingClasses: "py-3.25",
   skeletonClasses: "w-2/6",
@@ -291,12 +285,12 @@ const POPOVER_SELECT_THEME = {
 const STREAMLINE_THEME = {
   fieldWrapper: "Default" as FieldWrapperType,
   baseClasses:
-    "rounded flex w-full bg-neutral-000 border border-neutral-300 caret-turquoise-300",
+    "rounded flex w-full bg-neutral-000 border border-neutral-300 caret-purple-200",
   inputClasses:
     "text-16-18 md:text-13-14 text-neutral-900 placeholder-neutral-600",
-  focusClasses: "border-solid focus:border-turquoise-300",
+  focusClasses: "border-solid focus:border-purple-200",
   focusWithinClasses:
-    "border-solid focus-within:outline-none focus-within:border-turquoise-300",
+    "border-solid focus-within:outline-none focus-within:border-purple-200",
   paddingClasses: "px-2 py-2.25",
   skeletonClasses: "w-2/6",
   chevronClasses:
@@ -317,13 +311,13 @@ const STREAMLINE_THEME = {
 const STREAMLINE_INLINE_THEME = {
   fieldWrapper: "Default" as FieldWrapperType,
   baseClasses:
-    "rounded flex w-full bg-neutral-000 border border-neutral-300 caret-turquoise-300",
+    "rounded flex w-full bg-neutral-000 border border-neutral-300 caret-purple-200",
   inputClasses:
     "text-16-18 md:text-13-14 text-neutral-900 placeholder-neutral-600",
   focusClasses:
-    "border-solid border-transparent focus:outline-none focus:border-turquoise-300",
+    "border-solid border-transparent focus:outline-none focus:border-purple-200",
   focusWithinClasses:
-    "border-solid border-transparent focus-within:outline-none focus-within:border-turquoise-300",
+    "border-solid border-transparent focus-within:outline-none focus-within:border-purple-200",
   paddingClasses: "px-2 py-2.25",
   skeletonClasses: "w-2/6",
   chevronClasses:
@@ -344,12 +338,12 @@ const STREAMLINE_INLINE_THEME = {
 const PERCENTAGE_INCREMENT_THEME = {
   fieldWrapper: "Default" as FieldWrapperType,
   baseClasses:
-    "rounded-lg flex w-full bg-neutral-000 border border-neutral-300 caret-turquoise-300",
+    "rounded-lg flex w-full bg-neutral-000 border border-neutral-300 caret-purple-200",
   inputClasses:
     "text-14-22-em text-center appearance-none text-neutral-700 placeholder-neutral-600",
-  focusClasses: "border-solid focus:outline-none focus:border-turquoise-300",
+  focusClasses: "border-solid focus:outline-none focus:border-purple-200",
   focusWithinClasses:
-    "border-solid focus-within:outline-none focus-within:border-turquoise-300",
+    "border-solid focus-within:outline-none focus-within:border-purple-200",
   paddingClasses: "px-10 py-1.75",
   skeletonClasses: "w-2/6",
   chevronClasses:
@@ -369,11 +363,11 @@ const PERCENTAGE_INCREMENT_THEME = {
 const CHECKOUT_THEME = {
   fieldWrapper: "Default" as FieldWrapperType,
   baseClasses:
-    "rounded-lg flex w-full bg-neutral-000 border-2 border-neutral-300 caret-turquoise-300 shadow-lg",
+    "rounded-lg flex w-full bg-neutral-000 border-2 border-neutral-300 caret-purple-200 shadow-lg",
   inputClasses: "text-16-18-em text-neutral-900 placeholder-neutral-600",
-  focusClasses: "border-solid focus:border-turquoise-300",
+  focusClasses: "border-solid focus:border-purple-200",
   focusWithinClasses:
-    "border-solid focus-within:outline-none focus-within:border-turquoise-300",
+    "border-solid focus-within:outline-none focus-within:border-purple-200",
   paddingClasses: "px-3 py-4",
   skeletonClasses: "w-2/6",
   chevronClasses:

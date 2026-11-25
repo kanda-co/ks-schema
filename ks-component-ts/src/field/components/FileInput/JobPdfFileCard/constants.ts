@@ -16,7 +16,7 @@ export const CLASS_NAMES = {
     image: "object-contain w-32 max-h-32",
     button: "w-5 h-5 flex justify-center items-center ml-5",
     progress:
-      "absolute bg-turquoise-300 h-full opacity-10 z-0 transition-width transition-slowest ease",
+      "absolute bg-purple-200 h-full opacity-10 z-0 transition-width transition-slowest ease",
     bottom:
       "relative border border-t-0 rounded-b-xl border-neutral-200 bg-neutral-000 min-h-12 overflow-hidden",
     padding: "flex flex-row justify-between px-3 py-2.5",
@@ -27,7 +27,7 @@ export const CLASS_NAMES = {
     image: "object-contain w-16 max-h-16",
     button: "w-4 h-4 flex justify-center items-center ml-4",
     progress:
-      "absolute bg-turquoise-300 h-full opacity-10 z-0 transition-width transition-slowest ease",
+      "absolute bg-purple-200 h-full opacity-10 z-0 transition-width transition-slowest ease",
     bottom:
       "relative border border-t-0 rounded-b-xl border-neutral-200 bg-neutral-000 min-h-12 overflow-hidden",
     padding: "flex flex-row justify-between px-3 py-2.5",
@@ -38,7 +38,7 @@ export const ICONS = {
   default: {
     document: {
       icon: "file",
-      stroke: "turquoise-300",
+      stroke: "purple-200",
       size: 24,
       className: "mr-4 min-w-6 min-h-6",
     },
@@ -58,7 +58,7 @@ export const ICONS = {
   small: {
     document: {
       icon: "file",
-      stroke: "turquoise-300",
+      stroke: "purple-200",
       size: 20,
       className: "mr-3 min-w-5 min-h-5",
     },

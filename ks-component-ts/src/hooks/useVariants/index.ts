@@ -1,5 +1,8 @@
 import { useContext } from "react";
-import { useIsDesktop, LoadingProvider } from "@kanda-libs/ks-design-library";
+import {
+  useIsDesktop,
+  LoadingProviderContext,
+} from "@kanda-libs/ks-design-library";
 import { StringIndexedObject } from "~/types";
 
 export interface Hook extends StringIndexedObject {
@@ -9,7 +12,7 @@ export interface Hook extends StringIndexedObject {
 
 export default function useVariants(variants: StringIndexedObject): Hook {
   const isDesktop = useIsDesktop();
-  const loading = useContext(LoadingProvider.Context);
+  const loading = useContext(LoadingProviderContext);
 
   const media = isDesktop ? "desktop" : "mobile";
 

@@ -2,7 +2,7 @@ export const FIELD = {
   name: "desktop-search",
   icon: "search",
   iconVariant: "search",
-  iconColor: "text-turquoise-500",
+  iconColor: "text-purple-400",
 };
 
 export const BUTTON = {

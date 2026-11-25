@@ -1,4 +1,4 @@
-.PHONY: info
+.PHONY: info qa 
 
 info:
 	@echo Getting project info
@@ -90,6 +90,7 @@ widget:
 	rm -rf ks-frontend-services/src/generated
 	cp -r frontend/generated ks-frontend-services/src/generated
 	cp -r frontend/generated ks-component-ts/src/generated
+	rm -rf frontend/generated/widget
 
 ts-widget:
 	@echo Generating TS React Field components, validators from schema...
@@ -124,3 +125,29 @@ setup-repo:
 		--project="${PROJECT_ID}" \
 		--role="roles/iam.workloadIdentityUser" \
 		--member="principalSet://iam.googleapis.com/projects/${PROJECT_NUM}/locations/global/workloadIdentityPools/cicd-pool/*"
+
+publish-schema:
+	@echo "Checking access to @kanda-libs packages..."
+	@npm view @kanda-libs/ks-amplitude-providers name >/dev/null 2>&1 || { \
+		echo "🔒 Not authenticated or no access to @kanda-libs. Requesting NPM login..."; \
+		npm login; \
+	}
+	yarn
+	make qa clean-frontend build-frontend
+	npm run publish:patch
+
+full-gen-frontend:
+	@echo "Checking access to @kanda-libs packages..."
+	@npm view @kanda-libs/ks-amplitude-providers name >/dev/null 2>&1 || { \
+		echo "🔒 Not authenticated or no access to @kanda-libs. Requesting NPM login..."; \
+		npm login; \
+	}
+	yarn
+	make qa clean-frontend build-frontend
+	make qa ts-widget
+	cd ks-frontend-services && yarn remove:nodemodules && yarn && yarn build
+	cd ks-component-ts && yarn && yarn build
+
+publish-fe-patch:
+	cd ks-frontend-services && npm run publish:patch
+	cd ks-component-ts && npm run publish:patch

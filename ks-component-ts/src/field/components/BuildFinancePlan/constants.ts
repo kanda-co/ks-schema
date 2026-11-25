@@ -69,7 +69,7 @@ export const CLASS_NAMES = {
 };
 
 export const SELECT_PRICE_PROPS = {
-  color: "green-500",
+  color: "purple-400",
   poundsClassName: "text-style-f-em",
   centsClassName: "text-style-k-em mb-auto mt-px",
 };
