@@ -1,0 +1,23 @@
+{
+  "subject": "Loan offer approaching expiration",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Six Month Completion Deadline"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "{{ message }}"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "Continue to Ideal4Finance",
+      "url": "{{cta_url}}"
+    }
+  ]
+}

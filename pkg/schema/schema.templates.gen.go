@@ -3,6 +3,7 @@ package schema
 type TName string
 
 const (
+	DBV4_HO_2ND_LINE_OFFERED                           TName = "DBV4_HO_2ND_LINE_OFFERED"
 	DBV4_HO_AIP_HOWDENS                                TName = "DBV4_HO_AIP_HOWDENS"
 	DBV4_HO_AIP_PREAPPROVED                            TName = "DBV4_HO_AIP_PREAPPROVED"
 	DBV4_HO_APPLICATION_ACCEPTED_DEPOSIT_CHANGED       TName = "DBV4_HO_APPLICATION_ACCEPTED_DEPOSIT_CHANGED"
@@ -113,9 +114,11 @@ const (
 	DBV4_USER_VERIFY_DIRECTOR                          TName = "DBV4_USER_VERIFY_DIRECTOR"
 	DBV4_USER_VERIFY_DIRECTOR_REMINDER                 TName = "DBV4_USER_VERIFY_DIRECTOR_REMINDER"
 	DBV4_USER_VERIFY_EMAIL                             TName = "DBV4_USER_VERIFY_EMAIL"
+	ISS_SIX_MONTH_REMINDER                             TName = "ISS_SIX_MONTH_REMINDER"
 )
 
 var TemplateM = map[string]TName{
+	"DBV4_HO_2ND_LINE_OFFERED":                           DBV4_HO_2ND_LINE_OFFERED,
 	"DBV4_HO_AIP_HOWDENS":                                DBV4_HO_AIP_HOWDENS,
 	"DBV4_HO_AIP_PREAPPROVED":                            DBV4_HO_AIP_PREAPPROVED,
 	"DBV4_HO_APPLICATION_ACCEPTED_DEPOSIT_CHANGED":       DBV4_HO_APPLICATION_ACCEPTED_DEPOSIT_CHANGED,
@@ -226,6 +229,7 @@ var TemplateM = map[string]TName{
 	"DBV4_USER_VERIFY_DIRECTOR":                          DBV4_USER_VERIFY_DIRECTOR,
 	"DBV4_USER_VERIFY_DIRECTOR_REMINDER":                 DBV4_USER_VERIFY_DIRECTOR_REMINDER,
 	"DBV4_USER_VERIFY_EMAIL":                             DBV4_USER_VERIFY_EMAIL,
+	"ISS_SIX_MONTH_REMINDER":                             ISS_SIX_MONTH_REMINDER,
 }
 
 func (tn TName) String() string {
@@ -240,6 +244,42 @@ func (tn TName) Render() string {
 }
 
 var TMap = map[TName]string{
+	DBV4_HO_2ND_LINE_OFFERED: `{
+  "subject": "You've been offered finance at 16.9% APR",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "The lender has sent Ideal4Finance an update about your finance application for your job with {{sender.contact_name}}."
+        },
+        {
+          "text": "Unfortunately, your application has not been approved at the original rate. However, you have been offered finance at 16.9% APR instead."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "What happens now?",
+          "subtext": "At 16.9% APR your monthly repayments and the total amount you repay will be higher than at the original rate. Click the link below to see the full details of your offer before you decide whether to go ahead."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View my offer",
+      "url": "{{cta_url}}"
+    }
+  ],
+  "sms": "There has been an update to your finance application with Ideal4Finance. Check your emails for more info."
+}`,
 	DBV4_HO_AIP_HOWDENS: `{
   "subject": "{{receiver.contact_name}}, see if you can get finance for a new kitchen from Howdens with Ideal4Finance",
   "flow_type": "{{flow_type}}",
@@ -4163,6 +4203,29 @@ var TMap = map[TName]string{
     },
     {
       "type": "help"
+    }
+  ]
+}`,
+	ISS_SIX_MONTH_REMINDER: `{
+  "subject": "Loan offer approaching expiration",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Six Month Completion Deadline"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "{{ message }}"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "Continue to Ideal4Finance",
+      "url": "{{cta_url}}"
     }
   ]
 }`,

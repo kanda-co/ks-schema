@@ -1,0 +1,36 @@
+{
+  "subject": "You've been offered finance at 16.9% APR",
+  "flow_type": "{{flow_type}}",
+  "body": [
+    {
+      "type": "heading",
+      "text": "Hi {{receiver.contact_name}},"
+    },
+    {
+      "type": "text",
+      "rows": [
+        {
+          "text": "The lender has sent Ideal4Finance an update about your finance application for your job with {{sender.contact_name}}."
+        },
+        {
+          "text": "Unfortunately, your application has not been approved at the original rate. However, you have been offered finance at 16.9% APR instead."
+        }
+      ]
+    },
+    {
+      "type": "statements",
+      "rows": [
+        {
+          "text": "What happens now?",
+          "subtext": "At 16.9% APR your monthly repayments and the total amount you repay will be higher than at the original rate. Click the link below to see the full details of your offer before you decide whether to go ahead."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "text": "View my offer",
+      "url": "{{cta_url}}"
+    }
+  ],
+  "sms": "There has been an update to your finance application with Ideal4Finance. Check your emails for more info."
+}
