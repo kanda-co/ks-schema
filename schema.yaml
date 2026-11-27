@@ -7075,6 +7075,7 @@ paths:
               - housekeeping_run_propensio_payouts
               - housekeeping_run_tracking_csv
               - housekeeping_run_trade_monitoring
+              - housekeeping_six_month_reminder
       responses:
         200:
           description: runner has been completed
